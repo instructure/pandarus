@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -x
+
+mvn clean package scala:run -Dlauncher=ruby-codegen
+(
+  cd clients/ruby
+  GEMFILE=$(gem build red_panda.gemspec | fgrep -i 'FILE:' | awk '{ print $2 }')
+  echo "Gem file: $GEMFILE"
+  gem install $GEMFILE  
+)
