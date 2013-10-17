@@ -1,1 +1,0 @@
-require "red_panda/v1_api"

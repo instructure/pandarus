@@ -23,8 +23,8 @@ object RubyCanvasCodegen extends BasicRubyGenerator {
   // to avoid recompiling ...
   override def templateDir = "clients/ruby/template"
 
-  override def apiPackage = Some("red_panda")
-  override def modelPackage = Some("red_panda.models")
+  override def apiPackage = Some("pandarus")
+  override def modelPackage = Some("pandarus.models")
 
   override def destinationDir = "clients/ruby/lib"
 
@@ -53,6 +53,6 @@ object RubyCanvasCodegen extends BasicRubyGenerator {
     // ("swagger" + File.separator + "response.mustache", destinationDir + File.separator + apiPackage.get, "swagger" + File.separator + "response.rb"),
     // ("swagger" + File.separator + "version.mustache", destinationDir + File.separator + apiPackage.get, "swagger" + File.separator + "version.rb"),
     // ("swagger" + File.separator + "request.mustache", destinationDir + File.separator + apiPackage.get, "swagger" + File.separator + "request.rb")
-    ("models.mustache", destinationDir + File.separator + "red_panda", "models.rb")
+    ("models.mustache", destinationDir + File.separator + "pandarus", "models.rb")
   )
 }

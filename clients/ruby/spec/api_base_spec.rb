@@ -1,13 +1,13 @@
 require_relative 'spec_helper'
-require 'red_panda/api_base'
+require 'pandarus/api_base'
 
-describe RedPanda::APIBase do
+describe Pandarus::APIBase do
   context "underscores_to_square_brackets" do
     def u2sb(string)
       base.send(:underscores_to_square_brackets, string)
     end
 
-    let(:base) { RedPanda::APIBase.new }
+    let(:base) { Pandarus::APIBase.new }
 
     it "converts surrounding double underscores" do
       u2sb("prefix__inside__").should == :"prefix[inside]"

@@ -1,1 +1,1 @@
-$:.unshift(File.join(File.dirname(__FILE__), '..', 'red_panda', 'lib'))
+$:.unshift(File.join(File.dirname(__FILE__), '..', 'pandarus', 'lib'))
