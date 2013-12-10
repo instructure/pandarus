@@ -32,6 +32,9 @@ module Pandarus
       options = underscored_merge_opts(opts,
         {{#requiredParams}}:{{paramName}} => {{paramName}}{{#hasMore}},
         {{/hasMore}}
+      {{/requiredParams}}
+      {{^requiredParams}}
+        {}
       {{/requiredParams}}{{newline}}
       )
 
