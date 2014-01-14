@@ -18,7 +18,7 @@ module Pandarus
         :correct_comments => {:external => "correct_comments", :container => false, :type => nil},
         :incorrect_comments => {:external => "incorrect_comments", :container => false, :type => nil},
         :neutral_comments => {:external => "neutral_comments", :container => false, :type => nil},
-        :answers => {:external => "answers", :container => true, :type => "Enrollment"}
+        :answers => {:external => "answers", :container => true, :type => nil}
 
       }
     end
