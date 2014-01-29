@@ -35,6 +35,18 @@ See the Canvas API documentation that Pandarus is built from:
 
 http://api.instructure.com/
 
+Pandarus method names are very similar to the descriptions in the documentation. If you follow three rules, you will be able to access the full API:
+
+1. All descriptions get lower-cased and spaces become underscores
+2. If there is an 'a', 'an' or 'the' in the description, ignore it
+3. If there are two ways to access an API call (such as via /courses and /sections) then add a _courses or _sections suffix
+
+**Examples:**
+
+- The API documentation describes a "Get a single account" API. This becomes "get_single_account"
+- "Reserve a time slot" becomes "reserve_time_slot"
+- "Get a single course" becomes EITHER "get_single_course_courses" OR "get_single_course_accounts" because there are two ways to access the API.
+
 Code Generation
 ---------------
 
