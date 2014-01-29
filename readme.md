@@ -1,7 +1,7 @@
 What is Pandarus?
 =================
 
-Pandarus is a Ruby gem that makes it easy to access to the full Canvas API. It is also a code generator that has the potential to generate Canvas API support other languages.
+Pandarus is a Ruby gem that makes it easy to access to the full Canvas API. It is also a code generator that has the potential to generate Canvas API support for other proramming languages.
 
 Pandarus uses the Swagger spec. It depends on the canvas-lms API documentation to be accurate. If the documentation is accurate, the generated code should work. Because Pandarus is still fairly new, there are cases where the documentation hasn't been corrected, or where the code generation is not complete. Please feel free to make corrections in either case by adding pull requests.
 
