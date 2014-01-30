@@ -50,10 +50,14 @@ Pandarus method names are very similar to the descriptions in the documentation.
 Code Generation
 ---------------
 
-To generate Ruby code from the api-docs.json, accompanying json files, and
-this project's ruby template files:
+To generate the Ruby gem from Canvas's api-docs.json file:
 
-mvn clean package scala:run -Dlauncher=ruby-codegen
+1. Edit the pom.xml file and replace the fileMap path with the path to your api-docs.json file:
+```xml
+  <jvmArg>-DfileMap=/Users/duane/Instructure/canvas-lms/public/doc/api/api-docs.json</jvmArg>
+```
+
+2. Run ```./build-and-install-gem```
 
 (requires Java 1.7, may work on 1.6 but OOM errors have cropped up)
 
@@ -61,5 +65,6 @@ Authors
 -------
 
 Duane Johnson -- duane@instructure.com
+
 Eric Adams -- eadams@instructure.com
 
