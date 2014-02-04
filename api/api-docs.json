@@ -1,0 +1,234 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "apis": [
+    {
+      "path": "/account_authentication_services.json",
+      "description": "Account Authentication Services"
+    },
+    {
+      "path": "/account_reports.json",
+      "description": "Account Reports"
+    },
+    {
+      "path": "/accounts.json",
+      "description": "Accounts"
+    },
+    {
+      "path": "/admins.json",
+      "description": "Admins"
+    },
+    {
+      "path": "/analytics.json",
+      "description": "Analytics"
+    },
+    {
+      "path": "/announcement_external_feeds.json",
+      "description": "Announcement External Feeds"
+    },
+    {
+      "path": "/appointment_groups.json",
+      "description": "Appointment Groups"
+    },
+    {
+      "path": "/assignment_groups.json",
+      "description": "Assignment Groups"
+    },
+    {
+      "path": "/assignments.json",
+      "description": "Assignments"
+    },
+    {
+      "path": "/authentications_log.json",
+      "description": "Authentications Log"
+    },
+    {
+      "path": "/calendar_events.json",
+      "description": "Calendar Events"
+    },
+    {
+      "path": "/collaborations.json",
+      "description": "Collaborations"
+    },
+    {
+      "path": "/collections.json",
+      "description": "Collections"
+    },
+    {
+      "path": "/comm_messages.json",
+      "description": "CommMessages"
+    },
+    {
+      "path": "/communication_channels.json",
+      "description": "Communication Channels"
+    },
+    {
+      "path": "/conferences.json",
+      "description": "Conferences"
+    },
+    {
+      "path": "/content_exports.json",
+      "description": "Content Exports"
+    },
+    {
+      "path": "/content_migrations.json",
+      "description": "Content Migrations"
+    },
+    {
+      "path": "/conversations.json",
+      "description": "Conversations"
+    },
+    {
+      "path": "/course_audit_log.json",
+      "description": "Course Audit log"
+    },
+    {
+      "path": "/courses.json",
+      "description": "Courses"
+    },
+    {
+      "path": "/custom_gradebook_columns.json",
+      "description": "Custom Gradebook Columns"
+    },
+    {
+      "path": "/discussion_topics.json",
+      "description": "Discussion Topics"
+    },
+    {
+      "path": "/enrollments.json",
+      "description": "Enrollments"
+    },
+    {
+      "path": "/external_tools.json",
+      "description": "External Tools"
+    },
+    {
+      "path": "/favorites.json",
+      "description": "Favorites"
+    },
+    {
+      "path": "/feature_flags.json",
+      "description": "Feature Flags"
+    },
+    {
+      "path": "/files.json",
+      "description": "Files"
+    },
+    {
+      "path": "/grade_change_log.json",
+      "description": "Grade Change Log"
+    },
+    {
+      "path": "/gradebook_history.json",
+      "description": "Gradebook History"
+    },
+    {
+      "path": "/group_categories.json",
+      "description": "Group Categories"
+    },
+    {
+      "path": "/groups.json",
+      "description": "Groups"
+    },
+    {
+      "path": "/logins.json",
+      "description": "Logins"
+    },
+    {
+      "path": "/modules.json",
+      "description": "Modules"
+    },
+    {
+      "path": "/notification_preferences.json",
+      "description": "Notification Preferences"
+    },
+    {
+      "path": "/outcome_groups.json",
+      "description": "Outcome Groups"
+    },
+    {
+      "path": "/outcome_results.json",
+      "description": "Outcome Results"
+    },
+    {
+      "path": "/outcomes.json",
+      "description": "Outcomes"
+    },
+    {
+      "path": "/pages.json",
+      "description": "Pages"
+    },
+    {
+      "path": "/progress.json",
+      "description": "Progress"
+    },
+    {
+      "path": "/quiz_ip_filters.json",
+      "description": "Quiz IP Filters"
+    },
+    {
+      "path": "/quiz_question_groups.json",
+      "description": "Quiz Question Groups"
+    },
+    {
+      "path": "/quiz_reports.json",
+      "description": "Quiz Reports"
+    },
+    {
+      "path": "/quiz_submission_files.json",
+      "description": "Quiz Submission Files"
+    },
+    {
+      "path": "/quiz_submission_questions.json",
+      "description": "Quiz Submission Questions"
+    },
+    {
+      "path": "/quiz_submissions.json",
+      "description": "Quiz Submissions"
+    },
+    {
+      "path": "/quiz_questions.json",
+      "description": "QuizQuestions"
+    },
+    {
+      "path": "/quizzes.json",
+      "description": "Quizzes"
+    },
+    {
+      "path": "/roles.json",
+      "description": "Roles"
+    },
+    {
+      "path": "/sis_imports.json",
+      "description": "SIS Imports"
+    },
+    {
+      "path": "/search.json",
+      "description": "Search"
+    },
+    {
+      "path": "/sections.json",
+      "description": "Sections"
+    },
+    {
+      "path": "/services.json",
+      "description": "Services"
+    },
+    {
+      "path": "/submission_comments.json",
+      "description": "Submission Comments"
+    },
+    {
+      "path": "/submissions.json",
+      "description": "Submissions"
+    },
+    {
+      "path": "/tabs.json",
+      "description": "Tabs"
+    },
+    {
+      "path": "/users.json",
+      "description": "Users"
+    }
+  ]
+}

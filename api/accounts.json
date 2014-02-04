@@ -1,0 +1,433 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/accounts",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/accounts",
+      "description": "List accounts that the current user can view or manage.  Typically,\nstudents and even teachers will get an empty list in response, only\naccount admins can view the accounts that they are in.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List accounts",
+          "notes": "List accounts that the current user can view or manage.  Typically,\nstudents and even teachers will get an empty list in response, only\naccount admins can view the accounts that they are in.",
+          "nickname": "list_accounts",
+          "parameters": [
+
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{id}",
+      "description": "Retrieve information on an individual account, given by id or sis\nsis_account_id.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single account",
+          "notes": "Retrieve information on an individual account, given by id or sis\nsis_account_id.",
+          "nickname": "get_single_account",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/sub_accounts",
+      "description": "List accounts that are sub-accounts of the given account.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get the sub-accounts of an account",
+          "notes": "List accounts that are sub-accounts of the given account.",
+          "nickname": "get_the_sub_accounts_of_account",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "recursive",
+              "description": "If true, the entire account tree underneath this account will be returned (though still paginated). If false, only direct sub-accounts of this account will be returned. Defaults to false.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/courses",
+      "description": "Retrieve the list of courses in this account.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List active courses in an account",
+          "notes": "Retrieve the list of courses in this account.",
+          "nickname": "list_active_courses_in_account",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "with_enrollments",
+              "description": "If true, include only courses with at least one enrollment. If false, include only courses with no enrollments. If not present, do not filter on course enrollment status.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "published",
+              "description": "If true, include only published courses. If false, exclude published courses. If not present, do not filter on published status.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "completed",
+              "description": "If true, include only completed courses (these may be in state 'completed', or their enrollment term may have ended). If false, exclude completed courses. If not present, do not filter on completed status.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "by_teachers",
+              "description": "List of User IDs of teachers; if supplied, include only courses taught by one of the referenced users.",
+              "type": "integer",
+              "format": "int64",
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "by_subaccounts",
+              "description": "List of Account IDs; if supplied, include only courses associated with one of the referenced subaccounts.",
+              "type": "integer",
+              "format": "int64",
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "hide_enrollmentless_courses",
+              "description": "If present, only return courses that have at least one enrollment. Equivalent to 'with_enrollments=true'; retained for compatibility.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "state",
+              "description": "If set, only return courses that are in the given state(s). By default, all states but \"deleted\" are returned.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "created",
+                "claimed",
+                "available",
+                "completed",
+                "deleted"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "enrollment_term_id",
+              "description": "If set, only includes courses from the specified term.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "search_term",
+              "description": "The partial course name, code, or full ID to match and return in the results list. Must be at least 3 characters.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Course"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{id}",
+      "description": "Update an existing account.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update an account",
+          "notes": "Update an existing account.",
+          "nickname": "update_account",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "account[name]",
+              "description": "Updates the account name",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account[default_time_zone]",
+              "description": "The default time zone of the account. Allowed time zones are {http://www.iana.org/time-zones IANA time zones} or friendlier {http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html Ruby on Rails time zones}.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account[default_storage_quota_mb]",
+              "description": "The default course storage quota to be used, if not otherwise specified.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account[default_user_storage_quota_mb]",
+              "description": "The default user storage quota to be used, if not otherwise specified.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account[default_group_storage_quota_mb]",
+              "description": "The default group storage quota to be used, if not otherwise specified.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{id}",
+      "description": "",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Change the domains for an account",
+          "notes": "",
+          "nickname": "change_the_domains_for_account",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "account[domains]",
+              "description": "The domains to use for this account.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{id}",
+      "description": "Retrieve information on an individual account, given by id or\nsis_account_id.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single account (internal)",
+          "notes": "Retrieve information on an individual account, given by id or\nsis_account_id.",
+          "nickname": "get_single_account_internal",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "includes",
+              "description": "Additional attributes to include. Accepts 'domains.'",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts",
+      "description": "to '1', service will be enabled. If '0', service will be disabled.\nAvailable services are:\n  * skype\n  * diigo\n  * delicious\n  * google_docs_previews\n  * avatars\n'1,' setting will be enabled. If '0,' setting will be disabled.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a new root account",
+          "notes": "to '1', service will be enabled. If '0', service will be disabled.\nAvailable services are:\n  * skype\n  * diigo\n  * delicious\n  * google_docs_previews\n  * avatars\n'1,' setting will be enabled. If '0,' setting will be disabled.",
+          "nickname": "create_new_root_account",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "account[name]",
+              "description": "The account name.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "account[domain]",
+              "description": "The domain to use for this account.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "account[services]",
+              "description": "A hash of service settings. If set",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account[settings]",
+              "description": "A hash of account setting options. If set to",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/sub_accounts",
+      "description": "Add a new sub-account to a given account.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a new sub-account",
+          "notes": "Add a new sub-account to a given account.",
+          "nickname": "create_new_sub_account",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "account[name]",
+              "description": "The name of the new sub-account.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "account[default_storage_quota_mb]",
+              "description": "The default course storage quota to be used, if not otherwise specified.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account[default_user_storage_quota_mb]",
+              "description": "The default user storage quota to be used, if not otherwise specified.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account[default_group_storage_quota_mb]",
+              "description": "The default group storage quota to be used, if not otherwise specified.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Account"
+          }
+        }
+      ]
+    }
+  ],
+  "models": {
+  }
+}

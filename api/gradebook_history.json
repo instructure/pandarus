@@ -1,0 +1,298 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/gradebook history",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/gradebook_history/days",
+      "description": "Returns a map of dates to grader/assignment groups",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Days in gradebook history for this course",
+          "notes": "Returns a map of dates to grader/assignment groups",
+          "nickname": "days_in_gradebook_history_for_this_course",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "The id of the contextual course for this API call",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Day"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/gradebook_history/{date}",
+      "description": "Returns the graders who worked on this day, along with the assignments they worked on.\nMore details can be obtained by selecting a grader and assignment and calling the\n'submissions' api endpoint for a given date.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Details for a given date in gradebook history for this course",
+          "notes": "Returns the graders who worked on this day, along with the assignments they worked on.\nMore details can be obtained by selecting a grader and assignment and calling the\n'submissions' api endpoint for a given date.",
+          "nickname": "details_for_given_date_in_gradebook_history_for_this_course",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "The id of the contextual course for this API call",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "date",
+              "description": "The date for which you would like to see detailed information",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Grader"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/gradebook_history/{date}/graders/{grader_id}/assignments/{assignment_id}/submissions",
+      "description": "Gives a nested list of submission versions",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Lists submissions",
+          "notes": "Gives a nested list of submission versions",
+          "nickname": "lists_submissions",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "The id of the contextual course for this API call",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "date",
+              "description": "The date for which you would like to see submissions",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "grader_id",
+              "description": "The ID of the grader for which you want to see submissions",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "The ID of the assignment for which you want to see submissions",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "SubmissionHistory"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/gradebook_history/feed",
+      "description": "Gives a paginated, uncollated list of submission versions for all matching\nsubmissions in the context. This SubmissionVersion objects will not include\nthe +new_grade+ or +previous_grade+ keys, only the +grade+; same for\n+graded_at+ and +grader+.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List uncollated submission versions",
+          "notes": "Gives a paginated, uncollated list of submission versions for all matching\nsubmissions in the context. This SubmissionVersion objects will not include\nthe +new_grade+ or +previous_grade+ keys, only the +grade+; same for\n+graded_at+ and +grader+.",
+          "nickname": "list_uncollated_submission_versions",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "The id of the contextual course for this API call",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "assignment_id",
+              "description": "The ID of the assignment for which you want to see submissions. If absent, versions of submissions from any assignment in the course are included.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "user_id",
+              "description": "The ID of the user for which you want to see submissions. If absent, versions of submissions from any user in the course are included.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "ascending",
+              "description": "Returns submission versions in ascending date order (oldest first). If absent, returns submission versions in descending date order (newest first).",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "SubmissionVersion"
+          }
+        }
+      ]
+    }
+  ],
+  "models": {
+    "Grader": {
+      "id": "Grader",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "assignments": {
+          "type": "string"
+        }
+      }
+    },
+    "Day": {
+      "id": "Day",
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "graders": {
+          "type": "string"
+        }
+      }
+    },
+    "SubmissionVersion": {
+      "id": "SubmissionVersion",
+      "properties": {
+        "assignment_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "assignment_name": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "current_grade": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "current_graded_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "current_grader": {
+          "type": "string"
+        },
+        "grade_matches_current_submission": {
+          "type": "boolean"
+        },
+        "graded_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "grader": {
+          "type": "string"
+        },
+        "grader_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "new_grade": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "new_graded_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "new_grader": {
+          "type": "string"
+        },
+        "previous_grade": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "previous_graded_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "previous_grader": {
+          "type": "string"
+        },
+        "score": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "user_name": {
+          "type": "string"
+        },
+        "submission_type": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "workflow_state": {
+          "type": "string"
+        }
+      }
+    },
+    "SubmissionHistory": {
+      "id": "SubmissionHistory",
+      "properties": {
+        "submission_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "versions": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

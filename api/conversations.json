@@ -1,0 +1,674 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/conversations",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/conversations",
+      "description": "Returns the list of conversations for the current user, most recent ones first.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List conversations",
+          "notes": "Returns the list of conversations for the current user, most recent ones first.",
+          "nickname": "list_conversations",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "scope",
+              "description": "When set, only return conversations of the specified type. For example, set to \"unread\" to return only conversations that haven't been read. The default behavior is to return all non-archived conversations (i.e. read and unread).",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "unread",
+                "starred",
+                "archived"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "filter",
+              "description": "When set, only return conversations for the specified courses, groups or users. The id should be prefixed with its type, e.g. \"user_123\" or \"course_456\". Can be an array (by setting \"filter[]\") or single value (by setting \"filter\")",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "filter_mode",
+              "description": "no description",
+              "type": "combine them with this mode",
+              "format": null,
+              "required": false,
+              "enum": [
+                "and",
+                "or",
+                "default or] When filter[] contains multiple filters",
+                "filtering conversations that at have at least all of the contexts (and) or at least one of the contexts (or)"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "interleave_submissions",
+              "description": "Default is false. If true, the message_count will also include these submission-based messages in the total. See the show action for more information.",
+              "type": "boolean",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include_all_conversation_ids",
+              "description": "Default is false. If true, the top-level element of the response will be an object rather than an array, and will have the keys \"conversations\" which will contain the paged conversation data, and \"conversation_ids\" which will contain the ids of all conversations under this scope/filter in the same order.",
+              "type": "boolean",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/conversations",
+      "description": "Create a new conversation with one or more recipients. If there is already\nan existing private conversation with the given recipients, it will be\nreused.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a conversation",
+          "notes": "Create a new conversation with one or more recipients. If there is already\nan existing private conversation with the given recipients, it will be\nreused.",
+          "nickname": "create_conversation",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "recipients",
+              "description": "An array of recipient ids. These may beuser ids or course/group ids prefixed with \"course_\" or \"group_\" respectively, e.g. recipients[]=1&recipients[]=2&recipients[]=course_3",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "subject",
+              "description": "The subject of the conversation. This is ignored when reusing a conversation. Maximum length is 255 characters.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "body",
+              "description": "The message to be sent",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "group_conversation",
+              "description": "Defaults to false. If true, this will be a group conversation (i.e. all recipients may see all messages and replies). If false, individual private conversations will be started with each recipient.",
+              "type": "boolean",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "attachment_ids",
+              "description": "An array of attachments ids. These must be files that have been previously uploaded to the sender's \"conversation attachments\" folder.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "media_comment_id",
+              "description": "Media comment id of an audio of video file to be associated with this message.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "media_comment_type",
+              "description": "Type of the associated media file",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "audio",
+                "video"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "mode",
+              "description": "Determines whether the messages will be created/sent synchronously or asynchronously. Defaults to sync, and this option is ignored if this is a group conversation or there is just one recipient (i.e. it must be a bulk private message). When sent async, the response will be an empty array (batch status can be queried via the {api:ConversationsController#batches batches API})",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "sync",
+                "async"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "scope",
+              "description": "Used when generating \"visible\" in the API response. See the explanation under the {api:ConversationsController#index index API action}",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "unread",
+                "starred",
+                "archived"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "filter",
+              "description": "Used when generating \"visible\" in the API response. See the explanation under the {api:ConversationsController#index index API action}",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "filter_mode",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "and",
+                "or",
+                "default or] Used when generating visible in the API response. See the explanation under the {api:ConversationsController#index index API action}"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "context_code",
+              "description": "The course or group that is the context for this conversation. Same format as courses or groups in the recipients argument.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/conversations/batches",
+      "description": "Returns any currently running conversation batches for the current user.\nConversation batches are created when a bulk private message is sent\nasynchronously (see the mode argument to the {api:ConversationsController#create create API action}).",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "",
+          "notes": "Returns any currently running conversation batches for the current user.\nConversation batches are created when a bulk private message is sent\nasynchronously (see the mode argument to the {api:ConversationsController#create create API action}).",
+          "nickname": "",
+          "parameters": [
+
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/conversations/{id}",
+      "description": "Returns information for a single conversation. Response includes all\nfields that are present in the list/index action, as well as messages,\nsubmissions, and extended participant information.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single conversation",
+          "notes": "Returns information for a single conversation. Response includes all\nfields that are present in the list/index action, as well as messages,\nsubmissions, and extended participant information.",
+          "nickname": "get_single_conversation",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "interleave_submissions",
+              "description": "Default false. If true, submission data will be returned as first class messages interleaved with other messages. The submission details (comments, assignment, etc.) will be stored as the submission property on the message. Note that if set, the message_count will also include these messages in the total.",
+              "type": "boolean",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "scope",
+              "description": "Used when generating \"visible\" in the API response. See the explanation under the {api:ConversationsController#index index API action}",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "unread",
+                "starred",
+                "archived"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "filter",
+              "description": "Used when generating \"visible\" in the API response. See the explanation under the {api:ConversationsController#index index API action}",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "filter_mode",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "and",
+                "or",
+                "default or] Used when generating visible in the API response. See the explanation under the {api:ConversationsController#index index API action}"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "auto_mark_as_read",
+              "description": "Default true. If true, unread conversations will be automatically marked as read. This will default to false in a future API release, so clients should explicitly send true if that is the desired behavior.",
+              "type": "boolean",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/conversations/{id}",
+      "description": "Updates attributes for a single conversation.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Edit a conversation",
+          "notes": "Updates attributes for a single conversation.",
+          "nickname": "edit_conversation",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "conversation[subject]",
+              "description": "Change the subject of this conversation",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "conversation[workflow_state]",
+              "description": "Change the state of this conversation",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "read",
+                "unread",
+                "archived"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "conversation[subscribed]",
+              "description": "Toggle the current user's subscription to the conversation (only valid for group conversations). If unsubscribed, the user will still have access to the latest messages, but the conversation won't be automatically flagged as unread, nor will it jump to the top of the inbox.",
+              "type": "boolean",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "conversation[starred]",
+              "description": "Toggle the starred state of the current user's view of the conversation.",
+              "type": "boolean",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "scope",
+              "description": "Used when generating \"visible\" in the API response. See the explanation under the {api:ConversationsController#index index API action}",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "unread",
+                "starred",
+                "archived"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "filter",
+              "description": "Used when generating \"visible\" in the API response. See the explanation under the {api:ConversationsController#index index API action}",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "filter_mode",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "and",
+                "or",
+                "default or] Used when generating visible in the API response. See the explanation under the {api:ConversationsController#index index API action}"
+              ]
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/conversations/mark_all_as_read",
+      "description": "Mark all conversations as read.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Mark all as read",
+          "notes": "Mark all conversations as read.",
+          "nickname": "mark_all_as_read",
+          "parameters": [
+
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/conversations/{id}",
+      "description": "Delete this conversation and its messages. Note that this only deletes\nthis user's view of the conversation.\n\nResponse includes same fields as UPDATE action",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete a conversation",
+          "notes": "Delete this conversation and its messages. Note that this only deletes\nthis user's view of the conversation.\n\nResponse includes same fields as UPDATE action",
+          "nickname": "delete_conversation",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/conversations/{id}/add_recipients",
+      "description": "Add recipients to an existing group conversation. Response is similar to\nthe GET/show action, except that omits submissions and only includes the\nlatest message (e.g. \"joe was added to the conversation by bob\")",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Add recipients",
+          "notes": "Add recipients to an existing group conversation. Response is similar to\nthe GET/show action, except that omits submissions and only includes the\nlatest message (e.g. \"joe was added to the conversation by bob\")",
+          "nickname": "add_recipients",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "recipients",
+              "description": "An array of recipient ids. These may be user ids or course/group ids prefixed with \"course_\" or \"group_\" respectively, e.g. recipients[]=1&recipients[]=2&recipients[]=course_3",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/conversations/{id}/add_message",
+      "description": "Add a message to an existing conversation. Response is similar to the\nGET/show action, except that omits submissions and only includes the\nlatest message (i.e. what we just sent)\n\nAn array of user ids. Defaults to all of the current conversation\nrecipients. To explicitly send a message to no other recipients,\nthis array should consist of the logged-in user id.\n\nAn array of message ids from this conversation to send to recipients\nof the new message. Recipients who already had a copy of included\nmessages will not be affected.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Add a message",
+          "notes": "Add a message to an existing conversation. Response is similar to the\nGET/show action, except that omits submissions and only includes the\nlatest message (i.e. what we just sent)\n\nAn array of user ids. Defaults to all of the current conversation\nrecipients. To explicitly send a message to no other recipients,\nthis array should consist of the logged-in user id.\n\nAn array of message ids from this conversation to send to recipients\nof the new message. Recipients who already had a copy of included\nmessages will not be affected.",
+          "nickname": "add_message",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "body",
+              "description": "The message to be sent.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "attachment_ids",
+              "description": "An array of attachments ids. These must be files that have been previously uploaded to the sender's \"conversation attachments\" folder.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "media_comment_id",
+              "description": "Media comment id of an audio of video file to be associated with this message.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "media_comment_type",
+              "description": "Type of the associated media file.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "audio",
+                "video"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "recipients",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "included_messages",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/conversations/{id}/remove_messages",
+      "description": "Delete messages from this conversation. Note that this only affects this\nuser's view of the conversation. If all messages are deleted, the\nconversation will be as well (equivalent to DELETE)",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Delete a message",
+          "notes": "Delete messages from this conversation. Note that this only affects this\nuser's view of the conversation. If all messages are deleted, the\nconversation will be as well (equivalent to DELETE)",
+          "nickname": "delete_message",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "remove",
+              "description": "Array of message ids to be deleted",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/conversations",
+      "description": "Perform a change on a set of conversations. Operates asynchronously; use the {api:ProgressController#show progress endpoint}\nto query the status of an operation.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Batch update conversations",
+          "notes": "Perform a change on a set of conversations. Operates asynchronously; use the {api:ProgressController#show progress endpoint}\nto query the status of an operation.",
+          "nickname": "batch_update_conversations",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "conversation_ids",
+              "description": "List of conversations to update. Limited to 500 conversations.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "event",
+              "description": "The action to take on each conversation.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "mark_as_read",
+                "mark_as_unread",
+                "star",
+                "unstar",
+                "archive",
+                "destroy"
+              ]
+            }
+          ],
+          "type": "Progress"
+        }
+      ]
+    },
+    {
+      "path": "/v1/conversations/find_recipients",
+      "description": "Deprecated, see the {api:SearchController#recipients Find recipients endpoint} in the Search API",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Find recipients",
+          "notes": "Deprecated, see the {api:SearchController#recipients Find recipients endpoint} in the Search API",
+          "nickname": "find_recipients",
+          "parameters": [
+
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/conversations/unread_count",
+      "description": "Get the number of unread conversations for the current user",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Unread count",
+          "notes": "Get the number of unread conversations for the current user",
+          "nickname": "unread_count",
+          "parameters": [
+
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+  }
+}

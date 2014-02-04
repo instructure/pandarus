@@ -1,0 +1,388 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/quiz submissions",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/submissions",
+      "description": "Get a list of all submissions for this quiz.\n\n<b>200 OK</b> response code is returned if the request was successful.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get all quiz submissions.",
+          "notes": "Get a list of all submissions for this quiz.\n\n<b>200 OK</b> response code is returned if the request was successful.",
+          "nickname": "get_all_quiz_submissions",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Associations to include with the quiz submission.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "submission",
+                "quiz",
+                "user"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}",
+      "description": "Get a single quiz submission.\n\n<b>200 OK</b> response code is returned if the request was successful.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single quiz submission.",
+          "notes": "Get a single quiz submission.\n\n<b>200 OK</b> response code is returned if the request was successful.",
+          "nickname": "get_single_quiz_submission",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Associations to include with the quiz submission.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "submission",
+                "quiz",
+                "user"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/submissions",
+      "description": "Start taking a Quiz by creating a QuizSubmission which you can use to answer\nquestions and submit your answers.\n\n<b>Responses</b>\n\n* <b>200 OK</b> if the request was successful\n* <b>400 Bad Request</b> if the quiz is locked\n* <b>403 Forbidden</b> if an invalid access code is specified\n* <b>403 Forbidden</b> if the Quiz's IP filter restriction does not pass\n* <b>409 Conflict</b> if a QuizSubmission already exists for this user and quiz",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create the quiz submission (start a quiz-taking session)",
+          "notes": "Start taking a Quiz by creating a QuizSubmission which you can use to answer\nquestions and submit your answers.\n\n<b>Responses</b>\n\n* <b>200 OK</b> if the request was successful\n* <b>400 Bad Request</b> if the quiz is locked\n* <b>403 Forbidden</b> if an invalid access code is specified\n* <b>403 Forbidden</b> if the Quiz's IP filter restriction does not pass\n* <b>409 Conflict</b> if a QuizSubmission already exists for this user and quiz",
+          "nickname": "create_the_quiz_submission_start_quiz_taking_session",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "access_code",
+              "description": "Access code for the Quiz, if any.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "preview",
+              "description": "Whether this should be a preview QuizSubmission and not count towards the user's course record. Teachers only.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}",
+      "description": "Update the amount of points a student has scored for questions they've\nanswered, provide comments for the student about their answer(s), or simply\nfudge the total score by a specific amount of points.\n\n<b>Responses</b>\n\n* <b>200 OK</b> if the request was successful\n* <b>403 Forbidden</b> if you are not a teacher in this course\n* <b>400 Bad Request</b> if the attempt parameter is missing or invalid\n* <b>400 Bad Request</b> if the specified QS attempt is not yet complete",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update student question scores and comments.",
+          "notes": "Update the amount of points a student has scored for questions they've\nanswered, provide comments for the student about their answer(s), or simply\nfudge the total score by a specific amount of points.\n\n<b>Responses</b>\n\n* <b>200 OK</b> if the request was successful\n* <b>403 Forbidden</b> if you are not a teacher in this course\n* <b>400 Bad Request</b> if the attempt parameter is missing or invalid\n* <b>400 Bad Request</b> if the specified QS attempt is not yet complete",
+          "nickname": "update_student_question_scores_and_comments",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "attempt",
+              "description": "The attempt number of the quiz submission that should be updated. This attempt MUST be already completed.",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "fudge_points",
+              "description": "Amount of positive or negative points to fudge the total score by.",
+              "type": "float",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "questions",
+              "description": "A set of scores and comments for each question answered by the student. The keys are the question IDs, and the values are hashes of `score` and `comment` entries. See {Appendix: Manual Scoring} for more on this parameter.",
+              "type": "hash",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}/complete",
+      "description": "Complete the quiz submission by marking it as complete and grading it. When\nthe quiz submission has been marked as complete, no further modifications\nwill be allowed.\n\n<b>Responses</b>\n\n* <b>200 OK</b> if the request was successful\n* <b>403 Forbidden</b> if an invalid access code is specified\n* <b>403 Forbidden</b> if the Quiz's IP filter restriction does not pass\n* <b>403 Forbidden</b> if an invalid token is specified\n* <b>400 Bad Request</b> if the QS is already complete\n* <b>400 Bad Request</b> if the attempt parameter is missing\n* <b>400 Bad Request</b> if the attempt parameter is not the latest attempt",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Complete the quiz submission (turn it in).",
+          "notes": "Complete the quiz submission by marking it as complete and grading it. When\nthe quiz submission has been marked as complete, no further modifications\nwill be allowed.\n\n<b>Responses</b>\n\n* <b>200 OK</b> if the request was successful\n* <b>403 Forbidden</b> if an invalid access code is specified\n* <b>403 Forbidden</b> if the Quiz's IP filter restriction does not pass\n* <b>403 Forbidden</b> if an invalid token is specified\n* <b>400 Bad Request</b> if the QS is already complete\n* <b>400 Bad Request</b> if the attempt parameter is missing\n* <b>400 Bad Request</b> if the attempt parameter is not the latest attempt",
+          "nickname": "complete_the_quiz_submission_turn_it_in",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "attempt",
+              "description": "The attempt number of the quiz submission that should be completed. Note that this must be the latest attempt index, as earlier attempts can not be modified.",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "validation_token",
+              "description": "The unique validation token you received when this Quiz Submission was created.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "access_code",
+              "description": "Access code for the Quiz, if any.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "QuizSubmission": {
+      "id": "QuizSubmission",
+      "properties": {
+        "id": {
+          "description": "The ID of the quiz submission.",
+          "example": 1,
+          "type": "integer",
+          "format": "int64"
+        },
+        "quiz_id": {
+          "description": "The ID of the Quiz the quiz submission belongs to.",
+          "example": 2,
+          "type": "integer",
+          "format": "int64"
+        },
+        "user_id": {
+          "description": "The ID of the Student that made the quiz submission.",
+          "example": 3,
+          "type": "integer",
+          "format": "int64"
+        },
+        "submission_id": {
+          "description": "The ID of the Submission the quiz submission represents.",
+          "example": 1,
+          "type": "integer",
+          "format": "int64"
+        },
+        "started_at": {
+          "description": "The time at which the student started the quiz submission.",
+          "example": "2013-11-07T13:16:18Z",
+          "type": "string",
+          "format": "date-time"
+        },
+        "finished_at": {
+          "description": "The time at which the student submitted the quiz submission.",
+          "example": "2013-11-07T13:16:18Z",
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_at": {
+          "description": "The time at which the quiz submission will be overdue, and be flagged as a late submission.",
+          "example": "2013-11-07T13:16:18Z",
+          "type": "string",
+          "format": "date-time"
+        },
+        "attempt": {
+          "description": "For quizzes that allow multiple attempts, this field specifies the quiz submission attempt number.",
+          "example": 3,
+          "type": "integer",
+          "format": "int64"
+        },
+        "extra_attempts": {
+          "description": "Number of times the student was allowed to re-take the quiz over the multiple-attempt limit.",
+          "example": 1,
+          "type": "integer",
+          "format": "int64"
+        },
+        "extra_time": {
+          "description": "Amount of extra time allowed for the quiz submission, in seconds.",
+          "example": 60,
+          "type": "integer",
+          "format": "int64"
+        },
+        "time_spent": {
+          "description": "Amount of time spent, in seconds.",
+          "example": 300,
+          "type": "integer",
+          "format": "int64"
+        },
+        "score": {
+          "description": "The score of the quiz submission, if graded.",
+          "example": 3,
+          "type": "integer",
+          "format": "int64"
+        },
+        "score_before_regrade": {
+          "description": "The original score of the quiz submission prior to any re-grading.",
+          "example": 2,
+          "type": "integer",
+          "format": "int64"
+        },
+        "kept_score": {
+          "description": "For quizzes that allow multiple attempts, this is the score that will be used, which might be the score of the latest, or the highest, quiz submission.",
+          "example": 5,
+          "type": "integer",
+          "format": "int64"
+        },
+        "fudge_points": {
+          "description": "Number of points the quiz submission's score was fudged by.",
+          "example": 1,
+          "type": "integer",
+          "format": "int64"
+        },
+        "workflow_state": {
+          "description": "The current state of the quiz submission. Possible values: ['untaken'|'pending_review'|'complete'|'settings_only'|'preview'].",
+          "example": "untaken",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

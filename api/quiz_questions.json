@@ -1,0 +1,474 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/quiz_questions",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/questions",
+      "description": "Returns the list of QuizQuestions in this quiz.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List questions in a quiz",
+          "notes": "Returns the list of QuizQuestions in this quiz.",
+          "nickname": "list_questions_in_quiz",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "QuizQuestion"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/questions/{id}",
+      "description": "Returns the quiz question with the given id",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single quiz question",
+          "notes": "Returns the quiz question with the given id",
+          "nickname": "get_single_quiz_question",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "The quiz question unique identifier.",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            }
+          ],
+          "type": "QuizQuestion"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/questions",
+      "description": "Create a new quiz question for this quiz",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a single quiz question",
+          "notes": "Create a new quiz question for this quiz",
+          "nickname": "create_single_quiz_question",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "question[question_name]",
+              "description": "The name of the question.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "question[question_text]",
+              "description": "The text of the question.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "question[quiz_group_id]",
+              "description": "The id of the quiz group to assign the question to.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "question[question_type]",
+              "description": "The type of question. Multiple optional fields depend upon the type of question to be used.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "calculated_question",
+                "essay_question",
+                "file_upload_question",
+                "fill_in_multiple_blanks_question",
+                "matching_question",
+                "multiple_answers_question",
+                "multiple_choice_question",
+                "multiple_dropdowns_question",
+                "numerical_question",
+                "short_answer_question",
+                "text_only_question"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "question[position]",
+              "description": "The order in which the question will be displayed in the quiz in relation to other questions.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "question[points_possible]",
+              "description": "The maximum amount of points received for answering this question correctly.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "question[correct_comments]",
+              "description": "The comment to display if the student answers the question correctly.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "question[incorrect_comments]",
+              "description": "The comment to display if the student answers incorrectly.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "question[neutral_comments]",
+              "description": "The comment to display regardless of how the student answered.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "question[text_after_answers]",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "question[answers]",
+              "description": "no description",
+              "type": "[answer]",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "QuizQuestion"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/questions/{id}",
+      "description": "Updates an existing quiz question for this quiz",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update an existing quiz question",
+          "notes": "Updates an existing quiz question for this quiz",
+          "nickname": "update_existing_quiz_question",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "The associated quiz's unique identifier.",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "The quiz question's unique identifier.",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "question[question_name]",
+              "description": "The name of the question.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "question[question_text]",
+              "description": "The text of the question.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "question[quiz_group_id]",
+              "description": "The id of the quiz group to assign the question to.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "question[question_type]",
+              "description": "The type of question. Multiple optional fields depend upon the type of question to be used.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "calculated_question",
+                "essay_question",
+                "file_upload_question",
+                "fill_in_multiple_blanks_question",
+                "matching_question",
+                "multiple_answers_question",
+                "multiple_choice_question",
+                "multiple_dropdowns_question",
+                "numerical_question",
+                "short_answer_question",
+                "text_only_question"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "question[position]",
+              "description": "The order in which the question will be displayed in the quiz in relation to other questions.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "question[points_possible]",
+              "description": "The maximum amount of points received for answering this question correctly.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "question[correct_comments]",
+              "description": "The comment to display if the student answers the question correctly.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "question[incorrect_comments]",
+              "description": "The comment to display if the student answers incorrectly.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "question[neutral_comments]",
+              "description": "The comment to display regardless of how the student answered.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "question[text_after_answers]",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "question[answers]",
+              "description": "no description",
+              "type": "[answer]",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "QuizQuestion"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/questions/{id}",
+      "description": "<b>204 No Content<b> response code is returned if the deletion was successful.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete a quiz question",
+          "notes": "<b>204 No Content<b> response code is returned if the deletion was successful.",
+          "nickname": "delete_quiz_question",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "The associated quiz's unique identifier",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "The quiz question's unique identifier",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "Answer": {
+      "id": "Answer",
+      "properties": {
+        "required": {
+          "type": "string"
+        },
+        "properties": {
+          "type": "string"
+        }
+      }
+    },
+    "QuizQuestion": {
+      "id": "QuizQuestion",
+      "properties": {
+        "id": {
+          "description": "The ID of the quiz question.",
+          "example": 1,
+          "type": "integer",
+          "format": "int64"
+        },
+        "quiz_id": {
+          "description": "The ID of the Quiz the question belongs to.",
+          "example": 2,
+          "type": "integer",
+          "format": "int64"
+        },
+        "position": {
+          "description": "The order in which the question will be retrieved and displayed.",
+          "example": 1,
+          "type": "integer",
+          "format": "int64"
+        },
+        "question_name": {
+          "description": "The name of the question.",
+          "example": "Prime Number Identification",
+          "type": "string"
+        },
+        "question_type": {
+          "description": "The type of the question.",
+          "example": "multiple_choice_question",
+          "type": "string"
+        },
+        "question_text": {
+          "description": "The text of the question.",
+          "example": "Which of the following is NOT a prime number?",
+          "type": "string"
+        },
+        "points_possible": {
+          "description": "The maximum amount of points possible received for getting this question correct.",
+          "example": 5,
+          "type": "integer",
+          "format": "int64"
+        },
+        "correct_comments": {
+          "description": "The comments to display if the student answers the question correctly.",
+          "example": "That's correct!",
+          "type": "string"
+        },
+        "incorrect_comments": {
+          "description": "The comments to display if the student answers incorrectly.",
+          "example": "Unfortunately, that IS a prime number.",
+          "type": "string"
+        },
+        "neutral_comments": {
+          "description": "The comments to display regardless of how the student answered.",
+          "example": "Goldbach's conjecture proposes that every even integer greater than 2 can be expressed as the sum of two prime numbers.",
+          "type": "string"
+        },
+        "answers": {
+          "description": "An array of available answers to display to the student.",
+          "type": "array",
+          "items": {
+            "$ref": "string"
+          }
+        }
+      }
+    }
+  }
+}

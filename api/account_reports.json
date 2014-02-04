@@ -1,0 +1,220 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/account reports",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/accounts/{account_id}/reports",
+      "description": "Returns the list of reports for the current context.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List Available Reports",
+          "notes": "Returns the list of reports for the current context.",
+          "nickname": "list_available_reports",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/reports/{report}",
+      "description": "Generates a report instance for the account.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Start a Report",
+          "notes": "Generates a report instance for the account.",
+          "nickname": "start_report",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "report",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "[parameters]",
+              "description": "The parameters will vary for each report",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "report"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/reports/{report}",
+      "description": "Shows all reports that have been run for the account of a specific type.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Index of Reports",
+          "notes": "Shows all reports that have been run for the account of a specific type.",
+          "nickname": "index_of_reports",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "report",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Report"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/reports/{report}/{id}",
+      "description": "Returns the status of a report.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Status of a Report",
+          "notes": "Returns the status of a report.",
+          "nickname": "status_of_report",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "report",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "report_id",
+              "description": "The report id.",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            }
+          ],
+          "type": "Report"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/reports/{report}/{id}",
+      "description": "Deletes a generated report instance.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete a Report",
+          "notes": "Deletes a generated report instance.",
+          "nickname": "delete_report",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "report",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "Report"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "Report": {
+      "id": "Report",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "report": {
+          "type": "string"
+        },
+        "file_url": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "string"
+        },
+        "progress": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    }
+  }
+}

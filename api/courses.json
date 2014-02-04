@@ -1,0 +1,1102 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/courses",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses",
+      "description": "Returns the list of active courses for the current user.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List your courses",
+          "notes": "Returns the list of active courses for the current user.",
+          "nickname": "list_your_courses",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "enrollment_type",
+              "description": "When set, only return courses where the user is enrolled as this type. For example, set to \"teacher\" to return only courses where the user is enrolled as a Teacher. This argument is ignored if enrollment_role is given.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "teacher",
+                "student",
+                "ta",
+                "observer",
+                "designer"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "enrollment_role",
+              "description": "When set, only return courses where the user is enrolled with the specified course-level role. This can be a role created with the {api:RoleOverridesController#add_role Add Role API} or a base role type of 'StudentEnrollment', 'TeacherEnrollment', 'TaEnrollment', 'ObserverEnrollment', or 'DesignerEnrollment'.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "- \"needs_grading_count\": Optional information to include with each Course. When needs_grading_count is given, and the current user has grading rights, the total number of submissions needing grading for all assignments is returned. - \"syllabus_body\": Optional information to include with each Course. When syllabus_body is given the user-generated html for the course syllabus is returned. - \"total_scores\": Optional information to include with each Course. When total_scores is given, any enrollments with type 'student' will also include the fields 'calculated_current_score', 'calculated_final_score', 'calculated_current_grade', and 'calculated_final_grade'. calculated_current_score is the student's score in the course, ignoring ungraded assignments. calculated_final_score is the student's score in the course including ungraded assignments with a score of 0. calculated_current_grade is the letter grade equivalent of calculated_current_score (if available). calculated_final_grade is the letter grade equivalent of calculated_final_score (if available). This argument is ignored if the course is configured to hide final grades. - \"term\": Optional information to include with each Course. When term is given, the information for the enrollment term for each course is returned.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "needs_grading_count",
+                "syllabus_body",
+                "total_scores",
+                "term"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "state",
+              "description": "If set, only return courses that are in the given state(s). By default, \"available\" is returned for students and observers, and anything except \"deleted\", for all other enrollment types",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "unpublished",
+                "available",
+                "completed",
+                "deleted"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Course"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/courses",
+      "description": "Create a new course",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a new course",
+          "notes": "Create a new course",
+          "nickname": "create_new_course",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "The unique ID of the account to create to course under.",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "course[name]",
+              "description": "The name of the course. If omitted, the course will be named \"Unnamed Course.\"",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course[course_code]",
+              "description": "The course code for the course.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course[start_at]",
+              "description": "Course start date in ISO8601 format, e.g. 2011-01-01T01:00Z",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course[end_at]",
+              "description": "Course end date in ISO8601 format. e.g. 2011-01-01T01:00Z",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course[license]",
+              "description": "The name of the licensing. Should be one of the following abbreviations (a descriptive name is included in parenthesis for reference): - 'private' (Private Copyrighted) - 'cc_by_nc_nd' (CC Attribution Non-Commercial No Derivatives) - 'cc_by_nc_sa' (CC Attribution Non-Commercial Share Alike) - 'cc_by_nc' (CC Attribution Non-Commercial) - 'cc_by_nd' (CC Attribution No Derivatives) - 'cc_by_sa' (CC Attribution Share Alike) - 'cc_by' (CC Attribution) - 'public_domain' (Public Domain).",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course[is_public]",
+              "description": "Set to true if course if public.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course[public_syllabus]",
+              "description": "Set to true to make the course syllabus public.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course[public_description]",
+              "description": "A publicly visible description of the course.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course[allow_student_wiki_edits]",
+              "description": "If true, students will be able to modify the course wiki.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course[allow_wiki_comments]",
+              "description": "If true, course members will be able to comment on wiki pages.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course[allow_student_forum_attachments]",
+              "description": "If true, students can attach files to forum posts.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course[open_enrollment]",
+              "description": "Set to true if the course is open enrollment.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course[self_enrollment]",
+              "description": "Set to true if the course is self enrollment.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course[restrict_enrollments_to_course_dates]",
+              "description": "Set to true to restrict user enrollments to the start and end dates of the course.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course[enroll_me]",
+              "description": "Set to true to enroll the current user as the teacher.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course[sis_course_id]",
+              "description": "The unique SIS identifier.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course[hide_final_grades]",
+              "description": "If this option is set to true, the totals in student grades summary will be hidden.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course[apply_assignment_group_weights]",
+              "description": "Set to true to weight final grade based on assignment groups percentages.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "offer",
+              "description": "If this option is set to true, the course will be available to students immediately.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course[syllabus_body]",
+              "description": "The syllabus body for the course",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "Course"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/files",
+      "description": "Upload a file to the course.\n\nThis API endpoint is the first step in uploading a file to a course.\nSee the {file:file_uploads.html File Upload Documentation} for details on\nthe file upload workflow.\n\nOnly those with the \"Manage Files\" permission on a course can upload files\nto the course. By default, this is Teachers, TAs and Designers.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Upload a file",
+          "notes": "Upload a file to the course.\n\nThis API endpoint is the first step in uploading a file to a course.\nSee the {file:file_uploads.html File Upload Documentation} for details on\nthe file upload workflow.\n\nOnly those with the \"Manage Files\" permission on a course can upload files\nto the course. By default, this is Teachers, TAs and Designers.",
+          "nickname": "upload_file",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/students",
+      "description": "Returns the list of students enrolled in this course.\n\nDEPRECATED: Please use the {api:CoursesController#users course users} endpoint\nand pass \"student\" as the enrollment_type.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List students",
+          "notes": "Returns the list of students enrolled in this course.\n\nDEPRECATED: Please use the {api:CoursesController#users course users} endpoint\nand pass \"student\" as the enrollment_type.",
+          "nickname": "list_students",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "User"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/users",
+      "description": "Returns the list of users in this course. And optionally the user's enrollments in the course.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List users in course",
+          "notes": "Returns the list of users in this course. And optionally the user's enrollments in the course.",
+          "nickname": "list_users_in_course_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "search_term",
+              "description": "The partial name or full ID of the users to match and return in the results list.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "enrollment_type",
+              "description": "When set, only return users where the user is enrolled as this type. This argument is ignored if enrollment_role is given.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "teacher",
+                "student",
+                "ta",
+                "observer",
+                "designer"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "enrollment_role",
+              "description": "When set, only return users enrolled with the specified course-level role. This can be a role created with the {api:RoleOverridesController#add_role Add Role API} or a base role type of 'StudentEnrollment', 'TeacherEnrollment', 'TaEnrollment', 'ObserverEnrollment', or 'DesignerEnrollment'.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "- \"email\": Optional user email. - \"enrollments\": Optionally include with each Course the user's current and invited enrollments. If the user is enrolled as a student, and the account has permission to manage or view all grades, each enrollment will include a 'grades' key with 'current_score', 'final_score', 'current_grade' and 'final_grade' values. - \"locked\": Optionally include whether an enrollment is locked. - \"avatar_url\": Optionally include avatar_url. - \"test_student\": Optionally include the course's Test Student, if present. Default is to not include Test Student.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "email",
+                "enrollments",
+                "locked",
+                "avatar_url",
+                "test_student"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "user_id",
+              "description": "If included, the user will be queried and if the user is part of the users set, the page parameter will be modified so that the page containing user_id will be returned.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "User"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/search_users",
+      "description": "Returns the list of users in this course. And optionally the user's enrollments in the course.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List users in course",
+          "notes": "Returns the list of users in this course. And optionally the user's enrollments in the course.",
+          "nickname": "list_users_in_course_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "search_term",
+              "description": "The partial name or full ID of the users to match and return in the results list.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "enrollment_type",
+              "description": "When set, only return users where the user is enrolled as this type. This argument is ignored if enrollment_role is given.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "teacher",
+                "student",
+                "ta",
+                "observer",
+                "designer"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "enrollment_role",
+              "description": "When set, only return users enrolled with the specified course-level role. This can be a role created with the {api:RoleOverridesController#add_role Add Role API} or a base role type of 'StudentEnrollment', 'TeacherEnrollment', 'TaEnrollment', 'ObserverEnrollment', or 'DesignerEnrollment'.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "- \"email\": Optional user email. - \"enrollments\": Optionally include with each Course the user's current and invited enrollments. If the user is enrolled as a student, and the account has permission to manage or view all grades, each enrollment will include a 'grades' key with 'current_score', 'final_score', 'current_grade' and 'final_grade' values. - \"locked\": Optionally include whether an enrollment is locked. - \"avatar_url\": Optionally include avatar_url. - \"test_student\": Optionally include the course's Test Student, if present. Default is to not include Test Student.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "email",
+                "enrollments",
+                "locked",
+                "avatar_url",
+                "test_student"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "user_id",
+              "description": "If included, the user will be queried and if the user is part of the users set, the page parameter will be modified so that the page containing user_id will be returned.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "User"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/recent_students",
+      "description": "Returns the list of users in this course, ordered by how recently they have\nlogged in. The records include the 'last_login' field which contains\na timestamp of the last time that user logged into canvas.  The querying\nuser must have the 'View usage reports' permission.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List recently logged in students",
+          "notes": "Returns the list of users in this course, ordered by how recently they have\nlogged in. The records include the 'last_login' field which contains\na timestamp of the last time that user logged into canvas.  The querying\nuser must have the 'View usage reports' permission.",
+          "nickname": "list_recently_logged_in_students",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "User"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/users/{id}",
+      "description": "Return information on a single user.\n\nAccepts the same include[] parameters as the :users: action, and returns a\nsingle user with the same fields as that action.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "",
+          "notes": "Return information on a single user.\n\nAccepts the same include[] parameters as the :users: action, and returns a\nsingle user with the same fields as that action.",
+          "nickname": "",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "User"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/preview_html",
+      "description": "Preview html content processed for this course",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Preview processed html",
+          "notes": "Preview html content processed for this course",
+          "nickname": "preview_processed_html",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "html",
+              "description": "The html content to process",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/activity_stream",
+      "description": "Returns the current user's course-specific activity stream, paginated.\n\nFor full documentation, see the API documentation for the user activity\nstream, in the user api.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Course activity stream",
+          "notes": "Returns the current user's course-specific activity stream, paginated.\n\nFor full documentation, see the API documentation for the user activity\nstream, in the user api.",
+          "nickname": "course_activity_stream",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/activity_stream/summary",
+      "description": "Returns a summary of the current user's course-specific activity stream.\n\nFor full documentation, see the API documentation for the user activity\nstream summary, in the user api.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Course activity stream summary",
+          "notes": "Returns a summary of the current user's course-specific activity stream.\n\nFor full documentation, see the API documentation for the user activity\nstream summary, in the user api.",
+          "nickname": "course_activity_stream_summary",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/todo",
+      "description": "Returns the current user's course-specific todo items.\n\nFor full documentation, see the API documentation for the user todo items, in the user api.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Course TODO items",
+          "notes": "Returns the current user's course-specific todo items.\n\nFor full documentation, see the API documentation for the user todo items, in the user api.",
+          "nickname": "course_todo_items",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{id}",
+      "description": "Delete or conclude an existing course",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Conclude a course",
+          "notes": "Delete or conclude an existing course",
+          "nickname": "conclude_course",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "event",
+              "description": "The action to take on the course.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "delete",
+                "conclude"
+              ]
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/settings",
+      "description": "Returns some of a course's settings.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get course settings",
+          "notes": "Returns some of a course's settings.",
+          "nickname": "get_course_settings",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/settings",
+      "description": "Can update the following course settings:",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update course settings",
+          "notes": "Can update the following course settings:",
+          "nickname": "update_course_settings",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "allow_student_discussion_topics",
+              "description": "no description",
+              "type": "boolean",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "allow_student_forum_attachments",
+              "description": "no description",
+              "type": "boolean",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "allow_student_discussion_editing",
+              "description": "no description",
+              "type": "boolean",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{id}",
+      "description": "Return information on a single course.\n\nAccepts the same include[] parameters as the list action plus:",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single course",
+          "notes": "Return information on a single course.\n\nAccepts the same include[] parameters as the list action plus:",
+          "nickname": "get_single_course_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "- \"all_courses\": Also search recently deleted courses. - \"permissions\": Include permissions the current user has for the course.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "all_courses",
+                "permissions"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "Course"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/courses/{id}",
+      "description": "Return information on a single course.\n\nAccepts the same include[] parameters as the list action plus:",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single course",
+          "notes": "Return information on a single course.\n\nAccepts the same include[] parameters as the list action plus:",
+          "nickname": "get_single_course_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "- \"all_courses\": Also search recently deleted courses. - \"permissions\": Include permissions the current user has for the course.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "all_courses",
+                "permissions"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "Course"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{id}",
+      "description": "Update an existing course.\n\nFor possible arguments, see the Courses#create documentation (note: the enroll_me param is not allowed in the update action).",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update a course",
+          "notes": "Update an existing course.\n\nFor possible arguments, see the Courses#create documentation (note: the enroll_me param is not allowed in the update action).",
+          "nickname": "update_course",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/courses",
+      "description": "Update multiple courses in an account.  Operates asynchronously; use the {api:ProgressController#show progress endpoint}\nto query the status of an operation.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update courses",
+          "notes": "Update multiple courses in an account.  Operates asynchronously; use the {api:ProgressController#show progress endpoint}\nto query the status of an operation.",
+          "nickname": "update_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "course_ids",
+              "description": "List of ids of courses to update. At most 500 courses may be updated in one call.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "event",
+              "description": "The action to take on each course. Must be one of 'offer', 'conclude', 'delete', or 'undelete'. * 'offer' makes a course visible to students. This action is also called \"publish\" on the web site. * 'conclude' prevents future enrollments and makes a course read-only for all participants. The course still appears in prior-enrollment lists. * 'delete' completely removes the course from the web site (including course menus and prior-enrollment lists). All enrollments are deleted. Course content may be physically deleted at a future date. * 'undelete' attempts to recover a course that has been deleted. (Recovery is not guaranteed; please conclude rather than delete a course if there is any possibility the course will be used again.) The recovered course will be unpublished. Deleted enrollments will not be recovered.",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "Progress"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/course_copy/{id}",
+      "description": "DEPRECATED: Please use the {api:ContentMigrationsController#create Content Migrations API}\n\nRetrieve the status of a course copy",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get course copy status",
+          "notes": "DEPRECATED: Please use the {api:ContentMigrationsController#create Content Migrations API}\n\nRetrieve the status of a course copy",
+          "nickname": "get_course_copy_status",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/course_copy",
+      "description": "DEPRECATED: Please use the {api:ContentMigrationsController#create Content Migrations API}\n\nCopies content from one course into another. The default is to copy all course\ncontent. You can control specific types to copy by using either the 'except' option\nor the 'only' option.\n\nThe response is the same as the course copy status endpoint",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Copy course content",
+          "notes": "DEPRECATED: Please use the {api:ContentMigrationsController#create Content Migrations API}\n\nCopies content from one course into another. The default is to copy all course\ncontent. You can control specific types to copy by using either the 'except' option\nor the 'only' option.\n\nThe response is the same as the course copy status endpoint",
+          "nickname": "copy_course_content",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "source_course",
+              "description": "ID or SIS-ID of the course to copy the content from",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "except",
+              "description": "A list of the course content types to exclude, all areas not listed will be copied.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "course_settings",
+                "assignments",
+                "external_tools",
+                "files",
+                "topics",
+                "calendar_events",
+                "quizzes",
+                "wiki_pages",
+                "modules",
+                "outcomes"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "only",
+              "description": "A list of the course content types to copy, all areas not listed will not be copied.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "course_settings",
+                "assignments",
+                "external_tools",
+                "files",
+                "topics",
+                "calendar_events",
+                "quizzes",
+                "wiki_pages",
+                "modules",
+                "outcomes"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "Course": {
+      "id": "Course",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "sis_course_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "course_code": {
+          "type": "string"
+        },
+        "workflow_state": {
+          "type": "string"
+        },
+        "account_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "root_account_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "start_at": {
+          "type": "string"
+        },
+        "end_at": {
+          "type": "string"
+        },
+        "enrollments": {
+          "type": "string"
+        },
+        "calendar": {
+          "type": "string"
+        },
+        "default_view": {
+          "type": "string"
+        },
+        "syllabus_body": {
+          "type": "string"
+        },
+        "needs_grading_count": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "term": {
+          "type": "string"
+        },
+        "apply_assignment_group_weights": {
+          "type": "boolean"
+        },
+        "permissions": {
+          "type": "string"
+        },
+        "is_public": {
+          "type": "boolean"
+        },
+        "public_syllabus": {
+          "type": "boolean"
+        },
+        "public_description": {
+          "type": "string"
+        },
+        "storage_quota_mb": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "hide_final_grades": {
+          "type": "boolean"
+        },
+        "license": {
+          "type": "string"
+        },
+        "allow_student_assignment_edits": {
+          "type": "boolean"
+        },
+        "allow_wiki_comments": {
+          "type": "boolean"
+        },
+        "allow_student_forum_attachments": {
+          "type": "boolean"
+        },
+        "open_enrollment": {
+          "type": "boolean"
+        },
+        "self_enrollment": {
+          "type": "boolean"
+        },
+        "restrict_enrollments_to_course_dates": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

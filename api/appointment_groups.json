@@ -1,0 +1,559 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/appointment groups",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/appointment_groups",
+      "description": "Retrieve the list of appointment groups that can be reserved or managed by\nthe current user.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List appointment groups",
+          "notes": "Retrieve the list of appointment groups that can be reserved or managed by\nthe current user.",
+          "nickname": "list_appointment_groups",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "scope",
+              "description": "Defaults to \"reservable\"",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "reservable",
+                "manageable"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "context_codes",
+              "description": "Array of context codes used to limit returned results.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "include_past_appointments",
+              "description": "Defaults to false. If true, includes past appointment groups",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Array of additional information to include. \"appointments\":: calendar event time slots for this appointment group \"child_events\":: reservations of those time slots \"participant_count\":: number of reservations \"reserved_times\":: the event id, start time and end time of reservations the current user has made)",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "appointments",
+                "child_events",
+                "participant_count",
+                "reserved_times"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/appointment_groups",
+      "description": "Create and return a new appointment group. If new_appointments are\nspecified, the response will return a new_appointments array (same format\nas appointments array, see \"List appointment groups\" action)",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create an appointment group",
+          "notes": "Create and return a new appointment group. If new_appointments are\nspecified, the response will return a new_appointments array (same format\nas appointments array, see \"List appointment groups\" action)",
+          "nickname": "create_appointment_group",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "appointment_group[context_codes]",
+              "description": "Array of context codes (courses, e.g. course_1) this group should be linked to (1 or more). Users in the course(s) with appropriate permissions will be able to sign up for this appointment group.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[sub_context_codes]",
+              "description": "Array of sub context codes (course sections or a single group category) this group should be linked to. Used to limit the appointment group to particular sections. If a group category is specified, students will sign up in groups and the participant_type will be \"Group\" instead of \"User\".",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[title]",
+              "description": "Short title for the appointment group.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[description]",
+              "description": "Longer text description of the appointment group.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[location_name]",
+              "description": "Location name of the appointment group.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[location_address]",
+              "description": "Location address.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[publish]",
+              "description": "Indicates whether this appointment group should be published (i.e. made available for signup). Once published, an appointment group cannot be unpublished. Defaults to false.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[participants_per_appointment]",
+              "description": "Maximum number of participants that may register for each time slot. Defaults to null (no limit).",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[min_appointments_per_participant]",
+              "description": "Minimum number of time slots a user must register for. If not set, users do not need to sign up for any time slots.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[max_appointments_per_participant]",
+              "description": "Maximum number of time slots a user may register for.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[new_appointments][X]",
+              "description": "Nested array of start time/end time pairs indicating time slots for this appointment group. Refer to the example request.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[participant_visibility]",
+              "description": "\"private\":: participants cannot see who has signed up for a particular time slot \"protected\":: participants can see who has signed up. Defaults to \"private\".",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "private",
+                "protected"
+              ]
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/appointment_groups/{id}",
+      "description": "Returns information for a single appointment group",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single appointment group",
+          "notes": "Returns information for a single appointment group",
+          "nickname": "get_single_appointment_group",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Array of additional information to include. Ssee include[] argument of \"List appointment groups\" action. \"child_events\":: reservations of time slots time slots \"appointments\":: will always be returned",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "child_events",
+                "appointments"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/appointment_groups/{id}",
+      "description": "Update and return an appointment group. If new_appointments are specified,\nthe response will return a new_appointments array (same format as\nappointments array, see \"List appointment groups\" action).",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update an appointment group",
+          "notes": "Update and return an appointment group. If new_appointments are specified,\nthe response will return a new_appointments array (same format as\nappointments array, see \"List appointment groups\" action).",
+          "nickname": "update_appointment_group",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[context_codes]",
+              "description": "Array of context codes (courses, e.g. course_1) this group should be linked to (1 or more). Users in the course(s) with appropriate permissions will be able to sign up for this appointment group.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[sub_context_codes]",
+              "description": "Array of sub context codes (course sections or a single group category) this group should be linked to. Used to limit the appointment group to particular sections. If a group category is specified, students will sign up in groups and the participant_type will be \"Group\" instead of \"User\".",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[title]",
+              "description": "Short title for the appointment group.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[description]",
+              "description": "Longer text description of the appointment group.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[location_name]",
+              "description": "Location name of the appointment group.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[location_address]",
+              "description": "Location address.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[publish]",
+              "description": "Indicates whether this appointment group should be published (i.e. made available for signup). Once published, an appointment group cannot be unpublished. Defaults to false.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[participants_per_appointment]",
+              "description": "Maximum number of participants that may register for each time slot. Defaults to null (no limit).",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[min_appointments_per_participant]",
+              "description": "Minimum number of time slots a user must register for. If not set, users do not need to sign up for any time slots.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[max_appointments_per_participant]",
+              "description": "Maximum number of time slots a user may register for.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[new_appointments][X]",
+              "description": "Nested array of start time/end time pairs indicating time slots for this appointment group. Refer to the example request.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "appointment_group[participant_visibility]",
+              "description": "\"private\":: participants cannot see who has signed up for a particular time slot \"protected\":: participants can see who has signed up. Defaults to \"private\".",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "private",
+                "protected"
+              ]
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/appointment_groups/{id}",
+      "description": "Delete an appointment group (and associated time slots and reservations) \nand return the deleted group",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete an appointment group",
+          "notes": "Delete an appointment group (and associated time slots and reservations) \nand return the deleted group",
+          "nickname": "delete_appointment_group",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "cancel_reason",
+              "description": "Reason for deleting/canceling the appointment group.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/appointment_groups/{id}/users",
+      "description": "List users that are (or may be) participating in this appointment group.\nRefer to the Users API for the response fields. Returns no results for\nappointment groups with the \"Group\" participant_type.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List user participants",
+          "notes": "List users that are (or may be) participating in this appointment group.\nRefer to the Users API for the response fields. Returns no results for\nappointment groups with the \"Group\" participant_type.",
+          "nickname": "list_user_participants",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "registration_status",
+              "description": "Limits results to the a given participation status, defaults to \"all\"",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "all",
+                "registered",
+                "registered"
+              ]
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/appointment_groups/{id}/groups",
+      "description": "List student groups that are (or may be) participating in this appointment\ngroup. Refer to the Groups API for the response fields. Returns no results\nfor appointment groups with the \"User\" participant_type.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List student group participants",
+          "notes": "List student groups that are (or may be) participating in this appointment\ngroup. Refer to the Groups API for the response fields. Returns no results\nfor appointment groups with the \"User\" participant_type.",
+          "nickname": "list_student_group_participants",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "registration_status",
+              "description": "Limits results to the a given participation status, defaults to \"all\"",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "all",
+                "registered",
+                "registered"
+              ]
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "AppointmentGroup": {
+      "id": "AppointmentGroup",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "start_at": {
+          "type": "string"
+        },
+        "end_at": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "location_name": {
+          "type": "string"
+        },
+        "location_address": {
+          "type": "string"
+        },
+        "participant_count": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "reserved_times": {
+          "type": "string"
+        },
+        "context_codes": {
+          "type": "string"
+        },
+        "sub_context_codes": {
+          "type": "string"
+        },
+        "workflow_state": {
+          "type": "string"
+        },
+        "requiring_action": {
+          "type": "boolean"
+        },
+        "appointments_count": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "appointments": {
+          "type": "string"
+        },
+        "new_appointments": {
+          "type": "string"
+        },
+        "max_appointments_per_participant": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "min_appointments_per_participant": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "participants_per_appointment": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "participant_visibility": {
+          "type": "string"
+        },
+        "participant_type": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "html_url": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,487 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/content migrations",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/content_migrations/{content_migration_id}/migration_issues",
+      "description": "Returns paginated migration issues",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List migration issues",
+          "notes": "Returns paginated migration issues",
+          "nickname": "list_migration_issues",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "content_migration_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "MigrationIssue"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/content_migrations/{content_migration_id}/migration_issues/{id}",
+      "description": "Returns data on an individual migration issue",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a migration issue",
+          "notes": "Returns data on an individual migration issue",
+          "nickname": "get_migration_issue",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "content_migration_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "MigrationIssue"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/content_migrations/{content_migration_id}/migration_issues/{id}",
+      "description": "Update the workflow_state of a migration issue",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update a migration issue",
+          "notes": "Update the workflow_state of a migration issue",
+          "nickname": "update_migration_issue",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "content_migration_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "workflow_state",
+              "description": "Set the workflow_state of the issue.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "active",
+                "resolved"
+              ]
+            }
+          ],
+          "type": "MigrationIssue"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/content_migrations",
+      "description": "Returns paginated content migrations",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List content migrations",
+          "notes": "Returns paginated content migrations",
+          "nickname": "list_content_migrations",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "ContentMigration"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/content_migrations/{id}",
+      "description": "Returns data on an individual content migration",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a content migration",
+          "notes": "Returns data on an individual content migration",
+          "nickname": "get_content_migration",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "ContentMigration"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/content_migrations",
+      "description": "Create a content migration. If the migration requires a file to be uploaded\nthe actual processing of the file will start once the file upload process is completed.\nFile uploading works as described in the {file:file_uploads.html File Upload Documentation}\nexcept that the values are set on a *pre_attachment* sub-hash.\n\nFor migrations that don't require a file to be uploaded, like course copy, the\nprocessing will begin as soon as the migration is created.\n\nYou can use the {api:ProgressController#show Progress API} to track the\nprogress of the migration. The migration's progress is linked to with the\n_progress_url_ value.\n\nThe two general workflows are:\n\nIf no file upload is needed:\n\n1. POST to create\n2. Use the {api:ProgressController#show Progress} specified in _progress_url_ to monitor progress\n\nFor file uploading:\n\n1. POST to create with file info in *pre_attachment*\n2. Do {file:file_uploads.html file upload processing} using the data in the *pre_attachment* data\n3. {api:ContentMigrationsController#show GET} the ContentMigration\n4. Use the {api:ProgressController#show Progress} specified in _progress_url_ to monitor progress\n\n (required if doing .zip file upload)",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a content migration",
+          "notes": "Create a content migration. If the migration requires a file to be uploaded\nthe actual processing of the file will start once the file upload process is completed.\nFile uploading works as described in the {file:file_uploads.html File Upload Documentation}\nexcept that the values are set on a *pre_attachment* sub-hash.\n\nFor migrations that don't require a file to be uploaded, like course copy, the\nprocessing will begin as soon as the migration is created.\n\nYou can use the {api:ProgressController#show Progress API} to track the\nprogress of the migration. The migration's progress is linked to with the\n_progress_url_ value.\n\nThe two general workflows are:\n\nIf no file upload is needed:\n\n1. POST to create\n2. Use the {api:ProgressController#show Progress} specified in _progress_url_ to monitor progress\n\nFor file uploading:\n\n1. POST to create with file info in *pre_attachment*\n2. Do {file:file_uploads.html file upload processing} using the data in the *pre_attachment* data\n3. {api:ContentMigrationsController#show GET} the ContentMigration\n4. Use the {api:ProgressController#show Progress} specified in _progress_url_ to monitor progress\n\n (required if doing .zip file upload)",
+          "nickname": "create_content_migration",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "migration_type",
+              "description": "The type of the migration. Use the {api:ContentMigrationsController#available_migrators Migrator} endpoint to see all available migrators. Default allowed values: canvas_cartridge_importer, common_cartridge_importer, course_copy_importer, zip_file_importer, qti_converter, moodle_converter",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "pre_attachment[name]",
+              "description": "Required if uploading a file. This is the first step in uploading a file to the content migration. See the {file:file_uploads.html File Upload Documentation} for details on the file upload workflow.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "pre_attachment[*]",
+              "description": "Other file upload properties, See {file:file_uploads.html File Upload Documentation}",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "settings[file_url]",
+              "description": "(optional) A URL to download the file from. Must not require authentication.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "settings[source_course_id]",
+              "description": "The course to copy from for a course copy migration. (required if doing course copy)",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "settings[folder_id]",
+              "description": "The folder to unzip the .zip file into for a zip_file_import.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "settings[overwrite_quizzes]",
+              "description": "Whether to overwrite quizzes with the same identifiers between content packages.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "settings[question_bank_id]",
+              "description": "The existing question bank ID to import questions into if not specified in the content package.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "settings[question_bank_name]",
+              "description": "The question bank to import questions into if not specified in the content package, if both bank id and name are set, id will take precedence.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "date_shift_options[shift_dates]",
+              "description": "Whether to shift dates",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "date_shift_options[old_start_date]",
+              "description": "The original start date of the source content/course",
+              "type": "date",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "date_shift_options[old_end_date]",
+              "description": "The original end date of the source content/course",
+              "type": "date",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "date_shift_options[new_start_date]",
+              "description": "The new start date for the content/course",
+              "type": "date",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "date_shift_options[new_end_date]",
+              "description": "The new end date for the source content/course",
+              "type": "date",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "date_shift_options[day_substitutions][X]",
+              "description": "Move anything scheduled for day 'X' to the specified day. (0-Sunday, 1-Monday, 2-Tuesday, 3-Wednesday, 4-Thursday, 5-Friday, 6-Saturday)",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            }
+          ],
+          "type": "ContentMigration"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/content_migrations/{id}",
+      "description": "Update a content migration. Takes same arguments as create except that you\ncan't change the migration type. However, changing most settings after the\nmigration process has started will not do anything. Generally updating the\ncontent migration will be used when there is a file upload problem. If the\nfirst upload has a problem you can supply new _pre_attachment_ values to\nstart the process again.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update a content migration",
+          "notes": "Update a content migration. Takes same arguments as create except that you\ncan't change the migration type. However, changing most settings after the\nmigration process has started will not do anything. Generally updating the\ncontent migration will be used when there is a file upload problem. If the\nfirst upload has a problem you can supply new _pre_attachment_ values to\nstart the process again.",
+          "nickname": "update_content_migration",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "ContentMigration"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/content_migrations/migrators",
+      "description": "Lists the currently available migration types. These values may change.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List Migration Systems",
+          "notes": "Lists the currently available migration types. These values may change.",
+          "nickname": "list_migration_systems",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Migrator"
+          }
+        }
+      ]
+    }
+  ],
+  "models": {
+    "MigrationIssue": {
+      "id": "MigrationIssue",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "content_migration_url": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "workflow_state": {
+          "type": "string"
+        },
+        "fix_issue_html_url": {
+          "type": "string"
+        },
+        "issue_type": {
+          "type": "string"
+        },
+        "error_report_html_url": {
+          "type": "string"
+        },
+        "error_message": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        }
+      }
+    },
+    "ContentMigration": {
+      "id": "ContentMigration",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "migration_type": {
+          "type": "string"
+        },
+        "migration_type_title": {
+          "type": "string"
+        },
+        "migration_issues_url": {
+          "type": "string"
+        },
+        "attachment": {
+          "type": "string"
+        },
+        "progress_url": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "workflow_state": {
+          "type": "string"
+        },
+        "started_at": {
+          "type": "string"
+        },
+        "finished_at": {
+          "type": "string"
+        },
+        "pre_attachment": {
+          "type": "string"
+        }
+      }
+    },
+    "Migrator": {
+      "id": "Migrator",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "requires_file_upload": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "required_settings": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

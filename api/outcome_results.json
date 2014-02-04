@@ -1,0 +1,113 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/outcome results",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/outcome_rollups",
+      "description": "Gets the outcome rollups for the users and outcomes in the specified\ncontext.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get outcome result rollups",
+          "notes": "Gets the outcome rollups for the users and outcomes in the specified\ncontext.",
+          "nickname": "get_outcome_result_rollups",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "aggregate",
+              "description": "If specified, instead of returning one rollup for each user, all the user rollups will be combined into one rollup for the course that will contain the average rollup score for each outcome.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "course"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "user_ids",
+              "description": "If specified, only the users whose ids are given will be included in the results or used in an aggregate result. it is an error to specify an id for a user who is not a student in the context",
+              "type": "integer",
+              "format": "int64",
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "outcome_ids",
+              "description": "If specified, only the outcomes whose ids are given will be included in the results. it is an error to specify an id for an outcome which is not linked to the context.",
+              "type": "integer",
+              "format": "int64",
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Specify additional collections to be side loaded with the result.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "courses",
+                "outcomes",
+                "outcome_groups",
+                "outcome_links",
+                "users"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "OutcomeRollupScore": {
+      "id": "OutcomeRollupScore",
+      "properties": {
+        "score": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "links": {
+          "type": "string"
+        }
+      }
+    },
+    "OutcomeRollup": {
+      "id": "OutcomeRollup",
+      "properties": {
+        "scores": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "links": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

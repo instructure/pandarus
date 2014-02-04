@@ -1,0 +1,514 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/enrollments",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/enrollments",
+      "description": "Depending on the URL given, return either (1) all of the enrollments in\na course, (2) all of the enrollments in a section or (3) all of a user's\nenrollments. This includes student, teacher, TA, and observer enrollments.\n\nIf a user has multiple enrollments in a context (e.g. as a teacher\nand a student or in multiple course sections), each enrollment will be\nlisted separately.\n\nnote: Currently, only an admin user can return other users' enrollments. A\nuser can, however, return his/her own enrollments.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List enrollments",
+          "notes": "Depending on the URL given, return either (1) all of the enrollments in\na course, (2) all of the enrollments in a section or (3) all of a user's\nenrollments. This includes student, teacher, TA, and observer enrollments.\n\nIf a user has multiple enrollments in a context (e.g. as a teacher\nand a student or in multiple course sections), each enrollment will be\nlisted separately.\n\nnote: Currently, only an admin user can return other users' enrollments. A\nuser can, however, return his/her own enrollments.",
+          "nickname": "list_enrollments_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "type",
+              "description": "A list of enrollment types to return. Accepted values are 'StudentEnrollment', 'TeacherEnrollment', 'TaEnrollment', 'DesignerEnrollment', and 'ObserverEnrollment.' If omitted, all enrollment types are returned. This argument is ignored if `role` is given.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "role",
+              "description": "A list of enrollment roles to return. Accepted values include course-level roles created by the {api:RoleOverridesController#add_role Add Role API} as well as the base enrollment types accepted by the `type` argument above.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "state",
+              "description": "Filter by enrollment state. If omitted, 'active' and 'invited' enrollments are returned.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "active",
+                "invited",
+                "creation_pending",
+                "deleted",
+                "rejected",
+                "completed",
+                "inactive"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Enrollment"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/sections/{section_id}/enrollments",
+      "description": "Depending on the URL given, return either (1) all of the enrollments in\na course, (2) all of the enrollments in a section or (3) all of a user's\nenrollments. This includes student, teacher, TA, and observer enrollments.\n\nIf a user has multiple enrollments in a context (e.g. as a teacher\nand a student or in multiple course sections), each enrollment will be\nlisted separately.\n\nnote: Currently, only an admin user can return other users' enrollments. A\nuser can, however, return his/her own enrollments.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List enrollments",
+          "notes": "Depending on the URL given, return either (1) all of the enrollments in\na course, (2) all of the enrollments in a section or (3) all of a user's\nenrollments. This includes student, teacher, TA, and observer enrollments.\n\nIf a user has multiple enrollments in a context (e.g. as a teacher\nand a student or in multiple course sections), each enrollment will be\nlisted separately.\n\nnote: Currently, only an admin user can return other users' enrollments. A\nuser can, however, return his/her own enrollments.",
+          "nickname": "list_enrollments_sections",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "section_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "type",
+              "description": "A list of enrollment types to return. Accepted values are 'StudentEnrollment', 'TeacherEnrollment', 'TaEnrollment', 'DesignerEnrollment', and 'ObserverEnrollment.' If omitted, all enrollment types are returned. This argument is ignored if `role` is given.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "role",
+              "description": "A list of enrollment roles to return. Accepted values include course-level roles created by the {api:RoleOverridesController#add_role Add Role API} as well as the base enrollment types accepted by the `type` argument above.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "state",
+              "description": "Filter by enrollment state. If omitted, 'active' and 'invited' enrollments are returned.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "active",
+                "invited",
+                "creation_pending",
+                "deleted",
+                "rejected",
+                "completed",
+                "inactive"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Enrollment"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/enrollments",
+      "description": "Depending on the URL given, return either (1) all of the enrollments in\na course, (2) all of the enrollments in a section or (3) all of a user's\nenrollments. This includes student, teacher, TA, and observer enrollments.\n\nIf a user has multiple enrollments in a context (e.g. as a teacher\nand a student or in multiple course sections), each enrollment will be\nlisted separately.\n\nnote: Currently, only an admin user can return other users' enrollments. A\nuser can, however, return his/her own enrollments.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List enrollments",
+          "notes": "Depending on the URL given, return either (1) all of the enrollments in\na course, (2) all of the enrollments in a section or (3) all of a user's\nenrollments. This includes student, teacher, TA, and observer enrollments.\n\nIf a user has multiple enrollments in a context (e.g. as a teacher\nand a student or in multiple course sections), each enrollment will be\nlisted separately.\n\nnote: Currently, only an admin user can return other users' enrollments. A\nuser can, however, return his/her own enrollments.",
+          "nickname": "list_enrollments_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "type",
+              "description": "A list of enrollment types to return. Accepted values are 'StudentEnrollment', 'TeacherEnrollment', 'TaEnrollment', 'DesignerEnrollment', and 'ObserverEnrollment.' If omitted, all enrollment types are returned. This argument is ignored if `role` is given.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "role",
+              "description": "A list of enrollment roles to return. Accepted values include course-level roles created by the {api:RoleOverridesController#add_role Add Role API} as well as the base enrollment types accepted by the `type` argument above.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "state",
+              "description": "Filter by enrollment state. If omitted, 'active' and 'invited' enrollments are returned.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "active",
+                "invited",
+                "creation_pending",
+                "deleted",
+                "rejected",
+                "completed",
+                "inactive"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Enrollment"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/enrollments",
+      "description": "Create a new user enrollment for a course or section.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Enroll a user",
+          "notes": "Create a new user enrollment for a course or section.",
+          "nickname": "enroll_user_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment[user_id]",
+              "description": "The ID of the user to be enrolled in the course.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment[type]",
+              "description": "Enroll the user as a student, teacher, TA, observer, or designer. If no value is given, the type will be inferred by enrollment[role] if supplied, otherwise 'StudentEnrollment' will be used.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "StudentEnrollment",
+                "TeacherEnrollment",
+                "TaEnrollment",
+                "ObserverEnrollment",
+                "DesignerEnrollment"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment[role]",
+              "description": "Assigns a custom course-level role to the user.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment[enrollment_state]",
+              "description": "If set to 'active,' student will be immediately enrolled in the course. Otherwise they will be required to accept a course invitation. Default is 'invited.'",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "active",
+                "invited"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment[course_section_id]",
+              "description": "The ID of the course section to enroll the student in. If the section-specific URL is used, this argument is redundant and will be ignored.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment[limit_privileges_to_course_section]",
+              "description": "If a teacher or TA enrollment, teacher/TA will be restricted to the section given by course_section_id.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment[notify]",
+              "description": "If true, a notification will be sent to the enrolled user. Notifications are not sent by default.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment[self_enrollment_code]",
+              "description": "If the current user is not allowed to manage enrollments in this course, but the course allows self-enrollment, the user can self- enroll as a student in the default section by passing in a valid code. When self-enrolling, the user_id must be 'self'. The enrollment_state will be set to 'active' and all other arguments will be ignored.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "Enrollment"
+        }
+      ]
+    },
+    {
+      "path": "/v1/sections/{section_id}/enrollments",
+      "description": "Create a new user enrollment for a course or section.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Enroll a user",
+          "notes": "Create a new user enrollment for a course or section.",
+          "nickname": "enroll_user_sections",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "section_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment[user_id]",
+              "description": "The ID of the user to be enrolled in the course.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment[type]",
+              "description": "Enroll the user as a student, teacher, TA, observer, or designer. If no value is given, the type will be inferred by enrollment[role] if supplied, otherwise 'StudentEnrollment' will be used.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "StudentEnrollment",
+                "TeacherEnrollment",
+                "TaEnrollment",
+                "ObserverEnrollment",
+                "DesignerEnrollment"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment[role]",
+              "description": "Assigns a custom course-level role to the user.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment[enrollment_state]",
+              "description": "If set to 'active,' student will be immediately enrolled in the course. Otherwise they will be required to accept a course invitation. Default is 'invited.'",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "active",
+                "invited"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment[course_section_id]",
+              "description": "The ID of the course section to enroll the student in. If the section-specific URL is used, this argument is redundant and will be ignored.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment[limit_privileges_to_course_section]",
+              "description": "If a teacher or TA enrollment, teacher/TA will be restricted to the section given by course_section_id.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment[notify]",
+              "description": "If true, a notification will be sent to the enrolled user. Notifications are not sent by default.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment[self_enrollment_code]",
+              "description": "If the current user is not allowed to manage enrollments in this course, but the course allows self-enrollment, the user can self- enroll as a student in the default section by passing in a valid code. When self-enrolling, the user_id must be 'self'. The enrollment_state will be set to 'active' and all other arguments will be ignored.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "Enrollment"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/enrollments/{id}",
+      "description": "Delete or conclude an enrollment.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Conclude an enrollment",
+          "notes": "Delete or conclude an enrollment.",
+          "nickname": "conclude_enrollment",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "task",
+              "description": "The action to take on the enrollment.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "conclude",
+                "delete"
+              ]
+            }
+          ],
+          "type": "Enrollment"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "Enrollment": {
+      "id": "Enrollment",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "course_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "course_section_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "enrollment_state": {
+          "type": "string"
+        },
+        "limit_privileges_to_course_section": {
+          "type": "boolean"
+        },
+        "root_account_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "type": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "last_activity_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "html_url": {
+          "type": "string"
+        },
+        "grades": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

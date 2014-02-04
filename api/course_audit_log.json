@@ -1,0 +1,114 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/course audit log",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/audit/course/courses/{course_id}",
+      "description": "List course change events for a given course.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Query by course.",
+          "notes": "List course change events for a given course.",
+          "nickname": "query_by_course",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "start_time",
+              "description": "The beginning of the time range from which you want events.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "end_time",
+              "description": "The end of the time range from which you want events.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "CourseEvent"
+          }
+        }
+      ]
+    }
+  ],
+  "models": {
+    "CourseEvent": {
+      "id": "CourseEvent",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "event_type": {
+          "type": "string"
+        },
+        "event_data": {
+          "type": "string"
+        },
+        "links": {
+          "type": "string"
+        }
+      }
+    },
+    "CreatedEventData": {
+      "id": "CreatedEventData",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "start_at": {
+          "type": "string"
+        },
+        "conclude_at": {
+          "type": "string"
+        },
+        "is_public": {
+          "type": "string"
+        }
+      }
+    },
+    "UpdatedEventData": {
+      "id": "UpdatedEventData",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "start_at": {
+          "type": "string"
+        },
+        "conclude_at": {
+          "type": "string"
+        },
+        "is_public": {
+          "type": "string"
+        }
+      }
+    },
+    "ConcludedEventData": {
+      "id": "ConcludedEventData",
+      "properties": {
+      }
+    }
+  }
+}

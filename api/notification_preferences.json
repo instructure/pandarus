@@ -1,0 +1,348 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/notification preferences",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/users/{user_id}/communication_channels/{communication_channel_id}/notification_preferences",
+      "description": "Fetch all preferences for the given communication channel",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List preferences",
+          "notes": "Fetch all preferences for the given communication channel",
+          "nickname": "list_preferences_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "communication_channel_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "NotificationPreference"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/communication_channels/{type}/{address}/notification_preferences",
+      "description": "Fetch all preferences for the given communication channel",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List preferences",
+          "notes": "Fetch all preferences for the given communication channel",
+          "nickname": "list_preferences_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "type",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "address",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "NotificationPreference"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/communication_channels/{communication_channel_id}/notification_preferences/{notification}",
+      "description": "Fetch the preference for the given notification for the given communicaiton channel",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a preference",
+          "notes": "Fetch the preference for the given notification for the given communicaiton channel",
+          "nickname": "get_preference_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "communication_channel_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "notification",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "NotificationPreference"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/communication_channels/{type}/{address}/notification_preferences/{notification}",
+      "description": "Fetch the preference for the given notification for the given communicaiton channel",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a preference",
+          "notes": "Fetch the preference for the given notification for the given communicaiton channel",
+          "nickname": "get_preference_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "type",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "address",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "notification",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "NotificationPreference"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/self/communication_channels/{communication_channel_id}/notification_preferences/{notification}",
+      "description": "Change the preference for a single notification for a single communication channel",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update a preference",
+          "notes": "Change the preference for a single notification for a single communication channel",
+          "nickname": "update_preference_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "communication_channel_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "notification",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "notification_preferences[frequency]",
+              "description": "The desired frequency for this notification",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/self/communication_channels/{type}/{address}/notification_preferences/{notification}",
+      "description": "Change the preference for a single notification for a single communication channel",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update a preference",
+          "notes": "Change the preference for a single notification for a single communication channel",
+          "nickname": "update_preference_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "type",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "address",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "notification",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "notification_preferences[frequency]",
+              "description": "The desired frequency for this notification",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/self/communication_channels/{communication_channel_id}/notification_preferences",
+      "description": "Change the preferences for multiple notifications for a single communication channel at once",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update multiple preferences",
+          "notes": "Change the preferences for multiple notifications for a single communication channel at once",
+          "nickname": "update_multiple_preferences_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "communication_channel_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "notification_preferences[<X>][frequency]",
+              "description": "The desired frequency for <X> notification",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/self/communication_channels/{type}/{address}/notification_preferences",
+      "description": "Change the preferences for multiple notifications for a single communication channel at once",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update multiple preferences",
+          "notes": "Change the preferences for multiple notifications for a single communication channel at once",
+          "nickname": "update_multiple_preferences_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "type",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "address",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "notification_preferences[<X>][frequency]",
+              "description": "The desired frequency for <X> notification",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "NotificationPreference": {
+      "id": "NotificationPreference",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "notification": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "frequency": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

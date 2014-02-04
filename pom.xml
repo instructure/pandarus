@@ -39,7 +39,7 @@
                 <arg>http://canvas.instructure.com/doc/api/api-docs.json</arg>
               </args>
               <jvmArgs>
-                <jvmArg>-DfileMap=/Users/duane/Instructure/canvas-lms/public/doc/api/api-docs.json</jvmArg>
+                <jvmArg>-DfileMap=${project.basedir}/api/api-docs.json</jvmArg>
               </jvmArgs>
             </launcher>
           </launchers>

@@ -1,0 +1,52 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/submission comments",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{user_id}/comments/files",
+      "description": "Upload a file to attach to a submission comment\n\nSee the {file:file_uploads.html File Upload Documentation} for details on the file upload workflow.\n\nThe final step of the file upload workflow will return the attachment data,\nincluding the new file id. The caller can then PUT the file_id to the\nsubmission API to attach it to a comment",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Upload a file",
+          "notes": "Upload a file to attach to a submission comment\n\nSee the {file:file_uploads.html File Upload Documentation} for details on the file upload workflow.\n\nThe final step of the file upload workflow will return the attachment data,\nincluding the new file id. The caller can then PUT the file_id to the\nsubmission API to attach it to a comment",
+          "nickname": "upload_file",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+  }
+}

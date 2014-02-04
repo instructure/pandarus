@@ -1,0 +1,565 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/feature flags",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/features",
+      "description": "List all features that apply to a given Account, Course, or User.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List features",
+          "notes": "List all features that apply to a given Account, Course, or User.",
+          "nickname": "list_features_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Feature"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/features",
+      "description": "List all features that apply to a given Account, Course, or User.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List features",
+          "notes": "List all features that apply to a given Account, Course, or User.",
+          "nickname": "list_features_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Feature"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/features",
+      "description": "List all features that apply to a given Account, Course, or User.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List features",
+          "notes": "List all features that apply to a given Account, Course, or User.",
+          "nickname": "list_features_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Feature"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/features/enabled",
+      "description": "List all features that are enabled on a given Account, Course, or User.\nOnly the feature names are returned.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List enabled features",
+          "notes": "List all features that are enabled on a given Account, Course, or User.\nOnly the feature names are returned.",
+          "nickname": "list_enabled_features_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/features/enabled",
+      "description": "List all features that are enabled on a given Account, Course, or User.\nOnly the feature names are returned.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List enabled features",
+          "notes": "List all features that are enabled on a given Account, Course, or User.\nOnly the feature names are returned.",
+          "nickname": "list_enabled_features_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/features/enabled",
+      "description": "List all features that are enabled on a given Account, Course, or User.\nOnly the feature names are returned.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List enabled features",
+          "notes": "List all features that are enabled on a given Account, Course, or User.\nOnly the feature names are returned.",
+          "nickname": "list_enabled_features_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/features/flags/{feature}",
+      "description": "Get the feature flag that applies to a given Account, Course, or User.\nThe flag may be defined on the object, or it may be inherited from a parent\naccount. You can look at the context_id and context_type of the returned object\nto determine which is the case. If these fields are missing, then the object\nis the global Canvas default.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get feature flag",
+          "notes": "Get the feature flag that applies to a given Account, Course, or User.\nThe flag may be defined on the object, or it may be inherited from a parent\naccount. You can look at the context_id and context_type of the returned object\nto determine which is the case. If these fields are missing, then the object\nis the global Canvas default.",
+          "nickname": "get_feature_flag_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "feature",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "FeatureFlag"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/features/flags/{feature}",
+      "description": "Get the feature flag that applies to a given Account, Course, or User.\nThe flag may be defined on the object, or it may be inherited from a parent\naccount. You can look at the context_id and context_type of the returned object\nto determine which is the case. If these fields are missing, then the object\nis the global Canvas default.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get feature flag",
+          "notes": "Get the feature flag that applies to a given Account, Course, or User.\nThe flag may be defined on the object, or it may be inherited from a parent\naccount. You can look at the context_id and context_type of the returned object\nto determine which is the case. If these fields are missing, then the object\nis the global Canvas default.",
+          "nickname": "get_feature_flag_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "feature",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "FeatureFlag"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/features/flags/{feature}",
+      "description": "Get the feature flag that applies to a given Account, Course, or User.\nThe flag may be defined on the object, or it may be inherited from a parent\naccount. You can look at the context_id and context_type of the returned object\nto determine which is the case. If these fields are missing, then the object\nis the global Canvas default.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get feature flag",
+          "notes": "Get the feature flag that applies to a given Account, Course, or User.\nThe flag may be defined on the object, or it may be inherited from a parent\naccount. You can look at the context_id and context_type of the returned object\nto determine which is the case. If these fields are missing, then the object\nis the global Canvas default.",
+          "nickname": "get_feature_flag_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "feature",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "FeatureFlag"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/features/flags/{feature}",
+      "description": "Set a feature flag for a given Account, Course, or User. This call will fail if a parent account sets\na feature flag for the same feature in any state other than \"allowed\".",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Set feature flag",
+          "notes": "Set a feature flag for a given Account, Course, or User. This call will fail if a parent account sets\na feature flag for the same feature in any state other than \"allowed\".",
+          "nickname": "set_feature_flag_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "feature",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "state",
+              "description": "\"off\":: The feature is not available for the course, user, or account and sub-accounts. \"allowed\":: (valid only on accounts) The feature is off in the account, but may be enabled in sub-accounts and courses by setting a feature flag on the sub-account or course. \"on\":: The feature is turned on unconditionally for the user, course, or account and sub-accounts.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "off",
+                "allowed",
+                "on"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "locking_account_id",
+              "description": "If set, this FeatureFlag may only be modified by someone with administrative rights in the specified account. The locking account must be above the target object in the account chain.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            }
+          ],
+          "type": "FeatureFlag"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/features/flags/{feature}",
+      "description": "Set a feature flag for a given Account, Course, or User. This call will fail if a parent account sets\na feature flag for the same feature in any state other than \"allowed\".",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Set feature flag",
+          "notes": "Set a feature flag for a given Account, Course, or User. This call will fail if a parent account sets\na feature flag for the same feature in any state other than \"allowed\".",
+          "nickname": "set_feature_flag_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "feature",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "state",
+              "description": "\"off\":: The feature is not available for the course, user, or account and sub-accounts. \"allowed\":: (valid only on accounts) The feature is off in the account, but may be enabled in sub-accounts and courses by setting a feature flag on the sub-account or course. \"on\":: The feature is turned on unconditionally for the user, course, or account and sub-accounts.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "off",
+                "allowed",
+                "on"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "locking_account_id",
+              "description": "If set, this FeatureFlag may only be modified by someone with administrative rights in the specified account. The locking account must be above the target object in the account chain.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            }
+          ],
+          "type": "FeatureFlag"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/features/flags/{feature}",
+      "description": "Set a feature flag for a given Account, Course, or User. This call will fail if a parent account sets\na feature flag for the same feature in any state other than \"allowed\".",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Set feature flag",
+          "notes": "Set a feature flag for a given Account, Course, or User. This call will fail if a parent account sets\na feature flag for the same feature in any state other than \"allowed\".",
+          "nickname": "set_feature_flag_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "feature",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "state",
+              "description": "\"off\":: The feature is not available for the course, user, or account and sub-accounts. \"allowed\":: (valid only on accounts) The feature is off in the account, but may be enabled in sub-accounts and courses by setting a feature flag on the sub-account or course. \"on\":: The feature is turned on unconditionally for the user, course, or account and sub-accounts.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "off",
+                "allowed",
+                "on"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "locking_account_id",
+              "description": "If set, this FeatureFlag may only be modified by someone with administrative rights in the specified account. The locking account must be above the target object in the account chain.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            }
+          ],
+          "type": "FeatureFlag"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/features/flags/{feature}",
+      "description": "Remove feature flag for a given Account, Course, or User.  (Note that the flag must\nbe defined on the Account, Course, or User directly.)  The object will then inherit\nthe feature flags from a higher account, if any exist.  If this flag was 'on' or 'off',\nthen lower-level account flags that were masked by this one will apply again.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Remove feature flag",
+          "notes": "Remove feature flag for a given Account, Course, or User.  (Note that the flag must\nbe defined on the Account, Course, or User directly.)  The object will then inherit\nthe feature flags from a higher account, if any exist.  If this flag was 'on' or 'off',\nthen lower-level account flags that were masked by this one will apply again.",
+          "nickname": "remove_feature_flag_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "feature",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "FeatureFlag"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/features/flags/{feature}",
+      "description": "Remove feature flag for a given Account, Course, or User.  (Note that the flag must\nbe defined on the Account, Course, or User directly.)  The object will then inherit\nthe feature flags from a higher account, if any exist.  If this flag was 'on' or 'off',\nthen lower-level account flags that were masked by this one will apply again.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Remove feature flag",
+          "notes": "Remove feature flag for a given Account, Course, or User.  (Note that the flag must\nbe defined on the Account, Course, or User directly.)  The object will then inherit\nthe feature flags from a higher account, if any exist.  If this flag was 'on' or 'off',\nthen lower-level account flags that were masked by this one will apply again.",
+          "nickname": "remove_feature_flag_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "feature",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "FeatureFlag"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/features/flags/{feature}",
+      "description": "Remove feature flag for a given Account, Course, or User.  (Note that the flag must\nbe defined on the Account, Course, or User directly.)  The object will then inherit\nthe feature flags from a higher account, if any exist.  If this flag was 'on' or 'off',\nthen lower-level account flags that were masked by this one will apply again.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Remove feature flag",
+          "notes": "Remove feature flag for a given Account, Course, or User.  (Note that the flag must\nbe defined on the Account, Course, or User directly.)  The object will then inherit\nthe feature flags from a higher account, if any exist.  If this flag was 'on' or 'off',\nthen lower-level account flags that were masked by this one will apply again.",
+          "nickname": "remove_feature_flag_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "feature",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "FeatureFlag"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "Feature": {
+      "id": "Feature",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "display_name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "applies_to": {
+          "type": "string"
+        },
+        "enable_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "feature_flag": {
+          "type": "string"
+        },
+        "root_opt_in": {
+          "type": "boolean"
+        },
+        "beta": {
+          "type": "boolean"
+        },
+        "development": {
+          "type": "boolean"
+        },
+        "release_notes_url": {
+          "type": "string"
+        }
+      }
+    },
+    "FeatureFlag": {
+      "id": "FeatureFlag",
+      "properties": {
+        "context_type": {
+          "type": "string"
+        },
+        "context_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "feature": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "locked": {
+          "type": "boolean"
+        },
+        "locking_account_id": {
+          "type": "string"
+        },
+        "transitions": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

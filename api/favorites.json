@@ -1,0 +1,106 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/favorites",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/users/self/favorites/courses",
+      "description": "Retrieve the list of favorite courses for the current user. If the user has not chosen\nany favorites, then a selection of currently enrolled courses will be returned.\n\nSee the {api:CoursesController#index List courses API} for details on accepted include[] parameters.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List favorite courses",
+          "notes": "Retrieve the list of favorite courses for the current user. If the user has not chosen\nany favorites, then a selection of currently enrolled courses will be returned.\n\nSee the {api:CoursesController#index List courses API} for details on accepted include[] parameters.",
+          "nickname": "list_favorite_courses",
+          "parameters": [
+
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Course"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/self/favorites/courses/{id}",
+      "description": "Add a course to the current user's favorites.  If the course is already\nin the user's favorites, nothing happens.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Add course to favorites",
+          "notes": "Add a course to the current user's favorites.  If the course is already\nin the user's favorites, nothing happens.",
+          "nickname": "add_course_to_favorites",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "The ID or SIS ID of the course to add. The current user must be registered in the course.",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "Favorite"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/self/favorites/courses/{id}",
+      "description": "Remove a course from the current user's favorites.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Remove course from favorites",
+          "notes": "Remove a course from the current user's favorites.",
+          "nickname": "remove_course_from_favorites",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "the ID or SIS ID of the course to remove",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "Favorite"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/self/favorites/courses",
+      "description": "Reset the current user's course favorites to the default\nautomatically generated list of enrolled courses",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Reset course favorites",
+          "notes": "Reset the current user's course favorites to the default\nautomatically generated list of enrolled courses",
+          "nickname": "reset_course_favorites",
+          "parameters": [
+
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "Favorite": {
+      "id": "Favorite",
+      "properties": {
+        "context_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "context_type": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

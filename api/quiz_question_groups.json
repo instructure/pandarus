@@ -1,0 +1,309 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/quiz question groups",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/groups",
+      "description": "Create a new question group for this quiz\n\n<b>201 Created</b> response code is returned if the creation was successful.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a question group",
+          "notes": "Create a new question group for this quiz\n\n<b>201 Created</b> response code is returned if the creation was successful.",
+          "nickname": "create_question_group",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "quiz_groups[name]",
+              "description": "The name of the question group.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "quiz_groups[pick_count]",
+              "description": "The number of questions to randomly select for this group.",
+              "type": "integer",
+              "format": "int64",
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "quiz_groups[question_points]",
+              "description": "The number of points to assign to each question in the group.",
+              "type": "integer",
+              "format": "int64",
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "quiz_groups[assessment_question_bank_id]",
+              "description": "The id of the assessment question bank to pull questions from.",
+              "type": "integer",
+              "format": "int64",
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/groups/{id}",
+      "description": "Update a question group",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update a question group",
+          "notes": "Update a question group",
+          "nickname": "update_question_group",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "quiz_groups[name]",
+              "description": "The name of the question group.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "quiz_groups[pick_count]",
+              "description": "The number of questions to randomly select for this group.",
+              "type": "integer",
+              "format": "int64",
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "quiz_groups[question_points]",
+              "description": "The number of points to assign to each question in the group.",
+              "type": "integer",
+              "format": "int64",
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/groups/{id}",
+      "description": "Delete a question group\n\n<b>204 No Content<b> response code is returned if the deletion was successful.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete a question group",
+          "notes": "Delete a question group\n\n<b>204 No Content<b> response code is returned if the deletion was successful.",
+          "nickname": "delete_question_group",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/groups/{id}/reorder",
+      "description": "Change the order of the quiz questions within the group\n\n<b>204 No Content<b> response code is returned if the reorder was successful.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Reorder question groups",
+          "notes": "Change the order of the quiz questions within the group\n\n<b>204 No Content<b> response code is returned if the reorder was successful.",
+          "nickname": "reorder_question_groups",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "order[id]",
+              "description": "The associated item's unique identifier",
+              "type": "integer",
+              "format": "int64",
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "order[type]",
+              "description": "The type of item is always 'question' for a group",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "question"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "QuizGroup": {
+      "id": "QuizGroup",
+      "properties": {
+        "id": {
+          "description": "The ID of the question group.",
+          "example": 1,
+          "type": "integer",
+          "format": "int64"
+        },
+        "quiz_id": {
+          "description": "The ID of the Quiz the question group belongs to.",
+          "example": 2,
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "The name of the question group.",
+          "example": "Fraction questions",
+          "type": "string"
+        },
+        "pick_count": {
+          "description": "The number of questions to pick from the group to display to the student.",
+          "example": 3,
+          "type": "integer",
+          "format": "int64"
+        },
+        "question_points": {
+          "description": "The amount of points allotted to each question in the group.",
+          "example": 10,
+          "type": "integer",
+          "format": "int64"
+        },
+        "assessment_question_bank_id": {
+          "description": "The ID of the Assessment question bank to pull questions from.",
+          "example": 2,
+          "type": "integer",
+          "format": "int64"
+        },
+        "position": {
+          "description": "The order in which the question group will be retrieved and displayed.",
+          "example": 1,
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    }
+  }
+}

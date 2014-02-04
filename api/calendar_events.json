@@ -1,0 +1,572 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/calendar events",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/calendar_events",
+      "description": "Retrieve the list of calendar events or assignments for the current user",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List calendar events",
+          "notes": "Retrieve the list of calendar events or assignments for the current user",
+          "nickname": "list_calendar_events",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "type",
+              "description": "Defaults to \"event\"",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "event",
+                "assignment"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "start_date",
+              "description": "Only return events since the start_date (inclusive). Defaults to today. The value should be formatted as: yyyy-mm-dd.",
+              "type": "date",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "end_date",
+              "description": "Only return events before the end_date (inclusive). Defaults to start_date. The value should be formatted as: yyyy-mm-dd. If end_date is the same as start_date, then only events on that day are returned.",
+              "type": "date",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "undated",
+              "description": "Defaults to false (dated events only). If true, only return undated events and ignore start_date and end_date.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "all_events",
+              "description": "Defaults to false (uses start_date, end_date, and undated criteria). If true, all events are returned, ignoring start_date, end_date, and undated criteria.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "context_codes",
+              "description": "List of context codes of courses/groups/users whose events you want to see. If not specified, defaults to the current user (i.e personal calendar, no course/group events). Limited to 10 context codes, additional ones are ignored. The format of this field is the context type, followed by an underscore, followed by the context id. For example: course_42",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/calendar_events",
+      "description": "Create and return a new calendar event",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a calendar event",
+          "notes": "Create and return a new calendar event",
+          "nickname": "create_calendar_event",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "calendar_event[context_code]",
+              "description": "Context code of the course/group/user whose calendar this event should be added to.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[title]",
+              "description": "Short title for the calendar event.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[description]",
+              "description": "Longer HTML description of the event.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[start_at]",
+              "description": "Start date/time of the event.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[end_at]",
+              "description": "End date/time of the event.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[location_name]",
+              "description": "Location name of the event.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[location_address]",
+              "description": "Location address",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[time_zone_edited]",
+              "description": "Time zone of the user editing the event. Allowed time zones are {http://www.iana.org/time-zones IANA time zones} or friendlier {http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html Ruby on Rails time zones}.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[child_event_data][X][start_at]",
+              "description": "Section-level start time(s) if this is a course event. X can be any identifier, provided that it is consistent across the start_at, end_at and context_code",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[child_event_data][X][end_at]",
+              "description": "Section-level end time(s) if this is a course event.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[child_event_data][X][context_code]",
+              "description": "Context code(s) corresponding to the section-level start and end time(s).",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/calendar_events/{id}",
+      "description": "Returns information for a single event or assignment",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single calendar event or assignment",
+          "notes": "Returns information for a single event or assignment",
+          "nickname": "get_single_calendar_event_or_assignment",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/calendar_events/{id}/reservations",
+      "description": "Reserves a particular time slot and return the new reservation",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Reserve a time slot",
+          "notes": "Reserves a particular time slot and return the new reservation",
+          "nickname": "reserve_time_slot_calendar_events",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "participant_id",
+              "description": "User or group id for whom you are making the reservation (depends on the participant type). Defaults to the current user (or user's candidate group).",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "cancel_existing",
+              "description": "Defaults to false. If true, cancel any previous reservation(s) for this participant and appointment group.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/calendar_events/{id}/reservations/{participant_id}",
+      "description": "Reserves a particular time slot and return the new reservation",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Reserve a time slot",
+          "notes": "Reserves a particular time slot and return the new reservation",
+          "nickname": "reserve_time_slot_calendar_events",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "participant_id",
+              "description": "User or group id for whom you are making the reservation (depends on the participant type). Defaults to the current user (or user's candidate group).",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "cancel_existing",
+              "description": "Defaults to false. If true, cancel any previous reservation(s) for this participant and appointment group.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/calendar_events/{id}",
+      "description": "Update and return a calendar event",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update a calendar event",
+          "notes": "Update and return a calendar event",
+          "nickname": "update_calendar_event",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[context_code]",
+              "description": "Context code of the course/group/user whose calendar this event should be added to.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[title]",
+              "description": "Short title for the calendar event.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[description]",
+              "description": "Longer HTML description of the event.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[start_at]",
+              "description": "Start date/time of the event.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[end_at]",
+              "description": "End date/time of the event.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[location_name]",
+              "description": "Location name of the event.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[location_address]",
+              "description": "Location address",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[time_zone_edited]",
+              "description": "Time zone of the user editing the event. Allowed time zones are {http://www.iana.org/time-zones IANA time zones} or friendlier {http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html Ruby on Rails time zones}.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[child_event_data][X][start_at]",
+              "description": "Section-level start time(s) if this is a course event. X can be any identifier, provided that it is consistent across the start_at, end_at and context_code",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[child_event_data][X][end_at]",
+              "description": "Section-level end time(s) if this is a course event.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[child_event_data][X][context_code]",
+              "description": "Context code(s) corresponding to the section-level start and end time(s).",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/calendar_events/{id}",
+      "description": "Delete an event from the calendar and return the deleted event",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete a calendar event",
+          "notes": "Delete an event from the calendar and return the deleted event",
+          "nickname": "delete_calendar_event",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "cancel_reason",
+              "description": "Reason for deleting/canceling the event.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "CalendarEvent": {
+      "id": "CalendarEvent",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "start_at": {
+          "type": "string"
+        },
+        "end_at": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "location_name": {
+          "type": "string"
+        },
+        "location_address": {
+          "type": "string"
+        },
+        "context_code": {
+          "type": "string"
+        },
+        "effective_context_code": {
+          "type": "string"
+        },
+        "workflow_state": {
+          "type": "string"
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "parent_event_id": {
+          "type": "string"
+        },
+        "child_events_count": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "child_events": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "html_url": {
+          "type": "string"
+        },
+        "all_day_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "all_day": {
+          "type": "boolean"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "appointment_group_id": {
+          "type": "string"
+        },
+        "appointment_group_url": {
+          "type": "string"
+        },
+        "own_reservation": {
+          "type": "string"
+        },
+        "reserve_url": {
+          "type": "string"
+        },
+        "reserved": {
+          "type": "string"
+        },
+        "participants_per_appointment": {
+          "type": "string"
+        },
+        "available_slots": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "group": {
+          "type": "string"
+        }
+      }
+    },
+    "AssignmentEvent": {
+      "id": "AssignmentEvent",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "start_at": {
+          "type": "string"
+        },
+        "end_at": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "context_code": {
+          "type": "string"
+        },
+        "workflow_state": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "html_url": {
+          "type": "string"
+        },
+        "all_day_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "all_day": {
+          "type": "boolean"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "assignment": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

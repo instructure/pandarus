@@ -1,0 +1,287 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/quiz submission questions",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/quiz_submissions/{quiz_submission_id}/questions",
+      "description": "Get a list of all the question records for this quiz submission.\n\n<b>200 OK</b> response code is returned if the request was successful.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get all quiz submission questions.",
+          "notes": "Get a list of all the question records for this quiz submission.\n\n<b>200 OK</b> response code is returned if the request was successful.",
+          "nickname": "get_all_quiz_submission_questions",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "quiz_submission_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Associations to include with the quiz submission question.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "quiz_question"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/quiz_submissions/{quiz_submission_id}/questions/{id}",
+      "description": "Get a single question record.\n\n<b>200 OK</b> response code is returned if the request was successful.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single quiz submission question.",
+          "notes": "Get a single question record.\n\n<b>200 OK</b> response code is returned if the request was successful.",
+          "nickname": "get_single_quiz_submission_question",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "quiz_submission_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Associations to include with the quiz submission question.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "quiz_question"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/quiz_submissions/{quiz_submission_id}/questions/{id}",
+      "description": "Provide or modify an answer to a QuizQuestion.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Answering a question.",
+          "notes": "Provide or modify an answer to a QuizQuestion.",
+          "nickname": "answering_question",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "quiz_submission_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "attempt",
+              "description": "The attempt number of the quiz submission being taken. Note that this must be the latest attempt index, as questions for earlier attempts can not be modified.",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "validation_token",
+              "description": "The unique validation token you received when the Quiz Submission was created.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "access_code",
+              "description": "Access code for the Quiz, if any.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "answer",
+              "description": "The answer to the question. The type and format of this argument depend on the question type. See {Appendix: Question Answer Formats} for the accepted answer formats for each question type.",
+              "type": "mixed",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/quiz_submissions/{quiz_submission_id}/questions/{id}/flag",
+      "description": "Set a flag on a quiz question to indicate that you want to return to it\nlater.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Flagging a question.",
+          "notes": "Set a flag on a quiz question to indicate that you want to return to it\nlater.",
+          "nickname": "flagging_question",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "quiz_submission_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "attempt",
+              "description": "The attempt number of the quiz submission being taken. Note that this must be the latest attempt index, as questions for earlier attempts can not be modified.",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "validation_token",
+              "description": "The unique validation token you received when the Quiz Submission was created.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "access_code",
+              "description": "Access code for the Quiz, if any.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/quiz_submissions/{quiz_submission_id}/questions/{id}/unflag",
+      "description": "Remove the flag that you previously set on a quiz question after you've\nreturned to it.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Unflagging a question.",
+          "notes": "Remove the flag that you previously set on a quiz question after you've\nreturned to it.",
+          "nickname": "unflagging_question",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "quiz_submission_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "attempt",
+              "description": "The attempt number of the quiz submission being taken. Note that this must be the latest attempt index, as questions for earlier attempts can not be modified.",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "validation_token",
+              "description": "The unique validation token you received when the Quiz Submission was created.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "access_code",
+              "description": "Access code for the Quiz, if any.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "QuizSubmissionQuestion": {
+      "id": "QuizSubmissionQuestion",
+      "properties": {
+        "id": {
+          "description": "The ID of the QuizQuestion this answer is for.",
+          "example": 1,
+          "type": "integer",
+          "format": "int64"
+        },
+        "flagged": {
+          "description": "Whether this question is flagged.",
+          "example": true,
+          "type": "boolean"
+        },
+        "answer": {
+          "description": "The provided answer (if any) for this question. The format of this parameter depends on the type of the question, see the Appendix for more information."
+        }
+      }
+    }
+  }
+}

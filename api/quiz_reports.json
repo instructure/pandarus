@@ -1,0 +1,137 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/quiz reports",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/reports",
+      "description": "Create and return a new report for this quiz. If a previously\ngenerated report matches the arguments and is still current (i.e.\nthere have been no new submissions), it will be returned.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a quiz report",
+          "notes": "Create and return a new report for this quiz. If a previously\ngenerated report matches the arguments and is still current (i.e.\nthere have been no new submissions), it will be returned.",
+          "nickname": "create_quiz_report",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "quiz_report[report_type]",
+              "description": "The type of report to be generated.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "student_analysis",
+                "item_analysis"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "quiz_report[includes_all_versions]",
+              "description": "Whether the report should consider all submissions or only the most recent. Defaults to false, ignored for item_analysis.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "QuizReport"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/reports/{id}",
+      "description": "Returns the data for a single quiz report.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a quiz report",
+          "notes": "Returns the data for a single quiz report.",
+          "nickname": "get_quiz_report",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "QuizReport"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "QuizReport": {
+      "id": "QuizReport",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "quiz_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "report_type": {
+          "type": "string"
+        },
+        "includes_all_versions": {
+          "type": "boolean"
+        },
+        "anonymous": {
+          "type": "boolean"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "progress_url": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

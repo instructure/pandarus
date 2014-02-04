@@ -1,0 +1,161 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/tabs",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/tabs",
+      "description": "Returns a list of navigation tabs available in the current context.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List available tabs for a course or group",
+          "notes": "Returns a list of navigation tabs available in the current context.",
+          "nickname": "list_available_tabs_for_course_or_group_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Optionally include external tool tabs in the returned list of tabs (Only has effect for courses, not groups)",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "external"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/tabs",
+      "description": "Returns a list of navigation tabs available in the current context.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List available tabs for a course or group",
+          "notes": "Returns a list of navigation tabs available in the current context.",
+          "nickname": "list_available_tabs_for_course_or_group_groups",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Optionally include external tool tabs in the returned list of tabs (Only has effect for courses, not groups)",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "external"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/tabs/{tab_id}",
+      "description": "Home and Settings tabs are not manageable, and can't be hidden or moved\n\nReturns a tab object",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update a tab for a course",
+          "notes": "Home and Settings tabs are not manageable, and can't be hidden or moved\n\nReturns a tab object",
+          "nickname": "update_tab_for_course",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "tab_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "position",
+              "description": "The new position of the tab, 1-based",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "hidden",
+              "description": "\\\\ true, or false.",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "Tab"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "Tab": {
+      "id": "Tab",
+      "properties": {
+        "html_url": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string"
+        },
+        "position": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

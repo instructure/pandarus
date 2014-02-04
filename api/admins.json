@@ -1,0 +1,140 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/admins",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/accounts/{account_id}/admins",
+      "description": "Flag an existing user as an admin within the account.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Make an account admin",
+          "notes": "Flag an existing user as an admin within the account.",
+          "nickname": "make_account_admin",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "user_id",
+              "description": "The id of the user to promote.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "role",
+              "description": "The user's admin relationship with the account will be created with the given role. Defaults to 'AccountAdmin'.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "send_confirmation",
+              "description": "Send a notification email to the new admin if true. Default is true.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "Admin"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/admins/{user_id}",
+      "description": "Remove the rights associated with an account admin role from a user.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Remove account admin",
+          "notes": "Remove the rights associated with an account admin role from a user.",
+          "nickname": "remove_account_admin",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "role",
+              "description": "Account role to remove from the user. Defaults to 'AccountAdmin'. Any other account role must be specified explicitly.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "Admin"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/admins",
+      "description": "List the admins in the account",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List account admins",
+          "notes": "List the admins in the account",
+          "nickname": "list_account_admins",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Admin"
+          }
+        }
+      ]
+    }
+  ],
+  "models": {
+    "Admin": {
+      "id": "Admin",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "role": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

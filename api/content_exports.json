@@ -1,0 +1,134 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/content exports",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/content_exports",
+      "description": "List the past and pending content export jobs for a course.\nExports are returned newest first.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List content exports",
+          "notes": "List the past and pending content export jobs for a course.\nExports are returned newest first.",
+          "nickname": "list_content_exports",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "ContentExport"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/content_exports/{id}",
+      "description": "Get information about a single content export.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Show content export",
+          "notes": "Get information about a single content export.",
+          "nickname": "show_content_export",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "ContentExport"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/content_exports",
+      "description": "Begin a content export job for a course.\n\nYou can use the {api:ProgressController#show Progress API} to track the\nprogress of the export. The migration's progress is linked to with the\n_progress_url_ value.\n\nWhen the export completes, use the {api:ContentExportsApiController#show Show content export} endpoint\nto retrieve a download URL for the exported content.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Export course content",
+          "notes": "Begin a content export job for a course.\n\nYou can use the {api:ProgressController#show Progress API} to track the\nprogress of the export. The migration's progress is linked to with the\n_progress_url_ value.\n\nWhen the export completes, use the {api:ContentExportsApiController#show Show content export} endpoint\nto retrieve a download URL for the exported content.",
+          "nickname": "export_course_content",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "export_type",
+              "description": "\"common_cartridge\":: Export the contents of the course in the Common Cartridge (.imscc) format \"qti\":: Export quizzes in the QTI format",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "common_cartridge",
+                "qti"
+              ]
+            }
+          ],
+          "type": "ContentExport"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "ContentExport": {
+      "id": "ContentExport",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "export_type": {
+          "type": "string"
+        },
+        "attachment": {
+          "type": "string"
+        },
+        "progress_url": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "workflow_state": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
