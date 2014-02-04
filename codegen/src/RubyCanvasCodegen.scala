@@ -28,6 +28,7 @@ object RubyCanvasCodegen extends BasicRubyGenerator {
 
   override def destinationDir = "clients/ruby/lib"
 
+  override def toApiName(name: String) = name(0).toUpper + name.substring(1)
   override def toModelFilename(name: String) = toUnderscore(name).stripPrefix("_")
 
   override def toVarName(name: String): String = {
