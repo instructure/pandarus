@@ -1,0 +1,60 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/quiz submission files",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/self/files",
+      "description": "Associate a new quiz submission file\n\nThis API endpoint is the first step in uploading a quiz submission file.\nSee the {file:file_uploads.html File Upload Documentation} for details on\nthe file upload workflow as these parameters are interpreted as per the\ndocumentation there.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Upload a file",
+          "notes": "Associate a new quiz submission file\n\nThis API endpoint is the first step in uploading a quiz submission file.\nSee the {file:file_uploads.html File Upload Documentation} for details on\nthe file upload workflow as these parameters are interpreted as per the\ndocumentation there.",
+          "nickname": "upload_file",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "name",
+              "description": "The name of the quiz submission file",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "on_duplicate",
+              "description": "How to handle duplicate names",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+  }
+}

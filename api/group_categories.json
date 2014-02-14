@@ -1,0 +1,462 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/group categories",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/accounts/{account_id}/group_categories",
+      "description": "Returns a list of group categories in a context",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List group categories for a context",
+          "notes": "Returns a list of group categories in a context",
+          "nickname": "list_group_categories_for_context_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "GroupCategory"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/group_categories",
+      "description": "Returns a list of group categories in a context",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List group categories for a context",
+          "notes": "Returns a list of group categories in a context",
+          "nickname": "list_group_categories_for_context_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "GroupCategory"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/group_categories/{group_category_id}",
+      "description": "Returns the data for a single group category, or a 401 if the caller doesn't have\nthe rights to see it.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single group category",
+          "notes": "Returns the data for a single group category, or a 401 if the caller doesn't have\nthe rights to see it.",
+          "nickname": "get_single_group_category",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_category_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "GroupCategory"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/group_categories",
+      "description": "Create a new group category",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a Group Category",
+          "notes": "Create a new group category",
+          "nickname": "create_group_category_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "name",
+              "description": "Name of the group category",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "self_signup",
+              "description": "Allow students to sign up for a group themselves (Course Only). valid values are: \"enabled\":: allows students to self sign up for any group in course \"restricted\":: allows students to self sign up only for groups in the same section null disallows self sign up",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "enabled",
+                "restricted"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "group_limit",
+              "description": "Limit the maximum number of users in each group (Course Only). Requires self signup.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "create_group_count",
+              "description": "Create this number of groups (Course Only).",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "split_group_count",
+              "description": "(Deprecated) Create this number of groups, and evenly distribute students among them. not allowed with \"enable_self_signup\". because the group assignment happens synchronously, it's recommended that you instead use the assign_unassigned_members endpoint. (Course Only)",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "GroupCategory"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/group_categories",
+      "description": "Create a new group category",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a Group Category",
+          "notes": "Create a new group category",
+          "nickname": "create_group_category_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "name",
+              "description": "Name of the group category",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "self_signup",
+              "description": "Allow students to sign up for a group themselves (Course Only). valid values are: \"enabled\":: allows students to self sign up for any group in course \"restricted\":: allows students to self sign up only for groups in the same section null disallows self sign up",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "enabled",
+                "restricted"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "group_limit",
+              "description": "Limit the maximum number of users in each group (Course Only). Requires self signup.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "create_group_count",
+              "description": "Create this number of groups (Course Only).",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "split_group_count",
+              "description": "(Deprecated) Create this number of groups, and evenly distribute students among them. not allowed with \"enable_self_signup\". because the group assignment happens synchronously, it's recommended that you instead use the assign_unassigned_members endpoint. (Course Only)",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "GroupCategory"
+        }
+      ]
+    },
+    {
+      "path": "/v1/group_categories/{group_category_id}",
+      "description": "Modifies an existing group category.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update a Group Category",
+          "notes": "Modifies an existing group category.",
+          "nickname": "update_group_category",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_category_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "name",
+              "description": "Name of the group category",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "self_signup",
+              "description": "Allow students to sign up for a group themselves (Course Only). Valid values are: \"enabled\":: allows students to self sign up for any group in course \"restricted\":: allows students to self sign up only for groups in the same section null disallows self sign up",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "enabled",
+                "restricted"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "group_limit",
+              "description": "Limit the maximum number of users in each group (Course Only). Requires self signup.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "create_group_count",
+              "description": "Create this number of groups (Course Only).",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "split_group_count",
+              "description": "(Deprecated) Create this number of groups, and evenly distribute students among them. not allowed with \"enable_self_signup\". because the group assignment happens synchronously, it's recommended that you instead use the assign_unassigned_members endpoint. (Course Only)",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "GroupCategory"
+        }
+      ]
+    },
+    {
+      "path": "/v1/group_categories/{group_category_id}",
+      "description": "Deletes a group category and all groups under it. Protected group\ncategories can not be deleted, i.e. \"communities\", \"student_organized\", and \"imported\".",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete a Group Category",
+          "notes": "Deletes a group category and all groups under it. Protected group\ncategories can not be deleted, i.e. \"communities\", \"student_organized\", and \"imported\".",
+          "nickname": "delete_group_category",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_category_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/group_categories/{group_category_id}/groups",
+      "description": "Returns a list of groups in a group category",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List groups in group category",
+          "notes": "Returns a list of groups in a group category",
+          "nickname": "list_groups_in_group_category",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_category_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Group"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/group_categories/{group_category_id}/users",
+      "description": "Returns a list of users in the group category.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List users in group category",
+          "notes": "Returns a list of users in the group category.",
+          "nickname": "list_users_in_group_category",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_category_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "search_term",
+              "description": "The partial name or full ID of the users to match and return in the results list. Must be at least 3 characters.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "unassigned",
+              "description": "Set this value to true if you wish only to search unassigned users in the group category.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "User"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/group_categories/{group_category_id}/assign_unassigned_members",
+      "description": "Assign all unassigned members as evenly as possible among the existing\nstudent groups.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Assign unassigned members",
+          "notes": "Assign all unassigned members as evenly as possible among the existing\nstudent groups.",
+          "nickname": "assign_unassigned_members",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_category_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "sync",
+              "description": "The assigning is done asynchronously by default. If you would like to override this and have the assigning done synchronously, set this value to true.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "GroupMembership | Progress"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "GroupCategory": {
+      "id": "GroupCategory",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "The ID of the group category.",
+          "example": 17,
+          "type": "integer"
+        },
+        "name": {
+          "description": "The display name of the group category.",
+          "example": "Math Groups",
+          "type": "string"
+        },
+        "role": {
+          "description": "Certain types of group categories have special role designations. Currently, these include: 'communities', 'student_organized', and 'imported'. Regular course/account group categories have a role of null.",
+          "example": "communities",
+          "type": "string"
+        },
+        "self_signup": {
+          "description": "If the group category allows users to join a group themselves, thought they may only be a member of one group per group category at a time. Values include 'restricted', 'enabled', and null 'enabled' allows students to assign themselves to a group 'restricted' restricts them to only joining a group in their section null disallows students from joining groups",
+          "type": "string",
+          "allowableValues": {
+            "values": [
+              "restricted",
+              "enabled"
+            ]
+          }
+        },
+        "context_type": {
+          "description": "The course or account that the category group belongs to. The pattern here is that whatever the context_type is, there will be an _id field named after that type. So if instead context_type was 'Course', the course_id field would be replaced by an course_id field.",
+          "example": "Account",
+          "type": "string"
+        },
+        "account_id": {
+          "example": 3,
+          "type": "integer"
+        },
+        "group_limit": {
+          "description": "If self-signup is enabled, group_limit can be set to cap the number of users in each group. If null, there is no limit.",
+          "type": "integer"
+        },
+        "progress": {
+          "description": "If the group category has not yet finished a randomly student assignment request, a progress object will be attached, which will contain information related to the progress of the assignment request. Refer to the Progress API for more information",
+          "$ref": "Progress"
+        }
+      }
+    }
+  }
+}

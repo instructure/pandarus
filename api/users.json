@@ -1,0 +1,1052 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/users",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/accounts/{account_id}/users",
+      "description": "Retrieve the list of users associated with this account.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List users in account",
+          "notes": "Retrieve the list of users associated with this account.",
+          "nickname": "list_users_in_account",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "search_term",
+              "description": "The partial name or full ID of the users to match and return in the results list. Must be at least 3 characters.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "User"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/self/activity_stream",
+      "description": "Returns the current user's global activity stream, paginated.\n\nThere are many types of objects that can be returned in the activity\nstream. All object types have the same basic set of shared attributes:\n  !!!javascript\n  {\n    'created_at': '2011-07-13T09:12:00Z',\n    'updated_at': '2011-07-25T08:52:41Z',\n    'id': 1234,\n    'title': 'Stream Item Subject',\n    'message': 'This is the body text of the activity stream item. It is plain-text, and can be multiple paragraphs.',\n    'type': 'DiscussionTopic|Conversation|Message|Submission|Conference|Collaboration|...',\n    'read_state': false,\n    'context_type': 'course', // course|group\n    'course_id': 1,\n    'group_id': null,\n    'html_url': \"http://...\" // URL to the Canvas web UI for this stream item\n  }\n\nIn addition, each item type has its own set of attributes available.\n\nDiscussionTopic:\n\n  !!!javascript\n  {\n    'type': 'DiscussionTopic',\n    'discussion_topic_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': true,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor DiscussionTopic, the message is truncated at 4kb.\n\nAnnouncement:\n\n  !!!javascript\n  {\n    'type': 'Announcement',\n    'announcement_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': null,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor Announcement, the message is truncated at 4kb.\n\nConversation:\n\n  !!!javascript\n  {\n    'type': 'Conversation',\n    'conversation_id': 1234,\n    'private': false,\n    'participant_count': 3,\n  }\n\nMessage:\n\n  !!!javascript\n  {\n    'type': 'Message',\n    'message_id': 1234,\n    'notification_category': 'Assignment Graded'\n  }\n\nSubmission:\n\nReturns an {api:Submissions:Submission Submission} with its Course and Assignment data.\n\nConference:\n\n  !!!javascript\n  {\n    'type': 'Conference',\n    'web_conference_id': 1234\n  }\n\nCollaboration:\n\n  !!!javascript\n  {\n    'type': 'Collaboration',\n    'collaboration_id': 1234\n  }\n\nCollectionItem:\n\n  !!!javascript\n  {\n    'type': 'CollectionItem',\n    'collection_item' { ... full CollectionItem data ... }\n  }",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List the activity stream",
+          "notes": "Returns the current user's global activity stream, paginated.\n\nThere are many types of objects that can be returned in the activity\nstream. All object types have the same basic set of shared attributes:\n  !!!javascript\n  {\n    'created_at': '2011-07-13T09:12:00Z',\n    'updated_at': '2011-07-25T08:52:41Z',\n    'id': 1234,\n    'title': 'Stream Item Subject',\n    'message': 'This is the body text of the activity stream item. It is plain-text, and can be multiple paragraphs.',\n    'type': 'DiscussionTopic|Conversation|Message|Submission|Conference|Collaboration|...',\n    'read_state': false,\n    'context_type': 'course', // course|group\n    'course_id': 1,\n    'group_id': null,\n    'html_url': \"http://...\" // URL to the Canvas web UI for this stream item\n  }\n\nIn addition, each item type has its own set of attributes available.\n\nDiscussionTopic:\n\n  !!!javascript\n  {\n    'type': 'DiscussionTopic',\n    'discussion_topic_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': true,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor DiscussionTopic, the message is truncated at 4kb.\n\nAnnouncement:\n\n  !!!javascript\n  {\n    'type': 'Announcement',\n    'announcement_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': null,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor Announcement, the message is truncated at 4kb.\n\nConversation:\n\n  !!!javascript\n  {\n    'type': 'Conversation',\n    'conversation_id': 1234,\n    'private': false,\n    'participant_count': 3,\n  }\n\nMessage:\n\n  !!!javascript\n  {\n    'type': 'Message',\n    'message_id': 1234,\n    'notification_category': 'Assignment Graded'\n  }\n\nSubmission:\n\nReturns an {api:Submissions:Submission Submission} with its Course and Assignment data.\n\nConference:\n\n  !!!javascript\n  {\n    'type': 'Conference',\n    'web_conference_id': 1234\n  }\n\nCollaboration:\n\n  !!!javascript\n  {\n    'type': 'Collaboration',\n    'collaboration_id': 1234\n  }\n\nCollectionItem:\n\n  !!!javascript\n  {\n    'type': 'CollectionItem',\n    'collection_item' { ... full CollectionItem data ... }\n  }",
+          "nickname": "list_the_activity_stream_users",
+          "parameters": [
+
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/activity_stream",
+      "description": "Returns the current user's global activity stream, paginated.\n\nThere are many types of objects that can be returned in the activity\nstream. All object types have the same basic set of shared attributes:\n  !!!javascript\n  {\n    'created_at': '2011-07-13T09:12:00Z',\n    'updated_at': '2011-07-25T08:52:41Z',\n    'id': 1234,\n    'title': 'Stream Item Subject',\n    'message': 'This is the body text of the activity stream item. It is plain-text, and can be multiple paragraphs.',\n    'type': 'DiscussionTopic|Conversation|Message|Submission|Conference|Collaboration|...',\n    'read_state': false,\n    'context_type': 'course', // course|group\n    'course_id': 1,\n    'group_id': null,\n    'html_url': \"http://...\" // URL to the Canvas web UI for this stream item\n  }\n\nIn addition, each item type has its own set of attributes available.\n\nDiscussionTopic:\n\n  !!!javascript\n  {\n    'type': 'DiscussionTopic',\n    'discussion_topic_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': true,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor DiscussionTopic, the message is truncated at 4kb.\n\nAnnouncement:\n\n  !!!javascript\n  {\n    'type': 'Announcement',\n    'announcement_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': null,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor Announcement, the message is truncated at 4kb.\n\nConversation:\n\n  !!!javascript\n  {\n    'type': 'Conversation',\n    'conversation_id': 1234,\n    'private': false,\n    'participant_count': 3,\n  }\n\nMessage:\n\n  !!!javascript\n  {\n    'type': 'Message',\n    'message_id': 1234,\n    'notification_category': 'Assignment Graded'\n  }\n\nSubmission:\n\nReturns an {api:Submissions:Submission Submission} with its Course and Assignment data.\n\nConference:\n\n  !!!javascript\n  {\n    'type': 'Conference',\n    'web_conference_id': 1234\n  }\n\nCollaboration:\n\n  !!!javascript\n  {\n    'type': 'Collaboration',\n    'collaboration_id': 1234\n  }\n\nCollectionItem:\n\n  !!!javascript\n  {\n    'type': 'CollectionItem',\n    'collection_item' { ... full CollectionItem data ... }\n  }",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List the activity stream",
+          "notes": "Returns the current user's global activity stream, paginated.\n\nThere are many types of objects that can be returned in the activity\nstream. All object types have the same basic set of shared attributes:\n  !!!javascript\n  {\n    'created_at': '2011-07-13T09:12:00Z',\n    'updated_at': '2011-07-25T08:52:41Z',\n    'id': 1234,\n    'title': 'Stream Item Subject',\n    'message': 'This is the body text of the activity stream item. It is plain-text, and can be multiple paragraphs.',\n    'type': 'DiscussionTopic|Conversation|Message|Submission|Conference|Collaboration|...',\n    'read_state': false,\n    'context_type': 'course', // course|group\n    'course_id': 1,\n    'group_id': null,\n    'html_url': \"http://...\" // URL to the Canvas web UI for this stream item\n  }\n\nIn addition, each item type has its own set of attributes available.\n\nDiscussionTopic:\n\n  !!!javascript\n  {\n    'type': 'DiscussionTopic',\n    'discussion_topic_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': true,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor DiscussionTopic, the message is truncated at 4kb.\n\nAnnouncement:\n\n  !!!javascript\n  {\n    'type': 'Announcement',\n    'announcement_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': null,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor Announcement, the message is truncated at 4kb.\n\nConversation:\n\n  !!!javascript\n  {\n    'type': 'Conversation',\n    'conversation_id': 1234,\n    'private': false,\n    'participant_count': 3,\n  }\n\nMessage:\n\n  !!!javascript\n  {\n    'type': 'Message',\n    'message_id': 1234,\n    'notification_category': 'Assignment Graded'\n  }\n\nSubmission:\n\nReturns an {api:Submissions:Submission Submission} with its Course and Assignment data.\n\nConference:\n\n  !!!javascript\n  {\n    'type': 'Conference',\n    'web_conference_id': 1234\n  }\n\nCollaboration:\n\n  !!!javascript\n  {\n    'type': 'Collaboration',\n    'collaboration_id': 1234\n  }\n\nCollectionItem:\n\n  !!!javascript\n  {\n    'type': 'CollectionItem',\n    'collection_item' { ... full CollectionItem data ... }\n  }",
+          "nickname": "list_the_activity_stream_users",
+          "parameters": [
+
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/self/activity_stream/summary",
+      "description": "Returns a summary of the current user's global activity stream.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Activity stream summary",
+          "notes": "Returns a summary of the current user's global activity stream.",
+          "nickname": "activity_stream_summary",
+          "parameters": [
+
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/self/todo",
+      "description": "Returns the current user's list of todo items, as seen on the user dashboard.\n\nThere is a limit to the number of items returned.\n\nThe `ignore` and `ignore_permanently` URLs can be used to update the user's\npreferences on what items will be displayed.\nPerforming a DELETE request against the `ignore` URL will hide that item\nfrom future todo item requests, until the item changes.\nPerforming a DELETE request against the `ignore_permanently` URL will hide\nthat item forever.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List the TODO items",
+          "notes": "Returns the current user's list of todo items, as seen on the user dashboard.\n\nThere is a limit to the number of items returned.\n\nThe `ignore` and `ignore_permanently` URLs can be used to update the user's\npreferences on what items will be displayed.\nPerforming a DELETE request against the `ignore` URL will hide that item\nfrom future todo item requests, until the item changes.\nPerforming a DELETE request against the `ignore_permanently` URL will hide\nthat item forever.",
+          "nickname": "list_the_todo_items",
+          "parameters": [
+
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/self/upcoming_events",
+      "description": "Returns the current user's upcoming events, i.e. the same things shown\nin the dashboard 'Coming Up' sidebar.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List upcoming assignments, calendar events",
+          "notes": "Returns the current user's upcoming events, i.e. the same things shown\nin the dashboard 'Coming Up' sidebar.",
+          "nickname": "list_upcoming_assignments_calendar_events",
+          "parameters": [
+
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/self/activity_stream/{id}",
+      "description": "Hide the given stream item.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Hide a stream item",
+          "notes": "Hide the given stream item.",
+          "nickname": "hide_stream_item",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/self/activity_stream",
+      "description": "Hide all stream items for the user",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Hide all stream items",
+          "notes": "Hide all stream items for the user",
+          "nickname": "hide_all_stream_items",
+          "parameters": [
+
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/files",
+      "description": "Upload a file to the user's personal files section.\n\nThis API endpoint is the first step in uploading a file to a user's files.\nSee the {file:file_uploads.html File Upload Documentation} for details on\nthe file upload workflow.\n\nNote that typically users will only be able to upload files to their\nown files section. Passing a user_id of +self+ is an easy shortcut\nto specify the current user.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Upload a file",
+          "notes": "Upload a file to the user's personal files section.\n\nThis API endpoint is the first step in uploading a file to a user's files.\nSee the {file:file_uploads.html File Upload Documentation} for details on\nthe file upload workflow.\n\nNote that typically users will only be able to upload files to their\nown files section. Passing a user_id of +self+ is an easy shortcut\nto specify the current user.",
+          "nickname": "upload_file",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/users",
+      "description": "Create and return a new user and pseudonym for an account.\n\nIf you don't have the \"Modify login details for users\" permission, but\nself-registration is enabled on the account, you can still use this\nendpoint to register new users. Certain fields will be required, and\nothers will be ignored (see below).",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a user",
+          "notes": "Create and return a new user and pseudonym for an account.\n\nIf you don't have the \"Modify login details for users\" permission, but\nself-registration is enabled on the account, you can still use this\nendpoint to register new users. Certain fields will be required, and\nothers will be ignored (see below).",
+          "nickname": "create_user",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "user[name]",
+              "description": "The full name of the user. This name will be used by teacher for grading. Required if this is a self-registration.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user[short_name]",
+              "description": "User's name as it will be displayed in discussions, messages, and comments.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user[sortable_name]",
+              "description": "User's name as used to sort alphabetically in lists.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user[time_zone]",
+              "description": "The time zone for the user. Allowed time zones are {http://www.iana.org/time-zones IANA time zones} or friendlier {http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html Ruby on Rails time zones}.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user[locale]",
+              "description": "The user's preferred language as a two-letter ISO 639-1 code.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user[birthdate]",
+              "description": "The user's birth date.",
+              "type": "date",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user[terms_of_use]",
+              "description": "Whether the user accepts the terms of use. Required if this is a self-registration and this canvas instance requires users to accept the terms (on by default).",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "pseudonym[unique_id]",
+              "description": "User's login ID. If this is a self-registration, it must be a valid email address.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "pseudonym[password]",
+              "description": "User's password. Cannot be set during self-registration.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "pseudonym[sis_user_id]",
+              "description": "SIS ID for the user's account. To set this parameter, the caller must be able to manage SIS permissions.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "pseudonym[send_confirmation]",
+              "description": "Send user notification of account creation if true. Automatically set to true during self-registration.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "communication_channel[type]",
+              "description": "The communication channel type, e.g. 'email' or 'sms'.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "communication_channel[address]",
+              "description": "The communication channel address, e.g. the user's email address.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "User"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{id}/settings",
+      "description": "Update an existing user's settings.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Update user settings.",
+          "notes": "Update an existing user's settings.",
+          "nickname": "update_user_settings_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "manual_mark_as_read",
+              "description": "If true, require user to manually mark discussion posts as read (don't auto-mark as read).",
+              "type": "boolean",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{id}/settings",
+      "description": "Update an existing user's settings.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update user settings.",
+          "notes": "Update an existing user's settings.",
+          "nickname": "update_user_settings_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "manual_mark_as_read",
+              "description": "If true, require user to manually mark discussion posts as read (don't auto-mark as read).",
+              "type": "boolean",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{id}",
+      "description": "Modify an existing user. To modify a user's login, see the documentation for logins.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Edit a user",
+          "notes": "Modify an existing user. To modify a user's login, see the documentation for logins.",
+          "nickname": "edit_user",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "user[name]",
+              "description": "The full name of the user. This name will be used by teacher for grading.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user[short_name]",
+              "description": "User's name as it will be displayed in discussions, messages, and comments.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user[sortable_name]",
+              "description": "User's name as used to sort alphabetically in lists.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user[time_zone]",
+              "description": "The time zone for the user. Allowed time zones are {http://www.iana.org/time-zones IANA time zones} or friendlier {http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html Ruby on Rails time zones}.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user[locale]",
+              "description": "The user's preferred language as a two-letter ISO 639-1 code.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user[avatar][token]",
+              "description": "A unique representation of the avatar record to assign as the user's current avatar. This token can be obtained from the user avatars endpoint. This supersedes the user[avatar][url] argument, and if both are included the url will be ignored. Note: this is an internal representation and is subject to change without notice. It should be consumed with this api endpoint and used in the user update endpoint, and should not be constructed by the client.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user[avatar][url]",
+              "description": "To set the user's avatar to point to an external url, do not include a token and instead pass the url here. Warning: For maximum compatibility, please use 128 px square images.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "User"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/users/{id}",
+      "description": "Delete a user record from Canvas.\n\nWARNING: This API will allow a user to delete themselves. If you do this,\nyou won't be able to make API calls or log into Canvas.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete a user",
+          "notes": "Delete a user record from Canvas.\n\nWARNING: This API will allow a user to delete themselves. If you do this,\nyou won't be able to make API calls or log into Canvas.",
+          "nickname": "delete_user",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "User"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/followers/self",
+      "description": "Follow this user. If the current user is already following the\ntarget user, nothing happens. The target user must have a public profile in\norder to follow it.\n\nOn success, returns the User object. Responds with a 401 if the user\ndoesn't have permission to follow the target user, or a 400 if the user\ncan't follow the target user (if the user and target user are the same, for\nexample).",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Follow a user",
+          "notes": "Follow this user. If the current user is already following the\ntarget user, nothing happens. The target user must have a public profile in\norder to follow it.\n\nOn success, returns the User object. Responds with a 401 if the user\ndoesn't have permission to follow the target user, or a 400 if the user\ncan't follow the target user (if the user and target user are the same, for\nexample).",
+          "nickname": "follow_user",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/followers/self",
+      "description": "Stop following this user. If the current user is not already following the\ntarget user, nothing happens.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Un-follow a user",
+          "notes": "Stop following this user. If the current user is not already following the\ntarget user, nothing happens.",
+          "nickname": "un_follow_user",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{id}/merge_into/{destination_user_id}",
+      "description": "Merge a user into another user.\nTo merge users, the caller must have permissions to manage both users.\n\nWhen finding users by SIS ids in different accounts the\ndestination_account_id is required.\n\nThe account can also be identified by passing the domain in destination_account_id.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Merge user into another user",
+          "notes": "Merge a user into another user.\nTo merge users, the caller must have permissions to manage both users.\n\nWhen finding users by SIS ids in different accounts the\ndestination_account_id is required.\n\nThe account can also be identified by passing the domain in destination_account_id.",
+          "nickname": "merge_user_into_another_user_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "destination_user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "User"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{id}/merge_into/accounts/{destination_account_id}/users/{destination_user_id}",
+      "description": "Merge a user into another user.\nTo merge users, the caller must have permissions to manage both users.\n\nWhen finding users by SIS ids in different accounts the\ndestination_account_id is required.\n\nThe account can also be identified by passing the domain in destination_account_id.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Merge user into another user",
+          "notes": "Merge a user into another user.\nTo merge users, the caller must have permissions to manage both users.\n\nWhen finding users by SIS ids in different accounts the\ndestination_account_id is required.\n\nThe account can also be identified by passing the domain in destination_account_id.",
+          "nickname": "merge_user_into_another_user_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "destination_account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "destination_user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "User"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{id}/accounts",
+      "description": "Return a list of all root accounts the user is associated with.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List associated root accounts",
+          "notes": "Return a list of all root accounts the user is associated with.",
+          "nickname": "list_associated_root_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "search",
+              "description": "Search terms used to filter results. Accounts are searched by name.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/profile",
+      "description": "Returns user profile data, including user id, name, and profile pic.\n\nWhen requesting the profile for the user accessing the API, the user's\ncalendar feed URL will be returned as well.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get user profile",
+          "notes": "Returns user profile data, including user id, name, and profile pic.\n\nWhen requesting the profile for the user accessing the API, the user's\ncalendar feed URL will be returned as well.",
+          "nickname": "get_user_profile",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "Profile"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/avatars",
+      "description": "Retrieve the possible user avatar options that can be set with the user update endpoint. The response will be an array of avatar records. If the 'type' field is 'attachment', the record will include all the normal attachment json fields; otherwise it will include only the 'url' and 'display_name' fields. Additionally, all records will include a 'type' field and a 'token' field. The following explains each field in more detail\ntype:: [\"gravatar\"|\"attachment\"|\"no_pic\"] The type of avatar record, for categorization purposes.\nurl:: The url of the avatar \ntoken:: A unique representation of the avatar record which can be used to set the avatar with the user update endpoint. Note: this is an internal representation and is subject to change without notice. It should be consumed with this api endpoint and used in the user update endpoint, and should not be constructed by the client.\ndisplay_name:: A textual description of the avatar record\nid:: ['attachment' type only] the internal id of the attachment\ncontent-type:: ['attachment' type only] the content-type of the attachment\nfilename:: ['attachment' type only] the filename of the attachment\nsize:: ['attachment' type only] the size of the attachment",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List avatar options",
+          "notes": "Retrieve the possible user avatar options that can be set with the user update endpoint. The response will be an array of avatar records. If the 'type' field is 'attachment', the record will include all the normal attachment json fields; otherwise it will include only the 'url' and 'display_name' fields. Additionally, all records will include a 'type' field and a 'token' field. The following explains each field in more detail\ntype:: [\"gravatar\"|\"attachment\"|\"no_pic\"] The type of avatar record, for categorization purposes.\nurl:: The url of the avatar \ntoken:: A unique representation of the avatar record which can be used to set the avatar with the user update endpoint. Note: this is an internal representation and is subject to change without notice. It should be consumed with this api endpoint and used in the user update endpoint, and should not be constructed by the client.\ndisplay_name:: A textual description of the avatar record\nid:: ['attachment' type only] the internal id of the attachment\ncontent-type:: ['attachment' type only] the content-type of the attachment\nfilename:: ['attachment' type only] the filename of the attachment\nsize:: ['attachment' type only] the size of the attachment",
+          "nickname": "list_avatar_options",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Avatar"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/page_views",
+      "description": "Return the user's page view history in json format, similar to the\navailable CSV download. Pagination is used as described in API basics\nsection. Page views are returned in descending order, newest to oldest.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List user page views",
+          "notes": "Return the user's page view history in json format, similar to the\navailable CSV download. Pagination is used as described in API basics\nsection. Page views are returned in descending order, newest to oldest.",
+          "nickname": "list_user_page_views",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "start_time",
+              "description": "The beginning of the time range from which you want page views.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "end_time",
+              "description": "The end of the time range from which you want page views.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "PageView"
+          }
+        }
+      ]
+    }
+  ],
+  "models": {
+    "User": {
+      "id": "User",
+      "description": "A Canvas user, e.g. a student, teacher, administrator, observer, etc.",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "description": "The ID of the user.",
+          "example": 2,
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "The name of the user.",
+          "example": "Sheldon Cooper",
+          "type": "string"
+        },
+        "sortable_name": {
+          "description": "The name of the user that is should be used for sorting groups of users, such as in the gradebook.",
+          "example": "Cooper, Sheldon",
+          "type": "string"
+        },
+        "short_name": {
+          "description": "A short name the user has selected, for use in conversations or other less formal places through the site.",
+          "type": "string"
+        },
+        "sis_user_id": {
+          "description": "The SIS ID associated with the user.  This field is only included if the user came from a SIS import.",
+          "example": "SHEL93921",
+          "type": "string"
+        },
+        "sis_login_id": {
+          "description": "DEPRECATED: The SIS login ID associated with the user. Please use the sis_user_id or login_id. This field will be removed in a future version of the API.",
+          "type": "string"
+        },
+        "login_id": {
+          "description": "The unique login id for the user.  This is what the user uses to log in to Canvas.",
+          "example": "sheldon@caltech.example.com",
+          "type": "string"
+        },
+        "avatar_url": {
+          "description": "If avatars are enabled, this field will be included and contain a url to retrieve the user's avatar.",
+          "example": "https://en.gravatar.com/avatar/d8cb8c8cd40ddf0cd05241443a591868?s=80&r=g",
+          "type": "string"
+        },
+        "enrollments": {
+          "description": "Optional: This field can be requested with certain API calls, and will return a list of the users active enrollments. See the List enrollments API for more details about the format of these records.",
+          "type": "array",
+          "items": {
+            "$ref": "Enrollment"
+          }
+        },
+        "email": {
+          "description": "Optional: This field can be requested with certain API calls, and will return the users primary email address.",
+          "example": "sheldon@caltech.example.com",
+          "type": "string"
+        },
+        "locale": {
+          "description": "Optional: This field can be requested with certain API calls, and will return the users locale.",
+          "example": "tlh",
+          "type": "string"
+        },
+        "last_login": {
+          "description": "Optional: This field is only returned in certain API calls, and will return a timestamp representing the last time the user logged in to canvas.",
+          "example": "2012-05-30T17:45:25Z",
+          "type": "string",
+          "format": "date-time"
+        },
+        "time_zone": {
+          "description": "Optional: This field is only returned in ceratin API calls, and will return the IANA time zone name of the user's preferred timezone.",
+          "example": "America/Denver",
+          "type": "string"
+        }
+      }
+    },
+    "Profile": {
+      "id": "Profile",
+      "description": "Profile details for a Canvas user.",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "The ID of the user.",
+          "example": 1234,
+          "type": "integer"
+        },
+        "name": {
+          "description": "Sample User",
+          "example": "Sample User",
+          "type": "string"
+        },
+        "short_name": {
+          "description": "Sample User",
+          "example": "Sample User",
+          "type": "string"
+        },
+        "sortable_name": {
+          "description": "user, sample",
+          "example": "user, sample",
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "bio": {
+          "type": "string"
+        },
+        "primary_email": {
+          "description": "sample_user@example.com",
+          "example": "sample_user@example.com",
+          "type": "string"
+        },
+        "login_id": {
+          "description": "sample_user@example.com",
+          "example": "sample_user@example.com",
+          "type": "string"
+        },
+        "sis_user_id": {
+          "description": "sis1",
+          "example": "sis1",
+          "type": "string"
+        },
+        "sis_login_id": {
+          "description": "sis1-login",
+          "example": "sis1-login",
+          "type": "string"
+        },
+        "avatar_url": {
+          "description": "The avatar_url can change over time, so we recommend not caching it for more than a few hours",
+          "example": "..url..",
+          "type": "string"
+        },
+        "calendar": {
+          "$ref": "CalendarLink"
+        },
+        "time_zone": {
+          "description": "Optional: This field is only returned in certain API calls, and will return the IANA time zone name of the user's preferred timezone.",
+          "example": "America/Denver",
+          "type": "string"
+        }
+      }
+    },
+    "Avatar": {
+      "id": "Avatar",
+      "description": "Possible avatar for a user.",
+      "required": [
+        "type",
+        "url",
+        "token",
+        "display_name"
+      ],
+      "properties": {
+        "type": {
+          "description": "['gravatar'|'attachment'|'no_pic'] The type of avatar record, for categorization purposes.",
+          "example": "gravatar",
+          "type": "string"
+        },
+        "url": {
+          "description": "The url of the avatar",
+          "example": "https://secure.gravatar.com/avatar/2284...",
+          "type": "string"
+        },
+        "token": {
+          "description": "A unique representation of the avatar record which can be used to set the avatar with the user update endpoint. Note: this is an internal representation and is subject to change without notice. It should be consumed with this api endpoint and used in the user update endpoint, and should not be constructed by the client.",
+          "example": "<opaque_token>",
+          "type": "string"
+        },
+        "display_name": {
+          "description": "A textual description of the avatar record.",
+          "example": "user, sample",
+          "type": "string"
+        },
+        "id": {
+          "description": "['attachment' type only] the internal id of the attachment",
+          "example": 12,
+          "type": "integer"
+        },
+        "content-type": {
+          "description": "['attachment' type only] the content-type of the attachment.",
+          "example": "image/jpeg",
+          "type": "string"
+        },
+        "filename": {
+          "description": "['attachment' type only] the filename of the attachment",
+          "example": "profile.jpg",
+          "type": "string"
+        },
+        "size": {
+          "description": "['attachment' type only] the size of the attachment",
+          "example": 32649,
+          "type": "integer"
+        }
+      }
+    },
+    "PageView": {
+      "id": "PageView",
+      "description": "The record of a user page view access in Canvas",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "description": "A UUID representing the page view.  This is also the unique request id",
+          "example": "3e246700-e305-0130-51de-02e33aa501ef",
+          "type": "string",
+          "format": "uuid"
+        },
+        "url": {
+          "description": "The URL requested",
+          "example": "https://canvas.instructure.com/conversations",
+          "type": "string"
+        },
+        "context_type": {
+          "description": "The type of context for the request",
+          "example": "Course",
+          "type": "string"
+        },
+        "asset_type": {
+          "description": "The type of asset in the context for the request, if any",
+          "example": "Discussion",
+          "type": "string"
+        },
+        "controller": {
+          "description": "The rails controller that handled the request",
+          "example": "discussions",
+          "type": "string"
+        },
+        "action": {
+          "description": "The rails action that handled the request",
+          "example": "index",
+          "type": "string"
+        },
+        "contributed": {
+          "description": "True if the request counted as contributing, such as editing a wiki page",
+          "example": "false",
+          "type": "boolean"
+        },
+        "interaction_seconds": {
+          "description": "An approximation of how long the user spent on the page, in seconds",
+          "example": "7.21",
+          "type": "float"
+        },
+        "created_at": {
+          "description": "When the request was made",
+          "example": "2013-10-01T19:49:47Z",
+          "type": "datetime",
+          "format": "iso8601"
+        },
+        "user_request": {
+          "description": "A flag indicating whether the request was user-initiated, or automatic (such as an AJAX call)",
+          "example": "true",
+          "type": "boolean"
+        },
+        "render_time": {
+          "description": "How long the response took to render, in seconds",
+          "example": "0.369",
+          "type": "float"
+        },
+        "user_agent": {
+          "description": "The user-agent of the browser or program that made the request",
+          "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/536.30.1 (KHTML, like Gecko) Version/6.0.5 Safari/536.30.1",
+          "type": "string"
+        },
+        "participated": {
+          "description": "True if the request counted as participating, such as submitting homework",
+          "example": "false",
+          "type": "boolean"
+        },
+        "http_method": {
+          "description": "The HTTP method such as GET or POST",
+          "example": "GET",
+          "type": "string"
+        },
+        "remote_ip": {
+          "description": "The origin IP address of the request",
+          "example": "173.194.46.71",
+          "type": "string"
+        },
+        "links": {
+          "description": "The page view links to define the relationships",
+          "type": "PageViewLinks",
+          "example": "{}"
+        }
+      }
+    },
+    "PageViewLinks": {
+      "id": "PageViewLinks",
+      "description": "The links of a page view access in Canvas",
+      "required": [
+
+      ],
+      "properties": {
+        "user": {
+          "description": "The ID of the user for this page view",
+          "example": "1234",
+          "type": "integer",
+          "format": "int64"
+        },
+        "context": {
+          "description": "The ID of the context for the request (course id if context_type is Course, etc)",
+          "example": "1234",
+          "type": "integer",
+          "format": "int64"
+        },
+        "asset": {
+          "description": "The ID of the asset for the request, if any",
+          "example": "1234",
+          "type": "integer",
+          "format": "int64"
+        },
+        "real_user": {
+          "description": "The ID of the actual user who made this request, if the request was made by a user who was masquerading",
+          "example": "1234",
+          "type": "integer",
+          "format": "int64"
+        },
+        "account": {
+          "description": "The ID of the account context for this page view",
+          "example": "1234",
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    }
+  }
+}

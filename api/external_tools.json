@@ -1,0 +1,979 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/external tools",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/external_tools",
+      "description": "Returns the paginated list of external tools for the current context.\nSee the get request docs for a single tool for a list of properties on an external tool.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List external tools",
+          "notes": "Returns the paginated list of external tools for the current context.\nSee the get request docs for a single tool for a list of properties on an external tool.",
+          "nickname": "list_external_tools_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "search_term",
+              "description": "The partial name of the tools to match and return.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/external_tools",
+      "description": "Returns the paginated list of external tools for the current context.\nSee the get request docs for a single tool for a list of properties on an external tool.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List external tools",
+          "notes": "Returns the paginated list of external tools for the current context.\nSee the get request docs for a single tool for a list of properties on an external tool.",
+          "nickname": "list_external_tools_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "search_term",
+              "description": "The partial name of the tools to match and return.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/external_tools/sessionless_launch",
+      "description": "Returns a sessionless launch url for an external tool.\n\nEither the id or url must be provided.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a sessionless launch url for an external tool.",
+          "notes": "Returns a sessionless launch url for an external tool.\n\nEither the id or url must be provided.",
+          "nickname": "get_sessionless_launch_url_for_external_tool_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "id",
+              "description": "The external id of the tool to launch.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "url",
+              "description": "The LTI launch url for the external tool.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "assignment_id",
+              "description": "The assignment id for an assignment launch.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "launch_type",
+              "description": "The type of launch to perform on the external tool.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/external_tools/sessionless_launch",
+      "description": "Returns a sessionless launch url for an external tool.\n\nEither the id or url must be provided.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a sessionless launch url for an external tool.",
+          "notes": "Returns a sessionless launch url for an external tool.\n\nEither the id or url must be provided.",
+          "nickname": "get_sessionless_launch_url_for_external_tool_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "id",
+              "description": "The external id of the tool to launch.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "url",
+              "description": "The LTI launch url for the external tool.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "assignment_id",
+              "description": "The assignment id for an assignment launch.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "launch_type",
+              "description": "The type of launch to perform on the external tool.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/external_tools/{external_tool_id}",
+      "description": "Returns the specified external tool.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single external tool",
+          "notes": "Returns the specified external tool.",
+          "nickname": "get_single_external_tool_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "external_tool_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/external_tools/{external_tool_id}",
+      "description": "Returns the specified external tool.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single external tool",
+          "notes": "Returns the specified external tool.",
+          "nickname": "get_single_external_tool_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "external_tool_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/external_tools",
+      "description": "Create an external tool in the specified course/account.\nThe created tool will be returned, see the \"show\" endpoint for an example.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create an external tool",
+          "notes": "Create an external tool in the specified course/account.\nThe created tool will be returned, see the \"show\" endpoint for an example.",
+          "nickname": "create_external_tool_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "name",
+              "description": "The name of the tool",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "privacy_level",
+              "description": "What information to send to the external tool.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "anonymous",
+                "name_only",
+                "public"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "consumer_key",
+              "description": "The consumer key for the external tool",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "shared_secret",
+              "description": "The shared secret with the external tool",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "description",
+              "description": "A description of the tool",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "url",
+              "description": "The url to match links against. Either \"url\" or \"domain\" should be set, not both.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "domain",
+              "description": "The domain to match links against. Either \"url\" or \"domain\" should be set, not both.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "icon_url",
+              "description": "The url of the icon to show for this tool",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "text",
+              "description": "The default text to show for this tool",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "custom_fields",
+              "description": "Custom fields that will be sent to the tool consumer, specified as custom_fields[field_name]",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account_navigation[url]",
+              "description": "The url of the external tool for account navigation",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account_navigation[enabled]",
+              "description": "Set this to enable this feature",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account_navigation[text]",
+              "description": "The text that will show on the left-tab in the account navigation",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user_navigation[url]",
+              "description": "The url of the external tool for user navigation",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user_navigation[enabled]",
+              "description": "Set this to enable this feature",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user_navigation[text]",
+              "description": "The text that will show on the left-tab in the user navigation",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course_navigation[url]",
+              "description": "The url of the external tool for course navigation",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course_navigation[enabled]",
+              "description": "Set this to enable this feature",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course_navigation[text]",
+              "description": "The text that will show on the left-tab in the course navigation",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course_navigation[visibility]",
+              "description": "Who will see the navigation tab. \"admins\" for course admins, \"members\" for students, null for everyone",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "admins",
+                "members"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "course_navigation[default]",
+              "description": "Whether the navigation option will show in the course by default or whether the teacher will have to explicitly enable it",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "editor_button[url]",
+              "description": "The url of the external tool",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "editor_button[enabled]",
+              "description": "Set this to enable this feature",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "editor_button[icon_url]",
+              "description": "The url of the icon to show in the WYSIWYG editor",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "editor_button[selection_width]",
+              "description": "The width of the dialog the tool is launched in",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "editor_button[selection_height]",
+              "description": "The height of the dialog the tool is launched in",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "resource_selection[url]",
+              "description": "The url of the external tool",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "resource_selection[enabled]",
+              "description": "Set this to enable this feature",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "resource_selection[icon_url]",
+              "description": "The url of the icon to show in the module external tool list",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "resource_selection[selection_width]",
+              "description": "The width of the dialog the tool is launched in",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "resource_selection[selection_height]",
+              "description": "The height of the dialog the tool is launched in",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "config_type",
+              "description": "Configuration can be passed in as CC xml instead of using query parameters. If this value is \"by_url\" or \"by_xml\" then an xml configuration will be expected in either the \"config_xml\" or \"config_url\" parameter. Note that the name parameter overrides the tool name provided in the xml",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "config_xml",
+              "description": "XML tool configuration, as specified in the CC xml specification. This is required if \"config_type\" is set to \"by_xml\"",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "config_url",
+              "description": "URL where the server can retrieve an XML tool configuration, as specified in the CC xml specification. This is required if \"config_type\" is set to \"by_url\"",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/external_tools",
+      "description": "Create an external tool in the specified course/account.\nThe created tool will be returned, see the \"show\" endpoint for an example.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create an external tool",
+          "notes": "Create an external tool in the specified course/account.\nThe created tool will be returned, see the \"show\" endpoint for an example.",
+          "nickname": "create_external_tool_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "name",
+              "description": "The name of the tool",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "privacy_level",
+              "description": "What information to send to the external tool.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "anonymous",
+                "name_only",
+                "public"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "consumer_key",
+              "description": "The consumer key for the external tool",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "shared_secret",
+              "description": "The shared secret with the external tool",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "description",
+              "description": "A description of the tool",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "url",
+              "description": "The url to match links against. Either \"url\" or \"domain\" should be set, not both.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "domain",
+              "description": "The domain to match links against. Either \"url\" or \"domain\" should be set, not both.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "icon_url",
+              "description": "The url of the icon to show for this tool",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "text",
+              "description": "The default text to show for this tool",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "custom_fields",
+              "description": "Custom fields that will be sent to the tool consumer, specified as custom_fields[field_name]",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account_navigation[url]",
+              "description": "The url of the external tool for account navigation",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account_navigation[enabled]",
+              "description": "Set this to enable this feature",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account_navigation[text]",
+              "description": "The text that will show on the left-tab in the account navigation",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user_navigation[url]",
+              "description": "The url of the external tool for user navigation",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user_navigation[enabled]",
+              "description": "Set this to enable this feature",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "user_navigation[text]",
+              "description": "The text that will show on the left-tab in the user navigation",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course_navigation[url]",
+              "description": "The url of the external tool for course navigation",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course_navigation[enabled]",
+              "description": "Set this to enable this feature",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course_navigation[text]",
+              "description": "The text that will show on the left-tab in the course navigation",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course_navigation[visibility]",
+              "description": "Who will see the navigation tab. \"admins\" for course admins, \"members\" for students, null for everyone",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "admins",
+                "members"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "course_navigation[default]",
+              "description": "Whether the navigation option will show in the course by default or whether the teacher will have to explicitly enable it",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "editor_button[url]",
+              "description": "The url of the external tool",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "editor_button[enabled]",
+              "description": "Set this to enable this feature",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "editor_button[icon_url]",
+              "description": "The url of the icon to show in the WYSIWYG editor",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "editor_button[selection_width]",
+              "description": "The width of the dialog the tool is launched in",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "editor_button[selection_height]",
+              "description": "The height of the dialog the tool is launched in",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "resource_selection[url]",
+              "description": "The url of the external tool",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "resource_selection[enabled]",
+              "description": "Set this to enable this feature",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "resource_selection[icon_url]",
+              "description": "The url of the icon to show in the module external tool list",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "resource_selection[selection_width]",
+              "description": "The width of the dialog the tool is launched in",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "resource_selection[selection_height]",
+              "description": "The height of the dialog the tool is launched in",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "config_type",
+              "description": "Configuration can be passed in as CC xml instead of using query parameters. If this value is \"by_url\" or \"by_xml\" then an xml configuration will be expected in either the \"config_xml\" or \"config_url\" parameter. Note that the name parameter overrides the tool name provided in the xml",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "config_xml",
+              "description": "XML tool configuration, as specified in the CC xml specification. This is required if \"config_type\" is set to \"by_xml\"",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "config_url",
+              "description": "URL where the server can retrieve an XML tool configuration, as specified in the CC xml specification. This is required if \"config_type\" is set to \"by_url\"",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/external_tools/{external_tool_id}",
+      "description": "Update the specified external tool. Uses same parameters as create",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Edit an external tool",
+          "notes": "Update the specified external tool. Uses same parameters as create",
+          "nickname": "edit_external_tool_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "external_tool_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/external_tools/{external_tool_id}",
+      "description": "Update the specified external tool. Uses same parameters as create",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Edit an external tool",
+          "notes": "Update the specified external tool. Uses same parameters as create",
+          "nickname": "edit_external_tool_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "external_tool_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/external_tools/{external_tool_id}",
+      "description": "Remove the specified external tool",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete an external tool",
+          "notes": "Remove the specified external tool",
+          "nickname": "delete_external_tool_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "external_tool_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/external_tools/{external_tool_id}",
+      "description": "Remove the specified external tool",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete an external tool",
+          "notes": "Remove the specified external tool",
+          "nickname": "delete_external_tool_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "external_tool_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+  }
+}

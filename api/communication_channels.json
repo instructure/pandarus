@@ -1,0 +1,215 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/communication channels",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/users/{user_id}/communication_channels",
+      "description": "Returns a list of communication channels for the specified user, sorted by\nposition.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List user communication channels",
+          "notes": "Returns a list of communication channels for the specified user, sorted by\nposition.",
+          "nickname": "list_user_communication_channels",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "CommunicationChannel"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/communication_channels",
+      "description": "Creates a new communication channel for the specified user.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a communication channel",
+          "notes": "Creates a new communication channel for the specified user.",
+          "nickname": "create_communication_channel",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "communication_channel[address]",
+              "description": "An email address or SMS number.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "communication_channel[type]",
+              "description": "The type of communication channel. In order to enable push notification support, the server must be properly configured (via sns.yml) to communicate with Amazon Simple Notification Services, and the developer key used to create the access token from this request must have an SNS ARN configured on it.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "email",
+                "sms",
+                "push"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "skip_confirmation",
+              "description": "Only valid for site admins making requests; If true, the channel is automatically validated and no confirmation email or SMS is sent. Otherwise, the user must respond to a confirmation message to confirm the channel.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "CommunicationChannel"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/communication_channels/{id}",
+      "description": "Delete an existing communication channel.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete a communication channel",
+          "notes": "Delete an existing communication channel.",
+          "nickname": "delete_communication_channel_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "CommunicationChannel"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/communication_channels/{type}/{address}",
+      "description": "Delete an existing communication channel.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete a communication channel",
+          "notes": "Delete an existing communication channel.",
+          "nickname": "delete_communication_channel_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "type",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "address",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "CommunicationChannel"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "CommunicationChannel": {
+      "id": "CommunicationChannel",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "The ID of the communication channel.",
+          "example": 16,
+          "type": "integer"
+        },
+        "address": {
+          "description": "The address, or path, of the communication channel.",
+          "example": "sheldon@caltech.example.com",
+          "type": "string"
+        },
+        "type": {
+          "description": "The type of communcation channel being described. Possible values are: 'email', 'sms', 'chat', 'facebook' or 'twitter'. This field determines the type of value seen in 'address'.",
+          "example": "email",
+          "type": "string",
+          "allowableValues": {
+            "values": [
+              "email",
+              "sms",
+              "chat",
+              "facebook",
+              "twitter"
+            ]
+          }
+        },
+        "position": {
+          "description": "The position of this communication channel relative to the user's other channels when they are ordered.",
+          "example": 1,
+          "type": "integer"
+        },
+        "user_id": {
+          "description": "The ID of the user that owns this communication channel.",
+          "example": 1,
+          "type": "integer"
+        },
+        "workflow_state": {
+          "description": "The current state of the communication channel. Possible values are: 'unconfirmed' or 'active'.",
+          "example": "active",
+          "type": "string",
+          "allowableValues": {
+            "values": [
+              "unconfirmed",
+              "active"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

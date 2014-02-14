@@ -1,0 +1,277 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/announcement external feeds",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/external_feeds",
+      "description": "Returns the list of External Feeds this course or group.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List external feeds",
+          "notes": "Returns the list of External Feeds this course or group.",
+          "nickname": "list_external_feeds_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "ExternalFeed"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/external_feeds",
+      "description": "Returns the list of External Feeds this course or group.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List external feeds",
+          "notes": "Returns the list of External Feeds this course or group.",
+          "nickname": "list_external_feeds_groups",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "ExternalFeed"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/external_feeds",
+      "description": "Create a new external feed for the course or group.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create an external feed",
+          "notes": "Create a new external feed for the course or group.",
+          "nickname": "create_external_feed_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "url",
+              "description": "The url to the external rss or atom feed",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "header_match",
+              "description": "If given, only feed entries that contain this string in their title will be imported",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "verbosity",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "full",
+                "truncate",
+                "link_only"
+              ]
+            }
+          ],
+          "type": "ExternalFeed"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/external_feeds",
+      "description": "Create a new external feed for the course or group.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create an external feed",
+          "notes": "Create a new external feed for the course or group.",
+          "nickname": "create_external_feed_groups",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "url",
+              "description": "The url to the external rss or atom feed",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "header_match",
+              "description": "If given, only feed entries that contain this string in their title will be imported",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "verbosity",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "full",
+                "truncate",
+                "link_only"
+              ]
+            }
+          ],
+          "type": "ExternalFeed"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/external_feeds/{external_feed_id}",
+      "description": "Deletes the external feed.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete an external feed",
+          "notes": "Deletes the external feed.",
+          "nickname": "delete_external_feed_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "external_feed_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "ExternalFeed"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/external_feeds/{external_feed_id}",
+      "description": "Deletes the external feed.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete an external feed",
+          "notes": "Deletes the external feed.",
+          "nickname": "delete_external_feed_groups",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "external_feed_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "ExternalFeed"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "ExternalFeed": {
+      "id": "ExternalFeed",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "The ID of the feed",
+          "example": 5,
+          "type": "integer"
+        },
+        "display_name": {
+          "description": "The title of the feed, pulled from the feed itself. If the feed hasn't yet been pulled, a temporary name will be synthesized based on the URL",
+          "example": "My Blog",
+          "type": "string"
+        },
+        "url": {
+          "description": "The HTTP/HTTPS URL to the feed",
+          "example": "http://example.com/myblog.rss",
+          "type": "string"
+        },
+        "header_match": {
+          "description": "If not null, only feed entries whose title contains this string will trigger new posts in Canvas",
+          "example": "pattern",
+          "type": "string"
+        },
+        "created_at": {
+          "description": "When this external feed was added to Canvas",
+          "example": "2012-06-01T00:00:00-06:00",
+          "type": "datetime"
+        },
+        "verbosity": {
+          "description": "The verbosity setting determines how much of the feed's content is imported into Canvas as part of the posting. 'link_only' means that only the title and a link to the item. 'truncate' means that a summary of the first portion of the item body will be used. 'full' means that the full item body will be used.",
+          "example": "truncate",
+          "type": "string",
+          "allowableValues": {
+            "values": [
+              "link_only",
+              "truncate",
+              "full"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

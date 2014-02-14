@@ -1,0 +1,175 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/search",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/conversations/find_recipients",
+      "description": "Find valid recipients (users, courses and groups) that the current user\ncan send messages to. The /api/v1/search/recipients path is the preferred\nendpoint, /api/v1/conversations/find_recipients is deprecated.\n\nPagination is supported.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Find recipients",
+          "notes": "Find valid recipients (users, courses and groups) that the current user\ncan send messages to. The /api/v1/search/recipients path is the preferred\nendpoint, /api/v1/conversations/find_recipients is deprecated.\n\nPagination is supported.",
+          "nickname": "find_recipients_conversations",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "search",
+              "description": "Search terms used for matching users/courses/groups (e.g. \"bob smith\"). If multiple terms are given (separated via whitespace), only results matching all terms will be returned.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "context",
+              "description": "Limit the search to a particular course/group (e.g. \"course_3\" or \"group_4\").",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "exclude",
+              "description": "Array of ids to exclude from the search. These may be user ids or course/group ids prefixed with \"course_\" or \"group_\" respectively, e.g. exclude[]=1&exclude[]=2&exclude[]=course_3",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "type",
+              "description": "Limit the search just to users or contexts (groups/courses).",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "user",
+                "context"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "user_id",
+              "description": "Search for a specific user id. This ignores the other above parameters, and will never return more than one result.",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "from_conversation_id",
+              "description": "When searching by user_id, only users that could be normally messaged by this user will be returned. This parameter allows you to specify a conversation that will be referenced for a shared context -- if both the current user and the searched user are in the conversation, the user will be returned. This is used to start new side conversations.",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "permissions",
+              "description": "Array of permission strings to be checked for each matched context (e.g. \"send_messages\"). This argument determines which permissions may be returned in the response; it won't prevent contexts from being returned if they don't grant the permission(s).",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/search/recipients",
+      "description": "Find valid recipients (users, courses and groups) that the current user\ncan send messages to. The /api/v1/search/recipients path is the preferred\nendpoint, /api/v1/conversations/find_recipients is deprecated.\n\nPagination is supported.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Find recipients",
+          "notes": "Find valid recipients (users, courses and groups) that the current user\ncan send messages to. The /api/v1/search/recipients path is the preferred\nendpoint, /api/v1/conversations/find_recipients is deprecated.\n\nPagination is supported.",
+          "nickname": "find_recipients_search",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "search",
+              "description": "Search terms used for matching users/courses/groups (e.g. \"bob smith\"). If multiple terms are given (separated via whitespace), only results matching all terms will be returned.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "context",
+              "description": "Limit the search to a particular course/group (e.g. \"course_3\" or \"group_4\").",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "exclude",
+              "description": "Array of ids to exclude from the search. These may be user ids or course/group ids prefixed with \"course_\" or \"group_\" respectively, e.g. exclude[]=1&exclude[]=2&exclude[]=course_3",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "type",
+              "description": "Limit the search just to users or contexts (groups/courses).",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "user",
+                "context"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "user_id",
+              "description": "Search for a specific user id. This ignores the other above parameters, and will never return more than one result.",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "from_conversation_id",
+              "description": "When searching by user_id, only users that could be normally messaged by this user will be returned. This parameter allows you to specify a conversation that will be referenced for a shared context -- if both the current user and the searched user are in the conversation, the user will be returned. This is used to start new side conversations.",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "permissions",
+              "description": "Array of permission strings to be checked for each matched context (e.g. \"send_messages\"). This argument determines which permissions may be returned in the response; it won't prevent contexts from being returned if they don't grant the permission(s).",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+  }
+}

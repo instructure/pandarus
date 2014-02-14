@@ -1,0 +1,312 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/custom gradebook columns",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/custom_gradebook_columns",
+      "description": "List all custom gradebook columns for a course",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List custom gradebook columns",
+          "notes": "List all custom gradebook columns for a course",
+          "nickname": "list_custom_gradebook_columns",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "CustomColumn"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/custom_gradebook_columns",
+      "description": "Create a custom gradebook column",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a custom gradebook column",
+          "notes": "Create a custom gradebook column",
+          "nickname": "create_custom_gradebook_column",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "column[title]",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "column[position]",
+              "description": "The position of the column relative to other custom columns",
+              "type": "int",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "column[hidden]",
+              "description": "Hidden columns are not displayed in the gradebook",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "column[teacher_notes]",
+              "description": "Set this if the column is created by a teacher. The gradebook only supports one teacher_notes column.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "CustomColumn"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/custom_gradebook_columns/{id}",
+      "description": "Accepts the same parameters as custom gradebook column creation",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update a custom gradebook column",
+          "notes": "Accepts the same parameters as custom gradebook column creation",
+          "nickname": "update_custom_gradebook_column",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "CustomColumn"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/custom_gradebook_columns/{id}",
+      "description": "Permanently deletes a custom column and its associated data",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete a custom gradebook column",
+          "notes": "Permanently deletes a custom column and its associated data",
+          "nickname": "delete_custom_gradebook_column",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "CustomColumn"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/custom_gradebook_columns/reorder",
+      "description": "Puts the given columns in the specified order\n\n<b>200 OK</b> is returned if successful",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Reorder custom columns",
+          "notes": "Puts the given columns in the specified order\n\n<b>200 OK</b> is returned if successful",
+          "nickname": "reorder_custom_columns",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "order",
+              "description": "no description",
+              "type": "integer",
+              "format": "int64",
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/custom_gradebook_columns/{id}/data",
+      "description": "This does not list entries for students without associated data.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List entries for a column",
+          "notes": "This does not list entries for students without associated data.",
+          "nickname": "list_entries_for_column",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "ColumnDatum"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/custom_gradebook_columns/{id}/data/{user_id}",
+      "description": "Set the content of a custom column",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update column data",
+          "notes": "Set the content of a custom column",
+          "nickname": "update_column_data",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "column_data[content]",
+              "description": "Column content. Setting this to blank will delete the datum object.",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "ColumnDatum"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "CustomColumn": {
+      "id": "CustomColumn",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "title": {
+          "description": "header text",
+          "example": "Stuff",
+          "type": "string"
+        },
+        "position": {
+          "description": "column order",
+          "example": 1,
+          "type": "integer"
+        },
+        "hidden": {
+          "description": "won't be displayed if hidden is true",
+          "example": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "ColumnDatum": {
+      "id": "ColumnDatum",
+      "description": "ColumnDatum objects contain the entry for a column for each user.",
+      "required": [
+
+      ],
+      "properties": {
+        "content": {
+          "example": "Nut allergy",
+          "type": "string"
+        },
+        "user_id": {
+          "example": 2,
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

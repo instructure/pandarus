@@ -1,0 +1,70 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/quiz ip filters",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/ip_filters",
+      "description": "Get a list of available IP filters for this Quiz.\n\n<b>200 OK</b> response code is returned if the request was successful.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get available quiz IP filters.",
+          "notes": "Get a list of available IP filters for this Quiz.\n\n<b>200 OK</b> response code is returned if the request was successful.",
+          "nickname": "get_available_quiz_ip_filters",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "QuizIPFilter": {
+      "id": "QuizIPFilter",
+      "description": "",
+      "required": [
+        "name",
+        "account",
+        "filter"
+      ],
+      "properties": {
+        "name": {
+          "description": "A unique name for the filter.",
+          "example": "Current Filter",
+          "type": "string"
+        },
+        "account": {
+          "description": "Name of the Account (or Quiz) the IP filter is defined in.",
+          "example": "Some Quiz",
+          "type": "string"
+        },
+        "filter": {
+          "description": "An IP address (or range mask) this filter embodies.",
+          "example": "192.168.1.1/24",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

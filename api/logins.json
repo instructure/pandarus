@@ -1,0 +1,216 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/logins",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/accounts/{account_id}/logins",
+      "description": "Given a user ID, return that user's logins for the given account.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List user logins",
+          "notes": "Given a user ID, return that user's logins for the given account.",
+          "nickname": "list_user_logins_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "user[id]",
+              "description": "The ID of the user to search on.",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/logins",
+      "description": "Given a user ID, return that user's logins for the given account.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List user logins",
+          "notes": "Given a user ID, return that user's logins for the given account.",
+          "nickname": "list_user_logins_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "user[id]",
+              "description": "The ID of the user to search on.",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/logins",
+      "description": "Create a new login for an existing user in the given account.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a user login",
+          "notes": "Create a new login for an existing user in the given account.",
+          "nickname": "create_user_login",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "user[id]",
+              "description": "The ID of the user to create the login for.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "login[unique_id]",
+              "description": "The unique ID for the new login.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "login[password]",
+              "description": "The new login's password.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "login[sis_user_id]",
+              "description": "SIS ID for the login. To set this parameter, the caller must be able to manage SIS permissions on the account.",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/logins/{id}",
+      "description": "Update an existing login for a user in the given account.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Edit a user login",
+          "notes": "Update an existing login for a user in the given account.",
+          "nickname": "edit_user_login",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "login[unique_id]",
+              "description": "The new unique ID for the login.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "login[password]",
+              "description": "The new password for the login. Can only be set by an admin user if admins are allowed to change passwords for the account.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "login[sis_user_id]",
+              "description": "SIS ID for the login. To set this parameter, the caller must be able to manage SIS permissions on the account.",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/logins/{id}",
+      "description": "Delete an existing login.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete a user login",
+          "notes": "Delete an existing login.",
+          "nickname": "delete_user_login",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+  }
+}

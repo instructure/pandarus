@@ -1,0 +1,107 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/progress",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/progress/{id}",
+      "description": "Return completion and status information about an asynchronous job",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Query progress",
+          "notes": "Return completion and status information about an asynchronous job",
+          "nickname": "query_progress",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "Progress"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "Progress": {
+      "id": "Progress",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "the ID of the Progress object",
+          "example": 1,
+          "type": "integer"
+        },
+        "context_id": {
+          "description": "the context owning the job.",
+          "example": 1,
+          "type": "integer"
+        },
+        "context_type": {
+          "example": "Account",
+          "type": "string"
+        },
+        "user_id": {
+          "description": "the id of the user who started the job",
+          "example": 123,
+          "type": "integer"
+        },
+        "tag": {
+          "description": "the type of operation",
+          "example": "course_batch_update",
+          "type": "string"
+        },
+        "completion": {
+          "description": "percent completed",
+          "example": 100,
+          "type": "integer"
+        },
+        "workflow_state": {
+          "description": "the state of the job one of 'queued', 'running', 'completed', 'failed'",
+          "example": "completed",
+          "type": "string",
+          "allowableValues": {
+            "values": [
+              "queued",
+              "running",
+              "completed",
+              "failed"
+            ]
+          }
+        },
+        "created_at": {
+          "description": "the time the job was created",
+          "example": "2013-01-15T15:00:00Z",
+          "type": "datetime"
+        },
+        "updated_at": {
+          "description": "the time the job was last updated",
+          "example": "2013-01-15T15:04:00Z",
+          "type": "datetime"
+        },
+        "message": {
+          "description": "optional details about the job",
+          "example": "17 courses processed",
+          "type": "string"
+        },
+        "url": {
+          "description": "url where a progress update can be retrieved",
+          "example": "https://canvas.example.edu/api/v1/progress/1",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

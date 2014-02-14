@@ -1,0 +1,69 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/collaborations",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/collaborations/{id}/members",
+      "description": "Examples\n\n  curl https://<canvas>/api/v1/courses/1/collaborations/1/members",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List members of a collaboration.",
+          "notes": "Examples\n\n  curl https://<canvas>/api/v1/courses/1/collaborations/1/members",
+          "nickname": "list_members_of_collaboration",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Collaborator"
+          }
+        }
+      ]
+    }
+  ],
+  "models": {
+    "Collaborator": {
+      "id": "Collaborator",
+      "description": "",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "description": "The unique user or group identifier for the collaborator.",
+          "example": 12345,
+          "type": "integer"
+        },
+        "type": {
+          "description": "The type of collaborator (e.g. 'user' or 'group').",
+          "example": "user",
+          "type": "string",
+          "allowableValues": {
+            "values": [
+              "user",
+              "group"
+            ]
+          }
+        },
+        "name": {
+          "description": "The name of the collaborator.",
+          "example": "Don Draper",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/quiz reports",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/reports",
+      "description": "Create and return a new report for this quiz. If a previously\ngenerated report matches the arguments and is still current (i.e.\nthere have been no new submissions), it will be returned.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a quiz report",
+          "notes": "Create and return a new report for this quiz. If a previously\ngenerated report matches the arguments and is still current (i.e.\nthere have been no new submissions), it will be returned.",
+          "nickname": "create_quiz_report",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "quiz_report[report_type]",
+              "description": "The type of report to be generated.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "student_analysis",
+                "item_analysis"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "quiz_report[includes_all_versions]",
+              "description": "Whether the report should consider all submissions or only the most recent. Defaults to false, ignored for item_analysis.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "QuizReport"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/reports/{id}",
+      "description": "Returns the data for a single quiz report.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a quiz report",
+          "notes": "Returns the data for a single quiz report.",
+          "nickname": "get_quiz_report",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "QuizReport"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "QuizReport": {
+      "id": "QuizReport",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "the ID of the quiz report",
+          "example": 5,
+          "type": "integer"
+        },
+        "quiz_id": {
+          "description": "the ID of the quiz",
+          "example": 4,
+          "type": "integer"
+        },
+        "report_type": {
+          "description": "which type of report this is possible values: 'student_analysis', 'item_analysis'",
+          "example": "student_analysis",
+          "type": "string",
+          "allowableValues": {
+            "values": [
+              "student_analysis",
+              "item_analysis"
+            ]
+          }
+        },
+        "includes_all_versions": {
+          "description": "boolean indicating whether the report represents all submissions or only the most recent ones for each student",
+          "example": true,
+          "type": "boolean"
+        },
+        "anonymous": {
+          "description": "boolean indicating whether the report is for an anonymous survey. if true, no student names will be included in the csv",
+          "example": false,
+          "type": "boolean"
+        },
+        "created_at": {
+          "description": "when the report was created",
+          "example": "2013-05-01T12:34:56-07:00",
+          "type": "datetime"
+        },
+        "updated_at": {
+          "description": "when the report was last updated",
+          "example": "2013-05-01T12:34:56-07:00",
+          "type": "datetime"
+        },
+        "file": {
+          "description": "if the report has finished generating, a File object that represents it. refer to the Files API for more information about the format",
+          "$ref": "File"
+        },
+        "progress_url": {
+          "description": "if the report has not yet finished generating, a URL where information about its progress can be retrieved. refer to the Progress API for more information",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

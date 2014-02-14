@@ -1,0 +1,126 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/comm_messages",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/comm_messages",
+      "description": "Retrieve messages sent to a user.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List of CommMessages for a user",
+          "notes": "Retrieve messages sent to a user.",
+          "nickname": "list_of_commmessages_for_user",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "user_id",
+              "description": "The user id for whom you want to retrieve CommMessages",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "start_time",
+              "description": "The beginning of the time range you want to retrieve message from.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "end_time",
+              "description": "The end of the time range you want to retrieve messages for.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "CommMessage"
+          }
+        }
+      ]
+    }
+  ],
+  "models": {
+    "CommMessage": {
+      "id": "CommMessage",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "The ID of the CommMessage.",
+          "example": 42,
+          "type": "integer"
+        },
+        "created_at": {
+          "description": "The date and time this message was created",
+          "example": "2013-03-19T21:00:00Z",
+          "type": "datetime"
+        },
+        "sent_at": {
+          "description": "The date and time this message was sent",
+          "example": "2013-03-20T22:42:00Z",
+          "type": "datetime"
+        },
+        "workflow_state": {
+          "description": "The workflow state of the message. One of 'created', 'staged', 'sending', 'sent', 'bounced', 'dashboard', 'cancelled', or 'closed'",
+          "example": "sent",
+          "type": "string",
+          "allowableValues": {
+            "values": [
+              "created",
+              "staged",
+              "sending",
+              "sent",
+              "bounced",
+              "dashboard",
+              "cancelled",
+              "closed"
+            ]
+          }
+        },
+        "from": {
+          "description": "The address that was put in the 'from' field of the message",
+          "example": "notifications@example.com",
+          "type": "string"
+        },
+        "to": {
+          "description": "The address the message was sent to:",
+          "example": "someone@example.com",
+          "type": "string"
+        },
+        "reply_to": {
+          "description": "The reply_to header of the message",
+          "example": "notifications+specialdata@example.com",
+          "type": "string"
+        },
+        "subject": {
+          "description": "The message subject",
+          "example": "example subject line",
+          "type": "string"
+        },
+        "body": {
+          "description": "The plain text body of the message",
+          "example": "This is the body of the message",
+          "type": "string"
+        },
+        "html_body": {
+          "description": "The HTML body of the message.",
+          "example": "<html><body>This is the body of the message</body></html>",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

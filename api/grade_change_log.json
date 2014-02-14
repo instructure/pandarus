@@ -1,0 +1,262 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/grade change log",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/audit/grade_change/assignments/{assignment_id}",
+      "description": "List grade change events for a given assignment.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Query by assignment.",
+          "notes": "List grade change events for a given assignment.",
+          "nickname": "query_by_assignment",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "start_time",
+              "description": "The beginning of the time range from which you want events.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "end_time",
+              "description": "The end of the time range from which you want events.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "GradeChangeEvent"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/audit/grade_change/courses/{course_id}",
+      "description": "List grade change events for a given course.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Query by course.",
+          "notes": "List grade change events for a given course.",
+          "nickname": "query_by_course",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "start_time",
+              "description": "The beginning of the time range from which you want events.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "end_time",
+              "description": "The end of the time range from which you want events.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "GradeChangeEvent"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/audit/grade_change/students/{student_id}",
+      "description": "List grade change events for a given student.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Query by student.",
+          "notes": "List grade change events for a given student.",
+          "nickname": "query_by_student",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "student_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "start_time",
+              "description": "The beginning of the time range from which you want events.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "end_time",
+              "description": "The end of the time range from which you want events.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "GradeChangeEvent"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/audit/grade_change/graders/{grader_id}",
+      "description": "List grade change events for a given grader.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Query by grader.",
+          "notes": "List grade change events for a given grader.",
+          "nickname": "query_by_grader",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "grader_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "start_time",
+              "description": "The beginning of the time range from which you want events.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "end_time",
+              "description": "The end of the time range from which you want events.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "GradeChangeEvent"
+          }
+        }
+      ]
+    }
+  ],
+  "models": {
+    "GradeChangeEventLinks": {
+      "id": "GradeChangeEventLinks",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "assignment": {
+          "description": "ID of the assignment associated with the event",
+          "example": 2319,
+          "type": "integer"
+        },
+        "course": {
+          "description": "ID of the course associated with the event. will match the context_id in the associated assignment if the context type for the assignment is a course",
+          "example": 2319,
+          "type": "integer"
+        },
+        "student": {
+          "description": "ID of the student associated with the event. will match the user_id in the associated submission.",
+          "example": 2319,
+          "type": "integer"
+        },
+        "grader": {
+          "description": "ID of the grader associated with the event. will match the grader_id in the associated submission.",
+          "example": 2319,
+          "type": "integer"
+        },
+        "page_view": {
+          "description": "ID of the page view during the event if it exists.",
+          "example": "e2b76430-27a5-0131-3ca1-48e0eb13f29b",
+          "type": "string"
+        }
+      }
+    },
+    "GradeChangeEvent": {
+      "id": "GradeChangeEvent",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "ID of the event.",
+          "example": "e2b76430-27a5-0131-3ca1-48e0eb13f29b",
+          "type": "string"
+        },
+        "created_at": {
+          "description": "timestamp of the event",
+          "example": "2012-07-19T15:00:00-06:00",
+          "type": "datetime"
+        },
+        "event_type": {
+          "description": "GradeChange event type",
+          "example": "grade_change",
+          "type": "string"
+        },
+        "grade_after": {
+          "description": "The grade after the change.",
+          "example": "8",
+          "type": "string"
+        },
+        "grade_before": {
+          "description": "The grade before the change.",
+          "example": "8",
+          "type": "string"
+        },
+        "version_number": {
+          "description": "Version Number of the grade change submission.",
+          "example": "1",
+          "type": "string"
+        },
+        "request_id": {
+          "description": "The unique request id of the request during the grade change.",
+          "example": "e2b76430-27a5-0131-3ca1-48e0eb13f29b",
+          "type": "string"
+        },
+        "links": {
+          "$ref": "GradeChangeEventLinks"
+        }
+      }
+    }
+  }
+}

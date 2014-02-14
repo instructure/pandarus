@@ -1,0 +1,992 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/groups",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/users/self/groups",
+      "description": "Returns a list of active groups for the current user.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List your groups",
+          "notes": "Returns a list of active groups for the current user.",
+          "nickname": "list_your_groups",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "context_type",
+              "description": "Only include groups that are in this type of context.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "Account",
+                "Course"
+              ]
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Group"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/groups",
+      "description": "Returns the list of active groups in the given context that are visible to user.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List the groups available in a context.",
+          "notes": "Returns the list of active groups in the given context that are visible to user.",
+          "nickname": "list_the_groups_available_in_context_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Group"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/groups",
+      "description": "Returns the list of active groups in the given context that are visible to user.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List the groups available in a context.",
+          "notes": "Returns the list of active groups in the given context that are visible to user.",
+          "nickname": "list_the_groups_available_in_context_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Group"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}",
+      "description": "Returns the data for a single group, or a 401 if the caller doesn't have\nthe rights to see it.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single group",
+          "notes": "Returns the data for a single group, or a 401 if the caller doesn't have\nthe rights to see it.",
+          "nickname": "get_single_group",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "- \"permissions\": Include permissions the current user has for the group.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "permissions"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "Group"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups",
+      "description": "Creates a new group. Groups created using the \"/api/v1/groups/\"\nendpoint will be community groups.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a group",
+          "notes": "Creates a new group. Groups created using the \"/api/v1/groups/\"\nendpoint will be community groups.",
+          "nickname": "create_group_groups",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "name",
+              "description": "The name of the group",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "description",
+              "description": "A description of the group",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "is_public",
+              "description": "whether the group is public (applies only to community groups)",
+              "type": "boolean",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "join_level",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "parent_context_auto_join",
+                "parent_context_request",
+                "invitation_only"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "storage_quota_mb",
+              "description": "The allowed file storage for the group, in megabytes. This parameter is ignored if the caller does not have the manage_storage_quotas permission.",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            }
+          ],
+          "type": "Group"
+        }
+      ]
+    },
+    {
+      "path": "/v1/group_categories/{group_category_id}/groups",
+      "description": "Creates a new group. Groups created using the \"/api/v1/groups/\"\nendpoint will be community groups.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a group",
+          "notes": "Creates a new group. Groups created using the \"/api/v1/groups/\"\nendpoint will be community groups.",
+          "nickname": "create_group_group_categories",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_category_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "name",
+              "description": "The name of the group",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "description",
+              "description": "A description of the group",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "is_public",
+              "description": "whether the group is public (applies only to community groups)",
+              "type": "boolean",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "join_level",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "parent_context_auto_join",
+                "parent_context_request",
+                "invitation_only"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "storage_quota_mb",
+              "description": "The allowed file storage for the group, in megabytes. This parameter is ignored if the caller does not have the manage_storage_quotas permission.",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            }
+          ],
+          "type": "Group"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}",
+      "description": "Modifies an existing group.  Note that to set an avatar image for the\ngroup, you must first upload the image file to the group, and the use the\nid in the response as the argument to this function.  See the\n{file:file_uploads.html File Upload Documentation} for details on the file\nupload workflow.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Edit a group",
+          "notes": "Modifies an existing group.  Note that to set an avatar image for the\ngroup, you must first upload the image file to the group, and the use the\nid in the response as the argument to this function.  See the\n{file:file_uploads.html File Upload Documentation} for details on the file\nupload workflow.",
+          "nickname": "edit_group",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "name",
+              "description": "The name of the group",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "description",
+              "description": "A description of the group",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "is_public",
+              "description": "Whether the group is public (applies only to community groups). Currently you cannot set a group back to private once it has been made public.",
+              "type": "boolean",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "join_level",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "parent_context_auto_join",
+                "parent_context_request",
+                "invitation_only"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "avatar_id",
+              "description": "The id of the attachment previously uploaded to the group that you would like to use as the avatar image for this group.",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "storage_quota_mb",
+              "description": "The allowed file storage for the group, in megabytes. This parameter is ignored if the caller does not have the manage_storage_quotas permission.",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            }
+          ],
+          "type": "Group"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}",
+      "description": "Deletes a group and removes all members.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete a group",
+          "notes": "Deletes a group and removes all members.",
+          "nickname": "delete_group",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "Group"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/followers/self",
+      "description": "Follow this group. If the current user is already following the\ngroup, nothing happens. The user must have permissions to view the\ngroup in order to follow it.\n\nResponds with a 401 if the user doesn't have permission to follow the\ngroup.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Follow a group",
+          "notes": "Follow this group. If the current user is already following the\ngroup, nothing happens. The user must have permissions to view the\ngroup in order to follow it.\n\nResponds with a 401 if the user doesn't have permission to follow the\ngroup.",
+          "nickname": "follow_group",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/followers/self",
+      "description": "Stop following this group. If the current user is not already\nfollowing the group, nothing happens.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Un-follow a group",
+          "notes": "Stop following this group. If the current user is not already\nfollowing the group, nothing happens.",
+          "nickname": "un_follow_group",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/invite",
+      "description": "Sends an invitation to all supplied email addresses which will allow the\nreceivers to join the group.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Invite others to a group",
+          "notes": "Sends an invitation to all supplied email addresses which will allow the\nreceivers to join the group.",
+          "nickname": "invite_others_to_group",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "invitees",
+              "description": "An array of email addresses to be sent invitations.",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/users",
+      "description": "Returns a list of users in the group.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List group's users",
+          "notes": "Returns a list of users in the group.",
+          "nickname": "list_group_s_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "search_term",
+              "description": "The partial name or full ID of the users to match and return in the results list. Must be at least 3 characters.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "User"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/files",
+      "description": "Upload a file to the group.\n\nThis API endpoint is the first step in uploading a file to a group.\nSee the {file:file_uploads.html File Upload Documentation} for details on\nthe file upload workflow.\n\nOnly those with the \"Manage Files\" permission on a group can upload files\nto the group. By default, this is anybody participating in the\ngroup, or any admin over the group.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Upload a file",
+          "notes": "Upload a file to the group.\n\nThis API endpoint is the first step in uploading a file to a group.\nSee the {file:file_uploads.html File Upload Documentation} for details on\nthe file upload workflow.\n\nOnly those with the \"Manage Files\" permission on a group can upload files\nto the group. By default, this is anybody participating in the\ngroup, or any admin over the group.",
+          "nickname": "upload_file",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/preview_html",
+      "description": "Preview html content processed for this group",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Preview processed html",
+          "notes": "Preview html content processed for this group",
+          "nickname": "preview_processed_html",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "html",
+              "description": "The html content to process",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/activity_stream",
+      "description": "Returns the current user's group-specific activity stream, paginated.\n\nFor full documentation, see the API documentation for the user activity\nstream, in the user api.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Group activity stream",
+          "notes": "Returns the current user's group-specific activity stream, paginated.\n\nFor full documentation, see the API documentation for the user activity\nstream, in the user api.",
+          "nickname": "group_activity_stream",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/activity_stream/summary",
+      "description": "Returns a summary of the current user's group-specific activity stream.\n\nFor full documentation, see the API documentation for the user activity\nstream summary, in the user api.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Group activity stream summary",
+          "notes": "Returns a summary of the current user's group-specific activity stream.\n\nFor full documentation, see the API documentation for the user activity\nstream summary, in the user api.",
+          "nickname": "group_activity_stream_summary",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/memberships",
+      "description": "List the members of a group.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List group memberships",
+          "notes": "List the members of a group.",
+          "nickname": "list_group_memberships_groups",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "filter_states",
+              "description": "Only list memberships with the given workflow_states. By default it will return all memberships.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "accepted",
+                "invited",
+                "requested"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "GroupMembership"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/users",
+      "description": "List the members of a group.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List group memberships",
+          "notes": "List the members of a group.",
+          "nickname": "list_group_memberships_groups",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "filter_states",
+              "description": "Only list memberships with the given workflow_states. By default it will return all memberships.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "accepted",
+                "invited",
+                "requested"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "GroupMembership"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/memberships",
+      "description": "Join, or request to join, a group, depending on the join_level of the\ngroup.  If the membership or join request already exists, then it is simply\nreturned",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a membership",
+          "notes": "Join, or request to join, a group, depending on the join_level of the\ngroup.  If the membership or join request already exists, then it is simply\nreturned",
+          "nickname": "create_membership",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "user_id",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "GroupMembership"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/memberships/{membership_id}",
+      "description": "Accept a membership request, or add/remove moderator rights.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update a membership",
+          "notes": "Accept a membership request, or add/remove moderator rights.",
+          "nickname": "update_membership_groups",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "membership_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "workflow_state",
+              "description": "Currently, the only allowed value is \"accepted\"",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "accepted"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "moderator",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "GroupMembership"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/users/{user_id}",
+      "description": "Accept a membership request, or add/remove moderator rights.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update a membership",
+          "notes": "Accept a membership request, or add/remove moderator rights.",
+          "nickname": "update_membership_groups",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "workflow_state",
+              "description": "Currently, the only allowed value is \"accepted\"",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "accepted"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "moderator",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "GroupMembership"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/memberships/{membership_id}",
+      "description": "Leave a group if you are allowed to leave (some groups, such as sets of\ncourse groups created by teachers, cannot be left). You may also use 'self'\nin place of a membership_id.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Leave a group",
+          "notes": "Leave a group if you are allowed to leave (some groups, such as sets of\ncourse groups created by teachers, cannot be left). You may also use 'self'\nin place of a membership_id.",
+          "nickname": "leave_group_groups",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "membership_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/users/{user_id}",
+      "description": "Leave a group if you are allowed to leave (some groups, such as sets of\ncourse groups created by teachers, cannot be left). You may also use 'self'\nin place of a membership_id.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Leave a group",
+          "notes": "Leave a group if you are allowed to leave (some groups, such as sets of\ncourse groups created by teachers, cannot be left). You may also use 'self'\nin place of a membership_id.",
+          "nickname": "leave_group_groups",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "Group": {
+      "id": "Group",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "The ID of the group.",
+          "example": 17,
+          "type": "integer"
+        },
+        "name": {
+          "description": "The display name of the group.",
+          "example": "Math Group 1",
+          "type": "string"
+        },
+        "description": {
+          "description": "A description of the group. This is plain text.",
+          "type": "string"
+        },
+        "is_public": {
+          "description": "Whether or not the group is public.  Currently only community groups can be made public.  Also, once a group has been set to public, it cannot be changed back to private.",
+          "example": false,
+          "type": "boolean"
+        },
+        "followed_by_user": {
+          "description": "Whether or not the current user is following this group.",
+          "example": false,
+          "type": "boolean"
+        },
+        "join_level": {
+          "description": "How people are allowed to join the group.  For all groups except for community groups, the user must share the group's parent course or account.  For student organized or community groups, where a user can be a member of as many or few as they want, the applicable levels are 'parent_context_auto_join', 'parent_context_request', and 'invitation_only'.  For class groups, where students are divided up and should only be part of one group of the category, this value will always be 'invitation_only', and is not relevant. * If 'parent_context_auto_join', anyone can join and will be automatically accepted. * If 'parent_context_request', anyone  can request to join, which must be approved by a group moderator. * If 'invitation_only', only those how have received an invitation my join the group, by accepting that invitation.",
+          "example": "invitation_only",
+          "type": "string",
+          "allowableValues": {
+            "values": [
+              "parent_context_auto_join",
+              "parent_context_request",
+              "invitation_only"
+            ]
+          }
+        },
+        "members_count": {
+          "description": "The number of members currently in the group",
+          "example": 0,
+          "type": "integer"
+        },
+        "avatar_url": {
+          "description": "The url of the group's avatar",
+          "example": "https://<canvas>/files/avatar_image.png",
+          "type": "string"
+        },
+        "context_type": {
+          "description": "The course or account that the group belongs to. The pattern here is that whatever the context_type is, there will be an _id field named after that type. So if instead context_type was 'account', the course_id field would be replaced by an account_id field.",
+          "example": "Course",
+          "type": "string"
+        },
+        "course_id": {
+          "example": 3,
+          "type": "integer"
+        },
+        "role": {
+          "description": "Certain types of groups have special role designations. Currently, these include: 'communities', 'student_organized', and 'imported'. Regular course/account groups have a role of null.",
+          "type": "string",
+          "allowableValues": {
+            "values": [
+              "communities",
+              "student_organized",
+              "imported"
+            ]
+          }
+        },
+        "group_category_id": {
+          "description": "The ID of the group's category.",
+          "example": 4,
+          "type": "integer"
+        },
+        "storage_quota_mb": {
+          "description": "the storage quota for the group, in megabytes",
+          "example": 50,
+          "type": "integer"
+        },
+        "permissions": {
+          "description": "optional: the permissions the user has for the group. returned only for a single group and include[]=permissions",
+          "example": "{\"create_discussion_topic\"=>true}",
+          "type": "map",
+          "key": {
+            "type": "string"
+          },
+          "value": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "GroupMembership": {
+      "id": "GroupMembership",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "The id of the membership object",
+          "example": 92,
+          "type": "integer"
+        },
+        "group_id": {
+          "description": "The id of the group object to which the membership belongs",
+          "example": 17,
+          "type": "integer"
+        },
+        "user_id": {
+          "description": "The id of the user object to which the membership belongs",
+          "example": 3,
+          "type": "integer"
+        },
+        "workflow_state": {
+          "description": "The current state of the membership. Current possible values are 'accepted', 'invited', and 'requested'",
+          "example": "accepted",
+          "type": "string",
+          "allowableValues": {
+            "values": [
+              "accepted",
+              "invited",
+              "requested"
+            ]
+          }
+        },
+        "moderator": {
+          "description": "Whether or not the user is a moderator of the group (the must also be an active member of the group to moderate)",
+          "example": true,
+          "type": "boolean"
+        },
+        "just_created": {
+          "description": "optional: whether or not the record was just created on a create call (POST), i.e. was the user just added to the group, or was the user already a member",
+          "example": true,
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}
