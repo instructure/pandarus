@@ -8,6 +8,75 @@
   ],
   "apis": [
     {
+      "path": "/v1/courses/{course_id}/files/quota",
+      "description": "Returns the total and used storage quota for the course, group, or user.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get quota information",
+          "notes": "Returns the total and used storage quota for the course, group, or user.",
+          "nickname": "get_quota_information_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/files/quota",
+      "description": "Returns the total and used storage quota for the course, group, or user.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get quota information",
+          "notes": "Returns the total and used storage quota for the course, group, or user.",
+          "nickname": "get_quota_information_groups",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/files/quota",
+      "description": "Returns the total and used storage quota for the course, group, or user.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get quota information",
+          "notes": "Returns the total and used storage quota for the course, group, or user.",
+          "nickname": "get_quota_information_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
       "path": "/v1/courses/{course_id}/files",
       "description": "Returns the paginated list of files for the folder or course.",
       "operations": [
@@ -193,12 +262,12 @@
     },
     {
       "path": "/v1/files/{id}",
-      "description": "Remove the specified file\n\n  curl -XDELETE 'https://<canvas>/api/v1/files/<file_id>' \\ \n       -H 'Authorization: Bearer <token>'",
+      "description": "Remove the specified file\n\n  curl -XDELETE 'https://<canvas>/api/v1/files/<file_id>' \\\n       -H 'Authorization: Bearer <token>'",
       "operations": [
         {
           "method": "DELETE",
           "summary": "Delete file",
-          "notes": "Remove the specified file\n\n  curl -XDELETE 'https://<canvas>/api/v1/files/<file_id>' \\ \n       -H 'Authorization: Bearer <token>'",
+          "notes": "Remove the specified file\n\n  curl -XDELETE 'https://<canvas>/api/v1/files/<file_id>' \\\n       -H 'Authorization: Bearer <token>'",
           "nickname": "delete_file",
           "parameters": [
             {

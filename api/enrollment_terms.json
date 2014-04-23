@@ -1,0 +1,89 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/enrollment_terms",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/accounts/{account_id}/terms",
+      "description": "Return all of the terms in the account. Account must be a root account and\nrequires permission to manage the account (when called on non-root\naccounts, will be directed to the appropriate root account).",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List enrollment terms",
+          "notes": "Return all of the terms in the account. Account must be a root account and\nrequires permission to manage the account (when called on non-root\naccounts, will be directed to the appropriate root account).",
+          "nickname": "list_enrollment_terms",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "workflow_state",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "EnrollmentTerm"
+          }
+        }
+      ]
+    }
+  ],
+  "models": {
+    "EnrollmentTerm": {
+      "id": "EnrollmentTerm",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "The unique identifier for the enrollment term.",
+          "example": "1",
+          "type": "integer"
+        },
+        "sis_term_id": {
+          "description": "The SIS id of the term. Only included if the user has permission to view SIS information.",
+          "example": "Sp2014",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name of the term.",
+          "example": "Spring 2014",
+          "type": "string"
+        },
+        "start_at": {
+          "description": "The datetime of the start of the term.",
+          "example": "2014-01-06T08:00:00-05:00",
+          "type": "datetime"
+        },
+        "end_at": {
+          "description": "The datetime of the end of the term.",
+          "example": "2014-05-16T05:00:00-04:00",
+          "type": "datetime"
+        },
+        "workflow_state": {
+          "description": "The state of the term. Can be 'active' or 'deleted'.",
+          "example": "active",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

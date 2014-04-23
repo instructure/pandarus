@@ -897,7 +897,7 @@
           "method": "GET",
           "summary": "Show revision",
           "notes": "Retrieve the metadata and optionally content of a revision of the page.\nNote that retrieving historic versions of pages requires edit rights.",
-          "nickname": "show_revision_courses",
+          "nickname": "show_revision_courses_latest",
           "parameters": [
             {
               "paramType": "path",
@@ -936,7 +936,7 @@
           "method": "GET",
           "summary": "Show revision",
           "notes": "Retrieve the metadata and optionally content of a revision of the page.\nNote that retrieving historic versions of pages requires edit rights.",
-          "nickname": "show_revision_groups",
+          "nickname": "show_revision_groups_latest",
           "parameters": [
             {
               "paramType": "path",
@@ -975,7 +975,7 @@
           "method": "GET",
           "summary": "Show revision",
           "notes": "Retrieve the metadata and optionally content of a revision of the page.\nNote that retrieving historic versions of pages requires edit rights.",
-          "nickname": "show_revision_courses",
+          "nickname": "show_revision_courses_revision_id",
           "parameters": [
             {
               "paramType": "path",
@@ -1022,7 +1022,7 @@
           "method": "GET",
           "summary": "Show revision",
           "notes": "Retrieve the metadata and optionally content of a revision of the page.\nNote that retrieving historic versions of pages requires edit rights.",
-          "nickname": "show_revision_groups",
+          "nickname": "show_revision_groups_revision_id",
           "parameters": [
             {
               "paramType": "path",

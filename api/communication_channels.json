@@ -2,7 +2,7 @@
   "apiVersion": "1.0",
   "swaggerVersion": "1.2",
   "basePath": "http://canvas.instructure.com/api",
-  "resourcePath": "/communication channels",
+  "resourcePath": "/communication_channels",
   "produces": [
     "application/json"
   ],
@@ -75,7 +75,7 @@
             {
               "paramType": "form",
               "name": "skip_confirmation",
-              "description": "Only valid for site admins making requests; If true, the channel is automatically validated and no confirmation email or SMS is sent. Otherwise, the user must respond to a confirmation message to confirm the channel.",
+              "description": "Only valid for site admins and account admins making requests; If true, the channel is automatically validated and no confirmation email or SMS is sent. Otherwise, the user must respond to a confirmation message to confirm the channel.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -93,7 +93,7 @@
           "method": "DELETE",
           "summary": "Delete a communication channel",
           "notes": "Delete an existing communication channel.",
-          "nickname": "delete_communication_channel_users",
+          "nickname": "delete_communication_channel_id",
           "parameters": [
             {
               "paramType": "path",
@@ -124,7 +124,7 @@
           "method": "DELETE",
           "summary": "Delete a communication channel",
           "notes": "Delete an existing communication channel.",
-          "nickname": "delete_communication_channel_users",
+          "nickname": "delete_communication_channel_type",
           "parameters": [
             {
               "paramType": "path",

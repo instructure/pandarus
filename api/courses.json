@@ -43,7 +43,7 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "- \"needs_grading_count\": Optional information to include with each Course. When needs_grading_count is given, and the current user has grading rights, the total number of submissions needing grading for all assignments is returned. - \"syllabus_body\": Optional information to include with each Course. When syllabus_body is given the user-generated html for the course syllabus is returned. - \"total_scores\": Optional information to include with each Course. When total_scores is given, any enrollments with type 'student' will also include the fields 'calculated_current_score', 'calculated_final_score', 'calculated_current_grade', and 'calculated_final_grade'. calculated_current_score is the student's score in the course, ignoring ungraded assignments. calculated_final_score is the student's score in the course including ungraded assignments with a score of 0. calculated_current_grade is the letter grade equivalent of calculated_current_score (if available). calculated_final_grade is the letter grade equivalent of calculated_final_score (if available). This argument is ignored if the course is configured to hide final grades. - \"term\": Optional information to include with each Course. When term is given, the information for the enrollment term for each course is returned.",
+              "description": "- \"needs_grading_count\": Optional information to include with each Course. When needs_grading_count is given, and the current user has grading rights, the total number of submissions needing grading for all assignments is returned. - \"syllabus_body\": Optional information to include with each Course. When syllabus_body is given the user-generated html for the course syllabus is returned. - \"total_scores\": Optional information to include with each Course. When total_scores is given, any enrollments with type 'student' will also include the fields 'calculated_current_score', 'calculated_final_score', 'calculated_current_grade', and 'calculated_final_grade'. calculated_current_score is the student's score in the course, ignoring ungraded assignments. calculated_final_score is the student's score in the course including ungraded assignments with a score of 0. calculated_current_grade is the letter grade equivalent of calculated_current_score (if available). calculated_final_grade is the letter grade equivalent of calculated_final_score (if available). This argument is ignored if the course is configured to hide final grades. - \"term\": Optional information to include with each Course. When term is given, the information for the enrollment term for each course is returned. - \"course_progress\": Optional information to include with each Course. When course_progress is given, each course will include a 'course_progress' object with the fields: 'requirement_count', an integer specifying the total number of requirements in the course, 'requirement_completed_count', an integer specifying the total number of requirements in this course that have been completed, and 'next_requirement_url', a string url to the next requirement item, and 'completed_at', the date the course was completed (null if incomplete). 'next_requirement_url' will be null if all requirements have been completed or the current module does not require sequential progress. \"course_progress\" will return an error message if the course is not module based or the user is not enrolled as a student in the course.",
               "type": "string",
               "format": null,
               "required": true,
@@ -51,7 +51,8 @@
                 "needs_grading_count",
                 "syllabus_body",
                 "total_scores",
-                "term"
+                "term",
+                "course_progress"
               ],
               "tags": {
                 "type": "array"
@@ -222,6 +223,14 @@
             },
             {
               "paramType": "form",
+              "name": "course[term_id]",
+              "description": "The unique ID of the term to create to course in.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "course[sis_course_id]",
               "description": "The unique SIS identifier.",
               "type": "string",
@@ -322,7 +331,7 @@
           "method": "GET",
           "summary": "List users in course",
           "notes": "Returns the list of users in this course. And optionally the user's enrollments in the course.",
-          "nickname": "list_users_in_course_courses",
+          "nickname": "list_users_in_course_users",
           "parameters": [
             {
               "paramType": "path",
@@ -405,7 +414,7 @@
           "method": "GET",
           "summary": "List users in course",
           "notes": "Returns the list of users in this course. And optionally the user's enrollments in the course.",
-          "nickname": "list_users_in_course_courses",
+          "nickname": "list_users_in_course_search_users",
           "parameters": [
             {
               "paramType": "path",
@@ -828,12 +837,12 @@
     },
     {
       "path": "/v1/courses/{id}",
-      "description": "Update an existing course.\n\nFor possible arguments, see the Courses#create documentation (note: the enroll_me param is not allowed in the update action).",
+      "description": "Update an existing course.\n\nFor possible arguments, see the Courses#create documentation (note: the enroll_me param is not allowed in the update action).\n\nAdditional arguments available for Courses#update",
       "operations": [
         {
           "method": "PUT",
           "summary": "Update a course",
-          "notes": "Update an existing course.\n\nFor possible arguments, see the Courses#create documentation (note: the enroll_me param is not allowed in the update action).",
+          "notes": "Update an existing course.\n\nFor possible arguments, see the Courses#create documentation (note: the enroll_me param is not allowed in the update action).\n\nAdditional arguments available for Courses#update",
           "nickname": "update_course",
           "parameters": [
             {
@@ -843,6 +852,14 @@
               "type": "string",
               "format": null,
               "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "course[grading_standard_id]",
+              "description": "The grading standard id to set for the course. If no value is provided for this argument the current grading_standard will be un-set from this course.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
             }
           ],
           "type": "void"
@@ -1025,6 +1042,35 @@
         }
       }
     },
+    "CourseProgress": {
+      "id": "CourseProgress",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "requirement_count": {
+          "description": "total number of requirements from all modules",
+          "example": 10,
+          "type": "integer"
+        },
+        "requirement_completed_count": {
+          "description": "total number of requirements the user has completed from all modules",
+          "example": 1,
+          "type": "integer"
+        },
+        "next_requirement_url": {
+          "description": "url to next module item that has an unmet requirement. null if the user has completed the course or the current module does not require sequential progress",
+          "example": "http://localhost/courses/1/modules/items/2",
+          "type": "string"
+        },
+        "completed_at": {
+          "description": "date the course was completed. null if the course has not been completed by this user",
+          "example": "2013-06-01T00:00:00-06:00",
+          "type": "datetime"
+        }
+      }
+    },
     "Course": {
       "id": "Course",
       "description": "",
@@ -1120,8 +1166,12 @@
           "type": "integer"
         },
         "term": {
-          "description": "optional: the name of the enrollment term for the course returned only if include[]=term",
+          "description": "optional: the enrollment term object for the course returned only if include[]=term",
           "$ref": "Term"
+        },
+        "course_progress": {
+          "description": "optional (beta): information on progress through the course returned only if include[]=course_progress",
+          "$ref": "CourseProgress"
         },
         "apply_assignment_group_weights": {
           "description": "weight final grade based on assignment group percentages",
@@ -1186,6 +1236,20 @@
         "restrict_enrollments_to_course_dates": {
           "example": false,
           "type": "boolean"
+        }
+      }
+    },
+    "CalendarLink": {
+      "id": "CalendarLink",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "ics": {
+          "description": "The URL of the calendar in ICS format",
+          "example": "https://canvas.instructure.com/feeds/calendars/course_abcdef.ics",
+          "type": "string"
         }
       }
     }

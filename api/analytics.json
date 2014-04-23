@@ -15,7 +15,7 @@
           "method": "GET",
           "summary": "Get department-level participation data",
           "notes": "Returns page view hits summed across all courses in the department. Two\ngroupings of these counts are returned; one by day (+by_date+), the other\nby category (+by_category+). The possible categories are announcements,\nassignments, collaborations, conferences, discussions, files, general,\ngrades, groups, modules, other, pages, and quizzes.\n\nThis and the other department-level endpoints have three variations which\nall return the same style of data but for different subsets of courses. All\nshare the prefix /api/v1/accounts/<account_id>/analytics. The possible\nsuffixes are:\n\n * /current: includes all available courses in the default term\n * /completed: includes all concluded courses in the default term\n * /terms/<term_id>: includes all available or concluded courses in the\n   given term.\n\nCourses not yet offered or which have been deleted are never included.\n\n/current and /completed are intended for use when the account has only one\nterm. /terms/<term_id> is intended for use when the account has multiple\nterms.\n\nThe action follows the suffix.",
-          "nickname": "get_department_level_participation_data_accounts",
+          "nickname": "get_department_level_participation_data_terms",
           "parameters": [
             {
               "paramType": "path",
@@ -46,7 +46,7 @@
           "method": "GET",
           "summary": "Get department-level participation data",
           "notes": "Returns page view hits summed across all courses in the department. Two\ngroupings of these counts are returned; one by day (+by_date+), the other\nby category (+by_category+). The possible categories are announcements,\nassignments, collaborations, conferences, discussions, files, general,\ngrades, groups, modules, other, pages, and quizzes.\n\nThis and the other department-level endpoints have three variations which\nall return the same style of data but for different subsets of courses. All\nshare the prefix /api/v1/accounts/<account_id>/analytics. The possible\nsuffixes are:\n\n * /current: includes all available courses in the default term\n * /completed: includes all concluded courses in the default term\n * /terms/<term_id>: includes all available or concluded courses in the\n   given term.\n\nCourses not yet offered or which have been deleted are never included.\n\n/current and /completed are intended for use when the account has only one\nterm. /terms/<term_id> is intended for use when the account has multiple\nterms.\n\nThe action follows the suffix.",
-          "nickname": "get_department_level_participation_data_accounts",
+          "nickname": "get_department_level_participation_data_current",
           "parameters": [
             {
               "paramType": "path",
@@ -69,7 +69,7 @@
           "method": "GET",
           "summary": "Get department-level participation data",
           "notes": "Returns page view hits summed across all courses in the department. Two\ngroupings of these counts are returned; one by day (+by_date+), the other\nby category (+by_category+). The possible categories are announcements,\nassignments, collaborations, conferences, discussions, files, general,\ngrades, groups, modules, other, pages, and quizzes.\n\nThis and the other department-level endpoints have three variations which\nall return the same style of data but for different subsets of courses. All\nshare the prefix /api/v1/accounts/<account_id>/analytics. The possible\nsuffixes are:\n\n * /current: includes all available courses in the default term\n * /completed: includes all concluded courses in the default term\n * /terms/<term_id>: includes all available or concluded courses in the\n   given term.\n\nCourses not yet offered or which have been deleted are never included.\n\n/current and /completed are intended for use when the account has only one\nterm. /terms/<term_id> is intended for use when the account has multiple\nterms.\n\nThe action follows the suffix.",
-          "nickname": "get_department_level_participation_data_accounts",
+          "nickname": "get_department_level_participation_data_completed",
           "parameters": [
             {
               "paramType": "path",
@@ -92,7 +92,7 @@
           "method": "GET",
           "summary": "Get department-level grade data",
           "notes": "Returns the distribution of grades for students in courses in the\ndepartment.  Each data point is one student's current grade in one course;\nif a student is in multiple courses, he contributes one value per course,\nbut if he's enrolled multiple times in the same course (e.g. a lecture\nsection and a lab section), he only constributes on value for that course.\n\nGrades are binned to the nearest integer score; anomalous grades outside\nthe 0 to 100 range are ignored. The raw counts are returned, not yet\nnormalized by the total count.\n\nShares the same variations on endpoint as the participation data.",
-          "nickname": "get_department_level_grade_data_accounts",
+          "nickname": "get_department_level_grade_data_terms",
           "parameters": [
             {
               "paramType": "path",
@@ -123,7 +123,7 @@
           "method": "GET",
           "summary": "Get department-level grade data",
           "notes": "Returns the distribution of grades for students in courses in the\ndepartment.  Each data point is one student's current grade in one course;\nif a student is in multiple courses, he contributes one value per course,\nbut if he's enrolled multiple times in the same course (e.g. a lecture\nsection and a lab section), he only constributes on value for that course.\n\nGrades are binned to the nearest integer score; anomalous grades outside\nthe 0 to 100 range are ignored. The raw counts are returned, not yet\nnormalized by the total count.\n\nShares the same variations on endpoint as the participation data.",
-          "nickname": "get_department_level_grade_data_accounts",
+          "nickname": "get_department_level_grade_data_current",
           "parameters": [
             {
               "paramType": "path",
@@ -146,7 +146,7 @@
           "method": "GET",
           "summary": "Get department-level grade data",
           "notes": "Returns the distribution of grades for students in courses in the\ndepartment.  Each data point is one student's current grade in one course;\nif a student is in multiple courses, he contributes one value per course,\nbut if he's enrolled multiple times in the same course (e.g. a lecture\nsection and a lab section), he only constributes on value for that course.\n\nGrades are binned to the nearest integer score; anomalous grades outside\nthe 0 to 100 range are ignored. The raw counts are returned, not yet\nnormalized by the total count.\n\nShares the same variations on endpoint as the participation data.",
-          "nickname": "get_department_level_grade_data_accounts",
+          "nickname": "get_department_level_grade_data_completed",
           "parameters": [
             {
               "paramType": "path",
@@ -169,7 +169,7 @@
           "method": "GET",
           "summary": "Get department-level statistics",
           "notes": "Returns numeric statistics about the department and term (or filter).\n\nShares the same variations on endpoint as the participation data.",
-          "nickname": "get_department_level_statistics_accounts",
+          "nickname": "get_department_level_statistics_terms",
           "parameters": [
             {
               "paramType": "path",
@@ -200,7 +200,7 @@
           "method": "GET",
           "summary": "Get department-level statistics",
           "notes": "Returns numeric statistics about the department and term (or filter).\n\nShares the same variations on endpoint as the participation data.",
-          "nickname": "get_department_level_statistics_accounts",
+          "nickname": "get_department_level_statistics_current",
           "parameters": [
             {
               "paramType": "path",
@@ -223,7 +223,7 @@
           "method": "GET",
           "summary": "Get department-level statistics",
           "notes": "Returns numeric statistics about the department and term (or filter).\n\nShares the same variations on endpoint as the participation data.",
-          "nickname": "get_department_level_statistics_accounts",
+          "nickname": "get_department_level_statistics_completed",
           "parameters": [
             {
               "paramType": "path",

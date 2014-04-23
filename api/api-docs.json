@@ -51,10 +51,6 @@
       "description": "Collaborations"
     },
     {
-      "path": "/collections.json",
-      "description": "Collections"
-    },
-    {
       "path": "/comm_messages.json",
       "description": "CommMessages"
     },
@@ -95,6 +91,10 @@
       "description": "Discussion Topics"
     },
     {
+      "path": "/enrollment_terms.json",
+      "description": "Enrollment Terms"
+    },
+    {
       "path": "/enrollments.json",
       "description": "Enrollments"
     },
@@ -121,6 +121,10 @@
     {
       "path": "/gradebook_history.json",
       "description": "Gradebook History"
+    },
+    {
+      "path": "/grading_standards.json",
+      "description": "Grading Standards"
     },
     {
       "path": "/group_categories.json",
@@ -173,6 +177,10 @@
     {
       "path": "/quiz_reports.json",
       "description": "Quiz Reports"
+    },
+    {
+      "path": "/quiz_statistics.json",
+      "description": "Quiz Statistics"
     },
     {
       "path": "/quiz_submission_files.json",

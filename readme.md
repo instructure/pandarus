@@ -52,10 +52,7 @@ Code Generation
 
 To generate the Ruby gem from Canvas's api-docs.json file:
 
-1. Edit the pom.xml file and replace the fileMap path with the path to your api-docs.json file:
-```xml
-  <jvmArg>-DfileMap=/Users/duane/Instructure/canvas-lms/public/doc/api/api-docs.json</jvmArg>
-```
+1. Install maven (e.g. ```brew install maven```)
 
 2. Run ```./build-and-install-gem```
 

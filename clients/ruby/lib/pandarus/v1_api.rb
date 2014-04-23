@@ -592,8 +592,7 @@ module Pandarus
       end
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
-      response
-      
+      Account.new(response)
     end
     def change_the_domains_for_account(id,account__domains__,opts={})
       query_param_keys = [
@@ -833,7 +832,7 @@ module Pandarus
       page_params_store(:get, path)
       response.map {|response|Admin.new(response)}
     end
-    def get_department_level_participation_data_accounts(account_id,term_id,opts={})
+    def get_department_level_participation_data_terms(account_id,term_id,opts={})
       query_param_keys = [
         
       ]
@@ -867,7 +866,7 @@ module Pandarus
       response
       
     end
-    def get_department_level_participation_data_accounts(account_id,opts={})
+    def get_department_level_participation_data_current(account_id,opts={})
       query_param_keys = [
         
       ]
@@ -898,7 +897,7 @@ module Pandarus
       response
       
     end
-    def get_department_level_participation_data_accounts(account_id,opts={})
+    def get_department_level_participation_data_completed(account_id,opts={})
       query_param_keys = [
         
       ]
@@ -929,7 +928,7 @@ module Pandarus
       response
       
     end
-    def get_department_level_grade_data_accounts(account_id,term_id,opts={})
+    def get_department_level_grade_data_terms(account_id,term_id,opts={})
       query_param_keys = [
         
       ]
@@ -963,7 +962,7 @@ module Pandarus
       response
       
     end
-    def get_department_level_grade_data_accounts(account_id,opts={})
+    def get_department_level_grade_data_current(account_id,opts={})
       query_param_keys = [
         
       ]
@@ -994,7 +993,7 @@ module Pandarus
       response
       
     end
-    def get_department_level_grade_data_accounts(account_id,opts={})
+    def get_department_level_grade_data_completed(account_id,opts={})
       query_param_keys = [
         
       ]
@@ -1025,7 +1024,7 @@ module Pandarus
       response
       
     end
-    def get_department_level_statistics_accounts(account_id,term_id,opts={})
+    def get_department_level_statistics_terms(account_id,term_id,opts={})
       query_param_keys = [
         
       ]
@@ -1059,7 +1058,7 @@ module Pandarus
       response
       
     end
-    def get_department_level_statistics_accounts(account_id,opts={})
+    def get_department_level_statistics_current(account_id,opts={})
       query_param_keys = [
         
       ]
@@ -1090,7 +1089,7 @@ module Pandarus
       response
       
     end
-    def get_department_level_statistics_accounts(account_id,opts={})
+    def get_department_level_statistics_completed(account_id,opts={})
       query_param_keys = [
         
       ]
@@ -2064,6 +2063,7 @@ module Pandarus
         :assignment__assignment_group_id__,
         :assignment__muted__,
         :assignment__assignment_overrides__,
+        :assignment__only_visible_to_overrides__,
         :assignment__published__,
         
       ]
@@ -2117,6 +2117,7 @@ module Pandarus
       ]
 
       form_param_keys = [
+        :assignment__grading_standard_id__,
         
       ]
 
@@ -2526,8 +2527,7 @@ module Pandarus
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
-      response
-      
+      response.map {|response|CalendarEvent.new(response)}
     end
     def create_calendar_event(calendar_event__context_code__,opts={})
       query_param_keys = [
@@ -2599,10 +2599,9 @@ module Pandarus
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
-      response
-      
+      CalendarEvent.new(response)
     end
-    def reserve_time_slot_calendar_events(id,opts={})
+    def reserve_time_slot(id,opts={})
       query_param_keys = [
         
       ]
@@ -2635,7 +2634,7 @@ module Pandarus
       response
       
     end
-    def reserve_time_slot_calendar_events(id,participant_id,opts={})
+    def reserve_time_slot_participant_id(id,participant_id,opts={})
       query_param_keys = [
         
       ]
@@ -2775,586 +2774,6 @@ module Pandarus
       page_params_store(:get, path)
       response.map {|response|Collaborator.new(response)}
     end
-    def list_user_group_collections_users(user_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "user_id is required" if user_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :user_id => user_id
-      )
-
-      # resource path
-      path = path_replace("/v1/users/{user_id}/collections",
-        :user_id => user_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Collection.new(response)}
-    end
-    def list_user_group_collections_groups(group_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "group_id is required" if group_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :group_id => group_id
-      )
-
-      # resource path
-      path = path_replace("/v1/groups/{group_id}/collections",
-        :group_id => group_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Collection.new(response)}
-    end
-    def list_pinnable_collections(opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        {}
-      
-      )
-
-      # resource path
-      path = path_replace("/v1/collections",
-        )
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response
-      
-    end
-    def get_single_collection(collection_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "collection_id is required" if collection_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :collection_id => collection_id
-      )
-
-      # resource path
-      path = path_replace("/v1/collections/{collection_id}",
-        :collection_id => collection_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      Collection.new(response)
-    end
-    def create_collection_users(user_id,name,visibility,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        :name,
-        :visibility,
-        
-      ]
-
-      # verify existence of params
-      raise "user_id is required" if user_id.nil?
-      raise "name is required" if name.nil?
-      raise "visibility is required" if visibility.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :user_id => user_id,
-        :name => name,
-        :visibility => visibility
-      )
-
-      # resource path
-      path = path_replace("/v1/users/{user_id}/collections",
-        :user_id => user_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
-      Collection.new(response)
-    end
-    def create_collection_groups(group_id,name,visibility,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        :name,
-        :visibility,
-        
-      ]
-
-      # verify existence of params
-      raise "group_id is required" if group_id.nil?
-      raise "name is required" if name.nil?
-      raise "visibility is required" if visibility.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :group_id => group_id,
-        :name => name,
-        :visibility => visibility
-      )
-
-      # resource path
-      path = path_replace("/v1/groups/{group_id}/collections",
-        :group_id => group_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
-      Collection.new(response)
-    end
-    def edit_collection(collection_id,name,visibility,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        :name,
-        :visibility,
-        
-      ]
-
-      # verify existence of params
-      raise "collection_id is required" if collection_id.nil?
-      raise "name is required" if name.nil?
-      raise "visibility is required" if visibility.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :collection_id => collection_id,
-        :name => name,
-        :visibility => visibility
-      )
-
-      # resource path
-      path = path_replace("/v1/collections/{collection_id}",
-        :collection_id => collection_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
-      Collection.new(response)
-    end
-    def delete_collection(collection_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "collection_id is required" if collection_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :collection_id => collection_id
-      )
-
-      # resource path
-      path = path_replace("/v1/collections/{collection_id}",
-        :collection_id => collection_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
-      Collection.new(response)
-    end
-    def follow_collection(collection_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "collection_id is required" if collection_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :collection_id => collection_id
-      )
-
-      # resource path
-      path = path_replace("/v1/collections/{collection_id}/followers/self",
-        :collection_id => collection_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
-      response
-      
-    end
-    def un_follow_collection(collection_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "collection_id is required" if collection_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :collection_id => collection_id
-      )
-
-      # resource path
-      path = path_replace("/v1/collections/{collection_id}/followers/self",
-        :collection_id => collection_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
-      response
-      
-    end
-    def list_collection_items_collections(collection_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "collection_id is required" if collection_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :collection_id => collection_id
-      )
-
-      # resource path
-      path = path_replace("/v1/collections/{collection_id}/items",
-        :collection_id => collection_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|CollectionItem.new(response)}
-    end
-    def list_collection_items_collections(collection_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "collection_id is required" if collection_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :collection_id => collection_id
-      )
-
-      # resource path
-      path = path_replace("/v1/collections/{collection_id}/items",
-        :collection_id => collection_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|CollectionItem.new(response)}
-    end
-    def get_individual_collection_item(item_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "item_id is required" if item_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :item_id => item_id
-      )
-
-      # resource path
-      path = path_replace("/v1/collections/items/{item_id}",
-        :item_id => item_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      CollectionItem.new(response)
-    end
-    def create_or_clone_collection_item(collection_id,link_url,title,description,image_url,user_comment,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        :link_url,
-        :title,
-        :description,
-        :image_url,
-        :user_comment,
-        
-      ]
-
-      # verify existence of params
-      raise "collection_id is required" if collection_id.nil?
-      raise "link_url is required" if link_url.nil?
-      raise "title is required" if title.nil?
-      raise "description is required" if description.nil?
-      raise "image_url is required" if image_url.nil?
-      raise "user_comment is required" if user_comment.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :collection_id => collection_id,
-        :link_url => link_url,
-        :title => title,
-        :description => description,
-        :image_url => image_url,
-        :user_comment => user_comment
-      )
-
-      # resource path
-      path = path_replace("/v1/collections/{collection_id}/items",
-        :collection_id => collection_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
-      CollectionItem.new(response)
-    end
-    def edit_collection_item(item_id,user_comment,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        :user_comment,
-        
-      ]
-
-      # verify existence of params
-      raise "item_id is required" if item_id.nil?
-      raise "user_comment is required" if user_comment.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :item_id => item_id,
-        :user_comment => user_comment
-      )
-
-      # resource path
-      path = path_replace("/v1/collections/items/{item_id}",
-        :item_id => item_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
-      CollectionItem.new(response)
-    end
-    def delete_collection_item(item_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "item_id is required" if item_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :item_id => item_id
-      )
-
-      # resource path
-      path = path_replace("/v1/collections/items/{item_id}",
-        :item_id => item_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
-      CollectionItem.new(response)
-    end
-    def upvote_item(item_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "item_id is required" if item_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :item_id => item_id
-      )
-
-      # resource path
-      path = path_replace("/v1/collections/items/{item_id}/upvotes/self",
-        :item_id => item_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
-      response
-      
-    end
-    def de_upvote_item(item_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "item_id is required" if item_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :item_id => item_id
-      )
-
-      # resource path
-      path = path_replace("/v1/collections/items/{item_id}/upvotes/self",
-        :item_id => item_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
-      response
-      
-    end
     def list_of_commmessages_for_user(user_id,opts={})
       query_param_keys = [
         :user_id,
@@ -3454,7 +2873,7 @@ module Pandarus
       page_params_store(:post, path)
       CommunicationChannel.new(response)
     end
-    def delete_communication_channel_users(user_id,id,opts={})
+    def delete_communication_channel_id(user_id,id,opts={})
       query_param_keys = [
         
       ]
@@ -3487,7 +2906,7 @@ module Pandarus
       page_params_store(:delete, path)
       CommunicationChannel.new(response)
     end
-    def delete_communication_channel_users(user_id,type,address,opts={})
+    def delete_communication_channel_type(user_id,type,address,opts={})
       query_param_keys = [
         
       ]
@@ -4523,6 +3942,7 @@ module Pandarus
         :course__self_enrollment__,
         :course__restrict_enrollments_to_course_dates__,
         :course__enroll_me__,
+        :course__term_id__,
         :course__sis_course_id__,
         :course__hide_final_grades__,
         :course__apply_assignment_group_weights__,
@@ -4613,7 +4033,7 @@ module Pandarus
       page_params_store(:get, path)
       response.map {|response|User.new(response)}
     end
-    def list_users_in_course_courses(course_id,include,opts={})
+    def list_users_in_course_users(course_id,include,opts={})
       query_param_keys = [
         :search_term,
         :enrollment_type,
@@ -4649,7 +4069,7 @@ module Pandarus
       page_params_store(:get, path)
       response.map {|response|User.new(response)}
     end
-    def list_users_in_course_courses(course_id,include,opts={})
+    def list_users_in_course_search_users(course_id,include,opts={})
       query_param_keys = [
         :search_term,
         :enrollment_type,
@@ -5052,6 +4472,7 @@ module Pandarus
       ]
 
       form_param_keys = [
+        :course__grading_standard_id__,
         
       ]
 
@@ -5883,6 +5304,108 @@ module Pandarus
       end
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
+      response
+      
+    end
+    def reorder_pinned_topics_courses(course_id,order,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :order,
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "order is required" if order.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :order => order
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/discussion_topics/reorder",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:post, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      page_params_store(:post, path)
+      response
+      
+    end
+    def reorder_pinned_topics_groups(group_id,order,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :order,
+        
+      ]
+
+      # verify existence of params
+      raise "group_id is required" if group_id.nil?
+      raise "order is required" if order.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :group_id => group_id,
+        :order => order
+      )
+
+      # resource path
+      path = path_replace("/v1/groups/{group_id}/discussion_topics/reorder",
+        :group_id => group_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:post, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      page_params_store(:post, path)
+      response
+      
+    end
+    def reorder_pinned_topics_collection_items(collection_item_id,order,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :order,
+        
+      ]
+
+      # verify existence of params
+      raise "collection_item_id is required" if collection_item_id.nil?
+      raise "order is required" if order.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :collection_item_id => collection_item_id,
+        :order => order
+      )
+
+      # resource path
+      path = path_replace("/v1/collection_items/{collection_item_id}/discussion_topics/reorder",
+        :collection_item_id => collection_item_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:post, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      page_params_store(:post, path)
       response
       
     end
@@ -7719,6 +7242,36 @@ module Pandarus
       response
       
     end
+    def list_enrollment_terms(account_id,opts={})
+      query_param_keys = [
+        :workflow_state
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/terms",
+        :account_id => account_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response.map {|response|EnrollmentTerm.new(response)}
+    end
     def list_enrollments_courses(course_id,type,role,state,opts={})
       query_param_keys = [
         :type,
@@ -9037,6 +8590,99 @@ module Pandarus
       page_params_store(:delete, path)
       FeatureFlag.new(response)
     end
+    def get_quota_information_courses(course_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/files/quota",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    def get_quota_information_groups(group_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "group_id is required" if group_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :group_id => group_id
+      )
+
+      # resource path
+      path = path_replace("/v1/groups/{group_id}/files/quota",
+        :group_id => group_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    def get_quota_information_users(user_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "user_id is required" if user_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :user_id => user_id
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{user_id}/files/quota",
+        :user_id => user_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
     def list_files_courses(course_id,opts={})
       query_param_keys = [
         :content_types,
@@ -9956,6 +9602,84 @@ module Pandarus
       page_params_store(:get, path)
       response.map {|response|SubmissionVersion.new(response)}
     end
+    def create_new_grading_standard_accounts(account_id,title,grading_scheme_entry__name__,grading_scheme_entry__value__,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :title,
+        :grading_scheme_entry__name__,
+        :grading_scheme_entry__value__,
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      raise "title is required" if title.nil?
+      raise "grading_scheme_entry__name__ is required" if grading_scheme_entry__name__.nil?
+      raise "grading_scheme_entry__value__ is required" if grading_scheme_entry__value__.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id,
+        :title => title,
+        :grading_scheme_entry__name__ => grading_scheme_entry__name__,
+        :grading_scheme_entry__value__ => grading_scheme_entry__value__
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/grading_standards",
+        :account_id => account_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:post, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      page_params_store(:post, path)
+      GradingStandard.new(response)
+    end
+    def create_new_grading_standard_courses(course_id,title,grading_scheme_entry__name__,grading_scheme_entry__value__,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :title,
+        :grading_scheme_entry__name__,
+        :grading_scheme_entry__value__,
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "title is required" if title.nil?
+      raise "grading_scheme_entry__name__ is required" if grading_scheme_entry__name__.nil?
+      raise "grading_scheme_entry__value__ is required" if grading_scheme_entry__value__.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :title => title,
+        :grading_scheme_entry__name__ => grading_scheme_entry__name__,
+        :grading_scheme_entry__value__ => grading_scheme_entry__value__
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/grading_standards",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:post, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      page_params_store(:post, path)
+      GradingStandard.new(response)
+    end
     def list_group_categories_for_context_accounts(account_id,opts={})
       query_param_keys = [
         
@@ -10567,68 +10291,6 @@ module Pandarus
       page_params_store(:delete, path)
       Group.new(response)
     end
-    def follow_group(group_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "group_id is required" if group_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :group_id => group_id
-      )
-
-      # resource path
-      path = path_replace("/v1/groups/{group_id}/followers/self",
-        :group_id => group_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
-      response
-      
-    end
-    def un_follow_group(group_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "group_id is required" if group_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :group_id => group_id
-      )
-
-      # resource path
-      path = path_replace("/v1/groups/{group_id}/followers/self",
-        :group_id => group_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
-      response
-      
-    end
     def invite_others_to_group(group_id,invitees,opts={})
       query_param_keys = [
         
@@ -10820,7 +10482,7 @@ module Pandarus
       response
       
     end
-    def list_group_memberships_groups(group_id,opts={})
+    def list_group_memberships_memberships(group_id,opts={})
       query_param_keys = [
         :filter_states
       ]
@@ -10850,7 +10512,7 @@ module Pandarus
       page_params_store(:get, path)
       response.map {|response|GroupMembership.new(response)}
     end
-    def list_group_memberships_groups(group_id,opts={})
+    def list_group_memberships_users(group_id,opts={})
       query_param_keys = [
         :filter_states
       ]
@@ -10913,7 +10575,7 @@ module Pandarus
       page_params_store(:post, path)
       GroupMembership.new(response)
     end
-    def update_membership_groups(group_id,membership_id,moderator,opts={})
+    def update_membership_memberships(group_id,membership_id,moderator,opts={})
       query_param_keys = [
         
       ]
@@ -10950,7 +10612,7 @@ module Pandarus
       page_params_store(:put, path)
       GroupMembership.new(response)
     end
-    def update_membership_groups(group_id,user_id,moderator,opts={})
+    def update_membership_users(group_id,user_id,moderator,opts={})
       query_param_keys = [
         
       ]
@@ -10987,7 +10649,7 @@ module Pandarus
       page_params_store(:put, path)
       GroupMembership.new(response)
     end
-    def leave_group_groups(group_id,membership_id,opts={})
+    def leave_group_memberships(group_id,membership_id,opts={})
       query_param_keys = [
         
       ]
@@ -11021,7 +10683,7 @@ module Pandarus
       response
       
     end
-    def leave_group_groups(group_id,user_id,opts={})
+    def leave_group_users(group_id,user_id,opts={})
       query_param_keys = [
         
       ]
@@ -11669,7 +11331,7 @@ module Pandarus
       page_params_store(:get, path)
       ModuleItemSequence.new(response)
     end
-    def list_preferences_users(user_id,communication_channel_id,opts={})
+    def list_preferences_communication_channel_id(user_id,communication_channel_id,opts={})
       query_param_keys = [
         
       ]
@@ -11702,7 +11364,7 @@ module Pandarus
       page_params_store(:get, path)
       response.map {|response|NotificationPreference.new(response)}
     end
-    def list_preferences_users(user_id,type,address,opts={})
+    def list_preferences_type(user_id,type,address,opts={})
       query_param_keys = [
         
       ]
@@ -11738,7 +11400,7 @@ module Pandarus
       page_params_store(:get, path)
       response.map {|response|NotificationPreference.new(response)}
     end
-    def get_preference_users(user_id,communication_channel_id,notification,opts={})
+    def get_preference_communication_channel_id(user_id,communication_channel_id,notification,opts={})
       query_param_keys = [
         
       ]
@@ -11774,7 +11436,7 @@ module Pandarus
       page_params_store(:get, path)
       NotificationPreference.new(response)
     end
-    def get_preference_users(user_id,type,address,notification,opts={})
+    def get_preference_type(user_id,type,address,notification,opts={})
       query_param_keys = [
         
       ]
@@ -11813,7 +11475,7 @@ module Pandarus
       page_params_store(:get, path)
       NotificationPreference.new(response)
     end
-    def update_preference_users(communication_channel_id,notification,notification_preferences__frequency__,opts={})
+    def update_preference_communication_channel_id(communication_channel_id,notification,notification_preferences__frequency__,opts={})
       query_param_keys = [
         
       ]
@@ -11850,7 +11512,7 @@ module Pandarus
       response
       
     end
-    def update_preference_users(type,address,notification,notification_preferences__frequency__,opts={})
+    def update_preference_type(type,address,notification,notification_preferences__frequency__,opts={})
       query_param_keys = [
         
       ]
@@ -11890,7 +11552,7 @@ module Pandarus
       response
       
     end
-    def update_multiple_preferences_users(communication_channel_id,notification_preferences____x_____frequency__,opts={})
+    def update_multiple_preferences_communication_channel_id(communication_channel_id,notification_preferences____x_____frequency__,opts={})
       query_param_keys = [
         
       ]
@@ -11924,7 +11586,7 @@ module Pandarus
       response
       
     end
-    def update_multiple_preferences_users(type,address,notification_preferences____x_____frequency__,opts={})
+    def update_multiple_preferences_type(type,address,notification_preferences____x_____frequency__,opts={})
       query_param_keys = [
         
       ]
@@ -12606,7 +12268,7 @@ module Pandarus
       page_params_store(:post, path)
       OutcomeLink.new(response)
     end
-    def create_link_outcome_global(id,outcome_id,opts={})
+    def create_link_outcome_global_outcome_id(id,outcome_id,opts={})
       query_param_keys = [
         
       ]
@@ -12685,7 +12347,7 @@ module Pandarus
       page_params_store(:post, path)
       OutcomeLink.new(response)
     end
-    def create_link_outcome_accounts(account_id,id,outcome_id,opts={})
+    def create_link_outcome_accounts_outcome_id(account_id,id,outcome_id,opts={})
       query_param_keys = [
         
       ]
@@ -12767,7 +12429,7 @@ module Pandarus
       page_params_store(:post, path)
       OutcomeLink.new(response)
     end
-    def create_link_outcome_courses(course_id,id,outcome_id,opts={})
+    def create_link_outcome_courses_outcome_id(course_id,id,outcome_id,opts={})
       query_param_keys = [
         
       ]
@@ -13225,6 +12887,39 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       OutcomeGroup.new(response)
+    end
+    def get_outcome_results(course_id,opts={})
+      query_param_keys = [
+        :user_ids,
+        :outcome_ids,
+        :include
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/outcome_results",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
     end
     def get_outcome_result_rollups(course_id,opts={})
       query_param_keys = [
@@ -13912,7 +13607,7 @@ module Pandarus
       page_params_store(:get, path)
       response.map {|response|PageRevision.new(response)}
     end
-    def show_revision_courses(course_id,url,opts={})
+    def show_revision_courses_latest(course_id,url,opts={})
       query_param_keys = [
         :summary
       ]
@@ -13945,7 +13640,7 @@ module Pandarus
       page_params_store(:get, path)
       PageRevision.new(response)
     end
-    def show_revision_groups(group_id,url,opts={})
+    def show_revision_groups_latest(group_id,url,opts={})
       query_param_keys = [
         :summary
       ]
@@ -13978,7 +13673,7 @@ module Pandarus
       page_params_store(:get, path)
       PageRevision.new(response)
     end
-    def show_revision_courses(course_id,url,revision_id,opts={})
+    def show_revision_courses_revision_id(course_id,url,revision_id,opts={})
       query_param_keys = [
         :summary
       ]
@@ -14014,7 +13709,7 @@ module Pandarus
       page_params_store(:get, path)
       PageRevision.new(response)
     end
-    def show_revision_groups(group_id,url,revision_id,opts={})
+    def show_revision_groups_revision_id(group_id,url,revision_id,opts={})
       query_param_keys = [
         :summary
       ]
@@ -14344,6 +14039,39 @@ module Pandarus
       response
       
     end
+    def retrieve_all_quiz_reports(course_id,quiz_id,opts={})
+      query_param_keys = [
+        :includes_all_versions
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "quiz_id is required" if quiz_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :quiz_id => quiz_id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/reports",
+        :course_id => course_id,
+        :quiz_id => quiz_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response.map {|response| QuizReport .new(response)}
+    end
     def create_quiz_report(course_id,quiz_id,quiz_report__report_type__,opts={})
       query_param_keys = [
         
@@ -14352,6 +14080,7 @@ module Pandarus
       form_param_keys = [
         :quiz_report__report_type__,
         :quiz_report__includes_all_versions__,
+        :include,
         
       ]
 
@@ -14383,7 +14112,7 @@ module Pandarus
     end
     def get_quiz_report(course_id,quiz_id,id,opts={})
       query_param_keys = [
-        
+        :include
       ]
 
       form_param_keys = [
@@ -14416,6 +14145,42 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       QuizReport.new(response)
+    end
+    def fetching_the_latest_quiz_statistics(course_id,quiz_id,all_versions,opts={})
+      query_param_keys = [
+        :all_versions
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "quiz_id is required" if quiz_id.nil?
+      raise "all_versions is required" if all_versions.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :quiz_id => quiz_id,
+        :all_versions => all_versions
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/statistics",
+        :course_id => course_id,
+        :quiz_id => quiz_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
     end
     def upload_file(course_id,quiz_id,name,on_duplicate,opts={})
       query_param_keys = [
@@ -16714,7 +16479,7 @@ module Pandarus
       page_params_store(:get, path)
       response.map {|response|User.new(response)}
     end
-    def list_the_activity_stream_users(opts={})
+    def list_the_activity_stream_self(opts={})
       query_param_keys = [
         
       ]
@@ -16744,7 +16509,7 @@ module Pandarus
       response
       
     end
-    def list_the_activity_stream_users(opts={})
+    def list_the_activity_stream_activity_stream(opts={})
       query_param_keys = [
         
       ]
@@ -16975,6 +16740,7 @@ module Pandarus
         :pseudonym__send_confirmation__,
         :communication_channel__type__,
         :communication_channel__address__,
+        :skip_confirmation,
         
       ]
 
@@ -17001,7 +16767,7 @@ module Pandarus
       page_params_store(:post, path)
       User.new(response)
     end
-    def update_user_settings_users(id,manual_mark_as_read,opts={})
+    def update_user_settings(id,manual_mark_as_read,opts={})
       query_param_keys = [
         :manual_mark_as_read
       ]
@@ -17031,40 +16797,6 @@ module Pandarus
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
-      response
-      
-    end
-    def update_user_settings_users(id,manual_mark_as_read,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        :manual_mark_as_read,
-        
-      ]
-
-      # verify existence of params
-      raise "id is required" if id.nil?
-      raise "manual_mark_as_read is required" if manual_mark_as_read.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :id => id,
-        :manual_mark_as_read => manual_mark_as_read
-      )
-
-      # resource path
-      path = path_replace("/v1/users/{id}/settings",
-        :id => id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -17138,69 +16870,7 @@ module Pandarus
       page_params_store(:delete, path)
       User.new(response)
     end
-    def follow_user(user_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "user_id is required" if user_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :user_id => user_id
-      )
-
-      # resource path
-      path = path_replace("/v1/users/{user_id}/followers/self",
-        :user_id => user_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
-      response
-      
-    end
-    def un_follow_user(user_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "user_id is required" if user_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :user_id => user_id
-      )
-
-      # resource path
-      path = path_replace("/v1/users/{user_id}/followers/self",
-        :user_id => user_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
-      response
-      
-    end
-    def merge_user_into_another_user_users(id,destination_user_id,opts={})
+    def merge_user_into_another_user_destination_user_id(id,destination_user_id,opts={})
       query_param_keys = [
         
       ]
@@ -17233,7 +16903,7 @@ module Pandarus
       page_params_store(:put, path)
       User.new(response)
     end
-    def merge_user_into_another_user_users(id,destination_account_id,destination_user_id,opts={})
+    def merge_user_into_another_user_accounts(id,destination_account_id,destination_user_id,opts={})
       query_param_keys = [
         
       ]
@@ -17390,6 +17060,109 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response.map {|response|PageView.new(response)}
+    end
+    def store_custom_data(user_id,ns,data,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :ns,
+        :data,
+        
+      ]
+
+      # verify existence of params
+      raise "user_id is required" if user_id.nil?
+      raise "ns is required" if ns.nil?
+      raise "data is required" if data.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :user_id => user_id,
+        :ns => ns,
+        :data => data
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{user_id}/custom_data",
+        :user_id => user_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:put, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      page_params_store(:put, path)
+      response
+      
+    end
+    def load_custom_data(user_id,ns,opts={})
+      query_param_keys = [
+        :ns
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "user_id is required" if user_id.nil?
+      raise "ns is required" if ns.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :user_id => user_id,
+        :ns => ns
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{user_id}/custom_data",
+        :user_id => user_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    def delete_custom_data(user_id,ns,opts={})
+      query_param_keys = [
+        :ns
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "user_id is required" if user_id.nil?
+      raise "ns is required" if ns.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :user_id => user_id,
+        :ns => ns
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{user_id}/custom_data",
+        :user_id => user_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:delete, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      page_params_store(:delete, path)
+      response
+      
     end
     
   end

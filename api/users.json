@@ -43,13 +43,13 @@
     },
     {
       "path": "/v1/users/self/activity_stream",
-      "description": "Returns the current user's global activity stream, paginated.\n\nThere are many types of objects that can be returned in the activity\nstream. All object types have the same basic set of shared attributes:\n  !!!javascript\n  {\n    'created_at': '2011-07-13T09:12:00Z',\n    'updated_at': '2011-07-25T08:52:41Z',\n    'id': 1234,\n    'title': 'Stream Item Subject',\n    'message': 'This is the body text of the activity stream item. It is plain-text, and can be multiple paragraphs.',\n    'type': 'DiscussionTopic|Conversation|Message|Submission|Conference|Collaboration|...',\n    'read_state': false,\n    'context_type': 'course', // course|group\n    'course_id': 1,\n    'group_id': null,\n    'html_url': \"http://...\" // URL to the Canvas web UI for this stream item\n  }\n\nIn addition, each item type has its own set of attributes available.\n\nDiscussionTopic:\n\n  !!!javascript\n  {\n    'type': 'DiscussionTopic',\n    'discussion_topic_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': true,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor DiscussionTopic, the message is truncated at 4kb.\n\nAnnouncement:\n\n  !!!javascript\n  {\n    'type': 'Announcement',\n    'announcement_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': null,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor Announcement, the message is truncated at 4kb.\n\nConversation:\n\n  !!!javascript\n  {\n    'type': 'Conversation',\n    'conversation_id': 1234,\n    'private': false,\n    'participant_count': 3,\n  }\n\nMessage:\n\n  !!!javascript\n  {\n    'type': 'Message',\n    'message_id': 1234,\n    'notification_category': 'Assignment Graded'\n  }\n\nSubmission:\n\nReturns an {api:Submissions:Submission Submission} with its Course and Assignment data.\n\nConference:\n\n  !!!javascript\n  {\n    'type': 'Conference',\n    'web_conference_id': 1234\n  }\n\nCollaboration:\n\n  !!!javascript\n  {\n    'type': 'Collaboration',\n    'collaboration_id': 1234\n  }\n\nCollectionItem:\n\n  !!!javascript\n  {\n    'type': 'CollectionItem',\n    'collection_item' { ... full CollectionItem data ... }\n  }",
+      "description": "Returns the current user's global activity stream, paginated.\n\nThere are many types of objects that can be returned in the activity\nstream. All object types have the same basic set of shared attributes:\n  !!!javascript\n  {\n    'created_at': '2011-07-13T09:12:00Z',\n    'updated_at': '2011-07-25T08:52:41Z',\n    'id': 1234,\n    'title': 'Stream Item Subject',\n    'message': 'This is the body text of the activity stream item. It is plain-text, and can be multiple paragraphs.',\n    'type': 'DiscussionTopic|Conversation|Message|Submission|Conference|Collaboration|...',\n    'read_state': false,\n    'context_type': 'course', // course|group\n    'course_id': 1,\n    'group_id': null,\n    'html_url': \"http://...\" // URL to the Canvas web UI for this stream item\n  }\n\nIn addition, each item type has its own set of attributes available.\n\nDiscussionTopic:\n\n  !!!javascript\n  {\n    'type': 'DiscussionTopic',\n    'discussion_topic_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': true,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor DiscussionTopic, the message is truncated at 4kb.\n\nAnnouncement:\n\n  !!!javascript\n  {\n    'type': 'Announcement',\n    'announcement_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': null,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor Announcement, the message is truncated at 4kb.\n\nConversation:\n\n  !!!javascript\n  {\n    'type': 'Conversation',\n    'conversation_id': 1234,\n    'private': false,\n    'participant_count': 3,\n  }\n\nMessage:\n\n  !!!javascript\n  {\n    'type': 'Message',\n    'message_id': 1234,\n    'notification_category': 'Assignment Graded'\n  }\n\nSubmission:\n\nReturns an {api:Submissions:Submission Submission} with its Course and Assignment data.\n\nConference:\n\n  !!!javascript\n  {\n    'type': 'Conference',\n    'web_conference_id': 1234\n  }\n\nCollaboration:\n\n  !!!javascript\n  {\n    'type': 'Collaboration',\n    'collaboration_id': 1234\n  }",
       "operations": [
         {
           "method": "GET",
           "summary": "List the activity stream",
-          "notes": "Returns the current user's global activity stream, paginated.\n\nThere are many types of objects that can be returned in the activity\nstream. All object types have the same basic set of shared attributes:\n  !!!javascript\n  {\n    'created_at': '2011-07-13T09:12:00Z',\n    'updated_at': '2011-07-25T08:52:41Z',\n    'id': 1234,\n    'title': 'Stream Item Subject',\n    'message': 'This is the body text of the activity stream item. It is plain-text, and can be multiple paragraphs.',\n    'type': 'DiscussionTopic|Conversation|Message|Submission|Conference|Collaboration|...',\n    'read_state': false,\n    'context_type': 'course', // course|group\n    'course_id': 1,\n    'group_id': null,\n    'html_url': \"http://...\" // URL to the Canvas web UI for this stream item\n  }\n\nIn addition, each item type has its own set of attributes available.\n\nDiscussionTopic:\n\n  !!!javascript\n  {\n    'type': 'DiscussionTopic',\n    'discussion_topic_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': true,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor DiscussionTopic, the message is truncated at 4kb.\n\nAnnouncement:\n\n  !!!javascript\n  {\n    'type': 'Announcement',\n    'announcement_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': null,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor Announcement, the message is truncated at 4kb.\n\nConversation:\n\n  !!!javascript\n  {\n    'type': 'Conversation',\n    'conversation_id': 1234,\n    'private': false,\n    'participant_count': 3,\n  }\n\nMessage:\n\n  !!!javascript\n  {\n    'type': 'Message',\n    'message_id': 1234,\n    'notification_category': 'Assignment Graded'\n  }\n\nSubmission:\n\nReturns an {api:Submissions:Submission Submission} with its Course and Assignment data.\n\nConference:\n\n  !!!javascript\n  {\n    'type': 'Conference',\n    'web_conference_id': 1234\n  }\n\nCollaboration:\n\n  !!!javascript\n  {\n    'type': 'Collaboration',\n    'collaboration_id': 1234\n  }\n\nCollectionItem:\n\n  !!!javascript\n  {\n    'type': 'CollectionItem',\n    'collection_item' { ... full CollectionItem data ... }\n  }",
-          "nickname": "list_the_activity_stream_users",
+          "notes": "Returns the current user's global activity stream, paginated.\n\nThere are many types of objects that can be returned in the activity\nstream. All object types have the same basic set of shared attributes:\n  !!!javascript\n  {\n    'created_at': '2011-07-13T09:12:00Z',\n    'updated_at': '2011-07-25T08:52:41Z',\n    'id': 1234,\n    'title': 'Stream Item Subject',\n    'message': 'This is the body text of the activity stream item. It is plain-text, and can be multiple paragraphs.',\n    'type': 'DiscussionTopic|Conversation|Message|Submission|Conference|Collaboration|...',\n    'read_state': false,\n    'context_type': 'course', // course|group\n    'course_id': 1,\n    'group_id': null,\n    'html_url': \"http://...\" // URL to the Canvas web UI for this stream item\n  }\n\nIn addition, each item type has its own set of attributes available.\n\nDiscussionTopic:\n\n  !!!javascript\n  {\n    'type': 'DiscussionTopic',\n    'discussion_topic_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': true,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor DiscussionTopic, the message is truncated at 4kb.\n\nAnnouncement:\n\n  !!!javascript\n  {\n    'type': 'Announcement',\n    'announcement_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': null,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor Announcement, the message is truncated at 4kb.\n\nConversation:\n\n  !!!javascript\n  {\n    'type': 'Conversation',\n    'conversation_id': 1234,\n    'private': false,\n    'participant_count': 3,\n  }\n\nMessage:\n\n  !!!javascript\n  {\n    'type': 'Message',\n    'message_id': 1234,\n    'notification_category': 'Assignment Graded'\n  }\n\nSubmission:\n\nReturns an {api:Submissions:Submission Submission} with its Course and Assignment data.\n\nConference:\n\n  !!!javascript\n  {\n    'type': 'Conference',\n    'web_conference_id': 1234\n  }\n\nCollaboration:\n\n  !!!javascript\n  {\n    'type': 'Collaboration',\n    'collaboration_id': 1234\n  }",
+          "nickname": "list_the_activity_stream_self",
           "parameters": [
 
           ],
@@ -59,13 +59,13 @@
     },
     {
       "path": "/v1/users/activity_stream",
-      "description": "Returns the current user's global activity stream, paginated.\n\nThere are many types of objects that can be returned in the activity\nstream. All object types have the same basic set of shared attributes:\n  !!!javascript\n  {\n    'created_at': '2011-07-13T09:12:00Z',\n    'updated_at': '2011-07-25T08:52:41Z',\n    'id': 1234,\n    'title': 'Stream Item Subject',\n    'message': 'This is the body text of the activity stream item. It is plain-text, and can be multiple paragraphs.',\n    'type': 'DiscussionTopic|Conversation|Message|Submission|Conference|Collaboration|...',\n    'read_state': false,\n    'context_type': 'course', // course|group\n    'course_id': 1,\n    'group_id': null,\n    'html_url': \"http://...\" // URL to the Canvas web UI for this stream item\n  }\n\nIn addition, each item type has its own set of attributes available.\n\nDiscussionTopic:\n\n  !!!javascript\n  {\n    'type': 'DiscussionTopic',\n    'discussion_topic_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': true,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor DiscussionTopic, the message is truncated at 4kb.\n\nAnnouncement:\n\n  !!!javascript\n  {\n    'type': 'Announcement',\n    'announcement_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': null,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor Announcement, the message is truncated at 4kb.\n\nConversation:\n\n  !!!javascript\n  {\n    'type': 'Conversation',\n    'conversation_id': 1234,\n    'private': false,\n    'participant_count': 3,\n  }\n\nMessage:\n\n  !!!javascript\n  {\n    'type': 'Message',\n    'message_id': 1234,\n    'notification_category': 'Assignment Graded'\n  }\n\nSubmission:\n\nReturns an {api:Submissions:Submission Submission} with its Course and Assignment data.\n\nConference:\n\n  !!!javascript\n  {\n    'type': 'Conference',\n    'web_conference_id': 1234\n  }\n\nCollaboration:\n\n  !!!javascript\n  {\n    'type': 'Collaboration',\n    'collaboration_id': 1234\n  }\n\nCollectionItem:\n\n  !!!javascript\n  {\n    'type': 'CollectionItem',\n    'collection_item' { ... full CollectionItem data ... }\n  }",
+      "description": "Returns the current user's global activity stream, paginated.\n\nThere are many types of objects that can be returned in the activity\nstream. All object types have the same basic set of shared attributes:\n  !!!javascript\n  {\n    'created_at': '2011-07-13T09:12:00Z',\n    'updated_at': '2011-07-25T08:52:41Z',\n    'id': 1234,\n    'title': 'Stream Item Subject',\n    'message': 'This is the body text of the activity stream item. It is plain-text, and can be multiple paragraphs.',\n    'type': 'DiscussionTopic|Conversation|Message|Submission|Conference|Collaboration|...',\n    'read_state': false,\n    'context_type': 'course', // course|group\n    'course_id': 1,\n    'group_id': null,\n    'html_url': \"http://...\" // URL to the Canvas web UI for this stream item\n  }\n\nIn addition, each item type has its own set of attributes available.\n\nDiscussionTopic:\n\n  !!!javascript\n  {\n    'type': 'DiscussionTopic',\n    'discussion_topic_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': true,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor DiscussionTopic, the message is truncated at 4kb.\n\nAnnouncement:\n\n  !!!javascript\n  {\n    'type': 'Announcement',\n    'announcement_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': null,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor Announcement, the message is truncated at 4kb.\n\nConversation:\n\n  !!!javascript\n  {\n    'type': 'Conversation',\n    'conversation_id': 1234,\n    'private': false,\n    'participant_count': 3,\n  }\n\nMessage:\n\n  !!!javascript\n  {\n    'type': 'Message',\n    'message_id': 1234,\n    'notification_category': 'Assignment Graded'\n  }\n\nSubmission:\n\nReturns an {api:Submissions:Submission Submission} with its Course and Assignment data.\n\nConference:\n\n  !!!javascript\n  {\n    'type': 'Conference',\n    'web_conference_id': 1234\n  }\n\nCollaboration:\n\n  !!!javascript\n  {\n    'type': 'Collaboration',\n    'collaboration_id': 1234\n  }",
       "operations": [
         {
           "method": "GET",
           "summary": "List the activity stream",
-          "notes": "Returns the current user's global activity stream, paginated.\n\nThere are many types of objects that can be returned in the activity\nstream. All object types have the same basic set of shared attributes:\n  !!!javascript\n  {\n    'created_at': '2011-07-13T09:12:00Z',\n    'updated_at': '2011-07-25T08:52:41Z',\n    'id': 1234,\n    'title': 'Stream Item Subject',\n    'message': 'This is the body text of the activity stream item. It is plain-text, and can be multiple paragraphs.',\n    'type': 'DiscussionTopic|Conversation|Message|Submission|Conference|Collaboration|...',\n    'read_state': false,\n    'context_type': 'course', // course|group\n    'course_id': 1,\n    'group_id': null,\n    'html_url': \"http://...\" // URL to the Canvas web UI for this stream item\n  }\n\nIn addition, each item type has its own set of attributes available.\n\nDiscussionTopic:\n\n  !!!javascript\n  {\n    'type': 'DiscussionTopic',\n    'discussion_topic_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': true,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor DiscussionTopic, the message is truncated at 4kb.\n\nAnnouncement:\n\n  !!!javascript\n  {\n    'type': 'Announcement',\n    'announcement_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': null,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor Announcement, the message is truncated at 4kb.\n\nConversation:\n\n  !!!javascript\n  {\n    'type': 'Conversation',\n    'conversation_id': 1234,\n    'private': false,\n    'participant_count': 3,\n  }\n\nMessage:\n\n  !!!javascript\n  {\n    'type': 'Message',\n    'message_id': 1234,\n    'notification_category': 'Assignment Graded'\n  }\n\nSubmission:\n\nReturns an {api:Submissions:Submission Submission} with its Course and Assignment data.\n\nConference:\n\n  !!!javascript\n  {\n    'type': 'Conference',\n    'web_conference_id': 1234\n  }\n\nCollaboration:\n\n  !!!javascript\n  {\n    'type': 'Collaboration',\n    'collaboration_id': 1234\n  }\n\nCollectionItem:\n\n  !!!javascript\n  {\n    'type': 'CollectionItem',\n    'collection_item' { ... full CollectionItem data ... }\n  }",
-          "nickname": "list_the_activity_stream_users",
+          "notes": "Returns the current user's global activity stream, paginated.\n\nThere are many types of objects that can be returned in the activity\nstream. All object types have the same basic set of shared attributes:\n  !!!javascript\n  {\n    'created_at': '2011-07-13T09:12:00Z',\n    'updated_at': '2011-07-25T08:52:41Z',\n    'id': 1234,\n    'title': 'Stream Item Subject',\n    'message': 'This is the body text of the activity stream item. It is plain-text, and can be multiple paragraphs.',\n    'type': 'DiscussionTopic|Conversation|Message|Submission|Conference|Collaboration|...',\n    'read_state': false,\n    'context_type': 'course', // course|group\n    'course_id': 1,\n    'group_id': null,\n    'html_url': \"http://...\" // URL to the Canvas web UI for this stream item\n  }\n\nIn addition, each item type has its own set of attributes available.\n\nDiscussionTopic:\n\n  !!!javascript\n  {\n    'type': 'DiscussionTopic',\n    'discussion_topic_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': true,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor DiscussionTopic, the message is truncated at 4kb.\n\nAnnouncement:\n\n  !!!javascript\n  {\n    'type': 'Announcement',\n    'announcement_id': 1234,\n    'total_root_discussion_entries': 5,\n    'require_initial_post': true,\n    'user_has_posted': null,\n    'root_discussion_entries': {\n      ...\n    }\n  }\n\nFor Announcement, the message is truncated at 4kb.\n\nConversation:\n\n  !!!javascript\n  {\n    'type': 'Conversation',\n    'conversation_id': 1234,\n    'private': false,\n    'participant_count': 3,\n  }\n\nMessage:\n\n  !!!javascript\n  {\n    'type': 'Message',\n    'message_id': 1234,\n    'notification_category': 'Assignment Graded'\n  }\n\nSubmission:\n\nReturns an {api:Submissions:Submission Submission} with its Course and Assignment data.\n\nConference:\n\n  !!!javascript\n  {\n    'type': 'Conference',\n    'web_conference_id': 1234\n  }\n\nCollaboration:\n\n  !!!javascript\n  {\n    'type': 'Collaboration',\n    'collaboration_id': 1234\n  }",
+          "nickname": "list_the_activity_stream_activity_stream",
           "parameters": [
 
           ],
@@ -304,6 +304,14 @@
               "type": "string",
               "format": null,
               "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "skip_confirmation",
+              "description": "Only valid for site admins and account admins making requests; If true, the channel is automatically validated and no confirmation email or SMS is sent. Otherwise, the user must respond to a confirmation message to confirm the channel.",
+              "type": "boolean",
+              "format": null,
+              "required": false
             }
           ],
           "type": "User"
@@ -318,7 +326,7 @@
           "method": "GET",
           "summary": "Update user settings.",
           "notes": "Update an existing user's settings.",
-          "nickname": "update_user_settings_users",
+          "nickname": "update_user_settings",
           "parameters": [
             {
               "paramType": "path",
@@ -330,37 +338,6 @@
             },
             {
               "paramType": "query",
-              "name": "manual_mark_as_read",
-              "description": "If true, require user to manually mark discussion posts as read (don't auto-mark as read).",
-              "type": "boolean",
-              "format": null,
-              "required": true
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
-      "path": "/v1/users/{id}/settings",
-      "description": "Update an existing user's settings.",
-      "operations": [
-        {
-          "method": "PUT",
-          "summary": "Update user settings.",
-          "notes": "Update an existing user's settings.",
-          "nickname": "update_user_settings_users",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "form",
               "name": "manual_mark_as_read",
               "description": "If true, require user to manually mark discussion posts as read (don't auto-mark as read).",
               "type": "boolean",
@@ -483,52 +460,6 @@
       ]
     },
     {
-      "path": "/v1/users/{user_id}/followers/self",
-      "description": "Follow this user. If the current user is already following the\ntarget user, nothing happens. The target user must have a public profile in\norder to follow it.\n\nOn success, returns the User object. Responds with a 401 if the user\ndoesn't have permission to follow the target user, or a 400 if the user\ncan't follow the target user (if the user and target user are the same, for\nexample).",
-      "operations": [
-        {
-          "method": "PUT",
-          "summary": "Follow a user",
-          "notes": "Follow this user. If the current user is already following the\ntarget user, nothing happens. The target user must have a public profile in\norder to follow it.\n\nOn success, returns the User object. Responds with a 401 if the user\ndoesn't have permission to follow the target user, or a 400 if the user\ncan't follow the target user (if the user and target user are the same, for\nexample).",
-          "nickname": "follow_user",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "user_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
-      "path": "/v1/users/{user_id}/followers/self",
-      "description": "Stop following this user. If the current user is not already following the\ntarget user, nothing happens.",
-      "operations": [
-        {
-          "method": "DELETE",
-          "summary": "Un-follow a user",
-          "notes": "Stop following this user. If the current user is not already following the\ntarget user, nothing happens.",
-          "nickname": "un_follow_user",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "user_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
       "path": "/v1/users/{id}/merge_into/{destination_user_id}",
       "description": "Merge a user into another user.\nTo merge users, the caller must have permissions to manage both users.\n\nWhen finding users by SIS ids in different accounts the\ndestination_account_id is required.\n\nThe account can also be identified by passing the domain in destination_account_id.",
       "operations": [
@@ -536,7 +467,7 @@
           "method": "PUT",
           "summary": "Merge user into another user",
           "notes": "Merge a user into another user.\nTo merge users, the caller must have permissions to manage both users.\n\nWhen finding users by SIS ids in different accounts the\ndestination_account_id is required.\n\nThe account can also be identified by passing the domain in destination_account_id.",
-          "nickname": "merge_user_into_another_user_users",
+          "nickname": "merge_user_into_another_user_destination_user_id",
           "parameters": [
             {
               "paramType": "path",
@@ -567,7 +498,7 @@
           "method": "PUT",
           "summary": "Merge user into another user",
           "notes": "Merge a user into another user.\nTo merge users, the caller must have permissions to manage both users.\n\nWhen finding users by SIS ids in different accounts the\ndestination_account_id is required.\n\nThe account can also be identified by passing the domain in destination_account_id.",
-          "nickname": "merge_user_into_another_user_users",
+          "nickname": "merge_user_into_another_user_accounts",
           "parameters": [
             {
               "paramType": "path",
@@ -719,6 +650,107 @@
           }
         }
       ]
+    },
+    {
+      "path": "/v1/users/{user_id}/custom_data",
+      "description": "Store arbitrary user data as JSON.\n\nArbitrary JSON data can be stored for a User.\nA typical scenario would be an external site/service that registers users in Canvas\nand wants to capture additional info about them.  The part of the URL that follows\n+/custom_data/+ defines the scope of the request, and it reflects the structure of\nthe JSON data to be stored or retrieved.\n\nA namespace parameter, +ns+, is used to prevent custom_data collisions between\ndifferent apps.  This parameter is required for all custom_data requests.\n\nA request with Content-Type multipart/form-data or Content-Type\napplication/x-www-form-urlencoded can only be used to store strings.\n\nExample PUT with multipart/form-data data:\n  curl 'https://<canvas>/api/v1/users/<user_id>/custom_data/telephone' \\\n    -X PUT \\\n    -F 'ns=com.my-organization.canvas-app' \\\n    -F 'data=555-1234' \\\n    -H 'Authorization: Bearer <token>'\n\nResponse:\n  !!!javascript\n  {\n    \"data\": \"555-1234\"\n  }\n\nSubscopes (or, generated scopes) can also be specified by passing values to\ndata[<subscope>].\n\nExample PUT specifying subscopes:\n  curl 'https://<canvas>/api/v1/users/<user_id>/custom_data/body/measurements' \\\n    -X PUT \\\n    -F 'ns=com.my-organization.canvas-app' \\\n    -F 'data[waist]=32in' \\\n    -F 'data[inseam]=34in' \\\n    -F 'data[chest]=40in' \\\n    -H 'Authorization: Bearer <token>'\n\nResponse:\n  !!!javascript\n  {\n    \"data\": {\n      \"chest\": \"40in\",\n      \"waist\": \"32in\",\n      \"inseam\": \"34in\"\n    }\n  }\n\nFollowing such a request, subsets of the stored data to be retrieved directly from a subscope.\n\nExample {api:UsersController#get_custom_data GET} from a generated scope\n  curl 'https://<canvas>/api/v1/users/<user_id>/custom_data/body/measurements/chest' \\\n    -X GET \\\n    -F 'ns=com.my-organization.canvas-app' \\\n    -H 'Authorization: Bearer <token>'\n\nResponse:\n  !!!javascript\n  {\n    \"data\": \"40in\"\n  }\n\nIf you want to store more than just strings (i.e. numbers, arrays, hashes, true, false,\nand/or null), you must make a request with Content-Type application/json as in the following\nexample.\n\nExample PUT with JSON data:\n  curl 'https://<canvas>/api/v1/users/<user_id>/custom_data' \\\n    -H 'Content-Type: application/json' \\\n    -X PUT \\\n    -d '{\n          \"ns\": \"com.my-organization.canvas-app\",\n          \"data\": {\n            \"a-number\": 6.02e23,\n            \"a-bool\": true,\n            \"a-string\": \"true\",\n            \"a-hash\": {\"a\": {\"b\": \"ohai\"}},\n            \"an-array\": [1, \"two\", null, false]\n          }\n        }' \\\n    -H 'Authorization: Bearer <token>'\n\nResponse:\n  !!!javascript\n  {\n    \"data\": {\n      \"a-number\": 6.02e+23,\n      \"a-bool\": true,\n      \"a-string\": \"true\",\n      \"a-hash\": {\n        \"a\": {\n          \"b\": \"ohai\"\n        }\n      },\n      \"an-array\": [1, \"two\", null, false]\n    }\n  }\n\nIf the data is an Object (as it is in the above example), then subsets of the data can\nbe accessed by including the object's (possibly nested) keys in the scope of a GET request.\n\nExample {api:UsersController#get_custom_data GET} with a generated scope:\n  curl 'https://<canvas>/api/v1/users/<user_id>/custom_data/a-hash/a/b' \\\n    -X GET \\\n    -F 'ns=com.my-organization.canvas-app' \\\n    -H 'Authorization: Bearer <token>'\n\nResponse:\n  !!!javascript\n  {\n    \"data\": \"ohai\"\n  }\n\n\nOn success, this endpoint returns an object containing the data that was stored.\n\nResponds with status code 200 if the scope already contained data, and it was overwritten\nby the data specified in the request.\n\nResponds with status code 201 if the scope was previously empty, and the data specified\nin the request was successfully stored there.\n\nResponds with status code 400 if the namespace parameter, +ns+, is missing or invalid, or if\nthe +data+ parameter is missing.\n\nResponds with status code 409 if the requested scope caused a conflict and data was not stored.\nThis happens when storing data at the requested scope would cause data at an outer scope\nto be lost.  e.g., if +/custom_data+ was +{\"fashion_app\": {\"hair\": \"blonde\"}}+, but\nyou tried to +`PUT /custom_data/fashion_app/hair/style -F data=buzz`+, then for the request\nto succeed,the value of +/custom_data/fashion_app/hair+ would have to become a hash, and its\nold string value would be lost.  In this situation, an error object is returned with the\nfollowing format:\n\n  !!!javascript\n  {\n    \"message\": \"write conflict for custom_data hash\",\n    \"conflict_scope\": \"fashion_app/hair\",\n    \"type_at_conflict\": \"String\",\n    \"value_at_conflict\": \"blonde\"\n  }",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Store custom data",
+          "notes": "Store arbitrary user data as JSON.\n\nArbitrary JSON data can be stored for a User.\nA typical scenario would be an external site/service that registers users in Canvas\nand wants to capture additional info about them.  The part of the URL that follows\n+/custom_data/+ defines the scope of the request, and it reflects the structure of\nthe JSON data to be stored or retrieved.\n\nA namespace parameter, +ns+, is used to prevent custom_data collisions between\ndifferent apps.  This parameter is required for all custom_data requests.\n\nA request with Content-Type multipart/form-data or Content-Type\napplication/x-www-form-urlencoded can only be used to store strings.\n\nExample PUT with multipart/form-data data:\n  curl 'https://<canvas>/api/v1/users/<user_id>/custom_data/telephone' \\\n    -X PUT \\\n    -F 'ns=com.my-organization.canvas-app' \\\n    -F 'data=555-1234' \\\n    -H 'Authorization: Bearer <token>'\n\nResponse:\n  !!!javascript\n  {\n    \"data\": \"555-1234\"\n  }\n\nSubscopes (or, generated scopes) can also be specified by passing values to\ndata[<subscope>].\n\nExample PUT specifying subscopes:\n  curl 'https://<canvas>/api/v1/users/<user_id>/custom_data/body/measurements' \\\n    -X PUT \\\n    -F 'ns=com.my-organization.canvas-app' \\\n    -F 'data[waist]=32in' \\\n    -F 'data[inseam]=34in' \\\n    -F 'data[chest]=40in' \\\n    -H 'Authorization: Bearer <token>'\n\nResponse:\n  !!!javascript\n  {\n    \"data\": {\n      \"chest\": \"40in\",\n      \"waist\": \"32in\",\n      \"inseam\": \"34in\"\n    }\n  }\n\nFollowing such a request, subsets of the stored data to be retrieved directly from a subscope.\n\nExample {api:UsersController#get_custom_data GET} from a generated scope\n  curl 'https://<canvas>/api/v1/users/<user_id>/custom_data/body/measurements/chest' \\\n    -X GET \\\n    -F 'ns=com.my-organization.canvas-app' \\\n    -H 'Authorization: Bearer <token>'\n\nResponse:\n  !!!javascript\n  {\n    \"data\": \"40in\"\n  }\n\nIf you want to store more than just strings (i.e. numbers, arrays, hashes, true, false,\nand/or null), you must make a request with Content-Type application/json as in the following\nexample.\n\nExample PUT with JSON data:\n  curl 'https://<canvas>/api/v1/users/<user_id>/custom_data' \\\n    -H 'Content-Type: application/json' \\\n    -X PUT \\\n    -d '{\n          \"ns\": \"com.my-organization.canvas-app\",\n          \"data\": {\n            \"a-number\": 6.02e23,\n            \"a-bool\": true,\n            \"a-string\": \"true\",\n            \"a-hash\": {\"a\": {\"b\": \"ohai\"}},\n            \"an-array\": [1, \"two\", null, false]\n          }\n        }' \\\n    -H 'Authorization: Bearer <token>'\n\nResponse:\n  !!!javascript\n  {\n    \"data\": {\n      \"a-number\": 6.02e+23,\n      \"a-bool\": true,\n      \"a-string\": \"true\",\n      \"a-hash\": {\n        \"a\": {\n          \"b\": \"ohai\"\n        }\n      },\n      \"an-array\": [1, \"two\", null, false]\n    }\n  }\n\nIf the data is an Object (as it is in the above example), then subsets of the data can\nbe accessed by including the object's (possibly nested) keys in the scope of a GET request.\n\nExample {api:UsersController#get_custom_data GET} with a generated scope:\n  curl 'https://<canvas>/api/v1/users/<user_id>/custom_data/a-hash/a/b' \\\n    -X GET \\\n    -F 'ns=com.my-organization.canvas-app' \\\n    -H 'Authorization: Bearer <token>'\n\nResponse:\n  !!!javascript\n  {\n    \"data\": \"ohai\"\n  }\n\n\nOn success, this endpoint returns an object containing the data that was stored.\n\nResponds with status code 200 if the scope already contained data, and it was overwritten\nby the data specified in the request.\n\nResponds with status code 201 if the scope was previously empty, and the data specified\nin the request was successfully stored there.\n\nResponds with status code 400 if the namespace parameter, +ns+, is missing or invalid, or if\nthe +data+ parameter is missing.\n\nResponds with status code 409 if the requested scope caused a conflict and data was not stored.\nThis happens when storing data at the requested scope would cause data at an outer scope\nto be lost.  e.g., if +/custom_data+ was +{\"fashion_app\": {\"hair\": \"blonde\"}}+, but\nyou tried to +`PUT /custom_data/fashion_app/hair/style -F data=buzz`+, then for the request\nto succeed,the value of +/custom_data/fashion_app/hair+ would have to become a hash, and its\nold string value would be lost.  In this situation, an error object is returned with the\nfollowing format:\n\n  !!!javascript\n  {\n    \"message\": \"write conflict for custom_data hash\",\n    \"conflict_scope\": \"fashion_app/hair\",\n    \"type_at_conflict\": \"String\",\n    \"value_at_conflict\": \"blonde\"\n  }",
+          "nickname": "store_custom_data",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "ns",
+              "description": "The namespace under which to store the data. This should be something other Canvas API apps aren't likely to use, such as a reverse DNS for your organization.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "data",
+              "description": "The data you want to store for the user, at the specified scope. If the data is composed of (possibly nested) JSON objects, scopes will be generated for the (nested) keys (see examples).",
+              "type": "json",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/custom_data",
+      "description": "Load custom user data.\n\nArbitrary JSON data can be stored for a User.  This API call\nretrieves that data for a (optional) given scope.\nSee {api:UsersController#set_custom_data Store Custom Data} for details and\nexamples.\n\nOn success, this endpoint returns an object containing the data that was requested.\n\nResponds with status code 400 if the namespace parameter, +ns+, is missing or invalid,\nor if the specified scope does not contain any data.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Load custom data",
+          "notes": "Load custom user data.\n\nArbitrary JSON data can be stored for a User.  This API call\nretrieves that data for a (optional) given scope.\nSee {api:UsersController#set_custom_data Store Custom Data} for details and\nexamples.\n\nOn success, this endpoint returns an object containing the data that was requested.\n\nResponds with status code 400 if the namespace parameter, +ns+, is missing or invalid,\nor if the specified scope does not contain any data.",
+          "nickname": "load_custom_data",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "ns",
+              "description": "The namespace from which to retrieve the data. This should be something other Canvas API apps aren't likely to use, such as a reverse DNS for your organization.",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/custom_data",
+      "description": "Delete custom user data.\n\nArbitrary JSON data can be stored for a User.  This API call\ndeletes that data for a given scope.  Without a scope, all custom_data is deleted.\nSee {api:UsersController#set_custom_data Store Custom Data} for details and\nexamples of storage and retrieval.\n\nAs an example, we'll store some data, then delete a subset of it.\n\nExample {api:UsersController#set_custom_data PUT} with valid JSON data:\n  curl 'https://<canvas>/api/v1/users/<user_id>/custom_data' \\\n    -X PUT \\\n    -F 'ns=com.my-organization.canvas-app' \\\n    -F 'data[fruit][apple]=so tasty' \\\n    -F 'data[fruit][kiwi]=a bit sour' \\\n    -F 'data[veggies][root][onion]=tear-jerking' \\\n    -H 'Authorization: Bearer <token>'\n\nResponse:\n  !!!javascript\n  {\n    \"data\": {\n      \"fruit\": {\n        \"apple\": \"so tasty\",\n        \"kiwi\": \"a bit sour\"\n      },\n      \"veggies\": {\n        \"root\": {\n          \"onion\": \"tear-jerking\"\n        }\n      }\n    }\n  }\n\nExample DELETE:\n  curl 'https://<canvas>/api/v1/users/<user_id>/custom_data/fruit/kiwi' \\\n    -X DELETE \\\n    -F 'ns=com.my-organization.canvas-app' \\\n    -H 'Authorization: Bearer <token>'\n\nResponse:\n  !!!javascript\n  {\n    \"data\": \"a bit sour\"\n  }\n\nExample {api:UsersController#get_custom_data GET} following the above DELETE:\n  curl 'https://<canvas>/api/v1/users/<user_id>/custom_data' \\\n    -X GET \\\n    -F 'ns=com.my-organization.canvas-app' \\\n    -H 'Authorization: Bearer <token>'\n\nResponse:\n  !!!javascript\n  {\n    \"data\": {\n      \"fruit\": {\n        \"apple\": \"so tasty\"\n      },\n      \"veggies\": {\n        \"root\": {\n          \"onion\": \"tear-jerking\"\n        }\n      }\n    }\n  }\n\nNote that hashes left empty after a DELETE will get removed from the custom_data store.\nFor example, following the previous commands, if we delete /custom_data/veggies/root/onion,\nthen the entire /custom_data/veggies scope will be removed.\n\nExample DELETE that empties a parent scope:\n  curl 'https://<canvas>/api/v1/users/<user_id>/custom_data/veggies/root/onion' \\\n    -X DELETE \\\n    -F 'ns=com.my-organization.canvas-app' \\\n    -H 'Authorization: Bearer <token>'\n\nResponse:\n  !!!javascript\n  {\n    \"data\": \"tear-jerking\"\n  }\n\nExample {api:UsersController#get_custom_data GET} following the above DELETE:\n  curl 'https://<canvas>/api/v1/users/<user_id>/custom_data' \\\n    -X GET \\\n    -F 'ns=com.my-organization.canvas-app' \\\n    -H 'Authorization: Bearer <token>'\n\nResponse:\n  !!!javascript\n  {\n    \"data\": {\n      \"fruit\": {\n        \"apple\": \"so tasty\"\n      }\n    }\n  }\n\nOn success, this endpoint returns an object containing the data that was deleted.\n\nResponds with status code 400 if the namespace parameter, +ns+, is missing or invalid,\nor if the specified scope does not contain any data.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete custom data",
+          "notes": "Delete custom user data.\n\nArbitrary JSON data can be stored for a User.  This API call\ndeletes that data for a given scope.  Without a scope, all custom_data is deleted.\nSee {api:UsersController#set_custom_data Store Custom Data} for details and\nexamples of storage and retrieval.\n\nAs an example, we'll store some data, then delete a subset of it.\n\nExample {api:UsersController#set_custom_data PUT} with valid JSON data:\n  curl 'https://<canvas>/api/v1/users/<user_id>/custom_data' \\\n    -X PUT \\\n    -F 'ns=com.my-organization.canvas-app' \\\n    -F 'data[fruit][apple]=so tasty' \\\n    -F 'data[fruit][kiwi]=a bit sour' \\\n    -F 'data[veggies][root][onion]=tear-jerking' \\\n    -H 'Authorization: Bearer <token>'\n\nResponse:\n  !!!javascript\n  {\n    \"data\": {\n      \"fruit\": {\n        \"apple\": \"so tasty\",\n        \"kiwi\": \"a bit sour\"\n      },\n      \"veggies\": {\n        \"root\": {\n          \"onion\": \"tear-jerking\"\n        }\n      }\n    }\n  }\n\nExample DELETE:\n  curl 'https://<canvas>/api/v1/users/<user_id>/custom_data/fruit/kiwi' \\\n    -X DELETE \\\n    -F 'ns=com.my-organization.canvas-app' \\\n    -H 'Authorization: Bearer <token>'\n\nResponse:\n  !!!javascript\n  {\n    \"data\": \"a bit sour\"\n  }\n\nExample {api:UsersController#get_custom_data GET} following the above DELETE:\n  curl 'https://<canvas>/api/v1/users/<user_id>/custom_data' \\\n    -X GET \\\n    -F 'ns=com.my-organization.canvas-app' \\\n    -H 'Authorization: Bearer <token>'\n\nResponse:\n  !!!javascript\n  {\n    \"data\": {\n      \"fruit\": {\n        \"apple\": \"so tasty\"\n      },\n      \"veggies\": {\n        \"root\": {\n          \"onion\": \"tear-jerking\"\n        }\n      }\n    }\n  }\n\nNote that hashes left empty after a DELETE will get removed from the custom_data store.\nFor example, following the previous commands, if we delete /custom_data/veggies/root/onion,\nthen the entire /custom_data/veggies scope will be removed.\n\nExample DELETE that empties a parent scope:\n  curl 'https://<canvas>/api/v1/users/<user_id>/custom_data/veggies/root/onion' \\\n    -X DELETE \\\n    -F 'ns=com.my-organization.canvas-app' \\\n    -H 'Authorization: Bearer <token>'\n\nResponse:\n  !!!javascript\n  {\n    \"data\": \"tear-jerking\"\n  }\n\nExample {api:UsersController#get_custom_data GET} following the above DELETE:\n  curl 'https://<canvas>/api/v1/users/<user_id>/custom_data' \\\n    -X GET \\\n    -F 'ns=com.my-organization.canvas-app' \\\n    -H 'Authorization: Bearer <token>'\n\nResponse:\n  !!!javascript\n  {\n    \"data\": {\n      \"fruit\": {\n        \"apple\": \"so tasty\"\n      }\n    }\n  }\n\nOn success, this endpoint returns an object containing the data that was deleted.\n\nResponds with status code 400 if the namespace parameter, +ns+, is missing or invalid,\nor if the specified scope does not contain any data.",
+          "nickname": "delete_custom_data",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "ns",
+              "description": "The namespace from which to delete the data. This should be something other Canvas API apps aren't likely to use, such as a reverse DNS for your organization.",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
     }
   ],
   "models": {
@@ -747,12 +779,18 @@
         },
         "short_name": {
           "description": "A short name the user has selected, for use in conversations or other less formal places through the site.",
+          "example": "Shelly",
           "type": "string"
         },
         "sis_user_id": {
-          "description": "The SIS ID associated with the user.  This field is only included if the user came from a SIS import.",
+          "description": "The SIS ID associated with the user.  This field is only included if the user came from a SIS import and has permissions to view SIS information.",
           "example": "SHEL93921",
           "type": "string"
+        },
+        "sis_import_id": {
+          "description": "The id of the SIS import.  This field is only included if the user came from a SIS import and has permissions to manage SIS information.",
+          "example": "18",
+          "type": "int64"
         },
         "sis_login_id": {
           "description": "DEPRECATED: The SIS login ID associated with the user. Please use the sis_user_id or login_id. This field will be removed in a future version of the API.",
@@ -957,7 +995,7 @@
           "type": "string"
         },
         "contributed": {
-          "description": "True if the request counted as contributing, such as editing a wiki page",
+          "description": "This field is deprecated, and will always be false",
           "example": "false",
           "type": "boolean"
         },

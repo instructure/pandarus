@@ -2,7 +2,7 @@
   "apiVersion": "1.0",
   "swaggerVersion": "1.2",
   "basePath": "http://canvas.instructure.com/api",
-  "resourcePath": "/feature flags",
+  "resourcePath": "/feature_flags",
   "produces": [
     "application/json"
   ],

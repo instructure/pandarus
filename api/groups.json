@@ -354,52 +354,6 @@
       ]
     },
     {
-      "path": "/v1/groups/{group_id}/followers/self",
-      "description": "Follow this group. If the current user is already following the\ngroup, nothing happens. The user must have permissions to view the\ngroup in order to follow it.\n\nResponds with a 401 if the user doesn't have permission to follow the\ngroup.",
-      "operations": [
-        {
-          "method": "PUT",
-          "summary": "Follow a group",
-          "notes": "Follow this group. If the current user is already following the\ngroup, nothing happens. The user must have permissions to view the\ngroup in order to follow it.\n\nResponds with a 401 if the user doesn't have permission to follow the\ngroup.",
-          "nickname": "follow_group",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "group_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
-      "path": "/v1/groups/{group_id}/followers/self",
-      "description": "Stop following this group. If the current user is not already\nfollowing the group, nothing happens.",
-      "operations": [
-        {
-          "method": "DELETE",
-          "summary": "Un-follow a group",
-          "notes": "Stop following this group. If the current user is not already\nfollowing the group, nothing happens.",
-          "nickname": "un_follow_group",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "group_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
       "path": "/v1/groups/{group_id}/invite",
       "description": "Sends an invitation to all supplied email addresses which will allow the\nreceivers to join the group.",
       "operations": [
@@ -575,7 +529,7 @@
           "method": "GET",
           "summary": "List group memberships",
           "notes": "List the members of a group.",
-          "nickname": "list_group_memberships_groups",
+          "nickname": "list_group_memberships_memberships",
           "parameters": [
             {
               "paramType": "path",
@@ -617,7 +571,7 @@
           "method": "GET",
           "summary": "List group memberships",
           "notes": "List the members of a group.",
-          "nickname": "list_group_memberships_groups",
+          "nickname": "list_group_memberships_users",
           "parameters": [
             {
               "paramType": "path",
@@ -690,7 +644,7 @@
           "method": "PUT",
           "summary": "Update a membership",
           "notes": "Accept a membership request, or add/remove moderator rights.",
-          "nickname": "update_membership_groups",
+          "nickname": "update_membership_memberships",
           "parameters": [
             {
               "paramType": "path",
@@ -740,7 +694,7 @@
           "method": "PUT",
           "summary": "Update a membership",
           "notes": "Accept a membership request, or add/remove moderator rights.",
-          "nickname": "update_membership_groups",
+          "nickname": "update_membership_users",
           "parameters": [
             {
               "paramType": "path",
@@ -790,7 +744,7 @@
           "method": "DELETE",
           "summary": "Leave a group",
           "notes": "Leave a group if you are allowed to leave (some groups, such as sets of\ncourse groups created by teachers, cannot be left). You may also use 'self'\nin place of a membership_id.",
-          "nickname": "leave_group_groups",
+          "nickname": "leave_group_memberships",
           "parameters": [
             {
               "paramType": "path",
@@ -821,7 +775,7 @@
           "method": "DELETE",
           "summary": "Leave a group",
           "notes": "Leave a group if you are allowed to leave (some groups, such as sets of\ncourse groups created by teachers, cannot be left). You may also use 'self'\nin place of a membership_id.",
-          "nickname": "leave_group_groups",
+          "nickname": "leave_group_users",
           "parameters": [
             {
               "paramType": "path",
@@ -924,6 +878,16 @@
           "example": 4,
           "type": "integer"
         },
+        "sis_group_id": {
+          "description": "The SIS ID of the group. Only included if the user has permission to view SIS information.",
+          "example": "group4a",
+          "type": "string"
+        },
+        "sis_import_id": {
+          "description": "The id of the SIS import if created through SIS. Only included if the user has permission to manage SIS information.",
+          "example": 14,
+          "type": "integer"
+        },
         "storage_quota_mb": {
           "description": "the storage quota for the group, in megabytes",
           "example": 50,
@@ -985,6 +949,11 @@
           "description": "optional: whether or not the record was just created on a create call (POST), i.e. was the user just added to the group, or was the user already a member",
           "example": true,
           "type": "boolean"
+        },
+        "sis_import_id": {
+          "description": "The id of the SIS import if created through SIS. Only included if the user has permission to manage SIS information.",
+          "example": 4,
+          "type": "integer"
         }
       }
     }

@@ -2,7 +2,7 @@
   "apiVersion": "1.0",
   "swaggerVersion": "1.2",
   "basePath": "http://canvas.instructure.com/api",
-  "resourcePath": "/calendar events",
+  "resourcePath": "/calendar_events",
   "produces": [
     "application/json"
   ],
@@ -73,7 +73,10 @@
               }
             }
           ],
-          "type": "void"
+          "type": "array",
+          "items": {
+            "$ref": "CalendarEvent"
+          }
         }
       ]
     },
@@ -182,12 +185,12 @@
     },
     {
       "path": "/v1/calendar_events/{id}",
-      "description": "Returns information for a single event or assignment",
+      "description": "",
       "operations": [
         {
           "method": "GET",
           "summary": "Get a single calendar event or assignment",
-          "notes": "Returns information for a single event or assignment",
+          "notes": "",
           "nickname": "get_single_calendar_event_or_assignment",
           "parameters": [
             {
@@ -199,7 +202,7 @@
               "required": true
             }
           ],
-          "type": "void"
+          "type": "CalendarEvent"
         }
       ]
     },
@@ -211,7 +214,7 @@
           "method": "POST",
           "summary": "Reserve a time slot",
           "notes": "Reserves a particular time slot and return the new reservation",
-          "nickname": "reserve_time_slot_calendar_events",
+          "nickname": "reserve_time_slot",
           "parameters": [
             {
               "paramType": "path",
@@ -250,7 +253,7 @@
           "method": "POST",
           "summary": "Reserve a time slot",
           "notes": "Reserves a particular time slot and return the new reservation",
-          "nickname": "reserve_time_slot_calendar_events",
+          "nickname": "reserve_time_slot_participant_id",
           "parameters": [
             {
               "paramType": "path",
@@ -425,20 +428,6 @@
     }
   ],
   "models": {
-    "CalendarLink": {
-      "id": "CalendarLink",
-      "description": "",
-      "required": [
-
-      ],
-      "properties": {
-        "ics": {
-          "description": "The URL of the calendar in ICS format",
-          "example": "https://canvas.instructure.com/feeds/calendars/course_abcdef.ics",
-          "type": "string"
-        }
-      }
-    },
     "CalendarEvent": {
       "id": "CalendarEvent",
       "description": "",

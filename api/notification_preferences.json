@@ -2,7 +2,7 @@
   "apiVersion": "1.0",
   "swaggerVersion": "1.2",
   "basePath": "http://canvas.instructure.com/api",
-  "resourcePath": "/notification preferences",
+  "resourcePath": "/notification_preferences",
   "produces": [
     "application/json"
   ],
@@ -15,7 +15,7 @@
           "method": "GET",
           "summary": "List preferences",
           "notes": "Fetch all preferences for the given communication channel",
-          "nickname": "list_preferences_users",
+          "nickname": "list_preferences_communication_channel_id",
           "parameters": [
             {
               "paramType": "path",
@@ -49,7 +49,7 @@
           "method": "GET",
           "summary": "List preferences",
           "notes": "Fetch all preferences for the given communication channel",
-          "nickname": "list_preferences_users",
+          "nickname": "list_preferences_type",
           "parameters": [
             {
               "paramType": "path",
@@ -91,7 +91,7 @@
           "method": "GET",
           "summary": "Get a preference",
           "notes": "Fetch the preference for the given notification for the given communicaiton channel",
-          "nickname": "get_preference_users",
+          "nickname": "get_preference_communication_channel_id",
           "parameters": [
             {
               "paramType": "path",
@@ -130,7 +130,7 @@
           "method": "GET",
           "summary": "Get a preference",
           "notes": "Fetch the preference for the given notification for the given communicaiton channel",
-          "nickname": "get_preference_users",
+          "nickname": "get_preference_type",
           "parameters": [
             {
               "paramType": "path",
@@ -177,7 +177,7 @@
           "method": "PUT",
           "summary": "Update a preference",
           "notes": "Change the preference for a single notification for a single communication channel",
-          "nickname": "update_preference_users",
+          "nickname": "update_preference_communication_channel_id",
           "parameters": [
             {
               "paramType": "path",
@@ -216,7 +216,7 @@
           "method": "PUT",
           "summary": "Update a preference",
           "notes": "Change the preference for a single notification for a single communication channel",
-          "nickname": "update_preference_users",
+          "nickname": "update_preference_type",
           "parameters": [
             {
               "paramType": "path",
@@ -263,7 +263,7 @@
           "method": "PUT",
           "summary": "Update multiple preferences",
           "notes": "Change the preferences for multiple notifications for a single communication channel at once",
-          "nickname": "update_multiple_preferences_users",
+          "nickname": "update_multiple_preferences_communication_channel_id",
           "parameters": [
             {
               "paramType": "path",
@@ -294,7 +294,7 @@
           "method": "PUT",
           "summary": "Update multiple preferences",
           "notes": "Change the preferences for multiple notifications for a single communication channel at once",
-          "nickname": "update_multiple_preferences_users",
+          "nickname": "update_multiple_preferences_type",
           "parameters": [
             {
               "paramType": "path",

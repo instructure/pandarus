@@ -2,7 +2,7 @@
   "apiVersion": "1.0",
   "swaggerVersion": "1.2",
   "basePath": "http://canvas.instructure.com/api",
-  "resourcePath": "/outcome groups",
+  "resourcePath": "/outcome_groups",
   "produces": [
     "application/json"
   ],
@@ -711,7 +711,7 @@
           "method": "PUT",
           "summary": "Create/link an outcome",
           "notes": "Link an outcome into the outcome group. The outcome to link can either be\nspecified by a PUT to the link URL for a specific outcome (the outcome_id\nin the PUT URLs) or by supplying the information for a new outcome (title,\ndescription, ratings, mastery_points) in a POST to the collection.\n\nIf linking an existing outcome, the outcome_id must identify an outcome\navailable to this context; i.e. an outcome owned by this group's context,\nan outcome owned by an associated account, or a global outcome. With\noutcome_id present, any other parameters are ignored.\n\nIf defining a new outcome, the outcome is created in the outcome group's\ncontext using the provided title, description, ratings, and mastery points;\nthe title is required but all other fields are optional. The new outcome is\nthen linked into the outcome group.\n\nIf ratings are provided when creating a new outcome, an embedded rubric\ncriterion is included in the new outcome. This criterion's mastery_points\ndefault to the maximum points in the highest rating if not specified in the\nmastery_points parameter. Any ratings lacking a description are given a\ndefault of \"No description\". Any ratings lacking a point value are given a\ndefault of 0. If no ratings are provided, the mastery_points parameter is\nignored.",
-          "nickname": "create_link_outcome_global",
+          "nickname": "create_link_outcome_global_outcome_id",
           "parameters": [
             {
               "paramType": "path",
@@ -889,7 +889,7 @@
           "method": "PUT",
           "summary": "Create/link an outcome",
           "notes": "Link an outcome into the outcome group. The outcome to link can either be\nspecified by a PUT to the link URL for a specific outcome (the outcome_id\nin the PUT URLs) or by supplying the information for a new outcome (title,\ndescription, ratings, mastery_points) in a POST to the collection.\n\nIf linking an existing outcome, the outcome_id must identify an outcome\navailable to this context; i.e. an outcome owned by this group's context,\nan outcome owned by an associated account, or a global outcome. With\noutcome_id present, any other parameters are ignored.\n\nIf defining a new outcome, the outcome is created in the outcome group's\ncontext using the provided title, description, ratings, and mastery points;\nthe title is required but all other fields are optional. The new outcome is\nthen linked into the outcome group.\n\nIf ratings are provided when creating a new outcome, an embedded rubric\ncriterion is included in the new outcome. This criterion's mastery_points\ndefault to the maximum points in the highest rating if not specified in the\nmastery_points parameter. Any ratings lacking a description are given a\ndefault of \"No description\". Any ratings lacking a point value are given a\ndefault of 0. If no ratings are provided, the mastery_points parameter is\nignored.",
-          "nickname": "create_link_outcome_accounts",
+          "nickname": "create_link_outcome_accounts_outcome_id",
           "parameters": [
             {
               "paramType": "path",
@@ -1075,7 +1075,7 @@
           "method": "PUT",
           "summary": "Create/link an outcome",
           "notes": "Link an outcome into the outcome group. The outcome to link can either be\nspecified by a PUT to the link URL for a specific outcome (the outcome_id\nin the PUT URLs) or by supplying the information for a new outcome (title,\ndescription, ratings, mastery_points) in a POST to the collection.\n\nIf linking an existing outcome, the outcome_id must identify an outcome\navailable to this context; i.e. an outcome owned by this group's context,\nan outcome owned by an associated account, or a global outcome. With\noutcome_id present, any other parameters are ignored.\n\nIf defining a new outcome, the outcome is created in the outcome group's\ncontext using the provided title, description, ratings, and mastery points;\nthe title is required but all other fields are optional. The new outcome is\nthen linked into the outcome group.\n\nIf ratings are provided when creating a new outcome, an embedded rubric\ncriterion is included in the new outcome. This criterion's mastery_points\ndefault to the maximum points in the highest rating if not specified in the\nmastery_points parameter. Any ratings lacking a description are given a\ndefault of \"No description\". Any ratings lacking a point value are given a\ndefault of 0. If no ratings are provided, the mastery_points parameter is\nignored.",
-          "nickname": "create_link_outcome_courses",
+          "nickname": "create_link_outcome_courses_outcome_id",
           "parameters": [
             {
               "paramType": "path",

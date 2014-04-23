@@ -2,11 +2,53 @@
   "apiVersion": "1.0",
   "swaggerVersion": "1.2",
   "basePath": "http://canvas.instructure.com/api",
-  "resourcePath": "/quiz reports",
+  "resourcePath": "/quiz_reports",
   "produces": [
     "application/json"
   ],
   "apis": [
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/reports",
+      "description": "Returns a list of all available reports.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieve all quiz reports",
+          "notes": "Returns a list of all available reports.",
+          "nickname": "retrieve_all_quiz_reports",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "includes_all_versions",
+              "description": "Whether to retrieve reports that consider all the submissions or only the most recent. Defaults to false, ignored for item_analysis reports.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": " QuizReport "
+          }
+        }
+      ]
+    },
     {
       "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/reports",
       "description": "Create and return a new report for this quiz. If a previously\ngenerated report matches the arguments and is still current (i.e.\nthere have been no new submissions), it will be returned.",
@@ -52,6 +94,18 @@
               "type": "boolean",
               "format": null,
               "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "include",
+              "description": "Whether the output should include documents for the file and/or progress objects associated with this report. (Note: JSON-API only)",
+              "type": "string[]",
+              "format": null,
+              "required": false,
+              "enum": [
+                "file",
+                "progress"
+              ]
             }
           ],
           "type": "QuizReport"
@@ -91,6 +145,18 @@
               "type": "string",
               "format": null,
               "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Whether the output should include documents for the file and/or progress objects associated with this report. (Note: JSON-API only)",
+              "type": "string[]",
+              "format": null,
+              "required": false,
+              "enum": [
+                "file",
+                "progress"
+              ]
             }
           ],
           "type": "QuizReport"
@@ -127,6 +193,11 @@
             ]
           }
         },
+        "readable_type": {
+          "description": "a human-readable (and localized) version of the report_type",
+          "example": "Student Analysis",
+          "type": "string"
+        },
         "includes_all_versions": {
           "description": "boolean indicating whether the report represents all submissions or only the most recent ones for each student",
           "example": true,
@@ -135,6 +206,11 @@
         "anonymous": {
           "description": "boolean indicating whether the report is for an anonymous survey. if true, no student names will be included in the csv",
           "example": false,
+          "type": "boolean"
+        },
+        "generatable": {
+          "description": "boolean indicating whether the report can be generated, which is true unless the quiz is a survey one",
+          "example": true,
           "type": "boolean"
         },
         "created_at": {
@@ -147,13 +223,22 @@
           "example": "2013-05-01T12:34:56-07:00",
           "type": "datetime"
         },
+        "url": {
+          "description": "the API endpoint for this report",
+          "example": "http://canvas.example.com/api/v1/courses/1/quizzes/1/reports/1",
+          "type": "string"
+        },
         "file": {
           "description": "if the report has finished generating, a File object that represents it. refer to the Files API for more information about the format",
           "$ref": "File"
         },
         "progress_url": {
-          "description": "if the report has not yet finished generating, a URL where information about its progress can be retrieved. refer to the Progress API for more information",
+          "description": "if the report has not yet finished generating, a URL where information about its progress can be retrieved. refer to the Progress API for more information (Note: not available in JSON-API format)",
           "type": "string"
+        },
+        "progress": {
+          "description": "if the report is being generated, a Progress object that represents the operation. Refer to the Progress API for more information about the format. (Note: available only in JSON-API format)",
+          "$ref": "Progress"
         }
       }
     }

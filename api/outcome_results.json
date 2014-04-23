@@ -2,11 +2,76 @@
   "apiVersion": "1.0",
   "swaggerVersion": "1.2",
   "basePath": "http://canvas.instructure.com/api",
-  "resourcePath": "/outcome results",
+  "resourcePath": "/outcome_results",
   "produces": [
     "application/json"
   ],
   "apis": [
+    {
+      "path": "/v1/courses/{course_id}/outcome_results",
+      "description": "Gets the outcome results for users and outcomes in the specified context.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get outcome results",
+          "notes": "Gets the outcome results for users and outcomes in the specified context.",
+          "nickname": "get_outcome_results",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "user_ids",
+              "description": "If specified, only the users whose ids are given will be included in the results. it is an error to specify an id for a user who is not a student in the context",
+              "type": "integer",
+              "format": "int64",
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "outcome_ids",
+              "description": "If specified, only the outcomes whose ids are given will be included in the results. it is an error to specify an id for an outcome which is not linked to the context.",
+              "type": "integer",
+              "format": "int64",
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Specify additional collections to be side loaded with the result. \"alignments\" includes only the alignments referenced by the returned results. \"outcomes.alignments\" includes all alignments referenced by outcomes in the context.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "alignments",
+                "outcomes",
+                "outcomes.alignments",
+                "outcome_groups",
+                "outcome_links",
+                "outcome_paths",
+                "users"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
     {
       "path": "/v1/courses/{course_id}/outcome_rollups",
       "description": "Gets the outcome rollups for the users and outcomes in the specified\ncontext.",
@@ -68,8 +133,10 @@
               "enum": [
                 "courses",
                 "outcomes",
+                "outcomes.alignments",
                 "outcome_groups",
                 "outcome_links",
+                "outcome_paths",
                 "users"
               ],
               "tags": {
@@ -83,6 +150,29 @@
     }
   ],
   "models": {
+    "OutcomeResult": {
+      "id": "OutcomeResult",
+      "description": "A student's result for an outcome",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "example": "42",
+          "type": "integer",
+          "description": "A unique identifier for this result"
+        },
+        "score": {
+          "example": 6,
+          "type": "integer",
+          "description": "The student's score"
+        },
+        "links": {
+          "example": "{\"user\"=>\"3\", \"learning_outcome\"=>\"97\", \"alignment\"=>\"53\"}",
+          "description": "Unique identifiers of objects associated with this result"
+        }
+      }
+    },
     "OutcomeRollupScoreLinks": {
       "id": "OutcomeRollupScoreLinks",
       "description": "",
@@ -158,6 +248,61 @@
         "links": {
           "example": "{\"course\"=>42, \"user\"=>42, \"section\"=>57}",
           "$ref": "OutcomeRollupLinks"
+        }
+      }
+    },
+    "OutcomeAlignment": {
+      "id": "OutcomeAlignment",
+      "description": "An asset aligned with this outcome",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "A unique identifier for this alignment",
+          "example": "quiz_3",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name of this alignment",
+          "example": "Big mid-term test",
+          "type": "string"
+        },
+        "html_url": {
+          "description": "(Optional) A URL for details about this alignment",
+          "type": "string"
+        }
+      }
+    },
+    "OutcomePath": {
+      "id": "OutcomePath",
+      "description": "The full path to an outcome",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "example": "42",
+          "type": "integer",
+          "description": "A unique identifier for this outcome"
+        },
+        "parts": {
+          "description": "an array of OutcomePathPart objects",
+          "$ref": "OutcomePathPart"
+        }
+      }
+    },
+    "OutcomePathPart": {
+      "id": "OutcomePathPart",
+      "description": "An outcome or outcome group",
+      "required": [
+
+      ],
+      "properties": {
+        "name": {
+          "example": "Spelling out numbers",
+          "type": "string",
+          "description": "The title of the outcome or outcome group"
         }
       }
     }

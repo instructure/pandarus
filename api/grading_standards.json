@@ -1,0 +1,175 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://canvas.instructure.com/api",
+  "resourcePath": "/grading_standards",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/accounts/{account_id}/grading_standards",
+      "description": "Create a new grading standard\n\nIf grading_scheme_entry arguments are omitted, then a default grading scheme\nwill be set. The default scheme is as follows:\n     \"A\" : 94,\n     \"A-\" : 90,\n     \"B+\" : 87,\n     \"B\" : 84,\n     \"B-\" : 80,\n     \"C+\" : 77,\n     \"C\" : 74,\n     \"C-\" : 70,\n     \"D+\" : 67,\n     \"D\" : 64,\n     \"D-\" : 61,\n     \"F\" : 0,",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a new grading standard",
+          "notes": "Create a new grading standard\n\nIf grading_scheme_entry arguments are omitted, then a default grading scheme\nwill be set. The default scheme is as follows:\n     \"A\" : 94,\n     \"A-\" : 90,\n     \"B+\" : 87,\n     \"B\" : 84,\n     \"B-\" : 80,\n     \"C+\" : 77,\n     \"C\" : 74,\n     \"C-\" : 70,\n     \"D+\" : 67,\n     \"D\" : 64,\n     \"D-\" : 61,\n     \"F\" : 0,",
+          "nickname": "create_new_grading_standard_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "title",
+              "description": "The title for the Grading Standard.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "grading_scheme_entry[name]",
+              "description": "The name for an entry value within a GradingStandard that describes the range of the value e.g. A-",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "grading_scheme_entry[value]",
+              "description": "The value for the name of the entry within a GradingStandard. The entry represents the lower bound of the range for the entry. This range includes the value up to the next entry in the GradingStandard, or 100 if there is no upper bound. The lowest value will have a lower bound range of 0. e.g. 93",
+              "type": "integer",
+              "format": "int64",
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "GradingStandard"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/grading_standards",
+      "description": "Create a new grading standard\n\nIf grading_scheme_entry arguments are omitted, then a default grading scheme\nwill be set. The default scheme is as follows:\n     \"A\" : 94,\n     \"A-\" : 90,\n     \"B+\" : 87,\n     \"B\" : 84,\n     \"B-\" : 80,\n     \"C+\" : 77,\n     \"C\" : 74,\n     \"C-\" : 70,\n     \"D+\" : 67,\n     \"D\" : 64,\n     \"D-\" : 61,\n     \"F\" : 0,",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a new grading standard",
+          "notes": "Create a new grading standard\n\nIf grading_scheme_entry arguments are omitted, then a default grading scheme\nwill be set. The default scheme is as follows:\n     \"A\" : 94,\n     \"A-\" : 90,\n     \"B+\" : 87,\n     \"B\" : 84,\n     \"B-\" : 80,\n     \"C+\" : 77,\n     \"C\" : 74,\n     \"C-\" : 70,\n     \"D+\" : 67,\n     \"D\" : 64,\n     \"D-\" : 61,\n     \"F\" : 0,",
+          "nickname": "create_new_grading_standard_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "title",
+              "description": "The title for the Grading Standard.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "grading_scheme_entry[name]",
+              "description": "The name for an entry value within a GradingStandard that describes the range of the value e.g. A-",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "grading_scheme_entry[value]",
+              "description": "The value for the name of the entry within a GradingStandard. The entry represents the lower bound of the range for the entry. This range includes the value up to the next entry in the GradingStandard, or 100 if there is no upper bound. The lowest value will have a lower bound range of 0. e.g. 93",
+              "type": "integer",
+              "format": "int64",
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "GradingStandard"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "GradingSchemeEntry": {
+      "id": "GradingSchemeEntry",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "name": {
+          "description": "The name for an entry value within a GradingStandard that describes the range of the value",
+          "example": "A",
+          "type": "string"
+        },
+        "value": {
+          "description": "The value for the name of the entry within a GradingStandard.  The entry represents the lower bound of the range for the entry. This range includes the value up to the next entry in the GradingStandard, or 100 if there is no upper bound. The lowest value will have a lower bound range of 0.",
+          "example": 0.9,
+          "type": "integer"
+        }
+      }
+    },
+    "GradingStandard": {
+      "id": "GradingStandard",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "title": {
+          "description": "the title of the grading standard",
+          "example": "Account Standard",
+          "type": "string"
+        },
+        "id": {
+          "description": "the id of the grading standard",
+          "example": 1,
+          "type": "integer"
+        },
+        "context_type": {
+          "description": "the context this standard is associated with, either 'Account' or 'Course'",
+          "example": "Account",
+          "type": "string"
+        },
+        "context_id": {
+          "description": "the id for the context either the Account or Course id",
+          "example": 1,
+          "type": "integer"
+        },
+        "grading_scheme": {
+          "description": "A list of GradingSchemeEntry that make up the Grading Standard as an array of values with the scheme name and value",
+          "example": "[{\"name\":\"A\", \"value\":0.9}, {\"name\":\"B\", \"value\":0.8}, {\"name\":\"C\", \"value\":0.7}, {\"name\":\"D\", \"value\":0.6}]",
+          "type": "array",
+          "items": {
+            "$ref": "GradingSchemeEntry"
+          }
+        }
+      }
+    }
+  }
+}
