@@ -163,6 +163,18 @@
       "description": "Pages"
     },
     {
+      "path": "/poll_choices.json",
+      "description": "PollChoices"
+    },
+    {
+      "path": "/poll_submissions.json",
+      "description": "PollSubmissions"
+    },
+    {
+      "path": "/polls.json",
+      "description": "Polls"
+    },
+    {
       "path": "/progress.json",
       "description": "Progress"
     },

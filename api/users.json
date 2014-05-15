@@ -1,7 +1,7 @@
 {
   "apiVersion": "1.0",
   "swaggerVersion": "1.2",
-  "basePath": "http://canvas.instructure.com/api",
+  "basePath": "https://canvas.instructure.com/api",
   "resourcePath": "/users",
   "produces": [
     "application/json"
@@ -307,7 +307,7 @@
             },
             {
               "paramType": "form",
-              "name": "skip_confirmation",
+              "name": "communication_channel[skip_confirmation]",
               "description": "Only valid for site admins and account admins making requests; If true, the channel is automatically validated and no confirmation email or SMS is sent. Otherwise, the user must respond to a confirmation message to confirm the channel.",
               "type": "boolean",
               "format": null,
@@ -526,37 +526,6 @@
             }
           ],
           "type": "User"
-        }
-      ]
-    },
-    {
-      "path": "/v1/users/{id}/accounts",
-      "description": "Return a list of all root accounts the user is associated with.",
-      "operations": [
-        {
-          "method": "GET",
-          "summary": "List associated root accounts",
-          "notes": "Return a list of all root accounts the user is associated with.",
-          "nickname": "list_associated_root_accounts",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "query",
-              "name": "search",
-              "description": "Search terms used to filter results. Accounts are searched by name.",
-              "type": "string",
-              "format": null,
-              "required": false
-            }
-          ],
-          "type": "void"
         }
       ]
     },

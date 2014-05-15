@@ -1,7 +1,7 @@
 {
   "apiVersion": "1.0",
   "swaggerVersion": "1.2",
-  "basePath": "http://canvas.instructure.com/api",
+  "basePath": "https://canvas.instructure.com/api",
   "resourcePath": "/assignments",
   "produces": [
     "application/json"
@@ -179,7 +179,7 @@
               "description": "The position of this assignment in the group when displaying assignment lists.",
               "type": "integer",
               "format": "int64",
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -210,7 +210,7 @@
               "description": "Allowed extensions if submission_types includes \"online_upload\" Example: allowed_extensions: [\"docx\",\"ppt\"]",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "tags": {
                 "type": "array"
               }
@@ -285,7 +285,7 @@
               "description": "The maximum points possible on the assignment.",
               "type": "float",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -305,26 +305,26 @@
             {
               "paramType": "form",
               "name": "assignment[due_at]",
-              "description": "The day/time the assignment is due. Accepts times in ISO 8601 format, e.g. 2011-10-21T18:48Z.",
+              "description": "The day/time the assignment is due. Accepts times in ISO 8601 format, e.g. 2014-10-21T18:48:00Z.",
               "type": "timestamp",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
               "name": "assignment[lock_at]",
-              "description": "The day/time the assignment is locked after. Accepts times in ISO 8601 format, e.g. 2011-10-21T18:48Z.",
+              "description": "The day/time the assignment is locked after. Accepts times in ISO 8601 format, e.g. 2014-10-21T18:48:00Z.",
               "type": "timestamp",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
               "name": "assignment[unlock_at]",
-              "description": "The day/time the assignment is unlocked. Accepts times in ISO 8601 format, e.g. 2011-10-21T18:48Z.",
+              "description": "The day/time the assignment is unlocked. Accepts times in ISO 8601 format, e.g. 2014-10-21T18:48:00Z.",
               "type": "timestamp",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -332,7 +332,7 @@
               "description": "The assignment's description, supports HTML.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -340,7 +340,7 @@
               "description": "The assignment group id to put the assignment in. Defaults to the top assignment group in the course.",
               "type": "integer",
               "format": "int64",
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -348,7 +348,7 @@
               "description": "Whether this assignment is muted. A muted assignment does not send change notifications and hides grades from students. Defaults to false.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -620,7 +620,7 @@
             {
               "paramType": "form",
               "name": "assignment_override[due_at]",
-              "description": "The day/time the overridden assignment is due. Accepts times in ISO 8601 format, e.g. 2011-10-21T18:48Z. If absent, this override will not affect due date. May be present but null to indicate the override removes any previous due date.",
+              "description": "The day/time the overridden assignment is due. Accepts times in ISO 8601 format, e.g. 2014-10-21T18:48:00Z. If absent, this override will not affect due date. May be present but null to indicate the override removes any previous due date.",
               "type": "timestamp",
               "format": null,
               "required": false
@@ -628,7 +628,7 @@
             {
               "paramType": "form",
               "name": "assignment_override[unlock_at]",
-              "description": "The day/time the overridden assignment becomes unlocked. Accepts times in ISO 8601 format, e.g. 2011-10-21T18:48Z. If absent, this override will not affect the unlock date. May be present but null to indicate the override removes any previous unlock date.",
+              "description": "The day/time the overridden assignment becomes unlocked. Accepts times in ISO 8601 format, e.g. 2014-10-21T18:48:00Z. If absent, this override will not affect the unlock date. May be present but null to indicate the override removes any previous unlock date.",
               "type": "timestamp",
               "format": null,
               "required": false
@@ -636,7 +636,7 @@
             {
               "paramType": "form",
               "name": "assignment_override[lock_at]",
-              "description": "The day/time the overridden assignment becomes locked. Accepts times in ISO 8601 format, e.g. 2011-10-21T18:48Z. If absent, this override will not affect the lock date. May be present but null to indicate the override removes any previous lock date.",
+              "description": "The day/time the overridden assignment becomes locked. Accepts times in ISO 8601 format, e.g. 2014-10-21T18:48:00Z. If absent, this override will not affect the lock date. May be present but null to indicate the override removes any previous lock date.",
               "type": "timestamp",
               "format": null,
               "required": false
@@ -702,7 +702,7 @@
             {
               "paramType": "form",
               "name": "assignment_override[due_at]",
-              "description": "The day/time the overridden assignment is due. Accepts times in ISO 8601 format, e.g. 2011-10-21T18:48Z. If absent, this override will not affect due date. May be present but null to indicate the override removes any previous due date.",
+              "description": "The day/time the overridden assignment is due. Accepts times in ISO 8601 format, e.g. 2014-10-21T18:48:00Z. If absent, this override will not affect due date. May be present but null to indicate the override removes any previous due date.",
               "type": "timestamp",
               "format": null,
               "required": false
@@ -710,7 +710,7 @@
             {
               "paramType": "form",
               "name": "assignment_override[unlock_at]",
-              "description": "The day/time the overridden assignment becomes unlocked. Accepts times in ISO 8601 format, e.g. 2011-10-21T18:48Z. If absent, this override will not affect the unlock date. May be present but null to indicate the override removes any previous unlock date.",
+              "description": "The day/time the overridden assignment becomes unlocked. Accepts times in ISO 8601 format, e.g. 2014-10-21T18:48:00Z. If absent, this override will not affect the unlock date. May be present but null to indicate the override removes any previous unlock date.",
               "type": "timestamp",
               "format": null,
               "required": false
@@ -718,7 +718,7 @@
             {
               "paramType": "form",
               "name": "assignment_override[lock_at]",
-              "description": "The day/time the overridden assignment becomes locked. Accepts times in ISO 8601 format, e.g. 2011-10-21T18:48Z. If absent, this override will not affect the lock date. May be present but null to indicate the override removes any previous lock date.",
+              "description": "The day/time the overridden assignment becomes locked. Accepts times in ISO 8601 format, e.g. 2014-10-21T18:48:00Z. If absent, this override will not affect the lock date. May be present but null to indicate the override removes any previous lock date.",
               "type": "timestamp",
               "format": null,
               "required": false
@@ -1069,6 +1069,11 @@
           "description": "the sorting order of the assignment in the group",
           "example": 1,
           "type": "integer"
+        },
+        "post_to_sis": {
+          "example": true,
+          "type": "boolean",
+          "description": "(optional, present if Post Grades to SIS feature is enabled)"
         },
         "muted": {
           "description": "whether the assignment is muted",

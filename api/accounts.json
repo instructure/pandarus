@@ -1,7 +1,7 @@
 {
   "apiVersion": "1.0",
   "swaggerVersion": "1.2",
-  "basePath": "http://canvas.instructure.com/api",
+  "basePath": "https://canvas.instructure.com/api",
   "resourcePath": "/accounts",
   "produces": [
     "application/json"
@@ -258,121 +258,6 @@
             }
           ],
           "type": "Account"
-        }
-      ]
-    },
-    {
-      "path": "/v1/accounts/{id}",
-      "description": "",
-      "operations": [
-        {
-          "method": "PUT",
-          "summary": "Change the domains for an account",
-          "notes": "",
-          "nickname": "change_the_domains_for_account",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "account[domains]",
-              "description": "The domains to use for this account.",
-              "type": "string",
-              "format": null,
-              "required": true,
-              "tags": {
-                "type": "array"
-              }
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
-      "path": "/v1/accounts/{id}",
-      "description": "Retrieve information on an individual account, given by id or\nsis_account_id.",
-      "operations": [
-        {
-          "method": "GET",
-          "summary": "Get a single account (internal)",
-          "notes": "Retrieve information on an individual account, given by id or\nsis_account_id.",
-          "nickname": "get_single_account_internal",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "query",
-              "name": "includes",
-              "description": "Additional attributes to include. Accepts 'domains.'",
-              "type": "string",
-              "format": null,
-              "required": false,
-              "tags": {
-                "type": "array"
-              }
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
-      "path": "/v1/accounts",
-      "description": "to '1', service will be enabled. If '0', service will be disabled.\nAvailable services are:\n  * skype\n  * diigo\n  * delicious\n  * google_docs_previews\n  * avatars\n'1,' setting will be enabled. If '0,' setting will be disabled.",
-      "operations": [
-        {
-          "method": "POST",
-          "summary": "Create a new root account",
-          "notes": "to '1', service will be enabled. If '0', service will be disabled.\nAvailable services are:\n  * skype\n  * diigo\n  * delicious\n  * google_docs_previews\n  * avatars\n'1,' setting will be enabled. If '0,' setting will be disabled.",
-          "nickname": "create_new_root_account",
-          "parameters": [
-            {
-              "paramType": "form",
-              "name": "account[name]",
-              "description": "The account name.",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "account[domain]",
-              "description": "The domain to use for this account.",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "account[services]",
-              "description": "A hash of service settings. If set",
-              "type": "string",
-              "format": null,
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "account[settings]",
-              "description": "A hash of account setting options. If set to",
-              "type": "string",
-              "format": null,
-              "required": true
-            }
-          ],
-          "type": "void"
         }
       ]
     },

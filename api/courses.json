@@ -1,7 +1,7 @@
 {
   "apiVersion": "1.0",
   "swaggerVersion": "1.2",
-  "basePath": "http://canvas.instructure.com/api",
+  "basePath": "https://canvas.instructure.com/api",
   "resourcePath": "/courses",
   "produces": [
     "application/json"
@@ -43,7 +43,7 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "- \"needs_grading_count\": Optional information to include with each Course. When needs_grading_count is given, and the current user has grading rights, the total number of submissions needing grading for all assignments is returned. - \"syllabus_body\": Optional information to include with each Course. When syllabus_body is given the user-generated html for the course syllabus is returned. - \"total_scores\": Optional information to include with each Course. When total_scores is given, any enrollments with type 'student' will also include the fields 'calculated_current_score', 'calculated_final_score', 'calculated_current_grade', and 'calculated_final_grade'. calculated_current_score is the student's score in the course, ignoring ungraded assignments. calculated_final_score is the student's score in the course including ungraded assignments with a score of 0. calculated_current_grade is the letter grade equivalent of calculated_current_score (if available). calculated_final_grade is the letter grade equivalent of calculated_final_score (if available). This argument is ignored if the course is configured to hide final grades. - \"term\": Optional information to include with each Course. When term is given, the information for the enrollment term for each course is returned. - \"course_progress\": Optional information to include with each Course. When course_progress is given, each course will include a 'course_progress' object with the fields: 'requirement_count', an integer specifying the total number of requirements in the course, 'requirement_completed_count', an integer specifying the total number of requirements in this course that have been completed, and 'next_requirement_url', a string url to the next requirement item, and 'completed_at', the date the course was completed (null if incomplete). 'next_requirement_url' will be null if all requirements have been completed or the current module does not require sequential progress. \"course_progress\" will return an error message if the course is not module based or the user is not enrolled as a student in the course.",
+              "description": "- \"needs_grading_count\": Optional information to include with each Course. When needs_grading_count is given, and the current user has grading rights, the total number of submissions needing grading for all assignments is returned. - \"syllabus_body\": Optional information to include with each Course. When syllabus_body is given the user-generated html for the course syllabus is returned. - \"total_scores\": Optional information to include with each Course. When total_scores is given, any enrollments with type 'student' will also include the fields 'calculated_current_score', 'calculated_final_score', 'calculated_current_grade', and 'calculated_final_grade'. calculated_current_score is the student's score in the course, ignoring ungraded assignments. calculated_final_score is the student's score in the course including ungraded assignments with a score of 0. calculated_current_grade is the letter grade equivalent of calculated_current_score (if available). calculated_final_grade is the letter grade equivalent of calculated_final_score (if available). This argument is ignored if the course is configured to hide final grades. - \"term\": Optional information to include with each Course. When term is given, the information for the enrollment term for each course is returned. - \"course_progress\": Optional information to include with each Course. When course_progress is given, each course will include a 'course_progress' object with the fields: 'requirement_count', an integer specifying the total number of requirements in the course, 'requirement_completed_count', an integer specifying the total number of requirements in this course that have been completed, and 'next_requirement_url', a string url to the next requirement item, and 'completed_at', the date the course was completed (null if incomplete). 'next_requirement_url' will be null if all requirements have been completed or the current module does not require sequential progress. \"course_progress\" will return an error message if the course is not module based or the user is not enrolled as a student in the course. - \"sections\": Section enrollment information to include with each Course. Returns an array of hashes containing the section ID (id), section name (name), start and end dates (start_at, end_at), as well as the enrollment type (enrollment_role, e.g. 'StudentEnrollment').",
               "type": "string",
               "format": null,
               "required": true,
@@ -233,6 +233,14 @@
               "paramType": "form",
               "name": "course[sis_course_id]",
               "description": "The unique SIS identifier.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course[integration_id]",
+              "description": "The unique Integration identifier.",
               "type": "string",
               "format": null,
               "required": false
@@ -1085,6 +1093,10 @@
         },
         "sis_course_id": {
           "description": "the SIS identifier for the course, if defined",
+          "type": "string"
+        },
+        "integration_id": {
+          "description": "the integration identifier for the course, if defined",
           "type": "string"
         },
         "name": {

@@ -1,7 +1,7 @@
 {
   "apiVersion": "1.0",
   "swaggerVersion": "1.2",
-  "basePath": "http://canvas.instructure.com/api",
+  "basePath": "https://canvas.instructure.com/api",
   "resourcePath": "/discussion_topics",
   "produces": [
     "application/json"
@@ -31,7 +31,7 @@
               "description": "Determines the order of the discussion topic list. Defaults to \"position\".",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "position",
                 "recent_activity"
@@ -96,7 +96,7 @@
               "description": "Determines the order of the discussion topic list. Defaults to \"position\".",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "position",
                 "recent_activity"
@@ -174,10 +174,14 @@
             {
               "paramType": "form",
               "name": "discussion_type",
-              "description": "no description",
+              "description": "The type of discussion. Defaults to side_comment if not value is given. Accepted values are 'side_comment', for discussions that only allow one level of nested comments, and 'threaded' for fully threaded discussions.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false,
+              "enum": [
+                "side_comment",
+                "threaded"
+              ]
             },
             {
               "paramType": "form",
@@ -209,7 +213,7 @@
               "description": "If true, the topic will have an associated podcast feed.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -217,7 +221,7 @@
               "description": "If true, the podcast will include posts from students as well. Implies podcast_enabled.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -233,7 +237,7 @@
               "description": "To create an assignment discussion, pass the assignment parameters as a sub-object. See the {api:AssignmentsApiController#create Create an Assignment API} for the available parameters. The name parameter will be ignored, as it's taken from the discussion title. If you want to make a discussion that was an assignment NOT an assignment, pass set_assignment = false as part of the assignment object",
               "type": "assignment",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -241,7 +245,7 @@
               "description": "If true, this topic is an announcement. It will appear in the announcement's section rather than the discussions section. This requires announcment-posting permissions.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -249,7 +253,15 @@
               "description": "By default, discussions are sorted chronologically by creation date, you can pass the id of another topic to have this one show up after the other when they are listed.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "group_category_id",
+              "description": "If present, the topic will become a group discussion assigned to the group.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
             }
           ],
           "type": "void"
@@ -293,10 +305,14 @@
             {
               "paramType": "form",
               "name": "discussion_type",
-              "description": "no description",
+              "description": "The type of discussion. Defaults to side_comment if not value is given. Accepted values are 'side_comment', for discussions that only allow one level of nested comments, and 'threaded' for fully threaded discussions.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false,
+              "enum": [
+                "side_comment",
+                "threaded"
+              ]
             },
             {
               "paramType": "form",
@@ -328,7 +344,7 @@
               "description": "If true, the topic will have an associated podcast feed.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -336,7 +352,7 @@
               "description": "If true, the podcast will include posts from students as well. Implies podcast_enabled.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -352,7 +368,7 @@
               "description": "To create an assignment discussion, pass the assignment parameters as a sub-object. See the {api:AssignmentsApiController#create Create an Assignment API} for the available parameters. The name parameter will be ignored, as it's taken from the discussion title. If you want to make a discussion that was an assignment NOT an assignment, pass set_assignment = false as part of the assignment object",
               "type": "assignment",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -360,7 +376,7 @@
               "description": "If true, this topic is an announcement. It will appear in the announcement's section rather than the discussions section. This requires announcment-posting permissions.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -368,7 +384,15 @@
               "description": "By default, discussions are sorted chronologically by creation date, you can pass the id of another topic to have this one show up after the other when they are listed.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "group_category_id",
+              "description": "If present, the topic will become a group discussion assigned to the group.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
             }
           ],
           "type": "void"
@@ -412,10 +436,14 @@
             {
               "paramType": "form",
               "name": "discussion_type",
-              "description": "no description",
+              "description": "The type of discussion. Defaults to side_comment if not value is given. Accepted values are 'side_comment', for discussions that only allow one level of nested comments, and 'threaded' for fully threaded discussions.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false,
+              "enum": [
+                "side_comment",
+                "threaded"
+              ]
             },
             {
               "paramType": "form",
@@ -447,7 +475,7 @@
               "description": "If true, the topic will have an associated podcast feed.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -455,7 +483,7 @@
               "description": "If true, the podcast will include posts from students as well. Implies podcast_enabled.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -471,7 +499,7 @@
               "description": "To create an assignment discussion, pass the assignment parameters as a sub-object. See the {api:AssignmentsApiController#create Create an Assignment API} for the available parameters. The name parameter will be ignored, as it's taken from the discussion title. If you want to make a discussion that was an assignment NOT an assignment, pass set_assignment = false as part of the assignment object",
               "type": "assignment",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -479,7 +507,7 @@
               "description": "If true, this topic is an announcement. It will appear in the announcement's section rather than the discussions section. This requires announcment-posting permissions.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -487,7 +515,15 @@
               "description": "By default, discussions are sorted chronologically by creation date, you can pass the id of another topic to have this one show up after the other when they are listed.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "group_category_id",
+              "description": "If present, the topic will become a group discussion assigned to the group.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
             }
           ],
           "type": "void"
@@ -704,7 +740,7 @@
               "description": "The ids of the pinned discussion topics in the desired order. (For example, \"order=104,102,103\".)",
               "type": "integer",
               "format": "int64",
-              "required": true,
+              "required": false,
               "tags": {
                 "type": "array"
               }
@@ -738,7 +774,7 @@
               "description": "The ids of the pinned discussion topics in the desired order. (For example, \"order=104,102,103\".)",
               "type": "integer",
               "format": "int64",
-              "required": true,
+              "required": false,
               "tags": {
                 "type": "array"
               }
@@ -772,7 +808,7 @@
               "description": "The ids of the pinned discussion topics in the desired order. (For example, \"order=104,102,103\".)",
               "type": "integer",
               "format": "int64",
-              "required": true,
+              "required": false,
               "tags": {
                 "type": "array"
               }
@@ -2942,6 +2978,10 @@
               "threaded"
             ]
           }
+        },
+        "group_category_id": {
+          "description": "The unique identifier of the group category if the topic is a group discussion, otherwise null.",
+          "type": "integer"
         },
         "attachments": {
           "description": "Array of file attachments.",

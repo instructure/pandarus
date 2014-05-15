@@ -1,7 +1,7 @@
 {
   "apiVersion": "1.0",
   "swaggerVersion": "1.2",
-  "basePath": "http://canvas.instructure.com/api",
+  "basePath": "https://canvas.instructure.com/api",
   "resourcePath": "/quizzes",
   "produces": [
     "application/json"
@@ -104,7 +104,7 @@
               "description": "A description of the quiz.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -126,7 +126,7 @@
               "description": "The assignment group id to put the assignment in. Defaults to the top assignment group in the course. Only valid if the quiz is graded, i.e. if quiz_type is \"assignment\" or \"graded_survey\".",
               "type": "integer",
               "format": "int64",
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -134,7 +134,7 @@
               "description": "Time limit to take this quiz, in minutes. Set to null for no time limit. Defaults to null.",
               "type": "integer",
               "format": "int64",
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -142,7 +142,7 @@
               "description": "If true, quiz answers for multiple choice questions will be randomized for each student. Defaults to false.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -194,7 +194,7 @@
               "description": "Required and only valid if allowed_attempts > 1. Scoring policy for a quiz that students can take multiple times. Defaults to \"keep_highest\".",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "keep_highest",
                 "keep_latest"
@@ -238,7 +238,7 @@
               "description": "The day/time the quiz is due. Accepts times in ISO 8601 format, e.g. 2011-10-21T18:48Z.",
               "type": "timestamp",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -246,7 +246,7 @@
               "description": "The day/time the quiz is locked for students. Accepts times in ISO 8601 format, e.g. 2011-10-21T18:48Z.",
               "type": "timestamp",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -254,7 +254,7 @@
               "description": "The day/time the quiz is unlocked for students. Accepts times in ISO 8601 format, e.g. 2011-10-21T18:48Z.",
               "type": "timestamp",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -262,7 +262,7 @@
               "description": "Whether the quiz should have a draft state of published or unpublished. NOTE: If students have started taking the quiz, or there are any submissions for the quiz, you may not unpublish a quiz and will recieve an error.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "Quiz"
