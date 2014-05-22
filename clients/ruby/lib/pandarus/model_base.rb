@@ -23,12 +23,16 @@ module Pandarus
       self.class.attribute_map.has_key? name.to_sym
     end
  
-    def inspect
+    def to_hash
       Hash[
         self.class.attribute_map.keys.map do |key|
           [key, instance_variable_get("@#{key}")]
         end
-      ].inspect.sub(/^\{/,"<#{self.class} ").sub(/\}$/,'>')
+      ]
+    end
+
+    def inspect
+      to_hash.inspect.sub(/^\{/,"<#{self.class} ").sub(/\}$/,'>')
     end
 
     def vivify(constant_name, value)
