@@ -7,7 +7,87 @@
     "application/json"
   ],
   "apis": [
-
+    {
+      "path": "/v1/polls/{poll_id}/poll_sessions/{poll_session_id}/poll_submissions/{id}",
+      "description": "Returns the poll submission with the given id",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single poll submission",
+          "notes": "Returns the poll submission with the given id",
+          "nickname": "get_single_poll_submission",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "poll_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "poll_session_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/polls/{poll_id}/poll_sessions/{poll_session_id}/poll_submissions",
+      "description": "Create a new poll submission for this poll session",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a single poll submission",
+          "notes": "Create a new poll submission for this poll session",
+          "nickname": "create_single_poll_submission",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "poll_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "poll_session_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "poll_submissions[poll_choice_id]",
+              "description": "The chosen poll choice for this submission.",
+              "type": "integer",
+              "format": "int64",
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
   ],
   "models": {
     "PollSubmission": {
@@ -15,27 +95,29 @@
       "description": "",
       "required": [
         "id",
-        "poll",
-        "user"
+        "poll_choice"
       ],
       "properties": {
         "id": {
-          "description": "The unique identifier for the account role/user assignment.",
+          "description": "The unique identifier for the poll submission.",
           "example": 1023,
           "type": "integer"
         },
-        "poll": {
-          "description": "The poll this submission is for.  See the Polls API for details.",
-          "$ref": "Poll"
+        "poll_choice_id": {
+          "description": "The unique identifier of the poll choice chosen for this submission.",
+          "example": 155,
+          "type": "integer"
         },
-        "user": {
-          "description": "The user that submitted the poll submission. See the Users API for details.",
-          "$ref": "User"
+        "user_id": {
+          "description": "the unique identifier of the user who submitted this poll submission.",
+          "example": 4555,
+          "type": "integer"
         },
-        "status": {
-          "description": "The status of the account role/user assignment.",
+        "created_at": {
+          "description": "The date and time the poll submission was submitted.",
+          "example": "2013-11-07T13:16:18Z",
           "type": "string",
-          "example": "deleted"
+          "format": "date-time"
         }
       }
     }

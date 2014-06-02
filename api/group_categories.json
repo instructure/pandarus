@@ -122,6 +122,18 @@
             },
             {
               "paramType": "form",
+              "name": "auto_leader",
+              "description": "Assigns group leaders automatically when generating and allocating students to groups Valid values are: \"first\":: the first student to be allocated to a group is the leader \"random\":: a random student from all members is chosen as the leader",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "first",
+                "random"
+              ]
+            },
+            {
+              "paramType": "form",
               "name": "group_limit",
               "description": "Limit the maximum number of users in each group (Course Only). Requires self signup.",
               "type": "string",
@@ -189,6 +201,18 @@
             },
             {
               "paramType": "form",
+              "name": "auto_leader",
+              "description": "Assigns group leaders automatically when generating and allocating students to groups Valid values are: \"first\":: the first student to be allocated to a group is the leader \"random\":: a random student from all members is chosen as the leader",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "first",
+                "random"
+              ]
+            },
+            {
+              "paramType": "form",
               "name": "group_limit",
               "description": "Limit the maximum number of users in each group (Course Only). Requires self signup.",
               "type": "string",
@@ -252,6 +276,18 @@
               "enum": [
                 "enabled",
                 "restricted"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "auto_leader",
+              "description": "Assigns group leaders automatically when generating and allocating students to groups Valid values are: \"first\":: the first student to be allocated to a group is the leader \"random\":: a random student from all members is chosen as the leader",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "first",
+                "random"
               ]
             },
             {
@@ -436,6 +472,16 @@
             "values": [
               "restricted",
               "enabled"
+            ]
+          }
+        },
+        "auto_leader": {
+          "description": "Gives instructors the ability to automatically have group leaders assigned.  Values include 'random', 'first', and null; 'random' picks a student from the group at random as the leader, 'first' sets the first student to be assigned to the group as the leader",
+          "type": "string",
+          "allowableValues": {
+            "values": [
+              "first",
+              "random"
             ]
           }
         },

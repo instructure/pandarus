@@ -8,7 +8,7 @@
   ],
   "apis": [
     {
-      "path": "/v1/courses/{course_id}/polls/{poll_id}/poll_choices",
+      "path": "/v1/polls/{poll_id}/poll_choices",
       "description": "Returns the list of PollChoices in this poll.",
       "operations": [
         {
@@ -19,30 +19,19 @@
           "parameters": [
             {
               "paramType": "path",
-              "name": "course_id",
+              "name": "poll_id",
               "description": "ID",
               "type": "string",
               "format": null,
               "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "poll_id",
-              "description": "The associated poll's unique identifier",
-              "type": "integer",
-              "format": "int64",
-              "required": true
             }
           ],
-          "type": "array",
-          "items": {
-            "$ref": "PollChoice"
-          }
+          "type": "void"
         }
       ]
     },
     {
-      "path": "/v1/courses/{course_id}/polls/{poll_id}/poll_choices/{id}",
+      "path": "/v1/polls/{poll_id}/poll_choices/{id}",
       "description": "Returns the poll choice with the given id",
       "operations": [
         {
@@ -53,7 +42,7 @@
           "parameters": [
             {
               "paramType": "path",
-              "name": "course_id",
+              "name": "poll_id",
               "description": "ID",
               "type": "string",
               "format": null,
@@ -61,27 +50,19 @@
             },
             {
               "paramType": "path",
-              "name": "poll_id",
-              "description": "The associated poll's unique identifier",
-              "type": "integer",
-              "format": "int64",
-              "required": true
-            },
-            {
-              "paramType": "path",
               "name": "id",
-              "description": "The poll choice unique identifier.",
-              "type": "integer",
-              "format": "int64",
+              "description": "ID",
+              "type": "string",
+              "format": null,
               "required": true
             }
           ],
-          "type": "PollChoice"
+          "type": "void"
         }
       ]
     },
     {
-      "path": "/v1/courses/{course_id}/polls/{poll_id}/poll_choices",
+      "path": "/v1/polls/{poll_id}/poll_choices",
       "description": "Create a new poll choice for this poll",
       "operations": [
         {
@@ -92,43 +73,41 @@
           "parameters": [
             {
               "paramType": "path",
-              "name": "course_id",
+              "name": "poll_id",
               "description": "ID",
               "type": "string",
               "format": null,
               "required": true
             },
             {
-              "paramType": "path",
-              "name": "poll_id",
-              "description": "The associated poll's unique identifier",
-              "type": "integer",
-              "format": "int64",
-              "required": true
-            },
-            {
               "paramType": "form",
-              "name": "poll_choice[text]",
+              "name": "poll_choices[text]",
               "description": "The descriptive text of the poll choice.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
             },
             {
               "paramType": "form",
-              "name": "poll_choice[is_correct]",
+              "name": "poll_choices[is_correct]",
               "description": "Whether this poll choice is considered correct or not. Defaults to false.",
               "type": "boolean",
               "format": null,
-              "required": false
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
             }
           ],
-          "type": "PollChoice"
+          "type": "void"
         }
       ]
     },
     {
-      "path": "/v1/courses/{course_id}/polls/{poll_id}/poll_choices/{id}",
+      "path": "/v1/polls/{poll_id}/poll_choices/{id}",
       "description": "Update an existing poll choice for this poll",
       "operations": [
         {
@@ -139,7 +118,7 @@
           "parameters": [
             {
               "paramType": "path",
-              "name": "course_id",
+              "name": "poll_id",
               "description": "ID",
               "type": "string",
               "format": null,
@@ -154,47 +133,45 @@
               "required": true
             },
             {
-              "paramType": "path",
-              "name": "poll_id",
-              "description": "The associated poll's unique identifier",
-              "type": "integer",
-              "format": "int64",
-              "required": true
-            },
-            {
               "paramType": "form",
-              "name": "poll_choice[text]",
+              "name": "poll_choices[text]",
               "description": "The descriptive text of the poll choice.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
             },
             {
               "paramType": "form",
-              "name": "poll_choice[is_correct]",
+              "name": "poll_choices[is_correct]",
               "description": "Whether this poll choice is considered correct or not. Defaults to false.",
               "type": "boolean",
               "format": null,
-              "required": false
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
             }
           ],
-          "type": "Poll"
+          "type": "void"
         }
       ]
     },
     {
-      "path": "/v1/courses/{course_id}/polls/{poll_id}/poll_choices/{id}",
-      "description": "<b>204 No Content<b> response code is returned if the deletion was successful.",
+      "path": "/v1/polls/{poll_id}/poll_choices/{id}",
+      "description": "<b>204 No Content</b> response code is returned if the deletion was successful.",
       "operations": [
         {
           "method": "DELETE",
           "summary": "Delete a poll choice",
-          "notes": "<b>204 No Content<b> response code is returned if the deletion was successful.",
+          "notes": "<b>204 No Content</b> response code is returned if the deletion was successful.",
           "nickname": "delete_poll_choice",
           "parameters": [
             {
               "paramType": "path",
-              "name": "course_id",
+              "name": "poll_id",
               "description": "ID",
               "type": "string",
               "format": null,
@@ -202,18 +179,10 @@
             },
             {
               "paramType": "path",
-              "name": "poll_id",
-              "description": "The associated poll's unique identifier",
-              "type": "integer",
-              "format": "int64",
-              "required": true
-            },
-            {
-              "paramType": "path",
               "name": "id",
-              "description": "The poll choice's unique identifier",
-              "type": "integer",
-              "format": "int64",
+              "description": "ID",
+              "type": "string",
+              "format": null,
               "required": true
             }
           ],
@@ -228,12 +197,18 @@
       "description": "",
       "required": [
         "id",
+        "poll_id",
         "text"
       ],
       "properties": {
         "id": {
           "description": "The unique identifier for the poll choice.",
           "example": 1023,
+          "type": "integer"
+        },
+        "poll_id": {
+          "description": "The id of the poll this poll choice belongs to.",
+          "example": 1779,
           "type": "integer"
         },
         "is_correct": {

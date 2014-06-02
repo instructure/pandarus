@@ -251,6 +251,29 @@
       ]
     },
     {
+      "path": "/v1/files/{id}/public_url",
+      "description": "Determine the URL that should be used for inline preview of the file.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get quota information",
+          "notes": "Determine the URL that should be used for inline preview of the file.",
+          "nickname": "get_quota_information",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
       "path": "/v1/files/{id}",
       "description": "Returns the standard attachment json object",
       "operations": [
@@ -409,12 +432,38 @@
     },
     {
       "path": "/v1/courses/{course_id}/folders/by_path/*full_path",
-      "description": "Given the full path to a folder, returns a list of all Folders in the path hierarchy,\nstarting at the root folder, and ending at the requested folder. If no folder exists\nwith the given full path, a Not Found error is returned.",
+      "description": "Given the full path to a folder, returns a list of all Folders in the path hierarchy,\nstarting at the root folder, and ending at the requested folder. The given path is\nrelative to the context's root folder and does not include the root folder's name\n(e.g., \"course files\"). If an empty path is given, the context's root folder alone\nis returned. Otherwise, if no folder exists with the given full path, a Not Found\nerror is returned.",
       "operations": [
         {
           "method": "GET",
           "summary": "Resolve path",
-          "notes": "Given the full path to a folder, returns a list of all Folders in the path hierarchy,\nstarting at the root folder, and ending at the requested folder. If no folder exists\nwith the given full path, a Not Found error is returned.",
+          "notes": "Given the full path to a folder, returns a list of all Folders in the path hierarchy,\nstarting at the root folder, and ending at the requested folder. The given path is\nrelative to the context's root folder and does not include the root folder's name\n(e.g., \"course files\"). If an empty path is given, the context's root folder alone\nis returned. Otherwise, if no folder exists with the given full path, a Not Found\nerror is returned.",
+          "nickname": "resolve_path_courses_full_path",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Folder"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/folders/by_path",
+      "description": "Given the full path to a folder, returns a list of all Folders in the path hierarchy,\nstarting at the root folder, and ending at the requested folder. The given path is\nrelative to the context's root folder and does not include the root folder's name\n(e.g., \"course files\"). If an empty path is given, the context's root folder alone\nis returned. Otherwise, if no folder exists with the given full path, a Not Found\nerror is returned.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Resolve path",
+          "notes": "Given the full path to a folder, returns a list of all Folders in the path hierarchy,\nstarting at the root folder, and ending at the requested folder. The given path is\nrelative to the context's root folder and does not include the root folder's name\n(e.g., \"course files\"). If an empty path is given, the context's root folder alone\nis returned. Otherwise, if no folder exists with the given full path, a Not Found\nerror is returned.",
           "nickname": "resolve_path_courses",
           "parameters": [
             {
@@ -435,12 +484,38 @@
     },
     {
       "path": "/v1/users/{user_id}/folders/by_path/*full_path",
-      "description": "Given the full path to a folder, returns a list of all Folders in the path hierarchy,\nstarting at the root folder, and ending at the requested folder. If no folder exists\nwith the given full path, a Not Found error is returned.",
+      "description": "Given the full path to a folder, returns a list of all Folders in the path hierarchy,\nstarting at the root folder, and ending at the requested folder. The given path is\nrelative to the context's root folder and does not include the root folder's name\n(e.g., \"course files\"). If an empty path is given, the context's root folder alone\nis returned. Otherwise, if no folder exists with the given full path, a Not Found\nerror is returned.",
       "operations": [
         {
           "method": "GET",
           "summary": "Resolve path",
-          "notes": "Given the full path to a folder, returns a list of all Folders in the path hierarchy,\nstarting at the root folder, and ending at the requested folder. If no folder exists\nwith the given full path, a Not Found error is returned.",
+          "notes": "Given the full path to a folder, returns a list of all Folders in the path hierarchy,\nstarting at the root folder, and ending at the requested folder. The given path is\nrelative to the context's root folder and does not include the root folder's name\n(e.g., \"course files\"). If an empty path is given, the context's root folder alone\nis returned. Otherwise, if no folder exists with the given full path, a Not Found\nerror is returned.",
+          "nickname": "resolve_path_users_full_path",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Folder"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/folders/by_path",
+      "description": "Given the full path to a folder, returns a list of all Folders in the path hierarchy,\nstarting at the root folder, and ending at the requested folder. The given path is\nrelative to the context's root folder and does not include the root folder's name\n(e.g., \"course files\"). If an empty path is given, the context's root folder alone\nis returned. Otherwise, if no folder exists with the given full path, a Not Found\nerror is returned.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Resolve path",
+          "notes": "Given the full path to a folder, returns a list of all Folders in the path hierarchy,\nstarting at the root folder, and ending at the requested folder. The given path is\nrelative to the context's root folder and does not include the root folder's name\n(e.g., \"course files\"). If an empty path is given, the context's root folder alone\nis returned. Otherwise, if no folder exists with the given full path, a Not Found\nerror is returned.",
           "nickname": "resolve_path_users",
           "parameters": [
             {
@@ -461,12 +536,38 @@
     },
     {
       "path": "/v1/groups/{group_id}/folders/by_path/*full_path",
-      "description": "Given the full path to a folder, returns a list of all Folders in the path hierarchy,\nstarting at the root folder, and ending at the requested folder. If no folder exists\nwith the given full path, a Not Found error is returned.",
+      "description": "Given the full path to a folder, returns a list of all Folders in the path hierarchy,\nstarting at the root folder, and ending at the requested folder. The given path is\nrelative to the context's root folder and does not include the root folder's name\n(e.g., \"course files\"). If an empty path is given, the context's root folder alone\nis returned. Otherwise, if no folder exists with the given full path, a Not Found\nerror is returned.",
       "operations": [
         {
           "method": "GET",
           "summary": "Resolve path",
-          "notes": "Given the full path to a folder, returns a list of all Folders in the path hierarchy,\nstarting at the root folder, and ending at the requested folder. If no folder exists\nwith the given full path, a Not Found error is returned.",
+          "notes": "Given the full path to a folder, returns a list of all Folders in the path hierarchy,\nstarting at the root folder, and ending at the requested folder. The given path is\nrelative to the context's root folder and does not include the root folder's name\n(e.g., \"course files\"). If an empty path is given, the context's root folder alone\nis returned. Otherwise, if no folder exists with the given full path, a Not Found\nerror is returned.",
+          "nickname": "resolve_path_groups_full_path",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Folder"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/folders/by_path",
+      "description": "Given the full path to a folder, returns a list of all Folders in the path hierarchy,\nstarting at the root folder, and ending at the requested folder. The given path is\nrelative to the context's root folder and does not include the root folder's name\n(e.g., \"course files\"). If an empty path is given, the context's root folder alone\nis returned. Otherwise, if no folder exists with the given full path, a Not Found\nerror is returned.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Resolve path",
+          "notes": "Given the full path to a folder, returns a list of all Folders in the path hierarchy,\nstarting at the root folder, and ending at the requested folder. The given path is\nrelative to the context's root folder and does not include the root folder's name\n(e.g., \"course files\"). If an empty path is given, the context's root folder alone\nis returned. Otherwise, if no folder exists with the given full path, a Not Found\nerror is returned.",
           "nickname": "resolve_path_groups",
           "parameters": [
             {

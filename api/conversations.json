@@ -92,7 +92,7 @@
             {
               "paramType": "form",
               "name": "recipients",
-              "description": "An array of recipient ids. These may beuser ids or course/group ids prefixed with \"course_\" or \"group_\" respectively, e.g. recipients[]=1&recipients[]=2&recipients[]=course_3",
+              "description": "An array of recipient ids. These may be user ids or course/group ids prefixed with \"course_\" or \"group_\" respectively, e.g. recipients[]=1&recipients[]=2&recipients[]=course_3",
               "type": "string",
               "format": null,
               "required": true,
@@ -154,6 +154,14 @@
                 "audio",
                 "video"
               ]
+            },
+            {
+              "paramType": "form",
+              "name": "user_note",
+              "description": "Will add a faculty journal entry for each recipient as long as the user making the api call has permission, the recipient is a student and faculty journals are enabled in the account.",
+              "type": "boolean",
+              "format": null,
+              "required": false
             },
             {
               "paramType": "form",
@@ -557,6 +565,14 @@
               "tags": {
                 "type": "array"
               }
+            },
+            {
+              "paramType": "form",
+              "name": "user_note",
+              "description": "Will add a faculty journal entry for each recipient as long as the user making the api call has permission, the recipient is a student and faculty journals are enabled in the account.",
+              "type": "boolean",
+              "format": null,
+              "required": false
             }
           ],
           "type": "void"

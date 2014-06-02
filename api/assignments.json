@@ -225,6 +225,22 @@
             },
             {
               "paramType": "form",
+              "name": "assignment[integration_data]",
+              "description": "Data related to third party integrations, JSON string required.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "assignment[integration_id]",
+              "description": "Unique ID from third party integrations",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "assignment[turnitin_settings]",
               "description": "Settings to send along to turnitin. See Assignment object definition for format.",
               "type": "string",
@@ -1075,9 +1091,19 @@
           "type": "boolean",
           "description": "(optional, present if Post Grades to SIS feature is enabled)"
         },
+        "integration_id": {
+          "example": "12341234",
+          "type": "string",
+          "description": "(optional, Third Party unique identifier for Assignment)"
+        },
+        "integration_data": {
+          "example": "12341234",
+          "type": "string",
+          "description": "(optional, Third Party integration data for assignment)"
+        },
         "muted": {
           "description": "whether the assignment is muted",
-          "type": "integer"
+          "type": "boolean"
         },
         "points_possible": {
           "description": "the maximum points possible for the assignment",

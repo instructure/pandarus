@@ -50,7 +50,7 @@
             {
               "paramType": "query",
               "name": "state",
-              "description": "Filter by enrollment state. If omitted, 'active' and 'invited' enrollments are returned.",
+              "description": "Filter by enrollment state. If omitted, 'active' and 'invited' enrollments are returned. When querying a user's enrollments (either via user_id argument or via user enrollments endpoint), the following additional synthetic states are supported: \"current_and_invited\"|\"current_and_future\"|\"current_and_concluded\"",
               "type": "string",
               "format": null,
               "required": true,
@@ -66,6 +66,14 @@
               "tags": {
                 "type": "array"
               }
+            },
+            {
+              "paramType": "query",
+              "name": "user_id",
+              "description": "Filter by user_id (only valid for course or section enrollment queries). If set to the current user's id, this is a way to determine if the user has any enrollments in the course or section, independent of whether the user has permission to view other people on the roster.",
+              "type": "string",
+              "format": null,
+              "required": true
             }
           ],
           "type": "array",
@@ -118,7 +126,7 @@
             {
               "paramType": "query",
               "name": "state",
-              "description": "Filter by enrollment state. If omitted, 'active' and 'invited' enrollments are returned.",
+              "description": "Filter by enrollment state. If omitted, 'active' and 'invited' enrollments are returned. When querying a user's enrollments (either via user_id argument or via user enrollments endpoint), the following additional synthetic states are supported: \"current_and_invited\"|\"current_and_future\"|\"current_and_concluded\"",
               "type": "string",
               "format": null,
               "required": true,
@@ -134,6 +142,14 @@
               "tags": {
                 "type": "array"
               }
+            },
+            {
+              "paramType": "query",
+              "name": "user_id",
+              "description": "Filter by user_id (only valid for course or section enrollment queries). If set to the current user's id, this is a way to determine if the user has any enrollments in the course or section, independent of whether the user has permission to view other people on the roster.",
+              "type": "string",
+              "format": null,
+              "required": true
             }
           ],
           "type": "array",
@@ -153,14 +169,6 @@
           "notes": "Depending on the URL given, return either (1) all of the enrollments in\na course, (2) all of the enrollments in a section or (3) all of a user's\nenrollments. This includes student, teacher, TA, and observer enrollments.\n\nIf a user has multiple enrollments in a context (e.g. as a teacher\nand a student or in multiple course sections), each enrollment will be\nlisted separately.\n\nnote: Currently, only an admin user can return other users' enrollments. A\nuser can, however, return his/her own enrollments.",
           "nickname": "list_enrollments_users",
           "parameters": [
-            {
-              "paramType": "path",
-              "name": "user_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
             {
               "paramType": "query",
               "name": "type",
@@ -186,7 +194,7 @@
             {
               "paramType": "query",
               "name": "state",
-              "description": "Filter by enrollment state. If omitted, 'active' and 'invited' enrollments are returned.",
+              "description": "Filter by enrollment state. If omitted, 'active' and 'invited' enrollments are returned. When querying a user's enrollments (either via user_id argument or via user enrollments endpoint), the following additional synthetic states are supported: \"current_and_invited\"|\"current_and_future\"|\"current_and_concluded\"",
               "type": "string",
               "format": null,
               "required": true,
@@ -202,6 +210,14 @@
               "tags": {
                 "type": "array"
               }
+            },
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "Filter by user_id (only valid for course or section enrollment queries). If set to the current user's id, this is a way to determine if the user has any enrollments in the course or section, independent of whether the user has permission to view other people on the roster.",
+              "type": "string",
+              "format": null,
+              "required": true
             }
           ],
           "type": "array",
@@ -587,6 +603,11 @@
           "description": "The last activity time of the user for the enrollment, in ISO8601 format.",
           "example": "2012-04-18T23:08:51Z",
           "type": "datetime"
+        },
+        "total_activity_time": {
+          "description": "The total activity time of the user for the enrollment, in seconds.",
+          "example": 260,
+          "type": "integer"
         },
         "html_url": {
           "description": "The URL to the Canvas web UI page for this course enrollment.",

@@ -7,11 +7,7 @@ module Pandarus
     def initialize(attributes = {})
       return if attributes.empty?
       attributes.each_pair do |name, value|
-        if has_attr? name.to_sym
-          assign(name, value)
-        else
-          raise ArgumentError, "#{name} is not an attribute of #{self.class}"
-        end
+        assign(name, value)
       end
     end
  
@@ -60,6 +56,8 @@ module Pandarus
  
     def assign(attr_name, value)
       props = attr(attr_name)
+      return if props.nil?
+
       if props[:type]
         if props[:container]
           value = value.map{ |v| vivify(props[:type], v) }
@@ -68,6 +66,8 @@ module Pandarus
         end
       end
       instance_variable_set("@#{attr_name}", value)
+    rescue TypeError => e
+      raise e, e.to_s + " (#{self.class}, #{props.inspect})"
     end
  
     def to_body

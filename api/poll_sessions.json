@@ -1,0 +1,360 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/poll_sessions",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/polls/{poll_id}/poll_sessions",
+      "description": "Returns the list of PollSessions in this poll.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List poll sessions for a poll",
+          "notes": "Returns the list of PollSessions in this poll.",
+          "nickname": "list_poll_sessions_for_poll",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "poll_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/polls/{poll_id}/poll_sessions/{id}",
+      "description": "Returns the poll session with the given id",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get the results for a single poll session",
+          "notes": "Returns the poll session with the given id",
+          "nickname": "get_the_results_for_single_poll_session",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "poll_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/polls/{poll_id}/poll_sessions",
+      "description": "Create a new poll session for this poll",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a single poll session",
+          "notes": "Create a new poll session for this poll",
+          "nickname": "create_single_poll_session",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "poll_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "poll_sessions[course_id]",
+              "description": "The id of the course this session is associated with.",
+              "type": "integer",
+              "format": "int64",
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "poll_sessions[course_section_id]",
+              "description": "The id of the course section this session is associated with.",
+              "type": "integer",
+              "format": "int64",
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "poll_sessions[has_public_results]",
+              "description": "Whether or not results are viewable by students.",
+              "type": "boolean",
+              "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/polls/{poll_id}/poll_sessions/{id}",
+      "description": "Update an existing poll session for this poll",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update a single poll session",
+          "notes": "Update an existing poll session for this poll",
+          "nickname": "update_single_poll_session",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "poll_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "poll_sessions[course_id]",
+              "description": "The id of the course this session is associated with.",
+              "type": "integer",
+              "format": "int64",
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "poll_sessions[course_section_id]",
+              "description": "The id of the course section this session is associated with.",
+              "type": "integer",
+              "format": "int64",
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "poll_sessions[has_public_results]",
+              "description": "Whether or not results are viewable by students.",
+              "type": "boolean",
+              "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/polls/{poll_id}/poll_sessions/{id}",
+      "description": "<b>204 No Content</b> response code is returned if the deletion was successful.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete a poll session",
+          "notes": "<b>204 No Content</b> response code is returned if the deletion was successful.",
+          "nickname": "delete_poll_session",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "poll_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/polls/{poll_id}/poll_sessions/{id}/open",
+      "description": "",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Open a poll session",
+          "notes": "",
+          "nickname": "open_poll_session",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "poll_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/polls/{poll_id}/poll_sessions/{id}/close",
+      "description": "",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Close an opened poll session",
+          "notes": "",
+          "nickname": "close_opened_poll_session",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "poll_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/poll_sessions/opened",
+      "description": "Lists all opened poll sessions available to the current user.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List opened poll sessions",
+          "notes": "Lists all opened poll sessions available to the current user.",
+          "nickname": "list_opened_poll_sessions",
+          "parameters": [
+
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/poll_sessions/closed",
+      "description": "Lists all closed poll sessions available to the current user.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List closed poll sessions",
+          "notes": "Lists all closed poll sessions available to the current user.",
+          "nickname": "list_closed_poll_sessions",
+          "parameters": [
+
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "PollSession": {
+      "id": "PollSession",
+      "description": "",
+      "required": [
+        "id",
+        "poll_id",
+        "course_id",
+        "course_section_id"
+      ],
+      "properties": {
+        "id": {
+          "description": "The unique identifier for the poll session.",
+          "example": 1023,
+          "type": "integer"
+        },
+        "poll_id": {
+          "description": "The id of the Poll this poll session is associated with",
+          "example": 55,
+          "type": "integer"
+        },
+        "course_id": {
+          "description": "The id of the Course this poll session is associated with",
+          "example": 1111,
+          "type": "integer"
+        },
+        "course_section_id": {
+          "description": "The id of the Course Section this poll session is associated with",
+          "example": 444,
+          "type": "integer"
+        },
+        "is_published": {
+          "description": "Specifies whether or not this poll session has been published for students to participate in.",
+          "example": "true",
+          "type": "boolean"
+        },
+        "has_public_results": {
+          "description": "Specifies whether the results are viewable by students.",
+          "example": "true",
+          "type": "boolean"
+        },
+        "created_at": {
+          "description": "The time at which the poll session was created.",
+          "example": "2014-01-07T15:16:18Z",
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

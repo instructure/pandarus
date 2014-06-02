@@ -8,33 +8,23 @@
   ],
   "apis": [
     {
-      "path": "/v1/courses/{course_id}/polls",
-      "description": "Returns the list of polls in this course.",
+      "path": "/v1/polls",
+      "description": "Returns the list of polls for the current user.",
       "operations": [
         {
           "method": "GET",
-          "summary": "List polls in a course",
-          "notes": "Returns the list of polls in this course.",
-          "nickname": "list_polls_in_course",
+          "summary": "List polls",
+          "notes": "Returns the list of polls for the current user.",
+          "nickname": "list_polls",
           "parameters": [
-            {
-              "paramType": "path",
-              "name": "course_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            }
+
           ],
-          "type": "array",
-          "items": {
-            "$ref": "Poll"
-          }
+          "type": "void"
         }
       ]
     },
     {
-      "path": "/v1/courses/{course_id}/polls/{id}",
+      "path": "/v1/polls/{id}",
       "description": "Returns the poll with the given id",
       "operations": [
         {
@@ -45,84 +35,66 @@
           "parameters": [
             {
               "paramType": "path",
-              "name": "course_id",
+              "name": "id",
               "description": "ID",
               "type": "string",
               "format": null,
               "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "id",
-              "description": "The poll unique identifier.",
-              "type": "integer",
-              "format": "int64",
-              "required": true
             }
           ],
-          "type": "Poll"
+          "type": "void"
         }
       ]
     },
     {
-      "path": "/v1/courses/{course_id}/polls",
-      "description": "Create a new poll for this course",
+      "path": "/v1/polls",
+      "description": "Create a new poll for the current user",
       "operations": [
         {
           "method": "POST",
           "summary": "Create a single poll",
-          "notes": "Create a new poll for this course",
+          "notes": "Create a new poll for the current user",
           "nickname": "create_single_poll",
           "parameters": [
             {
-              "paramType": "path",
-              "name": "course_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
               "paramType": "form",
-              "name": "poll[title]",
+              "name": "polls[question]",
               "description": "The title of the poll.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
             },
             {
               "paramType": "form",
-              "name": "poll[description]",
+              "name": "polls[description]",
               "description": "A brief description or instructions for the poll.",
               "type": "string",
               "format": null,
-              "required": false
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
             }
           ],
-          "type": "Poll"
+          "type": "void"
         }
       ]
     },
     {
-      "path": "/v1/courses/{course_id}/polls/{id}",
-      "description": "Update an existing poll for this course",
+      "path": "/v1/polls/{id}",
+      "description": "Update an existing poll belonging to the current user",
       "operations": [
         {
           "method": "PUT",
           "summary": "Update a single poll",
-          "notes": "Update an existing poll for this course",
+          "notes": "Update an existing poll belonging to the current user",
           "nickname": "update_single_poll",
           "parameters": [
             {
               "paramType": "path",
-              "name": "course_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
               "name": "id",
               "description": "ID",
               "type": "string",
@@ -131,49 +103,47 @@
             },
             {
               "paramType": "form",
-              "name": "poll[title]",
+              "name": "polls[question]",
               "description": "The title of the poll.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": true,
+              "tags": {
+                "type": "array"
+              }
             },
             {
               "paramType": "form",
-              "name": "poll[description]",
+              "name": "polls[description]",
               "description": "A brief description or instructions for the poll.",
               "type": "string",
               "format": null,
-              "required": false
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
             }
           ],
-          "type": "Poll"
+          "type": "void"
         }
       ]
     },
     {
-      "path": "/v1/courses/{course_id}/polls/{id}",
-      "description": "<b>204 No Content<b> response code is returned if the deletion was successful.",
+      "path": "/v1/polls/{id}",
+      "description": "<b>204 No Content</b> response code is returned if the deletion was successful.",
       "operations": [
         {
           "method": "DELETE",
           "summary": "Delete a poll",
-          "notes": "<b>204 No Content<b> response code is returned if the deletion was successful.",
+          "notes": "<b>204 No Content</b> response code is returned if the deletion was successful.",
           "nickname": "delete_poll",
           "parameters": [
             {
               "paramType": "path",
-              "name": "course_id",
+              "name": "id",
               "description": "ID",
               "type": "string",
               "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "id",
-              "description": "The poll's unique identifier",
-              "type": "integer",
-              "format": "int64",
               "required": true
             }
           ],
@@ -188,8 +158,7 @@
       "description": "",
       "required": [
         "id",
-        "course",
-        "title"
+        "question"
       ],
       "properties": {
         "id": {
@@ -197,19 +166,26 @@
           "example": 1023,
           "type": "integer"
         },
-        "course": {
-          "description": "The course the poll belongs to.  See the Courses API for details.",
-          "$ref": "Course"
-        },
-        "title": {
-          "description": "The title of the poll.",
+        "question": {
+          "description": "The question/title of the poll.",
           "type": "string",
-          "example": "A Sample Poll"
+          "example": "What do you consider most important to your learning in this course?"
         },
         "description": {
           "description": "A short description of the poll.",
           "type": "string",
-          "example": "This poll is to quickly determine what you've learned in the past hour."
+          "example": "This poll is to determine what priorities the students in the course have."
+        },
+        "created_at": {
+          "description": "The time at which the poll was created.",
+          "example": "2014-01-07T15:16:18Z",
+          "type": "string",
+          "format": "date-time"
+        },
+        "user_id": {
+          "description": "The unique identifier for the user that created the poll.",
+          "example": 105,
+          "type": "integer"
         }
       }
     }

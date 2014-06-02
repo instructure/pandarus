@@ -163,6 +163,10 @@
       "description": "Pages"
     },
     {
+      "path": "/poll_sessions.json",
+      "description": "Poll Sessions"
+    },
+    {
       "path": "/poll_choices.json",
       "description": "PollChoices"
     },
@@ -177,6 +181,10 @@
     {
       "path": "/progress.json",
       "description": "Progress"
+    },
+    {
+      "path": "/quiz_extensions.json",
+      "description": "Quiz Extensions"
     },
     {
       "path": "/quiz_ip_filters.json",

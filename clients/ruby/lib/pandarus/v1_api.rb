@@ -2061,6 +2061,8 @@ module Pandarus
         :assignment__submission_types__,
         :assignment__allowed_extensions__,
         :assignment__turnitin_enabled__,
+        :assignment__integration_data__,
+        :assignment__integration_id__,
         :assignment__turnitin_settings__,
         :assignment__peer_reviews__,
         :assignment__automatic_peer_reviews__,
@@ -4409,6 +4411,7 @@ module Pandarus
         :attachment_ids,
         :media_comment_id,
         :media_comment_type,
+        :user_note,
         :mode,
         :scope,
         :filter,
@@ -4687,6 +4690,7 @@ module Pandarus
         :media_comment_type,
         :recipients,
         :included_messages,
+        :user_note,
         
       ]
 
@@ -8421,11 +8425,12 @@ module Pandarus
     end
     
     # List enrollments
-    def list_enrollments_courses(course_id,type,role,state,opts={})
+    def list_enrollments_courses(course_id,type,role,state,user_id,opts={})
       query_param_keys = [
         :type,
         :role,
-        :state
+        :state,
+        :user_id
       ]
 
       form_param_keys = [
@@ -8437,12 +8442,14 @@ module Pandarus
       raise "type is required" if type.nil?
       raise "role is required" if role.nil?
       raise "state is required" if state.nil?
+      raise "user_id is required" if user_id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :type => type,
         :role => role,
-        :state => state
+        :state => state,
+        :user_id => user_id
       )
 
       # resource path
@@ -8461,11 +8468,12 @@ module Pandarus
     end
     
     # List enrollments
-    def list_enrollments_sections(section_id,type,role,state,opts={})
+    def list_enrollments_sections(section_id,type,role,state,user_id,opts={})
       query_param_keys = [
         :type,
         :role,
-        :state
+        :state,
+        :user_id
       ]
 
       form_param_keys = [
@@ -8477,12 +8485,14 @@ module Pandarus
       raise "type is required" if type.nil?
       raise "role is required" if role.nil?
       raise "state is required" if state.nil?
+      raise "user_id is required" if user_id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :section_id => section_id,
         :type => type,
         :role => role,
-        :state => state
+        :state => state,
+        :user_id => user_id
       )
 
       # resource path
@@ -8501,7 +8511,7 @@ module Pandarus
     end
     
     # List enrollments
-    def list_enrollments_users(user_id,type,role,state,opts={})
+    def list_enrollments_users(type,role,state,user_id,opts={})
       query_param_keys = [
         :type,
         :role,
@@ -8513,16 +8523,16 @@ module Pandarus
       ]
 
       # verify existence of params
-      raise "user_id is required" if user_id.nil?
       raise "type is required" if type.nil?
       raise "role is required" if role.nil?
       raise "state is required" if state.nil?
+      raise "user_id is required" if user_id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :user_id => user_id,
         :type => type,
         :role => role,
-        :state => state
+        :state => state,
+        :user_id => user_id
       )
 
       # resource path
@@ -9983,6 +9993,39 @@ module Pandarus
       response.map {|response|File.new(response)}
     end
     
+    # Get quota information
+    def get_quota_information(id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/files/{id}/public_url",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
     # Get file
     def get_file(id,opts={})
       query_param_keys = [
@@ -10131,7 +10174,7 @@ module Pandarus
     end
     
     # Resolve path
-    def resolve_path_courses(course_id,opts={})
+    def resolve_path_courses_full_path(course_id,opts={})
       query_param_keys = [
         
       ]
@@ -10163,7 +10206,39 @@ module Pandarus
     end
     
     # Resolve path
-    def resolve_path_users(user_id,opts={})
+    def resolve_path_courses(course_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/folders/by_path",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response.map {|response|Folder.new(response)}
+    end
+    
+    # Resolve path
+    def resolve_path_users_full_path(user_id,opts={})
       query_param_keys = [
         
       ]
@@ -10195,7 +10270,39 @@ module Pandarus
     end
     
     # Resolve path
-    def resolve_path_groups(group_id,opts={})
+    def resolve_path_users(user_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "user_id is required" if user_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :user_id => user_id
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{user_id}/folders/by_path",
+        :user_id => user_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response.map {|response|Folder.new(response)}
+    end
+    
+    # Resolve path
+    def resolve_path_groups_full_path(group_id,opts={})
       query_param_keys = [
         
       ]
@@ -10213,6 +10320,38 @@ module Pandarus
 
       # resource path
       path = path_replace("/v1/groups/{group_id}/folders/by_path/*full_path",
+        :group_id => group_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response.map {|response|Folder.new(response)}
+    end
+    
+    # Resolve path
+    def resolve_path_groups(group_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "group_id is required" if group_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :group_id => group_id
+      )
+
+      # resource path
+      path = path_replace("/v1/groups/{group_id}/folders/by_path",
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
@@ -11169,6 +11308,7 @@ module Pandarus
       form_param_keys = [
         :name,
         :self_signup,
+        :auto_leader,
         :group_limit,
         :create_group_count,
         :split_group_count,
@@ -11208,6 +11348,7 @@ module Pandarus
       form_param_keys = [
         :name,
         :self_signup,
+        :auto_leader,
         :group_limit,
         :create_group_count,
         :split_group_count,
@@ -11247,6 +11388,7 @@ module Pandarus
       form_param_keys = [
         :name,
         :self_signup,
+        :auto_leader,
         :group_limit,
         :create_group_count,
         :split_group_count,
@@ -15440,8 +15582,8 @@ module Pandarus
       PageRevision.new(response)
     end
     
-    # List poll choices in a poll
-    def list_poll_choices_in_poll(course_id,poll_id,opts={})
+    # List poll sessions for a poll
+    def list_poll_sessions_for_poll(poll_id,opts={})
       query_param_keys = [
         
       ]
@@ -15451,17 +15593,14 @@ module Pandarus
       ]
 
       # verify existence of params
-      raise "course_id is required" if course_id.nil?
       raise "poll_id is required" if poll_id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
         :poll_id => poll_id
       )
 
       # resource path
-      path = path_replace("/v1/courses/{course_id}/polls/{poll_id}/poll_choices",
-        :course_id => course_id,
+      path = path_replace("/v1/polls/{poll_id}/poll_sessions",
         :poll_id => poll_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
@@ -15472,11 +15611,12 @@ module Pandarus
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
-      response.map {|response|PollChoice.new(response)}
+      response
+      
     end
     
-    # Get a single poll choice
-    def get_single_poll_choice(course_id,poll_id,id,opts={})
+    # Get the results for a single poll session
+    def get_the_results_for_single_poll_session(poll_id,id,opts={})
       query_param_keys = [
         
       ]
@@ -15486,19 +15626,16 @@ module Pandarus
       ]
 
       # verify existence of params
-      raise "course_id is required" if course_id.nil?
       raise "poll_id is required" if poll_id.nil?
       raise "id is required" if id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
         :poll_id => poll_id,
         :id => id
       )
 
       # resource path
-      path = path_replace("/v1/courses/{course_id}/polls/{poll_id}/poll_choices/{id}",
-        :course_id => course_id,
+      path = path_replace("/v1/polls/{poll_id}/poll_sessions/{id}",
         :poll_id => poll_id,
         :id => id)
       headers = nil
@@ -15510,35 +15647,36 @@ module Pandarus
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
-      PollChoice.new(response)
+      response
+      
     end
     
-    # Create a single poll choice
-    def create_single_poll_choice(course_id,poll_id,poll_choice__text__,opts={})
+    # Create a single poll session
+    def create_single_poll_session(poll_id,poll_sessions__course_id__,poll_sessions__course_section_id__,opts={})
       query_param_keys = [
         
       ]
 
       form_param_keys = [
-        :poll_choice__text__,
-        :poll_choice__is_correct__,
+        :poll_sessions__course_id__,
+        :poll_sessions__course_section_id__,
+        :poll_sessions__has_public_results__,
         
       ]
 
       # verify existence of params
-      raise "course_id is required" if course_id.nil?
       raise "poll_id is required" if poll_id.nil?
-      raise "poll_choice__text__ is required" if poll_choice__text__.nil?
+      raise "poll_sessions__course_id__ is required" if poll_sessions__course_id__.nil?
+      raise "poll_sessions__course_section_id__ is required" if poll_sessions__course_section_id__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
         :poll_id => poll_id,
-        :poll_choice__text__ => poll_choice__text__
+        :poll_sessions__course_id__ => poll_sessions__course_id__,
+        :poll_sessions__course_section_id__ => poll_sessions__course_section_id__
       )
 
       # resource path
-      path = path_replace("/v1/courses/{course_id}/polls/{poll_id}/poll_choices",
-        :course_id => course_id,
+      path = path_replace("/v1/polls/{poll_id}/poll_sessions",
         :poll_id => poll_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
@@ -15549,39 +15687,40 @@ module Pandarus
       end
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
-      PollChoice.new(response)
+      response
+      
     end
     
-    # Update a single poll choice
-    def update_single_poll_choice(course_id,id,poll_id,poll_choice__text__,opts={})
+    # Update a single poll session
+    def update_single_poll_session(poll_id,id,poll_sessions__course_id__,poll_sessions__course_section_id__,opts={})
       query_param_keys = [
         
       ]
 
       form_param_keys = [
-        :poll_choice__text__,
-        :poll_choice__is_correct__,
+        :poll_sessions__course_id__,
+        :poll_sessions__course_section_id__,
+        :poll_sessions__has_public_results__,
         
       ]
 
       # verify existence of params
-      raise "course_id is required" if course_id.nil?
-      raise "id is required" if id.nil?
       raise "poll_id is required" if poll_id.nil?
-      raise "poll_choice__text__ is required" if poll_choice__text__.nil?
+      raise "id is required" if id.nil?
+      raise "poll_sessions__course_id__ is required" if poll_sessions__course_id__.nil?
+      raise "poll_sessions__course_section_id__ is required" if poll_sessions__course_section_id__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :id => id,
         :poll_id => poll_id,
-        :poll_choice__text__ => poll_choice__text__
+        :id => id,
+        :poll_sessions__course_id__ => poll_sessions__course_id__,
+        :poll_sessions__course_section_id__ => poll_sessions__course_section_id__
       )
 
       # resource path
-      path = path_replace("/v1/courses/{course_id}/polls/{poll_id}/poll_choices/{id}",
-        :course_id => course_id,
-        :id => id,
-        :poll_id => poll_id)
+      path = path_replace("/v1/polls/{poll_id}/poll_sessions/{id}",
+        :poll_id => poll_id,
+        :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
@@ -15591,11 +15730,12 @@ module Pandarus
       end
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
-      Poll.new(response)
+      response
+      
     end
     
-    # Delete a poll choice
-    def delete_poll_choice(course_id,poll_id,id,opts={})
+    # Delete a poll session
+    def delete_poll_session(poll_id,id,opts={})
       query_param_keys = [
         
       ]
@@ -15605,19 +15745,16 @@ module Pandarus
       ]
 
       # verify existence of params
-      raise "course_id is required" if course_id.nil?
       raise "poll_id is required" if poll_id.nil?
       raise "id is required" if id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
         :poll_id => poll_id,
         :id => id
       )
 
       # resource path
-      path = path_replace("/v1/courses/{course_id}/polls/{poll_id}/poll_choices/{id}",
-        :course_id => course_id,
+      path = path_replace("/v1/polls/{poll_id}/poll_sessions/{id}",
         :poll_id => poll_id,
         :id => id)
       headers = nil
@@ -15633,8 +15770,8 @@ module Pandarus
       
     end
     
-    # List polls in a course
-    def list_polls_in_course(course_id,opts={})
+    # Open a poll session
+    def open_poll_session(poll_id,id,opts={})
       query_param_keys = [
         
       ]
@@ -15644,49 +15781,17 @@ module Pandarus
       ]
 
       # verify existence of params
-      raise "course_id is required" if course_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :course_id => course_id
-      )
-
-      # resource path
-      path = path_replace("/v1/courses/{course_id}/polls",
-        :course_id => course_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Poll.new(response)}
-    end
-    
-    # Get a single poll
-    def get_single_poll(course_id,id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "course_id is required" if course_id.nil?
+      raise "poll_id is required" if poll_id.nil?
       raise "id is required" if id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
+        :poll_id => poll_id,
         :id => id
       )
 
       # resource path
-      path = path_replace("/v1/courses/{course_id}/polls/{id}",
-        :course_id => course_id,
+      path = path_replace("/v1/polls/{poll_id}/poll_sessions/{id}/open",
+        :poll_id => poll_id,
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
@@ -15697,33 +15802,203 @@ module Pandarus
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
-      Poll.new(response)
+      response
+      
     end
     
-    # Create a single poll
-    def create_single_poll(course_id,poll__title__,opts={})
+    # Close an opened poll session
+    def close_opened_poll_session(poll_id,id,opts={})
       query_param_keys = [
         
       ]
 
       form_param_keys = [
-        :poll__title__,
-        :poll__description__,
         
       ]
 
       # verify existence of params
-      raise "course_id is required" if course_id.nil?
-      raise "poll__title__ is required" if poll__title__.nil?
+      raise "poll_id is required" if poll_id.nil?
+      raise "id is required" if id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :poll__title__ => poll__title__
+        :poll_id => poll_id,
+        :id => id
       )
 
       # resource path
-      path = path_replace("/v1/courses/{course_id}/polls",
-        :course_id => course_id)
+      path = path_replace("/v1/polls/{poll_id}/poll_sessions/{id}/close",
+        :poll_id => poll_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # List opened poll sessions
+    def list_opened_poll_sessions(opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        {}
+      
+      )
+
+      # resource path
+      path = path_replace("/v1/poll_sessions/opened",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # List closed poll sessions
+    def list_closed_poll_sessions(opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        {}
+      
+      )
+
+      # resource path
+      path = path_replace("/v1/poll_sessions/closed",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # List poll choices in a poll
+    def list_poll_choices_in_poll(poll_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "poll_id is required" if poll_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :poll_id => poll_id
+      )
+
+      # resource path
+      path = path_replace("/v1/polls/{poll_id}/poll_choices",
+        :poll_id => poll_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # Get a single poll choice
+    def get_single_poll_choice(poll_id,id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "poll_id is required" if poll_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :poll_id => poll_id,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/polls/{poll_id}/poll_choices/{id}",
+        :poll_id => poll_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # Create a single poll choice
+    def create_single_poll_choice(poll_id,poll_choices__text__,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :poll_choices__text__,
+        :poll_choices__is_correct__,
+        
+      ]
+
+      # verify existence of params
+      raise "poll_id is required" if poll_id.nil?
+      raise "poll_choices__text__ is required" if poll_choices__text__.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :poll_id => poll_id,
+        :poll_choices__text__ => poll_choices__text__
+      )
+
+      # resource path
+      path = path_replace("/v1/polls/{poll_id}/poll_choices",
+        :poll_id => poll_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
@@ -15733,35 +16008,36 @@ module Pandarus
       end
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
-      Poll.new(response)
+      response
+      
     end
     
-    # Update a single poll
-    def update_single_poll(course_id,id,poll__title__,opts={})
+    # Update a single poll choice
+    def update_single_poll_choice(poll_id,id,poll_choices__text__,opts={})
       query_param_keys = [
         
       ]
 
       form_param_keys = [
-        :poll__title__,
-        :poll__description__,
+        :poll_choices__text__,
+        :poll_choices__is_correct__,
         
       ]
 
       # verify existence of params
-      raise "course_id is required" if course_id.nil?
+      raise "poll_id is required" if poll_id.nil?
       raise "id is required" if id.nil?
-      raise "poll__title__ is required" if poll__title__.nil?
+      raise "poll_choices__text__ is required" if poll_choices__text__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
+        :poll_id => poll_id,
         :id => id,
-        :poll__title__ => poll__title__
+        :poll_choices__text__ => poll_choices__text__
       )
 
       # resource path
-      path = path_replace("/v1/courses/{course_id}/polls/{id}",
-        :course_id => course_id,
+      path = path_replace("/v1/polls/{poll_id}/poll_choices/{id}",
+        :poll_id => poll_id,
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
@@ -15772,11 +16048,12 @@ module Pandarus
       end
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
-      Poll.new(response)
+      response
+      
     end
     
-    # Delete a poll
-    def delete_poll(course_id,id,opts={})
+    # Delete a poll choice
+    def delete_poll_choice(poll_id,id,opts={})
       query_param_keys = [
         
       ]
@@ -15786,17 +16063,265 @@ module Pandarus
       ]
 
       # verify existence of params
-      raise "course_id is required" if course_id.nil?
+      raise "poll_id is required" if poll_id.nil?
       raise "id is required" if id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
+        :poll_id => poll_id,
         :id => id
       )
 
       # resource path
-      path = path_replace("/v1/courses/{course_id}/polls/{id}",
-        :course_id => course_id,
+      path = path_replace("/v1/polls/{poll_id}/poll_choices/{id}",
+        :poll_id => poll_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:delete, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      page_params_store(:delete, path)
+      response
+      
+    end
+    
+    # Get a single poll submission
+    def get_single_poll_submission(poll_id,poll_session_id,id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "poll_id is required" if poll_id.nil?
+      raise "poll_session_id is required" if poll_session_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :poll_id => poll_id,
+        :poll_session_id => poll_session_id,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/polls/{poll_id}/poll_sessions/{poll_session_id}/poll_submissions/{id}",
+        :poll_id => poll_id,
+        :poll_session_id => poll_session_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # Create a single poll submission
+    def create_single_poll_submission(poll_id,poll_session_id,poll_submissions__poll_choice_id__,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :poll_submissions__poll_choice_id__,
+        
+      ]
+
+      # verify existence of params
+      raise "poll_id is required" if poll_id.nil?
+      raise "poll_session_id is required" if poll_session_id.nil?
+      raise "poll_submissions__poll_choice_id__ is required" if poll_submissions__poll_choice_id__.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :poll_id => poll_id,
+        :poll_session_id => poll_session_id,
+        :poll_submissions__poll_choice_id__ => poll_submissions__poll_choice_id__
+      )
+
+      # resource path
+      path = path_replace("/v1/polls/{poll_id}/poll_sessions/{poll_session_id}/poll_submissions",
+        :poll_id => poll_id,
+        :poll_session_id => poll_session_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:post, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      page_params_store(:post, path)
+      response
+      
+    end
+    
+    # List polls
+    def list_polls(opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        {}
+      
+      )
+
+      # resource path
+      path = path_replace("/v1/polls",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # Get a single poll
+    def get_single_poll(id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/polls/{id}",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # Create a single poll
+    def create_single_poll(polls__question__,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :polls__question__,
+        :polls__description__,
+        
+      ]
+
+      # verify existence of params
+      raise "polls__question__ is required" if polls__question__.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :polls__question__ => polls__question__
+      )
+
+      # resource path
+      path = path_replace("/v1/polls",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:post, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      page_params_store(:post, path)
+      response
+      
+    end
+    
+    # Update a single poll
+    def update_single_poll(id,polls__question__,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :polls__question__,
+        :polls__description__,
+        
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      raise "polls__question__ is required" if polls__question__.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id,
+        :polls__question__ => polls__question__
+      )
+
+      # resource path
+      path = path_replace("/v1/polls/{id}",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:put, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      page_params_store(:put, path)
+      response
+      
+    end
+    
+    # Delete a poll
+    def delete_poll(id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/polls/{id}",
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
@@ -15841,6 +16366,50 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Progress.new(response)
+    end
+    
+    # Set extensions for student quiz submissions
+    def set_extensions_for_student_quiz_submissions(course_id,quiz_id,user_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :user_id,
+        :extra_attempts,
+        :extra_time,
+        :manually_unlocked,
+        :extend_from_now,
+        :extend_from_end_at,
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "quiz_id is required" if quiz_id.nil?
+      raise "user_id is required" if user_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :quiz_id => quiz_id,
+        :user_id => user_id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/extensions",
+        :course_id => course_id,
+        :quiz_id => quiz_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:post, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      page_params_store(:post, path)
+      response
+      
     end
     
     # Get available quiz IP filters.
