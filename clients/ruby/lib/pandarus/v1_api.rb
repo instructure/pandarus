@@ -523,7 +523,7 @@ module Pandarus
     end
     
     # Get the sub-accounts of an account
-    def get_the_sub_accounts_of_account(account_id,opts={})
+    def get_sub_accounts_of_account(account_id,opts={})
       query_param_keys = [
         :recursive
       ]
@@ -2081,6 +2081,7 @@ module Pandarus
         :assignment__assignment_overrides__,
         :assignment__only_visible_to_overrides__,
         :assignment__published__,
+        :assignment__grading_standard_id__,
         
       ]
 
@@ -2117,6 +2118,29 @@ module Pandarus
       ]
 
       form_param_keys = [
+        :assignment__name__,
+        :assignment__position__,
+        :assignment__submission_types__,
+        :assignment__allowed_extensions__,
+        :assignment__turnitin_enabled__,
+        :assignment__turnitin_settings__,
+        :assignment__peer_reviews__,
+        :assignment__automatic_peer_reviews__,
+        :assignment__notify_of_update__,
+        :assignment__group_category_id__,
+        :assignment__grade_group_students_individually__,
+        :assignment__external_tool_tag_attributes__,
+        :assignment__points_possible__,
+        :assignment__grading_type__,
+        :assignment__due_at__,
+        :assignment__lock_at__,
+        :assignment__unlock_at__,
+        :assignment__description__,
+        :assignment__assignment_group_id__,
+        :assignment__muted__,
+        :assignment__assignment_overrides__,
+        :assignment__only_visible_to_overrides__,
+        :assignment__published__,
         :assignment__grading_standard_id__,
         
       ]
@@ -2220,7 +2244,7 @@ module Pandarus
     end
     
     # Redirect to the assignment override for a group
-    def redirect_to_the_assignment_override_for_group(group_id,assignment_id,opts={})
+    def redirect_to_assignment_override_for_group(group_id,assignment_id,opts={})
       query_param_keys = [
         
       ]
@@ -2256,7 +2280,7 @@ module Pandarus
     end
     
     # Redirect to the assignment override for a section
-    def redirect_to_the_assignment_override_for_section(course_section_id,assignment_id,opts={})
+    def redirect_to_assignment_override_for_section(course_section_id,assignment_id,opts={})
       query_param_keys = [
         
       ]
@@ -6809,7 +6833,7 @@ module Pandarus
     end
     
     # Get the full topic
-    def get_the_full_topic_courses(course_id,topic_id,opts={})
+    def get_full_topic_courses(course_id,topic_id,opts={})
       query_param_keys = [
         
       ]
@@ -6845,7 +6869,7 @@ module Pandarus
     end
     
     # Get the full topic
-    def get_the_full_topic_groups(group_id,topic_id,opts={})
+    def get_full_topic_groups(group_id,topic_id,opts={})
       query_param_keys = [
         
       ]
@@ -6881,7 +6905,7 @@ module Pandarus
     end
     
     # Get the full topic
-    def get_the_full_topic_collection_items(collection_item_id,topic_id,opts={})
+    def get_full_topic_collection_items(collection_item_id,topic_id,opts={})
       query_param_keys = [
         
       ]
@@ -11582,7 +11606,7 @@ module Pandarus
     end
     
     # List the groups available in a context.
-    def list_the_groups_available_in_context_accounts(account_id,opts={})
+    def list_groups_available_in_context_accounts(account_id,opts={})
       query_param_keys = [
         
       ]
@@ -11614,7 +11638,7 @@ module Pandarus
     end
     
     # List the groups available in a context.
-    def list_the_groups_available_in_context_courses(course_id,opts={})
+    def list_groups_available_in_context_courses(course_id,opts={})
       query_param_keys = [
         
       ]
@@ -15616,7 +15640,7 @@ module Pandarus
     end
     
     # Get the results for a single poll session
-    def get_the_results_for_single_poll_session(poll_id,id,opts={})
+    def get_results_for_single_poll_session(poll_id,id,opts={})
       query_param_keys = [
         
       ]
@@ -16728,7 +16752,7 @@ module Pandarus
     end
     
     # Fetching the latest quiz statistics
-    def fetching_the_latest_quiz_statistics(course_id,quiz_id,all_versions,opts={})
+    def fetching_latest_quiz_statistics(course_id,quiz_id,all_versions,opts={})
       query_param_keys = [
         :all_versions
       ]
@@ -17090,7 +17114,7 @@ module Pandarus
     end
     
     # Create the quiz submission (start a quiz-taking session)
-    def create_the_quiz_submission_start_quiz_taking_session(course_id,quiz_id,opts={})
+    def create_quiz_submission_start_quiz_taking_session(course_id,quiz_id,opts={})
       query_param_keys = [
         
       ]
@@ -17172,7 +17196,7 @@ module Pandarus
     end
     
     # Complete the quiz submission (turn it in).
-    def complete_the_quiz_submission_turn_it_in(course_id,quiz_id,id,attempt,validation_token,opts={})
+    def complete_quiz_submission_turn_it_in(course_id,quiz_id,id,attempt,validation_token,opts={})
       query_param_keys = [
         
       ]
@@ -19165,7 +19189,7 @@ module Pandarus
     end
     
     # List the activity stream
-    def list_the_activity_stream_self(opts={})
+    def list_activity_stream_self(opts={})
       query_param_keys = [
         
       ]
@@ -19197,7 +19221,7 @@ module Pandarus
     end
     
     # List the activity stream
-    def list_the_activity_stream_activity_stream(opts={})
+    def list_activity_stream_activity_stream(opts={})
       query_param_keys = [
         
       ]
@@ -19261,7 +19285,7 @@ module Pandarus
     end
     
     # List the TODO items
-    def list_the_todo_items(opts={})
+    def list_todo_items(opts={})
       query_param_keys = [
         
       ]

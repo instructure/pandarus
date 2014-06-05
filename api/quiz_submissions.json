@@ -117,7 +117,7 @@
           "method": "POST",
           "summary": "Create the quiz submission (start a quiz-taking session)",
           "notes": "Start taking a Quiz by creating a QuizSubmission which you can use to answer\nquestions and submit your answers.\n\n<b>Responses</b>\n\n* <b>200 OK</b> if the request was successful\n* <b>400 Bad Request</b> if the quiz is locked\n* <b>403 Forbidden</b> if an invalid access code is specified\n* <b>403 Forbidden</b> if the Quiz's IP filter restriction does not pass\n* <b>409 Conflict</b> if a QuizSubmission already exists for this user and quiz",
-          "nickname": "create_the_quiz_submission_start_quiz_taking_session",
+          "nickname": "create_quiz_submission_start_quiz_taking_session",
           "parameters": [
             {
               "paramType": "path",
@@ -227,7 +227,7 @@
           "method": "POST",
           "summary": "Complete the quiz submission (turn it in).",
           "notes": "Complete the quiz submission by marking it as complete and grading it. When\nthe quiz submission has been marked as complete, no further modifications\nwill be allowed.\n\n<b>Responses</b>\n\n* <b>200 OK</b> if the request was successful\n* <b>403 Forbidden</b> if an invalid access code is specified\n* <b>403 Forbidden</b> if the Quiz's IP filter restriction does not pass\n* <b>403 Forbidden</b> if an invalid token is specified\n* <b>400 Bad Request</b> if the QS is already complete\n* <b>400 Bad Request</b> if the attempt parameter is missing\n* <b>400 Bad Request</b> if the attempt parameter is not the latest attempt",
-          "nickname": "complete_the_quiz_submission_turn_it_in",
+          "nickname": "complete_quiz_submission_turn_it_in",
           "parameters": [
             {
               "paramType": "path",

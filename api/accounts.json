@@ -57,7 +57,7 @@
           "method": "GET",
           "summary": "Get the sub-accounts of an account",
           "notes": "List accounts that are sub-accounts of the given account.",
-          "nickname": "get_the_sub_accounts_of_account",
+          "nickname": "get_sub_accounts_of_account",
           "parameters": [
             {
               "paramType": "path",

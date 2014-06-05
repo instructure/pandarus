@@ -45,7 +45,7 @@
           "method": "GET",
           "summary": "List the groups available in a context.",
           "notes": "Returns the list of active groups in the given context that are visible to user.",
-          "nickname": "list_the_groups_available_in_context_accounts",
+          "nickname": "list_groups_available_in_context_accounts",
           "parameters": [
             {
               "paramType": "path",
@@ -71,7 +71,7 @@
           "method": "GET",
           "summary": "List the groups available in a context.",
           "notes": "Returns the list of active groups in the given context that are visible to user.",
-          "nickname": "list_the_groups_available_in_context_courses",
+          "nickname": "list_groups_available_in_context_courses",
           "parameters": [
             {
               "paramType": "path",

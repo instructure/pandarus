@@ -38,7 +38,7 @@
           "method": "GET",
           "summary": "Get the results for a single poll session",
           "notes": "Returns the poll session with the given id",
-          "nickname": "get_the_results_for_single_poll_session",
+          "nickname": "get_results_for_single_poll_session",
           "parameters": [
             {
               "paramType": "path",

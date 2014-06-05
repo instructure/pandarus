@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pandarus (0.4.5)
+    pandarus (0.4.6)
       activesupport (>= 3.0.0)
       footrest (= 0.3.1)
 
