@@ -100,6 +100,17 @@
               "tags": {
                 "type": "array"
               }
+            },
+            {
+              "paramType": "form",
+              "name": "poll_choices[position]",
+              "description": "The order this poll choice should be returned in the context it's sibling poll choices.",
+              "type": "integer",
+              "format": "int64",
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
             }
           ],
           "type": "void"
@@ -149,6 +160,17 @@
               "description": "Whether this poll choice is considered correct or not. Defaults to false.",
               "type": "boolean",
               "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "poll_choices[position]",
+              "description": "The order this poll choice should be returned in the context it's sibling poll choices.",
+              "type": "integer",
+              "format": "int64",
               "required": false,
               "tags": {
                 "type": "array"
@@ -220,6 +242,11 @@
           "description": "The text of the poll choice.",
           "type": "string",
           "example": "Choice A"
+        },
+        "position": {
+          "description": "The order of the poll choice in relation to it's sibling poll choices.",
+          "type": "integer",
+          "example": 1
         }
       }
     }

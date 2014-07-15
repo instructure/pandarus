@@ -58,6 +58,14 @@
             },
             {
               "paramType": "form",
+              "name": "display_name",
+              "description": "A friendly name shown in reports for outcomes with cryptic titles, such as common core standards names.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "description",
               "description": "The new outcome description.",
               "type": "string",
@@ -138,6 +146,11 @@
         "title": {
           "description": "title of the outcome",
           "example": "Outcome title",
+          "type": "string"
+        },
+        "display_name": {
+          "description": "Optional friendly name for reporting",
+          "example": "My Favorite Outocome",
           "type": "string"
         },
         "description": {

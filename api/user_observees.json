@@ -1,0 +1,171 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/user_observees",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/users/{user_id}/observees",
+      "description": "List the users that the given user is observing.\n\n*Note:* all users are allowed to list their own observees. Administrators can list \nother users' observees.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List observees",
+          "notes": "List the users that the given user is observing.\n\n*Note:* all users are allowed to list their own observees. Administrators can list \nother users' observees.",
+          "nickname": "list_observees",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "User"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/observees",
+      "description": "Register the given user to observe another user, given the observee's credentials.\n\n*Note:* all users are allowed to add their own observees, given the observee's\ncredentials are provided. Administrators can add observees given credentials or\nthe {api:UserObserveesController#update observee's id}.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Add an observee with credentials",
+          "notes": "Register the given user to observe another user, given the observee's credentials.\n\n*Note:* all users are allowed to add their own observees, given the observee's\ncredentials are provided. Administrators can add observees given credentials or\nthe {api:UserObserveesController#update observee's id}.",
+          "nickname": "add_observee_with_credentials",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "observee[unique_id]",
+              "description": "The login id for the user to observe.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "observee[password]",
+              "description": "The password for the user to observe.",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "User"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/observees/{observee_id}",
+      "description": "Gets information about an observed user.\n\n*Note:* all users are allowed to view their own observees.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Show an observee",
+          "notes": "Gets information about an observed user.\n\n*Note:* all users are allowed to view their own observees.",
+          "nickname": "show_observee",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "observee_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "User"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/observees/{observee_id}",
+      "description": "Registers a user as being observed by the given user.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Add an observee",
+          "notes": "Registers a user as being observed by the given user.",
+          "nickname": "add_observee",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "observee_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "User"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/observees/{observee_id}",
+      "description": "Unregisters a user as being observed by the given user.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Remove an observee",
+          "notes": "Unregisters a user as being observed by the given user.",
+          "nickname": "remove_observee",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "observee_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "User"
+        }
+      ]
+    }
+  ],
+  "models": {
+  }
+}

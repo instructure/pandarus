@@ -90,26 +90,18 @@
       ]
     },
     {
-      "path": "/v1/quiz_submissions/{quiz_submission_id}/questions/{id}",
-      "description": "Provide or modify an answer to a QuizQuestion.",
+      "path": "/v1/quiz_submissions/{quiz_submission_id}/questions",
+      "description": "Provide or update an answer to one or more QuizQuestions.",
       "operations": [
         {
-          "method": "PUT",
-          "summary": "Answering a question.",
-          "notes": "Provide or modify an answer to a QuizQuestion.",
-          "nickname": "answering_question",
+          "method": "POST",
+          "summary": "Answering questions",
+          "notes": "Provide or update an answer to one or more QuizQuestions.",
+          "nickname": "answering_questions",
           "parameters": [
             {
               "paramType": "path",
               "name": "quiz_submission_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "id",
               "description": "ID",
               "type": "string",
               "format": null,
@@ -141,11 +133,11 @@
             },
             {
               "paramType": "form",
-              "name": "answer",
-              "description": "The answer to the question. The type and format of this argument depend on the question type. See {Appendix: Question Answer Formats} for the accepted answer formats for each question type.",
-              "type": "mixed",
+              "name": "quiz_questions",
+              "description": "Set of question IDs and the answer value. See {Appendix: Question Answer Formats} for the accepted answer formats for each question type.",
+              "type": "array",
               "format": null,
-              "required": false
+              "required": true
             }
           ],
           "type": "void"

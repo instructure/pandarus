@@ -228,6 +228,37 @@
       ]
     },
     {
+      "path": "/v1/accounts/{account_id}/enrollments/{id}",
+      "description": "Get an Enrollment object by Enrollment ID",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Enrollment by ID",
+          "notes": "Get an Enrollment object by Enrollment ID",
+          "nickname": "enrollment_by_id",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "The ID of the enrollment object",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            }
+          ],
+          "type": "Enrollment"
+        }
+      ]
+    },
+    {
       "path": "/v1/courses/{course_id}/enrollments",
       "description": "Create a new user enrollment for a course or section.",
       "operations": [
@@ -520,12 +551,12 @@
           "type": "integer"
         },
         "sis_course_id": {
-          "description": "The SIS Course ID in which the enrollment is associated. Only displayed if present.",
+          "description": "The SIS Course ID in which the enrollment is associated. Only displayed if present. This field is only included if the user has permission to view SIS information.",
           "example": "SHEL93921",
           "type": "string"
         },
         "course_integration_id": {
-          "description": "The Course Integration ID in which the enrollment is associated.",
+          "description": "The Course Integration ID in which the enrollment is associated. This field is only included if the user has permission to view SIS information.",
           "example": "SHEL93921",
           "type": "string"
         },
@@ -535,12 +566,12 @@
           "type": "integer"
         },
         "section_integration_id": {
-          "description": "The Section Integration ID in which the enrollment is associated.",
+          "description": "The Section Integration ID in which the enrollment is associated. This field is only included if the user has permission to view SIS information.",
           "example": "SHEL93921",
           "type": "string"
         },
         "sis_section_id": {
-          "description": "The SIS Section ID in which the enrollment is associated. Only displayed if present.",
+          "description": "The SIS Section ID in which the enrollment is associated. Only displayed if present. This field is only included if the user has permission to view SIS information.",
           "example": "SHEL93921",
           "type": "string"
         },

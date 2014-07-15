@@ -1,0 +1,210 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/live_assessments",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/live_assessments/{assessment_id}/results",
+      "description": "Creates live assessment results and adds them to a live assessment",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create live assessment results",
+          "notes": "Creates live assessment results and adds them to a live assessment",
+          "nickname": "create_live_assessment_results",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assessment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/live_assessments/{assessment_id}/results",
+      "description": "Returns a list of live assessment results",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List live assessment results",
+          "notes": "Returns a list of live assessment results",
+          "nickname": "list_live_assessment_results",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assessment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "user_id",
+              "description": "If set, restrict results to those for this user",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/live_assessments",
+      "description": "Creates or finds an existing live assessment with the given key and aligns it with\nthe linked outcome",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create or find a live assessment",
+          "notes": "Creates or finds an existing live assessment with the given key and aligns it with\nthe linked outcome",
+          "nickname": "create_or_find_live_assessment",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/live_assessments",
+      "description": "Returns a list of live assessments.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List live assessments",
+          "notes": "Returns a list of live assessments.",
+          "nickname": "list_live_assessments",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "Result": {
+      "id": "Result",
+      "description": "A pass/fail results for a student",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "42",
+          "description": "A unique identifier for this result"
+        },
+        "passed": {
+          "type": "boolean",
+          "example": true,
+          "description": "Whether the user passed or not"
+        },
+        "assessed_at": {
+          "type": "datetime",
+          "example": "2014-05-13T00:01:57-06:00",
+          "description": "When this result was recorded"
+        },
+        "links": {
+          "type": "ResultLinks",
+          "example": {
+            "user": "42",
+            "assessor": "23",
+            "assessment": "5"
+          },
+          "description": "Unique identifiers of objects associated with this result"
+        }
+      }
+    },
+    "ResultLinks": {
+      "id": "ResultLinks",
+      "description": "Unique identifiers of objects associated with a result",
+      "required": [
+
+      ],
+      "properties": {
+        "user": {
+          "type": "string",
+          "example": "42",
+          "description": "A unique identifier for the user to whom this result applies"
+        },
+        "assessor": {
+          "type": "string",
+          "example": "23",
+          "description": "A unique identifier for the user who created this result"
+        },
+        "assessment": {
+          "type": "string",
+          "example": "5",
+          "description": "A unique identifier for the assessment that this result is for"
+        }
+      }
+    },
+    "Assessment": {
+      "id": "Assessment",
+      "description": "A simple assessment that collects pass/fail results for a student",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "42",
+          "description": "A unique identifier for this live assessment"
+        },
+        "key": {
+          "type": "string",
+          "example": "2014-05-27,outcome_52",
+          "description": "A client specified unique identifier for the assessment"
+        },
+        "title": {
+          "type": "string",
+          "example": "May 27th Reading Assessment",
+          "description": "A human readable title for the assessment"
+        }
+      }
+    }
+  }
+}

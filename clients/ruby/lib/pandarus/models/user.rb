@@ -13,7 +13,7 @@ module Pandarus
         :sortable_name => {:external => "sortable_name", :container => false, :type => "String"},
         :short_name => {:external => "short_name", :container => false, :type => "String"},
         :sis_user_id => {:external => "sis_user_id", :container => false, :type => "String"},
-        :sis_import_id => {:external => "sis_import_id", :container => false, :type => "Int64"},
+        :sis_import_id => {:external => "sis_import_id", :container => false, :type => nil},
         :sis_login_id => {:external => "sis_login_id", :container => false, :type => "String"},
         :login_id => {:external => "login_id", :container => false, :type => "String"},
         :avatar_url => {:external => "avatar_url", :container => false, :type => "String"},

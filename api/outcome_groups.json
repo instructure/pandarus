@@ -138,6 +138,22 @@
               "type": "string",
               "format": null,
               "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "outcome_style",
+              "description": "The detail level of the outcomes. Defaults to \"abbrev\". Specify \"full\" for more information.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "outcome_group_style",
+              "description": "The detail level of the outcome groups. Defaults to \"abbrev\". Specify \"full\" for more information.",
+              "type": "string",
+              "format": null,
+              "required": false
             }
           ],
           "type": "array",
@@ -164,6 +180,22 @@
               "type": "string",
               "format": null,
               "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "outcome_style",
+              "description": "The detail level of the outcomes. Defaults to \"abbrev\". Specify \"full\" for more information.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "outcome_group_style",
+              "description": "The detail level of the outcome groups. Defaults to \"abbrev\". Specify \"full\" for more information.",
+              "type": "string",
+              "format": null,
+              "required": false
             }
           ],
           "type": "array",
@@ -654,6 +686,14 @@
             },
             {
               "paramType": "form",
+              "name": "display_name",
+              "description": "A friendly name shown in reports for outcomes with cryptic titles, such as common core standards names.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "description",
               "description": "The description of the new outcome.",
               "type": "string",
@@ -733,6 +773,14 @@
               "paramType": "form",
               "name": "title",
               "description": "The title of the new outcome. Required if outcome_id is absent.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "display_name",
+              "description": "A friendly name shown in reports for outcomes with cryptic titles, such as common core standards names.",
               "type": "string",
               "format": null,
               "required": false
@@ -832,6 +880,14 @@
             },
             {
               "paramType": "form",
+              "name": "display_name",
+              "description": "A friendly name shown in reports for outcomes with cryptic titles, such as common core standards names.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "description",
               "description": "The description of the new outcome.",
               "type": "string",
@@ -919,6 +975,14 @@
               "paramType": "form",
               "name": "title",
               "description": "The title of the new outcome. Required if outcome_id is absent.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "display_name",
+              "description": "A friendly name shown in reports for outcomes with cryptic titles, such as common core standards names.",
               "type": "string",
               "format": null,
               "required": false
@@ -1018,6 +1082,14 @@
             },
             {
               "paramType": "form",
+              "name": "display_name",
+              "description": "A friendly name shown in reports for outcomes with cryptic titles, such as common core standards names.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "description",
               "description": "The description of the new outcome.",
               "type": "string",
@@ -1105,6 +1177,14 @@
               "paramType": "form",
               "name": "title",
               "description": "The title of the new outcome. Required if outcome_id is absent.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "display_name",
+              "description": "A friendly name shown in reports for outcomes with cryptic titles, such as common core standards names.",
               "type": "string",
               "format": null,
               "required": false
@@ -1707,7 +1787,7 @@
       "properties": {
         "url": {
           "description": "the URL for fetching/updating the outcome link. should be treated as opaque",
-          "example": "/api/v1/account/1/outcome_groups/1/outcomes/1",
+          "example": "/api/v1/accounts/1/outcome_groups/1/outcomes/1",
           "type": "string"
         },
         "context_id": {
@@ -1725,7 +1805,7 @@
         },
         "outcome": {
           "description": "an abbreviated Outcome object representing the outcome linked into the containing outcome group.",
-          "$ref": "OutcomeGroup"
+          "$ref": "Outcome"
         }
       }
     }

@@ -29,8 +29,8 @@
               "paramType": "form",
               "name": "user_id",
               "description": "The id of the user to promote.",
-              "type": "string",
-              "format": null,
+              "type": "integer",
+              "format": "int64",
               "required": true
             },
             {
@@ -110,6 +110,17 @@
               "type": "string",
               "format": null,
               "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "user_id",
+              "description": "Scope the results to those with user IDs equal to any of the IDs specified here.",
+              "type": "[integer]",
+              "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
             }
           ],
           "type": "array",

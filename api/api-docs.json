@@ -135,6 +135,10 @@
       "description": "Groups"
     },
     {
+      "path": "/live_assessments.json",
+      "description": "LiveAssessments"
+    },
+    {
       "path": "/logins.json",
       "description": "Logins"
     },
@@ -253,6 +257,10 @@
     {
       "path": "/tabs.json",
       "description": "Tabs"
+    },
+    {
+      "path": "/user_observees.json",
+      "description": "User Observees"
     },
     {
       "path": "/users.json",

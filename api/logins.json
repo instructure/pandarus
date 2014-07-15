@@ -24,14 +24,6 @@
               "type": "string",
               "format": null,
               "required": true
-            },
-            {
-              "paramType": "query",
-              "name": "user[id]",
-              "description": "The ID of the user to search on.",
-              "type": "string",
-              "format": null,
-              "required": true
             }
           ],
           "type": "void"
@@ -52,14 +44,6 @@
               "paramType": "path",
               "name": "user_id",
               "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "query",
-              "name": "user[id]",
-              "description": "The ID of the user to search on.",
               "type": "string",
               "format": null,
               "required": true
@@ -109,7 +93,7 @@
               "description": "The new login's password.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -117,7 +101,7 @@
               "description": "SIS ID for the login. To set this parameter, the caller must be able to manage SIS permissions on the account.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "void"
@@ -156,7 +140,7 @@
               "description": "The new unique ID for the login.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -164,7 +148,7 @@
               "description": "The new password for the login. Can only be set by an admin user if admins are allowed to change passwords for the account.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -172,7 +156,7 @@
               "description": "SIS ID for the login. To set this parameter, the caller must be able to manage SIS permissions on the account.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "void"

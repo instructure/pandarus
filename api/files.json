@@ -164,6 +164,180 @@
       ]
     },
     {
+      "path": "/v1/users/{user_id}/files",
+      "description": "Returns the paginated list of files for the folder or course.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List files",
+          "notes": "Returns the paginated list of files for the folder or course.",
+          "nickname": "list_files_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "content_types",
+              "description": "Filter results by content-type. You can specify type/subtype pairs (e.g., 'image/jpeg'), or simply types (e.g., 'image', which will match 'image/gif', 'image/jpeg', etc.).",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "search_term",
+              "description": "The partial name of the files to match and return.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Array of additional information to include. \"user\":: the user who uploaded the file or last edited its content",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "user"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "sort",
+              "description": "Sort results by this field. Defaults to 'name'. Note that `sort=user` implies `include[]=user`.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "name",
+                "size",
+                "created_at",
+                "updated_at",
+                "content_type",
+                "user"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "order",
+              "description": "The sorting order. Defaults to 'asc'.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "File"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/files",
+      "description": "Returns the paginated list of files for the folder or course.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List files",
+          "notes": "Returns the paginated list of files for the folder or course.",
+          "nickname": "list_files_groups",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "content_types",
+              "description": "Filter results by content-type. You can specify type/subtype pairs (e.g., 'image/jpeg'), or simply types (e.g., 'image', which will match 'image/gif', 'image/jpeg', etc.).",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "search_term",
+              "description": "The partial name of the files to match and return.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Array of additional information to include. \"user\":: the user who uploaded the file or last edited its content",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "user"
+              ],
+              "tags": {
+                "type": "array"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "sort",
+              "description": "Sort results by this field. Defaults to 'name'. Note that `sort=user` implies `include[]=user`.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "name",
+                "size",
+                "created_at",
+                "updated_at",
+                "content_type",
+                "user"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "order",
+              "description": "The sorting order. Defaults to 'asc'.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "File"
+          }
+        }
+      ]
+    },
+    {
       "path": "/v1/folders/{id}/files",
       "description": "Returns the paginated list of files for the folder or course.",
       "operations": [

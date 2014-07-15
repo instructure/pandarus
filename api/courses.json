@@ -216,14 +216,6 @@
             },
             {
               "paramType": "form",
-              "name": "course[enroll_me]",
-              "description": "Set to true to enroll the current user as the teacher.",
-              "type": "boolean",
-              "format": null,
-              "required": false
-            },
-            {
-              "paramType": "form",
               "name": "course[term_id]",
               "description": "The unique ID of the term to create to course in.",
               "type": "integer",
@@ -266,6 +258,14 @@
               "paramType": "form",
               "name": "offer",
               "description": "If this option is set to true, the course will be available to students immediately.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enroll_me",
+              "description": "Set to true to enroll the current user as the teacher.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -1093,11 +1093,11 @@
           "type": "integer"
         },
         "sis_course_id": {
-          "description": "the SIS identifier for the course, if defined",
+          "description": "the SIS identifier for the course, if defined. This field is only included if the user has permission to view SIS information.",
           "type": "string"
         },
         "integration_id": {
-          "description": "the integration identifier for the course, if defined",
+          "description": "the integration identifier for the course, if defined. This field is only included if the user has permission to view SIS information.",
           "type": "string"
         },
         "name": {

@@ -12,7 +12,7 @@ module Pandarus
         :context_id => {:external => "context_id", :container => false, :type => "Integer"},
         :context_type => {:external => "context_type", :container => false, :type => "String"},
         :outcome_group => {:external => "outcome_group", :container => false, :type => "OutcomeGroup"},
-        :outcome => {:external => "outcome", :container => false, :type => "OutcomeGroup"}
+        :outcome => {:external => "outcome", :container => false, :type => "Outcome"}
 
       }
     end

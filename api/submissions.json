@@ -39,7 +39,7 @@
               "description": "Include a textual comment with the submission.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -61,7 +61,7 @@
               "description": "Submit the assignment as an HTML document snippet. Note this HTML snippet will be sanitized using the same ruleset as a submission made from the Canvas web UI. The sanitized HTML will be returned in the response as the submission body. Requires a submission_type of \"online_text_entry\".",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -69,7 +69,7 @@
               "description": "Submit the assignment as a URL. The URL scheme must be \"http\" or \"https\", no \"ftp\" or other URL schemes are allowed. If no scheme is given (e.g. \"www.example.com\") then \"http\" will be assumed. Requires a submission_type of \"online_url\".",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -77,7 +77,7 @@
               "description": "Submit the assignment as a set of one or more previously uploaded files residing in the submitting user's files section (or the group's files section, for group assignments). To upload a new file to submit, see the submissions {api:SubmissionsApiController#create_file Upload a file API}. Requires a submission_type of \"online_upload\".",
               "type": "integer",
               "format": "int64",
-              "required": true,
+              "required": false,
               "tags": {
                 "type": "array"
               }
@@ -86,9 +86,9 @@
               "paramType": "form",
               "name": "submission[media_comment_id]",
               "description": "The media comment id to submit. Media comment ids can be submitted via this API, however, note that there is not yet an API to generate or list existing media comments, so this functionality is currently of limited use. Requires a submission_type of \"media_recording\".",
-              "type": "integer",
-              "format": "int64",
-              "required": true
+              "type": "string",
+              "format": null,
+              "required": false
             },
             {
               "paramType": "form",
@@ -96,7 +96,7 @@
               "description": "The type of media comment being submitted.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "audio",
                 "video"
@@ -139,7 +139,7 @@
               "description": "Include a textual comment with the submission.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -161,7 +161,7 @@
               "description": "Submit the assignment as an HTML document snippet. Note this HTML snippet will be sanitized using the same ruleset as a submission made from the Canvas web UI. The sanitized HTML will be returned in the response as the submission body. Requires a submission_type of \"online_text_entry\".",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -169,7 +169,7 @@
               "description": "Submit the assignment as a URL. The URL scheme must be \"http\" or \"https\", no \"ftp\" or other URL schemes are allowed. If no scheme is given (e.g. \"www.example.com\") then \"http\" will be assumed. Requires a submission_type of \"online_url\".",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -177,7 +177,7 @@
               "description": "Submit the assignment as a set of one or more previously uploaded files residing in the submitting user's files section (or the group's files section, for group assignments). To upload a new file to submit, see the submissions {api:SubmissionsApiController#create_file Upload a file API}. Requires a submission_type of \"online_upload\".",
               "type": "integer",
               "format": "int64",
-              "required": true,
+              "required": false,
               "tags": {
                 "type": "array"
               }
@@ -186,9 +186,9 @@
               "paramType": "form",
               "name": "submission[media_comment_id]",
               "description": "The media comment id to submit. Media comment ids can be submitted via this API, however, note that there is not yet an API to generate or list existing media comments, so this functionality is currently of limited use. Requires a submission_type of \"media_recording\".",
-              "type": "integer",
-              "format": "int64",
-              "required": true
+              "type": "string",
+              "format": null,
+              "required": false
             },
             {
               "paramType": "form",
@@ -196,7 +196,7 @@
               "description": "The type of media comment being submitted.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "audio",
                 "video"
@@ -673,7 +673,7 @@
               "description": "Add a textual comment to the submission.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -687,9 +687,9 @@
               "paramType": "form",
               "name": "comment[media_comment_id]",
               "description": "Add an audio/video comment to the submission. Media comments can be added via this API, however, note that there is not yet an API to generate or list existing media comments, so this functionality is currently of limited use.",
-              "type": "integer",
-              "format": "int64",
-              "required": true
+              "type": "string",
+              "format": null,
+              "required": false
             },
             {
               "paramType": "form",
@@ -697,7 +697,7 @@
               "description": "The type of media comment being added.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "audio",
                 "video"
@@ -720,7 +720,7 @@
               "description": "Assign a score to the submission, updating both the \"score\" and \"grade\" fields on the submission record. This parameter can be passed in a few different formats: points:: A floating point or integral value, such as \"13.5\". The grade will be interpreted directly as the score of the assignment. Values above assignment.points_possible are allowed, for awarding extra credit. percentage:: A floating point value appended with a percent sign, such as \"40%\". The grade will be interpreted as a percentage score on the assignment, where 100% == assignment.points_possible. Values above 100% are allowed, for awarding extra credit. letter grade:: A letter grade, following the assignment's defined letter grading scheme. For example, \"A-\". The resulting score will be the high end of the defined range for the letter grade. For instance, if \"B\" is defined as 86% to 84%, a letter grade of \"B\" will be worth 86%. The letter grade will be rejected if the assignment does not have a defined letter grading scheme. For more fine-grained control of scores, pass in points or percentage rather than the letter grade. \"pass/complete/fail/incomplete\":: A string value of \"pass\" or \"complete\" will give a score of 100%. \"fail\" or \"incomplete\" will give a score of 0. Note that assignments with grading_type of \"pass_fail\" can only be assigned a score of 0 or assignment.points_possible, nothing inbetween. If a posted_grade in the \"points\" or \"percentage\" format is sent, the grade will only be accepted if the grade equals one of those two values.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -728,7 +728,7 @@
               "description": "Assign a rubric assessment to this assignment submission. The sub-parameters here depend on the rubric for the assignment. The general format is, for each row in the rubric: rubric_assessment[criterion_id][points]:: The points awarded for this row. rubric_assessment[criterion_id][comments]:: Comments to add for this row. For example, if the assignment rubric is (in JSON format): !!!javascript [ { 'id': 'crit1', 'points': 10, 'description': 'Criterion 1', 'ratings': [ { 'description': 'Good', 'points': 10 }, { 'description': 'Poor', 'points': 3 } ] }, { 'id': 'crit2', 'points': 5, 'description': 'Criterion 2', 'ratings': [ { 'description': 'Complete', 'points': 5 }, { 'description': 'Incomplete', 'points': 0 } ] } ] Then a possible set of values for rubric_assessment would be: rubric_assessment[crit1][points]=3&rubric_assessment[crit2][points]=5&rubric_assessment[crit2][comments]=Well%20Done.",
               "type": "rubricassessment",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "void"
@@ -775,7 +775,7 @@
               "description": "Add a textual comment to the submission.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -789,9 +789,9 @@
               "paramType": "form",
               "name": "comment[media_comment_id]",
               "description": "Add an audio/video comment to the submission. Media comments can be added via this API, however, note that there is not yet an API to generate or list existing media comments, so this functionality is currently of limited use.",
-              "type": "integer",
-              "format": "int64",
-              "required": true
+              "type": "string",
+              "format": null,
+              "required": false
             },
             {
               "paramType": "form",
@@ -799,7 +799,7 @@
               "description": "The type of media comment being added.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "audio",
                 "video"
@@ -822,7 +822,7 @@
               "description": "Assign a score to the submission, updating both the \"score\" and \"grade\" fields on the submission record. This parameter can be passed in a few different formats: points:: A floating point or integral value, such as \"13.5\". The grade will be interpreted directly as the score of the assignment. Values above assignment.points_possible are allowed, for awarding extra credit. percentage:: A floating point value appended with a percent sign, such as \"40%\". The grade will be interpreted as a percentage score on the assignment, where 100% == assignment.points_possible. Values above 100% are allowed, for awarding extra credit. letter grade:: A letter grade, following the assignment's defined letter grading scheme. For example, \"A-\". The resulting score will be the high end of the defined range for the letter grade. For instance, if \"B\" is defined as 86% to 84%, a letter grade of \"B\" will be worth 86%. The letter grade will be rejected if the assignment does not have a defined letter grading scheme. For more fine-grained control of scores, pass in points or percentage rather than the letter grade. \"pass/complete/fail/incomplete\":: A string value of \"pass\" or \"complete\" will give a score of 100%. \"fail\" or \"incomplete\" will give a score of 0. Note that assignments with grading_type of \"pass_fail\" can only be assigned a score of 0 or assignment.points_possible, nothing inbetween. If a posted_grade in the \"points\" or \"percentage\" format is sent, the grade will only be accepted if the grade equals one of those two values.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -830,7 +830,7 @@
               "description": "Assign a rubric assessment to this assignment submission. The sub-parameters here depend on the rubric for the assignment. The general format is, for each row in the rubric: rubric_assessment[criterion_id][points]:: The points awarded for this row. rubric_assessment[criterion_id][comments]:: Comments to add for this row. For example, if the assignment rubric is (in JSON format): !!!javascript [ { 'id': 'crit1', 'points': 10, 'description': 'Criterion 1', 'ratings': [ { 'description': 'Good', 'points': 10 }, { 'description': 'Poor', 'points': 3 } ] }, { 'id': 'crit2', 'points': 5, 'description': 'Criterion 2', 'ratings': [ { 'description': 'Complete', 'points': 5 }, { 'description': 'Incomplete', 'points': 0 } ] } ] Then a possible set of values for rubric_assessment would be: rubric_assessment[crit1][points]=3&rubric_assessment[crit2][points]=5&rubric_assessment[crit2][comments]=Well%20Done.",
               "type": "rubricassessment",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "void"
