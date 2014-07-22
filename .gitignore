@@ -2,3 +2,4 @@
 .DS_Store
 clients/ruby/pandarus*.gem
 target/
+clients/ruby/Gemfile.lock
