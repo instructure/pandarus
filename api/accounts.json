@@ -321,5 +321,74 @@
     }
   ],
   "models": {
+    "Account": {
+      "id": "Account",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "the ID of the Account object",
+          "example": 2,
+          "type": "integer"
+        },
+        "name": {
+          "description": "The display name of the account",
+          "example": "Canvas Account",
+          "type": "string"
+        },
+        "parent_account_id": {
+          "description": "The account's parent ID, or null if this is the root account",
+          "example": 1,
+          "type": "integer"
+        },
+        "root_account_id": {
+          "description": "The ID of the root account, or null if this is the root account",
+          "example": 1,
+          "type": "integer"
+        },
+        "default_storage_quota_mb": {
+          "description": "The storage quota for the account in megabytes, if not otherwise specified",
+          "example": 500,
+          "type": "integer"
+        },
+        "default_user_storage_quota_mb": {
+          "description": "The storage quota for a user in the account in megabytes, if not otherwise specified",
+          "example": 50,
+          "type": "integer"
+        },
+        "default_group_storage_quota_mb": {
+          "description": "The storage quota for a group in the account in megabytes, if not otherwise specified",
+          "example": 50,
+          "type": "integer"
+        },
+        "default_time_zone": {
+          "description": "The default time zone of the account. Allowed time zones are {http://www.iana.org/time-zones IANA time zones} or friendlier {http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html Ruby on Rails time zones}.",
+          "example": "America/Denver",
+          "type": "string"
+        },
+        "sis_account_id": {
+          "description": "The account's identifier in the Student Information System. Only included if the user has permission to view SIS information.",
+          "example": "123xyz",
+          "type": "string"
+        },
+        "integration_id": {
+          "description": "The account's identifier in the Student Information System. Only included if the user has permission to view SIS information.",
+          "example": "123xyz",
+          "type": "string"
+        },
+        "sis_import_id": {
+          "description": "The id of the SIS import if created through SIS. Only included if the user has permission to manage SIS information.",
+          "example": "12",
+          "type": "integer"
+        },
+        "workflow_state": {
+          "description": "The state of the account. Can be 'active' or 'deleted'.",
+          "example": "active",
+          "type": "string"
+        }
+      }
+    }
   }
 }

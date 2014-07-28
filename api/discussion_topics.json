@@ -400,137 +400,6 @@
       ]
     },
     {
-      "path": "/v1/collection_items/{collection_item_id}/discussion_topics",
-      "description": "Create an new discussion topic for the course or group.",
-      "operations": [
-        {
-          "method": "POST",
-          "summary": "Create a new discussion topic",
-          "notes": "Create an new discussion topic for the course or group.",
-          "nickname": "create_new_discussion_topic_collection_items",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "collection_item_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "title",
-              "description": "no description",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "message",
-              "description": "no description",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "discussion_type",
-              "description": "The type of discussion. Defaults to side_comment if not value is given. Accepted values are 'side_comment', for discussions that only allow one level of nested comments, and 'threaded' for fully threaded discussions.",
-              "type": "string",
-              "format": null,
-              "required": false,
-              "enum": [
-                "side_comment",
-                "threaded"
-              ]
-            },
-            {
-              "paramType": "form",
-              "name": "published",
-              "description": "Whether this topic is published (true) or draft state (false). Only teachers and TAs have the ability to create draft state topics.",
-              "type": "boolean",
-              "format": null,
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "delayed_post_at",
-              "description": "If a timestamp is given, the topic will not be published until that time.",
-              "type": "datetime",
-              "format": null,
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "lock_at",
-              "description": "If a timestamp is given, the topic will be scheduled to lock at the provided timestamp. If the timestamp is in the past, the topic will be locked.",
-              "type": "datetime",
-              "format": null,
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "podcast_enabled",
-              "description": "If true, the topic will have an associated podcast feed.",
-              "type": "boolean",
-              "format": null,
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "podcast_has_student_posts",
-              "description": "If true, the podcast will include posts from students as well. Implies podcast_enabled.",
-              "type": "boolean",
-              "format": null,
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "require_initial_post",
-              "description": "If true then a user may not respond to other replies until that user has made an initial reply. Defaults to false.",
-              "type": "boolean",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "assignment",
-              "description": "To create an assignment discussion, pass the assignment parameters as a sub-object. See the {api:AssignmentsApiController#create Create an Assignment API} for the available parameters. The name parameter will be ignored, as it's taken from the discussion title. If you want to make a discussion that was an assignment NOT an assignment, pass set_assignment = false as part of the assignment object",
-              "type": "assignment",
-              "format": null,
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "is_announcement",
-              "description": "If true, this topic is an announcement. It will appear in the announcement's section rather than the discussions section. This requires announcment-posting permissions.",
-              "type": "boolean",
-              "format": null,
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "position_after",
-              "description": "By default, discussions are sorted chronologically by creation date, you can pass the id of another topic to have this one show up after the other when they are listed.",
-              "type": "string",
-              "format": null,
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "group_category_id",
-              "description": "If present, the topic will become a group discussion assigned to the group.",
-              "type": "integer",
-              "format": "int64",
-              "required": false
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
       "path": "/v1/courses/{course_id}/discussion_topics/{topic_id}",
       "description": "Accepts the same parameters as create",
       "operations": [
@@ -574,37 +443,6 @@
             {
               "paramType": "path",
               "name": "group_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "topic_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
-      "path": "/v1/collection_items/{collection_item_id}/discussion_topics/{topic_id}",
-      "description": "Accepts the same parameters as create",
-      "operations": [
-        {
-          "method": "PUT",
-          "summary": "Update a topic",
-          "notes": "Accepts the same parameters as create",
-          "nickname": "update_topic_collection_items",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "collection_item_id",
               "description": "ID",
               "type": "string",
               "format": null,
@@ -686,37 +524,6 @@
       ]
     },
     {
-      "path": "/v1/collection_items/{collection_item_id}/discussion_topics/{topic_id}",
-      "description": "Deletes the discussion topic. This will also delete the assignment, if it's\nan assignment discussion.",
-      "operations": [
-        {
-          "method": "DELETE",
-          "summary": "Delete a topic",
-          "notes": "Deletes the discussion topic. This will also delete the assignment, if it's\nan assignment discussion.",
-          "nickname": "delete_topic_collection_items",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "collection_item_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "topic_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
       "path": "/v1/courses/{course_id}/discussion_topics/reorder",
       "description": "Puts the pinned discussion topics in the specified order.\nAll pinned topics should be included.",
       "operations": [
@@ -763,40 +570,6 @@
             {
               "paramType": "path",
               "name": "group_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "order",
-              "description": "The ids of the pinned discussion topics in the desired order. (For example, \"order=104,102,103\".)",
-              "type": "integer",
-              "format": "int64",
-              "required": false,
-              "tags": {
-                "type": "array"
-              }
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
-      "path": "/v1/collection_items/{collection_item_id}/discussion_topics/reorder",
-      "description": "Puts the pinned discussion topics in the specified order.\nAll pinned topics should be included.",
-      "operations": [
-        {
-          "method": "POST",
-          "summary": "Reorder pinned topics",
-          "notes": "Puts the pinned discussion topics in the specified order.\nAll pinned topics should be included.",
-          "nickname": "reorder_pinned_topics_collection_items",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "collection_item_id",
               "description": "ID",
               "type": "string",
               "format": null,
@@ -913,53 +686,6 @@
       ]
     },
     {
-      "path": "/v1/collection_items/{collection_item_id}/discussion_topics/{topic_id}/entries/{id}",
-      "description": "Update an existing discussion entry.\n\nThe entry must have been created by the current user, or the current user\nmust have admin rights to the discussion. If the edit is not allowed, a 401 will be returned.",
-      "operations": [
-        {
-          "method": "PUT",
-          "summary": "Update an entry",
-          "notes": "Update an existing discussion entry.\n\nThe entry must have been created by the current user, or the current user\nmust have admin rights to the discussion. If the edit is not allowed, a 401 will be returned.",
-          "nickname": "update_entry_collection_items",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "collection_item_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "topic_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "message",
-              "description": "The updated body of the entry.",
-              "type": "string",
-              "format": null,
-              "required": true
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
       "path": "/v1/courses/{course_id}/discussion_topics/{topic_id}/entries/{id}",
       "description": "Delete a discussion entry.\n\nThe entry must have been created by the current user, or the current user\nmust have admin rights to the discussion. If the delete is not allowed, a 401 will be returned.\n\nThe discussion will be marked deleted, and the user_id and message will be cleared out.",
       "operations": [
@@ -1011,45 +737,6 @@
             {
               "paramType": "path",
               "name": "group_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "topic_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
-      "path": "/v1/collection_items/{collection_item_id}/discussion_topics/{topic_id}/entries/{id}",
-      "description": "Delete a discussion entry.\n\nThe entry must have been created by the current user, or the current user\nmust have admin rights to the discussion. If the delete is not allowed, a 401 will be returned.\n\nThe discussion will be marked deleted, and the user_id and message will be cleared out.",
-      "operations": [
-        {
-          "method": "DELETE",
-          "summary": "Delete an entry",
-          "notes": "Delete a discussion entry.\n\nThe entry must have been created by the current user, or the current user\nmust have admin rights to the discussion. If the delete is not allowed, a 401 will be returned.\n\nThe discussion will be marked deleted, and the user_id and message will be cleared out.",
-          "nickname": "delete_entry_collection_items",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "collection_item_id",
               "description": "ID",
               "type": "string",
               "format": null,
@@ -1139,37 +826,6 @@
       ]
     },
     {
-      "path": "/v1/collection_items/{collection_item_id}/discussion_topics/{topic_id}",
-      "description": "Returns data on an individual discussion topic. See the List action for the response formatting.",
-      "operations": [
-        {
-          "method": "GET",
-          "summary": "Get a single topic",
-          "notes": "Returns data on an individual discussion topic. See the List action for the response formatting.",
-          "nickname": "get_single_topic_collection_items",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "collection_item_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "topic_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
       "path": "/v1/courses/{course_id}/discussion_topics/{topic_id}/view",
       "description": "Return a cached structure of the discussion topic, containing all entries,\ntheir authors, and their message bodies.\n\nMay require (depending on the topic) that the user has posted in the topic.\nIf it is required, and the user has not posted, will respond with a 403\nForbidden status and the body 'require_initial_post'.\n\nIn some rare situations, this cached structure may not be available yet. In\nthat case, the server will respond with a 503 error, and the caller should\ntry again soon.\n\nThe response is an object containing the following keys:\n* \"participants\": A list of summary information on users who have posted to\n  the discussion. Each value is an object containing their id, display_name,\n  and avatar_url.\n* \"unread_entries\": A list of entry ids that are unread by the current\n  user. this implies that any entry not in this list is read.\n* \"forced_entries\": A list of entry ids that have forced_read_state set to\n  true. This flag is meant to indicate the entry's read_state has been \n  manually set to 'unread' by the user, so the entry should not be\n  automatically marked as read.\n* \"view\": A threaded view of all the entries in the discussion, containing\n  the id, user_id, and message.\n* \"new_entries\": Because this view is eventually consistent, it's possible\n  that newly created or updated entries won't yet be reflected in the view.\n  If the application wants to also get a flat list of all entries not yet\n  reflected in the view, pass include_new_entries=1 to the request and this\n  array of entries will be returned. These entries are returned in a flat\n  array, in ascending created_at order.",
       "operations": [
@@ -1213,37 +869,6 @@
             {
               "paramType": "path",
               "name": "group_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "topic_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
-      "path": "/v1/collection_items/{collection_item_id}/discussion_topics/{topic_id}/view",
-      "description": "Return a cached structure of the discussion topic, containing all entries,\ntheir authors, and their message bodies.\n\nMay require (depending on the topic) that the user has posted in the topic.\nIf it is required, and the user has not posted, will respond with a 403\nForbidden status and the body 'require_initial_post'.\n\nIn some rare situations, this cached structure may not be available yet. In\nthat case, the server will respond with a 503 error, and the caller should\ntry again soon.\n\nThe response is an object containing the following keys:\n* \"participants\": A list of summary information on users who have posted to\n  the discussion. Each value is an object containing their id, display_name,\n  and avatar_url.\n* \"unread_entries\": A list of entry ids that are unread by the current\n  user. this implies that any entry not in this list is read.\n* \"forced_entries\": A list of entry ids that have forced_read_state set to\n  true. This flag is meant to indicate the entry's read_state has been \n  manually set to 'unread' by the user, so the entry should not be\n  automatically marked as read.\n* \"view\": A threaded view of all the entries in the discussion, containing\n  the id, user_id, and message.\n* \"new_entries\": Because this view is eventually consistent, it's possible\n  that newly created or updated entries won't yet be reflected in the view.\n  If the application wants to also get a flat list of all entries not yet\n  reflected in the view, pass include_new_entries=1 to the request and this\n  array of entries will be returned. These entries are returned in a flat\n  array, in ascending created_at order.",
-      "operations": [
-        {
-          "method": "GET",
-          "summary": "Get the full topic",
-          "notes": "Return a cached structure of the discussion topic, containing all entries,\ntheir authors, and their message bodies.\n\nMay require (depending on the topic) that the user has posted in the topic.\nIf it is required, and the user has not posted, will respond with a 403\nForbidden status and the body 'require_initial_post'.\n\nIn some rare situations, this cached structure may not be available yet. In\nthat case, the server will respond with a 503 error, and the caller should\ntry again soon.\n\nThe response is an object containing the following keys:\n* \"participants\": A list of summary information on users who have posted to\n  the discussion. Each value is an object containing their id, display_name,\n  and avatar_url.\n* \"unread_entries\": A list of entry ids that are unread by the current\n  user. this implies that any entry not in this list is read.\n* \"forced_entries\": A list of entry ids that have forced_read_state set to\n  true. This flag is meant to indicate the entry's read_state has been \n  manually set to 'unread' by the user, so the entry should not be\n  automatically marked as read.\n* \"view\": A threaded view of all the entries in the discussion, containing\n  the id, user_id, and message.\n* \"new_entries\": Because this view is eventually consistent, it's possible\n  that newly created or updated entries won't yet be reflected in the view.\n  If the application wants to also get a flat list of all entries not yet\n  reflected in the view, pass include_new_entries=1 to the request and this\n  array of entries will be returned. These entries are returned in a flat\n  array, in ascending created_at order.",
-          "nickname": "get_full_topic_collection_items",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "collection_item_id",
               "description": "ID",
               "type": "string",
               "format": null,
@@ -1357,53 +982,6 @@
       ]
     },
     {
-      "path": "/v1/collection_items/{collection_item_id}/discussion_topics/{topic_id}/entries",
-      "description": "Create a new entry in a discussion topic. Returns a json representation of\nthe created entry (see documentation for 'entries' method) on success.",
-      "operations": [
-        {
-          "method": "POST",
-          "summary": "Post an entry",
-          "notes": "Create a new entry in a discussion topic. Returns a json representation of\nthe created entry (see documentation for 'entries' method) on success.",
-          "nickname": "post_entry_collection_items",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "collection_item_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "topic_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "message",
-              "description": "The body of the entry.",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "attachment",
-              "description": "a multipart/form-data form-field-style attachment. Attachments larger than 1 kilobyte are subject to quota restrictions.",
-              "type": "string",
-              "format": null,
-              "required": false
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
       "path": "/v1/courses/{course_id}/discussion_topics/{topic_id}/entries",
       "description": "Retrieve the (paginated) top-level entries in a discussion topic.\n\nMay require (depending on the topic) that the user has posted in the topic.\nIf it is required, and the user has not posted, will respond with a 403\nForbidden status and the body 'require_initial_post'.\n\nWill include the 10 most recent replies, if any, for each entry returned.\n\nIf the topic is a root topic with children corresponding to groups of a\ngroup assignment, entries from those subtopics for which the user belongs\nto the corresponding group will be returned.\n\nOrdering of returned entries is newest-first by posting timestamp (reply\nactivity is ignored).",
       "operations": [
@@ -1447,37 +1025,6 @@
             {
               "paramType": "path",
               "name": "group_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "topic_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
-      "path": "/v1/collection_items/{collection_item_id}/discussion_topics/{topic_id}/entries",
-      "description": "Retrieve the (paginated) top-level entries in a discussion topic.\n\nMay require (depending on the topic) that the user has posted in the topic.\nIf it is required, and the user has not posted, will respond with a 403\nForbidden status and the body 'require_initial_post'.\n\nWill include the 10 most recent replies, if any, for each entry returned.\n\nIf the topic is a root topic with children corresponding to groups of a\ngroup assignment, entries from those subtopics for which the user belongs\nto the corresponding group will be returned.\n\nOrdering of returned entries is newest-first by posting timestamp (reply\nactivity is ignored).",
-      "operations": [
-        {
-          "method": "GET",
-          "summary": "List topic entries",
-          "notes": "Retrieve the (paginated) top-level entries in a discussion topic.\n\nMay require (depending on the topic) that the user has posted in the topic.\nIf it is required, and the user has not posted, will respond with a 403\nForbidden status and the body 'require_initial_post'.\n\nWill include the 10 most recent replies, if any, for each entry returned.\n\nIf the topic is a root topic with children corresponding to groups of a\ngroup assignment, entries from those subtopics for which the user belongs\nto the corresponding group will be returned.\n\nOrdering of returned entries is newest-first by posting timestamp (reply\nactivity is ignored).",
-          "nickname": "list_topic_entries_collection_items",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "collection_item_id",
               "description": "ID",
               "type": "string",
               "format": null,
@@ -1607,61 +1154,6 @@
       ]
     },
     {
-      "path": "/v1/collection_items/{collection_item_id}/discussion_topics/{topic_id}/entries/{entry_id}/replies",
-      "description": "Add a reply to an entry in a discussion topic. Returns a json\nrepresentation of the created reply (see documentation for 'replies'\nmethod) on success.\n\nMay require (depending on the topic) that the user has posted in the topic.\nIf it is required, and the user has not posted, will respond with a 403\nForbidden status and the body 'require_initial_post'.",
-      "operations": [
-        {
-          "method": "POST",
-          "summary": "Post a reply",
-          "notes": "Add a reply to an entry in a discussion topic. Returns a json\nrepresentation of the created reply (see documentation for 'replies'\nmethod) on success.\n\nMay require (depending on the topic) that the user has posted in the topic.\nIf it is required, and the user has not posted, will respond with a 403\nForbidden status and the body 'require_initial_post'.",
-          "nickname": "post_reply_collection_items",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "collection_item_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "topic_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "entry_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "message",
-              "description": "The body of the entry.",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "attachment",
-              "description": "a multipart/form-data form-field-style attachment. Attachments larger than 1 kilobyte are subject to quota restrictions.",
-              "type": "string",
-              "format": null,
-              "required": false
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
       "path": "/v1/courses/{course_id}/discussion_topics/{topic_id}/entries/{entry_id}/replies",
       "description": "Retrieve the (paginated) replies to a top-level entry in a discussion\ntopic.\n\nMay require (depending on the topic) that the user has posted in the topic.\nIf it is required, and the user has not posted, will respond with a 403\nForbidden status and the body 'require_initial_post'.\n\nOrdering of returned entries is newest-first by creation timestamp.",
       "operations": [
@@ -1713,45 +1205,6 @@
             {
               "paramType": "path",
               "name": "group_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "topic_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "entry_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
-      "path": "/v1/collection_items/{collection_item_id}/discussion_topics/{topic_id}/entries/{entry_id}/replies",
-      "description": "Retrieve the (paginated) replies to a top-level entry in a discussion\ntopic.\n\nMay require (depending on the topic) that the user has posted in the topic.\nIf it is required, and the user has not posted, will respond with a 403\nForbidden status and the body 'require_initial_post'.\n\nOrdering of returned entries is newest-first by creation timestamp.",
-      "operations": [
-        {
-          "method": "GET",
-          "summary": "List entry replies",
-          "notes": "Retrieve the (paginated) replies to a top-level entry in a discussion\ntopic.\n\nMay require (depending on the topic) that the user has posted in the topic.\nIf it is required, and the user has not posted, will respond with a 403\nForbidden status and the body 'require_initial_post'.\n\nOrdering of returned entries is newest-first by creation timestamp.",
-          "nickname": "list_entry_replies_collection_items",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "collection_item_id",
               "description": "ID",
               "type": "string",
               "format": null,
@@ -1863,48 +1316,6 @@
       ]
     },
     {
-      "path": "/v1/collection_items/{collection_item_id}/discussion_topics/{topic_id}/entry_list",
-      "description": "Retrieve a paginated list of discussion entries, given a list of ids.\n\nMay require (depending on the topic) that the user has posted in the topic.\nIf it is required, and the user has not posted, will respond with a 403\nForbidden status and the body 'require_initial_post'.",
-      "operations": [
-        {
-          "method": "GET",
-          "summary": "List entries",
-          "notes": "Retrieve a paginated list of discussion entries, given a list of ids.\n\nMay require (depending on the topic) that the user has posted in the topic.\nIf it is required, and the user has not posted, will respond with a 403\nForbidden status and the body 'require_initial_post'.",
-          "nickname": "list_entries_collection_items",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "collection_item_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "topic_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "query",
-              "name": "ids",
-              "description": "A list of entry ids to retrieve. Entries will be returned in id order, smallest id first.",
-              "type": "string",
-              "format": null,
-              "required": true,
-              "tags": {
-                "type": "array"
-              }
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
       "path": "/v1/courses/{course_id}/discussion_topics/{topic_id}/read",
       "description": "Mark the initial text of the discussion topic as read.\n\nNo request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
       "operations": [
@@ -1948,37 +1359,6 @@
             {
               "paramType": "path",
               "name": "group_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "topic_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
-      "path": "/v1/collection_items/{collection_item_id}/discussion_topics/{topic_id}/read",
-      "description": "Mark the initial text of the discussion topic as read.\n\nNo request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
-      "operations": [
-        {
-          "method": "PUT",
-          "summary": "Mark topic as read",
-          "notes": "Mark the initial text of the discussion topic as read.\n\nNo request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
-          "nickname": "mark_topic_as_read_collection_items",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "collection_item_id",
               "description": "ID",
               "type": "string",
               "format": null,
@@ -2060,37 +1440,6 @@
       ]
     },
     {
-      "path": "/v1/collection_items/{collection_item_id}/discussion_topics/{topic_id}/read",
-      "description": "Mark the initial text of the discussion topic as unread.\n\nNo request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
-      "operations": [
-        {
-          "method": "DELETE",
-          "summary": "Mark topic as unread",
-          "notes": "Mark the initial text of the discussion topic as unread.\n\nNo request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
-          "nickname": "mark_topic_as_unread_collection_items",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "collection_item_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "topic_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
       "path": "/v1/courses/{course_id}/discussion_topics/{topic_id}/read_all",
       "description": "Mark the discussion topic and all its entries as read.\n\nNo request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
       "operations": [
@@ -2142,45 +1491,6 @@
             {
               "paramType": "path",
               "name": "group_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "topic_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "forced_read_state",
-              "description": "A boolean value to set all of the entries' forced_read_state. No change is made if this argument is not specified.",
-              "type": "boolean",
-              "format": null,
-              "required": false
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
-      "path": "/v1/collection_items/{collection_item_id}/discussion_topics/{topic_id}/read_all",
-      "description": "Mark the discussion topic and all its entries as read.\n\nNo request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
-      "operations": [
-        {
-          "method": "PUT",
-          "summary": "Mark all entries as read",
-          "notes": "Mark the discussion topic and all its entries as read.\n\nNo request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
-          "nickname": "mark_all_entries_as_read_collection_items",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "collection_item_id",
               "description": "ID",
               "type": "string",
               "format": null,
@@ -2286,45 +1596,6 @@
       ]
     },
     {
-      "path": "/v1/collection_items/{collection_item_id}/discussion_topics/{topic_id}/read_all",
-      "description": "Mark the discussion topic and all its entries as unread.\n\nNo request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
-      "operations": [
-        {
-          "method": "DELETE",
-          "summary": "Mark all entries as unread",
-          "notes": "Mark the discussion topic and all its entries as unread.\n\nNo request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
-          "nickname": "mark_all_entries_as_unread_collection_items",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "collection_item_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "topic_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "query",
-              "name": "forced_read_state",
-              "description": "A boolean value to set all of the entries' forced_read_state. No change is made if this argument is not specified.",
-              "type": "boolean",
-              "format": null,
-              "required": false
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
       "path": "/v1/courses/{course_id}/discussion_topics/{topic_id}/entries/{entry_id}/read",
       "description": "Mark a discussion entry as read.\n\nNo request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
       "operations": [
@@ -2384,53 +1655,6 @@
             {
               "paramType": "path",
               "name": "group_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "topic_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "entry_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "forced_read_state",
-              "description": "A boolean value to set the entry's forced_read_state. No change is made if this argument is not specified.",
-              "type": "boolean",
-              "format": null,
-              "required": false
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
-      "path": "/v1/collection_items/{collection_item_id}/discussion_topics/{topic_id}/entries/{entry_id}/read",
-      "description": "Mark a discussion entry as read.\n\nNo request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
-      "operations": [
-        {
-          "method": "PUT",
-          "summary": "Mark entry as read",
-          "notes": "Mark a discussion entry as read.\n\nNo request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
-          "nickname": "mark_entry_as_read_collection_items",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "collection_item_id",
               "description": "ID",
               "type": "string",
               "format": null,
@@ -2560,53 +1784,6 @@
       ]
     },
     {
-      "path": "/v1/collection_items/{collection_item_id}/discussion_topics/{topic_id}/entries/{entry_id}/read",
-      "description": "Mark a discussion entry as unread.\n\nNo request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
-      "operations": [
-        {
-          "method": "DELETE",
-          "summary": "Mark entry as unread",
-          "notes": "Mark a discussion entry as unread.\n\nNo request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
-          "nickname": "mark_entry_as_unread_collection_items",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "collection_item_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "topic_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "entry_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "query",
-              "name": "forced_read_state",
-              "description": "A boolean value to set the entry's forced_read_state. No change is made if this argument is not specified.",
-              "type": "boolean",
-              "format": null,
-              "required": false
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
       "path": "/v1/courses/{course_id}/discussion_topics/{topic_id}/subscribed",
       "description": "Subscribe to a topic to receive notifications about new entries\n\nOn success, the response will be 204 No Content with an empty body",
       "operations": [
@@ -2669,37 +1846,6 @@
       ]
     },
     {
-      "path": "/v1/collection_items/{collection_item_id}/discussion_topics/{topic_id}/subscribed",
-      "description": "Subscribe to a topic to receive notifications about new entries\n\nOn success, the response will be 204 No Content with an empty body",
-      "operations": [
-        {
-          "method": "PUT",
-          "summary": "Subscribe to a topic",
-          "notes": "Subscribe to a topic to receive notifications about new entries\n\nOn success, the response will be 204 No Content with an empty body",
-          "nickname": "subscribe_to_topic_collection_items",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "collection_item_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "topic_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
       "path": "/v1/courses/{course_id}/discussion_topics/{topic_id}/subscribed",
       "description": "Unsubscribe from a topic to stop receiving notifications about new entries\n\nOn success, the response will be 204 No Content with an empty body",
       "operations": [
@@ -2743,37 +1889,6 @@
             {
               "paramType": "path",
               "name": "group_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "topic_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
-      "path": "/v1/collection_items/{collection_item_id}/discussion_topics/{topic_id}/subscribed",
-      "description": "Unsubscribe from a topic to stop receiving notifications about new entries\n\nOn success, the response will be 204 No Content with an empty body",
-      "operations": [
-        {
-          "method": "DELETE",
-          "summary": "Unsubscribe from a topic",
-          "notes": "Unsubscribe from a topic to stop receiving notifications about new entries\n\nOn success, the response will be 204 No Content with an empty body",
-          "nickname": "unsubscribe_from_topic_collection_items",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "collection_item_id",
               "description": "ID",
               "type": "string",
               "format": null,

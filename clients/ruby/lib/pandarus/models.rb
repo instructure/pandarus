@@ -81,4 +81,5 @@ require 'pandarus/models/external_tool_tag_attributes'
 require 'pandarus/models/group_membership'
 require 'pandarus/models/quiz_report'
 require 'pandarus/models/answer'
+require 'pandarus/models/account'
 

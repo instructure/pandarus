@@ -19,10 +19,6 @@
       "description": "Admins"
     },
     {
-      "path": "/analytics.json",
-      "description": "Analytics"
-    },
-    {
       "path": "/announcement_external_feeds.json",
       "description": "Announcement External Feeds"
     },

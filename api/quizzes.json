@@ -263,6 +263,14 @@
               "type": "boolean",
               "format": null,
               "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "quiz[one_time_results]",
+              "description": "Whether students should be prevented from viewing their quiz results past the first time (right after they turn the quiz in.) Only valid if \"hide_results\" is not set to \"always\". Defaults to false.",
+              "type": "boolean",
+              "format": null,
+              "required": false
             }
           ],
           "type": "Quiz"
@@ -488,6 +496,11 @@
           "description": "prevent the students from seeing correct answers after the specified date has passed. only valid if show_correct_answers=true",
           "example": "2013-01-23T23:59:00-07:00",
           "type": "datetime"
+        },
+        "one_time_results": {
+          "description": "prevent the students from seeing their results more than once (right after they submit the quiz)",
+          "example": true,
+          "type": "boolean"
         },
         "scoring_policy": {
           "description": "which quiz score to keep (only if allowed_attempts != 1) possible values: 'keep_highest', 'keep_latest'",
