@@ -136,16 +136,16 @@
               "paramType": "form",
               "name": "group_limit",
               "description": "Limit the maximum number of users in each group (Course Only). Requires self signup.",
-              "type": "string",
-              "format": null,
+              "type": "integer",
+              "format": "int64",
               "required": false
             },
             {
               "paramType": "form",
               "name": "create_group_count",
               "description": "Create this number of groups (Course Only).",
-              "type": "string",
-              "format": null,
+              "type": "integer",
+              "format": "int64",
               "required": false
             },
             {
@@ -215,16 +215,16 @@
               "paramType": "form",
               "name": "group_limit",
               "description": "Limit the maximum number of users in each group (Course Only). Requires self signup.",
-              "type": "string",
-              "format": null,
+              "type": "integer",
+              "format": "int64",
               "required": false
             },
             {
               "paramType": "form",
               "name": "create_group_count",
               "description": "Create this number of groups (Course Only).",
-              "type": "string",
-              "format": null,
+              "type": "integer",
+              "format": "int64",
               "required": false
             },
             {
@@ -264,7 +264,7 @@
               "description": "Name of the group category",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -294,16 +294,16 @@
               "paramType": "form",
               "name": "group_limit",
               "description": "Limit the maximum number of users in each group (Course Only). Requires self signup.",
-              "type": "string",
-              "format": null,
+              "type": "integer",
+              "format": "int64",
               "required": false
             },
             {
               "paramType": "form",
               "name": "create_group_count",
               "description": "Create this number of groups (Course Only).",
-              "type": "string",
-              "format": null,
+              "type": "integer",
+              "format": "int64",
               "required": false
             },
             {

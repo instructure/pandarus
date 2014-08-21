@@ -23,7 +23,7 @@
               "description": "The user id for whom you want to retrieve CommMessages",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "query",

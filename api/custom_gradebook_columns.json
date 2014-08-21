@@ -24,6 +24,14 @@
               "type": "string",
               "format": null,
               "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include_hidden",
+              "description": "Include hidden parameters (defaults to false)",
+              "type": "boolean",
+              "format": null,
+              "required": false
             }
           ],
           "type": "array",
@@ -63,9 +71,9 @@
               "paramType": "form",
               "name": "column[position]",
               "description": "The position of the column relative to other custom columns",
-              "type": "int",
-              "format": null,
-              "required": true
+              "type": "integer",
+              "format": "int64",
+              "required": false
             },
             {
               "paramType": "form",

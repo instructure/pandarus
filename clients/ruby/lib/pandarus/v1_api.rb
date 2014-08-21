@@ -275,6 +275,53 @@ module Pandarus
       
     end
     
+    # Create a global notification
+    def create_global_notification(account_id,account_notification__subject__,account_notification__message__,account_notification__start_at__,account_notification__end_at__,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :account_notification__subject__,
+        :account_notification__message__,
+        :account_notification__start_at__,
+        :account_notification__end_at__,
+        :account_notification__icon__,
+        :account_notification_roles,
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      raise "account_notification__subject__ is required" if account_notification__subject__.nil?
+      raise "account_notification__message__ is required" if account_notification__message__.nil?
+      raise "account_notification__start_at__ is required" if account_notification__start_at__.nil?
+      raise "account_notification__end_at__ is required" if account_notification__end_at__.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id,
+        :account_notification__subject__ => account_notification__subject__,
+        :account_notification__message__ => account_notification__message__,
+        :account_notification__start_at__ => account_notification__start_at__,
+        :account_notification__end_at__ => account_notification__end_at__
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/account_notifications",
+        :account_id => account_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:post, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      page_params_store(:post, path)
+      response
+      
+    end
+    
     # List Available Reports
     def list_available_reports(account_id,opts={})
       query_param_keys = [
@@ -309,7 +356,7 @@ module Pandarus
     end
     
     # Start a Report
-    def start_report(account_id,report,__parameters__,opts={})
+    def start_report(account_id,report,opts={})
       query_param_keys = [
         
       ]
@@ -322,12 +369,10 @@ module Pandarus
       # verify existence of params
       raise "account_id is required" if account_id.nil?
       raise "report is required" if report.nil?
-      raise "__parameters__ is required" if __parameters__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id,
-        :report => report,
-        :__parameters__ => __parameters__
+        :report => report
       )
 
       # resource path
@@ -773,6 +818,519 @@ module Pandarus
       response.map {|response|Admin.new(response)}
     end
     
+    # Get department-level participation data
+    def get_department_level_participation_data_terms(account_id,term_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      raise "term_id is required" if term_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id,
+        :term_id => term_id
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/analytics/terms/{term_id}/activity",
+        :account_id => account_id,
+        :term_id => term_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # Get department-level participation data
+    def get_department_level_participation_data_current(account_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/analytics/current/activity",
+        :account_id => account_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # Get department-level participation data
+    def get_department_level_participation_data_completed(account_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/analytics/completed/activity",
+        :account_id => account_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # Get department-level grade data
+    def get_department_level_grade_data_terms(account_id,term_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      raise "term_id is required" if term_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id,
+        :term_id => term_id
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/analytics/terms/{term_id}/grades",
+        :account_id => account_id,
+        :term_id => term_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # Get department-level grade data
+    def get_department_level_grade_data_current(account_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/analytics/current/grades",
+        :account_id => account_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # Get department-level grade data
+    def get_department_level_grade_data_completed(account_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/analytics/completed/grades",
+        :account_id => account_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # Get department-level statistics
+    def get_department_level_statistics_terms(account_id,term_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      raise "term_id is required" if term_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id,
+        :term_id => term_id
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/analytics/terms/{term_id}/statistics",
+        :account_id => account_id,
+        :term_id => term_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # Get department-level statistics
+    def get_department_level_statistics_current(account_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/analytics/current/statistics",
+        :account_id => account_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # Get department-level statistics
+    def get_department_level_statistics_completed(account_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/analytics/completed/statistics",
+        :account_id => account_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # Get course-level participation data
+    def get_course_level_participation_data(course_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/analytics/activity",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # Get course-level assignment data
+    def get_course_level_assignment_data(course_id,opts={})
+      query_param_keys = [
+        :async
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/analytics/assignments",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # Get course-level student summary data
+    def get_course_level_student_summary_data(course_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/analytics/student_summaries",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # Get user-in-a-course-level participation data
+    def get_user_in_a_course_level_participation_data(course_id,student_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "student_id is required" if student_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :student_id => student_id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/analytics/users/{student_id}/activity",
+        :course_id => course_id,
+        :student_id => student_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # Get user-in-a-course-level assignment data
+    def get_user_in_a_course_level_assignment_data(course_id,student_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "student_id is required" if student_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :student_id => student_id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/analytics/users/{student_id}/assignments",
+        :course_id => course_id,
+        :student_id => student_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # Get user-in-a-course-level messaging data
+    def get_user_in_a_course_level_messaging_data(course_id,student_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "student_id is required" if student_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :student_id => student_id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/analytics/users/{student_id}/communication",
+        :course_id => course_id,
+        :student_id => student_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
     # List external feeds
     def list_external_feeds_courses(course_id,opts={})
       query_param_keys = [
@@ -838,7 +1396,7 @@ module Pandarus
     end
     
     # Create an external feed
-    def create_external_feed_courses(course_id,url,verbosity,opts={})
+    def create_external_feed_courses(course_id,url,opts={})
       query_param_keys = [
         
       ]
@@ -853,12 +1411,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "url is required" if url.nil?
-      raise "verbosity is required" if verbosity.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :url => url,
-        :verbosity => verbosity
+        :url => url
       )
 
       # resource path
@@ -877,7 +1433,7 @@ module Pandarus
     end
     
     # Create an external feed
-    def create_external_feed_groups(group_id,url,verbosity,opts={})
+    def create_external_feed_groups(group_id,url,opts={})
       query_param_keys = [
         
       ]
@@ -892,12 +1448,10 @@ module Pandarus
       # verify existence of params
       raise "group_id is required" if group_id.nil?
       raise "url is required" if url.nil?
-      raise "verbosity is required" if verbosity.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id,
-        :url => url,
-        :verbosity => verbosity
+        :url => url
       )
 
       # resource path
@@ -1021,7 +1575,7 @@ module Pandarus
     end
     
     # Create an appointment group
-    def create_appointment_group(appointment_group__context_codes__,opts={})
+    def create_appointment_group(appointment_group__context_codes__,appointment_group__title__,opts={})
       query_param_keys = [
         
       ]
@@ -1044,9 +1598,11 @@ module Pandarus
 
       # verify existence of params
       raise "appointment_group__context_codes__ is required" if appointment_group__context_codes__.nil?
+      raise "appointment_group__title__ is required" if appointment_group__title__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :appointment_group__context_codes__ => appointment_group__context_codes__
+        :appointment_group__context_codes__ => appointment_group__context_codes__,
+        :appointment_group__title__ => appointment_group__title__
       )
 
       # resource path
@@ -1245,7 +1801,7 @@ module Pandarus
     end
     
     # List assignment groups
-    def list_assignment_groups(course_id,include,opts={})
+    def list_assignment_groups(course_id,opts={})
       query_param_keys = [
         :include,
         :override_assignment_dates
@@ -1257,11 +1813,9 @@ module Pandarus
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :include => include
+        :course_id => course_id
       )
 
       # resource path
@@ -1280,7 +1834,7 @@ module Pandarus
     end
     
     # Get an Assignment Group
-    def get_assignment_group(course_id,assignment_group_id,include,opts={})
+    def get_assignment_group(course_id,assignment_group_id,opts={})
       query_param_keys = [
         :include,
         :override_assignment_dates
@@ -1293,12 +1847,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "assignment_group_id is required" if assignment_group_id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :assignment_group_id => assignment_group_id,
-        :include => include
+        :assignment_group_id => assignment_group_id
       )
 
       # resource path
@@ -1389,7 +1941,7 @@ module Pandarus
     end
     
     # Destroy an Assignment Group
-    def destroy_assignment_group(course_id,assignment_group_id,move_assignment_to,opts={})
+    def destroy_assignment_group(course_id,assignment_group_id,opts={})
       query_param_keys = [
         :move_assignment_to
       ]
@@ -1401,12 +1953,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "assignment_group_id is required" if assignment_group_id.nil?
-      raise "move_assignment_to is required" if move_assignment_to.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :assignment_group_id => assignment_group_id,
-        :move_assignment_to => move_assignment_to
+        :assignment_group_id => assignment_group_id
       )
 
       # resource path
@@ -1461,7 +2011,7 @@ module Pandarus
     end
     
     # List assignments
-    def list_assignments(course_id,include,opts={})
+    def list_assignments(course_id,opts={})
       query_param_keys = [
         :include,
         :search_term,
@@ -1474,11 +2024,9 @@ module Pandarus
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :include => include
+        :course_id => course_id
       )
 
       # resource path
@@ -1497,7 +2045,7 @@ module Pandarus
     end
     
     # Get a single assignment
-    def get_single_assignment(course_id,id,include,opts={})
+    def get_single_assignment(course_id,id,opts={})
       query_param_keys = [
         :include,
         :override_assignment_dates
@@ -1510,12 +2058,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "id is required" if id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :id => id,
-        :include => include
+        :id => id
       )
 
       # resource path
@@ -1535,7 +2081,7 @@ module Pandarus
     end
     
     # Create an assignment
-    def create_assignment(course_id,assignment__name__,assignment__submission_types__,opts={})
+    def create_assignment(course_id,assignment__name__,opts={})
       query_param_keys = [
         
       ]
@@ -1546,9 +2092,9 @@ module Pandarus
         :assignment__submission_types__,
         :assignment__allowed_extensions__,
         :assignment__turnitin_enabled__,
+        :assignment__turnitin_settings__,
         :assignment__integration_data__,
         :assignment__integration_id__,
-        :assignment__turnitin_settings__,
         :assignment__peer_reviews__,
         :assignment__automatic_peer_reviews__,
         :assignment__notify_of_update__,
@@ -1573,12 +2119,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "assignment__name__ is required" if assignment__name__.nil?
-      raise "assignment__submission_types__ is required" if assignment__submission_types__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :assignment__name__ => assignment__name__,
-        :assignment__submission_types__ => assignment__submission_types__
+        :assignment__name__ => assignment__name__
       )
 
       # resource path
@@ -1609,6 +2153,8 @@ module Pandarus
         :assignment__allowed_extensions__,
         :assignment__turnitin_enabled__,
         :assignment__turnitin_settings__,
+        :assignment__integration_data__,
+        :assignment__integration_id__,
         :assignment__peer_reviews__,
         :assignment__automatic_peer_reviews__,
         :assignment__notify_of_update__,
@@ -2321,7 +2867,7 @@ module Pandarus
     end
     
     # List of CommMessages for a user
-    def list_of_commmessages_for_user(user_id,opts={})
+    def list_of_commmessages_for_user(opts={})
       query_param_keys = [
         :user_id,
         :start_time,
@@ -2332,11 +2878,10 @@ module Pandarus
         
       ]
 
-      # verify existence of params
-      raise "user_id is required" if user_id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :user_id => user_id
+        {}
+      
       )
 
       # resource path
@@ -2387,7 +2932,7 @@ module Pandarus
     end
     
     # Create a communication channel
-    def create_communication_channel(user_id,communication_channel__address__,communication_channel__type__,opts={})
+    def create_communication_channel(user_id,opts={})
       query_param_keys = [
         
       ]
@@ -2401,13 +2946,9 @@ module Pandarus
 
       # verify existence of params
       raise "user_id is required" if user_id.nil?
-      raise "communication_channel__address__ is required" if communication_channel__address__.nil?
-      raise "communication_channel__type__ is required" if communication_channel__type__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :user_id => user_id,
-        :communication_channel__address__ => communication_channel__address__,
-        :communication_channel__type__ => communication_channel__type__
+        :user_id => user_id
       )
 
       # resource path
@@ -2563,7 +3104,7 @@ module Pandarus
     end
     
     # List content exports
-    def list_content_exports(course_id,opts={})
+    def list_content_exports_courses(course_id,opts={})
       query_param_keys = [
         
       ]
@@ -2594,8 +3135,72 @@ module Pandarus
       response.map {|response|ContentExport.new(response)}
     end
     
+    # List content exports
+    def list_content_exports_groups(group_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "group_id is required" if group_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :group_id => group_id
+      )
+
+      # resource path
+      path = path_replace("/v1/groups/{group_id}/content_exports",
+        :group_id => group_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response.map {|response|ContentExport.new(response)}
+    end
+    
+    # List content exports
+    def list_content_exports_users(user_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "user_id is required" if user_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :user_id => user_id
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{user_id}/content_exports",
+        :user_id => user_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response.map {|response|ContentExport.new(response)}
+    end
+    
     # Show content export
-    def show_content_export(course_id,id,opts={})
+    def show_content_export_courses(course_id,id,opts={})
       query_param_keys = [
         
       ]
@@ -2629,29 +3234,166 @@ module Pandarus
       ContentExport.new(response)
     end
     
-    # Export course content
-    def export_course_content(course_id,export_type,opts={})
+    # Show content export
+    def show_content_export_groups(group_id,id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "group_id is required" if group_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :group_id => group_id,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/groups/{group_id}/content_exports/{id}",
+        :group_id => group_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      ContentExport.new(response)
+    end
+    
+    # Show content export
+    def show_content_export_users(user_id,id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "user_id is required" if user_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :user_id => user_id,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{user_id}/content_exports/{id}",
+        :user_id => user_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      ContentExport.new(response)
+    end
+    
+    # Export content
+    def export_content_courses(course_id,opts={})
       query_param_keys = [
         
       ]
 
       form_param_keys = [
         :export_type,
+        :skip_notifications,
         
       ]
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
-      raise "export_type is required" if export_type.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :export_type => export_type
+        :course_id => course_id
       )
 
       # resource path
       path = path_replace("/v1/courses/{course_id}/content_exports",
         :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:post, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      page_params_store(:post, path)
+      ContentExport.new(response)
+    end
+    
+    # Export content
+    def export_content_groups(group_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :export_type,
+        :skip_notifications,
+        
+      ]
+
+      # verify existence of params
+      raise "group_id is required" if group_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :group_id => group_id
+      )
+
+      # resource path
+      path = path_replace("/v1/groups/{group_id}/content_exports",
+        :group_id => group_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:post, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      page_params_store(:post, path)
+      ContentExport.new(response)
+    end
+    
+    # Export content
+    def export_content_users(user_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :export_type,
+        :skip_notifications,
+        
+      ]
+
+      # verify existence of params
+      raise "user_id is required" if user_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :user_id => user_id
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{user_id}/content_exports",
+        :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
@@ -3389,7 +4131,7 @@ module Pandarus
     end
     
     # Create a content migration
-    def create_content_migration_accounts(account_id,migration_type,pre_attachment__name__,settings__file_url__,opts={})
+    def create_content_migration_accounts(account_id,migration_type,opts={})
       query_param_keys = [
         
       ]
@@ -3410,20 +4152,17 @@ module Pandarus
         :date_shift_options__new_start_date__,
         :date_shift_options__new_end_date__,
         :date_shift_options__day_substitutions_____x__,
+        :date_shift_options__remove_dates__,
         
       ]
 
       # verify existence of params
       raise "account_id is required" if account_id.nil?
       raise "migration_type is required" if migration_type.nil?
-      raise "pre_attachment__name__ is required" if pre_attachment__name__.nil?
-      raise "settings__file_url__ is required" if settings__file_url__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id,
-        :migration_type => migration_type,
-        :pre_attachment__name__ => pre_attachment__name__,
-        :settings__file_url__ => settings__file_url__
+        :migration_type => migration_type
       )
 
       # resource path
@@ -3442,7 +4181,7 @@ module Pandarus
     end
     
     # Create a content migration
-    def create_content_migration_courses(course_id,migration_type,pre_attachment__name__,settings__file_url__,opts={})
+    def create_content_migration_courses(course_id,migration_type,opts={})
       query_param_keys = [
         
       ]
@@ -3463,20 +4202,17 @@ module Pandarus
         :date_shift_options__new_start_date__,
         :date_shift_options__new_end_date__,
         :date_shift_options__day_substitutions_____x__,
+        :date_shift_options__remove_dates__,
         
       ]
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "migration_type is required" if migration_type.nil?
-      raise "pre_attachment__name__ is required" if pre_attachment__name__.nil?
-      raise "settings__file_url__ is required" if settings__file_url__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :migration_type => migration_type,
-        :pre_attachment__name__ => pre_attachment__name__,
-        :settings__file_url__ => settings__file_url__
+        :migration_type => migration_type
       )
 
       # resource path
@@ -3495,7 +4231,7 @@ module Pandarus
     end
     
     # Create a content migration
-    def create_content_migration_groups(group_id,migration_type,pre_attachment__name__,settings__file_url__,opts={})
+    def create_content_migration_groups(group_id,migration_type,opts={})
       query_param_keys = [
         
       ]
@@ -3516,20 +4252,17 @@ module Pandarus
         :date_shift_options__new_start_date__,
         :date_shift_options__new_end_date__,
         :date_shift_options__day_substitutions_____x__,
+        :date_shift_options__remove_dates__,
         
       ]
 
       # verify existence of params
       raise "group_id is required" if group_id.nil?
       raise "migration_type is required" if migration_type.nil?
-      raise "pre_attachment__name__ is required" if pre_attachment__name__.nil?
-      raise "settings__file_url__ is required" if settings__file_url__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id,
-        :migration_type => migration_type,
-        :pre_attachment__name__ => pre_attachment__name__,
-        :settings__file_url__ => settings__file_url__
+        :migration_type => migration_type
       )
 
       # resource path
@@ -3548,7 +4281,7 @@ module Pandarus
     end
     
     # Create a content migration
-    def create_content_migration_users(user_id,migration_type,pre_attachment__name__,settings__file_url__,opts={})
+    def create_content_migration_users(user_id,migration_type,opts={})
       query_param_keys = [
         
       ]
@@ -3569,20 +4302,17 @@ module Pandarus
         :date_shift_options__new_start_date__,
         :date_shift_options__new_end_date__,
         :date_shift_options__day_substitutions_____x__,
+        :date_shift_options__remove_dates__,
         
       ]
 
       # verify existence of params
       raise "user_id is required" if user_id.nil?
       raise "migration_type is required" if migration_type.nil?
-      raise "pre_attachment__name__ is required" if pre_attachment__name__.nil?
-      raise "settings__file_url__ is required" if settings__file_url__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id,
-        :migration_type => migration_type,
-        :pre_attachment__name__ => pre_attachment__name__,
-        :settings__file_url__ => settings__file_url__
+        :migration_type => migration_type
       )
 
       # resource path
@@ -3869,7 +4599,7 @@ module Pandarus
     end
     
     # List conversations
-    def list_conversations(interleave_submissions,include_all_conversation_ids,opts={})
+    def list_conversations(opts={})
       query_param_keys = [
         :scope,
         :filter,
@@ -3882,13 +4612,10 @@ module Pandarus
         
       ]
 
-      # verify existence of params
-      raise "interleave_submissions is required" if interleave_submissions.nil?
-      raise "include_all_conversation_ids is required" if include_all_conversation_ids.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :interleave_submissions => interleave_submissions,
-        :include_all_conversation_ids => include_all_conversation_ids
+        {}
+      
       )
 
       # resource path
@@ -3907,7 +4634,7 @@ module Pandarus
     end
     
     # Create a conversation
-    def create_conversation(recipients,body,group_conversation,attachment_ids,media_comment_id,media_comment_type,mode,opts={})
+    def create_conversation(recipients,body,opts={})
       query_param_keys = [
         
       ]
@@ -3932,20 +4659,10 @@ module Pandarus
       # verify existence of params
       raise "recipients is required" if recipients.nil?
       raise "body is required" if body.nil?
-      raise "group_conversation is required" if group_conversation.nil?
-      raise "attachment_ids is required" if attachment_ids.nil?
-      raise "media_comment_id is required" if media_comment_id.nil?
-      raise "media_comment_type is required" if media_comment_type.nil?
-      raise "mode is required" if mode.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :recipients => recipients,
-        :body => body,
-        :group_conversation => group_conversation,
-        :attachment_ids => attachment_ids,
-        :media_comment_id => media_comment_id,
-        :media_comment_type => media_comment_type,
-        :mode => mode
+        :body => body
       )
 
       # resource path
@@ -3997,7 +4714,7 @@ module Pandarus
     end
     
     # Get a single conversation
-    def get_single_conversation(id,interleave_submissions,auto_mark_as_read,opts={})
+    def get_single_conversation(id,opts={})
       query_param_keys = [
         :interleave_submissions,
         :scope,
@@ -4012,13 +4729,9 @@ module Pandarus
 
       # verify existence of params
       raise "id is required" if id.nil?
-      raise "interleave_submissions is required" if interleave_submissions.nil?
-      raise "auto_mark_as_read is required" if auto_mark_as_read.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :id => id,
-        :interleave_submissions => interleave_submissions,
-        :auto_mark_as_read => auto_mark_as_read
+        :id => id
       )
 
       # resource path
@@ -4038,7 +4751,7 @@ module Pandarus
     end
     
     # Edit a conversation
-    def edit_conversation(id,conversation__subject__,conversation__workflow_state__,conversation__subscribed__,conversation__starred__,opts={})
+    def edit_conversation(id,opts={})
       query_param_keys = [
         
       ]
@@ -4056,17 +4769,9 @@ module Pandarus
 
       # verify existence of params
       raise "id is required" if id.nil?
-      raise "conversation__subject__ is required" if conversation__subject__.nil?
-      raise "conversation__workflow_state__ is required" if conversation__workflow_state__.nil?
-      raise "conversation__subscribed__ is required" if conversation__subscribed__.nil?
-      raise "conversation__starred__ is required" if conversation__starred__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :id => id,
-        :conversation__subject__ => conversation__subject__,
-        :conversation__workflow_state__ => conversation__workflow_state__,
-        :conversation__subscribed__ => conversation__subscribed__,
-        :conversation__starred__ => conversation__starred__
+        :id => id
       )
 
       # resource path
@@ -4187,7 +4892,7 @@ module Pandarus
     end
     
     # Add a message
-    def add_message(id,body,attachment_ids,media_comment_id,media_comment_type,opts={})
+    def add_message(id,body,opts={})
       query_param_keys = [
         
       ]
@@ -4206,16 +4911,10 @@ module Pandarus
       # verify existence of params
       raise "id is required" if id.nil?
       raise "body is required" if body.nil?
-      raise "attachment_ids is required" if attachment_ids.nil?
-      raise "media_comment_id is required" if media_comment_id.nil?
-      raise "media_comment_type is required" if media_comment_type.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id,
-        :body => body,
-        :attachment_ids => attachment_ids,
-        :media_comment_id => media_comment_id,
-        :media_comment_type => media_comment_type
+        :body => body
       )
 
       # resource path
@@ -4404,7 +5103,7 @@ module Pandarus
     end
     
     # List your courses
-    def list_your_courses(include,opts={})
+    def list_your_courses(opts={})
       query_param_keys = [
         :enrollment_type,
         :enrollment_role,
@@ -4416,11 +5115,10 @@ module Pandarus
         
       ]
 
-      # verify existence of params
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :include => include
+        {}
+      
       )
 
       # resource path
@@ -4558,7 +5256,7 @@ module Pandarus
     end
     
     # List users in course
-    def list_users_in_course_users(course_id,include,opts={})
+    def list_users_in_course_users(course_id,opts={})
       query_param_keys = [
         :search_term,
         :enrollment_type,
@@ -4573,11 +5271,9 @@ module Pandarus
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :include => include
+        :course_id => course_id
       )
 
       # resource path
@@ -4596,7 +5292,7 @@ module Pandarus
     end
     
     # List users in course
-    def list_users_in_course_search_users(course_id,include,opts={})
+    def list_users_in_course_search_users(course_id,opts={})
       query_param_keys = [
         :search_term,
         :enrollment_type,
@@ -4611,11 +5307,9 @@ module Pandarus
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :include => include
+        :course_id => course_id
       )
 
       # resource path
@@ -4701,7 +5395,7 @@ module Pandarus
     end
     
     # Preview processed html
-    def preview_processed_html(course_id,html,opts={})
+    def preview_processed_html(course_id,opts={})
       query_param_keys = [
         
       ]
@@ -4713,11 +5407,9 @@ module Pandarus
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
-      raise "html is required" if html.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :html => html
+        :course_id => course_id
       )
 
       # resource path
@@ -4904,7 +5596,7 @@ module Pandarus
     end
     
     # Update course settings
-    def update_course_settings(course_id,allow_student_discussion_topics,allow_student_forum_attachments,allow_student_discussion_editing,opts={})
+    def update_course_settings(course_id,opts={})
       query_param_keys = [
         
       ]
@@ -4918,15 +5610,9 @@ module Pandarus
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
-      raise "allow_student_discussion_topics is required" if allow_student_discussion_topics.nil?
-      raise "allow_student_forum_attachments is required" if allow_student_forum_attachments.nil?
-      raise "allow_student_discussion_editing is required" if allow_student_discussion_editing.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :allow_student_discussion_topics => allow_student_discussion_topics,
-        :allow_student_forum_attachments => allow_student_forum_attachments,
-        :allow_student_discussion_editing => allow_student_discussion_editing
+        :course_id => course_id
       )
 
       # resource path
@@ -4946,7 +5632,7 @@ module Pandarus
     end
     
     # Get a single course
-    def get_single_course_courses(id,include,opts={})
+    def get_single_course_courses(id,opts={})
       query_param_keys = [
         :include
       ]
@@ -4957,11 +5643,9 @@ module Pandarus
 
       # verify existence of params
       raise "id is required" if id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :id => id,
-        :include => include
+        :id => id
       )
 
       # resource path
@@ -4980,7 +5664,7 @@ module Pandarus
     end
     
     # Get a single course
-    def get_single_course_accounts(account_id,id,include,opts={})
+    def get_single_course_accounts(account_id,id,opts={})
       query_param_keys = [
         :include
       ]
@@ -4992,12 +5676,10 @@ module Pandarus
       # verify existence of params
       raise "account_id is required" if account_id.nil?
       raise "id is required" if id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id,
-        :id => id,
-        :include => include
+        :id => id
       )
 
       # resource path
@@ -5125,7 +5807,7 @@ module Pandarus
     end
     
     # Copy course content
-    def copy_course_content(course_id,source_course,except,only,opts={})
+    def copy_course_content(course_id,opts={})
       query_param_keys = [
         
       ]
@@ -5139,15 +5821,9 @@ module Pandarus
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
-      raise "source_course is required" if source_course.nil?
-      raise "except is required" if except.nil?
-      raise "only is required" if only.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :source_course => source_course,
-        :except => except,
-        :only => only
+        :course_id => course_id
       )
 
       # resource path
@@ -5169,7 +5845,7 @@ module Pandarus
     # List custom gradebook columns
     def list_custom_gradebook_columns(course_id,opts={})
       query_param_keys = [
-        
+        :include_hidden
       ]
 
       form_param_keys = [
@@ -5199,7 +5875,7 @@ module Pandarus
     end
     
     # Create a custom gradebook column
-    def create_custom_gradebook_column(course_id,column__title__,column__position__,opts={})
+    def create_custom_gradebook_column(course_id,column__title__,opts={})
       query_param_keys = [
         
       ]
@@ -5215,12 +5891,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "column__title__ is required" if column__title__.nil?
-      raise "column__position__ is required" if column__position__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :column__title__ => column__title__,
-        :column__position__ => column__position__
+        :column__title__ => column__title__
       )
 
       # resource path
@@ -5493,7 +6167,7 @@ module Pandarus
     end
     
     # Create a new discussion topic
-    def create_new_discussion_topic_courses(course_id,title,message,require_initial_post,opts={})
+    def create_new_discussion_topic_courses(course_id,opts={})
       query_param_keys = [
         
       ]
@@ -5517,15 +6191,9 @@ module Pandarus
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
-      raise "title is required" if title.nil?
-      raise "message is required" if message.nil?
-      raise "require_initial_post is required" if require_initial_post.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :title => title,
-        :message => message,
-        :require_initial_post => require_initial_post
+        :course_id => course_id
       )
 
       # resource path
@@ -5545,7 +6213,7 @@ module Pandarus
     end
     
     # Create a new discussion topic
-    def create_new_discussion_topic_groups(group_id,title,message,require_initial_post,opts={})
+    def create_new_discussion_topic_groups(group_id,opts={})
       query_param_keys = [
         
       ]
@@ -5569,15 +6237,9 @@ module Pandarus
 
       # verify existence of params
       raise "group_id is required" if group_id.nil?
-      raise "title is required" if title.nil?
-      raise "message is required" if message.nil?
-      raise "require_initial_post is required" if require_initial_post.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :group_id => group_id,
-        :title => title,
-        :message => message,
-        :require_initial_post => require_initial_post
+        :group_id => group_id
       )
 
       # resource path
@@ -5741,7 +6403,7 @@ module Pandarus
     end
     
     # Reorder pinned topics
-    def reorder_pinned_topics_courses(course_id,opts={})
+    def reorder_pinned_topics_courses(course_id,order,opts={})
       query_param_keys = [
         
       ]
@@ -5753,9 +6415,11 @@ module Pandarus
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
+      raise "order is required" if order.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id
+        :course_id => course_id,
+        :order => order
       )
 
       # resource path
@@ -5775,7 +6439,7 @@ module Pandarus
     end
     
     # Reorder pinned topics
-    def reorder_pinned_topics_groups(group_id,opts={})
+    def reorder_pinned_topics_groups(group_id,order,opts={})
       query_param_keys = [
         
       ]
@@ -5787,9 +6451,11 @@ module Pandarus
 
       # verify existence of params
       raise "group_id is required" if group_id.nil?
+      raise "order is required" if order.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :group_id => group_id
+        :group_id => group_id,
+        :order => order
       )
 
       # resource path
@@ -5809,7 +6475,7 @@ module Pandarus
     end
     
     # Update an entry
-    def update_entry_courses(course_id,topic_id,id,message,opts={})
+    def update_entry_courses(course_id,topic_id,id,opts={})
       query_param_keys = [
         
       ]
@@ -5823,13 +6489,11 @@ module Pandarus
       raise "course_id is required" if course_id.nil?
       raise "topic_id is required" if topic_id.nil?
       raise "id is required" if id.nil?
-      raise "message is required" if message.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :topic_id => topic_id,
-        :id => id,
-        :message => message
+        :id => id
       )
 
       # resource path
@@ -5851,7 +6515,7 @@ module Pandarus
     end
     
     # Update an entry
-    def update_entry_groups(group_id,topic_id,id,message,opts={})
+    def update_entry_groups(group_id,topic_id,id,opts={})
       query_param_keys = [
         
       ]
@@ -5865,13 +6529,11 @@ module Pandarus
       raise "group_id is required" if group_id.nil?
       raise "topic_id is required" if topic_id.nil?
       raise "id is required" if id.nil?
-      raise "message is required" if message.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :topic_id => topic_id,
-        :id => id,
-        :message => message
+        :id => id
       )
 
       # resource path
@@ -6115,7 +6777,7 @@ module Pandarus
     end
     
     # Post an entry
-    def post_entry_courses(course_id,topic_id,message,opts={})
+    def post_entry_courses(course_id,topic_id,opts={})
       query_param_keys = [
         
       ]
@@ -6129,12 +6791,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "topic_id is required" if topic_id.nil?
-      raise "message is required" if message.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :topic_id => topic_id,
-        :message => message
+        :topic_id => topic_id
       )
 
       # resource path
@@ -6155,7 +6815,7 @@ module Pandarus
     end
     
     # Post an entry
-    def post_entry_groups(group_id,topic_id,message,opts={})
+    def post_entry_groups(group_id,topic_id,opts={})
       query_param_keys = [
         
       ]
@@ -6169,12 +6829,10 @@ module Pandarus
       # verify existence of params
       raise "group_id is required" if group_id.nil?
       raise "topic_id is required" if topic_id.nil?
-      raise "message is required" if message.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id,
-        :topic_id => topic_id,
-        :message => message
+        :topic_id => topic_id
       )
 
       # resource path
@@ -6267,7 +6925,7 @@ module Pandarus
     end
     
     # Post a reply
-    def post_reply_courses(course_id,topic_id,entry_id,message,opts={})
+    def post_reply_courses(course_id,topic_id,entry_id,opts={})
       query_param_keys = [
         
       ]
@@ -6282,13 +6940,11 @@ module Pandarus
       raise "course_id is required" if course_id.nil?
       raise "topic_id is required" if topic_id.nil?
       raise "entry_id is required" if entry_id.nil?
-      raise "message is required" if message.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :topic_id => topic_id,
-        :entry_id => entry_id,
-        :message => message
+        :entry_id => entry_id
       )
 
       # resource path
@@ -6310,7 +6966,7 @@ module Pandarus
     end
     
     # Post a reply
-    def post_reply_groups(group_id,topic_id,entry_id,message,opts={})
+    def post_reply_groups(group_id,topic_id,entry_id,opts={})
       query_param_keys = [
         
       ]
@@ -6325,13 +6981,11 @@ module Pandarus
       raise "group_id is required" if group_id.nil?
       raise "topic_id is required" if topic_id.nil?
       raise "entry_id is required" if entry_id.nil?
-      raise "message is required" if message.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :topic_id => topic_id,
-        :entry_id => entry_id,
-        :message => message
+        :entry_id => entry_id
       )
 
       # resource path
@@ -6431,7 +7085,7 @@ module Pandarus
     end
     
     # List entries
-    def list_entries_courses(course_id,topic_id,ids,opts={})
+    def list_entries_courses(course_id,topic_id,opts={})
       query_param_keys = [
         :ids
       ]
@@ -6443,12 +7097,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "topic_id is required" if topic_id.nil?
-      raise "ids is required" if ids.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :topic_id => topic_id,
-        :ids => ids
+        :topic_id => topic_id
       )
 
       # resource path
@@ -6469,7 +7121,7 @@ module Pandarus
     end
     
     # List entries
-    def list_entries_groups(group_id,topic_id,ids,opts={})
+    def list_entries_groups(group_id,topic_id,opts={})
       query_param_keys = [
         :ids
       ]
@@ -6481,12 +7133,10 @@ module Pandarus
       # verify existence of params
       raise "group_id is required" if group_id.nil?
       raise "topic_id is required" if topic_id.nil?
-      raise "ids is required" if ids.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id,
-        :topic_id => topic_id,
-        :ids => ids
+        :topic_id => topic_id
       )
 
       # resource path
@@ -7131,7 +7781,7 @@ module Pandarus
     end
     
     # List enrollments
-    def list_enrollments_courses(course_id,type,role,state,user_id,opts={})
+    def list_enrollments_courses(course_id,opts={})
       query_param_keys = [
         :type,
         :role,
@@ -7145,17 +7795,9 @@ module Pandarus
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
-      raise "type is required" if type.nil?
-      raise "role is required" if role.nil?
-      raise "state is required" if state.nil?
-      raise "user_id is required" if user_id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :type => type,
-        :role => role,
-        :state => state,
-        :user_id => user_id
+        :course_id => course_id
       )
 
       # resource path
@@ -7174,7 +7816,7 @@ module Pandarus
     end
     
     # List enrollments
-    def list_enrollments_sections(section_id,type,role,state,user_id,opts={})
+    def list_enrollments_sections(section_id,opts={})
       query_param_keys = [
         :type,
         :role,
@@ -7188,17 +7830,9 @@ module Pandarus
 
       # verify existence of params
       raise "section_id is required" if section_id.nil?
-      raise "type is required" if type.nil?
-      raise "role is required" if role.nil?
-      raise "state is required" if state.nil?
-      raise "user_id is required" if user_id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :section_id => section_id,
-        :type => type,
-        :role => role,
-        :state => state,
-        :user_id => user_id
+        :section_id => section_id
       )
 
       # resource path
@@ -7217,7 +7851,7 @@ module Pandarus
     end
     
     # List enrollments
-    def list_enrollments_users(type,role,state,user_id,opts={})
+    def list_enrollments_users(user_id,opts={})
       query_param_keys = [
         :type,
         :role,
@@ -7229,15 +7863,9 @@ module Pandarus
       ]
 
       # verify existence of params
-      raise "type is required" if type.nil?
-      raise "role is required" if role.nil?
-      raise "state is required" if state.nil?
       raise "user_id is required" if user_id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :type => type,
-        :role => role,
-        :state => state,
         :user_id => user_id
       )
 
@@ -7380,7 +8008,7 @@ module Pandarus
     end
     
     # Conclude an enrollment
-    def conclude_enrollment(course_id,id,task,opts={})
+    def conclude_enrollment(course_id,id,opts={})
       query_param_keys = [
         :task
       ]
@@ -7392,12 +8020,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "id is required" if id.nil?
-      raise "task is required" if task.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :id => id,
-        :task => task
+        :id => id
       )
 
       # resource path
@@ -8872,7 +9498,7 @@ module Pandarus
     end
     
     # Update file
-    def update_file(id,name,parent_folder_id,lock_at,unlock_at,locked,hidden,opts={})
+    def update_file(id,opts={})
       query_param_keys = [
         
       ]
@@ -8889,21 +9515,9 @@ module Pandarus
 
       # verify existence of params
       raise "id is required" if id.nil?
-      raise "name is required" if name.nil?
-      raise "parent_folder_id is required" if parent_folder_id.nil?
-      raise "lock_at is required" if lock_at.nil?
-      raise "unlock_at is required" if unlock_at.nil?
-      raise "locked is required" if locked.nil?
-      raise "hidden is required" if hidden.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :id => id,
-        :name => name,
-        :parent_folder_id => parent_folder_id,
-        :lock_at => lock_at,
-        :unlock_at => unlock_at,
-        :locked => locked,
-        :hidden => hidden
+        :id => id
       )
 
       # resource path
@@ -9316,7 +9930,7 @@ module Pandarus
     end
     
     # Update folder
-    def update_folder(id,name,parent_folder_id,lock_at,unlock_at,locked,hidden,position,opts={})
+    def update_folder(id,opts={})
       query_param_keys = [
         
       ]
@@ -9334,23 +9948,9 @@ module Pandarus
 
       # verify existence of params
       raise "id is required" if id.nil?
-      raise "name is required" if name.nil?
-      raise "parent_folder_id is required" if parent_folder_id.nil?
-      raise "lock_at is required" if lock_at.nil?
-      raise "unlock_at is required" if unlock_at.nil?
-      raise "locked is required" if locked.nil?
-      raise "hidden is required" if hidden.nil?
-      raise "position is required" if position.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :id => id,
-        :name => name,
-        :parent_folder_id => parent_folder_id,
-        :lock_at => lock_at,
-        :unlock_at => unlock_at,
-        :locked => locked,
-        :hidden => hidden,
-        :position => position
+        :id => id
       )
 
       # resource path
@@ -9369,7 +9969,7 @@ module Pandarus
     end
     
     # Create folder
-    def create_folder_courses(course_id,name,parent_folder_id,parent_folder_path,lock_at,unlock_at,locked,hidden,position,opts={})
+    def create_folder_courses(course_id,name,opts={})
       query_param_keys = [
         
       ]
@@ -9389,24 +9989,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "name is required" if name.nil?
-      raise "parent_folder_id is required" if parent_folder_id.nil?
-      raise "parent_folder_path is required" if parent_folder_path.nil?
-      raise "lock_at is required" if lock_at.nil?
-      raise "unlock_at is required" if unlock_at.nil?
-      raise "locked is required" if locked.nil?
-      raise "hidden is required" if hidden.nil?
-      raise "position is required" if position.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :name => name,
-        :parent_folder_id => parent_folder_id,
-        :parent_folder_path => parent_folder_path,
-        :lock_at => lock_at,
-        :unlock_at => unlock_at,
-        :locked => locked,
-        :hidden => hidden,
-        :position => position
+        :name => name
       )
 
       # resource path
@@ -9425,7 +10011,7 @@ module Pandarus
     end
     
     # Create folder
-    def create_folder_users(user_id,name,parent_folder_id,parent_folder_path,lock_at,unlock_at,locked,hidden,position,opts={})
+    def create_folder_users(user_id,name,opts={})
       query_param_keys = [
         
       ]
@@ -9445,24 +10031,10 @@ module Pandarus
       # verify existence of params
       raise "user_id is required" if user_id.nil?
       raise "name is required" if name.nil?
-      raise "parent_folder_id is required" if parent_folder_id.nil?
-      raise "parent_folder_path is required" if parent_folder_path.nil?
-      raise "lock_at is required" if lock_at.nil?
-      raise "unlock_at is required" if unlock_at.nil?
-      raise "locked is required" if locked.nil?
-      raise "hidden is required" if hidden.nil?
-      raise "position is required" if position.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id,
-        :name => name,
-        :parent_folder_id => parent_folder_id,
-        :parent_folder_path => parent_folder_path,
-        :lock_at => lock_at,
-        :unlock_at => unlock_at,
-        :locked => locked,
-        :hidden => hidden,
-        :position => position
+        :name => name
       )
 
       # resource path
@@ -9481,7 +10053,7 @@ module Pandarus
     end
     
     # Create folder
-    def create_folder_groups(group_id,name,parent_folder_id,parent_folder_path,lock_at,unlock_at,locked,hidden,position,opts={})
+    def create_folder_groups(group_id,name,opts={})
       query_param_keys = [
         
       ]
@@ -9501,24 +10073,10 @@ module Pandarus
       # verify existence of params
       raise "group_id is required" if group_id.nil?
       raise "name is required" if name.nil?
-      raise "parent_folder_id is required" if parent_folder_id.nil?
-      raise "parent_folder_path is required" if parent_folder_path.nil?
-      raise "lock_at is required" if lock_at.nil?
-      raise "unlock_at is required" if unlock_at.nil?
-      raise "locked is required" if locked.nil?
-      raise "hidden is required" if hidden.nil?
-      raise "position is required" if position.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id,
-        :name => name,
-        :parent_folder_id => parent_folder_id,
-        :parent_folder_path => parent_folder_path,
-        :lock_at => lock_at,
-        :unlock_at => unlock_at,
-        :locked => locked,
-        :hidden => hidden,
-        :position => position
+        :name => name
       )
 
       # resource path
@@ -9537,7 +10095,7 @@ module Pandarus
     end
     
     # Create folder
-    def create_folder_folders(folder_id,name,parent_folder_id,parent_folder_path,lock_at,unlock_at,locked,hidden,position,opts={})
+    def create_folder_folders(folder_id,name,opts={})
       query_param_keys = [
         
       ]
@@ -9557,24 +10115,10 @@ module Pandarus
       # verify existence of params
       raise "folder_id is required" if folder_id.nil?
       raise "name is required" if name.nil?
-      raise "parent_folder_id is required" if parent_folder_id.nil?
-      raise "parent_folder_path is required" if parent_folder_path.nil?
-      raise "lock_at is required" if lock_at.nil?
-      raise "unlock_at is required" if unlock_at.nil?
-      raise "locked is required" if locked.nil?
-      raise "hidden is required" if hidden.nil?
-      raise "position is required" if position.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :folder_id => folder_id,
-        :name => name,
-        :parent_folder_id => parent_folder_id,
-        :parent_folder_path => parent_folder_path,
-        :lock_at => lock_at,
-        :unlock_at => unlock_at,
-        :locked => locked,
-        :hidden => hidden,
-        :position => position
+        :name => name
       )
 
       # resource path
@@ -9593,7 +10137,7 @@ module Pandarus
     end
     
     # Delete folder
-    def delete_folder(id,force,opts={})
+    def delete_folder(id,opts={})
       query_param_keys = [
         :force
       ]
@@ -9604,11 +10148,9 @@ module Pandarus
 
       # verify existence of params
       raise "id is required" if id.nil?
-      raise "force is required" if force.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :id => id,
-        :force => force
+        :id => id
       )
 
       # resource path
@@ -10193,7 +10735,7 @@ module Pandarus
     end
     
     # Update a Group Category
-    def update_group_category(group_category_id,name,opts={})
+    def update_group_category(group_category_id,opts={})
       query_param_keys = [
         
       ]
@@ -10210,11 +10752,9 @@ module Pandarus
 
       # verify existence of params
       raise "group_category_id is required" if group_category_id.nil?
-      raise "name is required" if name.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :group_category_id => group_category_id,
-        :name => name
+        :group_category_id => group_category_id
       )
 
       # resource path
@@ -10459,7 +10999,7 @@ module Pandarus
     end
     
     # Get a single group
-    def get_single_group(group_id,include,opts={})
+    def get_single_group(group_id,opts={})
       query_param_keys = [
         :include
       ]
@@ -10470,11 +11010,9 @@ module Pandarus
 
       # verify existence of params
       raise "group_id is required" if group_id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :group_id => group_id,
-        :include => include
+        :group_id => group_id
       )
 
       # resource path
@@ -10493,7 +11031,7 @@ module Pandarus
     end
     
     # Create a group
-    def create_group_groups(name,description,is_public,join_level,storage_quota_mb,opts={})
+    def create_group_groups(opts={})
       query_param_keys = [
         
       ]
@@ -10507,19 +11045,10 @@ module Pandarus
         
       ]
 
-      # verify existence of params
-      raise "name is required" if name.nil?
-      raise "description is required" if description.nil?
-      raise "is_public is required" if is_public.nil?
-      raise "join_level is required" if join_level.nil?
-      raise "storage_quota_mb is required" if storage_quota_mb.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :name => name,
-        :description => description,
-        :is_public => is_public,
-        :join_level => join_level,
-        :storage_quota_mb => storage_quota_mb
+        {}
+      
       )
 
       # resource path
@@ -10538,7 +11067,7 @@ module Pandarus
     end
     
     # Create a group
-    def create_group_group_categories(group_category_id,name,description,is_public,join_level,storage_quota_mb,opts={})
+    def create_group_group_categories(group_category_id,opts={})
       query_param_keys = [
         
       ]
@@ -10554,19 +11083,9 @@ module Pandarus
 
       # verify existence of params
       raise "group_category_id is required" if group_category_id.nil?
-      raise "name is required" if name.nil?
-      raise "description is required" if description.nil?
-      raise "is_public is required" if is_public.nil?
-      raise "join_level is required" if join_level.nil?
-      raise "storage_quota_mb is required" if storage_quota_mb.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :group_category_id => group_category_id,
-        :name => name,
-        :description => description,
-        :is_public => is_public,
-        :join_level => join_level,
-        :storage_quota_mb => storage_quota_mb
+        :group_category_id => group_category_id
       )
 
       # resource path
@@ -10585,7 +11104,7 @@ module Pandarus
     end
     
     # Edit a group
-    def edit_group(group_id,name,description,is_public,join_level,avatar_id,storage_quota_mb,opts={})
+    def edit_group(group_id,opts={})
       query_param_keys = [
         
       ]
@@ -10602,21 +11121,9 @@ module Pandarus
 
       # verify existence of params
       raise "group_id is required" if group_id.nil?
-      raise "name is required" if name.nil?
-      raise "description is required" if description.nil?
-      raise "is_public is required" if is_public.nil?
-      raise "join_level is required" if join_level.nil?
-      raise "avatar_id is required" if avatar_id.nil?
-      raise "storage_quota_mb is required" if storage_quota_mb.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :group_id => group_id,
-        :name => name,
-        :description => description,
-        :is_public => is_public,
-        :join_level => join_level,
-        :avatar_id => avatar_id,
-        :storage_quota_mb => storage_quota_mb
+        :group_id => group_id
       )
 
       # resource path
@@ -10703,7 +11210,7 @@ module Pandarus
     end
     
     # List group's users
-    def list_group_s_users(group_id,include,opts={})
+    def list_group_s_users(group_id,opts={})
       query_param_keys = [
         :search_term,
         :include
@@ -10715,11 +11222,9 @@ module Pandarus
 
       # verify existence of params
       raise "group_id is required" if group_id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :group_id => group_id,
-        :include => include
+        :group_id => group_id
       )
 
       # resource path
@@ -10771,7 +11276,7 @@ module Pandarus
     end
     
     # Preview processed html
-    def preview_processed_html(group_id,html,opts={})
+    def preview_processed_html(group_id,opts={})
       query_param_keys = [
         
       ]
@@ -10783,11 +11288,9 @@ module Pandarus
 
       # verify existence of params
       raise "group_id is required" if group_id.nil?
-      raise "html is required" if html.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :group_id => group_id,
-        :html => html
+        :group_id => group_id
       )
 
       # resource path
@@ -10937,7 +11440,7 @@ module Pandarus
     end
     
     # Create a membership
-    def create_membership(group_id,user_id,opts={})
+    def create_membership(group_id,opts={})
       query_param_keys = [
         
       ]
@@ -10949,11 +11452,9 @@ module Pandarus
 
       # verify existence of params
       raise "group_id is required" if group_id.nil?
-      raise "user_id is required" if user_id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :group_id => group_id,
-        :user_id => user_id
+        :group_id => group_id
       )
 
       # resource path
@@ -10972,7 +11473,7 @@ module Pandarus
     end
     
     # Update a membership
-    def update_membership_memberships(group_id,membership_id,moderator,opts={})
+    def update_membership_memberships(group_id,membership_id,opts={})
       query_param_keys = [
         
       ]
@@ -10986,12 +11487,10 @@ module Pandarus
       # verify existence of params
       raise "group_id is required" if group_id.nil?
       raise "membership_id is required" if membership_id.nil?
-      raise "moderator is required" if moderator.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id,
-        :membership_id => membership_id,
-        :moderator => moderator
+        :membership_id => membership_id
       )
 
       # resource path
@@ -11011,7 +11510,7 @@ module Pandarus
     end
     
     # Update a membership
-    def update_membership_users(group_id,user_id,moderator,opts={})
+    def update_membership_users(group_id,user_id,opts={})
       query_param_keys = [
         
       ]
@@ -11025,12 +11524,10 @@ module Pandarus
       # verify existence of params
       raise "group_id is required" if group_id.nil?
       raise "user_id is required" if user_id.nil?
-      raise "moderator is required" if moderator.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id,
-        :user_id => user_id,
-        :moderator => moderator
+        :user_id => user_id
       )
 
       # resource path
@@ -11442,7 +11939,7 @@ module Pandarus
     end
     
     # List modules
-    def list_modules(course_id,include,opts={})
+    def list_modules(course_id,opts={})
       query_param_keys = [
         :include,
         :search_term,
@@ -11455,11 +11952,9 @@ module Pandarus
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :include => include
+        :course_id => course_id
       )
 
       # resource path
@@ -11478,7 +11973,7 @@ module Pandarus
     end
     
     # Show module
-    def show_module(course_id,id,include,opts={})
+    def show_module(course_id,id,opts={})
       query_param_keys = [
         :include,
         :student_id
@@ -11491,12 +11986,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "id is required" if id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :id => id,
-        :include => include
+        :id => id
       )
 
       # resource path
@@ -11633,7 +12126,7 @@ module Pandarus
     end
     
     # List module items
-    def list_module_items(course_id,module_id,include,opts={})
+    def list_module_items(course_id,module_id,opts={})
       query_param_keys = [
         :include,
         :search_term,
@@ -11647,12 +12140,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "module_id is required" if module_id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :module_id => module_id,
-        :include => include
+        :module_id => module_id
       )
 
       # resource path
@@ -11672,7 +12163,7 @@ module Pandarus
     end
     
     # Show module item
-    def show_module_item(course_id,module_id,id,include,opts={})
+    def show_module_item(course_id,module_id,id,opts={})
       query_param_keys = [
         :include,
         :student_id
@@ -11686,13 +12177,11 @@ module Pandarus
       raise "course_id is required" if course_id.nil?
       raise "module_id is required" if module_id.nil?
       raise "id is required" if id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :module_id => module_id,
-        :id => id,
-        :include => include
+        :id => id
       )
 
       # resource path
@@ -11713,7 +12202,7 @@ module Pandarus
     end
     
     # Create a module item
-    def create_module_item(course_id,module_id,module_item__type__,module_item__content_id__,module_item__page_url__,module_item__external_url__,module_item__completion_requirement____min_score__,opts={})
+    def create_module_item(course_id,module_id,module_item__type__,module_item__content_id__,opts={})
       query_param_keys = [
         
       ]
@@ -11737,18 +12226,12 @@ module Pandarus
       raise "module_id is required" if module_id.nil?
       raise "module_item__type__ is required" if module_item__type__.nil?
       raise "module_item__content_id__ is required" if module_item__content_id__.nil?
-      raise "module_item__page_url__ is required" if module_item__page_url__.nil?
-      raise "module_item__external_url__ is required" if module_item__external_url__.nil?
-      raise "module_item__completion_requirement____min_score__ is required" if module_item__completion_requirement____min_score__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :module_id => module_id,
         :module_item__type__ => module_item__type__,
-        :module_item__content_id__ => module_item__content_id__,
-        :module_item__page_url__ => module_item__page_url__,
-        :module_item__external_url__ => module_item__external_url__,
-        :module_item__completion_requirement____min_score__ => module_item__completion_requirement____min_score__
+        :module_item__content_id__ => module_item__content_id__
       )
 
       # resource path
@@ -11768,7 +12251,7 @@ module Pandarus
     end
     
     # Update a module item
-    def update_module_item(course_id,module_id,id,module_item__completion_requirement____min_score__,opts={})
+    def update_module_item(course_id,module_id,id,opts={})
       query_param_keys = [
         
       ]
@@ -11790,13 +12273,11 @@ module Pandarus
       raise "course_id is required" if course_id.nil?
       raise "module_id is required" if module_id.nil?
       raise "id is required" if id.nil?
-      raise "module_item__completion_requirement____min_score__ is required" if module_item__completion_requirement____min_score__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :module_id => module_id,
-        :id => id,
-        :module_item__completion_requirement____min_score__ => module_item__completion_requirement____min_score__
+        :id => id
       )
 
       # resource path
@@ -11855,7 +12336,7 @@ module Pandarus
     end
     
     # Get module item sequence
-    def get_module_item_sequence(course_id,asset_type,asset_id,opts={})
+    def get_module_item_sequence(course_id,opts={})
       query_param_keys = [
         :asset_type,
         :asset_id
@@ -11867,13 +12348,9 @@ module Pandarus
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
-      raise "asset_type is required" if asset_type.nil?
-      raise "asset_id is required" if asset_id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :asset_type => asset_type,
-        :asset_id => asset_id
+        :course_id => course_id
       )
 
       # resource path
@@ -12044,7 +12521,7 @@ module Pandarus
     end
     
     # Update a preference
-    def update_preference_communication_channel_id(communication_channel_id,notification,notification_preferences__frequency__,opts={})
+    def update_preference_communication_channel_id(communication_channel_id,notification,opts={})
       query_param_keys = [
         
       ]
@@ -12057,12 +12534,10 @@ module Pandarus
       # verify existence of params
       raise "communication_channel_id is required" if communication_channel_id.nil?
       raise "notification is required" if notification.nil?
-      raise "notification_preferences__frequency__ is required" if notification_preferences__frequency__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :communication_channel_id => communication_channel_id,
-        :notification => notification,
-        :notification_preferences__frequency__ => notification_preferences__frequency__
+        :notification => notification
       )
 
       # resource path
@@ -12083,7 +12558,7 @@ module Pandarus
     end
     
     # Update a preference
-    def update_preference_type(type,address,notification,notification_preferences__frequency__,opts={})
+    def update_preference_type(type,address,notification,opts={})
       query_param_keys = [
         
       ]
@@ -12097,13 +12572,11 @@ module Pandarus
       raise "type is required" if type.nil?
       raise "address is required" if address.nil?
       raise "notification is required" if notification.nil?
-      raise "notification_preferences__frequency__ is required" if notification_preferences__frequency__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :type => type,
         :address => address,
-        :notification => notification,
-        :notification_preferences__frequency__ => notification_preferences__frequency__
+        :notification => notification
       )
 
       # resource path
@@ -12125,7 +12598,7 @@ module Pandarus
     end
     
     # Update multiple preferences
-    def update_multiple_preferences_communication_channel_id(communication_channel_id,notification_preferences____x_____frequency__,opts={})
+    def update_multiple_preferences_communication_channel_id(communication_channel_id,opts={})
       query_param_keys = [
         
       ]
@@ -12137,11 +12610,9 @@ module Pandarus
 
       # verify existence of params
       raise "communication_channel_id is required" if communication_channel_id.nil?
-      raise "notification_preferences____x_____frequency__ is required" if notification_preferences____x_____frequency__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :communication_channel_id => communication_channel_id,
-        :notification_preferences____x_____frequency__ => notification_preferences____x_____frequency__
+        :communication_channel_id => communication_channel_id
       )
 
       # resource path
@@ -12161,7 +12632,7 @@ module Pandarus
     end
     
     # Update multiple preferences
-    def update_multiple_preferences_type(type,address,notification_preferences____x_____frequency__,opts={})
+    def update_multiple_preferences_type(type,address,opts={})
       query_param_keys = [
         
       ]
@@ -12174,12 +12645,10 @@ module Pandarus
       # verify existence of params
       raise "type is required" if type.nil?
       raise "address is required" if address.nil?
-      raise "notification_preferences____x_____frequency__ is required" if notification_preferences____x_____frequency__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :type => type,
-        :address => address,
-        :notification_preferences____x_____frequency__ => notification_preferences____x_____frequency__
+        :address => address
       )
 
       # resource path
@@ -13319,7 +13788,7 @@ module Pandarus
     end
     
     # Create a subgroup
-    def create_subgroup_global(id,title,opts={})
+    def create_subgroup_global(id,opts={})
       query_param_keys = [
         
       ]
@@ -13333,11 +13802,9 @@ module Pandarus
 
       # verify existence of params
       raise "id is required" if id.nil?
-      raise "title is required" if title.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :id => id,
-        :title => title
+        :id => id
       )
 
       # resource path
@@ -13356,7 +13823,7 @@ module Pandarus
     end
     
     # Create a subgroup
-    def create_subgroup_accounts(account_id,id,title,opts={})
+    def create_subgroup_accounts(account_id,id,opts={})
       query_param_keys = [
         
       ]
@@ -13371,12 +13838,10 @@ module Pandarus
       # verify existence of params
       raise "account_id is required" if account_id.nil?
       raise "id is required" if id.nil?
-      raise "title is required" if title.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id,
-        :id => id,
-        :title => title
+        :id => id
       )
 
       # resource path
@@ -13396,7 +13861,7 @@ module Pandarus
     end
     
     # Create a subgroup
-    def create_subgroup_courses(course_id,id,title,opts={})
+    def create_subgroup_courses(course_id,id,opts={})
       query_param_keys = [
         
       ]
@@ -13411,12 +13876,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "id is required" if id.nil?
-      raise "title is required" if title.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :id => id,
-        :title => title
+        :id => id
       )
 
       # resource path
@@ -13436,7 +13899,7 @@ module Pandarus
     end
     
     # Import an outcome group
-    def import_outcome_group_global(id,source_outcome_group_id,opts={})
+    def import_outcome_group_global(id,opts={})
       query_param_keys = [
         
       ]
@@ -13448,11 +13911,9 @@ module Pandarus
 
       # verify existence of params
       raise "id is required" if id.nil?
-      raise "source_outcome_group_id is required" if source_outcome_group_id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :id => id,
-        :source_outcome_group_id => source_outcome_group_id
+        :id => id
       )
 
       # resource path
@@ -13471,7 +13932,7 @@ module Pandarus
     end
     
     # Import an outcome group
-    def import_outcome_group_accounts(account_id,id,source_outcome_group_id,opts={})
+    def import_outcome_group_accounts(account_id,id,opts={})
       query_param_keys = [
         
       ]
@@ -13484,12 +13945,10 @@ module Pandarus
       # verify existence of params
       raise "account_id is required" if account_id.nil?
       raise "id is required" if id.nil?
-      raise "source_outcome_group_id is required" if source_outcome_group_id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id,
-        :id => id,
-        :source_outcome_group_id => source_outcome_group_id
+        :id => id
       )
 
       # resource path
@@ -13509,7 +13968,7 @@ module Pandarus
     end
     
     # Import an outcome group
-    def import_outcome_group_courses(course_id,id,source_outcome_group_id,opts={})
+    def import_outcome_group_courses(course_id,id,opts={})
       query_param_keys = [
         
       ]
@@ -13522,12 +13981,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "id is required" if id.nil?
-      raise "source_outcome_group_id is required" if source_outcome_group_id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :id => id,
-        :source_outcome_group_id => source_outcome_group_id
+        :id => id
       )
 
       # resource path
@@ -13753,7 +14210,7 @@ module Pandarus
     end
     
     # Update/create front page
-    def update_create_front_page_courses(course_id,wiki_page__body__,opts={})
+    def update_create_front_page_courses(course_id,opts={})
       query_param_keys = [
         
       ]
@@ -13770,11 +14227,9 @@ module Pandarus
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
-      raise "wiki_page__body__ is required" if wiki_page__body__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :wiki_page__body__ => wiki_page__body__
+        :course_id => course_id
       )
 
       # resource path
@@ -13793,7 +14248,7 @@ module Pandarus
     end
     
     # Update/create front page
-    def update_create_front_page_groups(group_id,wiki_page__body__,opts={})
+    def update_create_front_page_groups(group_id,opts={})
       query_param_keys = [
         
       ]
@@ -13810,11 +14265,9 @@ module Pandarus
 
       # verify existence of params
       raise "group_id is required" if group_id.nil?
-      raise "wiki_page__body__ is required" if wiki_page__body__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :group_id => group_id,
-        :wiki_page__body__ => wiki_page__body__
+        :group_id => group_id
       )
 
       # resource path
@@ -13903,7 +14356,7 @@ module Pandarus
     end
     
     # Create page
-    def create_page_courses(course_id,wiki_page__title__,wiki_page__body__,wiki_page__hide_from_students__,wiki_page__notify_of_update__,opts={})
+    def create_page_courses(course_id,opts={})
       query_param_keys = [
         
       ]
@@ -13921,17 +14374,9 @@ module Pandarus
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
-      raise "wiki_page__title__ is required" if wiki_page__title__.nil?
-      raise "wiki_page__body__ is required" if wiki_page__body__.nil?
-      raise "wiki_page__hide_from_students__ is required" if wiki_page__hide_from_students__.nil?
-      raise "wiki_page__notify_of_update__ is required" if wiki_page__notify_of_update__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :wiki_page__title__ => wiki_page__title__,
-        :wiki_page__body__ => wiki_page__body__,
-        :wiki_page__hide_from_students__ => wiki_page__hide_from_students__,
-        :wiki_page__notify_of_update__ => wiki_page__notify_of_update__
+        :course_id => course_id
       )
 
       # resource path
@@ -13950,7 +14395,7 @@ module Pandarus
     end
     
     # Create page
-    def create_page_groups(group_id,wiki_page__title__,wiki_page__body__,wiki_page__hide_from_students__,wiki_page__notify_of_update__,opts={})
+    def create_page_groups(group_id,opts={})
       query_param_keys = [
         
       ]
@@ -13968,17 +14413,9 @@ module Pandarus
 
       # verify existence of params
       raise "group_id is required" if group_id.nil?
-      raise "wiki_page__title__ is required" if wiki_page__title__.nil?
-      raise "wiki_page__body__ is required" if wiki_page__body__.nil?
-      raise "wiki_page__hide_from_students__ is required" if wiki_page__hide_from_students__.nil?
-      raise "wiki_page__notify_of_update__ is required" if wiki_page__notify_of_update__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :group_id => group_id,
-        :wiki_page__title__ => wiki_page__title__,
-        :wiki_page__body__ => wiki_page__body__,
-        :wiki_page__hide_from_students__ => wiki_page__hide_from_students__,
-        :wiki_page__notify_of_update__ => wiki_page__notify_of_update__
+        :group_id => group_id
       )
 
       # resource path
@@ -14067,7 +14504,7 @@ module Pandarus
     end
     
     # Update/create page
-    def update_create_page_courses(course_id,url,wiki_page__title__,wiki_page__body__,wiki_page__hide_from_students__,wiki_page__notify_of_update__,opts={})
+    def update_create_page_courses(course_id,url,opts={})
       query_param_keys = [
         
       ]
@@ -14086,18 +14523,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "url is required" if url.nil?
-      raise "wiki_page__title__ is required" if wiki_page__title__.nil?
-      raise "wiki_page__body__ is required" if wiki_page__body__.nil?
-      raise "wiki_page__hide_from_students__ is required" if wiki_page__hide_from_students__.nil?
-      raise "wiki_page__notify_of_update__ is required" if wiki_page__notify_of_update__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :url => url,
-        :wiki_page__title__ => wiki_page__title__,
-        :wiki_page__body__ => wiki_page__body__,
-        :wiki_page__hide_from_students__ => wiki_page__hide_from_students__,
-        :wiki_page__notify_of_update__ => wiki_page__notify_of_update__
+        :url => url
       )
 
       # resource path
@@ -14117,7 +14546,7 @@ module Pandarus
     end
     
     # Update/create page
-    def update_create_page_groups(group_id,url,wiki_page__title__,wiki_page__body__,wiki_page__hide_from_students__,wiki_page__notify_of_update__,opts={})
+    def update_create_page_groups(group_id,url,opts={})
       query_param_keys = [
         
       ]
@@ -14136,18 +14565,10 @@ module Pandarus
       # verify existence of params
       raise "group_id is required" if group_id.nil?
       raise "url is required" if url.nil?
-      raise "wiki_page__title__ is required" if wiki_page__title__.nil?
-      raise "wiki_page__body__ is required" if wiki_page__body__.nil?
-      raise "wiki_page__hide_from_students__ is required" if wiki_page__hide_from_students__.nil?
-      raise "wiki_page__notify_of_update__ is required" if wiki_page__notify_of_update__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id,
-        :url => url,
-        :wiki_page__title__ => wiki_page__title__,
-        :wiki_page__body__ => wiki_page__body__,
-        :wiki_page__hide_from_students__ => wiki_page__hide_from_students__,
-        :wiki_page__notify_of_update__ => wiki_page__notify_of_update__
+        :url => url
       )
 
       # resource path
@@ -15516,7 +15937,7 @@ module Pandarus
     end
     
     # Reorder question groups
-    def reorder_question_groups(course_id,quiz_id,id,order__id__,order__type__,opts={})
+    def reorder_question_groups(course_id,quiz_id,id,order__id__,opts={})
       query_param_keys = [
         
       ]
@@ -15532,14 +15953,12 @@ module Pandarus
       raise "quiz_id is required" if quiz_id.nil?
       raise "id is required" if id.nil?
       raise "order__id__ is required" if order__id__.nil?
-      raise "order__type__ is required" if order__type__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :quiz_id => quiz_id,
         :id => id,
-        :order__id__ => order__id__,
-        :order__type__ => order__type__
+        :order__id__ => order__id__
       )
 
       # resource path
@@ -15596,7 +16015,7 @@ module Pandarus
     end
     
     # Create a quiz report
-    def create_quiz_report(course_id,quiz_id,quiz_report__report_type__,opts={})
+    def create_quiz_report(course_id,quiz_id,opts={})
       query_param_keys = [
         
       ]
@@ -15611,12 +16030,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "quiz_id is required" if quiz_id.nil?
-      raise "quiz_report__report_type__ is required" if quiz_report__report_type__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :quiz_id => quiz_id,
-        :quiz_report__report_type__ => quiz_report__report_type__
+        :quiz_id => quiz_id
       )
 
       # resource path
@@ -15674,7 +16091,7 @@ module Pandarus
     end
     
     # Fetching the latest quiz statistics
-    def fetching_latest_quiz_statistics(course_id,quiz_id,all_versions,opts={})
+    def fetching_latest_quiz_statistics(course_id,quiz_id,opts={})
       query_param_keys = [
         :all_versions
       ]
@@ -15686,12 +16103,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "quiz_id is required" if quiz_id.nil?
-      raise "all_versions is required" if all_versions.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :quiz_id => quiz_id,
-        :all_versions => all_versions
+        :quiz_id => quiz_id
       )
 
       # resource path
@@ -15712,7 +16127,7 @@ module Pandarus
     end
     
     # Upload a file
-    def upload_file(course_id,quiz_id,name,on_duplicate,opts={})
+    def upload_file(course_id,quiz_id,opts={})
       query_param_keys = [
         
       ]
@@ -15726,14 +16141,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "quiz_id is required" if quiz_id.nil?
-      raise "name is required" if name.nil?
-      raise "on_duplicate is required" if on_duplicate.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :quiz_id => quiz_id,
-        :name => name,
-        :on_duplicate => on_duplicate
+        :quiz_id => quiz_id
       )
 
       # resource path
@@ -15754,7 +16165,7 @@ module Pandarus
     end
     
     # Get all quiz submission questions.
-    def get_all_quiz_submission_questions(quiz_submission_id,include,opts={})
+    def get_all_quiz_submission_questions(quiz_submission_id,opts={})
       query_param_keys = [
         :include
       ]
@@ -15765,11 +16176,9 @@ module Pandarus
 
       # verify existence of params
       raise "quiz_submission_id is required" if quiz_submission_id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :quiz_submission_id => quiz_submission_id,
-        :include => include
+        :quiz_submission_id => quiz_submission_id
       )
 
       # resource path
@@ -15789,7 +16198,7 @@ module Pandarus
     end
     
     # Get a single quiz submission question.
-    def get_single_quiz_submission_question(quiz_submission_id,id,include,opts={})
+    def get_single_quiz_submission_question(quiz_submission_id,id,opts={})
       query_param_keys = [
         :include
       ]
@@ -15801,12 +16210,10 @@ module Pandarus
       # verify existence of params
       raise "quiz_submission_id is required" if quiz_submission_id.nil?
       raise "id is required" if id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :quiz_submission_id => quiz_submission_id,
-        :id => id,
-        :include => include
+        :id => id
       )
 
       # resource path
@@ -15827,7 +16234,7 @@ module Pandarus
     end
     
     # Answering questions
-    def answering_questions(quiz_submission_id,attempt,validation_token,quiz_questions,opts={})
+    def answering_questions(quiz_submission_id,opts={})
       query_param_keys = [
         
       ]
@@ -15842,15 +16249,9 @@ module Pandarus
 
       # verify existence of params
       raise "quiz_submission_id is required" if quiz_submission_id.nil?
-      raise "attempt is required" if attempt.nil?
-      raise "validation_token is required" if validation_token.nil?
-      raise "quiz_questions is required" if quiz_questions.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :quiz_submission_id => quiz_submission_id,
-        :attempt => attempt,
-        :validation_token => validation_token,
-        :quiz_questions => quiz_questions
+        :quiz_submission_id => quiz_submission_id
       )
 
       # resource path
@@ -15870,7 +16271,7 @@ module Pandarus
     end
     
     # Flagging a question.
-    def flagging_question(quiz_submission_id,id,attempt,validation_token,opts={})
+    def flagging_question(quiz_submission_id,id,opts={})
       query_param_keys = [
         
       ]
@@ -15885,14 +16286,10 @@ module Pandarus
       # verify existence of params
       raise "quiz_submission_id is required" if quiz_submission_id.nil?
       raise "id is required" if id.nil?
-      raise "attempt is required" if attempt.nil?
-      raise "validation_token is required" if validation_token.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :quiz_submission_id => quiz_submission_id,
-        :id => id,
-        :attempt => attempt,
-        :validation_token => validation_token
+        :id => id
       )
 
       # resource path
@@ -15913,7 +16310,7 @@ module Pandarus
     end
     
     # Unflagging a question.
-    def unflagging_question(quiz_submission_id,id,attempt,validation_token,opts={})
+    def unflagging_question(quiz_submission_id,id,opts={})
       query_param_keys = [
         
       ]
@@ -15928,14 +16325,10 @@ module Pandarus
       # verify existence of params
       raise "quiz_submission_id is required" if quiz_submission_id.nil?
       raise "id is required" if id.nil?
-      raise "attempt is required" if attempt.nil?
-      raise "validation_token is required" if validation_token.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :quiz_submission_id => quiz_submission_id,
-        :id => id,
-        :attempt => attempt,
-        :validation_token => validation_token
+        :id => id
       )
 
       # resource path
@@ -15956,7 +16349,7 @@ module Pandarus
     end
     
     # Get all quiz submissions.
-    def get_all_quiz_submissions(course_id,quiz_id,include,opts={})
+    def get_all_quiz_submissions(course_id,quiz_id,opts={})
       query_param_keys = [
         :include
       ]
@@ -15968,12 +16361,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "quiz_id is required" if quiz_id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :quiz_id => quiz_id,
-        :include => include
+        :quiz_id => quiz_id
       )
 
       # resource path
@@ -15994,7 +16385,7 @@ module Pandarus
     end
     
     # Get a single quiz submission.
-    def get_single_quiz_submission(course_id,quiz_id,id,include,opts={})
+    def get_single_quiz_submission(course_id,quiz_id,id,opts={})
       query_param_keys = [
         :include
       ]
@@ -16007,13 +16398,11 @@ module Pandarus
       raise "course_id is required" if course_id.nil?
       raise "quiz_id is required" if quiz_id.nil?
       raise "id is required" if id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :quiz_id => quiz_id,
-        :id => id,
-        :include => include
+        :id => id
       )
 
       # resource path
@@ -16073,7 +16462,7 @@ module Pandarus
     end
     
     # Update student question scores and comments.
-    def update_student_question_scores_and_comments(course_id,quiz_id,id,attempt,opts={})
+    def update_student_question_scores_and_comments(course_id,quiz_id,id,opts={})
       query_param_keys = [
         
       ]
@@ -16089,13 +16478,11 @@ module Pandarus
       raise "course_id is required" if course_id.nil?
       raise "quiz_id is required" if quiz_id.nil?
       raise "id is required" if id.nil?
-      raise "attempt is required" if attempt.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :quiz_id => quiz_id,
-        :id => id,
-        :attempt => attempt
+        :id => id
       )
 
       # resource path
@@ -16117,7 +16504,7 @@ module Pandarus
     end
     
     # Complete the quiz submission (turn it in).
-    def complete_quiz_submission_turn_it_in(course_id,quiz_id,id,attempt,validation_token,opts={})
+    def complete_quiz_submission_turn_it_in(course_id,quiz_id,id,opts={})
       query_param_keys = [
         
       ]
@@ -16133,15 +16520,11 @@ module Pandarus
       raise "course_id is required" if course_id.nil?
       raise "quiz_id is required" if quiz_id.nil?
       raise "id is required" if id.nil?
-      raise "attempt is required" if attempt.nil?
-      raise "validation_token is required" if validation_token.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :quiz_id => quiz_id,
-        :id => id,
-        :attempt => attempt,
-        :validation_token => validation_token
+        :id => id
       )
 
       # resource path
@@ -16236,7 +16619,7 @@ module Pandarus
     end
     
     # Create a single quiz question
-    def create_single_quiz_question(course_id,quiz_id,question__question_name__,question__question_text__,question__question_type__,opts={})
+    def create_single_quiz_question(course_id,quiz_id,question__question_name__,question__question_text__,opts={})
       query_param_keys = [
         
       ]
@@ -16261,14 +16644,12 @@ module Pandarus
       raise "quiz_id is required" if quiz_id.nil?
       raise "question__question_name__ is required" if question__question_name__.nil?
       raise "question__question_text__ is required" if question__question_text__.nil?
-      raise "question__question_type__ is required" if question__question_type__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :quiz_id => quiz_id,
         :question__question_name__ => question__question_name__,
-        :question__question_text__ => question__question_text__,
-        :question__question_type__ => question__question_type__
+        :question__question_text__ => question__question_text__
       )
 
       # resource path
@@ -16288,7 +16669,7 @@ module Pandarus
     end
     
     # Update an existing quiz question
-    def update_existing_quiz_question(course_id,quiz_id,id,question__question_name__,question__question_text__,question__question_type__,opts={})
+    def update_existing_quiz_question(course_id,quiz_id,id,question__question_name__,question__question_text__,opts={})
       query_param_keys = [
         
       ]
@@ -16314,15 +16695,13 @@ module Pandarus
       raise "id is required" if id.nil?
       raise "question__question_name__ is required" if question__question_name__.nil?
       raise "question__question_text__ is required" if question__question_text__.nil?
-      raise "question__question_type__ is required" if question__question_type__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :quiz_id => quiz_id,
         :id => id,
         :question__question_name__ => question__question_name__,
-        :question__question_text__ => question__question_text__,
-        :question__question_type__ => question__question_type__
+        :question__question_text__ => question__question_text__
       )
 
       # resource path
@@ -16449,7 +16828,7 @@ module Pandarus
     end
     
     # Create a quiz
-    def create_quiz(course_id,quiz__title__,quiz__quiz_type__,opts={})
+    def create_quiz(course_id,opts={})
       query_param_keys = [
         
       ]
@@ -16481,13 +16860,9 @@ module Pandarus
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
-      raise "quiz__title__ is required" if quiz__title__.nil?
-      raise "quiz__quiz_type__ is required" if quiz__quiz_type__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :quiz__title__ => quiz__title__,
-        :quiz__quiz_type__ => quiz__quiz_type__
+        :course_id => course_id
       )
 
       # resource path
@@ -16506,7 +16881,7 @@ module Pandarus
     end
     
     # Edit a quiz
-    def edit_quiz(course_id,id,quiz__notify_of_update__,opts={})
+    def edit_quiz(course_id,id,opts={})
       query_param_keys = [
         
       ]
@@ -16519,12 +16894,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "id is required" if id.nil?
-      raise "quiz__notify_of_update__ is required" if quiz__notify_of_update__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :id => id,
-        :quiz__notify_of_update__ => quiz__notify_of_update__
+        :id => id
       )
 
       # resource path
@@ -16579,7 +16952,7 @@ module Pandarus
     end
     
     # Reorder quiz items
-    def reorder_quiz_items(course_id,id,order__id__,order__type__,opts={})
+    def reorder_quiz_items(course_id,id,order__id__,opts={})
       query_param_keys = [
         
       ]
@@ -16594,13 +16967,11 @@ module Pandarus
       raise "course_id is required" if course_id.nil?
       raise "id is required" if id.nil?
       raise "order__id__ is required" if order__id__.nil?
-      raise "order__type__ is required" if order__type__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id,
-        :order__id__ => order__id__,
-        :order__type__ => order__type__
+        :order__id__ => order__id__
       )
 
       # resource path
@@ -16621,7 +16992,7 @@ module Pandarus
     end
     
     # List roles
-    def list_roles(account_id,state,opts={})
+    def list_roles(account_id,opts={})
       query_param_keys = [
         :state
       ]
@@ -16632,11 +17003,9 @@ module Pandarus
 
       # verify existence of params
       raise "account_id is required" if account_id.nil?
-      raise "state is required" if state.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :account_id => account_id,
-        :state => state
+        :account_id => account_id
       )
 
       # resource path
@@ -16690,7 +17059,7 @@ module Pandarus
     end
     
     # Create a new role
-    def create_new_role(account_id,role,opts={})
+    def create_new_role(account_id,opts={})
       query_param_keys = [
         
       ]
@@ -16706,11 +17075,9 @@ module Pandarus
 
       # verify existence of params
       raise "account_id is required" if account_id.nil?
-      raise "role is required" if role.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :account_id => account_id,
-        :role => role
+        :account_id => account_id
       )
 
       # resource path
@@ -16868,7 +17235,7 @@ module Pandarus
     end
     
     # Import SIS data
-    def import_sis_data(account_id,attachment,opts={})
+    def import_sis_data(account_id,opts={})
       query_param_keys = [
         
       ]
@@ -16887,11 +17254,9 @@ module Pandarus
 
       # verify existence of params
       raise "account_id is required" if account_id.nil?
-      raise "attachment is required" if attachment.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :account_id => account_id,
-        :attachment => attachment
+        :account_id => account_id
       )
 
       # resource path
@@ -16945,7 +17310,7 @@ module Pandarus
     end
     
     # Find recipients
-    def find_recipients_conversations(search,context,exclude,type,user_id,from_conversation_id,permissions,opts={})
+    def find_recipients_conversations(opts={})
       query_param_keys = [
         :search,
         :context,
@@ -16960,23 +17325,10 @@ module Pandarus
         
       ]
 
-      # verify existence of params
-      raise "search is required" if search.nil?
-      raise "context is required" if context.nil?
-      raise "exclude is required" if exclude.nil?
-      raise "type is required" if type.nil?
-      raise "user_id is required" if user_id.nil?
-      raise "from_conversation_id is required" if from_conversation_id.nil?
-      raise "permissions is required" if permissions.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :search => search,
-        :context => context,
-        :exclude => exclude,
-        :type => type,
-        :user_id => user_id,
-        :from_conversation_id => from_conversation_id,
-        :permissions => permissions
+        {}
+      
       )
 
       # resource path
@@ -16996,7 +17348,7 @@ module Pandarus
     end
     
     # Find recipients
-    def find_recipients_search(search,context,exclude,type,user_id,from_conversation_id,permissions,opts={})
+    def find_recipients_search(opts={})
       query_param_keys = [
         :search,
         :context,
@@ -17011,23 +17363,10 @@ module Pandarus
         
       ]
 
-      # verify existence of params
-      raise "search is required" if search.nil?
-      raise "context is required" if context.nil?
-      raise "exclude is required" if exclude.nil?
-      raise "type is required" if type.nil?
-      raise "user_id is required" if user_id.nil?
-      raise "from_conversation_id is required" if from_conversation_id.nil?
-      raise "permissions is required" if permissions.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :search => search,
-        :context => context,
-        :exclude => exclude,
-        :type => type,
-        :user_id => user_id,
-        :from_conversation_id => from_conversation_id,
-        :permissions => permissions
+        {}
+      
       )
 
       # resource path
@@ -17079,7 +17418,7 @@ module Pandarus
     end
     
     # Create course section
-    def create_course_section(course_id,course_section__name__,opts={})
+    def create_course_section(course_id,opts={})
       query_param_keys = [
         
       ]
@@ -17094,11 +17433,9 @@ module Pandarus
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
-      raise "course_section__name__ is required" if course_section__name__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :course_section__name__ => course_section__name__
+        :course_id => course_id
       )
 
       # resource path
@@ -17418,7 +17755,7 @@ module Pandarus
     end
     
     # Submit an assignment
-    def submit_assignment_courses(course_id,assignment_id,submission__submission_type__,opts={})
+    def submit_assignment_courses(course_id,assignment_id,opts={})
       query_param_keys = [
         
       ]
@@ -17437,12 +17774,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "assignment_id is required" if assignment_id.nil?
-      raise "submission__submission_type__ is required" if submission__submission_type__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :assignment_id => assignment_id,
-        :submission__submission_type__ => submission__submission_type__
+        :assignment_id => assignment_id
       )
 
       # resource path
@@ -17463,7 +17798,7 @@ module Pandarus
     end
     
     # Submit an assignment
-    def submit_assignment_sections(section_id,assignment_id,submission__submission_type__,opts={})
+    def submit_assignment_sections(section_id,assignment_id,opts={})
       query_param_keys = [
         
       ]
@@ -17482,12 +17817,10 @@ module Pandarus
       # verify existence of params
       raise "section_id is required" if section_id.nil?
       raise "assignment_id is required" if assignment_id.nil?
-      raise "submission__submission_type__ is required" if submission__submission_type__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :section_id => section_id,
-        :assignment_id => assignment_id,
-        :submission__submission_type__ => submission__submission_type__
+        :assignment_id => assignment_id
       )
 
       # resource path
@@ -17508,7 +17841,7 @@ module Pandarus
     end
     
     # List assignment submissions
-    def list_assignment_submissions_courses(course_id,assignment_id,include,opts={})
+    def list_assignment_submissions_courses(course_id,assignment_id,opts={})
       query_param_keys = [
         :include
       ]
@@ -17520,12 +17853,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "assignment_id is required" if assignment_id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :assignment_id => assignment_id,
-        :include => include
+        :assignment_id => assignment_id
       )
 
       # resource path
@@ -17546,7 +17877,7 @@ module Pandarus
     end
     
     # List assignment submissions
-    def list_assignment_submissions_sections(section_id,assignment_id,include,opts={})
+    def list_assignment_submissions_sections(section_id,assignment_id,opts={})
       query_param_keys = [
         :include
       ]
@@ -17558,12 +17889,10 @@ module Pandarus
       # verify existence of params
       raise "section_id is required" if section_id.nil?
       raise "assignment_id is required" if assignment_id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :section_id => section_id,
-        :assignment_id => assignment_id,
-        :include => include
+        :assignment_id => assignment_id
       )
 
       # resource path
@@ -17584,7 +17913,7 @@ module Pandarus
     end
     
     # List submissions for multiple assignments
-    def list_submissions_for_multiple_assignments_courses(course_id,student_ids,assignment_ids,grouped,include,opts={})
+    def list_submissions_for_multiple_assignments_courses(course_id,opts={})
       query_param_keys = [
         :student_ids,
         :assignment_ids,
@@ -17598,17 +17927,9 @@ module Pandarus
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
-      raise "student_ids is required" if student_ids.nil?
-      raise "assignment_ids is required" if assignment_ids.nil?
-      raise "grouped is required" if grouped.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :student_ids => student_ids,
-        :assignment_ids => assignment_ids,
-        :grouped => grouped,
-        :include => include
+        :course_id => course_id
       )
 
       # resource path
@@ -17628,7 +17949,7 @@ module Pandarus
     end
     
     # List submissions for multiple assignments
-    def list_submissions_for_multiple_assignments_sections(section_id,student_ids,assignment_ids,grouped,include,opts={})
+    def list_submissions_for_multiple_assignments_sections(section_id,opts={})
       query_param_keys = [
         :student_ids,
         :assignment_ids,
@@ -17642,17 +17963,9 @@ module Pandarus
 
       # verify existence of params
       raise "section_id is required" if section_id.nil?
-      raise "student_ids is required" if student_ids.nil?
-      raise "assignment_ids is required" if assignment_ids.nil?
-      raise "grouped is required" if grouped.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :section_id => section_id,
-        :student_ids => student_ids,
-        :assignment_ids => assignment_ids,
-        :grouped => grouped,
-        :include => include
+        :section_id => section_id
       )
 
       # resource path
@@ -17672,7 +17985,7 @@ module Pandarus
     end
     
     # Get a single submission
-    def get_single_submission_courses(course_id,assignment_id,user_id,include,opts={})
+    def get_single_submission_courses(course_id,assignment_id,user_id,opts={})
       query_param_keys = [
         :include
       ]
@@ -17685,13 +17998,11 @@ module Pandarus
       raise "course_id is required" if course_id.nil?
       raise "assignment_id is required" if assignment_id.nil?
       raise "user_id is required" if user_id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :assignment_id => assignment_id,
-        :user_id => user_id,
-        :include => include
+        :user_id => user_id
       )
 
       # resource path
@@ -17713,7 +18024,7 @@ module Pandarus
     end
     
     # Get a single submission
-    def get_single_submission_sections(section_id,assignment_id,user_id,include,opts={})
+    def get_single_submission_sections(section_id,assignment_id,user_id,opts={})
       query_param_keys = [
         :include
       ]
@@ -17726,13 +18037,11 @@ module Pandarus
       raise "section_id is required" if section_id.nil?
       raise "assignment_id is required" if assignment_id.nil?
       raise "user_id is required" if user_id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :section_id => section_id,
         :assignment_id => assignment_id,
-        :user_id => user_id,
-        :include => include
+        :user_id => user_id
       )
 
       # resource path
@@ -17924,7 +18233,7 @@ module Pandarus
     end
     
     # List available tabs for a course or group
-    def list_available_tabs_for_course_or_group_courses(course_id,include,opts={})
+    def list_available_tabs_for_course_or_group_courses(course_id,opts={})
       query_param_keys = [
         :include
       ]
@@ -17935,11 +18244,9 @@ module Pandarus
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :include => include
+        :course_id => course_id
       )
 
       # resource path
@@ -17959,7 +18266,7 @@ module Pandarus
     end
     
     # List available tabs for a course or group
-    def list_available_tabs_for_course_or_group_groups(group_id,include,opts={})
+    def list_available_tabs_for_course_or_group_groups(group_id,opts={})
       query_param_keys = [
         :include
       ]
@@ -17970,11 +18277,9 @@ module Pandarus
 
       # verify existence of params
       raise "group_id is required" if group_id.nil?
-      raise "include is required" if include.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :group_id => group_id,
-        :include => include
+        :group_id => group_id
       )
 
       # resource path
@@ -17994,7 +18299,7 @@ module Pandarus
     end
     
     # Update a tab for a course
-    def update_tab_for_course(course_id,tab_id,position,hidden,opts={})
+    def update_tab_for_course(course_id,tab_id,opts={})
       query_param_keys = [
         
       ]
@@ -18008,14 +18313,10 @@ module Pandarus
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "tab_id is required" if tab_id.nil?
-      raise "position is required" if position.nil?
-      raise "hidden is required" if hidden.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :tab_id => tab_id,
-        :position => position,
-        :hidden => hidden
+        :tab_id => tab_id
       )
 
       # resource path
@@ -18067,7 +18368,7 @@ module Pandarus
     end
     
     # Add an observee with credentials
-    def add_observee_with_credentials(user_id,observee__unique_id__,observee__password__,opts={})
+    def add_observee_with_credentials(user_id,opts={})
       query_param_keys = [
         
       ]
@@ -18080,13 +18381,9 @@ module Pandarus
 
       # verify existence of params
       raise "user_id is required" if user_id.nil?
-      raise "observee__unique_id__ is required" if observee__unique_id__.nil?
-      raise "observee__password__ is required" if observee__password__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :user_id => user_id,
-        :observee__unique_id__ => observee__unique_id__,
-        :observee__password__ => observee__password__
+        :user_id => user_id
       )
 
       # resource path
@@ -18500,7 +18797,7 @@ module Pandarus
     end
     
     # Create a user
-    def create_user(account_id,pseudonym__unique_id__,opts={})
+    def create_user(account_id,opts={})
       query_param_keys = [
         
       ]
@@ -18525,11 +18822,9 @@ module Pandarus
 
       # verify existence of params
       raise "account_id is required" if account_id.nil?
-      raise "pseudonym__unique_id__ is required" if pseudonym__unique_id__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :account_id => account_id,
-        :pseudonym__unique_id__ => pseudonym__unique_id__
+        :account_id => account_id
       )
 
       # resource path
@@ -18548,7 +18843,7 @@ module Pandarus
     end
     
     # Update user settings.
-    def update_user_settings(id,manual_mark_as_read,opts={})
+    def update_user_settings(id,opts={})
       query_param_keys = [
         :manual_mark_as_read
       ]
@@ -18559,11 +18854,9 @@ module Pandarus
 
       # verify existence of params
       raise "id is required" if id.nil?
-      raise "manual_mark_as_read is required" if manual_mark_as_read.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :id => id,
-        :manual_mark_as_read => manual_mark_as_read
+        :id => id
       )
 
       # resource path
@@ -18827,7 +19120,7 @@ module Pandarus
     end
     
     # Store custom data
-    def store_custom_data(user_id,ns,data,opts={})
+    def store_custom_data(user_id,opts={})
       query_param_keys = [
         
       ]
@@ -18840,13 +19133,9 @@ module Pandarus
 
       # verify existence of params
       raise "user_id is required" if user_id.nil?
-      raise "ns is required" if ns.nil?
-      raise "data is required" if data.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :user_id => user_id,
-        :ns => ns,
-        :data => data
+        :user_id => user_id
       )
 
       # resource path
@@ -18866,7 +19155,7 @@ module Pandarus
     end
     
     # Load custom data
-    def load_custom_data(user_id,ns,opts={})
+    def load_custom_data(user_id,opts={})
       query_param_keys = [
         :ns
       ]
@@ -18877,11 +19166,9 @@ module Pandarus
 
       # verify existence of params
       raise "user_id is required" if user_id.nil?
-      raise "ns is required" if ns.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :user_id => user_id,
-        :ns => ns
+        :user_id => user_id
       )
 
       # resource path
@@ -18901,7 +19188,7 @@ module Pandarus
     end
     
     # Delete custom data
-    def delete_custom_data(user_id,ns,opts={})
+    def delete_custom_data(user_id,opts={})
       query_param_keys = [
         :ns
       ]
@@ -18912,11 +19199,9 @@ module Pandarus
 
       # verify existence of params
       raise "user_id is required" if user_id.nil?
-      raise "ns is required" if ns.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :user_id => user_id,
-        :ns => ns
+        :user_id => user_id
       )
 
       # resource path

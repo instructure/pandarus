@@ -113,7 +113,7 @@
               "description": "- \"permissions\": Include permissions the current user has for the group.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "permissions"
               ],
@@ -142,7 +142,7 @@
               "description": "The name of the group",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -150,7 +150,7 @@
               "description": "A description of the group",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -158,7 +158,7 @@
               "description": "whether the group is public (applies only to community groups)",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -166,7 +166,7 @@
               "description": "no description",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "parent_context_auto_join",
                 "parent_context_request",
@@ -179,7 +179,7 @@
               "description": "The allowed file storage for the group, in megabytes. This parameter is ignored if the caller does not have the manage_storage_quotas permission.",
               "type": "integer",
               "format": "int64",
-              "required": true
+              "required": false
             }
           ],
           "type": "Group"
@@ -210,7 +210,7 @@
               "description": "The name of the group",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -218,7 +218,7 @@
               "description": "A description of the group",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -226,7 +226,7 @@
               "description": "whether the group is public (applies only to community groups)",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -234,7 +234,7 @@
               "description": "no description",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "parent_context_auto_join",
                 "parent_context_request",
@@ -247,7 +247,7 @@
               "description": "The allowed file storage for the group, in megabytes. This parameter is ignored if the caller does not have the manage_storage_quotas permission.",
               "type": "integer",
               "format": "int64",
-              "required": true
+              "required": false
             }
           ],
           "type": "Group"
@@ -278,7 +278,7 @@
               "description": "The name of the group",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -286,7 +286,7 @@
               "description": "A description of the group",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -294,7 +294,7 @@
               "description": "Whether the group is public (applies only to community groups). Currently you cannot set a group back to private once it has been made public.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -302,7 +302,7 @@
               "description": "no description",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "parent_context_auto_join",
                 "parent_context_request",
@@ -315,7 +315,7 @@
               "description": "The id of the attachment previously uploaded to the group that you would like to use as the avatar image for this group.",
               "type": "integer",
               "format": "int64",
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -323,7 +323,7 @@
               "description": "The allowed file storage for the group, in megabytes. This parameter is ignored if the caller does not have the manage_storage_quotas permission.",
               "type": "integer",
               "format": "int64",
-              "required": true
+              "required": false
             }
           ],
           "type": "Group"
@@ -419,7 +419,7 @@
               "description": "- \"avatar_url\": Include users' avatar_urls.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "avatar_url"
               ],
@@ -482,7 +482,7 @@
               "description": "The html content to process",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "void"
@@ -643,7 +643,7 @@
               "description": "no description",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "GroupMembership"
@@ -693,7 +693,7 @@
               "description": "no description",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "GroupMembership"
@@ -743,7 +743,7 @@
               "description": "no description",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "GroupMembership"

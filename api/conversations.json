@@ -61,7 +61,7 @@
               "description": "(Obsolete) Submissions are no longer linked to conversations. This parameter is ignored.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "query",
@@ -69,7 +69,7 @@
               "description": "Default is false. If true, the top-level element of the response will be an object rather than an array, and will have the keys \"conversations\" which will contain the paged conversation data, and \"conversation_ids\" which will contain the ids of all conversations under this scope/filter in the same order.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "array",
@@ -122,7 +122,7 @@
               "description": "Defaults to false. If true, this will be a group conversation (i.e. all recipients may see all messages and replies). If false, individual private conversations will be started with each recipient.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -130,7 +130,7 @@
               "description": "An array of attachments ids. These must be files that have been previously uploaded to the sender's \"conversation attachments\" folder.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "tags": {
                 "type": "array"
               }
@@ -141,7 +141,7 @@
               "description": "Media comment id of an audio of video file to be associated with this message.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -149,7 +149,7 @@
               "description": "Type of the associated media file",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "audio",
                 "video"
@@ -169,7 +169,7 @@
               "description": "Determines whether the messages will be created/sent synchronously or asynchronously. Defaults to sync, and this option is ignored if this is a group conversation or there is just one recipient (i.e. it must be a bulk private message). When sent async, the response will be an empty array (batch status can be queried via the {api:ConversationsController#batches batches API})",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "sync",
                 "async"
@@ -265,7 +265,7 @@
               "description": "(Obsolete) Submissions are no longer linked to conversations. This parameter is ignored.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "query",
@@ -310,7 +310,7 @@
               "description": "Default true. If true, unread conversations will be automatically marked as read. This will default to false in a future API release, so clients should explicitly send true if that is the desired behavior.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "void"
@@ -341,7 +341,7 @@
               "description": "Change the subject of this conversation",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -349,7 +349,7 @@
               "description": "Change the state of this conversation",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "read",
                 "unread",
@@ -362,7 +362,7 @@
               "description": "Toggle the current user's subscription to the conversation (only valid for group conversations). If unsubscribed, the user will still have access to the latest messages, but the conversation won't be automatically flagged as unread, nor will it jump to the top of the inbox.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -370,7 +370,7 @@
               "description": "Toggle the starred state of the current user's view of the conversation.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -519,7 +519,7 @@
               "description": "An array of attachments ids. These must be files that have been previously uploaded to the sender's \"conversation attachments\" folder.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "tags": {
                 "type": "array"
               }
@@ -530,7 +530,7 @@
               "description": "Media comment id of an audio of video file to be associated with this message.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -538,7 +538,7 @@
               "description": "Type of the associated media file.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "audio",
                 "video"

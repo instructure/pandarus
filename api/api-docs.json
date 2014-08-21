@@ -7,6 +7,10 @@
       "description": "Account Authentication Services"
     },
     {
+      "path": "/account_notifications.json",
+      "description": "Account Notifications"
+    },
+    {
       "path": "/account_reports.json",
       "description": "Account Reports"
     },
@@ -17,6 +21,10 @@
     {
       "path": "/admins.json",
       "description": "Admins"
+    },
+    {
+      "path": "/analytics.json",
+      "description": "Analytics"
     },
     {
       "path": "/announcement_external_feeds.json",

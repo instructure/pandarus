@@ -31,7 +31,7 @@
               "description": "A list of enrollment types to return. Accepted values are 'StudentEnrollment', 'TeacherEnrollment', 'TaEnrollment', 'DesignerEnrollment', and 'ObserverEnrollment.' If omitted, all enrollment types are returned. This argument is ignored if `role` is given.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "tags": {
                 "type": "array"
               }
@@ -42,7 +42,7 @@
               "description": "A list of enrollment roles to return. Accepted values include course-level roles created by the {api:RoleOverridesController#add_role Add Role API} as well as the base enrollment types accepted by the `type` argument above.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "tags": {
                 "type": "array"
               }
@@ -53,7 +53,7 @@
               "description": "Filter by enrollment state. If omitted, 'active' and 'invited' enrollments are returned. When querying a user's enrollments (either via user_id argument or via user enrollments endpoint), the following additional synthetic states are supported: \"current_and_invited\"|\"current_and_future\"|\"current_and_concluded\"",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "active",
                 "invited",
@@ -73,7 +73,7 @@
               "description": "Filter by user_id (only valid for course or section enrollment queries). If set to the current user's id, this is a way to determine if the user has any enrollments in the course or section, independent of whether the user has permission to view other people on the roster.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "array",
@@ -107,7 +107,7 @@
               "description": "A list of enrollment types to return. Accepted values are 'StudentEnrollment', 'TeacherEnrollment', 'TaEnrollment', 'DesignerEnrollment', and 'ObserverEnrollment.' If omitted, all enrollment types are returned. This argument is ignored if `role` is given.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "tags": {
                 "type": "array"
               }
@@ -118,7 +118,7 @@
               "description": "A list of enrollment roles to return. Accepted values include course-level roles created by the {api:RoleOverridesController#add_role Add Role API} as well as the base enrollment types accepted by the `type` argument above.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "tags": {
                 "type": "array"
               }
@@ -129,7 +129,7 @@
               "description": "Filter by enrollment state. If omitted, 'active' and 'invited' enrollments are returned. When querying a user's enrollments (either via user_id argument or via user enrollments endpoint), the following additional synthetic states are supported: \"current_and_invited\"|\"current_and_future\"|\"current_and_concluded\"",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "active",
                 "invited",
@@ -149,7 +149,7 @@
               "description": "Filter by user_id (only valid for course or section enrollment queries). If set to the current user's id, this is a way to determine if the user has any enrollments in the course or section, independent of whether the user has permission to view other people on the roster.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "array",
@@ -175,7 +175,7 @@
               "description": "A list of enrollment types to return. Accepted values are 'StudentEnrollment', 'TeacherEnrollment', 'TaEnrollment', 'DesignerEnrollment', and 'ObserverEnrollment.' If omitted, all enrollment types are returned. This argument is ignored if `role` is given.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "tags": {
                 "type": "array"
               }
@@ -186,7 +186,7 @@
               "description": "A list of enrollment roles to return. Accepted values include course-level roles created by the {api:RoleOverridesController#add_role Add Role API} as well as the base enrollment types accepted by the `type` argument above.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "tags": {
                 "type": "array"
               }
@@ -197,7 +197,7 @@
               "description": "Filter by enrollment state. If omitted, 'active' and 'invited' enrollments are returned. When querying a user's enrollments (either via user_id argument or via user enrollments endpoint), the following additional synthetic states are supported: \"current_and_invited\"|\"current_and_future\"|\"current_and_concluded\"",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "active",
                 "invited",
@@ -486,7 +486,7 @@
               "description": "The action to take on the enrollment.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "conclude",
                 "delete"

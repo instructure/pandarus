@@ -201,7 +201,7 @@
               "description": "The desired frequency for this notification",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "void"
@@ -248,7 +248,7 @@
               "description": "The desired frequency for this notification",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "void"
@@ -279,7 +279,7 @@
               "description": "The desired frequency for <X> notification",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "void"
@@ -318,7 +318,7 @@
               "description": "The desired frequency for <X> notification",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "void"

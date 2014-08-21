@@ -31,7 +31,7 @@
               "description": "Filter by role state. If this argument is omitted, only 'active' roles are returned.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "active",
                 "inactive"
@@ -103,7 +103,7 @@
               "description": "Label and unique identifier for the role.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",

@@ -39,7 +39,7 @@
               "description": "Whether the statistics report should include all submissions attempts.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "void"

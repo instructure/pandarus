@@ -62,7 +62,7 @@
               "description": "The parameters will vary for each report",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "Report"

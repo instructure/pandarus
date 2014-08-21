@@ -31,7 +31,7 @@
               "description": "Optionally include external tool tabs in the returned list of tabs (Only has effect for courses, not groups)",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "external"
               ],
@@ -68,7 +68,7 @@
               "description": "Optionally include external tool tabs in the returned list of tabs (Only has effect for courses, not groups)",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "external"
               ],
@@ -113,7 +113,7 @@
               "description": "The new position of the tab, 1-based",
               "type": "integer",
               "format": "int64",
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -121,7 +121,7 @@
               "description": "\\\\ true, or false.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "Tab"

@@ -1,0 +1,148 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/account_notifications",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/accounts/{account_id}/account_notifications",
+      "description": "Create and return a new global notification for an account.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a global notification",
+          "notes": "Create and return a new global notification for an account.",
+          "nickname": "create_global_notification",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "account_notification[subject]",
+              "description": "The subject of the notification.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "account_notification[message]",
+              "description": "The message body of the notification.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "account_notification[start_at]",
+              "description": "The start date and time of the notification in ISO8601 format. e.g. 2014-01-01T01:00Z",
+              "type": "datetime",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "account_notification[end_at]",
+              "description": "The end date and time of the notification in ISO8601 format. e.g. 2014-01-01T01:00Z",
+              "type": "datetime",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "account_notification[icon]",
+              "description": "The icon to display with the notification. Note: Defaults to warning.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "warning",
+                "information",
+                "question",
+                "error",
+                "calendar"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "account_notification_roles",
+              "description": "The role(s) to send global notification to. Note: ommitting this field will send to everyone Example: account_notification_roles: [\"StudentEnrollment\", \"TeacherEnrollment\"]",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "AccountNotificaion": {
+      "id": "AccountNotificaion",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "subject": {
+          "description": "The subject of the notifications",
+          "example": "Attention Students",
+          "type": "string"
+        },
+        "message": {
+          "description": "The message to be sent in the notification.",
+          "example": "This is a test of the notification system.",
+          "type": "string"
+        },
+        "start_at": {
+          "description": "When to send out the notification.",
+          "example": "2013-08-28T23:59:00-06:00",
+          "type": "datetime"
+        },
+        "end_at": {
+          "description": "When to expire the notification.",
+          "example": "2013-08-29T23:59:00-06:00",
+          "type": "datetime"
+        },
+        "icon": {
+          "description": "The icon to display with the message.  Defaults to warning.",
+          "example": "[\"information\"]",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "allowableValues": {
+            "values": [
+              "warning",
+              "information",
+              "question",
+              "error",
+              "calendar"
+            ]
+          }
+        },
+        "roles": {
+          "description": "The roles to send the notification to.  If roles is not passed it defaults to all roles",
+          "example": "[\"StudentEnrollment\"]",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

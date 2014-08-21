@@ -263,7 +263,7 @@
               "description": "User's login ID. If this is a self-registration, it must be a valid email address.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -342,7 +342,7 @@
               "description": "If true, require user to manually mark discussion posts as read (don't auto-mark as read).",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "void"
@@ -410,7 +410,7 @@
             {
               "paramType": "form",
               "name": "user[avatar][token]",
-              "description": "A unique representation of the avatar record to assign as the user's current avatar. This token can be obtained from the user avatars endpoint. This supersedes the user[avatar][url] argument, and if both are included the url will be ignored. Note: this is an internal representation and is subject to change without notice. It should be consumed with this api endpoint and used in the user update endpoint, and should not be constructed by the client.",
+              "description": "A unique representation of the avatar record to assign as the user's current avatar. This token can be obtained from the user avatars endpoint. This supersedes the user [avatar] [url] argument, and if both are included the url will be ignored. Note: this is an internal representation and is subject to change without notice. It should be consumed with this api endpoint and used in the user update endpoint, and should not be constructed by the client.",
               "type": "string",
               "format": null,
               "required": false
@@ -644,7 +644,7 @@
               "description": "The namespace under which to store the data. This should be something other Canvas API apps aren't likely to use, such as a reverse DNS for your organization.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -652,7 +652,7 @@
               "description": "The data you want to store for the user, at the specified scope. If the data is composed of (possibly nested) JSON objects, scopes will be generated for the (nested) keys (see examples).",
               "type": "json",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "void"
@@ -683,7 +683,7 @@
               "description": "The namespace from which to retrieve the data. This should be something other Canvas API apps aren't likely to use, such as a reverse DNS for your organization.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "void"
@@ -714,7 +714,7 @@
               "description": "The namespace from which to delete the data. This should be something other Canvas API apps aren't likely to use, such as a reverse DNS for your organization.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "void"

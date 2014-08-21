@@ -508,7 +508,7 @@
               "description": "The new display name of the file",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -516,7 +516,7 @@
               "description": "The id of the folder to move this file into. The new folder must be in the same context as the original parent folder. If the file is in a context without folders this does not apply.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -524,7 +524,7 @@
               "description": "The datetime to lock the file at",
               "type": "datetime",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -532,7 +532,7 @@
               "description": "The datetime to unlock the file at",
               "type": "datetime",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -540,7 +540,7 @@
               "description": "Flag the file as locked",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -548,7 +548,7 @@
               "description": "Flag the file as hidden",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "File"
@@ -900,7 +900,7 @@
               "description": "The new name of the folder",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -908,7 +908,7 @@
               "description": "The id of the folder to move this folder into. The new folder must be in the same context as the original parent folder.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -916,7 +916,7 @@
               "description": "The datetime to lock the folder at",
               "type": "datetime",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -924,7 +924,7 @@
               "description": "The datetime to unlock the folder at",
               "type": "datetime",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -932,7 +932,7 @@
               "description": "Flag the folder as locked",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -940,7 +940,7 @@
               "description": "Flag the folder as hidden",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -948,7 +948,7 @@
               "description": "Set an explicit sort position for the folder",
               "type": "integer",
               "format": "int64",
-              "required": true
+              "required": false
             }
           ],
           "type": "Folder"
@@ -987,7 +987,7 @@
               "description": "The id of the folder to store the file in. If this and parent_folder_path are sent an error will be returned. If neither is given, a default folder will be used.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -995,7 +995,7 @@
               "description": "The path of the folder to store the new folder in. The path separator is the forward slash `/`, never a back slash. The parent folder will be created if it does not already exist. This parameter only applies to new folders in a context that has folders, such as a user, a course, or a group. If this and parent_folder_id are sent an error will be returned. If neither is given, a default folder will be used.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1003,7 +1003,7 @@
               "description": "The datetime to lock the folder at",
               "type": "datetime",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1011,7 +1011,7 @@
               "description": "The datetime to unlock the folder at",
               "type": "datetime",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1019,7 +1019,7 @@
               "description": "Flag the folder as locked",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1027,7 +1027,7 @@
               "description": "Flag the folder as hidden",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1035,7 +1035,7 @@
               "description": "Set an explicit sort position for the folder",
               "type": "integer",
               "format": "int64",
-              "required": true
+              "required": false
             }
           ],
           "type": "Folder"
@@ -1074,7 +1074,7 @@
               "description": "The id of the folder to store the file in. If this and parent_folder_path are sent an error will be returned. If neither is given, a default folder will be used.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1082,7 +1082,7 @@
               "description": "The path of the folder to store the new folder in. The path separator is the forward slash `/`, never a back slash. The parent folder will be created if it does not already exist. This parameter only applies to new folders in a context that has folders, such as a user, a course, or a group. If this and parent_folder_id are sent an error will be returned. If neither is given, a default folder will be used.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1090,7 +1090,7 @@
               "description": "The datetime to lock the folder at",
               "type": "datetime",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1098,7 +1098,7 @@
               "description": "The datetime to unlock the folder at",
               "type": "datetime",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1106,7 +1106,7 @@
               "description": "Flag the folder as locked",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1114,7 +1114,7 @@
               "description": "Flag the folder as hidden",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1122,7 +1122,7 @@
               "description": "Set an explicit sort position for the folder",
               "type": "integer",
               "format": "int64",
-              "required": true
+              "required": false
             }
           ],
           "type": "Folder"
@@ -1161,7 +1161,7 @@
               "description": "The id of the folder to store the file in. If this and parent_folder_path are sent an error will be returned. If neither is given, a default folder will be used.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1169,7 +1169,7 @@
               "description": "The path of the folder to store the new folder in. The path separator is the forward slash `/`, never a back slash. The parent folder will be created if it does not already exist. This parameter only applies to new folders in a context that has folders, such as a user, a course, or a group. If this and parent_folder_id are sent an error will be returned. If neither is given, a default folder will be used.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1177,7 +1177,7 @@
               "description": "The datetime to lock the folder at",
               "type": "datetime",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1185,7 +1185,7 @@
               "description": "The datetime to unlock the folder at",
               "type": "datetime",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1193,7 +1193,7 @@
               "description": "Flag the folder as locked",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1201,7 +1201,7 @@
               "description": "Flag the folder as hidden",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1209,7 +1209,7 @@
               "description": "Set an explicit sort position for the folder",
               "type": "integer",
               "format": "int64",
-              "required": true
+              "required": false
             }
           ],
           "type": "Folder"
@@ -1248,7 +1248,7 @@
               "description": "The id of the folder to store the file in. If this and parent_folder_path are sent an error will be returned. If neither is given, a default folder will be used.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1256,7 +1256,7 @@
               "description": "The path of the folder to store the new folder in. The path separator is the forward slash `/`, never a back slash. The parent folder will be created if it does not already exist. This parameter only applies to new folders in a context that has folders, such as a user, a course, or a group. If this and parent_folder_id are sent an error will be returned. If neither is given, a default folder will be used.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1264,7 +1264,7 @@
               "description": "The datetime to lock the folder at",
               "type": "datetime",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1272,7 +1272,7 @@
               "description": "The datetime to unlock the folder at",
               "type": "datetime",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1280,7 +1280,7 @@
               "description": "Flag the folder as locked",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1288,7 +1288,7 @@
               "description": "Flag the folder as hidden",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1296,7 +1296,7 @@
               "description": "Set an explicit sort position for the folder",
               "type": "integer",
               "format": "int64",
-              "required": true
+              "required": false
             }
           ],
           "type": "Folder"
@@ -1327,7 +1327,7 @@
               "description": "Set to 'true' to allow deleting a non-empty folder",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "void"

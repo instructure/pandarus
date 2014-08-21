@@ -96,7 +96,7 @@
               "description": "The quiz title.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -112,7 +112,7 @@
               "description": "The type of quiz.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "practice_quiz",
                 "assignment",
@@ -309,7 +309,7 @@
               "description": "If true, notifies users that the quiz has changed. Defaults to true",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "Quiz"
@@ -390,7 +390,7 @@
               "description": "The type of item is either 'question' or 'group'",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "question",
                 "group"

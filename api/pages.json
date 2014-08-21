@@ -85,7 +85,7 @@
               "description": "The content for the new page.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -162,7 +162,7 @@
               "description": "The content for the new page.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -365,7 +365,7 @@
               "description": "The title for the new page.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -373,7 +373,7 @@
               "description": "The content for the new page.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -381,7 +381,7 @@
               "description": "Whether the page should be hidden from students. *Note:* when draft state is enabled, attempts to set +hide_from_students+ will be ignored and the value returned will always be the inverse of the +published+ value.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -403,7 +403,7 @@
               "description": "Whether participants should be notified when this page changes.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -450,7 +450,7 @@
               "description": "The title for the new page.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -458,7 +458,7 @@
               "description": "The content for the new page.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -466,7 +466,7 @@
               "description": "Whether the page should be hidden from students. *Note:* when draft state is enabled, attempts to set +hide_from_students+ will be ignored and the value returned will always be the inverse of the +published+ value.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -488,7 +488,7 @@
               "description": "Whether participants should be notified when this page changes.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -605,7 +605,7 @@
               "description": "The title for the new page. NOTE: changing a page's title will change its url. The updated url will be returned in the result.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -613,7 +613,7 @@
               "description": "The content for the new page.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -621,7 +621,7 @@
               "description": "Whether the page should be hidden from students. *Note:* when draft state is enabled, attempts to set +hide_from_students+ will be ignored and the value returned will always be the inverse of the +published+ value.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -643,7 +643,7 @@
               "description": "Whether participants should be notified when this page changes.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -698,7 +698,7 @@
               "description": "The title for the new page. NOTE: changing a page's title will change its url. The updated url will be returned in the result.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -706,7 +706,7 @@
               "description": "The content for the new page.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -714,7 +714,7 @@
               "description": "Whether the page should be hidden from students. *Note:* when draft state is enabled, attempts to set +hide_from_students+ will be ignored and the value returned will always be the inverse of the +published+ value.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -736,7 +736,7 @@
               "description": "Whether participants should be notified when this page changes.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",

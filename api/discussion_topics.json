@@ -161,7 +161,7 @@
               "description": "no description",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -169,7 +169,7 @@
               "description": "no description",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -229,7 +229,7 @@
               "description": "If true then a user may not respond to other replies until that user has made an initial reply. Defaults to false.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -292,7 +292,7 @@
               "description": "no description",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -300,7 +300,7 @@
               "description": "no description",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -360,7 +360,7 @@
               "description": "If true then a user may not respond to other replies until that user has made an initial reply. Defaults to false.",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -547,7 +547,7 @@
               "description": "The ids of the pinned discussion topics in the desired order. (For example, \"order=104,102,103\".)",
               "type": "integer",
               "format": "int64",
-              "required": false,
+              "required": true,
               "tags": {
                 "type": "array"
               }
@@ -581,7 +581,7 @@
               "description": "The ids of the pinned discussion topics in the desired order. (For example, \"order=104,102,103\".)",
               "type": "integer",
               "format": "int64",
-              "required": false,
+              "required": true,
               "tags": {
                 "type": "array"
               }
@@ -631,7 +631,7 @@
               "description": "The updated body of the entry.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "void"
@@ -678,7 +678,7 @@
               "description": "The updated body of the entry.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "void"
@@ -919,7 +919,7 @@
               "description": "The body of the entry.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -966,7 +966,7 @@
               "description": "The body of the entry.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1083,7 +1083,7 @@
               "description": "The body of the entry.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1138,7 +1138,7 @@
               "description": "The body of the entry.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1263,7 +1263,7 @@
               "description": "A list of entry ids to retrieve. Entries will be returned in id order, smallest id first.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "tags": {
                 "type": "array"
               }
@@ -1305,7 +1305,7 @@
               "description": "A list of entry ids to retrieve. Entries will be returned in id order, smallest id first.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "tags": {
                 "type": "array"
               }

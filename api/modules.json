@@ -31,7 +31,7 @@
               "description": "- \"items\": Return module items inline if possible. This parameter suggests that Canvas return module items directly in the Module object JSON, to avoid having to make separate API requests for each module when enumerating modules and items. Canvas is free to omit 'items' for any particular module if it deems them too numerous to return inline. Callers must be prepared to use the {api:ContextModuleItemsApiController#index List Module Items API} if items are not returned. - \"content_details\": Requires include['items']. Returns additional details with module items specific to their associated content items. Includes standard lock information for each item.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "items",
                 "content_details"
@@ -96,7 +96,7 @@
               "description": "- \"items\": Return module items inline if possible. This parameter suggests that Canvas return module items directly in the Module object JSON, to avoid having to make separate API requests for each module when enumerating modules and items. Canvas is free to omit 'items' for any particular module if it deems them too numerous to return inline. Callers must be prepared to use the {api:ContextModuleItemsApiController#index List Module Items API} if items are not returned. - \"content_details\": Requires include['items']. Returns additional details with module items specific to their associated content items. Includes standard lock information for each item.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "items",
                 "content_details"
@@ -345,7 +345,7 @@
               "description": "If included, will return additional details specific to the content associated with each item. Refer to the {api:Modules:Module%20Item Module Item specification} for more details. Includes standard lock information for each item.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "content_details"
               ],
@@ -417,7 +417,7 @@
               "description": "If included, will return additional details specific to the content associated with this item. Refer to the {api:Modules:Module%20Item Module Item specification} for more details. Includes standard lock information for each item.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "content_details"
               ],
@@ -520,7 +520,7 @@
               "description": "Suffix for the linked wiki page (e.g. 'front-page'). Required for 'Page' type.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -528,7 +528,7 @@
               "description": "External url that the item points to. [Required for 'ExternalUrl' and 'ExternalTool' types.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -557,7 +557,7 @@
               "description": "Minimum score required to complete. Required for completion_requirement type 'min_score'.",
               "type": "integer",
               "format": "int64",
-              "required": true
+              "required": false
             }
           ],
           "type": "ModuleItem"
@@ -657,7 +657,7 @@
               "description": "Minimum score required to complete, Required for completion_requirement type 'min_score'.",
               "type": "integer",
               "format": "int64",
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -743,7 +743,7 @@
               "description": "The type of asset to find module sequence information for. Use the ModuleItem if it is known (e.g., the user navigated from a module item), since this will avoid ambiguity if the asset appears more than once in the module sequence.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "ModuleItem",
                 "File",
@@ -760,7 +760,7 @@
               "description": "The id of the asset (or the url in the case of a Page)",
               "type": "integer",
               "format": "int64",
-              "required": true
+              "required": false
             }
           ],
           "type": "ModuleItemSequence"

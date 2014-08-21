@@ -96,10 +96,10 @@
             {
               "paramType": "form",
               "name": "verbosity",
-              "description": "no description",
+              "description": "Defaults to \"full\"",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "full",
                 "truncate",
@@ -148,10 +148,10 @@
             {
               "paramType": "form",
               "name": "verbosity",
-              "description": "no description",
+              "description": "Defaults to \"full\"",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "full",
                 "truncate",

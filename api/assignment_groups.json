@@ -28,14 +28,15 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "Associations to include with the group. both \"discussion_topic\" and \"all_dates\" is only valid are only valid if \"assignments\" is also included.",
+              "description": "Associations to include with the group. \"discussion_topic\", \"all_dates\" \"assignment_visibility\" are only valid are only valid if \"assignments\" is also included. The \"assignment_visibility\" option additionally requires that the Differentiated Assignments course feature be turned on.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "assignments",
                 "discussion_topic",
-                "all_dates"
+                "all_dates",
+                "assignment_visibility"
               ],
               "tags": {
                 "type": "array"
@@ -86,13 +87,14 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "Associations to include with the group. \"discussion_topic\" is only valid if \"assignments\" is also included.",
+              "description": "Associations to include with the group. \"discussion_topic\" and \"assignment_visibility\" are only valid if \"assignments\" is also included. The \"assignment_visibility\" option additionally requires that the Differentiated Assignments course feature be turned on.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "assignments",
-                "discussion_topic"
+                "discussion_topic",
+                "assignment_visibility"
               ],
               "tags": {
                 "type": "array"
@@ -229,7 +231,7 @@
               "description": "The ID of an active Assignment Group to which the assignments that are currently assigned to the destroyed Assignment Group will be assigned. NOTE: If this argument is not provided, any assignments in this Assignment Group will be deleted.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "AssignmentGroup"

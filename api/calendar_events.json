@@ -269,7 +269,7 @@
               "description": "User or group id for whom you are making the reservation (depends on the participant type). Defaults to the current user (or user's candidate group).",
               "type": "string",
               "format": null,
-              "required": false
+              "required": true
             },
             {
               "paramType": "form",

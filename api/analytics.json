@@ -1,0 +1,414 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/analytics",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/accounts/{account_id}/analytics/terms/{term_id}/activity",
+      "description": "Returns page view hits summed across all courses in the department. Two\ngroupings of these counts are returned; one by day (+by_date+), the other\nby category (+by_category+). The possible categories are announcements,\nassignments, collaborations, conferences, discussions, files, general,\ngrades, groups, modules, other, pages, and quizzes.\n\nThis and the other department-level endpoints have three variations which\nall return the same style of data but for different subsets of courses. All\nshare the prefix /api/v1/accounts/<account_id>/analytics. The possible\nsuffixes are:\n\n * /current: includes all available courses in the default term\n * /completed: includes all concluded courses in the default term\n * /terms/<term_id>: includes all available or concluded courses in the\n   given term.\n\nCourses not yet offered or which have been deleted are never included.\n\n/current and /completed are intended for use when the account has only one\nterm. /terms/<term_id> is intended for use when the account has multiple\nterms.\n\nThe action follows the suffix.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get department-level participation data",
+          "notes": "Returns page view hits summed across all courses in the department. Two\ngroupings of these counts are returned; one by day (+by_date+), the other\nby category (+by_category+). The possible categories are announcements,\nassignments, collaborations, conferences, discussions, files, general,\ngrades, groups, modules, other, pages, and quizzes.\n\nThis and the other department-level endpoints have three variations which\nall return the same style of data but for different subsets of courses. All\nshare the prefix /api/v1/accounts/<account_id>/analytics. The possible\nsuffixes are:\n\n * /current: includes all available courses in the default term\n * /completed: includes all concluded courses in the default term\n * /terms/<term_id>: includes all available or concluded courses in the\n   given term.\n\nCourses not yet offered or which have been deleted are never included.\n\n/current and /completed are intended for use when the account has only one\nterm. /terms/<term_id> is intended for use when the account has multiple\nterms.\n\nThe action follows the suffix.",
+          "nickname": "get_department_level_participation_data_terms",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "term_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/analytics/current/activity",
+      "description": "Returns page view hits summed across all courses in the department. Two\ngroupings of these counts are returned; one by day (+by_date+), the other\nby category (+by_category+). The possible categories are announcements,\nassignments, collaborations, conferences, discussions, files, general,\ngrades, groups, modules, other, pages, and quizzes.\n\nThis and the other department-level endpoints have three variations which\nall return the same style of data but for different subsets of courses. All\nshare the prefix /api/v1/accounts/<account_id>/analytics. The possible\nsuffixes are:\n\n * /current: includes all available courses in the default term\n * /completed: includes all concluded courses in the default term\n * /terms/<term_id>: includes all available or concluded courses in the\n   given term.\n\nCourses not yet offered or which have been deleted are never included.\n\n/current and /completed are intended for use when the account has only one\nterm. /terms/<term_id> is intended for use when the account has multiple\nterms.\n\nThe action follows the suffix.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get department-level participation data",
+          "notes": "Returns page view hits summed across all courses in the department. Two\ngroupings of these counts are returned; one by day (+by_date+), the other\nby category (+by_category+). The possible categories are announcements,\nassignments, collaborations, conferences, discussions, files, general,\ngrades, groups, modules, other, pages, and quizzes.\n\nThis and the other department-level endpoints have three variations which\nall return the same style of data but for different subsets of courses. All\nshare the prefix /api/v1/accounts/<account_id>/analytics. The possible\nsuffixes are:\n\n * /current: includes all available courses in the default term\n * /completed: includes all concluded courses in the default term\n * /terms/<term_id>: includes all available or concluded courses in the\n   given term.\n\nCourses not yet offered or which have been deleted are never included.\n\n/current and /completed are intended for use when the account has only one\nterm. /terms/<term_id> is intended for use when the account has multiple\nterms.\n\nThe action follows the suffix.",
+          "nickname": "get_department_level_participation_data_current",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/analytics/completed/activity",
+      "description": "Returns page view hits summed across all courses in the department. Two\ngroupings of these counts are returned; one by day (+by_date+), the other\nby category (+by_category+). The possible categories are announcements,\nassignments, collaborations, conferences, discussions, files, general,\ngrades, groups, modules, other, pages, and quizzes.\n\nThis and the other department-level endpoints have three variations which\nall return the same style of data but for different subsets of courses. All\nshare the prefix /api/v1/accounts/<account_id>/analytics. The possible\nsuffixes are:\n\n * /current: includes all available courses in the default term\n * /completed: includes all concluded courses in the default term\n * /terms/<term_id>: includes all available or concluded courses in the\n   given term.\n\nCourses not yet offered or which have been deleted are never included.\n\n/current and /completed are intended for use when the account has only one\nterm. /terms/<term_id> is intended for use when the account has multiple\nterms.\n\nThe action follows the suffix.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get department-level participation data",
+          "notes": "Returns page view hits summed across all courses in the department. Two\ngroupings of these counts are returned; one by day (+by_date+), the other\nby category (+by_category+). The possible categories are announcements,\nassignments, collaborations, conferences, discussions, files, general,\ngrades, groups, modules, other, pages, and quizzes.\n\nThis and the other department-level endpoints have three variations which\nall return the same style of data but for different subsets of courses. All\nshare the prefix /api/v1/accounts/<account_id>/analytics. The possible\nsuffixes are:\n\n * /current: includes all available courses in the default term\n * /completed: includes all concluded courses in the default term\n * /terms/<term_id>: includes all available or concluded courses in the\n   given term.\n\nCourses not yet offered or which have been deleted are never included.\n\n/current and /completed are intended for use when the account has only one\nterm. /terms/<term_id> is intended for use when the account has multiple\nterms.\n\nThe action follows the suffix.",
+          "nickname": "get_department_level_participation_data_completed",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/analytics/terms/{term_id}/grades",
+      "description": "Returns the distribution of grades for students in courses in the\ndepartment.  Each data point is one student's current grade in one course;\nif a student is in multiple courses, he contributes one value per course,\nbut if he's enrolled multiple times in the same course (e.g. a lecture\nsection and a lab section), he only constributes on value for that course.\n\nGrades are binned to the nearest integer score; anomalous grades outside\nthe 0 to 100 range are ignored. The raw counts are returned, not yet\nnormalized by the total count.\n\nShares the same variations on endpoint as the participation data.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get department-level grade data",
+          "notes": "Returns the distribution of grades for students in courses in the\ndepartment.  Each data point is one student's current grade in one course;\nif a student is in multiple courses, he contributes one value per course,\nbut if he's enrolled multiple times in the same course (e.g. a lecture\nsection and a lab section), he only constributes on value for that course.\n\nGrades are binned to the nearest integer score; anomalous grades outside\nthe 0 to 100 range are ignored. The raw counts are returned, not yet\nnormalized by the total count.\n\nShares the same variations on endpoint as the participation data.",
+          "nickname": "get_department_level_grade_data_terms",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "term_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/analytics/current/grades",
+      "description": "Returns the distribution of grades for students in courses in the\ndepartment.  Each data point is one student's current grade in one course;\nif a student is in multiple courses, he contributes one value per course,\nbut if he's enrolled multiple times in the same course (e.g. a lecture\nsection and a lab section), he only constributes on value for that course.\n\nGrades are binned to the nearest integer score; anomalous grades outside\nthe 0 to 100 range are ignored. The raw counts are returned, not yet\nnormalized by the total count.\n\nShares the same variations on endpoint as the participation data.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get department-level grade data",
+          "notes": "Returns the distribution of grades for students in courses in the\ndepartment.  Each data point is one student's current grade in one course;\nif a student is in multiple courses, he contributes one value per course,\nbut if he's enrolled multiple times in the same course (e.g. a lecture\nsection and a lab section), he only constributes on value for that course.\n\nGrades are binned to the nearest integer score; anomalous grades outside\nthe 0 to 100 range are ignored. The raw counts are returned, not yet\nnormalized by the total count.\n\nShares the same variations on endpoint as the participation data.",
+          "nickname": "get_department_level_grade_data_current",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/analytics/completed/grades",
+      "description": "Returns the distribution of grades for students in courses in the\ndepartment.  Each data point is one student's current grade in one course;\nif a student is in multiple courses, he contributes one value per course,\nbut if he's enrolled multiple times in the same course (e.g. a lecture\nsection and a lab section), he only constributes on value for that course.\n\nGrades are binned to the nearest integer score; anomalous grades outside\nthe 0 to 100 range are ignored. The raw counts are returned, not yet\nnormalized by the total count.\n\nShares the same variations on endpoint as the participation data.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get department-level grade data",
+          "notes": "Returns the distribution of grades for students in courses in the\ndepartment.  Each data point is one student's current grade in one course;\nif a student is in multiple courses, he contributes one value per course,\nbut if he's enrolled multiple times in the same course (e.g. a lecture\nsection and a lab section), he only constributes on value for that course.\n\nGrades are binned to the nearest integer score; anomalous grades outside\nthe 0 to 100 range are ignored. The raw counts are returned, not yet\nnormalized by the total count.\n\nShares the same variations on endpoint as the participation data.",
+          "nickname": "get_department_level_grade_data_completed",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/analytics/terms/{term_id}/statistics",
+      "description": "Returns numeric statistics about the department and term (or filter).\n\nShares the same variations on endpoint as the participation data.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get department-level statistics",
+          "notes": "Returns numeric statistics about the department and term (or filter).\n\nShares the same variations on endpoint as the participation data.",
+          "nickname": "get_department_level_statistics_terms",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "term_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/analytics/current/statistics",
+      "description": "Returns numeric statistics about the department and term (or filter).\n\nShares the same variations on endpoint as the participation data.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get department-level statistics",
+          "notes": "Returns numeric statistics about the department and term (or filter).\n\nShares the same variations on endpoint as the participation data.",
+          "nickname": "get_department_level_statistics_current",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/analytics/completed/statistics",
+      "description": "Returns numeric statistics about the department and term (or filter).\n\nShares the same variations on endpoint as the participation data.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get department-level statistics",
+          "notes": "Returns numeric statistics about the department and term (or filter).\n\nShares the same variations on endpoint as the participation data.",
+          "nickname": "get_department_level_statistics_completed",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/analytics/activity",
+      "description": "Returns page view hits and participation numbers grouped by day through the\nentire history of the course. Page views is returned as a hash, where the\nhash keys are dates in the format \"YYYY-MM-DD\". The page_views result set\nincludes page views broken out by access category. Participations is\nreturned as an array of dates in the format \"YYYY-MM-DD\".",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get course-level participation data",
+          "notes": "Returns page view hits and participation numbers grouped by day through the\nentire history of the course. Page views is returned as a hash, where the\nhash keys are dates in the format \"YYYY-MM-DD\". The page_views result set\nincludes page views broken out by access category. Participations is\nreturned as an array of dates in the format \"YYYY-MM-DD\".",
+          "nickname": "get_course_level_participation_data",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/analytics/assignments",
+      "description": "Returns a list of assignments for the course sorted by due date. For\neach assignment returns basic assignment information, the grade breakdown,\nand a breakdown of on-time/late status of homework submissions.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get course-level assignment data",
+          "notes": "Returns a list of assignments for the course sorted by due date. For\neach assignment returns basic assignment information, the grade breakdown,\nand a breakdown of on-time/late status of homework submissions.",
+          "nickname": "get_course_level_assignment_data",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "async",
+              "description": "If async is true, then the course_assignments call can happen asynch- ronously and MAY return a response containing a progress_url key instead of an assignments array. If it does, then it is the caller's responsibility to poll the API again to see if the progress is complete. If the data is ready (possibly even on the first async call) then it will be passed back normally, as documented in the example response.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/analytics/student_summaries",
+      "description": "Returns a summary of per-user access information for all students in\na course. This includes total page views, total participations, and a\nbreakdown of on-time/late status for all homework submissions in the course.\nThe data is returned as a list in lexical order on the student name.\n\nEach student's summary also includes the maximum number of page views and\nparticipations by any student in the course, which may be useful for some\nvisualizations (since determining maximums client side can be tricky with\npagination).",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get course-level student summary data",
+          "notes": "Returns a summary of per-user access information for all students in\na course. This includes total page views, total participations, and a\nbreakdown of on-time/late status for all homework submissions in the course.\nThe data is returned as a list in lexical order on the student name.\n\nEach student's summary also includes the maximum number of page views and\nparticipations by any student in the course, which may be useful for some\nvisualizations (since determining maximums client side can be tricky with\npagination).",
+          "nickname": "get_course_level_student_summary_data",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/analytics/users/{student_id}/activity",
+      "description": "Returns page view hits and participation numbers grouped by day through the\nentire history of the course. Two hashes are returned, one for page views\nand one for participations, where the hash keys are dates in the format\n\"YYYY-MM-DD\".",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get user-in-a-course-level participation data",
+          "notes": "Returns page view hits and participation numbers grouped by day through the\nentire history of the course. Two hashes are returned, one for page views\nand one for participations, where the hash keys are dates in the format\n\"YYYY-MM-DD\".",
+          "nickname": "get_user_in_a_course_level_participation_data",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "student_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/analytics/users/{student_id}/assignments",
+      "description": "Returns a list of assignments for the course sorted by due date. For\neach assignment returns basic assignment information, the grade breakdown\n(including the student's actual grade), and the basic submission\ninformation for the student's submission if it exists.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get user-in-a-course-level assignment data",
+          "notes": "Returns a list of assignments for the course sorted by due date. For\neach assignment returns basic assignment information, the grade breakdown\n(including the student's actual grade), and the basic submission\ninformation for the student's submission if it exists.",
+          "nickname": "get_user_in_a_course_level_assignment_data",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "student_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/analytics/users/{student_id}/communication",
+      "description": "Returns messaging \"hits\" grouped by day through the entire history of the\ncourse. Returns a hash containing the number of instructor-to-student messages,\nand student-to-instructor messages, where the hash keys are dates\nin the format \"YYYY-MM-DD\". Message hits include Conversation messages and\ncomments on homework submissions.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get user-in-a-course-level messaging data",
+          "notes": "Returns messaging \"hits\" grouped by day through the entire history of the\ncourse. Returns a hash containing the number of instructor-to-student messages,\nand student-to-instructor messages, where the hash keys are dates\nin the format \"YYYY-MM-DD\". Message hits include Conversation messages and\ncomments on homework submissions.",
+          "nickname": "get_user_in_a_course_level_messaging_data",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "student_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+  }
+}

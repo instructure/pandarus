@@ -108,7 +108,7 @@
               "description": "Short title for the appointment group.",
               "type": "string",
               "format": null,
-              "required": false
+              "required": true
             },
             {
               "paramType": "form",

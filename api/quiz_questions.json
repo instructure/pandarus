@@ -136,7 +136,7 @@
               "description": "The type of question. Multiple optional fields depend upon the type of question to be used.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "calculated_question",
                 "essay_question",
@@ -276,7 +276,7 @@
               "description": "The type of question. Multiple optional fields depend upon the type of question to be used.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "calculated_question",
                 "essay_question",

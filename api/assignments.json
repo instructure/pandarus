@@ -59,12 +59,13 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "Associations to include with the assignment.",
+              "description": "Associations to include with the assignment. The \"assignment_visibility\" option requires that the Differentiated Assignments course feature be turned on.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
-                "submission"
+                "submission",
+                "assignment_visibility"
               ],
               "tags": {
                 "type": "array"
@@ -123,12 +124,13 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "Associations to include with the assignment.",
+              "description": "Associations to include with the assignment. The \"assignment_visibility\" option requires that the Differentiated Assignments course feature be turned on.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
-                "submission"
+                "submission",
+                "assignment_visibility"
               ],
               "tags": {
                 "type": "array"
@@ -187,7 +189,7 @@
               "description": "List of supported submission types for the assignment. Unless the assignment is allowing online submissions, the array should only have one element. If not allowing online submissions, your options are: \"online_quiz\" \"none\" \"on_paper\" \"online_quiz\" \"discussion_topic\" \"external_tool\" If you are allowing online submissions, you can have one or many allowed submission types: \"online_upload\" \"online_text_entry\" \"online_url\" \"media_recording\" (Only valid when the Kaltura plugin is enabled)",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "online_quiz",
                 "none",
@@ -225,6 +227,14 @@
             },
             {
               "paramType": "form",
+              "name": "assignment[turnitin_settings]",
+              "description": "Settings to send along to turnitin. See Assignment object definition for format.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "assignment[integration_data]",
               "description": "Data related to third party integrations, JSON string required.",
               "type": "string",
@@ -235,14 +245,6 @@
               "paramType": "form",
               "name": "assignment[integration_id]",
               "description": "Unique ID from third party integrations",
-              "type": "string",
-              "format": null,
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "assignment[turnitin_settings]",
-              "description": "Settings to send along to turnitin. See Assignment object definition for format.",
               "type": "string",
               "format": null,
               "required": false
@@ -290,10 +292,13 @@
             {
               "paramType": "form",
               "name": "assignment[external_tool_tag_attributes]",
-              "description": "Hash of attributes if submission_types is [\"external_tool\"] Example: external_tool_tag_attributes: { // url to the external tool url: \"http://instructure.com\", // create a new tab for the module, defaults to false. new_tab: false }",
-              "type": "string",
+              "description": "no description",
+              "type": "// create a new tab for the module",
               "format": null,
-              "required": false
+              "required": false,
+              "enum": [
+                "Hash of attributes if submission_types is [external_tool] Example: external_tool_tag_attributes: { // url to the external tool url: http://instructure.com"
+              ]
             },
             {
               "paramType": "form",
@@ -408,12 +413,12 @@
     },
     {
       "path": "/v1/courses/{course_id}/assignments/{id}",
-      "description": "Modify an existing assignment.\n\nIf the assignment[assignment_overrides] key is absent, any existing\noverrides are kept as is. If the assignment[assignment_overrides] key is\npresent, existing overrides are updated or deleted (and new ones created,\nas necessary) to match the provided list.\n\nNOTE: The assignment overrides feature is in beta.",
+      "description": "Modify an existing assignment.\n\nIf the assignment [assignment_overrides] key is absent, any existing\noverrides are kept as is. If the assignment [assignment_overrides] key is\npresent, existing overrides are updated or deleted (and new ones created,\nas necessary) to match the provided list.\n\nNOTE: The assignment overrides feature is in beta.",
       "operations": [
         {
           "method": "PUT",
           "summary": "Edit an assignment",
-          "notes": "Modify an existing assignment.\n\nIf the assignment[assignment_overrides] key is absent, any existing\noverrides are kept as is. If the assignment[assignment_overrides] key is\npresent, existing overrides are updated or deleted (and new ones created,\nas necessary) to match the provided list.\n\nNOTE: The assignment overrides feature is in beta.",
+          "notes": "Modify an existing assignment.\n\nIf the assignment [assignment_overrides] key is absent, any existing\noverrides are kept as is. If the assignment [assignment_overrides] key is\npresent, existing overrides are updated or deleted (and new ones created,\nas necessary) to match the provided list.\n\nNOTE: The assignment overrides feature is in beta.",
           "nickname": "edit_assignment",
           "parameters": [
             {
@@ -500,6 +505,22 @@
             },
             {
               "paramType": "form",
+              "name": "assignment[integration_data]",
+              "description": "Data related to third party integrations, JSON string required.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "assignment[integration_id]",
+              "description": "Unique ID from third party integrations",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "assignment[peer_reviews]",
               "description": "If submission_types does not include external_tool,discussion_topic, online_quiz, or on_paper, determines whether or not peer reviews will be turned on for the assignment.",
               "type": "boolean",
@@ -541,10 +562,13 @@
             {
               "paramType": "form",
               "name": "assignment[external_tool_tag_attributes]",
-              "description": "Hash of attributes if submission_types is [\"external_tool\"] Example: external_tool_tag_attributes: { // url to the external tool url: \"http://instructure.com\", // create a new tab for the module, defaults to false. new_tab: false }",
-              "type": "string",
+              "description": "no description",
+              "type": "// create a new tab for the module",
               "format": null,
-              "required": false
+              "required": false,
+              "enum": [
+                "Hash of attributes if submission_types is [external_tool] Example: external_tool_tag_attributes: { // url to the external tool url: http://instructure.com"
+              ]
             },
             {
               "paramType": "form",
@@ -1390,7 +1414,7 @@
           "type": "boolean"
         },
         "only_visible_to_overrides": {
-          "description": "(Only visible if 'differentiated assignments' account setting is on) Whether the assignment is only visible to overrides.",
+          "description": "(Only visible if the Differentiated Assignments course feature is turned on) Whether the assignment is only visible to overrides.",
           "example": false,
           "type": "boolean"
         },
@@ -1458,6 +1482,14 @@
         "rubric": {
           "description": "(Optional) A list of scoring criteria and ratings for each rubric criterion. Included if there is an associated rubric.",
           "$ref": "RubricCriteria"
+        },
+        "assignment_visibility": {
+          "description": "(Optional) If 'assignment_visibility' is included in the 'include' parameter, includes an array of student IDs who can see this assignment.",
+          "example": "[137,381,572]",
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
         }
       }
     },

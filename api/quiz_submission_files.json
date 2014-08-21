@@ -39,7 +39,7 @@
               "description": "The name of the quiz submission file",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -47,7 +47,7 @@
               "description": "How to handle duplicate names",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "void"

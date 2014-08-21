@@ -46,7 +46,7 @@
               "description": "- \"needs_grading_count\": Optional information to include with each Course. When needs_grading_count is given, and the current user has grading rights, the total number of submissions needing grading for all assignments is returned. - \"syllabus_body\": Optional information to include with each Course. When syllabus_body is given the user-generated html for the course syllabus is returned. - \"total_scores\": Optional information to include with each Course. When total_scores is given, any enrollments with type 'student' will also include the fields 'calculated_current_score', 'calculated_final_score', 'calculated_current_grade', and 'calculated_final_grade'. calculated_current_score is the student's score in the course, ignoring ungraded assignments. calculated_final_score is the student's score in the course including ungraded assignments with a score of 0. calculated_current_grade is the letter grade equivalent of calculated_current_score (if available). calculated_final_grade is the letter grade equivalent of calculated_final_score (if available). This argument is ignored if the course is configured to hide final grades. - \"term\": Optional information to include with each Course. When term is given, the information for the enrollment term for each course is returned. - \"course_progress\": Optional information to include with each Course. When course_progress is given, each course will include a 'course_progress' object with the fields: 'requirement_count', an integer specifying the total number of requirements in the course, 'requirement_completed_count', an integer specifying the total number of requirements in this course that have been completed, and 'next_requirement_url', a string url to the next requirement item, and 'completed_at', the date the course was completed (null if incomplete). 'next_requirement_url' will be null if all requirements have been completed or the current module does not require sequential progress. \"course_progress\" will return an error message if the course is not module based or the user is not enrolled as a student in the course. - \"sections\": Section enrollment information to include with each Course. Returns an array of hashes containing the section ID (id), section name (name), start and end dates (start_at, end_at), as well as the enrollment type (enrollment_role, e.g. 'StudentEnrollment').",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "needs_grading_count",
                 "syllabus_body",
@@ -387,7 +387,7 @@
               "description": "- \"email\": Optional user email. - \"enrollments\": Optionally include with each Course the user's current and invited enrollments. If the user is enrolled as a student, and the account has permission to manage or view all grades, each enrollment will include a 'grades' key with 'current_score', 'final_score', 'current_grade' and 'final_grade' values. - \"locked\": Optionally include whether an enrollment is locked. - \"avatar_url\": Optionally include avatar_url. - \"test_student\": Optionally include the course's Test Student, if present. Default is to not include Test Student.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "email",
                 "enrollments",
@@ -470,7 +470,7 @@
               "description": "- \"email\": Optional user email. - \"enrollments\": Optionally include with each Course the user's current and invited enrollments. If the user is enrolled as a student, and the account has permission to manage or view all grades, each enrollment will include a 'grades' key with 'current_score', 'final_score', 'current_grade' and 'final_grade' values. - \"locked\": Optionally include whether an enrollment is locked. - \"avatar_url\": Optionally include avatar_url. - \"test_student\": Optionally include the course's Test Student, if present. Default is to not include Test Student.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "email",
                 "enrollments",
@@ -579,7 +579,7 @@
               "description": "The html content to process",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "void"
@@ -737,7 +737,7 @@
               "description": "no description",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -745,7 +745,7 @@
               "description": "no description",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -753,7 +753,7 @@
               "description": "no description",
               "type": "boolean",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "void"
@@ -784,7 +784,7 @@
               "description": "- \"all_courses\": Also search recently deleted courses. - \"permissions\": Include permissions the current user has for the course.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "all_courses",
                 "permissions"
@@ -830,7 +830,7 @@
               "description": "- \"all_courses\": Also search recently deleted courses. - \"permissions\": Include permissions the current user has for the course.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "all_courses",
                 "permissions"
@@ -877,12 +877,12 @@
     },
     {
       "path": "/v1/accounts/{account_id}/courses",
-      "description": "Update multiple courses in an account.  Operates asynchronously; use the {api:ProgressController#show progress endpoint}\nto query the status of an operation.",
+      "description": "Update multiple courses in an account.  Operates asynchronously; use the {api:ProgressController#show progress endpoint}\nto query the status of an operation.\n\nThe action to take on each course.  Must be one of 'offer', 'conclude', 'delete', or 'undelete'.\n  * 'offer' makes a course visible to students. This action is also called \"publish\" on the web site.\n  * 'conclude' prevents future enrollments and makes a course read-only for all participants. The course still appears\n    in prior-enrollment lists.\n  * 'delete' completely removes the course from the web site (including course menus and prior-enrollment lists).\n    All enrollments are deleted. Course content may be physically deleted at a future date.\n  * 'undelete' attempts to recover a course that has been deleted. (Recovery is not guaranteed; please conclude\n    rather than delete a course if there is any possibility the course will be used again.) The recovered course\n    will be unpublished. Deleted enrollments will not be recovered.",
       "operations": [
         {
           "method": "PUT",
           "summary": "Update courses",
-          "notes": "Update multiple courses in an account.  Operates asynchronously; use the {api:ProgressController#show progress endpoint}\nto query the status of an operation.",
+          "notes": "Update multiple courses in an account.  Operates asynchronously; use the {api:ProgressController#show progress endpoint}\nto query the status of an operation.\n\nThe action to take on each course.  Must be one of 'offer', 'conclude', 'delete', or 'undelete'.\n  * 'offer' makes a course visible to students. This action is also called \"publish\" on the web site.\n  * 'conclude' prevents future enrollments and makes a course read-only for all participants. The course still appears\n    in prior-enrollment lists.\n  * 'delete' completely removes the course from the web site (including course menus and prior-enrollment lists).\n    All enrollments are deleted. Course content may be physically deleted at a future date.\n  * 'undelete' attempts to recover a course that has been deleted. (Recovery is not guaranteed; please conclude\n    rather than delete a course if there is any possibility the course will be used again.) The recovered course\n    will be unpublished. Deleted enrollments will not be recovered.",
           "nickname": "update_courses",
           "parameters": [
             {
@@ -907,10 +907,16 @@
             {
               "paramType": "form",
               "name": "event",
-              "description": "The action to take on each course. Must be one of 'offer', 'conclude', 'delete', or 'undelete'. * 'offer' makes a course visible to students. This action is also called \"publish\" on the web site. * 'conclude' prevents future enrollments and makes a course read-only for all participants. The course still appears in prior-enrollment lists. * 'delete' completely removes the course from the web site (including course menus and prior-enrollment lists). All enrollments are deleted. Course content may be physically deleted at a future date. * 'undelete' attempts to recover a course that has been deleted. (Recovery is not guaranteed; please conclude rather than delete a course if there is any possibility the course will be used again.) The recovered course will be unpublished. Deleted enrollments will not be recovered.",
+              "description": "no description",
               "type": "string",
               "format": null,
-              "required": true
+              "required": true,
+              "enum": [
+                "offer",
+                "conclude",
+                "delete",
+                "undelete"
+              ]
             }
           ],
           "type": "Progress"
@@ -972,7 +978,7 @@
               "description": "ID or SIS-ID of the course to copy the content from",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -980,7 +986,7 @@
               "description": "A list of the course content types to exclude, all areas not listed will be copied.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "course_settings",
                 "assignments",
@@ -1003,7 +1009,7 @@
               "description": "A list of the course content types to copy, all areas not listed will not be copied.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "course_settings",
                 "assignments",

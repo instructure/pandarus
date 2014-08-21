@@ -39,7 +39,7 @@
               "description": "Associations to include with the quiz submission.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "submission",
                 "quiz",
@@ -94,7 +94,7 @@
               "description": "Associations to include with the quiz submission.",
               "type": "string",
               "format": null,
-              "required": true,
+              "required": false,
               "enum": [
                 "submission",
                 "quiz",
@@ -196,7 +196,7 @@
               "description": "The attempt number of the quiz submission that should be updated. This attempt MUST be already completed.",
               "type": "integer",
               "format": "int64",
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -259,7 +259,7 @@
               "description": "The attempt number of the quiz submission that should be completed. Note that this must be the latest attempt index, as earlier attempts can not be modified.",
               "type": "integer",
               "format": "int64",
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -267,7 +267,7 @@
               "description": "The unique validation token you received when this Quiz Submission was created.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",

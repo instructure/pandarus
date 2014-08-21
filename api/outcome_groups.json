@@ -767,7 +767,7 @@
               "description": "The ID of the existing outcome to link.",
               "type": "integer",
               "format": "int64",
-              "required": false
+              "required": true
             },
             {
               "paramType": "form",
@@ -969,7 +969,7 @@
               "description": "The ID of the existing outcome to link.",
               "type": "integer",
               "format": "int64",
-              "required": false
+              "required": true
             },
             {
               "paramType": "form",
@@ -1171,7 +1171,7 @@
               "description": "The ID of the existing outcome to link.",
               "type": "integer",
               "format": "int64",
-              "required": false
+              "required": true
             },
             {
               "paramType": "form",
@@ -1467,7 +1467,7 @@
               "description": "The title of the new outcome group.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1522,7 +1522,7 @@
               "description": "The title of the new outcome group.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1577,7 +1577,7 @@
               "description": "The title of the new outcome group.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -1624,7 +1624,7 @@
               "description": "The ID of the source outcome group.",
               "type": "integer",
               "format": "int64",
-              "required": true
+              "required": false
             }
           ],
           "type": "OutcomeGroup"
@@ -1663,7 +1663,7 @@
               "description": "The ID of the source outcome group.",
               "type": "integer",
               "format": "int64",
-              "required": true
+              "required": false
             }
           ],
           "type": "OutcomeGroup"
@@ -1702,7 +1702,7 @@
               "description": "The ID of the source outcome group.",
               "type": "integer",
               "format": "int64",
-              "required": true
+              "required": false
             }
           ],
           "type": "OutcomeGroup"
