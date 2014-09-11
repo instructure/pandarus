@@ -1,0 +1,111 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/quiz_assignment_overrides",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/quizzes/assignment_overrides",
+      "description": "Retrieve the actual due-at, unlock-at, and available-at dates for quizzes\nbased on the assignment overrides active for the current API user.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieve assignment-overridden dates for quizzes",
+          "notes": "Retrieve the actual due-at, unlock-at, and available-at dates for quizzes\nbased on the assignment overrides active for the current API user.",
+          "nickname": "retrieve_assignment_overridden_dates_for_quizzes",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "quiz_assignment_overrides[0][quiz_ids]",
+              "description": "An array of quiz IDs. If omitted, overrides for all quizzes available to the operating user will be returned.",
+              "type": "integer",
+              "format": "int64",
+              "required": false,
+              "tags": {
+                "type": "array"
+              }
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "QuizAssignmentOverrideSet"
+          }
+        }
+      ]
+    }
+  ],
+  "models": {
+    "QuizAssignmentOverrideSet": {
+      "id": "QuizAssignmentOverrideSet",
+      "description": "Set of assignment-overridden dates for a quiz.",
+      "required": [
+
+      ],
+      "properties": {
+        "quiz_id": {
+          "description": "ID of the quiz those dates are for.",
+          "example": "1",
+          "type": "string"
+        },
+        "due_dates": {
+          "description": "An array of quiz assignment overrides. For students, this array will always contain a single item which is the set of dates that apply to that student. For teachers and staff, it may contain more.",
+          "$ref": "QuizAssignmentOverride"
+        },
+        "all_dates": {
+          "description": "An array of all assignment overrides active for the quiz. This is visible only to teachers and staff.",
+          "$ref": "QuizAssignmentOverride"
+        }
+      }
+    },
+    "QuizAssignmentOverride": {
+      "id": "QuizAssignmentOverride",
+      "description": "Set of assignment-overridden dates for a quiz.",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": 1,
+          "description": "ID of the assignment override, unless this is the base construct, in which case the 'id' field is omitted."
+        },
+        "due_at": {
+          "description": "The date after which any quiz submission is considered late.",
+          "example": "2014-02-21T06:59:59Z",
+          "type": "datetime"
+        },
+        "unlock_at": {
+          "description": "Date when the quiz becomes available for taking.",
+          "example": null,
+          "type": "datetime"
+        },
+        "lock_at": {
+          "description": "When the quiz will stop being available for taking. A value of null means it can always be taken.",
+          "example": "2014-02-21T06:59:59Z",
+          "type": "datetime"
+        },
+        "title": {
+          "description": "Title of the section this assignment override is for, if any.",
+          "example": "Project X",
+          "type": "string"
+        },
+        "base": {
+          "description": "If this property is present, it means that dates in this structure are not based on an assignment override, but are instead for all students.",
+          "example": true,
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

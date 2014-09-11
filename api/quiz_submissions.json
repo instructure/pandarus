@@ -196,7 +196,7 @@
               "description": "The attempt number of the quiz submission that should be updated. This attempt MUST be already completed.",
               "type": "integer",
               "format": "int64",
-              "required": false
+              "required": true
             },
             {
               "paramType": "form",
@@ -259,7 +259,7 @@
               "description": "The attempt number of the quiz submission that should be completed. Note that this must be the latest attempt index, as earlier attempts can not be modified.",
               "type": "integer",
               "format": "int64",
-              "required": false
+              "required": true
             },
             {
               "paramType": "form",
@@ -267,7 +267,7 @@
               "description": "The unique validation token you received when this Quiz Submission was created.",
               "type": "string",
               "format": null,
-              "required": false
+              "required": true
             },
             {
               "paramType": "form",

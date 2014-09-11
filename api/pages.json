@@ -365,7 +365,7 @@
               "description": "The title for the new page.",
               "type": "string",
               "format": null,
-              "required": false
+              "required": true
             },
             {
               "paramType": "form",
@@ -450,7 +450,7 @@
               "description": "The title for the new page.",
               "type": "string",
               "format": null,
-              "required": false
+              "required": true
             },
             {
               "paramType": "form",

@@ -199,13 +199,14 @@
             {
               "paramType": "form",
               "name": "export_type",
-              "description": "\"common_cartridge\":: Export the contents of a course in the Common Cartridge (.imscc) format \"qti\":: Export quizzes from a course in the QTI format \"zip\":: Export files from a course, group, or user in a zip file",
+              "description": "\"common_cartridge\":: Export the contents of the course in the Common Cartridge (.imscc) format \"qti\":: Export quizzes from a course in the QTI format \"zip\":: Export files from a course, group, or user in a zip file",
               "type": "string",
               "format": null,
-              "required": false,
+              "required": true,
               "enum": [
                 "common_cartridge",
-                "qti"
+                "qti",
+                "zip"
               ]
             },
             {
@@ -242,13 +243,14 @@
             {
               "paramType": "form",
               "name": "export_type",
-              "description": "\"common_cartridge\":: Export the contents of a course in the Common Cartridge (.imscc) format \"qti\":: Export quizzes from a course in the QTI format \"zip\":: Export files from a course, group, or user in a zip file",
+              "description": "\"common_cartridge\":: Export the contents of the course in the Common Cartridge (.imscc) format \"qti\":: Export quizzes from a course in the QTI format \"zip\":: Export files from a course, group, or user in a zip file",
               "type": "string",
               "format": null,
-              "required": false,
+              "required": true,
               "enum": [
                 "common_cartridge",
-                "qti"
+                "qti",
+                "zip"
               ]
             },
             {
@@ -285,13 +287,14 @@
             {
               "paramType": "form",
               "name": "export_type",
-              "description": "\"common_cartridge\":: Export the contents of a course in the Common Cartridge (.imscc) format \"qti\":: Export quizzes from a course in the QTI format \"zip\":: Export files from a course, group, or user in a zip file",
+              "description": "\"common_cartridge\":: Export the contents of the course in the Common Cartridge (.imscc) format \"qti\":: Export quizzes from a course in the QTI format \"zip\":: Export files from a course, group, or user in a zip file",
               "type": "string",
               "format": null,
-              "required": false,
+              "required": true,
               "enum": [
                 "common_cartridge",
-                "qti"
+                "qti",
+                "zip"
               ]
             },
             {

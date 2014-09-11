@@ -113,7 +113,7 @@
               "description": "The attempt number of the quiz submission being taken. Note that this must be the latest attempt index, as questions for earlier attempts can not be modified.",
               "type": "integer",
               "format": "int64",
-              "required": false
+              "required": true
             },
             {
               "paramType": "form",
@@ -121,7 +121,7 @@
               "description": "The unique validation token you received when the Quiz Submission was created.",
               "type": "string",
               "format": null,
-              "required": false
+              "required": true
             },
             {
               "paramType": "form",
@@ -176,7 +176,7 @@
               "description": "The attempt number of the quiz submission being taken. Note that this must be the latest attempt index, as questions for earlier attempts can not be modified.",
               "type": "integer",
               "format": "int64",
-              "required": false
+              "required": true
             },
             {
               "paramType": "form",
@@ -184,7 +184,7 @@
               "description": "The unique validation token you received when the Quiz Submission was created.",
               "type": "string",
               "format": null,
-              "required": false
+              "required": true
             },
             {
               "paramType": "form",
@@ -231,7 +231,7 @@
               "description": "The attempt number of the quiz submission being taken. Note that this must be the latest attempt index, as questions for earlier attempts can not be modified.",
               "type": "integer",
               "format": "int64",
-              "required": false
+              "required": true
             },
             {
               "paramType": "form",
@@ -239,7 +239,7 @@
               "description": "The unique validation token you received when the Quiz Submission was created.",
               "type": "string",
               "format": null,
-              "required": false
+              "required": true
             },
             {
               "paramType": "form",

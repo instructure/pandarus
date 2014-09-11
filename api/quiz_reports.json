@@ -81,7 +81,7 @@
               "description": "The type of report to be generated.",
               "type": "string",
               "format": null,
-              "required": false,
+              "required": true,
               "enum": [
                 "student_analysis",
                 "item_analysis"

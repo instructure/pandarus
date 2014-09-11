@@ -149,7 +149,7 @@
               "description": "The id of the course this session is associated with.",
               "type": "integer",
               "format": "int64",
-              "required": true,
+              "required": false,
               "tags": {
                 "type": "array"
               }
@@ -160,7 +160,7 @@
               "description": "The id of the course section this session is associated with.",
               "type": "integer",
               "format": "int64",
-              "required": true,
+              "required": false,
               "tags": {
                 "type": "array"
               }

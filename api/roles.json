@@ -103,7 +103,7 @@
               "description": "Label and unique identifier for the role.",
               "type": "string",
               "format": null,
-              "required": false
+              "required": true
             },
             {
               "paramType": "form",

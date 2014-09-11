@@ -9,12 +9,12 @@
   "apis": [
     {
       "path": "/v1/courses/{course_id}/conferences",
-      "description": "Retrieve the list of conferences for this context\n\nThis API returns a JSON object containing the list of conferences,\nthe key for the list of conferences is \"conferences\"\n\n Examples:\n    curl 'https://<canvas>/api/v1/courses/<course_id>/conferences' \\\n        -H \"Authorization: Bearer <token>\"\n\n    curl 'https://<canvas>/api/v1/groups/<group_id>/conferences' \\\n        -H \"Authorization: Bearer <token>\"",
+      "description": "Retrieve the list of conferences for this context\n\nThis API returns a JSON object containing the list of conferences,\nthe key for the list of conferences is \"conferences\"",
       "operations": [
         {
           "method": "GET",
           "summary": "List conferences",
-          "notes": "Retrieve the list of conferences for this context\n\nThis API returns a JSON object containing the list of conferences,\nthe key for the list of conferences is \"conferences\"\n\n Examples:\n    curl 'https://<canvas>/api/v1/courses/<course_id>/conferences' \\\n        -H \"Authorization: Bearer <token>\"\n\n    curl 'https://<canvas>/api/v1/groups/<group_id>/conferences' \\\n        -H \"Authorization: Bearer <token>\"",
+          "notes": "Retrieve the list of conferences for this context\n\nThis API returns a JSON object containing the list of conferences,\nthe key for the list of conferences is \"conferences\"",
           "nickname": "list_conferences_courses",
           "parameters": [
             {
@@ -35,12 +35,12 @@
     },
     {
       "path": "/v1/groups/{group_id}/conferences",
-      "description": "Retrieve the list of conferences for this context\n\nThis API returns a JSON object containing the list of conferences,\nthe key for the list of conferences is \"conferences\"\n\n Examples:\n    curl 'https://<canvas>/api/v1/courses/<course_id>/conferences' \\\n        -H \"Authorization: Bearer <token>\"\n\n    curl 'https://<canvas>/api/v1/groups/<group_id>/conferences' \\\n        -H \"Authorization: Bearer <token>\"",
+      "description": "Retrieve the list of conferences for this context\n\nThis API returns a JSON object containing the list of conferences,\nthe key for the list of conferences is \"conferences\"",
       "operations": [
         {
           "method": "GET",
           "summary": "List conferences",
-          "notes": "Retrieve the list of conferences for this context\n\nThis API returns a JSON object containing the list of conferences,\nthe key for the list of conferences is \"conferences\"\n\n Examples:\n    curl 'https://<canvas>/api/v1/courses/<course_id>/conferences' \\\n        -H \"Authorization: Bearer <token>\"\n\n    curl 'https://<canvas>/api/v1/groups/<group_id>/conferences' \\\n        -H \"Authorization: Bearer <token>\"",
+          "notes": "Retrieve the list of conferences for this context\n\nThis API returns a JSON object containing the list of conferences,\nthe key for the list of conferences is \"conferences\"",
           "nickname": "list_conferences_groups",
           "parameters": [
             {

@@ -32,6 +32,14 @@
               "type": "string",
               "format": null,
               "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "selectable",
+              "description": "If true, then only tools that are meant to be selectable are returned",
+              "type": "boolean",
+              "format": null,
+              "required": false
             }
           ],
           "type": "void"
@@ -61,6 +69,14 @@
               "name": "search_term",
               "description": "The partial name of the tools to match and return.",
               "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "selectable",
+              "description": "If true, then only tools that are meant to be selectable are returned",
+              "type": "boolean",
               "format": null,
               "required": false
             }
@@ -333,6 +349,14 @@
               "name": "text",
               "description": "The default text to show for this tool",
               "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "not_selectable",
+              "description": "Default: false, if set to true the tool won't show up in the external tool selection UI in modules and assignments",
+              "type": "boolean",
               "format": null,
               "required": false
             },
@@ -637,6 +661,14 @@
               "name": "text",
               "description": "The default text to show for this tool",
               "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "not_selectable",
+              "description": "Default: false, if set to true the tool won't show up in the external tool selection UI in modules and assignments",
+              "type": "boolean",
               "format": null,
               "required": false
             },

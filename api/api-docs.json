@@ -7,6 +7,10 @@
       "description": "Account Authentication Services"
     },
     {
+      "path": "/account_domain_lookups.json",
+      "description": "Account Domain Lookups"
+    },
+    {
       "path": "/account_notifications.json",
       "description": "Account Notifications"
     },
@@ -83,6 +87,10 @@
       "description": "Course Audit log"
     },
     {
+      "path": "/course_quiz_extensions.json",
+      "description": "Course Quiz Extensions"
+    },
+    {
       "path": "/courses.json",
       "description": "Courses"
     },
@@ -93,6 +101,10 @@
     {
       "path": "/discussion_topics.json",
       "description": "Discussion Topics"
+    },
+    {
+      "path": "/document_previews.json",
+      "description": "Document Previews"
     },
     {
       "path": "/enrollment_terms.json",
@@ -189,6 +201,10 @@
     {
       "path": "/progress.json",
       "description": "Progress"
+    },
+    {
+      "path": "/quiz_assignment_overrides.json",
+      "description": "Quiz Assignment Overrides"
     },
     {
       "path": "/quiz_extensions.json",

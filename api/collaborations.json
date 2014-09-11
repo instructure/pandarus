@@ -9,12 +9,12 @@
   "apis": [
     {
       "path": "/v1/collaborations/{id}/members",
-      "description": "Examples\n\n  curl https://<canvas>/api/v1/courses/1/collaborations/1/members",
+      "description": "List the collaborators of a given collaboration",
       "operations": [
         {
           "method": "GET",
           "summary": "List members of a collaboration.",
-          "notes": "Examples\n\n  curl https://<canvas>/api/v1/courses/1/collaborations/1/members",
+          "notes": "List the collaborators of a given collaboration",
           "nickname": "list_members_of_collaboration",
           "parameters": [
             {

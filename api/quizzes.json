@@ -96,7 +96,7 @@
               "description": "The quiz title.",
               "type": "string",
               "format": null,
-              "required": false
+              "required": true
             },
             {
               "paramType": "form",
@@ -349,12 +349,12 @@
     },
     {
       "path": "/v1/courses/{course_id}/quizzes/{id}/reorder",
-      "description": "Change order of the quiz questions or groups within the quiz\n\n<b>204 No Content<b> response code is returned if the reorder was successful.",
+      "description": "Change order of the quiz questions or groups within the quiz\n\n<b>204 No Content</b> response code is returned if the reorder was successful.",
       "operations": [
         {
           "method": "POST",
           "summary": "Reorder quiz items",
-          "notes": "Change order of the quiz questions or groups within the quiz\n\n<b>204 No Content<b> response code is returned if the reorder was successful.",
+          "notes": "Change order of the quiz questions or groups within the quiz\n\n<b>204 No Content</b> response code is returned if the reorder was successful.",
           "nickname": "reorder_quiz_items",
           "parameters": [
             {

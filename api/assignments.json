@@ -86,6 +86,14 @@
               "type": "boolean",
               "format": null,
               "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "needs_grading_count_by_section",
+              "description": "Split up \"needs_grading_count\" by sections into the \"needs_grading_count_by_section\" key, defaults to false",
+              "type": "boolean",
+              "format": null,
+              "required": false
             }
           ],
           "type": "array",
@@ -140,6 +148,14 @@
               "paramType": "query",
               "name": "override_assignment_dates",
               "description": "Apply assignment overrides to the assignment, defaults to true.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "needs_grading_count_by_section",
+              "description": "Split up \"needs_grading_count\" by sections into the \"needs_grading_count_by_section\" key, defaults to false",
               "type": "boolean",
               "format": null,
               "required": false
@@ -1210,6 +1226,25 @@
         }
       }
     },
+    "NeedsGradingCount": {
+      "id": "NeedsGradingCount",
+      "description": "Used by Assignment model",
+      "required": [
+
+      ],
+      "properties": {
+        "section_id": {
+          "description": "The section ID",
+          "example": "123456",
+          "type": "string"
+        },
+        "needs_grading_count": {
+          "description": "Number of submissions that need grading",
+          "example": 5,
+          "type": "integer"
+        }
+      }
+    },
     "Assignment": {
       "id": "Assignment",
       "description": "",
@@ -1334,6 +1369,23 @@
           "description": "if the requesting user has grading rights, the number of submissions that need grading.",
           "example": 17,
           "type": "integer"
+        },
+        "needs_grading_count_by_section": {
+          "description": "if the requesting user has grading rights and the 'needs_grading_count_by_section' flag is specified, the number of submissions that need grading split out by section. NOTE: This key is NOT present unless you pass the 'needs_grading_count_by_section' argument as true.  ANOTHER NOTE: it's possible to be enrolled in multiple sections, and if a student is setup that way they will show an assignment that needs grading in multiple sections (effectively the count will be duplicated between sections)",
+          "example": [
+            {
+              "section_id": "123456",
+              "needs_grading_count": 5
+            },
+            {
+              "section_id": "654321",
+              "needs_grading_count": 0
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "NeedsGradingCount"
+          }
         },
         "position": {
           "description": "the sorting order of the assignment in the group",

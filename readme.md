@@ -18,7 +18,7 @@ Example Usage
 ```
 require 'pandarus'
 
-client = Pandarus::V1_api.new(
+client = Pandarus::Client.new(
   prefix: "https://pandamonium.instructure.com/api",
   token: "[YOUR API TOKEN HERE]")
 

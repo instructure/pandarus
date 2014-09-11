@@ -401,12 +401,12 @@
     },
     {
       "path": "/v1/courses/{course_id}/discussion_topics/{topic_id}",
-      "description": "Accepts the same parameters as create",
+      "description": "Update an existing discussion topic for the course or group.",
       "operations": [
         {
           "method": "PUT",
           "summary": "Update a topic",
-          "notes": "Accepts the same parameters as create",
+          "notes": "Update an existing discussion topic for the course or group.",
           "nickname": "update_topic_courses",
           "parameters": [
             {
@@ -424,6 +424,114 @@
               "type": "string",
               "format": null,
               "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "title",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "message",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "discussion_type",
+              "description": "The type of discussion. Defaults to side_comment if not value is given. Accepted values are 'side_comment', for discussions that only allow one level of nested comments, and 'threaded' for fully threaded discussions.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "side_comment",
+                "threaded"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "published",
+              "description": "Whether this topic is published (true) or draft state (false). Only teachers and TAs have the ability to create draft state topics.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "delayed_post_at",
+              "description": "If a timestamp is given, the topic will not be published until that time.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "lock_at",
+              "description": "If a timestamp is given, the topic will be scheduled to lock at the provided timestamp. If the timestamp is in the past, the topic will be locked.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "podcast_enabled",
+              "description": "If true, the topic will have an associated podcast feed.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "podcast_has_student_posts",
+              "description": "If true, the podcast will include posts from students as well. Implies podcast_enabled.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "require_initial_post",
+              "description": "If true then a user may not respond to other replies until that user has made an initial reply. Defaults to false.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "assignment",
+              "description": "To create an assignment discussion, pass the assignment parameters as a sub-object. See the {api:AssignmentsApiController#create Create an Assignment API} for the available parameters. The name parameter will be ignored, as it's taken from the discussion title. If you want to make a discussion that was an assignment NOT an assignment, pass set_assignment = false as part of the assignment object",
+              "type": "assignment",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "is_announcement",
+              "description": "If true, this topic is an announcement. It will appear in the announcement's section rather than the discussions section. This requires announcment-posting permissions.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "position_after",
+              "description": "By default, discussions are sorted chronologically by creation date, you can pass the id of another topic to have this one show up after the other when they are listed.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "group_category_id",
+              "description": "If present, the topic will become a group discussion assigned to the group.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
             }
           ],
           "type": "void"
@@ -432,12 +540,12 @@
     },
     {
       "path": "/v1/groups/{group_id}/discussion_topics/{topic_id}",
-      "description": "Accepts the same parameters as create",
+      "description": "Update an existing discussion topic for the course or group.",
       "operations": [
         {
           "method": "PUT",
           "summary": "Update a topic",
-          "notes": "Accepts the same parameters as create",
+          "notes": "Update an existing discussion topic for the course or group.",
           "nickname": "update_topic_groups",
           "parameters": [
             {
@@ -455,6 +563,114 @@
               "type": "string",
               "format": null,
               "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "title",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "message",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "discussion_type",
+              "description": "The type of discussion. Defaults to side_comment if not value is given. Accepted values are 'side_comment', for discussions that only allow one level of nested comments, and 'threaded' for fully threaded discussions.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "side_comment",
+                "threaded"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "published",
+              "description": "Whether this topic is published (true) or draft state (false). Only teachers and TAs have the ability to create draft state topics.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "delayed_post_at",
+              "description": "If a timestamp is given, the topic will not be published until that time.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "lock_at",
+              "description": "If a timestamp is given, the topic will be scheduled to lock at the provided timestamp. If the timestamp is in the past, the topic will be locked.",
+              "type": "datetime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "podcast_enabled",
+              "description": "If true, the topic will have an associated podcast feed.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "podcast_has_student_posts",
+              "description": "If true, the podcast will include posts from students as well. Implies podcast_enabled.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "require_initial_post",
+              "description": "If true then a user may not respond to other replies until that user has made an initial reply. Defaults to false.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "assignment",
+              "description": "To create an assignment discussion, pass the assignment parameters as a sub-object. See the {api:AssignmentsApiController#create Create an Assignment API} for the available parameters. The name parameter will be ignored, as it's taken from the discussion title. If you want to make a discussion that was an assignment NOT an assignment, pass set_assignment = false as part of the assignment object",
+              "type": "assignment",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "is_announcement",
+              "description": "If true, this topic is an announcement. It will appear in the announcement's section rather than the discussions section. This requires announcment-posting permissions.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "position_after",
+              "description": "By default, discussions are sorted chronologically by creation date, you can pass the id of another topic to have this one show up after the other when they are listed.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "group_category_id",
+              "description": "If present, the topic will become a group discussion assigned to the group.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
             }
           ],
           "type": "void"

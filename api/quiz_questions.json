@@ -112,7 +112,7 @@
               "description": "The name of the question.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -120,7 +120,7 @@
               "description": "The text of the question.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -252,7 +252,7 @@
               "description": "The name of the question.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -260,7 +260,7 @@
               "description": "The text of the question.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -354,12 +354,12 @@
     },
     {
       "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/questions/{id}",
-      "description": "<b>204 No Content<b> response code is returned if the deletion was successful.",
+      "description": "<b>204 No Content</b> response code is returned if the deletion was successful.",
       "operations": [
         {
           "method": "DELETE",
           "summary": "Delete a quiz question",
-          "notes": "<b>204 No Content<b> response code is returned if the deletion was successful.",
+          "notes": "<b>204 No Content</b> response code is returned if the deletion was successful.",
           "nickname": "delete_quiz_question",
           "parameters": [
             {

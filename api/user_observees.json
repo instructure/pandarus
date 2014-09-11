@@ -57,7 +57,7 @@
               "description": "The login id for the user to observe.",
               "type": "string",
               "format": null,
-              "required": false
+              "required": true
             },
             {
               "paramType": "form",
@@ -65,7 +65,7 @@
               "description": "The password for the user to observe.",
               "type": "string",
               "format": null,
-              "required": false
+              "required": true
             }
           ],
           "type": "User"

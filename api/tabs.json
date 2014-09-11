@@ -118,8 +118,8 @@
             {
               "paramType": "form",
               "name": "hidden",
-              "description": "\\\\ true, or false.",
-              "type": "string",
+              "description": "no description",
+              "type": "boolean",
               "format": null,
               "required": false
             }
