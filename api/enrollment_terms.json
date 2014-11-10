@@ -29,11 +29,11 @@
               "paramType": "query",
               "name": "workflow_state",
               "description": "no description",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],

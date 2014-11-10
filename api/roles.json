@@ -29,15 +29,15 @@
               "paramType": "query",
               "name": "state",
               "description": "Filter by role state. If this argument is omitted, only 'active' roles are returned.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
                 "active",
                 "inactive"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],
@@ -49,7 +49,7 @@
       ]
     },
     {
-      "path": "/v1/accounts/{account_id}/roles/{role}",
+      "path": "/v1/accounts/{account_id}/roles/{id}",
       "description": "Retrieve information about a single role",
       "operations": [
         {
@@ -60,6 +60,14 @@
           "parameters": [
             {
               "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
               "name": "account_id",
               "description": "The id of the account containing the role",
               "type": "string",
@@ -67,7 +75,7 @@
               "required": true
             },
             {
-              "paramType": "path",
+              "paramType": "query",
               "name": "role",
               "description": "The name and unique identifier for the role",
               "type": "string",
@@ -100,7 +108,7 @@
             {
               "paramType": "form",
               "name": "role",
-              "description": "Label and unique identifier for the role.",
+              "description": "Label for the role.",
               "type": "string",
               "format": null,
               "required": true
@@ -151,7 +159,7 @@
       ]
     },
     {
-      "path": "/v1/accounts/{account_id}/roles/{role}",
+      "path": "/v1/accounts/{account_id}/roles/{id}",
       "description": "Deactivates a custom role.  This hides it in the user interface and prevents it\nfrom being assigned to new users.  Existing users assigned to the role will\ncontinue to function with the same permissions they had previously.\nBuilt-in roles cannot be deactivated.",
       "operations": [
         {
@@ -170,6 +178,14 @@
             },
             {
               "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
               "name": "role",
               "description": "Label and unique identifier for the role.",
               "type": "string",
@@ -182,7 +198,7 @@
       ]
     },
     {
-      "path": "/v1/accounts/{account_id}/roles/{role}/activate",
+      "path": "/v1/accounts/{account_id}/roles/{id}/activate",
       "description": "Re-activates an inactive role (allowing it to be assigned to new users)",
       "operations": [
         {
@@ -201,6 +217,14 @@
             },
             {
               "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
               "name": "role",
               "description": "Label and unique identifier for the role.",
               "type": "string",
@@ -213,7 +237,7 @@
       ]
     },
     {
-      "path": "/v1/accounts/{account_id}/roles/{role}",
+      "path": "/v1/accounts/{account_id}/roles/{id}",
       "description": "Update permissions for an existing role.\n\nRecognized roles are:\n* TeacherEnrollment\n* StudentEnrollment\n* TaEnrollment\n* ObserverEnrollment\n* DesignerEnrollment\n* AccountAdmin\n* Any previously created custom role",
       "operations": [
         {
@@ -232,7 +256,7 @@
             },
             {
               "paramType": "path",
-              "name": "role",
+              "name": "id",
               "description": "ID",
               "type": "string",
               "format": null,
@@ -303,7 +327,7 @@
       ],
       "properties": {
         "role": {
-          "description": "The label and unique identifier of the role.",
+          "description": "The label of the role.",
           "example": "New Role",
           "type": "string"
         },
@@ -318,7 +342,7 @@
           "$ref": "Account"
         },
         "workflow_state": {
-          "description": "The state of the role: 'active' or 'inactive'",
+          "description": "The state of the role: 'active', 'inactive', or 'built_in'",
           "example": "active",
           "type": "string"
         },

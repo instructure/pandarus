@@ -60,15 +60,15 @@
               "paramType": "query",
               "name": "include",
               "description": "Associations to include with the assignment. The \"assignment_visibility\" option requires that the Differentiated Assignments course feature be turned on.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
                 "submission",
                 "assignment_visibility"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -133,15 +133,15 @@
               "paramType": "query",
               "name": "include",
               "description": "Associations to include with the assignment. The \"assignment_visibility\" option requires that the Differentiated Assignments course feature be turned on.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
                 "submission",
                 "assignment_visibility"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -203,7 +203,7 @@
               "paramType": "form",
               "name": "assignment[submission_types]",
               "description": "List of supported submission types for the assignment. Unless the assignment is allowing online submissions, the array should only have one element. If not allowing online submissions, your options are: \"online_quiz\" \"none\" \"on_paper\" \"online_quiz\" \"discussion_topic\" \"external_tool\" If you are allowing online submissions, you can have one or many allowed submission types: \"online_upload\" \"online_text_entry\" \"online_url\" \"media_recording\" (Only valid when the Kaltura plugin is enabled)",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
@@ -218,19 +218,19 @@
                 "online_url",
                 "media_recording"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "form",
               "name": "assignment[allowed_extensions]",
               "description": "Allowed extensions if submission_types includes \"online_upload\" Example: allowed_extensions: [\"docx\",\"ppt\"]",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -391,11 +391,11 @@
               "paramType": "form",
               "name": "assignment[assignment_overrides]",
               "description": "List of overrides for the assignment. NOTE: The assignment overrides feature is in beta.",
-              "type": "assignmentoverride",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "$ref": "assignmentoverride"
               }
             },
             {
@@ -473,7 +473,7 @@
               "paramType": "form",
               "name": "assignment[submission_types]",
               "description": "List of supported submission types for the assignment. Unless the assignment is allowing online submissions, the array should only have one element. If not allowing online submissions, your options are: \"online_quiz\" \"none\" \"on_paper\" \"online_quiz\" \"discussion_topic\" \"external_tool\" If you are allowing online submissions, you can have one or many allowed submission types: \"online_upload\" \"online_text_entry\" \"online_url\" \"media_recording\" (Only valid when the Kaltura plugin is enabled)",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
@@ -488,19 +488,19 @@
                 "online_url",
                 "media_recording"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "form",
               "name": "assignment[allowed_extensions]",
               "description": "Allowed extensions if submission_types includes \"online_upload\" Example: allowed_extensions: [\"docx\",\"ppt\"]",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -661,11 +661,11 @@
               "paramType": "form",
               "name": "assignment[assignment_overrides]",
               "description": "List of overrides for the assignment. NOTE: The assignment overrides feature is in beta.",
-              "type": "assignmentoverride",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "$ref": "assignmentoverride"
               }
             },
             {
@@ -862,11 +862,11 @@
               "paramType": "form",
               "name": "assignment_override[student_ids]",
               "description": "The IDs of the override's target students. If present, the IDs must each identify a user with an active student enrollment in the course that is not already targetted by a different adhoc override.",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             },
             {
@@ -960,11 +960,11 @@
               "paramType": "form",
               "name": "assignment_override[student_ids]",
               "description": "The IDs of the override's target students. If present, the IDs must each identify a user with an active student enrollment in the course that is not already targetted by a different adhoc override. Ignored unless the override being updated is adhoc.",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             },
             {

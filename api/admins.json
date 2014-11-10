@@ -36,9 +36,17 @@
             {
               "paramType": "form",
               "name": "role",
-              "description": "The user's admin relationship with the account will be created with the given role. Defaults to 'AccountAdmin'.",
+              "description": "(deprecated) The user's admin relationship with the account will be created with the given role. Defaults to 'AccountAdmin'.",
               "type": "string",
               "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "role_id",
+              "description": "The user's admin relationship with the account will be created with the given role. Defaults to the built-in role for 'AccountAdmin'.",
+              "type": "integer",
+              "format": "int64",
               "required": false
             },
             {
@@ -83,9 +91,17 @@
             {
               "paramType": "query",
               "name": "role",
-              "description": "Account role to remove from the user. Defaults to 'AccountAdmin'. Any other account role must be specified explicitly.",
+              "description": "(Deprecated) Account role to remove from the user. Defaults to 'AccountAdmin'. Any other account role must be specified explicitly.",
               "type": "string",
               "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "role_id",
+              "description": "The user's admin relationship with the account will be created with the given role. Defaults to the built-in role for 'AccountAdmin'.",
+              "type": "integer",
+              "format": "int64",
               "required": false
             }
           ],
@@ -115,11 +131,11 @@
               "paramType": "query",
               "name": "user_id",
               "description": "Scope the results to those with user IDs equal to any of the IDs specified here.",
-              "type": "[integer]",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "$ref": "[integer]"
               }
             }
           ],

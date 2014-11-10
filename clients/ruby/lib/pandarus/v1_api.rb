@@ -275,8 +275,8 @@ module Pandarus
       
     end
     
-    # 
-    def x(opts={})
+    # Search account domains
+    def search_account_domains(opts={})
       query_param_keys = [
         :name,
         :domain,
@@ -570,6 +570,37 @@ module Pandarus
       response.map {|response|Account.new(response)}
     end
     
+    # List accounts for course admins
+    def list_accounts_for_course_admins(opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        {}
+      
+      )
+
+      # resource path
+      path = path_replace("/v1/course_accounts",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response.map {|response|Account.new(response)}
+    end
+    
     # Get a single account
     def get_single_account(id,opts={})
       query_param_keys = [
@@ -711,6 +742,41 @@ module Pandarus
       Account.new(response)
     end
     
+    # Delete a user from the root account
+    def delete_user_from_root_account(account_id,user_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      raise "user_id is required" if user_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id,
+        :user_id => user_id
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/users/{user_id}",
+        :account_id => account_id,
+        :user_id => user_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:delete, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      page_params_store(:delete, path)
+      User.new(response)
+    end
+    
     # Create a new sub-account
     def create_new_sub_account(account_id,account__name__,opts={})
       query_param_keys = [
@@ -758,6 +824,7 @@ module Pandarus
       form_param_keys = [
         :user_id,
         :role,
+        :role_id,
         :send_confirmation,
         
       ]
@@ -789,7 +856,8 @@ module Pandarus
     # Remove account admin
     def remove_account_admin(account_id,user_id,opts={})
       query_param_keys = [
-        :role
+        :role,
+        :role_id
       ]
 
       form_param_keys = [
@@ -851,519 +919,6 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response.map {|response|Admin.new(response)}
-    end
-    
-    # Get department-level participation data
-    def get_department_level_participation_data_terms(account_id,term_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "account_id is required" if account_id.nil?
-      raise "term_id is required" if term_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :account_id => account_id,
-        :term_id => term_id
-      )
-
-      # resource path
-      path = path_replace("/v1/accounts/{account_id}/analytics/terms/{term_id}/activity",
-        :account_id => account_id,
-        :term_id => term_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response
-      
-    end
-    
-    # Get department-level participation data
-    def get_department_level_participation_data_current(account_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "account_id is required" if account_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :account_id => account_id
-      )
-
-      # resource path
-      path = path_replace("/v1/accounts/{account_id}/analytics/current/activity",
-        :account_id => account_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response
-      
-    end
-    
-    # Get department-level participation data
-    def get_department_level_participation_data_completed(account_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "account_id is required" if account_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :account_id => account_id
-      )
-
-      # resource path
-      path = path_replace("/v1/accounts/{account_id}/analytics/completed/activity",
-        :account_id => account_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response
-      
-    end
-    
-    # Get department-level grade data
-    def get_department_level_grade_data_terms(account_id,term_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "account_id is required" if account_id.nil?
-      raise "term_id is required" if term_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :account_id => account_id,
-        :term_id => term_id
-      )
-
-      # resource path
-      path = path_replace("/v1/accounts/{account_id}/analytics/terms/{term_id}/grades",
-        :account_id => account_id,
-        :term_id => term_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response
-      
-    end
-    
-    # Get department-level grade data
-    def get_department_level_grade_data_current(account_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "account_id is required" if account_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :account_id => account_id
-      )
-
-      # resource path
-      path = path_replace("/v1/accounts/{account_id}/analytics/current/grades",
-        :account_id => account_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response
-      
-    end
-    
-    # Get department-level grade data
-    def get_department_level_grade_data_completed(account_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "account_id is required" if account_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :account_id => account_id
-      )
-
-      # resource path
-      path = path_replace("/v1/accounts/{account_id}/analytics/completed/grades",
-        :account_id => account_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response
-      
-    end
-    
-    # Get department-level statistics
-    def get_department_level_statistics_terms(account_id,term_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "account_id is required" if account_id.nil?
-      raise "term_id is required" if term_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :account_id => account_id,
-        :term_id => term_id
-      )
-
-      # resource path
-      path = path_replace("/v1/accounts/{account_id}/analytics/terms/{term_id}/statistics",
-        :account_id => account_id,
-        :term_id => term_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response
-      
-    end
-    
-    # Get department-level statistics
-    def get_department_level_statistics_current(account_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "account_id is required" if account_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :account_id => account_id
-      )
-
-      # resource path
-      path = path_replace("/v1/accounts/{account_id}/analytics/current/statistics",
-        :account_id => account_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response
-      
-    end
-    
-    # Get department-level statistics
-    def get_department_level_statistics_completed(account_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "account_id is required" if account_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :account_id => account_id
-      )
-
-      # resource path
-      path = path_replace("/v1/accounts/{account_id}/analytics/completed/statistics",
-        :account_id => account_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response
-      
-    end
-    
-    # Get course-level participation data
-    def get_course_level_participation_data(course_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "course_id is required" if course_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :course_id => course_id
-      )
-
-      # resource path
-      path = path_replace("/v1/courses/{course_id}/analytics/activity",
-        :course_id => course_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response
-      
-    end
-    
-    # Get course-level assignment data
-    def get_course_level_assignment_data(course_id,opts={})
-      query_param_keys = [
-        :async
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "course_id is required" if course_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :course_id => course_id
-      )
-
-      # resource path
-      path = path_replace("/v1/courses/{course_id}/analytics/assignments",
-        :course_id => course_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response
-      
-    end
-    
-    # Get course-level student summary data
-    def get_course_level_student_summary_data(course_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "course_id is required" if course_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :course_id => course_id
-      )
-
-      # resource path
-      path = path_replace("/v1/courses/{course_id}/analytics/student_summaries",
-        :course_id => course_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response
-      
-    end
-    
-    # Get user-in-a-course-level participation data
-    def get_user_in_a_course_level_participation_data(course_id,student_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "course_id is required" if course_id.nil?
-      raise "student_id is required" if student_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :student_id => student_id
-      )
-
-      # resource path
-      path = path_replace("/v1/courses/{course_id}/analytics/users/{student_id}/activity",
-        :course_id => course_id,
-        :student_id => student_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response
-      
-    end
-    
-    # Get user-in-a-course-level assignment data
-    def get_user_in_a_course_level_assignment_data(course_id,student_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "course_id is required" if course_id.nil?
-      raise "student_id is required" if student_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :student_id => student_id
-      )
-
-      # resource path
-      path = path_replace("/v1/courses/{course_id}/analytics/users/{student_id}/assignments",
-        :course_id => course_id,
-        :student_id => student_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response
-      
-    end
-    
-    # Get user-in-a-course-level messaging data
-    def get_user_in_a_course_level_messaging_data(course_id,student_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "course_id is required" if course_id.nil?
-      raise "student_id is required" if student_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :student_id => student_id
-      )
-
-      # resource path
-      path = path_replace("/v1/courses/{course_id}/analytics/users/{student_id}/communication",
-        :course_id => course_id,
-        :student_id => student_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response
-      
     end
     
     # List external feeds
@@ -5196,6 +4751,7 @@ module Pandarus
       query_param_keys = [
         :enrollment_type,
         :enrollment_role,
+        :enrollment_role_id,
         :include,
         :state
       ]
@@ -5254,6 +4810,8 @@ module Pandarus
         :offer,
         :enroll_me,
         :course__syllabus_body__,
+        :course__grading_standard_id__,
+        :course__course_format__,
         
       ]
 
@@ -5350,6 +4908,7 @@ module Pandarus
         :search_term,
         :enrollment_type,
         :enrollment_role,
+        :enrollment_role_id,
         :include,
         :user_id
       ]
@@ -5386,6 +4945,7 @@ module Pandarus
         :search_term,
         :enrollment_type,
         :enrollment_role,
+        :enrollment_role_id,
         :include,
         :user_id
       ]
@@ -5788,21 +5348,46 @@ module Pandarus
     end
     
     # Update a course
-    def update_course(id,opts={})
+    def update_course(id,account_id,opts={})
       query_param_keys = [
         
       ]
 
       form_param_keys = [
+        :account_id,
+        :course__name__,
+        :course__course_code__,
+        :course__start_at__,
+        :course__end_at__,
+        :course__license__,
+        :course__is_public__,
+        :course__public_syllabus__,
+        :course__public_description__,
+        :course__allow_student_wiki_edits__,
+        :course__allow_wiki_comments__,
+        :course__allow_student_forum_attachments__,
+        :course__open_enrollment__,
+        :course__self_enrollment__,
+        :course__restrict_enrollments_to_course_dates__,
+        :course__term_id__,
+        :course__sis_course_id__,
+        :course__integration_id__,
+        :course__hide_final_grades__,
+        :course__apply_assignment_group_weights__,
+        :offer,
+        :course__syllabus_body__,
         :course__grading_standard_id__,
+        :course__course_format__,
         
       ]
 
       # verify existence of params
       raise "id is required" if id.nil?
+      raise "account_id is required" if account_id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :id => id
+        :id => id,
+        :account_id => account_id
       )
 
       # resource path
@@ -6215,8 +5800,7 @@ module Pandarus
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
-      response
-      
+      response.map {|response|DiscussionTopic.new(response)}
     end
     
     # List discussion topics
@@ -6251,8 +5835,7 @@ module Pandarus
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
-      response
-      
+      response.map {|response|DiscussionTopic.new(response)}
     end
     
     # Create a new discussion topic
@@ -8044,6 +7627,7 @@ module Pandarus
         :enrollment__user_id__,
         :enrollment__type__,
         :enrollment__role__,
+        :enrollment__role_id__,
         :enrollment__enrollment_state__,
         :enrollment__course_section_id__,
         :enrollment__limit_privileges_to_course_section__,
@@ -8088,6 +7672,7 @@ module Pandarus
         :enrollment__user_id__,
         :enrollment__type__,
         :enrollment__role__,
+        :enrollment__role_id__,
         :enrollment__enrollment_state__,
         :enrollment__course_section_id__,
         :enrollment__limit_privileges_to_course_section__,
@@ -10595,6 +10180,390 @@ module Pandarus
       response.map {|response|SubmissionVersion.new(response)}
     end
     
+    # List grading periods
+    def list_grading_periods_courses(course_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/grading_periods",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # List grading periods
+    def list_grading_periods_accounts(account_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/grading_periods",
+        :account_id => account_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # Get a single grading period
+    def get_single_grading_period_courses(course_id,id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/grading_periods/{id}",
+        :course_id => course_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # Get a single grading period
+    def get_single_grading_period_accounts(account_id,id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/grading_periods/{id}",
+        :account_id => account_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # Create a single grading period
+    def create_single_grading_period_courses(course_id,grading_periods__weight__,grading_periods__start_date__,grading_periods__end_date__,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :grading_periods__weight__,
+        :grading_periods__start_date__,
+        :grading_periods__end_date__,
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "grading_periods__weight__ is required" if grading_periods__weight__.nil?
+      raise "grading_periods__start_date__ is required" if grading_periods__start_date__.nil?
+      raise "grading_periods__end_date__ is required" if grading_periods__end_date__.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :grading_periods__weight__ => grading_periods__weight__,
+        :grading_periods__start_date__ => grading_periods__start_date__,
+        :grading_periods__end_date__ => grading_periods__end_date__
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/grading_periods",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:post, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      page_params_store(:post, path)
+      response
+      
+    end
+    
+    # Create a single grading period
+    def create_single_grading_period_accounts(account_id,grading_periods__weight__,grading_periods__start_date__,grading_periods__end_date__,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :grading_periods__weight__,
+        :grading_periods__start_date__,
+        :grading_periods__end_date__,
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      raise "grading_periods__weight__ is required" if grading_periods__weight__.nil?
+      raise "grading_periods__start_date__ is required" if grading_periods__start_date__.nil?
+      raise "grading_periods__end_date__ is required" if grading_periods__end_date__.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id,
+        :grading_periods__weight__ => grading_periods__weight__,
+        :grading_periods__start_date__ => grading_periods__start_date__,
+        :grading_periods__end_date__ => grading_periods__end_date__
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/grading_periods",
+        :account_id => account_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:post, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      page_params_store(:post, path)
+      response
+      
+    end
+    
+    # Update a single grading period
+    def update_single_grading_period_courses(course_id,id,grading_periods__weight__,grading_periods__start_date__,grading_periods__end_date__,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :grading_periods__weight__,
+        :grading_periods__start_date__,
+        :grading_periods__end_date__,
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "id is required" if id.nil?
+      raise "grading_periods__weight__ is required" if grading_periods__weight__.nil?
+      raise "grading_periods__start_date__ is required" if grading_periods__start_date__.nil?
+      raise "grading_periods__end_date__ is required" if grading_periods__end_date__.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :id => id,
+        :grading_periods__weight__ => grading_periods__weight__,
+        :grading_periods__start_date__ => grading_periods__start_date__,
+        :grading_periods__end_date__ => grading_periods__end_date__
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/grading_periods/{id}",
+        :course_id => course_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:put, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      page_params_store(:put, path)
+      response
+      
+    end
+    
+    # Update a single grading period
+    def update_single_grading_period_accounts(account_id,id,grading_periods__weight__,grading_periods__start_date__,grading_periods__end_date__,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :grading_periods__weight__,
+        :grading_periods__start_date__,
+        :grading_periods__end_date__,
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      raise "id is required" if id.nil?
+      raise "grading_periods__weight__ is required" if grading_periods__weight__.nil?
+      raise "grading_periods__start_date__ is required" if grading_periods__start_date__.nil?
+      raise "grading_periods__end_date__ is required" if grading_periods__end_date__.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id,
+        :id => id,
+        :grading_periods__weight__ => grading_periods__weight__,
+        :grading_periods__start_date__ => grading_periods__start_date__,
+        :grading_periods__end_date__ => grading_periods__end_date__
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/grading_periods/{id}",
+        :account_id => account_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:put, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      page_params_store(:put, path)
+      response
+      
+    end
+    
+    # Delete a grading period
+    def delete_grading_period_courses(course_id,id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/grading_periods/{id}",
+        :course_id => course_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:delete, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      page_params_store(:delete, path)
+      response
+      
+    end
+    
+    # Delete a grading period
+    def delete_grading_period_accounts(account_id,id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/grading_periods/{id}",
+        :account_id => account_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:delete, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      page_params_store(:delete, path)
+      response
+      
+    end
+    
     # Create a new grading standard
     def create_new_grading_standard_accounts(account_id,title,grading_scheme_entry__name__,grading_scheme_entry__value__,opts={})
       query_param_keys = [
@@ -11495,7 +11464,7 @@ module Pandarus
     end
     
     # List group memberships
-    def list_group_memberships_memberships(group_id,opts={})
+    def list_group_memberships(group_id,opts={})
       query_param_keys = [
         :filter_states
       ]
@@ -11513,38 +11482,6 @@ module Pandarus
 
       # resource path
       path = path_replace("/v1/groups/{group_id}/memberships",
-        :group_id => group_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|GroupMembership.new(response)}
-    end
-    
-    # List group memberships
-    def list_group_memberships_users(group_id,opts={})
-      query_param_keys = [
-        :filter_states
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "group_id is required" if group_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :group_id => group_id
-      )
-
-      # resource path
-      path = path_replace("/v1/groups/{group_id}/users",
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
@@ -16443,8 +16380,7 @@ module Pandarus
       end
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
-      response
-      
+      response.map {|response|QuizSubmissionQuestion.new(response)}
     end
     
     # Flagging a question.
@@ -16529,6 +16465,42 @@ module Pandarus
       end
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
+      response
+      
+    end
+    
+    # Send a message to unsubmitted or submitted users for the quiz
+    def send_message_to_unsubmitted_or_submitted_users_for_quiz(course_id,id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/quizzes/{id}/submission_users/message",
+        :course_id => course_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:post, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      page_params_store(:post, path)
       response
       
     end
@@ -16943,6 +16915,48 @@ module Pandarus
       
     end
     
+    # Submit captured events
+    def submit_captured_events(course_id,quiz_id,id,quiz_submission_events,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :quiz_submission_events,
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "quiz_id is required" if quiz_id.nil?
+      raise "id is required" if id.nil?
+      raise "quiz_submission_events is required" if quiz_submission_events.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :quiz_id => quiz_id,
+        :id => id,
+        :quiz_submission_events => quiz_submission_events
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}/events",
+        :course_id => course_id,
+        :quiz_id => quiz_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:post, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      page_params_store(:post, path)
+      response
+      
+    end
+    
     # List quizzes in a course
     def list_quizzes_in_course(course_id,opts={})
       query_param_keys = [
@@ -17209,9 +17223,9 @@ module Pandarus
     end
     
     # Get a single role
-    def get_single_role(account_id,role,opts={})
+    def get_single_role(id,account_id,role,opts={})
       query_param_keys = [
-        
+        :role
       ]
 
       form_param_keys = [
@@ -17219,18 +17233,20 @@ module Pandarus
       ]
 
       # verify existence of params
+      raise "id is required" if id.nil?
       raise "account_id is required" if account_id.nil?
       raise "role is required" if role.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
+        :id => id,
         :account_id => account_id,
         :role => role
       )
 
       # resource path
-      path = path_replace("/v1/accounts/{account_id}/roles/{role}",
-        :account_id => account_id,
-        :role => role)
+      path = path_replace("/v1/accounts/{account_id}/roles/{id}",
+        :id => id,
+        :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
@@ -17283,9 +17299,9 @@ module Pandarus
     end
     
     # Deactivate a role
-    def deactivate_role(account_id,role,opts={})
+    def deactivate_role(account_id,id,role,opts={})
       query_param_keys = [
-        
+        :role
       ]
 
       form_param_keys = [
@@ -17294,17 +17310,19 @@ module Pandarus
 
       # verify existence of params
       raise "account_id is required" if account_id.nil?
+      raise "id is required" if id.nil?
       raise "role is required" if role.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id,
+        :id => id,
         :role => role
       )
 
       # resource path
-      path = path_replace("/v1/accounts/{account_id}/roles/{role}",
+      path = path_replace("/v1/accounts/{account_id}/roles/{id}",
         :account_id => account_id,
-        :role => role)
+        :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
@@ -17318,28 +17336,31 @@ module Pandarus
     end
     
     # Activate a role
-    def activate_role(account_id,role,opts={})
+    def activate_role(account_id,id,role,opts={})
       query_param_keys = [
         
       ]
 
       form_param_keys = [
+        :role,
         
       ]
 
       # verify existence of params
       raise "account_id is required" if account_id.nil?
+      raise "id is required" if id.nil?
       raise "role is required" if role.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id,
+        :id => id,
         :role => role
       )
 
       # resource path
-      path = path_replace("/v1/accounts/{account_id}/roles/{role}/activate",
+      path = path_replace("/v1/accounts/{account_id}/roles/{id}/activate",
         :account_id => account_id,
-        :role => role)
+        :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
@@ -17353,7 +17374,7 @@ module Pandarus
     end
     
     # Update a role
-    def update_role(account_id,role,opts={})
+    def update_role(account_id,id,opts={})
       query_param_keys = [
         
       ]
@@ -17366,17 +17387,17 @@ module Pandarus
 
       # verify existence of params
       raise "account_id is required" if account_id.nil?
-      raise "role is required" if role.nil?
+      raise "id is required" if id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id,
-        :role => role
+        :id => id
       )
 
       # resource path
-      path = path_replace("/v1/accounts/{account_id}/roles/{role}",
+      path = path_replace("/v1/accounts/{account_id}/roles/{id}",
         :account_id => account_id,
-        :role => role)
+        :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
@@ -17558,6 +17579,40 @@ module Pandarus
 
       # resource path
       path = path_replace("/v1/search/recipients",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:get, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      page_params_store(:get, path)
+      response
+      
+    end
+    
+    # List all courses
+    def list_all_courses(opts={})
+      query_param_keys = [
+        :search,
+        :public_only,
+        :open_enrollment_only
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        {}
+      
+      )
+
+      # resource path
+      path = path_replace("/v1/search/all_courses",
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
@@ -18063,8 +18118,7 @@ module Pandarus
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
-      response
-      
+      response.map {|response|Submission.new(response)}
     end
     
     # List assignment submissions
@@ -18099,8 +18153,7 @@ module Pandarus
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
-      response
-      
+      response.map {|response|Submission.new(response)}
     end
     
     # List submissions for multiple assignments
@@ -18419,6 +18472,162 @@ module Pandarus
       end
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
+      response
+      
+    end
+    
+    # Mark submission as read
+    def mark_submission_as_read_courses(course_id,assignment_id,user_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      raise "user_id is required" if user_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :assignment_id => assignment_id,
+        :user_id => user_id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{user_id}/read",
+        :course_id => course_id,
+        :assignment_id => assignment_id,
+        :user_id => user_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:put, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      page_params_store(:put, path)
+      response
+      
+    end
+    
+    # Mark submission as read
+    def mark_submission_as_read_sections(section_id,assignment_id,user_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "section_id is required" if section_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      raise "user_id is required" if user_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :section_id => section_id,
+        :assignment_id => assignment_id,
+        :user_id => user_id
+      )
+
+      # resource path
+      path = path_replace("/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{user_id}/read",
+        :section_id => section_id,
+        :assignment_id => assignment_id,
+        :user_id => user_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:put, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      page_params_store(:put, path)
+      response
+      
+    end
+    
+    # Mark submission as unread
+    def mark_submission_as_unread_courses(course_id,assignment_id,user_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      raise "user_id is required" if user_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :assignment_id => assignment_id,
+        :user_id => user_id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{user_id}/read",
+        :course_id => course_id,
+        :assignment_id => assignment_id,
+        :user_id => user_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:delete, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      page_params_store(:delete, path)
+      response
+      
+    end
+    
+    # Mark submission as unread
+    def mark_submission_as_unread_sections(section_id,assignment_id,user_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "section_id is required" if section_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      raise "user_id is required" if user_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :section_id => section_id,
+        :assignment_id => assignment_id,
+        :user_id => user_id
+      )
+
+      # resource path
+      path = path_replace("/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{user_id}/read",
+        :section_id => section_id,
+        :assignment_id => assignment_id,
+        :user_id => user_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_params(options, query_param_keys)
+      if opts[:next_page]
+        pagination_params = page_params_load(:delete, path)
+        query_params.merge! pagination_params if pagination_params
+      end
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      page_params_store(:delete, path)
       response
       
     end
@@ -19011,6 +19220,7 @@ module Pandarus
         :pseudonym__send_confirmation__,
         :communication_channel__type__,
         :communication_channel__address__,
+        :communication_channel__confirmation_url__,
         :communication_channel__skip_confirmation__,
         
       ]
@@ -19108,41 +19318,6 @@ module Pandarus
       end
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
-      User.new(response)
-    end
-    
-    # Delete a user
-    def delete_user(account_id,id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "account_id is required" if account_id.nil?
-      raise "id is required" if id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :account_id => account_id,
-        :id => id
-      )
-
-      # resource path
-      path = path_replace("/v1/accounts/{account_id}/users/{id}",
-        :account_id => account_id,
-        :id => id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
-      response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       User.new(response)
     end
     

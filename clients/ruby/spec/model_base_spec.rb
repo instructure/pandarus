@@ -2,13 +2,10 @@ require_relative 'spec_helper'
 require 'pandarus'
 
 class TestModel < Pandarus::ModelBase
-    attr_accessor :id, :name
-    def self.attribute_map
-      {
-        :id => {:external => "id", :container => false, :type => "Integer"},
-        :name => {:external => "name", :container => false, :type => "String"}
-      }
-    end
+  include Virtus.model
+
+  attribute :id, resolve_type("Integer")
+  attribute :name, resolve_type("String")
 end
 
 describe Pandarus::ModelBase do

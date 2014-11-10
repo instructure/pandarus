@@ -27,4 +27,6 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency "footrest", "0.3.1"
   gem.add_dependency "activesupport", ">= 3.0.0"
+  gem.add_dependency "virtus", ">= 1.0.3"
+  gem.add_dependency "inflecto", ">= 0.0.2"
 end

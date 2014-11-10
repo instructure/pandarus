@@ -33,11 +33,11 @@
               "paramType": "query",
               "name": "context_codes",
               "description": "Array of context codes used to limit returned results.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -52,7 +52,7 @@
               "paramType": "query",
               "name": "include",
               "description": "Array of additional information to include. \"appointments\":: calendar event time slots for this appointment group \"child_events\":: reservations of those time slots \"participant_count\":: number of reservations \"reserved_times\":: the event id, start time and end time of reservations the current user has made)",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
@@ -61,8 +61,8 @@
                 "participant_count",
                 "reserved_times"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],
@@ -84,22 +84,22 @@
               "paramType": "form",
               "name": "appointment_group[context_codes]",
               "description": "Array of context codes (courses, e.g. course_1) this group should be linked to (1 or more). Users in the course(s) with appropriate permissions will be able to sign up for this appointment group.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": true,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "form",
               "name": "appointment_group[sub_context_codes]",
               "description": "Array of sub context codes (course sections or a single group category) this group should be linked to. Used to limit the appointment group to particular sections. If a group category is specified, students will sign up in groups and the participant_type will be \"Group\" instead of \"User\".",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -170,11 +170,11 @@
               "paramType": "form",
               "name": "appointment_group[new_appointments][X]",
               "description": "Nested array of start time/end time pairs indicating time slots for this appointment group. Refer to the example request.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -216,15 +216,15 @@
               "paramType": "query",
               "name": "include",
               "description": "Array of additional information to include. Ssee include[] argument of \"List appointment groups\" action. \"child_events\":: reservations of time slots time slots \"appointments\":: will always be returned",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
                 "child_events",
                 "appointments"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],
@@ -254,22 +254,22 @@
               "paramType": "form",
               "name": "appointment_group[context_codes]",
               "description": "Array of context codes (courses, e.g. course_1) this group should be linked to (1 or more). Users in the course(s) with appropriate permissions will be able to sign up for this appointment group.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": true,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "form",
               "name": "appointment_group[sub_context_codes]",
               "description": "Array of sub context codes (course sections or a single group category) this group should be linked to. Used to limit the appointment group to particular sections. If a group category is specified, students will sign up in groups and the participant_type will be \"Group\" instead of \"User\".",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -340,11 +340,11 @@
               "paramType": "form",
               "name": "appointment_group[new_appointments][X]",
               "description": "Nested array of start time/end time pairs indicating time slots for this appointment group. Refer to the example request.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {

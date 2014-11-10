@@ -29,29 +29,29 @@
               "paramType": "query",
               "name": "type",
               "description": "A list of enrollment types to return. Accepted values are 'StudentEnrollment', 'TeacherEnrollment', 'TaEnrollment', 'DesignerEnrollment', and 'ObserverEnrollment.' If omitted, all enrollment types are returned. This argument is ignored if `role` is given.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "query",
               "name": "role",
               "description": "A list of enrollment roles to return. Accepted values include course-level roles created by the {api:RoleOverridesController#add_role Add Role API} as well as the base enrollment types accepted by the `type` argument above.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "query",
               "name": "state",
               "description": "Filter by enrollment state. If omitted, 'active' and 'invited' enrollments are returned. When querying a user's enrollments (either via user_id argument or via user enrollments endpoint), the following additional synthetic states are supported: \"current_and_invited\"|\"current_and_future\"|\"current_and_concluded\"",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
@@ -63,8 +63,8 @@
                 "completed",
                 "inactive"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -105,29 +105,29 @@
               "paramType": "query",
               "name": "type",
               "description": "A list of enrollment types to return. Accepted values are 'StudentEnrollment', 'TeacherEnrollment', 'TaEnrollment', 'DesignerEnrollment', and 'ObserverEnrollment.' If omitted, all enrollment types are returned. This argument is ignored if `role` is given.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "query",
               "name": "role",
               "description": "A list of enrollment roles to return. Accepted values include course-level roles created by the {api:RoleOverridesController#add_role Add Role API} as well as the base enrollment types accepted by the `type` argument above.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "query",
               "name": "state",
               "description": "Filter by enrollment state. If omitted, 'active' and 'invited' enrollments are returned. When querying a user's enrollments (either via user_id argument or via user enrollments endpoint), the following additional synthetic states are supported: \"current_and_invited\"|\"current_and_future\"|\"current_and_concluded\"",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
@@ -139,8 +139,8 @@
                 "completed",
                 "inactive"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -173,29 +173,29 @@
               "paramType": "query",
               "name": "type",
               "description": "A list of enrollment types to return. Accepted values are 'StudentEnrollment', 'TeacherEnrollment', 'TaEnrollment', 'DesignerEnrollment', and 'ObserverEnrollment.' If omitted, all enrollment types are returned. This argument is ignored if `role` is given.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "query",
               "name": "role",
               "description": "A list of enrollment roles to return. Accepted values include course-level roles created by the {api:RoleOverridesController#add_role Add Role API} as well as the base enrollment types accepted by the `type` argument above.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "query",
               "name": "state",
               "description": "Filter by enrollment state. If omitted, 'active' and 'invited' enrollments are returned. When querying a user's enrollments (either via user_id argument or via user enrollments endpoint), the following additional synthetic states are supported: \"current_and_invited\"|\"current_and_future\"|\"current_and_concluded\"",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
@@ -207,8 +207,8 @@
                 "completed",
                 "inactive"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -303,8 +303,16 @@
               "paramType": "form",
               "name": "enrollment[role]",
               "description": "Assigns a custom course-level role to the user.",
-              "type": "string",
+              "type": "deprecated",
               "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment[role_id]",
+              "description": "Assigns a custom course-level role to the user.",
+              "type": "integer",
+              "format": "int64",
               "required": false
             },
             {
@@ -401,8 +409,16 @@
               "paramType": "form",
               "name": "enrollment[role]",
               "description": "Assigns a custom course-level role to the user.",
-              "type": "string",
+              "type": "deprecated",
               "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment[role_id]",
+              "description": "Assigns a custom course-level role to the user.",
+              "type": "integer",
+              "format": "int64",
               "required": false
             },
             {

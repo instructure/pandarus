@@ -27,10 +27,6 @@
       "description": "Admins"
     },
     {
-      "path": "/analytics.json",
-      "description": "Analytics"
-    },
-    {
       "path": "/announcement_external_feeds.json",
       "description": "Announcement External Feeds"
     },
@@ -139,6 +135,10 @@
       "description": "Gradebook History"
     },
     {
+      "path": "/grading_periods.json",
+      "description": "Grading Periods"
+    },
+    {
       "path": "/grading_standards.json",
       "description": "Grading Standards"
     },
@@ -235,12 +235,20 @@
       "description": "Quiz Submission Questions"
     },
     {
+      "path": "/quiz_submission_user_list.json",
+      "description": "Quiz Submission User List"
+    },
+    {
       "path": "/quiz_submissions.json",
       "description": "Quiz Submissions"
     },
     {
       "path": "/quiz_questions.json",
       "description": "QuizQuestions"
+    },
+    {
+      "path": "/quiz_submission_event.json",
+      "description": "QuizSubmissionEvent"
     },
     {
       "path": "/quizzes.json",

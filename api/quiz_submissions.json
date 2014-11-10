@@ -37,7 +37,7 @@
               "paramType": "query",
               "name": "include",
               "description": "Associations to include with the quiz submission.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
@@ -45,8 +45,8 @@
                 "quiz",
                 "user"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],
@@ -92,7 +92,7 @@
               "paramType": "query",
               "name": "include",
               "description": "Associations to include with the quiz submission.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
@@ -100,8 +100,8 @@
                 "quiz",
                 "user"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],

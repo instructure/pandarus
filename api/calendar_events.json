@@ -65,11 +65,11 @@
               "paramType": "query",
               "name": "context_codes",
               "description": "List of context codes of courses/groups/users whose events you want to see. If not specified, defaults to the current user (i.e personal calendar, no course/group events). Limited to 10 context codes, additional ones are ignored. The format of this field is the context type, followed by an underscore, followed by the context id. For example: course_42",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],

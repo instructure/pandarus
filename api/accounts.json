@@ -27,6 +27,25 @@
       ]
     },
     {
+      "path": "/v1/course_accounts",
+      "description": "List accounts that the current user can view through their admin course enrollments.\n(Teacher, TA, or designer enrollments).\nOnly returns \"id\", \"name\", \"workflow_state\", \"root_account_id\" and \"parent_account_id\"",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List accounts for course admins",
+          "notes": "List accounts that the current user can view through their admin course enrollments.\n(Teacher, TA, or designer enrollments).\nOnly returns \"id\", \"name\", \"workflow_state\", \"root_account_id\" and \"parent_account_id\"",
+          "nickname": "list_accounts_for_course_admins",
+          "parameters": [
+
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Account"
+          }
+        }
+      ]
+    },
+    {
       "path": "/v1/accounts/{id}",
       "description": "Retrieve information on an individual account, given by id or sis\nsis_account_id.",
       "operations": [
@@ -129,22 +148,22 @@
               "paramType": "query",
               "name": "by_teachers",
               "description": "List of User IDs of teachers; if supplied, include only courses taught by one of the referenced users.",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             },
             {
               "paramType": "query",
               "name": "by_subaccounts",
               "description": "List of Account IDs; if supplied, include only courses associated with one of the referenced subaccounts.",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             },
             {
@@ -159,7 +178,7 @@
               "paramType": "query",
               "name": "state",
               "description": "If set, only return courses that are in the given state(s). By default, all states but \"deleted\" are returned.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
@@ -170,8 +189,8 @@
                 "deleted",
                 "all"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -258,6 +277,37 @@
             }
           ],
           "type": "Account"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/users/{user_id}",
+      "description": "Delete a user record from a Canvas root account. If a user is associated\nwith multiple root accounts (in a multi-tenant instance of Canvas), this\naction will NOT remove them from the other accounts.\n\nWARNING: This API will allow a user to remove themselves from the account.\nIf they do this, they won't be able to make API calls or log into Canvas at\nthat account.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete a user from the root account",
+          "notes": "Delete a user record from a Canvas root account. If a user is associated\nwith multiple root accounts (in a multi-tenant instance of Canvas), this\naction will NOT remove them from the other accounts.\n\nWARNING: This API will allow a user to remove themselves from the account.\nIf they do this, they won't be able to make API calls or log into Canvas at\nthat account.",
+          "nickname": "delete_user_from_root_account",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "User"
         }
       ]
     },

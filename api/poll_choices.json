@@ -83,33 +83,33 @@
               "paramType": "form",
               "name": "poll_choices[text]",
               "description": "The descriptive text of the poll choice.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": true,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "form",
               "name": "poll_choices[is_correct]",
               "description": "Whether this poll choice is considered correct or not. Defaults to false.",
-              "type": "boolean",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "$ref": "boolean"
               }
             },
             {
               "paramType": "form",
               "name": "poll_choices[position]",
               "description": "The order this poll choice should be returned in the context it's sibling poll choices.",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             }
           ],
@@ -147,33 +147,33 @@
               "paramType": "form",
               "name": "poll_choices[text]",
               "description": "The descriptive text of the poll choice.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": true,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "form",
               "name": "poll_choices[is_correct]",
               "description": "Whether this poll choice is considered correct or not. Defaults to false.",
-              "type": "boolean",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "$ref": "boolean"
               }
             },
             {
               "paramType": "form",
               "name": "poll_choices[position]",
               "description": "The order this poll choice should be returned in the context it's sibling poll choices.",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             }
           ],

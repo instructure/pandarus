@@ -76,11 +76,11 @@
               "paramType": "form",
               "name": "poll_submissions[poll_choice_id]",
               "description": "The chosen poll choice for this submission.",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": true,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             }
           ],

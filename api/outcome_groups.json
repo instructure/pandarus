@@ -720,22 +720,22 @@
               "paramType": "form",
               "name": "ratings[description]",
               "description": "The description of a rating level for the embedded rubric criterion.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "form",
               "name": "ratings[points]",
               "description": "The points corresponding to a rating level for the embedded rubric criterion.",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             }
           ],
@@ -813,22 +813,22 @@
               "paramType": "form",
               "name": "ratings[description]",
               "description": "The description of a rating level for the embedded rubric criterion.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "form",
               "name": "ratings[points]",
               "description": "The points corresponding to a rating level for the embedded rubric criterion.",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             }
           ],
@@ -914,22 +914,22 @@
               "paramType": "form",
               "name": "ratings[description]",
               "description": "The description of a rating level for the embedded rubric criterion.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "form",
               "name": "ratings[points]",
               "description": "The points corresponding to a rating level for the embedded rubric criterion.",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             }
           ],
@@ -1015,22 +1015,22 @@
               "paramType": "form",
               "name": "ratings[description]",
               "description": "The description of a rating level for the embedded rubric criterion.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "form",
               "name": "ratings[points]",
               "description": "The points corresponding to a rating level for the embedded rubric criterion.",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             }
           ],
@@ -1116,22 +1116,22 @@
               "paramType": "form",
               "name": "ratings[description]",
               "description": "The description of a rating level for the embedded rubric criterion.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "form",
               "name": "ratings[points]",
               "description": "The points corresponding to a rating level for the embedded rubric criterion.",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             }
           ],
@@ -1217,22 +1217,22 @@
               "paramType": "form",
               "name": "ratings[description]",
               "description": "The description of a rating level for the embedded rubric criterion.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "form",
               "name": "ratings[points]",
               "description": "The points corresponding to a rating level for the embedded rubric criterion.",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             }
           ],

@@ -1,0 +1,68 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/quiz_submission_user_list",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{id}/submission_users/message",
+      "description": "{\n  \"body\": {\n    \"type\": \"string\",\n    \"description\": \"message body of the conversation to be created\",\n    \"example\": \"Please take the quiz.\"\n  },\n  \"recipients\": {\n    \"type\": \"string\",\n    \"description\": \"Who to send the message to. May be either 'submitted' or 'unsubmitted'\",\n    \"example\": \"submitted\"\n  },\n  \"subject\": {\n    \"type\": \"string\",\n    \"description\": \"Subject of the new Conversation created\",\n    \"example\": \"ATTN: Quiz 101 Students\"\n  }\n}",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Send a message to unsubmitted or submitted users for the quiz",
+          "notes": "{\n  \"body\": {\n    \"type\": \"string\",\n    \"description\": \"message body of the conversation to be created\",\n    \"example\": \"Please take the quiz.\"\n  },\n  \"recipients\": {\n    \"type\": \"string\",\n    \"description\": \"Who to send the message to. May be either 'submitted' or 'unsubmitted'\",\n    \"example\": \"submitted\"\n  },\n  \"subject\": {\n    \"type\": \"string\",\n    \"description\": \"Subject of the new Conversation created\",\n    \"example\": \"ATTN: Quiz 101 Students\"\n  }\n}",
+          "nickname": "send_message_to_unsubmitted_or_submitted_users_for_quiz",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "QuizSubmissionUserList": {
+      "id": "QuizSubmissionUserList",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": null
+    },
+    "QuizSubmissionUserListMeta": {
+      "id": "QuizSubmissionUserListMeta",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": null
+    },
+    "JSONAPIPagination": {
+      "id": "JSONAPIPagination",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": null
+    }
+  }
+}

@@ -180,11 +180,11 @@
               "paramType": "form",
               "name": "order",
               "description": "no description",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": true,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             }
           ],

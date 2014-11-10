@@ -98,11 +98,11 @@
               "paramType": "query",
               "name": "content_types",
               "description": "Filter results by content-type. You can specify type/subtype pairs (e.g., 'image/jpeg'), or simply types (e.g., 'image', which will match 'image/gif', 'image/jpeg', etc.).",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -117,14 +117,14 @@
               "paramType": "query",
               "name": "include",
               "description": "Array of additional information to include. \"user\":: the user who uploaded the file or last edited its content",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
                 "user"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -185,11 +185,11 @@
               "paramType": "query",
               "name": "content_types",
               "description": "Filter results by content-type. You can specify type/subtype pairs (e.g., 'image/jpeg'), or simply types (e.g., 'image', which will match 'image/gif', 'image/jpeg', etc.).",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -204,14 +204,14 @@
               "paramType": "query",
               "name": "include",
               "description": "Array of additional information to include. \"user\":: the user who uploaded the file or last edited its content",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
                 "user"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -272,11 +272,11 @@
               "paramType": "query",
               "name": "content_types",
               "description": "Filter results by content-type. You can specify type/subtype pairs (e.g., 'image/jpeg'), or simply types (e.g., 'image', which will match 'image/gif', 'image/jpeg', etc.).",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -291,14 +291,14 @@
               "paramType": "query",
               "name": "include",
               "description": "Array of additional information to include. \"user\":: the user who uploaded the file or last edited its content",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
                 "user"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -359,11 +359,11 @@
               "paramType": "query",
               "name": "content_types",
               "description": "Filter results by content-type. You can specify type/subtype pairs (e.g., 'image/jpeg'), or simply types (e.g., 'image', which will match 'image/gif', 'image/jpeg', etc.).",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -378,14 +378,14 @@
               "paramType": "query",
               "name": "include",
               "description": "Array of additional information to include. \"user\":: the user who uploaded the file or last edited its content",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
                 "user"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -469,14 +469,14 @@
               "paramType": "query",
               "name": "include",
               "description": "Array of additional information to include. \"user\":: the user who uploaded the file or last edited its content",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
                 "user"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],

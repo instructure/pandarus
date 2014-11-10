@@ -13,9 +13,9 @@
       "operations": [
         {
           "method": "GET",
-          "summary": "",
+          "summary": "Search account domains",
           "notes": "Returns a list of up to 5 matching account domains\n\nPartial match on name / domain are supported",
-          "nickname": "",
+          "nickname": "search_account_domains",
           "parameters": [
             {
               "paramType": "query",

@@ -34,11 +34,11 @@
               "paramType": "query",
               "name": "filter",
               "description": "When set, only return conversations for the specified courses, groups or users. The id should be prefixed with its type, e.g. \"user_123\" or \"course_456\". Can be an array (by setting \"filter[]\") or single value (by setting \"filter\")",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -93,11 +93,11 @@
               "paramType": "form",
               "name": "recipients",
               "description": "An array of recipient ids. These may be user ids or course/group ids prefixed with \"course_\" or \"group_\" respectively, e.g. recipients[]=1&recipients[]=2&recipients[]=course_3",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": true,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -128,11 +128,11 @@
               "paramType": "form",
               "name": "attachment_ids",
               "description": "An array of attachments ids. These must be files that have been previously uploaded to the sender's \"conversation attachments\" folder.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -192,11 +192,11 @@
               "paramType": "form",
               "name": "filter",
               "description": "Used when generating \"visible\" in the API response. See the explanation under the {api:ConversationsController#index index API action}",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -284,11 +284,11 @@
               "paramType": "query",
               "name": "filter",
               "description": "Used when generating \"visible\" in the API response. See the explanation under the {api:ConversationsController#index index API action}",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -389,11 +389,11 @@
               "paramType": "form",
               "name": "filter",
               "description": "Used when generating \"visible\" in the API response. See the explanation under the {api:ConversationsController#index index API action}",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -475,11 +475,11 @@
               "paramType": "form",
               "name": "recipients",
               "description": "An array of recipient ids. These may be user ids or course/group ids prefixed with \"course_\" or \"group_\" respectively, e.g. recipients[]=1&recipients[]=2&recipients[]=course_3",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": true,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],
@@ -517,11 +517,11 @@
               "paramType": "form",
               "name": "attachment_ids",
               "description": "An array of attachments ids. These must be files that have been previously uploaded to the sender's \"conversation attachments\" folder.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -548,22 +548,22 @@
               "paramType": "form",
               "name": "recipients",
               "description": "no description",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "form",
               "name": "included_messages",
               "description": "no description",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -601,11 +601,11 @@
               "paramType": "form",
               "name": "remove",
               "description": "Array of message ids to be deleted",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": true,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],
@@ -627,11 +627,11 @@
               "paramType": "form",
               "name": "conversation_ids",
               "description": "List of conversations to update. Limited to 500 conversations.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": true,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -744,15 +744,24 @@
         },
         "properties": {
           "description": "Additional conversation flags (last_author, attachments, media_objects). Each listed property means the flag is set to true (i.e. the current user is the most recent author, there are attachments, or there are media objects)",
-          "type": "[string]"
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "audience": {
           "description": "Array of user ids who are involved in the conversation, ordered by participation level, then alphabetical. Excludes current user, unless this is a monologue.",
-          "type": "[integer]"
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
         },
         "audience_contexts": {
           "description": "Most relevant shared contexts (courses and groups) between current user and other participants. If there is only one participant, it will also include that user's enrollment(s)/ membership type(s) in each course/group.",
-          "type": "[string]"
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "avatar_url": {
           "description": "URL to appropriate icon for this conversation (custom, individual or group avatar, depending on audience).",
@@ -761,7 +770,10 @@
         },
         "participants": {
           "description": "Array of users (id, name) participating in the conversation. Includes current user.",
-          "type": "[string]"
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "visible": {
           "description": "indicates whether the conversation is visible under the current scope and filter. This attribute is always true in the index API response, and is primarily useful in create/update responses so that you can know if the record should be displayed in the UI. The default scope is assumed, unless a scope or filter is passed to the create/update API call.",

@@ -29,14 +29,14 @@
               "paramType": "query",
               "name": "include",
               "description": "Optionally include external tool tabs in the returned list of tabs (Only has effect for courses, not groups)",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
                 "external"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],
@@ -66,14 +66,14 @@
               "paramType": "query",
               "name": "include",
               "description": "Optionally include external tool tabs in the returned list of tabs (Only has effect for courses, not groups)",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
                 "external"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],

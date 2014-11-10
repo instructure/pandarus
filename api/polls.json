@@ -60,22 +60,22 @@
               "paramType": "form",
               "name": "polls[question]",
               "description": "The title of the poll.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": true,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "form",
               "name": "polls[description]",
               "description": "A brief description or instructions for the poll.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],
@@ -105,22 +105,22 @@
               "paramType": "form",
               "name": "polls[question]",
               "description": "The title of the poll.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": true,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "form",
               "name": "polls[description]",
               "description": "A brief description or instructions for the poll.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],

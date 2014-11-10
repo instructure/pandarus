@@ -37,44 +37,44 @@
               "paramType": "form",
               "name": "quiz_groups[name]",
               "description": "The name of the question group.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "form",
               "name": "quiz_groups[pick_count]",
               "description": "The number of questions to randomly select for this group.",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             },
             {
               "paramType": "form",
               "name": "quiz_groups[question_points]",
               "description": "The number of points to assign to each question in the group.",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             },
             {
               "paramType": "form",
               "name": "quiz_groups[assessment_question_bank_id]",
               "description": "The id of the assessment question bank to pull questions from.",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             }
           ],
@@ -120,33 +120,33 @@
               "paramType": "form",
               "name": "quiz_groups[name]",
               "description": "The name of the question group.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "form",
               "name": "quiz_groups[pick_count]",
               "description": "The number of questions to randomly select for this group.",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             },
             {
               "paramType": "form",
               "name": "quiz_groups[question_points]",
               "description": "The number of points to assign to each question in the group.",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             }
           ],
@@ -231,25 +231,25 @@
               "paramType": "form",
               "name": "order[id]",
               "description": "The associated item's unique identifier",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": true,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             },
             {
               "paramType": "form",
               "name": "order[type]",
               "description": "The type of item is always 'question' for a group",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
                 "question"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],

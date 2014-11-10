@@ -29,15 +29,15 @@
               "paramType": "query",
               "name": "include",
               "description": "- \"items\": Return module items inline if possible. This parameter suggests that Canvas return module items directly in the Module object JSON, to avoid having to make separate API requests for each module when enumerating modules and items. Canvas is free to omit 'items' for any particular module if it deems them too numerous to return inline. Callers must be prepared to use the {api:ContextModuleItemsApiController#index List Module Items API} if items are not returned. - \"content_details\": Requires include['items']. Returns additional details with module items specific to their associated content items. Includes standard lock information for each item.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
                 "items",
                 "content_details"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -94,15 +94,15 @@
               "paramType": "query",
               "name": "include",
               "description": "- \"items\": Return module items inline if possible. This parameter suggests that Canvas return module items directly in the Module object JSON, to avoid having to make separate API requests for each module when enumerating modules and items. Canvas is free to omit 'items' for any particular module if it deems them too numerous to return inline. Callers must be prepared to use the {api:ContextModuleItemsApiController#index List Module Items API} if items are not returned. - \"content_details\": Requires include['items']. Returns additional details with module items specific to their associated content items. Includes standard lock information for each item.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
                 "items",
                 "content_details"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -172,11 +172,11 @@
               "paramType": "form",
               "name": "module[prerequisite_module_ids]",
               "description": "IDs of Modules that must be completed before this one is unlocked. Prerequisite modules must precede this module (i.e. have a lower position value), otherwise they will be ignored",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -254,11 +254,11 @@
               "paramType": "form",
               "name": "module[prerequisite_module_ids]",
               "description": "IDs of Modules that must be completed before this one is unlocked Prerequisite modules must precede this module (i.e. have a lower position value), otherwise they will be ignored",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -343,14 +343,14 @@
               "paramType": "query",
               "name": "include",
               "description": "If included, will return additional details specific to the content associated with each item. Refer to the {api:Modules:Module%20Item Module Item specification} for more details. Includes standard lock information for each item.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
                 "content_details"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -415,14 +415,14 @@
               "paramType": "query",
               "name": "include",
               "description": "If included, will return additional details specific to the content associated with this item. Refer to the {api:Modules:Module%20Item Module Item specification} for more details. Includes standard lock information for each item.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
                 "content_details"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {

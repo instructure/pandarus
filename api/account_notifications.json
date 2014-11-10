@@ -76,11 +76,11 @@
               "paramType": "form",
               "name": "account_notification_roles",
               "description": "The role(s) to send global notification to. Note: ommitting this field will send to everyone Example: account_notification_roles: [\"StudentEnrollment\", \"TeacherEnrollment\"]",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],
@@ -135,11 +135,19 @@
           }
         },
         "roles": {
-          "description": "The roles to send the notification to.  If roles is not passed it defaults to all roles",
+          "description": "(Deprecated) The roles to send the notification to.  If roles is not passed it defaults to all roles",
           "example": "[\"StudentEnrollment\"]",
           "type": "array",
           "items": {
             "type": "string"
+          }
+        },
+        "role_ids": {
+          "description": "The roles to send the notification to.  If roles is not passed it defaults to all roles",
+          "example": "[1]",
+          "type": "array",
+          "items": {
+            "type": "integer"
           }
         }
       }

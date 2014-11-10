@@ -29,7 +29,7 @@
               "paramType": "query",
               "name": "include",
               "description": "Associations to include with the group. \"discussion_topic\", \"all_dates\" \"assignment_visibility\" are only valid are only valid if \"assignments\" is also included. The \"assignment_visibility\" option additionally requires that the Differentiated Assignments course feature be turned on.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
@@ -38,8 +38,8 @@
                 "all_dates",
                 "assignment_visibility"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -88,7 +88,7 @@
               "paramType": "query",
               "name": "include",
               "description": "Associations to include with the group. \"discussion_topic\" and \"assignment_visibility\" are only valid if \"assignments\" is also included. The \"assignment_visibility\" option additionally requires that the Differentiated Assignments course feature be turned on.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
@@ -96,8 +96,8 @@
                 "discussion_topic",
                 "assignment_visibility"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {

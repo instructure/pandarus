@@ -10,27 +10,27 @@ popd > /dev/null
 # [OPTIONAL]: Build the Canvas API docs and corresponding JSON files.
 #
 # Comment this out if you don't want to re-generate the Canvas API spec.
-set -x
-cd "$CANVAS_DIR" && (
-  set +x
-  echo `pwd`
-  set -x
-  CANVAS_DOMAIN="https://canvas.instructure.com" bundle exec rake doc:api
-)
+# set -x
+# cd "$CANVAS_DIR" && (
+#   set +x
+#   echo `pwd`
+#   set -x
+#   CANVAS_DOMAIN="https://canvas.instructure.com" bundle exec rake doc:api
+# )
 
 # [OPTIONAL]: Remove the pandarus/api directory and re-populate it with JSON
 # files from the Canvas "rake doc:api" process.
 #
 # Comment this out if you don't want to overwrite the Pandarus gem's built-in
 # Canvas API spec.
-cd "$SCRIPT_DIR" && (
-  set +x
-  echo `pwd`
-  set -x
-  rm -rf ./api &&
-  mkdir api &&
-  cp ${CANVAS_DIR}/public/doc/api/*.json api/
-)
+# cd "$SCRIPT_DIR" && (
+#   set +x
+#   echo `pwd`
+#   set -x
+#   rm -rf ./api &&
+#   mkdir api &&
+#   cp ${CANVAS_DIR}/public/doc/api/*.json api/
+# )
 
 # Build the Ruby gem and install it locally
 cd "$SCRIPT_DIR" && (

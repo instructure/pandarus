@@ -37,11 +37,11 @@
               "paramType": "query",
               "name": "exclude",
               "description": "Array of ids to exclude from the search. These may be user ids or course/group ids prefixed with \"course_\" or \"group_\" respectively, e.g. exclude[]=1&exclude[]=2&exclude[]=course_3",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -76,11 +76,11 @@
               "paramType": "query",
               "name": "permissions",
               "description": "Array of permission strings to be checked for each matched context (e.g. \"send_messages\"). This argument determines which permissions may be returned in the response; it won't prevent contexts from being returned if they don't grant the permission(s).",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],
@@ -118,11 +118,11 @@
               "paramType": "query",
               "name": "exclude",
               "description": "Array of ids to exclude from the search. These may be user ids or course/group ids prefixed with \"course_\" or \"group_\" respectively, e.g. exclude[]=1&exclude[]=2&exclude[]=course_3",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -157,12 +157,51 @@
               "paramType": "query",
               "name": "permissions",
               "description": "Array of permission strings to be checked for each matched context (e.g. \"send_messages\"). This argument determines which permissions may be returned in the response; it won't prevent contexts from being returned if they don't grant the permission(s).",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/search/all_courses",
+      "description": "List all courses visible in the public index",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List all courses",
+          "notes": "List all courses visible in the public index",
+          "nickname": "list_all_courses",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "search",
+              "description": "Search terms used for matching users/courses/groups (e.g. \"bob smith\"). If multiple terms are given (separated via whitespace), only results matching all terms will be returned.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "public_only",
+              "description": "Only return courses with public content. Defaults to false.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "open_enrollment_only",
+              "description": "Only return courses that allow self enrollment. Defaults to false.",
+              "type": "boolean",
+              "format": null,
+              "required": false
             }
           ],
           "type": "void"

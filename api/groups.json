@@ -111,14 +111,14 @@
               "paramType": "query",
               "name": "include",
               "description": "- \"permissions\": Include permissions the current user has for the group.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
                 "permissions"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],
@@ -375,11 +375,11 @@
               "paramType": "form",
               "name": "invitees",
               "description": "An array of email addresses to be sent invitations.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": true,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],
@@ -417,14 +417,14 @@
               "paramType": "query",
               "name": "include",
               "description": "- \"avatar_url\": Include users' avatar_urls.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
                 "avatar_url"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],
@@ -543,7 +543,7 @@
           "method": "GET",
           "summary": "List group memberships",
           "notes": "List the members of a group.",
-          "nickname": "list_group_memberships_memberships",
+          "nickname": "list_group_memberships",
           "parameters": [
             {
               "paramType": "path",
@@ -557,7 +557,7 @@
               "paramType": "query",
               "name": "filter_states",
               "description": "Only list memberships with the given workflow_states. By default it will return all memberships.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
@@ -565,50 +565,8 @@
                 "invited",
                 "requested"
               ],
-              "tags": {
-                "type": "array"
-              }
-            }
-          ],
-          "type": "array",
-          "items": {
-            "$ref": "GroupMembership"
-          }
-        }
-      ]
-    },
-    {
-      "path": "/v1/groups/{group_id}/users",
-      "description": "List the members of a group.",
-      "operations": [
-        {
-          "method": "GET",
-          "summary": "List group memberships",
-          "notes": "List the members of a group.",
-          "nickname": "list_group_memberships_users",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "group_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "query",
-              "name": "filter_states",
-              "description": "Only list memberships with the given workflow_states. By default it will return all memberships.",
-              "type": "string",
-              "format": null,
-              "required": false,
-              "enum": [
-                "accepted",
-                "invited",
-                "requested"
-              ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],

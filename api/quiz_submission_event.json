@@ -1,0 +1,89 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/quiz_submission_event",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}/events",
+      "description": "Store a set of events which were captured during a quiz taking session.\n\nOn success, the response will be 204 No Content with an empty body.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Submit captured events",
+          "notes": "Store a set of events which were captured during a quiz taking session.\n\nOn success, the response will be 204 No Content with an empty body.",
+          "nickname": "submit_captured_events",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "quiz_submission_events",
+              "description": "The submission events to be recorded",
+              "type": "array",
+              "format": null,
+              "required": true,
+              "items": {
+                "$ref": "array"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "QuizSubmissionEvent": {
+      "id": "QuizSubmissionEvent",
+      "description": "An event passed from the Quiz Submission take page",
+      "required": [
+
+      ],
+      "properties": {
+        "created_at": {
+          "description": "a timestamp record of creation time",
+          "example": "2014-10-08T19:29:58Z",
+          "type": "datetime"
+        },
+        "event_type": {
+          "description": "the type of event being sent",
+          "example": "question_answered",
+          "type": "string"
+        },
+        "data": {
+          "description": "the event data",
+          "example": {
+            "answer": "42"
+          },
+          "type": "object"
+        }
+      }
+    }
+  }
+}

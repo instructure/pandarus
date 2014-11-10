@@ -1,0 +1,457 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/grading_periods",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/grading_periods",
+      "description": "Returns the list of grading periods for the current course.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List grading periods",
+          "notes": "Returns the list of grading periods for the current course.",
+          "nickname": "list_grading_periods_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/grading_periods",
+      "description": "Returns the list of grading periods for the current course.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List grading periods",
+          "notes": "Returns the list of grading periods for the current course.",
+          "nickname": "list_grading_periods_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/grading_periods/{id}",
+      "description": "Returns the grading period with the given id",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single grading period",
+          "notes": "Returns the grading period with the given id",
+          "nickname": "get_single_grading_period_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/grading_periods/{id}",
+      "description": "Returns the grading period with the given id",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single grading period",
+          "notes": "Returns the grading period with the given id",
+          "nickname": "get_single_grading_period_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/grading_periods",
+      "description": "Create a new grading period for the current user",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a single grading period",
+          "notes": "Create a new grading period for the current user",
+          "nickname": "create_single_grading_period_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "grading_periods[weight]",
+              "description": "The percentage weight of how much the period should count toward the course grade.",
+              "type": "array",
+              "format": null,
+              "required": true,
+              "items": {
+                "$ref": "number"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "grading_periods[start_date]",
+              "description": "The date the grading period starts.",
+              "type": "array",
+              "format": null,
+              "required": true,
+              "items": {
+                "$ref": "date"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "grading_periods[end_date]",
+              "description": "no description",
+              "type": "array",
+              "format": null,
+              "required": true,
+              "items": {
+                "$ref": "date"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/grading_periods",
+      "description": "Create a new grading period for the current user",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a single grading period",
+          "notes": "Create a new grading period for the current user",
+          "nickname": "create_single_grading_period_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "grading_periods[weight]",
+              "description": "The percentage weight of how much the period should count toward the course grade.",
+              "type": "array",
+              "format": null,
+              "required": true,
+              "items": {
+                "$ref": "number"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "grading_periods[start_date]",
+              "description": "The date the grading period starts.",
+              "type": "array",
+              "format": null,
+              "required": true,
+              "items": {
+                "$ref": "date"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "grading_periods[end_date]",
+              "description": "no description",
+              "type": "array",
+              "format": null,
+              "required": true,
+              "items": {
+                "$ref": "date"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/grading_periods/{id}",
+      "description": "Update an existing grading period.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update a single grading period",
+          "notes": "Update an existing grading period.",
+          "nickname": "update_single_grading_period_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "grading_periods[weight]",
+              "description": "The percentage weight of how much the period should count toward the course grade.",
+              "type": "array",
+              "format": null,
+              "required": true,
+              "items": {
+                "$ref": "number"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "grading_periods[start_date]",
+              "description": "The date the grading period starts.",
+              "type": "array",
+              "format": null,
+              "required": true,
+              "items": {
+                "$ref": "date"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "grading_periods[end_date]",
+              "description": "no description",
+              "type": "array",
+              "format": null,
+              "required": true,
+              "items": {
+                "$ref": "date"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/grading_periods/{id}",
+      "description": "Update an existing grading period.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update a single grading period",
+          "notes": "Update an existing grading period.",
+          "nickname": "update_single_grading_period_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "grading_periods[weight]",
+              "description": "The percentage weight of how much the period should count toward the course grade.",
+              "type": "array",
+              "format": null,
+              "required": true,
+              "items": {
+                "$ref": "number"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "grading_periods[start_date]",
+              "description": "The date the grading period starts.",
+              "type": "array",
+              "format": null,
+              "required": true,
+              "items": {
+                "$ref": "date"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "grading_periods[end_date]",
+              "description": "no description",
+              "type": "array",
+              "format": null,
+              "required": true,
+              "items": {
+                "$ref": "date"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/grading_periods/{id}",
+      "description": "<b>204 No Content</b> response code is returned if the deletion was successful.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete a grading period",
+          "notes": "<b>204 No Content</b> response code is returned if the deletion was successful.",
+          "nickname": "delete_grading_period_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/grading_periods/{id}",
+      "description": "<b>204 No Content</b> response code is returned if the deletion was successful.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete a grading period",
+          "notes": "<b>204 No Content</b> response code is returned if the deletion was successful.",
+          "nickname": "delete_grading_period_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "GradingPeriod": {
+      "id": "GradingPeriod",
+      "description": "",
+      "required": [
+        "id",
+        "weight",
+        "start_date",
+        "end_date"
+      ],
+      "properties": {
+        "id": {
+          "description": "The unique identifier for the grading period.",
+          "example": 1023,
+          "type": "integer"
+        },
+        "weight": {
+          "description": "The weighted percentage on how much this particular period should count toward the total grade.",
+          "type": "integer",
+          "example": "25"
+        },
+        "start_date": {
+          "description": "The start date of the grading period.",
+          "example": "2014-01-07T15:04:00Z",
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_date": {
+          "description": "The end date of the grading period.",
+          "example": "2014-05-07T17:07:00Z",
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

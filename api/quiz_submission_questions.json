@@ -29,14 +29,14 @@
               "paramType": "query",
               "name": "include",
               "description": "Associations to include with the quiz submission question.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
                 "quiz_question"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],
@@ -74,14 +74,14 @@
               "paramType": "query",
               "name": "include",
               "description": "Associations to include with the quiz submission question.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
                 "quiz_question"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],
@@ -137,10 +137,16 @@
               "description": "Set of question IDs and the answer value. See {Appendix: Question Answer Formats} for the accepted answer formats for each question type.",
               "type": "array",
               "format": null,
-              "required": false
+              "required": false,
+              "items": {
+                "$ref": "quizsubmissionquestion"
+              }
             }
           ],
-          "type": "void"
+          "type": "array",
+          "items": {
+            "$ref": "QuizSubmissionQuestion"
+          }
         }
       ]
     },
@@ -275,7 +281,8 @@
           "type": "boolean"
         },
         "answer": {
-          "description": "The provided answer (if any) for this question. The format of this parameter depends on the type of the question, see the Appendix for more information."
+          "description": "The provided answer (if any) for this question. The format of this parameter depends on the type of the question, see the Appendix for more information.",
+          "type": "string"
         }
       }
     }

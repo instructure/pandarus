@@ -75,11 +75,11 @@
               "paramType": "form",
               "name": "submission[file_ids]",
               "description": "Submit the assignment as a set of one or more previously uploaded files residing in the submitting user's files section (or the group's files section, for group assignments). To upload a new file to submit, see the submissions {api:SubmissionsApiController#create_file Upload a file API}. Requires a submission_type of \"online_upload\".",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             },
             {
@@ -175,11 +175,11 @@
               "paramType": "form",
               "name": "submission[file_ids]",
               "description": "Submit the assignment as a set of one or more previously uploaded files residing in the submitting user's files section (or the group's files section, for group assignments). To upload a new file to submit, see the submissions {api:SubmissionsApiController#create_file Upload a file API}. Requires a submission_type of \"online_upload\".",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             },
             {
@@ -237,7 +237,7 @@
               "paramType": "query",
               "name": "include",
               "description": "Associations to include with the group.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
@@ -246,12 +246,15 @@
                 "rubric_assessment",
                 "assignment"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],
-          "type": "void"
+          "type": "array",
+          "items": {
+            "$ref": "Submission"
+          }
         }
       ]
     },
@@ -285,7 +288,7 @@
               "paramType": "query",
               "name": "include",
               "description": "Associations to include with the group.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
@@ -294,12 +297,15 @@
                 "rubric_assessment",
                 "assignment"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],
-          "type": "void"
+          "type": "array",
+          "items": {
+            "$ref": "Submission"
+          }
         }
       ]
     },
@@ -325,22 +331,22 @@
               "paramType": "query",
               "name": "student_ids",
               "description": "List of student ids to return submissions for. If this argument is omitted, return submissions for the calling user. Students may only list their own submissions. Observers may only list those of associated students. The special id \"all\" will return submissions for all students in the course/section as appropriate.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "query",
               "name": "assignment_ids",
               "description": "List of assignments to return submissions for. If none are given, submissions for all assignments are returned.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -355,7 +361,7 @@
               "paramType": "query",
               "name": "include",
               "description": "Associations to include with the group. `total_scores` requires the `grouped` argument.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
@@ -365,8 +371,8 @@
                 "assignment",
                 "total_scores"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],
@@ -396,22 +402,22 @@
               "paramType": "query",
               "name": "student_ids",
               "description": "List of student ids to return submissions for. If this argument is omitted, return submissions for the calling user. Students may only list their own submissions. Observers may only list those of associated students. The special id \"all\" will return submissions for all students in the course/section as appropriate.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
               "paramType": "query",
               "name": "assignment_ids",
               "description": "List of assignments to return submissions for. If none are given, submissions for all assignments are returned.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             },
             {
@@ -426,7 +432,7 @@
               "paramType": "query",
               "name": "include",
               "description": "Associations to include with the group. `total_scores` requires the `grouped` argument.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
@@ -436,8 +442,8 @@
                 "assignment",
                 "total_scores"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],
@@ -483,7 +489,7 @@
               "paramType": "query",
               "name": "include",
               "description": "Associations to include with the group.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
@@ -491,8 +497,8 @@
                 "submission_comments",
                 "rubric_assessment"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],
@@ -538,7 +544,7 @@
               "paramType": "query",
               "name": "include",
               "description": "Associations to include with the group.",
-              "type": "string",
+              "type": "array",
               "format": null,
               "required": false,
               "enum": [
@@ -546,8 +552,8 @@
                 "submission_comments",
                 "rubric_assessment"
               ],
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "string"
               }
             }
           ],
@@ -707,11 +713,11 @@
               "paramType": "form",
               "name": "comment[file_ids]",
               "description": "Attach files to this comment that were previously uploaded using the Submission Comment API's files action",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             },
             {
@@ -809,11 +815,11 @@
               "paramType": "form",
               "name": "comment[file_ids]",
               "description": "Attach files to this comment that were previously uploaded using the Submission Comment API's files action",
-              "type": "integer",
+              "type": "array",
               "format": "int64",
               "required": false,
-              "tags": {
-                "type": "array"
+              "items": {
+                "type": "integer"
               }
             },
             {
@@ -831,6 +837,162 @@
               "type": "rubricassessment",
               "format": null,
               "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{user_id}/read",
+      "description": "No request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Mark submission as read",
+          "notes": "No request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
+          "nickname": "mark_submission_as_read_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{user_id}/read",
+      "description": "No request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Mark submission as read",
+          "notes": "No request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
+          "nickname": "mark_submission_as_read_sections",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "section_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{user_id}/read",
+      "description": "No request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Mark submission as unread",
+          "notes": "No request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
+          "nickname": "mark_submission_as_unread_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{user_id}/read",
+      "description": "No request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Mark submission as unread",
+          "notes": "No request fields are necessary.\n\nOn success, the response will be 204 No Content with an empty body.",
+          "nickname": "mark_submission_as_unread_sections",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "section_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
             }
           ],
           "type": "void"

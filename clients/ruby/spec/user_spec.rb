@@ -12,12 +12,8 @@ describe Pandarus::User do
         :login_id => "duane",
         :last_login => "2013-12-01",
         :enrollments => [
-          {
-            :course_id => 1
-          },
-          {
-            :course_id => 2
-          }
+          Pandarus::Enrollment.new(:course_id => 1),
+          Pandarus::Enrollment.new(:course_id => 2)
         ]
       )
     }
