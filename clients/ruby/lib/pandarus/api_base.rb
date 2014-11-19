@@ -31,18 +31,31 @@ module Pandarus
       "#{method}:#{path}"
     end
 
-    def page_params_store(method, path, url=@response.env[:next_page])
-      uri = URI.parse(url)
-      params = Hash[URI.decode_www_form(uri.query)]
-      @pagination_params[remember_key(method, path)] = params
+    def parse_page_params!(url)
+      return nil if url.nil?
+      uri = URI.parse url
+      Hash[URI.decode_www_form(uri.query)]
     rescue URI::InvalidURIError
       nil
+    end
+
+    def page_params_store(method, path, response=@response.env)
+      @pagination_params[remember_key(method, path)] = {
+        next: parse_page_params!(response[:next_page]),
+        current: parse_page_params!(response[:current_page]),
+        last: parse_page_params!(response[:last_page])
+      }
     end
 
     def page_params_load(method, path)
       @pagination_params[remember_key(method, path)]
     end
 
+    def was_last_page?(method, path)
+      params = @pagination_params[remember_key(method, path)]
+      return false if params.nil? || params[:current].nil? || params[:last].nil?
+      return (params[:current] == params[:last])
+    end
 
     def underscored_merge_opts(opts, base)
       base.merge(opts).merge(underscored_flatten_hash(opts))

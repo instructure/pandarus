@@ -31,9 +31,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -63,10 +67,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       AccountAuthorizationConfig.new(response)
@@ -98,10 +99,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       AccountAuthorizationConfig.new(response)
@@ -133,10 +131,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       AccountAuthorizationConfig.new(response)
@@ -168,10 +163,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -201,10 +193,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       DiscoveryUrl.new(response)
@@ -233,10 +222,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       DiscoveryUrl.new(response)
@@ -265,10 +251,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -300,10 +283,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -347,10 +327,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -380,10 +357,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -417,10 +391,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       Report.new(response)
@@ -452,9 +423,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -492,10 +467,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Report.new(response)
@@ -530,10 +502,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       Report.new(response)
@@ -561,9 +530,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -592,9 +565,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -624,10 +601,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Account.new(response)
@@ -656,9 +630,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -696,9 +674,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -733,10 +715,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       Account.new(response)
@@ -768,10 +747,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       User.new(response)
@@ -806,9 +782,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:post, path)
+        page_params = page_params_load(:post, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -844,10 +824,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       Admin.new(response)
@@ -880,10 +857,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       Admin.new(response)
@@ -912,9 +886,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -944,9 +922,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -976,9 +958,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -1013,10 +999,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       ExternalFeed.new(response)
@@ -1050,10 +1033,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       ExternalFeed.new(response)
@@ -1085,10 +1065,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       ExternalFeed.new(response)
@@ -1120,10 +1097,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       ExternalFeed.new(response)
@@ -1154,10 +1128,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -1201,10 +1172,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -1234,10 +1202,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -1281,10 +1246,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -1314,10 +1276,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -1347,10 +1306,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -1380,10 +1336,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -1414,9 +1367,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -1450,10 +1407,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       AssignmentGroup.new(response)
@@ -1486,10 +1440,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       AssignmentGroup.new(response)
@@ -1521,10 +1472,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       AssignmentGroup.new(response)
@@ -1556,10 +1504,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       AssignmentGroup.new(response)
@@ -1591,10 +1536,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       Assignment.new(response)
@@ -1626,9 +1568,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -1663,10 +1609,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Assignment.new(response)
@@ -1723,10 +1666,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       Assignment.new(response)
@@ -1784,10 +1724,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       Assignment.new(response)
@@ -1819,9 +1756,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -1857,10 +1798,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       AssignmentOverride.new(response)
@@ -1892,10 +1830,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -1928,10 +1863,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -1971,10 +1903,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       AssignmentOverride.new(response)
@@ -2014,10 +1943,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       AssignmentOverride.new(response)
@@ -2052,10 +1978,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       AssignmentOverride.new(response)
@@ -2085,10 +2008,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -2119,10 +2039,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -2153,10 +2070,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -2190,9 +2104,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -2233,10 +2151,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -2266,10 +2181,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       CalendarEvent.new(response)
@@ -2300,10 +2212,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -2337,10 +2246,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -2383,10 +2289,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -2416,10 +2319,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -2449,9 +2349,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -2483,9 +2387,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -2515,9 +2423,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -2554,10 +2466,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       CommunicationChannel.new(response)
@@ -2589,10 +2498,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       CommunicationChannel.new(response)
@@ -2627,10 +2533,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       CommunicationChannel.new(response)
@@ -2659,9 +2562,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -2691,9 +2598,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -2723,9 +2634,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -2755,9 +2670,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -2787,9 +2706,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -2822,10 +2745,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       ContentExport.new(response)
@@ -2857,10 +2777,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       ContentExport.new(response)
@@ -2892,10 +2809,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       ContentExport.new(response)
@@ -2928,10 +2842,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       ContentExport.new(response)
@@ -2964,10 +2875,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       ContentExport.new(response)
@@ -3000,10 +2908,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       ContentExport.new(response)
@@ -3035,9 +2940,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -3070,9 +2979,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -3105,9 +3018,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -3140,9 +3057,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -3178,10 +3099,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       MigrationIssue.new(response)
@@ -3216,10 +3134,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       MigrationIssue.new(response)
@@ -3254,10 +3169,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       MigrationIssue.new(response)
@@ -3292,10 +3204,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       MigrationIssue.new(response)
@@ -3333,10 +3242,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       MigrationIssue.new(response)
@@ -3374,10 +3280,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       MigrationIssue.new(response)
@@ -3415,10 +3318,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       MigrationIssue.new(response)
@@ -3456,10 +3356,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       MigrationIssue.new(response)
@@ -3488,9 +3385,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -3520,9 +3421,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -3552,9 +3457,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -3584,9 +3493,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -3619,10 +3532,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       ContentMigration.new(response)
@@ -3654,10 +3564,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       ContentMigration.new(response)
@@ -3689,10 +3596,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       ContentMigration.new(response)
@@ -3724,10 +3628,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       ContentMigration.new(response)
@@ -3774,10 +3675,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       ContentMigration.new(response)
@@ -3824,10 +3722,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       ContentMigration.new(response)
@@ -3874,10 +3769,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       ContentMigration.new(response)
@@ -3924,10 +3816,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       ContentMigration.new(response)
@@ -3959,10 +3848,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       ContentMigration.new(response)
@@ -3994,10 +3880,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       ContentMigration.new(response)
@@ -4029,10 +3912,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       ContentMigration.new(response)
@@ -4064,10 +3944,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       ContentMigration.new(response)
@@ -4096,9 +3973,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -4128,9 +4009,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -4160,9 +4045,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -4192,9 +4081,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -4227,9 +4120,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -4274,10 +4171,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -4306,10 +4200,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -4343,10 +4234,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -4383,10 +4271,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -4415,10 +4300,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -4448,10 +4330,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -4484,10 +4363,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -4526,10 +4402,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -4562,10 +4435,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -4599,10 +4469,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       Progress.new(response)
@@ -4630,10 +4497,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -4662,10 +4526,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -4696,9 +4557,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -4736,10 +4601,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -4772,9 +4634,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -4828,10 +4694,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       Course.new(response)
@@ -4860,10 +4723,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -4893,9 +4753,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -4930,9 +4794,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -4967,9 +4835,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -4999,9 +4871,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -5034,10 +4910,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       User.new(response)
@@ -5067,10 +4940,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -5100,10 +4970,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -5133,10 +5000,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -5166,10 +5030,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -5201,10 +5062,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -5234,10 +5092,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -5270,10 +5125,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -5303,10 +5155,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Course.new(response)
@@ -5338,10 +5187,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Course.new(response)
@@ -5396,10 +5242,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -5435,10 +5278,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       Progress.new(response)
@@ -5470,10 +5310,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -5506,10 +5343,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -5539,9 +5373,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -5577,10 +5415,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       CustomColumn.new(response)
@@ -5612,10 +5447,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       CustomColumn.new(response)
@@ -5647,10 +5479,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       CustomColumn.new(response)
@@ -5682,10 +5511,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -5718,9 +5544,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -5759,10 +5589,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       ColumnDatum.new(response)
@@ -5794,9 +5621,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -5829,9 +5660,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -5874,10 +5709,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -5920,10 +5752,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -5969,10 +5798,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -6018,10 +5844,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -6054,10 +5877,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -6090,10 +5910,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -6126,10 +5943,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -6162,10 +5976,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -6202,10 +6013,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -6242,10 +6050,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -6281,10 +6086,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -6320,10 +6122,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -6356,10 +6155,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -6392,10 +6188,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -6428,10 +6221,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -6464,10 +6254,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -6502,10 +6289,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -6540,10 +6324,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -6576,10 +6357,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -6612,10 +6390,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -6653,10 +6428,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -6694,10 +6466,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -6733,10 +6502,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -6772,10 +6538,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -6808,10 +6571,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -6844,10 +6604,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -6880,10 +6637,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -6916,10 +6670,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -6952,10 +6703,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -6988,10 +6736,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -7025,10 +6770,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -7062,10 +6804,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -7098,10 +6837,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -7134,10 +6870,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -7174,10 +6907,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -7214,10 +6944,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -7253,10 +6980,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -7292,10 +7016,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -7328,10 +7049,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -7364,10 +7082,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -7400,10 +7115,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -7436,10 +7148,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -7469,9 +7178,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -7504,9 +7217,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -7539,9 +7256,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -7573,9 +7294,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -7608,10 +7333,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Enrollment.new(response)
@@ -7653,10 +7375,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       Enrollment.new(response)
@@ -7698,10 +7417,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       Enrollment.new(response)
@@ -7733,10 +7449,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       Enrollment.new(response)
@@ -7766,10 +7479,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -7800,10 +7510,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -7836,10 +7543,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -7872,10 +7576,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -7908,10 +7609,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -7944,10 +7642,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -8020,10 +7715,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -8096,10 +7788,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -8132,10 +7821,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -8168,10 +7854,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -8204,10 +7887,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -8240,10 +7920,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -8272,9 +7949,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -8304,10 +7985,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       Favorite.new(response)
@@ -8336,10 +8014,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       Favorite.new(response)
@@ -8367,10 +8042,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -8400,9 +8072,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -8432,9 +8108,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -8464,9 +8144,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -8496,10 +8180,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -8529,10 +8210,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -8562,10 +8240,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -8598,10 +8273,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       FeatureFlag.new(response)
@@ -8633,10 +8305,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       FeatureFlag.new(response)
@@ -8668,10 +8337,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       FeatureFlag.new(response)
@@ -8705,10 +8371,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       FeatureFlag.new(response)
@@ -8742,10 +8405,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       FeatureFlag.new(response)
@@ -8779,10 +8439,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       FeatureFlag.new(response)
@@ -8814,10 +8471,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       FeatureFlag.new(response)
@@ -8849,10 +8503,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       FeatureFlag.new(response)
@@ -8884,10 +8535,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       FeatureFlag.new(response)
@@ -8916,10 +8564,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -8949,10 +8594,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -8982,10 +8624,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -9019,9 +8658,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -9055,9 +8698,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -9091,9 +8738,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -9127,9 +8778,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -9159,10 +8814,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -9192,10 +8844,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       File.new(response)
@@ -9230,10 +8879,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       File.new(response)
@@ -9262,10 +8908,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -9295,9 +8938,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -9327,9 +8974,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -9359,9 +9010,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -9391,9 +9046,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -9423,9 +9082,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -9455,9 +9118,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -9487,9 +9154,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -9522,10 +9193,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Folder.new(response)
@@ -9557,10 +9225,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Folder.new(response)
@@ -9592,10 +9257,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Folder.new(response)
@@ -9624,10 +9286,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Folder.new(response)
@@ -9663,10 +9322,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       Folder.new(response)
@@ -9705,10 +9361,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       Folder.new(response)
@@ -9747,10 +9400,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       Folder.new(response)
@@ -9789,10 +9439,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       Folder.new(response)
@@ -9831,10 +9478,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       Folder.new(response)
@@ -9863,10 +9507,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -9896,10 +9537,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -9930,9 +9568,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -9963,9 +9605,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -9996,9 +9642,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -10029,9 +9679,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -10061,9 +9715,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -10096,9 +9754,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -10137,9 +9799,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -10171,9 +9837,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -10203,10 +9873,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -10236,10 +9903,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -10272,10 +9936,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -10308,10 +9969,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -10350,10 +10008,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -10392,10 +10047,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -10437,10 +10089,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -10482,10 +10131,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -10518,10 +10164,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -10554,10 +10197,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -10596,10 +10236,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       GradingStandard.new(response)
@@ -10637,10 +10274,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       GradingStandard.new(response)
@@ -10669,9 +10303,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -10701,9 +10339,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -10733,10 +10375,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       GroupCategory.new(response)
@@ -10773,10 +10412,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       GroupCategory.new(response)
@@ -10813,10 +10449,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       GroupCategory.new(response)
@@ -10851,10 +10484,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       GroupCategory.new(response)
@@ -10883,10 +10513,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -10916,9 +10543,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -10949,9 +10580,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -10982,10 +10617,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       GroupMembership | Progress.new(response)
@@ -11013,9 +10645,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -11045,9 +10681,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -11077,9 +10717,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -11109,10 +10753,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Group.new(response)
@@ -11145,10 +10786,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       Group.new(response)
@@ -11182,10 +10820,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       Group.new(response)
@@ -11220,10 +10855,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       Group.new(response)
@@ -11252,10 +10884,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       Group.new(response)
@@ -11287,10 +10916,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -11321,9 +10947,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -11353,10 +10983,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -11387,10 +11014,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -11420,10 +11044,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -11453,10 +11074,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -11486,9 +11104,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -11519,10 +11141,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       GroupMembership.new(response)
@@ -11556,10 +11175,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       GroupMembership.new(response)
@@ -11593,10 +11209,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       GroupMembership.new(response)
@@ -11628,10 +11241,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -11664,10 +11274,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -11700,10 +11307,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -11736,10 +11340,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -11769,10 +11370,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -11802,10 +11400,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -11835,10 +11430,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -11868,10 +11460,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -11909,10 +11498,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -11948,10 +11534,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -11984,10 +11567,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -12019,9 +11599,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -12055,10 +11639,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Module.new(response)
@@ -12095,10 +11676,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       Module.new(response)
@@ -12137,10 +11715,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       Module.new(response)
@@ -12172,10 +11747,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       Module.new(response)
@@ -12209,9 +11781,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -12248,10 +11824,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       ModuleItem.new(response)
@@ -12297,10 +11870,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       ModuleItem.new(response)
@@ -12344,10 +11914,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       ModuleItem.new(response)
@@ -12382,10 +11949,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       ModuleItem.new(response)
@@ -12415,10 +11979,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       ModuleItemSequence.new(response)
@@ -12450,9 +12011,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -12488,9 +12053,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -12526,10 +12095,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       NotificationPreference.new(response)
@@ -12567,10 +12133,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       NotificationPreference.new(response)
@@ -12605,10 +12168,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -12647,10 +12207,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -12683,10 +12240,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -12722,10 +12276,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -12754,10 +12305,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -12787,10 +12335,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -12820,10 +12365,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -12853,9 +12395,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -12885,9 +12431,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -12918,9 +12468,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -12951,9 +12505,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -12983,10 +12541,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       OutcomeGroup.new(response)
@@ -13018,10 +12573,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       OutcomeGroup.new(response)
@@ -13053,10 +12605,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       OutcomeGroup.new(response)
@@ -13089,10 +12638,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       OutcomeGroup.new(response)
@@ -13128,10 +12674,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       OutcomeGroup.new(response)
@@ -13167,10 +12710,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       OutcomeGroup.new(response)
@@ -13199,10 +12739,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       OutcomeGroup.new(response)
@@ -13234,10 +12771,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       OutcomeGroup.new(response)
@@ -13269,10 +12803,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       OutcomeGroup.new(response)
@@ -13301,9 +12832,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -13336,9 +12871,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -13371,9 +12910,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -13411,10 +12954,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       OutcomeLink.new(response)
@@ -13453,10 +12993,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       OutcomeLink.new(response)
@@ -13496,10 +13033,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       OutcomeLink.new(response)
@@ -13541,10 +13075,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       OutcomeLink.new(response)
@@ -13584,10 +13115,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       OutcomeLink.new(response)
@@ -13629,10 +13157,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       OutcomeLink.new(response)
@@ -13664,10 +13189,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       OutcomeLink.new(response)
@@ -13702,10 +13224,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       OutcomeLink.new(response)
@@ -13740,10 +13259,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       OutcomeLink.new(response)
@@ -13772,9 +13288,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -13807,9 +13327,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -13842,9 +13366,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -13879,10 +13407,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       OutcomeGroup.new(response)
@@ -13919,10 +13444,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       OutcomeGroup.new(response)
@@ -13959,10 +13481,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       OutcomeGroup.new(response)
@@ -13994,10 +13513,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       OutcomeGroup.new(response)
@@ -14032,10 +13548,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       OutcomeGroup.new(response)
@@ -14070,10 +13583,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       OutcomeGroup.new(response)
@@ -14104,10 +13614,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -14140,10 +13647,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -14173,10 +13677,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Outcome.new(response)
@@ -14212,10 +13713,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       Outcome.new(response)
@@ -14244,10 +13742,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Page.new(response)
@@ -14276,10 +13771,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Page.new(response)
@@ -14314,10 +13806,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       Page.new(response)
@@ -14352,10 +13841,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       Page.new(response)
@@ -14387,9 +13873,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -14422,9 +13912,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -14463,10 +13957,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       Page.new(response)
@@ -14504,10 +13995,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       Page.new(response)
@@ -14539,10 +14027,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Page.new(response)
@@ -14574,10 +14059,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Page.new(response)
@@ -14616,10 +14098,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       Page.new(response)
@@ -14658,10 +14137,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       Page.new(response)
@@ -14693,10 +14169,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       Page.new(response)
@@ -14728,10 +14201,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       Page.new(response)
@@ -14763,9 +14233,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -14798,9 +14272,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -14833,10 +14311,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       PageRevision.new(response)
@@ -14868,10 +14343,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       PageRevision.new(response)
@@ -14906,10 +14378,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       PageRevision.new(response)
@@ -14944,10 +14413,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       PageRevision.new(response)
@@ -14982,10 +14448,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       PageRevision.new(response)
@@ -15020,10 +14483,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       PageRevision.new(response)
@@ -15052,10 +14512,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -15088,10 +14545,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -15126,10 +14580,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -15165,10 +14616,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -15201,10 +14649,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -15237,10 +14682,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -15273,10 +14715,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -15305,10 +14744,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -15337,10 +14773,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -15370,10 +14803,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -15406,10 +14836,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -15444,10 +14871,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -15485,10 +14909,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -15521,10 +14942,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -15560,10 +14978,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -15599,10 +15014,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -15631,10 +15043,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -15664,10 +15073,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -15699,10 +15105,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -15736,10 +15139,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -15769,10 +15169,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -15802,10 +15199,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Progress.new(response)
@@ -15834,9 +15228,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -15877,10 +15275,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -15913,10 +15308,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -15953,10 +15345,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -15995,10 +15384,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -16034,10 +15420,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -16077,10 +15460,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -16113,9 +15493,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -16153,10 +15537,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       QuizReport.new(response)
@@ -16191,10 +15572,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       QuizReport.new(response)
@@ -16226,10 +15604,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -16264,10 +15639,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -16297,10 +15669,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -16333,10 +15702,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -16374,9 +15740,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:post, path)
+        page_params = page_params_load(:post, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -16416,10 +15786,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -16459,10 +15826,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -16495,10 +15859,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -16531,10 +15892,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -16570,10 +15928,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -16608,10 +15963,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -16652,10 +16004,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -16698,10 +16047,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -16734,9 +16080,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -16772,10 +16122,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       QuizQuestion.new(response)
@@ -16818,10 +16165,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       QuizQuestion.new(response)
@@ -16867,10 +16211,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       QuizQuestion.new(response)
@@ -16905,10 +16246,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -16947,10 +16285,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -16980,9 +16315,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -17015,10 +16354,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Quiz.new(response)
@@ -17070,10 +16406,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       Quiz.new(response)
@@ -17106,10 +16439,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       Quiz.new(response)
@@ -17141,10 +16471,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       Quiz.new(response)
@@ -17180,10 +16507,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -17213,9 +16537,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -17250,10 +16578,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Role.new(response)
@@ -17289,10 +16614,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       Role.new(response)
@@ -17326,10 +16648,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       Role.new(response)
@@ -17364,10 +16683,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       Role.new(response)
@@ -17401,10 +16717,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       Role.new(response)
@@ -17433,9 +16746,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -17473,10 +16790,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       SisImport.new(response)
@@ -17508,10 +16822,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       SisImport.new(response)
@@ -17545,10 +16856,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -17583,10 +16891,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -17617,10 +16922,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -17650,9 +16952,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -17686,10 +16992,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       Section.new(response)
@@ -17721,10 +17024,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       Section.new(response)
@@ -17753,10 +17053,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       Section.new(response)
@@ -17785,10 +17082,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       Section.new(response)
@@ -17820,10 +17114,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Section.new(response)
@@ -17852,10 +17143,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Section.new(response)
@@ -17884,10 +17172,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       Section.new(response)
@@ -17915,10 +17200,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -17947,10 +17229,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -17986,10 +17265,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -18031,10 +17307,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -18076,10 +17349,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -18112,9 +17382,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -18147,9 +17421,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -18182,10 +17460,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -18218,10 +17493,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -18257,10 +17529,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -18296,10 +17565,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -18335,10 +17601,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -18374,10 +17637,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -18420,10 +17680,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -18466,10 +17723,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -18505,10 +17759,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -18544,10 +17795,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -18583,10 +17831,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -18622,10 +17867,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -18655,10 +17897,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -18688,10 +17927,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -18726,10 +17962,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       Tab.new(response)
@@ -18758,9 +17991,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -18796,10 +18033,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       User.new(response)
@@ -18831,10 +18065,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       User.new(response)
@@ -18866,10 +18097,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       User.new(response)
@@ -18901,10 +18129,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       User.new(response)
@@ -18933,9 +18158,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -18964,10 +18193,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -18996,10 +18222,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -19028,10 +18251,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -19060,10 +18280,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -19092,10 +18309,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -19125,10 +18339,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -19157,10 +18368,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response
@@ -19190,10 +18398,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       response
@@ -19240,10 +18445,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:post, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
       User.new(response)
@@ -19272,10 +18474,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -19312,10 +18511,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       User.new(response)
@@ -19347,10 +18543,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       User.new(response)
@@ -19385,10 +18578,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       User.new(response)
@@ -19417,10 +18607,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       Profile.new(response)
@@ -19449,9 +18636,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -19482,9 +18673,13 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
       if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:get, path)
+        page_params = page_params_load(:get, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -19520,10 +18715,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:put, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
       response
@@ -19555,10 +18747,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:get, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
       response
@@ -19590,10 +18779,7 @@ module Pandarus
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
-      if opts[:next_page]
-        pagination_params = page_params_load(:delete, path)
-        query_params.merge! pagination_params if pagination_params
-      end
+
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
       response

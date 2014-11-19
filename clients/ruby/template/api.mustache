@@ -54,10 +54,17 @@ module Pandarus
       
       form_params = select_params(options, form_param_keys)
       query_params = select_params(options, query_param_keys)
+
+      {{#returnContainer}}
       if opts[:next_page]
-        pagination_params = page_params_load(:{{httpMethodLowerCase}}, path)
-        query_params.merge! pagination_params if pagination_params
+        return [] if was_last_page?(:{{httpMethodLowerCase}}, path)
+        page_params = page_params_load(:{{httpMethodLowerCase}}, path)
+        if(page_params && page_params[:next])
+          query_params.merge! page_params[:next]
+        end
       end
+      {{/returnContainer}}
+
       response = mixed_request(:{{httpMethodLowerCase}}, path, query_params, form_params, headers)
       page_params_store(:{{httpMethodLowerCase}}, path)
       {{#returnType}}
