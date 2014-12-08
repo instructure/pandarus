@@ -99,9 +99,14 @@ module Pandarus
 
     # Convert something like user__name__ to user[name]
     def underscores_to_square_brackets(key)
-      key.to_s.gsub(/(__.+?__)/) do |x|
-        x.sub('__', '[').sub('__', ']')
+      key.to_s.gsub(/__(.+?)__/) do |x|
+        "[#{ $1 }]"
       end.to_sym
+    end
+
+    def select_query_params(params, param_keys)
+      param_keys << :per_page
+      select_params(params, param_keys)
     end
 
     # pull querystring keys from options, and convert double underscores

@@ -6,7 +6,7 @@ module Pandarus
   class V1 < APIBase
 
     self.prefix = "https://canvas.instructure.com/api"
-    
+
     
     # List Authorization Configs
     def list_authorization_configs(account_id,opts={})
@@ -30,7 +30,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -66,7 +66,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -98,7 +98,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -130,7 +130,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -162,7 +162,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -192,7 +192,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -221,7 +221,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -250,7 +250,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -282,7 +282,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -326,7 +326,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -356,7 +356,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -390,7 +390,7 @@ module Pandarus
         :report => report)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -422,7 +422,7 @@ module Pandarus
         :report => report)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -466,7 +466,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -501,7 +501,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -529,7 +529,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -564,7 +564,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -600,7 +600,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -629,7 +629,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -673,7 +673,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -714,7 +714,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -746,7 +746,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -781,7 +781,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:post, path)
@@ -823,7 +823,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -856,7 +856,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -885,7 +885,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -921,7 +921,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -957,7 +957,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -998,7 +998,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -1032,7 +1032,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -1064,7 +1064,7 @@ module Pandarus
         :external_feed_id => external_feed_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -1096,7 +1096,7 @@ module Pandarus
         :external_feed_id => external_feed_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -1127,7 +1127,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -1171,7 +1171,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -1201,7 +1201,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -1245,7 +1245,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -1275,7 +1275,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -1305,7 +1305,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -1335,7 +1335,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -1366,7 +1366,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -1406,7 +1406,7 @@ module Pandarus
         :assignment_group_id => assignment_group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -1439,7 +1439,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -1471,7 +1471,7 @@ module Pandarus
         :assignment_group_id => assignment_group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -1503,7 +1503,7 @@ module Pandarus
         :assignment_group_id => assignment_group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -1535,7 +1535,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -1567,7 +1567,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -1608,7 +1608,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -1665,7 +1665,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -1723,7 +1723,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -1755,7 +1755,7 @@ module Pandarus
         :assignment_id => assignment_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -1797,7 +1797,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -1829,7 +1829,7 @@ module Pandarus
         :assignment_id => assignment_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -1862,7 +1862,7 @@ module Pandarus
         :assignment_id => assignment_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -1902,7 +1902,7 @@ module Pandarus
         :assignment_id => assignment_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -1942,7 +1942,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -1977,7 +1977,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -2007,7 +2007,7 @@ module Pandarus
         :login_id => login_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -2038,7 +2038,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -2069,7 +2069,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -2103,7 +2103,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -2150,7 +2150,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -2180,7 +2180,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -2211,7 +2211,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -2245,7 +2245,7 @@ module Pandarus
         :participant_id => participant_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -2288,7 +2288,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -2318,7 +2318,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -2348,7 +2348,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -2386,7 +2386,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -2422,7 +2422,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -2465,7 +2465,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -2497,7 +2497,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -2532,7 +2532,7 @@ module Pandarus
         :address => address)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -2561,7 +2561,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -2597,7 +2597,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -2633,7 +2633,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -2669,7 +2669,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -2705,7 +2705,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -2744,7 +2744,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -2776,7 +2776,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -2808,7 +2808,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -2841,7 +2841,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -2874,7 +2874,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -2907,7 +2907,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -2939,7 +2939,7 @@ module Pandarus
         :content_migration_id => content_migration_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -2978,7 +2978,7 @@ module Pandarus
         :content_migration_id => content_migration_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -3017,7 +3017,7 @@ module Pandarus
         :content_migration_id => content_migration_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -3056,7 +3056,7 @@ module Pandarus
         :content_migration_id => content_migration_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -3098,7 +3098,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -3133,7 +3133,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -3168,7 +3168,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -3203,7 +3203,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -3241,7 +3241,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -3279,7 +3279,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -3317,7 +3317,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -3355,7 +3355,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -3384,7 +3384,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -3420,7 +3420,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -3456,7 +3456,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -3492,7 +3492,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -3531,7 +3531,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -3563,7 +3563,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -3595,7 +3595,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -3627,7 +3627,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -3674,7 +3674,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -3721,7 +3721,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -3768,7 +3768,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -3815,7 +3815,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -3847,7 +3847,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -3879,7 +3879,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -3911,7 +3911,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -3943,7 +3943,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -3972,7 +3972,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -4008,7 +4008,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -4044,7 +4044,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -4080,7 +4080,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -4119,7 +4119,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -4170,7 +4170,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -4199,7 +4199,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -4233,7 +4233,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -4270,7 +4270,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -4299,7 +4299,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -4329,7 +4329,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -4362,7 +4362,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -4401,7 +4401,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -4434,7 +4434,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -4468,7 +4468,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -4496,7 +4496,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -4525,7 +4525,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -4556,7 +4556,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -4600,7 +4600,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -4633,7 +4633,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -4693,7 +4693,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -4722,7 +4722,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -4752,7 +4752,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -4793,7 +4793,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -4834,7 +4834,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -4870,7 +4870,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -4909,7 +4909,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -4939,7 +4939,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -4969,7 +4969,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -4999,7 +4999,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -5029,7 +5029,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -5061,7 +5061,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -5091,7 +5091,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -5124,7 +5124,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -5154,7 +5154,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -5186,7 +5186,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -5241,7 +5241,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -5277,7 +5277,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -5309,7 +5309,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -5342,7 +5342,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -5372,7 +5372,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -5414,7 +5414,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -5446,7 +5446,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -5478,7 +5478,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -5510,7 +5510,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -5543,7 +5543,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -5588,7 +5588,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -5620,7 +5620,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -5659,7 +5659,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -5708,7 +5708,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -5751,7 +5751,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -5797,7 +5797,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -5843,7 +5843,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -5876,7 +5876,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -5909,7 +5909,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -5942,7 +5942,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -5975,7 +5975,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -6012,7 +6012,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -6049,7 +6049,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -6085,7 +6085,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -6121,7 +6121,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -6154,7 +6154,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -6187,7 +6187,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -6220,7 +6220,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -6253,7 +6253,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -6288,7 +6288,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -6323,7 +6323,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -6356,7 +6356,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -6389,7 +6389,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -6427,7 +6427,7 @@ module Pandarus
         :entry_id => entry_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -6465,7 +6465,7 @@ module Pandarus
         :entry_id => entry_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -6501,7 +6501,7 @@ module Pandarus
         :entry_id => entry_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -6537,7 +6537,7 @@ module Pandarus
         :entry_id => entry_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -6570,7 +6570,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -6603,7 +6603,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -6636,7 +6636,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -6669,7 +6669,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -6702,7 +6702,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -6735,7 +6735,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -6769,7 +6769,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -6803,7 +6803,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -6836,7 +6836,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -6869,7 +6869,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -6906,7 +6906,7 @@ module Pandarus
         :entry_id => entry_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -6943,7 +6943,7 @@ module Pandarus
         :entry_id => entry_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -6979,7 +6979,7 @@ module Pandarus
         :entry_id => entry_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -7015,7 +7015,7 @@ module Pandarus
         :entry_id => entry_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -7048,7 +7048,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -7081,7 +7081,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -7114,7 +7114,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -7147,7 +7147,7 @@ module Pandarus
         :topic_id => topic_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -7177,7 +7177,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -7216,7 +7216,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -7255,7 +7255,7 @@ module Pandarus
         :section_id => section_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -7293,7 +7293,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -7332,7 +7332,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -7374,7 +7374,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -7416,7 +7416,7 @@ module Pandarus
         :section_id => section_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -7448,7 +7448,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -7478,7 +7478,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -7509,7 +7509,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -7542,7 +7542,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -7575,7 +7575,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -7608,7 +7608,7 @@ module Pandarus
         :external_tool_id => external_tool_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -7641,7 +7641,7 @@ module Pandarus
         :external_tool_id => external_tool_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -7714,7 +7714,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -7787,7 +7787,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -7820,7 +7820,7 @@ module Pandarus
         :external_tool_id => external_tool_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -7853,7 +7853,7 @@ module Pandarus
         :external_tool_id => external_tool_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -7886,7 +7886,7 @@ module Pandarus
         :external_tool_id => external_tool_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -7919,7 +7919,7 @@ module Pandarus
         :external_tool_id => external_tool_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -7948,7 +7948,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -7984,7 +7984,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -8013,7 +8013,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -8041,7 +8041,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -8071,7 +8071,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -8107,7 +8107,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -8143,7 +8143,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -8179,7 +8179,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -8209,7 +8209,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -8239,7 +8239,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -8272,7 +8272,7 @@ module Pandarus
         :feature => feature)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -8304,7 +8304,7 @@ module Pandarus
         :feature => feature)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -8336,7 +8336,7 @@ module Pandarus
         :feature => feature)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -8370,7 +8370,7 @@ module Pandarus
         :feature => feature)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -8404,7 +8404,7 @@ module Pandarus
         :feature => feature)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -8438,7 +8438,7 @@ module Pandarus
         :feature => feature)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -8470,7 +8470,7 @@ module Pandarus
         :feature => feature)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -8502,7 +8502,7 @@ module Pandarus
         :feature => feature)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -8534,7 +8534,7 @@ module Pandarus
         :feature => feature)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -8563,7 +8563,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -8593,7 +8593,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -8623,7 +8623,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -8657,7 +8657,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -8697,7 +8697,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -8737,7 +8737,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -8777,7 +8777,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -8813,7 +8813,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -8843,7 +8843,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -8878,7 +8878,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -8907,7 +8907,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -8937,7 +8937,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -8973,7 +8973,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -9009,7 +9009,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -9045,7 +9045,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -9081,7 +9081,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -9117,7 +9117,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -9153,7 +9153,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -9192,7 +9192,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -9224,7 +9224,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -9256,7 +9256,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -9285,7 +9285,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -9321,7 +9321,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -9360,7 +9360,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -9399,7 +9399,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -9438,7 +9438,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -9477,7 +9477,7 @@ module Pandarus
         :folder_id => folder_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -9506,7 +9506,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -9536,7 +9536,7 @@ module Pandarus
         :folder_id => folder_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -9567,7 +9567,7 @@ module Pandarus
         :assignment_id => assignment_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -9604,7 +9604,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -9641,7 +9641,7 @@ module Pandarus
         :student_id => student_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -9678,7 +9678,7 @@ module Pandarus
         :grader_id => grader_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -9714,7 +9714,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -9753,7 +9753,7 @@ module Pandarus
         :date => date)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -9798,7 +9798,7 @@ module Pandarus
         :assignment_id => assignment_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -9836,7 +9836,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -9872,7 +9872,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -9902,7 +9902,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -9935,7 +9935,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -9968,7 +9968,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -10007,7 +10007,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -10046,7 +10046,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -10088,7 +10088,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -10130,7 +10130,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -10163,7 +10163,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -10196,7 +10196,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -10235,7 +10235,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -10273,7 +10273,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -10302,7 +10302,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -10338,7 +10338,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -10374,7 +10374,7 @@ module Pandarus
         :group_category_id => group_category_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -10411,7 +10411,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -10448,7 +10448,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -10483,7 +10483,7 @@ module Pandarus
         :group_category_id => group_category_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -10512,7 +10512,7 @@ module Pandarus
         :group_category_id => group_category_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -10542,7 +10542,7 @@ module Pandarus
         :group_category_id => group_category_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -10579,7 +10579,7 @@ module Pandarus
         :group_category_id => group_category_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -10616,7 +10616,7 @@ module Pandarus
         :group_category_id => group_category_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -10644,7 +10644,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -10680,7 +10680,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -10716,7 +10716,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -10752,7 +10752,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -10785,7 +10785,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -10819,7 +10819,7 @@ module Pandarus
         :group_category_id => group_category_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -10854,7 +10854,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -10883,7 +10883,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -10915,7 +10915,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -10946,7 +10946,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -10982,7 +10982,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -11013,7 +11013,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -11043,7 +11043,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -11073,7 +11073,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -11103,7 +11103,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -11140,7 +11140,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -11174,7 +11174,7 @@ module Pandarus
         :membership_id => membership_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -11208,7 +11208,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -11240,7 +11240,7 @@ module Pandarus
         :membership_id => membership_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -11273,7 +11273,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -11306,7 +11306,7 @@ module Pandarus
         :assessment_id => assessment_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -11339,7 +11339,7 @@ module Pandarus
         :assessment_id => assessment_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -11369,7 +11369,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -11399,7 +11399,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -11429,7 +11429,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -11459,7 +11459,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -11497,7 +11497,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -11533,7 +11533,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -11566,7 +11566,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -11598,7 +11598,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -11638,7 +11638,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -11675,7 +11675,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -11714,7 +11714,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -11746,7 +11746,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -11780,7 +11780,7 @@ module Pandarus
         :module_id => module_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -11823,7 +11823,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -11869,7 +11869,7 @@ module Pandarus
         :module_id => module_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -11913,7 +11913,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -11948,7 +11948,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -11978,7 +11978,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -12010,7 +12010,7 @@ module Pandarus
         :communication_channel_id => communication_channel_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -12052,7 +12052,7 @@ module Pandarus
         :address => address)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -12094,7 +12094,7 @@ module Pandarus
         :notification => notification)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -12132,7 +12132,7 @@ module Pandarus
         :notification => notification)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -12167,7 +12167,7 @@ module Pandarus
         :notification => notification)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -12206,7 +12206,7 @@ module Pandarus
         :notification => notification)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -12239,7 +12239,7 @@ module Pandarus
         :communication_channel_id => communication_channel_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -12275,7 +12275,7 @@ module Pandarus
         :address => address)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -12304,7 +12304,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -12334,7 +12334,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -12364,7 +12364,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -12394,7 +12394,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -12430,7 +12430,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -12467,7 +12467,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -12504,7 +12504,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -12540,7 +12540,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -12572,7 +12572,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -12604,7 +12604,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -12637,7 +12637,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -12673,7 +12673,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -12709,7 +12709,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -12738,7 +12738,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -12770,7 +12770,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -12802,7 +12802,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -12831,7 +12831,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -12870,7 +12870,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -12909,7 +12909,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -12953,7 +12953,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -12992,7 +12992,7 @@ module Pandarus
         :outcome_id => outcome_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -13032,7 +13032,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -13074,7 +13074,7 @@ module Pandarus
         :outcome_id => outcome_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -13114,7 +13114,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -13156,7 +13156,7 @@ module Pandarus
         :outcome_id => outcome_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -13188,7 +13188,7 @@ module Pandarus
         :outcome_id => outcome_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -13223,7 +13223,7 @@ module Pandarus
         :outcome_id => outcome_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -13258,7 +13258,7 @@ module Pandarus
         :outcome_id => outcome_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -13287,7 +13287,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -13326,7 +13326,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -13365,7 +13365,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -13406,7 +13406,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -13443,7 +13443,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -13480,7 +13480,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -13512,7 +13512,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -13547,7 +13547,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -13582,7 +13582,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -13613,7 +13613,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -13646,7 +13646,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -13676,7 +13676,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -13712,7 +13712,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -13741,7 +13741,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -13770,7 +13770,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -13805,7 +13805,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -13840,7 +13840,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -13872,7 +13872,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -13911,7 +13911,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -13956,7 +13956,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -13994,7 +13994,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -14026,7 +14026,7 @@ module Pandarus
         :url => url)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -14058,7 +14058,7 @@ module Pandarus
         :url => url)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -14097,7 +14097,7 @@ module Pandarus
         :url => url)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -14136,7 +14136,7 @@ module Pandarus
         :url => url)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -14168,7 +14168,7 @@ module Pandarus
         :url => url)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -14200,7 +14200,7 @@ module Pandarus
         :url => url)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -14232,7 +14232,7 @@ module Pandarus
         :url => url)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -14271,7 +14271,7 @@ module Pandarus
         :url => url)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -14310,7 +14310,7 @@ module Pandarus
         :url => url)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -14342,7 +14342,7 @@ module Pandarus
         :url => url)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -14377,7 +14377,7 @@ module Pandarus
         :revision_id => revision_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -14412,7 +14412,7 @@ module Pandarus
         :revision_id => revision_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -14447,7 +14447,7 @@ module Pandarus
         :revision_id => revision_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -14482,7 +14482,7 @@ module Pandarus
         :revision_id => revision_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -14511,7 +14511,7 @@ module Pandarus
         :poll_id => poll_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -14544,7 +14544,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -14579,7 +14579,7 @@ module Pandarus
         :poll_id => poll_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -14615,7 +14615,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -14648,7 +14648,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -14681,7 +14681,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -14714,7 +14714,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -14743,7 +14743,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -14772,7 +14772,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -14802,7 +14802,7 @@ module Pandarus
         :poll_id => poll_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -14835,7 +14835,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -14870,7 +14870,7 @@ module Pandarus
         :poll_id => poll_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -14908,7 +14908,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -14941,7 +14941,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -14977,7 +14977,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -15013,7 +15013,7 @@ module Pandarus
         :poll_session_id => poll_session_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -15042,7 +15042,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -15072,7 +15072,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -15104,7 +15104,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -15138,7 +15138,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -15168,7 +15168,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -15198,7 +15198,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -15227,7 +15227,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -15274,7 +15274,7 @@ module Pandarus
         :quiz_id => quiz_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -15307,7 +15307,7 @@ module Pandarus
         :quiz_id => quiz_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -15344,7 +15344,7 @@ module Pandarus
         :quiz_id => quiz_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -15383,7 +15383,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -15419,7 +15419,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -15459,7 +15459,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -15492,7 +15492,7 @@ module Pandarus
         :quiz_id => quiz_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -15536,7 +15536,7 @@ module Pandarus
         :quiz_id => quiz_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -15571,7 +15571,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -15603,7 +15603,7 @@ module Pandarus
         :quiz_id => quiz_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -15638,7 +15638,7 @@ module Pandarus
         :quiz_id => quiz_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -15668,7 +15668,7 @@ module Pandarus
         :quiz_submission_id => quiz_submission_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -15701,7 +15701,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -15739,7 +15739,7 @@ module Pandarus
         :quiz_submission_id => quiz_submission_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:post, path)
@@ -15785,7 +15785,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -15825,7 +15825,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -15858,7 +15858,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -15891,7 +15891,7 @@ module Pandarus
         :quiz_id => quiz_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -15927,7 +15927,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -15962,7 +15962,7 @@ module Pandarus
         :quiz_id => quiz_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -16003,7 +16003,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -16046,7 +16046,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -16079,7 +16079,7 @@ module Pandarus
         :quiz_id => quiz_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -16121,7 +16121,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -16164,7 +16164,7 @@ module Pandarus
         :quiz_id => quiz_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -16210,7 +16210,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -16245,7 +16245,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -16284,7 +16284,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -16314,7 +16314,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -16353,7 +16353,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -16405,7 +16405,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -16438,7 +16438,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -16470,7 +16470,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -16506,7 +16506,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -16536,7 +16536,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -16577,7 +16577,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -16613,7 +16613,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -16647,7 +16647,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -16682,7 +16682,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -16716,7 +16716,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -16745,7 +16745,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -16789,7 +16789,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -16821,7 +16821,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -16855,7 +16855,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -16890,7 +16890,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -16921,7 +16921,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -16951,7 +16951,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -16991,7 +16991,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -17023,7 +17023,7 @@ module Pandarus
         :new_course_id => new_course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -17052,7 +17052,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -17081,7 +17081,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -17113,7 +17113,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -17142,7 +17142,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -17171,7 +17171,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -17199,7 +17199,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -17228,7 +17228,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -17264,7 +17264,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -17306,7 +17306,7 @@ module Pandarus
         :assignment_id => assignment_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -17348,7 +17348,7 @@ module Pandarus
         :assignment_id => assignment_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -17381,7 +17381,7 @@ module Pandarus
         :assignment_id => assignment_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -17420,7 +17420,7 @@ module Pandarus
         :assignment_id => assignment_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -17459,7 +17459,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -17492,7 +17492,7 @@ module Pandarus
         :section_id => section_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -17528,7 +17528,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -17564,7 +17564,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -17600,7 +17600,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -17636,7 +17636,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -17679,7 +17679,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -17722,7 +17722,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -17758,7 +17758,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -17794,7 +17794,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -17830,7 +17830,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -17866,7 +17866,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -17896,7 +17896,7 @@ module Pandarus
         :course_id => course_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -17926,7 +17926,7 @@ module Pandarus
         :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -17961,7 +17961,7 @@ module Pandarus
         :tab_id => tab_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -17990,7 +17990,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -18032,7 +18032,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -18064,7 +18064,7 @@ module Pandarus
         :observee_id => observee_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -18096,7 +18096,7 @@ module Pandarus
         :observee_id => observee_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -18128,7 +18128,7 @@ module Pandarus
         :observee_id => observee_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -18157,7 +18157,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -18192,7 +18192,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -18221,7 +18221,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -18250,7 +18250,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -18279,7 +18279,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -18308,7 +18308,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -18338,7 +18338,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -18367,7 +18367,7 @@ module Pandarus
         )
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)
@@ -18397,7 +18397,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -18444,7 +18444,7 @@ module Pandarus
         :account_id => account_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       page_params_store(:post, path)
@@ -18473,7 +18473,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -18510,7 +18510,7 @@ module Pandarus
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -18542,7 +18542,7 @@ module Pandarus
         :destination_user_id => destination_user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -18577,7 +18577,7 @@ module Pandarus
         :destination_user_id => destination_user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -18606,7 +18606,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -18635,7 +18635,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -18672,7 +18672,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       if opts[:next_page]
         return [] if was_last_page?(:get, path)
@@ -18714,7 +18714,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       page_params_store(:put, path)
@@ -18746,7 +18746,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       page_params_store(:get, path)
@@ -18778,7 +18778,7 @@ module Pandarus
         :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       page_params_store(:delete, path)

@@ -7,7 +7,7 @@ module Pandarus
   class {{classname}} < APIBase
 
     self.prefix = "{{basePath}}"
-    
+
     {{#operation}}{{newline}}
     # {{summary}}
     def {{nickname}}({{#requiredParams}}{{paramName}}{{#defaultValue}} = {{{defaultValue}}}{{/defaultValue}},{{/requiredParams}} opts={})
@@ -51,9 +51,9 @@ module Pandarus
       {{/headerParams}}
       {{^headerParams}}headers = nil
       {{/headerParams}}
-      
+
       form_params = select_params(options, form_param_keys)
-      query_params = select_params(options, query_param_keys)
+      query_params = select_query_params(options, query_param_keys)
 
       {{#returnContainer}}
       if opts[:next_page]
