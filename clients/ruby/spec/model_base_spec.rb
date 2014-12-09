@@ -1,23 +1,25 @@
 require_relative 'spec_helper'
 require 'pandarus'
 
-class TestModel < Pandarus::ModelBase
-  include Virtus.model
-
-  attribute :id, resolve_type("Integer")
-  attribute :name, resolve_type("String")
-end
-
 describe Pandarus::ModelBase do
-  it "initializes" do
-    tm = TestModel.new(:id => 1, :name => "test")
-    tm.id.should == 1
-    tm.name.should == "test"
-  end
+  let(:klass) {
+    Class.new(Pandarus::ModelBase) do
+      include Virtus.model
 
-  it "accepts attributes not in the map" do
-    lambda do
-      tm = TestModel.new(:id => 1, :integration_id => "blah")
-    end.should_not raise_error
+      attribute :id, resolve_type("Integer")
+      attribute :name, resolve_type("String")
+    end
+  }
+
+  describe '#initialize' do
+    it "works" do
+      tm = klass.new(:id => 1, :name => "test")
+      expect(tm.id).to eq 1
+      expect(tm.name).to eq "test"
+    end
+
+    it 'must not raise an exception when supplied attributes not in the attribute list' do
+      klass.new({foo: 'bar', id: 32})
+    end
   end
 end

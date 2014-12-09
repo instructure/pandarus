@@ -19,16 +19,16 @@ describe Pandarus::User do
     }
 
     it "login_id is a string" do
-      user.login_id.should == "duane"
+      expect(user.login_id).to eq 'duane'
     end
 
     it "last_login is a date" do
-      user.last_login.year.should == 2013
+      expect(user.last_login.year).to eq 2013
     end
 
     it "enrollments is array of type Enrollment" do
-      user.enrollments.size.should == 2
-      user.enrollments.map{ |e| e.course_id }.should == [1, 2]
+      expect(user.enrollments.size).to eq 2
+      expect(user.enrollments.map(&:course_id)).to eq [1, 2]
     end
   end
 end

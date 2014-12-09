@@ -1,5 +1,6 @@
 require "uri"
 require "footrest"
+require "pandarus/remote_collection"
 
 module Pandarus
   class APIBase < Footrest::Client

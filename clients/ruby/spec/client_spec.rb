@@ -11,21 +11,7 @@ describe Pandarus::Client do
     let(:opts) { { :prefix => prefix, :token => token } }
 
     it "raises when args are too few" do
-      lambda { client.list_account_admins }.should raise_error
-    end
-
-    it "does not raise when args are correct" do
-      stub_json_request("http://localhost:3000/api/v1/accounts/1/admins", "[]")
-      lambda { client.list_account_admins(1) }.should_not raise_error
-    end
-  end
-
-  context "with overridden params" do
-    let(:opts) { { :account_id => 1, :prefix => prefix, :token => token } }
-
-    it "uses overridden param account_id" do
-      stub_json_request("http://localhost:3000/api/v1/accounts/1/admins", "[]")
-      lambda { client.list_account_admins }.should_not raise_error
+      expect { client.list_account_admins }.to raise_error
     end
   end
 

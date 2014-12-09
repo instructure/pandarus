@@ -32,16 +32,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|AccountAuthorizationConfig.new(response)}
+      RemoteCollection.new(connection, AccountAuthorizationConfig, path, query_params)
+      
     end
     
     # Create Authorization Config
@@ -69,8 +61,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       AccountAuthorizationConfig.new(response)
+      
     end
     
     # Update Authorization Config
@@ -101,8 +93,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       AccountAuthorizationConfig.new(response)
+      
     end
     
     # Get Authorization Config
@@ -133,8 +125,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       AccountAuthorizationConfig.new(response)
+      
     end
     
     # Delete Authorization Config
@@ -165,7 +157,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -195,8 +186,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       DiscoveryUrl.new(response)
+      
     end
     
     # Set discovery url
@@ -224,8 +215,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       DiscoveryUrl.new(response)
+      
     end
     
     # Delete discovery url
@@ -253,7 +244,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -285,7 +275,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -329,7 +318,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -359,7 +347,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -393,8 +380,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       Report.new(response)
+      
     end
     
     # Index of Reports
@@ -424,16 +411,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Report.new(response)}
+      RemoteCollection.new(connection, Report, path, query_params)
+      
     end
     
     # Status of a Report
@@ -469,8 +448,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Report.new(response)
+      
     end
     
     # Delete a Report
@@ -504,8 +483,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       Report.new(response)
+      
     end
     
     # List accounts
@@ -531,16 +510,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Account.new(response)}
+      RemoteCollection.new(connection, Account, path, query_params)
+      
     end
     
     # List accounts for course admins
@@ -566,16 +537,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Account.new(response)}
+      RemoteCollection.new(connection, Account, path, query_params)
+      
     end
     
     # Get a single account
@@ -603,8 +566,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Account.new(response)
+      
     end
     
     # Get the sub-accounts of an account
@@ -631,16 +594,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Account.new(response)}
+      RemoteCollection.new(connection, Account, path, query_params)
+      
     end
     
     # List active courses in an account
@@ -675,16 +630,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Course.new(response)}
+      RemoteCollection.new(connection, Course, path, query_params)
+      
     end
     
     # Update an account
@@ -717,8 +664,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       Account.new(response)
+      
     end
     
     # Delete a user from the root account
@@ -749,8 +696,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       User.new(response)
+      
     end
     
     # Create a new sub-account
@@ -783,16 +730,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:post, path)
-        page_params = page_params_load(:post, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
-      response.map {|response|Account.new(response)}
+      RemoteCollection.new(connection, Account, path, query_params)
+      
     end
     
     # Make an account admin
@@ -826,8 +765,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       Admin.new(response)
+      
     end
     
     # Remove account admin
@@ -859,8 +798,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       Admin.new(response)
+      
     end
     
     # List account admins
@@ -887,16 +826,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Admin.new(response)}
+      RemoteCollection.new(connection, Admin, path, query_params)
+      
     end
     
     # List external feeds
@@ -923,16 +854,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|ExternalFeed.new(response)}
+      RemoteCollection.new(connection, ExternalFeed, path, query_params)
+      
     end
     
     # List external feeds
@@ -959,16 +882,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|ExternalFeed.new(response)}
+      RemoteCollection.new(connection, ExternalFeed, path, query_params)
+      
     end
     
     # Create an external feed
@@ -1001,8 +916,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       ExternalFeed.new(response)
+      
     end
     
     # Create an external feed
@@ -1035,8 +950,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       ExternalFeed.new(response)
+      
     end
     
     # Delete an external feed
@@ -1067,8 +982,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       ExternalFeed.new(response)
+      
     end
     
     # Delete an external feed
@@ -1099,8 +1014,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       ExternalFeed.new(response)
+      
     end
     
     # List appointment groups
@@ -1130,7 +1045,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -1174,7 +1088,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -1204,7 +1117,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -1248,7 +1160,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -1278,7 +1189,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -1308,7 +1218,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -1338,7 +1247,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -1368,16 +1276,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|AssignmentGroup.new(response)}
+      RemoteCollection.new(connection, AssignmentGroup, path, query_params)
+      
     end
     
     # Get an Assignment Group
@@ -1409,8 +1309,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       AssignmentGroup.new(response)
+      
     end
     
     # Create an Assignment Group
@@ -1442,8 +1342,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       AssignmentGroup.new(response)
+      
     end
     
     # Edit an Assignment Group
@@ -1474,8 +1374,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       AssignmentGroup.new(response)
+      
     end
     
     # Destroy an Assignment Group
@@ -1506,8 +1406,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       AssignmentGroup.new(response)
+      
     end
     
     # Delete an assignment
@@ -1538,8 +1438,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       Assignment.new(response)
+      
     end
     
     # List assignments
@@ -1569,16 +1469,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Assignment.new(response)}
+      RemoteCollection.new(connection, Assignment, path, query_params)
+      
     end
     
     # Get a single assignment
@@ -1611,8 +1503,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Assignment.new(response)
+      
     end
     
     # Create an assignment
@@ -1668,8 +1560,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       Assignment.new(response)
+      
     end
     
     # Edit an assignment
@@ -1726,8 +1618,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       Assignment.new(response)
+      
     end
     
     # List assignment overrides
@@ -1757,16 +1649,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|AssignmentOverride.new(response)}
+      RemoteCollection.new(connection, AssignmentOverride, path, query_params)
+      
     end
     
     # Get a single assignment override
@@ -1800,8 +1684,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       AssignmentOverride.new(response)
+      
     end
     
     # Redirect to the assignment override for a group
@@ -1832,7 +1716,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -1865,7 +1748,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -1905,8 +1787,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       AssignmentOverride.new(response)
+      
     end
     
     # Update an assignment override
@@ -1945,8 +1827,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       AssignmentOverride.new(response)
+      
     end
     
     # Delete an assignment override
@@ -1980,8 +1862,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       AssignmentOverride.new(response)
+      
     end
     
     # Query by login.
@@ -2010,7 +1892,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -2041,7 +1922,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -2072,7 +1952,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -2105,16 +1984,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|CalendarEvent.new(response)}
+      RemoteCollection.new(connection, CalendarEvent, path, query_params)
+      
     end
     
     # Create a calendar event
@@ -2153,7 +2024,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -2183,8 +2053,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       CalendarEvent.new(response)
+      
     end
     
     # Reserve a time slot
@@ -2214,7 +2084,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -2248,7 +2117,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -2291,7 +2159,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -2321,7 +2188,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -2350,16 +2216,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Collaborator.new(response)}
+      RemoteCollection.new(connection, Collaborator, path, query_params)
+      
     end
     
     # List of CommMessages for a user
@@ -2388,16 +2246,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|CommMessage.new(response)}
+      RemoteCollection.new(connection, CommMessage, path, query_params)
+      
     end
     
     # List user communication channels
@@ -2424,16 +2274,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|CommunicationChannel.new(response)}
+      RemoteCollection.new(connection, CommunicationChannel, path, query_params)
+      
     end
     
     # Create a communication channel
@@ -2468,8 +2310,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       CommunicationChannel.new(response)
+      
     end
     
     # Delete a communication channel
@@ -2500,8 +2342,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       CommunicationChannel.new(response)
+      
     end
     
     # Delete a communication channel
@@ -2535,8 +2377,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       CommunicationChannel.new(response)
+      
     end
     
     # List conferences
@@ -2563,16 +2405,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Conference.new(response)}
+      RemoteCollection.new(connection, Conference, path, query_params)
+      
     end
     
     # List conferences
@@ -2599,16 +2433,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Conference.new(response)}
+      RemoteCollection.new(connection, Conference, path, query_params)
+      
     end
     
     # List content exports
@@ -2635,16 +2461,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|ContentExport.new(response)}
+      RemoteCollection.new(connection, ContentExport, path, query_params)
+      
     end
     
     # List content exports
@@ -2671,16 +2489,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|ContentExport.new(response)}
+      RemoteCollection.new(connection, ContentExport, path, query_params)
+      
     end
     
     # List content exports
@@ -2707,16 +2517,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|ContentExport.new(response)}
+      RemoteCollection.new(connection, ContentExport, path, query_params)
+      
     end
     
     # Show content export
@@ -2747,8 +2549,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       ContentExport.new(response)
+      
     end
     
     # Show content export
@@ -2779,8 +2581,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       ContentExport.new(response)
+      
     end
     
     # Show content export
@@ -2811,8 +2613,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       ContentExport.new(response)
+      
     end
     
     # Export content
@@ -2844,8 +2646,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       ContentExport.new(response)
+      
     end
     
     # Export content
@@ -2877,8 +2679,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       ContentExport.new(response)
+      
     end
     
     # Export content
@@ -2910,8 +2712,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       ContentExport.new(response)
+      
     end
     
     # List migration issues
@@ -2941,16 +2743,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|MigrationIssue.new(response)}
+      RemoteCollection.new(connection, MigrationIssue, path, query_params)
+      
     end
     
     # List migration issues
@@ -2980,16 +2774,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|MigrationIssue.new(response)}
+      RemoteCollection.new(connection, MigrationIssue, path, query_params)
+      
     end
     
     # List migration issues
@@ -3019,16 +2805,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|MigrationIssue.new(response)}
+      RemoteCollection.new(connection, MigrationIssue, path, query_params)
+      
     end
     
     # List migration issues
@@ -3058,16 +2836,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|MigrationIssue.new(response)}
+      RemoteCollection.new(connection, MigrationIssue, path, query_params)
+      
     end
     
     # Get a migration issue
@@ -3101,8 +2871,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       MigrationIssue.new(response)
+      
     end
     
     # Get a migration issue
@@ -3136,8 +2906,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       MigrationIssue.new(response)
+      
     end
     
     # Get a migration issue
@@ -3171,8 +2941,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       MigrationIssue.new(response)
+      
     end
     
     # Get a migration issue
@@ -3206,8 +2976,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       MigrationIssue.new(response)
+      
     end
     
     # Update a migration issue
@@ -3244,8 +3014,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       MigrationIssue.new(response)
+      
     end
     
     # Update a migration issue
@@ -3282,8 +3052,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       MigrationIssue.new(response)
+      
     end
     
     # Update a migration issue
@@ -3320,8 +3090,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       MigrationIssue.new(response)
+      
     end
     
     # Update a migration issue
@@ -3358,8 +3128,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       MigrationIssue.new(response)
+      
     end
     
     # List content migrations
@@ -3386,16 +3156,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|ContentMigration.new(response)}
+      RemoteCollection.new(connection, ContentMigration, path, query_params)
+      
     end
     
     # List content migrations
@@ -3422,16 +3184,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|ContentMigration.new(response)}
+      RemoteCollection.new(connection, ContentMigration, path, query_params)
+      
     end
     
     # List content migrations
@@ -3458,16 +3212,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|ContentMigration.new(response)}
+      RemoteCollection.new(connection, ContentMigration, path, query_params)
+      
     end
     
     # List content migrations
@@ -3494,16 +3240,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|ContentMigration.new(response)}
+      RemoteCollection.new(connection, ContentMigration, path, query_params)
+      
     end
     
     # Get a content migration
@@ -3534,8 +3272,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       ContentMigration.new(response)
+      
     end
     
     # Get a content migration
@@ -3566,8 +3304,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       ContentMigration.new(response)
+      
     end
     
     # Get a content migration
@@ -3598,8 +3336,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       ContentMigration.new(response)
+      
     end
     
     # Get a content migration
@@ -3630,8 +3368,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       ContentMigration.new(response)
+      
     end
     
     # Create a content migration
@@ -3677,8 +3415,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       ContentMigration.new(response)
+      
     end
     
     # Create a content migration
@@ -3724,8 +3462,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       ContentMigration.new(response)
+      
     end
     
     # Create a content migration
@@ -3771,8 +3509,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       ContentMigration.new(response)
+      
     end
     
     # Create a content migration
@@ -3818,8 +3556,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       ContentMigration.new(response)
+      
     end
     
     # Update a content migration
@@ -3850,8 +3588,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       ContentMigration.new(response)
+      
     end
     
     # Update a content migration
@@ -3882,8 +3620,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       ContentMigration.new(response)
+      
     end
     
     # Update a content migration
@@ -3914,8 +3652,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       ContentMigration.new(response)
+      
     end
     
     # Update a content migration
@@ -3946,8 +3684,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       ContentMigration.new(response)
+      
     end
     
     # List Migration Systems
@@ -3974,16 +3712,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Migrator.new(response)}
+      RemoteCollection.new(connection, Migrator, path, query_params)
+      
     end
     
     # List Migration Systems
@@ -4010,16 +3740,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Migrator.new(response)}
+      RemoteCollection.new(connection, Migrator, path, query_params)
+      
     end
     
     # List Migration Systems
@@ -4046,16 +3768,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Migrator.new(response)}
+      RemoteCollection.new(connection, Migrator, path, query_params)
+      
     end
     
     # List Migration Systems
@@ -4082,16 +3796,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Migrator.new(response)}
+      RemoteCollection.new(connection, Migrator, path, query_params)
+      
     end
     
     # List conversations
@@ -4121,16 +3827,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Conversation.new(response)}
+      RemoteCollection.new(connection, Conversation, path, query_params)
+      
     end
     
     # Create a conversation
@@ -4173,7 +3871,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -4202,7 +3899,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -4236,7 +3932,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -4273,7 +3968,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -4302,7 +3996,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -4332,7 +4025,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -4365,7 +4057,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -4404,7 +4095,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -4437,7 +4127,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -4471,8 +4160,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       Progress.new(response)
+      
     end
     
     # Find recipients
@@ -4499,7 +4188,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -4528,7 +4216,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -4558,16 +4245,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|CourseEvent.new(response)}
+      RemoteCollection.new(connection, CourseEvent, path, query_params)
+      
     end
     
     # Set extensions for student quiz submissions
@@ -4603,7 +4282,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -4635,16 +4313,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Course.new(response)}
+      RemoteCollection.new(connection, Course, path, query_params)
+      
     end
     
     # Create a new course
@@ -4696,8 +4366,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       Course.new(response)
+      
     end
     
     # Upload a file
@@ -4725,7 +4395,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -4754,16 +4423,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|User.new(response)}
+      RemoteCollection.new(connection, User, path, query_params)
+      
     end
     
     # List users in course
@@ -4795,16 +4456,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|User.new(response)}
+      RemoteCollection.new(connection, User, path, query_params)
+      
     end
     
     # List users in course
@@ -4836,16 +4489,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|User.new(response)}
+      RemoteCollection.new(connection, User, path, query_params)
+      
     end
     
     # List recently logged in students
@@ -4872,16 +4517,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|User.new(response)}
+      RemoteCollection.new(connection, User, path, query_params)
+      
     end
     
     # Get single user
@@ -4912,8 +4549,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       User.new(response)
+      
     end
     
     # Preview processed html
@@ -4942,7 +4579,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -4972,7 +4608,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -5002,7 +4637,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -5032,7 +4666,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -5064,7 +4697,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -5094,7 +4726,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -5127,7 +4758,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -5157,8 +4787,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Course.new(response)
+      
     end
     
     # Get a single course
@@ -5189,8 +4819,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Course.new(response)
+      
     end
     
     # Update a course
@@ -5244,7 +4874,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -5280,8 +4909,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       Progress.new(response)
+      
     end
     
     # Get course copy status
@@ -5312,7 +4941,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -5345,7 +4973,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -5374,16 +5001,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|CustomColumn.new(response)}
+      RemoteCollection.new(connection, CustomColumn, path, query_params)
+      
     end
     
     # Create a custom gradebook column
@@ -5417,8 +5036,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       CustomColumn.new(response)
+      
     end
     
     # Update a custom gradebook column
@@ -5449,8 +5068,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       CustomColumn.new(response)
+      
     end
     
     # Delete a custom gradebook column
@@ -5481,8 +5100,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       CustomColumn.new(response)
+      
     end
     
     # Reorder custom columns
@@ -5513,7 +5132,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -5545,16 +5163,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|ColumnDatum.new(response)}
+      RemoteCollection.new(connection, ColumnDatum, path, query_params)
+      
     end
     
     # Update column data
@@ -5591,8 +5201,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       ColumnDatum.new(response)
+      
     end
     
     # List discussion topics
@@ -5622,16 +5232,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|DiscussionTopic.new(response)}
+      RemoteCollection.new(connection, DiscussionTopic, path, query_params)
+      
     end
     
     # List discussion topics
@@ -5661,16 +5263,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|DiscussionTopic.new(response)}
+      RemoteCollection.new(connection, DiscussionTopic, path, query_params)
+      
     end
     
     # Create a new discussion topic
@@ -5711,7 +5305,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -5754,7 +5347,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -5800,7 +5392,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -5846,7 +5437,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -5879,7 +5469,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -5912,7 +5501,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -5945,7 +5533,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -5978,7 +5565,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -6015,7 +5601,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -6052,7 +5637,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -6088,7 +5672,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -6124,7 +5707,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -6157,7 +5739,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -6190,7 +5771,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -6223,7 +5803,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -6256,7 +5835,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -6291,7 +5869,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -6326,7 +5903,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -6359,7 +5935,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -6392,7 +5967,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -6430,7 +6004,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -6468,7 +6041,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -6504,7 +6076,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -6540,7 +6111,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -6573,7 +6143,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -6606,7 +6175,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -6639,7 +6207,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -6672,7 +6239,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -6705,7 +6271,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -6738,7 +6303,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -6772,7 +6336,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -6806,7 +6369,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -6839,7 +6401,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -6872,7 +6433,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -6909,7 +6469,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -6946,7 +6505,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -6982,7 +6540,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -7018,7 +6575,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -7051,7 +6607,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -7084,7 +6639,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -7117,7 +6671,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -7150,7 +6703,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -7179,16 +6731,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|EnrollmentTerm.new(response)}
+      RemoteCollection.new(connection, EnrollmentTerm, path, query_params)
+      
     end
     
     # List enrollments
@@ -7218,16 +6762,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Enrollment.new(response)}
+      RemoteCollection.new(connection, Enrollment, path, query_params)
+      
     end
     
     # List enrollments
@@ -7257,16 +6793,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Enrollment.new(response)}
+      RemoteCollection.new(connection, Enrollment, path, query_params)
+      
     end
     
     # List enrollments
@@ -7295,16 +6823,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Enrollment.new(response)}
+      RemoteCollection.new(connection, Enrollment, path, query_params)
+      
     end
     
     # Enrollment by ID
@@ -7335,8 +6855,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Enrollment.new(response)
+      
     end
     
     # Enroll a user
@@ -7377,8 +6897,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       Enrollment.new(response)
+      
     end
     
     # Enroll a user
@@ -7419,8 +6939,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       Enrollment.new(response)
+      
     end
     
     # Conclude an enrollment
@@ -7451,8 +6971,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       Enrollment.new(response)
+      
     end
     
     # List external tools
@@ -7481,7 +7001,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -7512,7 +7031,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -7545,7 +7063,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -7578,7 +7095,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -7611,7 +7127,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -7644,7 +7159,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -7717,7 +7231,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -7790,7 +7303,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -7823,7 +7335,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -7856,7 +7367,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -7889,7 +7399,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -7922,7 +7431,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -7950,16 +7458,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Course.new(response)}
+      RemoteCollection.new(connection, Course, path, query_params)
+      
     end
     
     # Add course to favorites
@@ -7987,8 +7487,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       Favorite.new(response)
+      
     end
     
     # Remove course from favorites
@@ -8016,8 +7516,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       Favorite.new(response)
+      
     end
     
     # Reset course favorites
@@ -8044,7 +7544,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -8073,16 +7572,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Feature.new(response)}
+      RemoteCollection.new(connection, Feature, path, query_params)
+      
     end
     
     # List features
@@ -8109,16 +7600,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Feature.new(response)}
+      RemoteCollection.new(connection, Feature, path, query_params)
+      
     end
     
     # List features
@@ -8145,16 +7628,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Feature.new(response)}
+      RemoteCollection.new(connection, Feature, path, query_params)
+      
     end
     
     # List enabled features
@@ -8182,7 +7657,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -8212,7 +7686,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -8242,7 +7715,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -8275,8 +7747,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       FeatureFlag.new(response)
+      
     end
     
     # Get feature flag
@@ -8307,8 +7779,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       FeatureFlag.new(response)
+      
     end
     
     # Get feature flag
@@ -8339,8 +7811,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       FeatureFlag.new(response)
+      
     end
     
     # Set feature flag
@@ -8373,8 +7845,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       FeatureFlag.new(response)
+      
     end
     
     # Set feature flag
@@ -8407,8 +7879,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       FeatureFlag.new(response)
+      
     end
     
     # Set feature flag
@@ -8441,8 +7913,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       FeatureFlag.new(response)
+      
     end
     
     # Remove feature flag
@@ -8473,8 +7945,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       FeatureFlag.new(response)
+      
     end
     
     # Remove feature flag
@@ -8505,8 +7977,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       FeatureFlag.new(response)
+      
     end
     
     # Remove feature flag
@@ -8537,8 +8009,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       FeatureFlag.new(response)
+      
     end
     
     # Get quota information
@@ -8566,7 +8038,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -8596,7 +8067,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -8626,7 +8096,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -8659,16 +8128,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|File.new(response)}
+      RemoteCollection.new(connection, File, path, query_params)
+      
     end
     
     # List files
@@ -8699,16 +8160,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|File.new(response)}
+      RemoteCollection.new(connection, File, path, query_params)
+      
     end
     
     # List files
@@ -8739,16 +8192,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|File.new(response)}
+      RemoteCollection.new(connection, File, path, query_params)
+      
     end
     
     # List files
@@ -8779,16 +8224,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|File.new(response)}
+      RemoteCollection.new(connection, File, path, query_params)
+      
     end
     
     # Get quota information
@@ -8816,7 +8253,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -8846,8 +8282,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       File.new(response)
+      
     end
     
     # Update file
@@ -8881,8 +8317,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       File.new(response)
+      
     end
     
     # Delete file
@@ -8910,7 +8346,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -8939,16 +8374,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Folder.new(response)}
+      RemoteCollection.new(connection, Folder, path, query_params)
+      
     end
     
     # Resolve path
@@ -8975,16 +8402,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Folder.new(response)}
+      RemoteCollection.new(connection, Folder, path, query_params)
+      
     end
     
     # Resolve path
@@ -9011,16 +8430,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Folder.new(response)}
+      RemoteCollection.new(connection, Folder, path, query_params)
+      
     end
     
     # Resolve path
@@ -9047,16 +8458,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Folder.new(response)}
+      RemoteCollection.new(connection, Folder, path, query_params)
+      
     end
     
     # Resolve path
@@ -9083,16 +8486,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Folder.new(response)}
+      RemoteCollection.new(connection, Folder, path, query_params)
+      
     end
     
     # Resolve path
@@ -9119,16 +8514,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Folder.new(response)}
+      RemoteCollection.new(connection, Folder, path, query_params)
+      
     end
     
     # Resolve path
@@ -9155,16 +8542,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Folder.new(response)}
+      RemoteCollection.new(connection, Folder, path, query_params)
+      
     end
     
     # Get folder
@@ -9195,8 +8574,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Folder.new(response)
+      
     end
     
     # Get folder
@@ -9227,8 +8606,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Folder.new(response)
+      
     end
     
     # Get folder
@@ -9259,8 +8638,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Folder.new(response)
+      
     end
     
     # Get folder
@@ -9288,8 +8667,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Folder.new(response)
+      
     end
     
     # Update folder
@@ -9324,8 +8703,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       Folder.new(response)
+      
     end
     
     # Create folder
@@ -9363,8 +8742,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       Folder.new(response)
+      
     end
     
     # Create folder
@@ -9402,8 +8781,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       Folder.new(response)
+      
     end
     
     # Create folder
@@ -9441,8 +8820,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       Folder.new(response)
+      
     end
     
     # Create folder
@@ -9480,8 +8859,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       Folder.new(response)
+      
     end
     
     # Delete folder
@@ -9509,7 +8888,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -9539,7 +8917,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -9569,16 +8946,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|GradeChangeEvent.new(response)}
+      RemoteCollection.new(connection, GradeChangeEvent, path, query_params)
+      
     end
     
     # Query by course.
@@ -9606,16 +8975,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|GradeChangeEvent.new(response)}
+      RemoteCollection.new(connection, GradeChangeEvent, path, query_params)
+      
     end
     
     # Query by student.
@@ -9643,16 +9004,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|GradeChangeEvent.new(response)}
+      RemoteCollection.new(connection, GradeChangeEvent, path, query_params)
+      
     end
     
     # Query by grader.
@@ -9680,16 +9033,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|GradeChangeEvent.new(response)}
+      RemoteCollection.new(connection, GradeChangeEvent, path, query_params)
+      
     end
     
     # Days in gradebook history for this course
@@ -9716,16 +9061,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Day.new(response)}
+      RemoteCollection.new(connection, Day, path, query_params)
+      
     end
     
     # Details for a given date in gradebook history for this course
@@ -9755,16 +9092,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Grader.new(response)}
+      RemoteCollection.new(connection, Grader, path, query_params)
+      
     end
     
     # Lists submissions
@@ -9800,16 +9129,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|SubmissionHistory.new(response)}
+      RemoteCollection.new(connection, SubmissionHistory, path, query_params)
+      
     end
     
     # List uncollated submission versions
@@ -9838,16 +9159,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|SubmissionVersion.new(response)}
+      RemoteCollection.new(connection, SubmissionVersion, path, query_params)
+      
     end
     
     # List grading periods
@@ -9875,7 +9188,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -9905,7 +9217,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -9938,7 +9249,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -9971,7 +9281,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -10010,7 +9319,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -10049,7 +9357,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -10091,7 +9398,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -10133,7 +9439,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -10166,7 +9471,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -10199,7 +9503,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -10238,8 +9541,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       GradingStandard.new(response)
+      
     end
     
     # Create a new grading standard
@@ -10276,8 +9579,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       GradingStandard.new(response)
+      
     end
     
     # List group categories for a context
@@ -10304,16 +9607,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|GroupCategory.new(response)}
+      RemoteCollection.new(connection, GroupCategory, path, query_params)
+      
     end
     
     # List group categories for a context
@@ -10340,16 +9635,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|GroupCategory.new(response)}
+      RemoteCollection.new(connection, GroupCategory, path, query_params)
+      
     end
     
     # Get a single group category
@@ -10377,8 +9664,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       GroupCategory.new(response)
+      
     end
     
     # Create a Group Category
@@ -10414,8 +9701,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       GroupCategory.new(response)
+      
     end
     
     # Create a Group Category
@@ -10451,8 +9738,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       GroupCategory.new(response)
+      
     end
     
     # Update a Group Category
@@ -10486,8 +9773,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       GroupCategory.new(response)
+      
     end
     
     # Delete a Group Category
@@ -10515,7 +9802,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -10544,16 +9830,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Group.new(response)}
+      RemoteCollection.new(connection, Group, path, query_params)
+      
     end
     
     # List users in group category
@@ -10581,16 +9859,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|User.new(response)}
+      RemoteCollection.new(connection, User, path, query_params)
+      
     end
     
     # Assign unassigned members
@@ -10619,8 +9889,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       GroupMembership | Progress.new(response)
+      
     end
     
     # List your groups
@@ -10646,16 +9916,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Group.new(response)}
+      RemoteCollection.new(connection, Group, path, query_params)
+      
     end
     
     # List the groups available in a context.
@@ -10682,16 +9944,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Group.new(response)}
+      RemoteCollection.new(connection, Group, path, query_params)
+      
     end
     
     # List the groups available in a context.
@@ -10718,16 +9972,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Group.new(response)}
+      RemoteCollection.new(connection, Group, path, query_params)
+      
     end
     
     # Get a single group
@@ -10755,8 +10001,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Group.new(response)
+      
     end
     
     # Create a group
@@ -10788,8 +10034,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       Group.new(response)
+      
     end
     
     # Create a group
@@ -10822,8 +10068,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       Group.new(response)
+      
     end
     
     # Edit a group
@@ -10857,8 +10103,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       Group.new(response)
+      
     end
     
     # Delete a group
@@ -10886,8 +10132,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       Group.new(response)
+      
     end
     
     # Invite others to a group
@@ -10918,7 +10164,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -10948,16 +10193,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|User.new(response)}
+      RemoteCollection.new(connection, User, path, query_params)
+      
     end
     
     # Upload a file
@@ -10985,7 +10222,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -11016,7 +10252,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -11046,7 +10281,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -11076,7 +10310,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -11105,16 +10338,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|GroupMembership.new(response)}
+      RemoteCollection.new(connection, GroupMembership, path, query_params)
+      
     end
     
     # Create a membership
@@ -11143,8 +10368,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       GroupMembership.new(response)
+      
     end
     
     # Update a membership
@@ -11177,8 +10402,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       GroupMembership.new(response)
+      
     end
     
     # Update a membership
@@ -11211,8 +10436,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       GroupMembership.new(response)
+      
     end
     
     # Leave a group
@@ -11243,7 +10468,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -11276,7 +10500,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -11309,7 +10532,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -11342,7 +10564,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -11372,7 +10593,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -11402,7 +10622,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -11432,7 +10651,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -11462,7 +10680,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -11500,7 +10717,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -11536,7 +10752,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -11569,7 +10784,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -11600,16 +10814,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Module.new(response)}
+      RemoteCollection.new(connection, Module, path, query_params)
+      
     end
     
     # Show module
@@ -11641,8 +10847,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Module.new(response)
+      
     end
     
     # Create a module
@@ -11678,8 +10884,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       Module.new(response)
+      
     end
     
     # Update a module
@@ -11717,8 +10923,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       Module.new(response)
+      
     end
     
     # Delete module
@@ -11749,8 +10955,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       Module.new(response)
+      
     end
     
     # List module items
@@ -11782,16 +10988,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|ModuleItem.new(response)}
+      RemoteCollection.new(connection, ModuleItem, path, query_params)
+      
     end
     
     # Show module item
@@ -11826,8 +11024,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       ModuleItem.new(response)
+      
     end
     
     # Create a module item
@@ -11872,8 +11070,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       ModuleItem.new(response)
+      
     end
     
     # Update a module item
@@ -11916,8 +11114,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       ModuleItem.new(response)
+      
     end
     
     # Delete module item
@@ -11951,8 +11149,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       ModuleItem.new(response)
+      
     end
     
     # Get module item sequence
@@ -11981,8 +11179,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       ModuleItemSequence.new(response)
+      
     end
     
     # List preferences
@@ -12012,16 +11210,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|NotificationPreference.new(response)}
+      RemoteCollection.new(connection, NotificationPreference, path, query_params)
+      
     end
     
     # List preferences
@@ -12054,16 +11244,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|NotificationPreference.new(response)}
+      RemoteCollection.new(connection, NotificationPreference, path, query_params)
+      
     end
     
     # Get a preference
@@ -12097,8 +11279,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       NotificationPreference.new(response)
+      
     end
     
     # Get a preference
@@ -12135,8 +11317,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       NotificationPreference.new(response)
+      
     end
     
     # Update a preference
@@ -12170,7 +11352,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -12209,7 +11390,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -12242,7 +11422,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -12278,7 +11457,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -12307,7 +11485,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -12337,7 +11514,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -12367,7 +11543,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -12396,16 +11571,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|OutcomeGroup.new(response)}
+      RemoteCollection.new(connection, OutcomeGroup, path, query_params)
+      
     end
     
     # Get all outcome groups for context
@@ -12432,16 +11599,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|OutcomeGroup.new(response)}
+      RemoteCollection.new(connection, OutcomeGroup, path, query_params)
+      
     end
     
     # Get all outcome links for context
@@ -12469,16 +11628,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|OutcomeLink.new(response)}
+      RemoteCollection.new(connection, OutcomeLink, path, query_params)
+      
     end
     
     # Get all outcome links for context
@@ -12506,16 +11657,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|OutcomeLink.new(response)}
+      RemoteCollection.new(connection, OutcomeLink, path, query_params)
+      
     end
     
     # Show an outcome group
@@ -12543,8 +11686,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       OutcomeGroup.new(response)
+      
     end
     
     # Show an outcome group
@@ -12575,8 +11718,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       OutcomeGroup.new(response)
+      
     end
     
     # Show an outcome group
@@ -12607,8 +11750,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       OutcomeGroup.new(response)
+      
     end
     
     # Update an outcome group
@@ -12640,8 +11783,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       OutcomeGroup.new(response)
+      
     end
     
     # Update an outcome group
@@ -12676,8 +11819,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       OutcomeGroup.new(response)
+      
     end
     
     # Update an outcome group
@@ -12712,8 +11855,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       OutcomeGroup.new(response)
+      
     end
     
     # Delete an outcome group
@@ -12741,8 +11884,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       OutcomeGroup.new(response)
+      
     end
     
     # Delete an outcome group
@@ -12773,8 +11916,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       OutcomeGroup.new(response)
+      
     end
     
     # Delete an outcome group
@@ -12805,8 +11948,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       OutcomeGroup.new(response)
+      
     end
     
     # List linked outcomes
@@ -12833,16 +11976,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|OutcomeLink.new(response)}
+      RemoteCollection.new(connection, OutcomeLink, path, query_params)
+      
     end
     
     # List linked outcomes
@@ -12872,16 +12007,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|OutcomeLink.new(response)}
+      RemoteCollection.new(connection, OutcomeLink, path, query_params)
+      
     end
     
     # List linked outcomes
@@ -12911,16 +12038,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|OutcomeLink.new(response)}
+      RemoteCollection.new(connection, OutcomeLink, path, query_params)
+      
     end
     
     # Create/link an outcome
@@ -12956,8 +12075,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       OutcomeLink.new(response)
+      
     end
     
     # Create/link an outcome
@@ -12995,8 +12114,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       OutcomeLink.new(response)
+      
     end
     
     # Create/link an outcome
@@ -13035,8 +12154,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       OutcomeLink.new(response)
+      
     end
     
     # Create/link an outcome
@@ -13077,8 +12196,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       OutcomeLink.new(response)
+      
     end
     
     # Create/link an outcome
@@ -13117,8 +12236,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       OutcomeLink.new(response)
+      
     end
     
     # Create/link an outcome
@@ -13159,8 +12278,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       OutcomeLink.new(response)
+      
     end
     
     # Unlink an outcome
@@ -13191,8 +12310,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       OutcomeLink.new(response)
+      
     end
     
     # Unlink an outcome
@@ -13226,8 +12345,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       OutcomeLink.new(response)
+      
     end
     
     # Unlink an outcome
@@ -13261,8 +12380,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       OutcomeLink.new(response)
+      
     end
     
     # List subgroups
@@ -13289,16 +12408,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|OutcomeGroup.new(response)}
+      RemoteCollection.new(connection, OutcomeGroup, path, query_params)
+      
     end
     
     # List subgroups
@@ -13328,16 +12439,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|OutcomeGroup.new(response)}
+      RemoteCollection.new(connection, OutcomeGroup, path, query_params)
+      
     end
     
     # List subgroups
@@ -13367,16 +12470,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|OutcomeGroup.new(response)}
+      RemoteCollection.new(connection, OutcomeGroup, path, query_params)
+      
     end
     
     # Create a subgroup
@@ -13409,8 +12504,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       OutcomeGroup.new(response)
+      
     end
     
     # Create a subgroup
@@ -13446,8 +12541,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       OutcomeGroup.new(response)
+      
     end
     
     # Create a subgroup
@@ -13483,8 +12578,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       OutcomeGroup.new(response)
+      
     end
     
     # Import an outcome group
@@ -13515,8 +12610,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       OutcomeGroup.new(response)
+      
     end
     
     # Import an outcome group
@@ -13550,8 +12645,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       OutcomeGroup.new(response)
+      
     end
     
     # Import an outcome group
@@ -13585,8 +12680,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       OutcomeGroup.new(response)
+      
     end
     
     # Get outcome results
@@ -13616,7 +12711,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -13649,7 +12743,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -13679,8 +12772,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Outcome.new(response)
+      
     end
     
     # Update an outcome
@@ -13715,8 +12808,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       Outcome.new(response)
+      
     end
     
     # Show front page
@@ -13744,8 +12837,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Page.new(response)
+      
     end
     
     # Show front page
@@ -13773,8 +12866,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Page.new(response)
+      
     end
     
     # Update/create front page
@@ -13808,8 +12901,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       Page.new(response)
+      
     end
     
     # Update/create front page
@@ -13843,8 +12936,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       Page.new(response)
+      
     end
     
     # List pages
@@ -13874,16 +12967,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Page.new(response)}
+      RemoteCollection.new(connection, Page, path, query_params)
+      
     end
     
     # List pages
@@ -13913,16 +12998,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Page.new(response)}
+      RemoteCollection.new(connection, Page, path, query_params)
+      
     end
     
     # Create page
@@ -13959,8 +13036,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       Page.new(response)
+      
     end
     
     # Create page
@@ -13997,8 +13074,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       Page.new(response)
+      
     end
     
     # Show page
@@ -14029,8 +13106,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Page.new(response)
+      
     end
     
     # Show page
@@ -14061,8 +13138,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Page.new(response)
+      
     end
     
     # Update/create page
@@ -14100,8 +13177,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       Page.new(response)
+      
     end
     
     # Update/create page
@@ -14139,8 +13216,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       Page.new(response)
+      
     end
     
     # Delete page
@@ -14171,8 +13248,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       Page.new(response)
+      
     end
     
     # Delete page
@@ -14203,8 +13280,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       Page.new(response)
+      
     end
     
     # List revisions
@@ -14234,16 +13311,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|PageRevision.new(response)}
+      RemoteCollection.new(connection, PageRevision, path, query_params)
+      
     end
     
     # List revisions
@@ -14273,16 +13342,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|PageRevision.new(response)}
+      RemoteCollection.new(connection, PageRevision, path, query_params)
+      
     end
     
     # Show revision
@@ -14313,8 +13374,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       PageRevision.new(response)
+      
     end
     
     # Show revision
@@ -14345,8 +13406,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       PageRevision.new(response)
+      
     end
     
     # Show revision
@@ -14380,8 +13441,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       PageRevision.new(response)
+      
     end
     
     # Show revision
@@ -14415,8 +13476,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       PageRevision.new(response)
+      
     end
     
     # Revert to revision
@@ -14450,8 +13511,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       PageRevision.new(response)
+      
     end
     
     # Revert to revision
@@ -14485,8 +13546,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       PageRevision.new(response)
+      
     end
     
     # List poll sessions for a poll
@@ -14514,7 +13575,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -14547,7 +13607,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -14582,7 +13641,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -14618,7 +13676,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -14651,7 +13708,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -14684,7 +13740,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -14717,7 +13772,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -14746,7 +13800,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -14775,7 +13828,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -14805,7 +13857,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -14838,7 +13889,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -14873,7 +13923,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -14911,7 +13960,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -14944,7 +13992,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -14980,7 +14027,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -15016,7 +14062,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -15045,7 +14090,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -15075,7 +14119,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -15107,7 +14150,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -15141,7 +14183,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -15171,7 +14212,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -15201,8 +14241,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Progress.new(response)
+      
     end
     
     # Retrieve assignment-overridden dates for quizzes
@@ -15229,16 +14269,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|QuizAssignmentOverrideSet.new(response)}
+      RemoteCollection.new(connection, QuizAssignmentOverrideSet, path, query_params)
+      
     end
     
     # Set extensions for student quiz submissions
@@ -15277,7 +14309,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -15310,7 +14341,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -15347,7 +14377,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -15386,7 +14415,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -15422,7 +14450,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -15462,7 +14489,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -15494,16 +14520,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response| QuizReport .new(response)}
+      RemoteCollection.new(connection,  QuizReport , path, query_params)
+      
     end
     
     # Create a quiz report
@@ -15539,8 +14557,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       QuizReport.new(response)
+      
     end
     
     # Get a quiz report
@@ -15574,8 +14592,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       QuizReport.new(response)
+      
     end
     
     # Fetching the latest quiz statistics
@@ -15606,7 +14624,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -15641,7 +14658,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -15671,7 +14687,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -15704,7 +14719,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -15741,16 +14755,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:post, path)
-        page_params = page_params_load(:post, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
-      response.map {|response|QuizSubmissionQuestion.new(response)}
+      RemoteCollection.new(connection, QuizSubmissionQuestion, path, query_params)
+      
     end
     
     # Flagging a question.
@@ -15788,7 +14794,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -15828,7 +14833,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -15861,7 +14865,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -15894,7 +14897,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -15930,7 +14932,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -15965,7 +14966,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -16006,7 +15006,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -16049,7 +15048,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -16081,16 +15079,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|QuizQuestion.new(response)}
+      RemoteCollection.new(connection, QuizQuestion, path, query_params)
+      
     end
     
     # Get a single quiz question
@@ -16124,8 +15114,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       QuizQuestion.new(response)
+      
     end
     
     # Create a single quiz question
@@ -16167,8 +15157,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       QuizQuestion.new(response)
+      
     end
     
     # Update an existing quiz question
@@ -16213,8 +15203,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       QuizQuestion.new(response)
+      
     end
     
     # Delete a quiz question
@@ -16248,7 +15238,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -16287,7 +15276,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -16316,16 +15304,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Quiz.new(response)}
+      RemoteCollection.new(connection, Quiz, path, query_params)
+      
     end
     
     # Get a single quiz
@@ -16356,8 +15336,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Quiz.new(response)
+      
     end
     
     # Create a quiz
@@ -16408,8 +15388,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       Quiz.new(response)
+      
     end
     
     # Edit a quiz
@@ -16441,8 +15421,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       Quiz.new(response)
+      
     end
     
     # Delete a quiz
@@ -16473,8 +15453,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       Quiz.new(response)
+      
     end
     
     # Reorder quiz items
@@ -16509,7 +15489,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -16538,16 +15517,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Role.new(response)}
+      RemoteCollection.new(connection, Role, path, query_params)
+      
     end
     
     # Get a single role
@@ -16580,8 +15551,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Role.new(response)
+      
     end
     
     # Create a new role
@@ -16616,8 +15587,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       Role.new(response)
+      
     end
     
     # Deactivate a role
@@ -16650,8 +15621,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       Role.new(response)
+      
     end
     
     # Activate a role
@@ -16685,8 +15656,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       Role.new(response)
+      
     end
     
     # Update a role
@@ -16719,8 +15690,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       Role.new(response)
+      
     end
     
     # Get SIS import list
@@ -16747,16 +15718,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|SisImport.new(response)}
+      RemoteCollection.new(connection, SisImport, path, query_params)
+      
     end
     
     # Import SIS data
@@ -16792,8 +15755,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       SisImport.new(response)
+      
     end
     
     # Get SIS import status
@@ -16824,8 +15787,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       SisImport.new(response)
+      
     end
     
     # Find recipients
@@ -16858,7 +15821,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -16893,7 +15855,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -16924,7 +15885,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -16953,16 +15913,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Section.new(response)}
+      RemoteCollection.new(connection, Section, path, query_params)
+      
     end
     
     # Create course section
@@ -16994,8 +15946,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       Section.new(response)
+      
     end
     
     # Cross-list a Section
@@ -17026,8 +15978,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       Section.new(response)
+      
     end
     
     # De-cross-list a Section
@@ -17055,8 +16007,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       Section.new(response)
+      
     end
     
     # Edit a section
@@ -17084,8 +16036,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       Section.new(response)
+      
     end
     
     # Get section information
@@ -17116,8 +16068,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Section.new(response)
+      
     end
     
     # Get section information
@@ -17145,8 +16097,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Section.new(response)
+      
     end
     
     # Delete a section
@@ -17174,8 +16126,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       Section.new(response)
+      
     end
     
     # Get Kaltura config
@@ -17202,7 +16154,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -17231,7 +16182,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -17267,7 +16217,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -17309,7 +16258,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -17351,7 +16299,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -17383,16 +16330,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Submission.new(response)}
+      RemoteCollection.new(connection, Submission, path, query_params)
+      
     end
     
     # List assignment submissions
@@ -17422,16 +16361,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Submission.new(response)}
+      RemoteCollection.new(connection, Submission, path, query_params)
+      
     end
     
     # List submissions for multiple assignments
@@ -17462,7 +16393,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -17495,7 +16425,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -17531,7 +16460,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -17567,7 +16495,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -17603,7 +16530,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -17639,7 +16565,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -17682,7 +16607,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -17725,7 +16649,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -17761,7 +16684,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -17797,7 +16719,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -17833,7 +16754,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -17869,7 +16789,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -17899,7 +16818,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -17929,7 +16847,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -17964,8 +16881,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       Tab.new(response)
+      
     end
     
     # List observees
@@ -17992,16 +16909,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|User.new(response)}
+      RemoteCollection.new(connection, User, path, query_params)
+      
     end
     
     # Add an observee with credentials
@@ -18035,8 +16944,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       User.new(response)
+      
     end
     
     # Show an observee
@@ -18067,8 +16976,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       User.new(response)
+      
     end
     
     # Add an observee
@@ -18099,8 +17008,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       User.new(response)
+      
     end
     
     # Remove an observee
@@ -18131,8 +17040,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       User.new(response)
+      
     end
     
     # List users in account
@@ -18159,16 +17068,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|User.new(response)}
+      RemoteCollection.new(connection, User, path, query_params)
+      
     end
     
     # List the activity stream
@@ -18195,7 +17096,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -18224,7 +17124,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -18253,7 +17152,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -18282,7 +17180,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -18311,7 +17208,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -18341,7 +17237,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -18370,7 +17265,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end
@@ -18400,7 +17294,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       response
       
     end
@@ -18447,8 +17340,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      page_params_store(:post, path)
       User.new(response)
+      
     end
     
     # Update user settings.
@@ -18476,7 +17369,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -18513,8 +17405,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       User.new(response)
+      
     end
     
     # Merge user into another user
@@ -18545,8 +17437,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       User.new(response)
+      
     end
     
     # Merge user into another user
@@ -18580,8 +17472,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       User.new(response)
+      
     end
     
     # Get user profile
@@ -18609,8 +17501,8 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       Profile.new(response)
+      
     end
     
     # List avatar options
@@ -18637,16 +17529,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|Avatar.new(response)}
+      RemoteCollection.new(connection, Avatar, path, query_params)
+      
     end
     
     # List user page views
@@ -18674,16 +17558,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      if opts[:next_page]
-        return [] if was_last_page?(:get, path)
-        page_params = page_params_load(:get, path)
-        if(page_params && page_params[:next])
-          query_params.merge! page_params[:next]
-        end
-      end
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
-      response.map {|response|PageView.new(response)}
+      RemoteCollection.new(connection, PageView, path, query_params)
+      
     end
     
     # Store custom data
@@ -18717,7 +17593,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
-      page_params_store(:put, path)
       response
       
     end
@@ -18749,7 +17624,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      page_params_store(:get, path)
       response
       
     end
@@ -18781,7 +17655,6 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      page_params_store(:delete, path)
       response
       
     end

@@ -23,9 +23,9 @@ describe Pandarus::SisImport do
     }
 
     it "has an array of processing_warnings" do
-      import.processing_warnings.size.should == 2
-      import.processing_warnings.first.size.should == 2
-      import.processing_warnings[1][1].should == "oh my"
+      expect(import.processing_warnings.size).to eq 2
+      expect(import.processing_warnings.first.size).to eq 2
+      expect(import.processing_warnings[1][1]).to eq "oh my"
     end
   end
 end

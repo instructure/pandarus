@@ -10,16 +10,15 @@ describe Pandarus::APIBase do
     end
 
     it "converts surrounding double underscores" do
-      u2sb("prefix__inside__").should == :"prefix[inside]"
+      expect(u2sb("prefix__inside__")).to eq :"prefix[inside]"
     end
 
     it "ignores single underscores" do
-      u2sb("prefix__inner_word__").should == :"prefix[inner_word]"
+      expect(u2sb("prefix__inner_word__")).to eq :"prefix[inner_word]"
     end
 
     it "converts multiple double underscores" do
-      u2sb("prefix__alpha____beta_gamma__").should ==
-        :"prefix[alpha][beta_gamma]"
+      expect(u2sb("prefix__alpha____beta_gamma__")).to eq :"prefix[alpha][beta_gamma]"
     end
   end
 

@@ -56,6 +56,10 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       {{#returnContainer}}
+      {{#returnType}}
+      RemoteCollection.new(connection, {{returnBaseType}}, path, query_params)
+      {{/returnType}}
+      {{^returnType}}
       if opts[:next_page]
         return [] if was_last_page?(:{{httpMethodLowerCase}}, path)
         page_params = page_params_load(:{{httpMethodLowerCase}}, path)
@@ -63,21 +67,23 @@ module Pandarus
           query_params.merge! page_params[:next]
         end
       end
-      {{/returnContainer}}
-
       response = mixed_request(:{{httpMethodLowerCase}}, path, query_params, form_params, headers)
       page_params_store(:{{httpMethodLowerCase}}, path)
-      {{#returnType}}
-      {{#returnContainer}}
-      response.map {|response|{{/returnContainer}} {{returnBaseType}}.new(response){{#returnContainer}} }{{/returnContainer}}
-      {{/returnType}}
-      {{^returnType}}
-        {{#returnContainer}}
-        raise "Array returned when object expected" if response.is_a?(Array)
-        {{/returnContainer}}
+      raise "Array returned when object expected" if response.is_a?(Array)
       response
       {{/returnType}}
-    {{newline}}
+      {{/returnContainer}}
+
+      {{^returnContainer}}
+      response = mixed_request(:{{httpMethodLowerCase}}, path, query_params, form_params, headers)
+      {{#returnType}}
+      {{returnBaseType}}.new(response)
+      {{/returnType}}
+      {{^returnType}}
+      response
+      {{/returnType}}
+      {{/returnContainer}}
+      {{newline}}
     end
     {{/operation}}
     {{newline}}
