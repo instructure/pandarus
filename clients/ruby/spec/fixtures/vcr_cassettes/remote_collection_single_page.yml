@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://shard1.canvas.dev/api/v1/courses/14/sections
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Authorization:
+      - Bearer Bearer 1~A5dY8IsOyhVOVRJi4V3XWGNsa7pzuIbdM8OCv62YTRFqOsiS9vX0NbtY8PR9q4pX
+      User-Agent:
+      - Footrest
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Canvas-User-Id:
+      - '10000000000001'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Ua-Compatible:
+      - IE=Edge
+      Etag:
+      - '"d57de41ff2edcb1840cba95cd99ceb93"'
+      Cache-Control:
+      - must-revalidate, private, max-age=0
+      Set-Cookie:
+      - _csrf_token=Nn0Xriy%2BzySk5XIE4WX%2FIYmWuMirPk52%2FY8rWDthFp1SS17JfMipYP6%2FS2%2BwNaVx8N%2F9pflOPDfI%2FmpuYVlb%2BA%3D%3D;
+        path=/
+      - _normandy_session=kjUGEKraWqjH8yUDgkjv0g.KV0__PysS8xFX02CiZFVHdyhaQB6RboB7hzYJ4R95FKcBGg7GgtaHLEfZ1wtPz2RAJ-53cGqRKwvcGM-ZJxi4gTz4iBuSHLC990OlekqmtjCyIq1Z4jnpAkGQ2Lc0md7.-Fkgs-L9w-l5bvVJaon6h0U9ths.VJiCAA;
+        path=/; HttpOnly
+      X-Session-Id:
+      - ed3089094605b369c73c4ff0002cc5fe
+      X-Request-Context-Id:
+      - d877b560-6c48-0132-52e9-38e85630c82a
+      X-Canvas-Meta:
+      - a=1;g=DtbEcIgsiKSxJvSoQKH05C46ONAcwvepb4BEBYAz;s=2;c=development;b=328372;m=328372;u=0.19;y=0.01;d=0.00;
+      X-Runtime:
+      - '0.225363'
+      Date:
+      - Mon, 22 Dec 2014 20:41:36 GMT
+      X-Rack-Cache:
+      - miss
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '[{"course_id":14,"end_at":null,"id":14,"name":"1st Grade English-EL101-14-15-Barker","nonxlist_course_id":null,"start_at":null,"sis_section_id":"1994","sis_course_id":"1994","integration_id":"1994","sis_import_id":4}]'
+    http_version: 
+  recorded_at: Mon, 22 Dec 2014 20:41:36 GMT
+recorded_with: VCR 2.9.3

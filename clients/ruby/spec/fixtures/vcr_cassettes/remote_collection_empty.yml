@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://shard1.canvas.dev/api/v1/courses/183/users?enrollment_type=student
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Authorization:
+      - Bearer Bearer 1~A5dY8IsOyhVOVRJi4V3XWGNsa7pzuIbdM8OCv62YTRFqOsiS9vX0NbtY8PR9q4pX
+      User-Agent:
+      - Footrest
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Canvas-User-Id:
+      - '10000000000001'
+      Link:
+      - <http://shard1.canvas.dev/api/v1/courses/183/users?enrollment_type=student&page=1&per_page=10>;
+        rel="current",<http://shard1.canvas.dev/api/v1/courses/183/users?enrollment_type=student&page=1&per_page=10>;
+        rel="first",<http://shard1.canvas.dev/api/v1/courses/183/users?enrollment_type=student&page=1&per_page=10>;
+        rel="last"
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Ua-Compatible:
+      - IE=Edge
+      Etag:
+      - '"d751713988987e9331980363e24189ce"'
+      Cache-Control:
+      - must-revalidate, private, max-age=0
+      Set-Cookie:
+      - _csrf_token=70LPEWYX8OUtxNrRWPyLn%2FF5xpDuVASz9YBJQekUgJWBGIBcE2bBqV2erbMBqe713ivx4L8%2FZsKnuBgEv2TDow%3D%3D;
+        path=/
+      - _normandy_session=yClqZDQD-PKanqxq4xbeUA.YKVmGVKaKJ6pC4Lf_jlDeelPxqjDK5ZO1wn57l9_e2q_xaAlLWt_nkEYd4arBr8x1sFipxANo5tXnOmCIxduDZhah0oXGnPxhwcowYPwH4bW3R0-udl6FsJ6WGAFwU2z._u4S-ax72PiWoXX-kD6cSPOo88Y.VK1_SA;
+        path=/; HttpOnly
+      X-Session-Id:
+      - 2698d12b0db9b5da795f2e5df6f53ba6
+      X-Request-Context-Id:
+      - 927c35e0-78cb-0132-bea1-38e85630c82a
+      X-Canvas-Meta:
+      - a=1;g=DtbEcIgsiKSxJvSoQKH05C46ONAcwvepb4BEBYAz;s=2;c=development;b=341124;m=341280;u=0.21;y=0.02;d=0.01;
+      X-Runtime:
+      - '0.260593'
+      Date:
+      - Wed, 07 Jan 2015 18:47:36 GMT
+      X-Rack-Cache:
+      - miss
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: "[]"
+    http_version: 
+  recorded_at: Wed, 07 Jan 2015 18:47:36 GMT
+recorded_with: VCR 2.9.3

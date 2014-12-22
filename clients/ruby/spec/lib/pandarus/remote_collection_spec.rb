@@ -43,14 +43,27 @@ module Pandarus
     end
 
     describe '#to_a' do
-      let(:array) {
-        VCR.use_cassette('remote_collection_all_pages') do
-          collection.to_a
+      it 'must gracefully handle an empty collection' do
+        VCR.use_cassette('remote_collection_empty') do
+          collection.instance_variable_set(:@path, '/v1/courses/183/users')
+          array = collection.to_a
+          expect(array).to be_empty
         end
-      }
+      end
 
-      it 'must fetch all pages and combine them into a single array' do
-        expect(array.size).to eq 21
+      it 'must happily fetch a collection with a single page' do
+        VCR.use_cassette('remote_collection_single_page') do
+          collection = RemoteCollection.new(client, Section, '/v1/courses/14/sections', {})
+          array = collection.to_a
+          expect(array.size).to eq 1
+        end
+      end
+
+      it 'must fetch all pages of a multi page collection and combine them into a single array' do
+        VCR.use_cassette('remote_collection_all_pages') do
+          array = collection.to_a
+          expect(array.size).to eq 21
+        end
       end
     end
   end

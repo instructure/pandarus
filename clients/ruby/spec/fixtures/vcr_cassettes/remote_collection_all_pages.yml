@@ -39,20 +39,20 @@ http_interactions:
       Cache-Control:
       - must-revalidate, private, max-age=0
       Set-Cookie:
-      - _csrf_token=HmhMEGEdhhvRVlnYZLXTwyIGYGjuWeQ68xUPSiAd5vt6GQdXBUXDLL0jOIkGgrqzWEhZKaQTnF3CVFolV0mTzg%3D%3D;
+      - _csrf_token=jsM58YpsUDxPQGzaKcvUwzWfBulRrJgI%2B1fYmLoOqbPou3WV%2BSsBUiILFpZng7v0TNsw3inu0mK%2FGu%2Br7zjO4Q%3D%3D;
         path=/
-      - _normandy_session=cP7mYMVZ0cCgO7RmBD_99w.5oUsKA4C4mkJk-l49huIqeHphIh-b8Gq1yRT8B9cvpBCTSTSGbICDIbmnIKlZX_Y76DZTEfDSLeyzDuyzECfmLPXW86Z22X6rmTroYwMeAt5ym_3khrSJGefEypDw6Hd.fKoO7AdPLd-swV8VPxGDeHz_SBg.VJLvJg;
+      - _normandy_session=zWF8MzAVtYcQl4Ocez9TJA.MdkGjGCWASvMn2GyQEJ647UUwZ5PfS7B216UEU8vilJ2GtqnGI0JSxUhWZLMUldMPFXiOyDU2PCOCp2z1k9e4pbXNa0NRyaywnJYcGazLc5ECUK7aYdUdUTlL5Scj2-j.UrtD2RSC0LuX-gDM8YjMG_WHlvk.VJiTTw;
         path=/; HttpOnly
       X-Session-Id:
-      - ac19512a3ac594145f0b4c21095275e6
+      - 76414941a586ff4bef0337f23df28509
       X-Request-Context-Id:
-      - 6079e1c0-68f6-0132-4d7c-38e85630c82a
+      - 29716e60-6c53-0132-52e9-38e85630c82a
       X-Canvas-Meta:
-      - a=1;g=DtbEcIgsiKSxJvSoQKH05C46ONAcwvepb4BEBYAz;s=2;c=development;b=328036;m=328036;u=0.22;y=0.02;d=0.01;
+      - a=1;g=DtbEcIgsiKSxJvSoQKH05C46ONAcwvepb4BEBYAz;s=2;c=development;b=371464;m=371464;u=0.23;y=0.02;d=0.01;
       X-Runtime:
-      - '0.261794'
+      - '0.269341'
       Date:
-      - Thu, 18 Dec 2014 15:13:42 GMT
+      - Mon, 22 Dec 2014 21:55:27 GMT
       X-Rack-Cache:
       - miss
       Connection:
@@ -71,7 +71,7 @@ http_interactions:
         Holland","sortable_name":"Holland, Jonathan","short_name":"Jonathan Holland","sis_user_id":"student_4459","integration_id":null,"sis_login_id":"westudent215","sis_import_id":4,"login_id":"westudent215"},{"id":91,"name":"Corey
         Kelly","sortable_name":"Kelly, Corey","short_name":"Corey Kelly","sis_user_id":"student_4408","integration_id":null,"sis_login_id":"westudent259","sis_import_id":4,"login_id":"westudent259"}]'
     http_version: 
-  recorded_at: Thu, 18 Dec 2014 15:13:42 GMT
+  recorded_at: Mon, 22 Dec 2014 21:55:27 GMT
 - request:
     method: get
     uri: http://shard1.canvas.dev/api/v1/courses/14/users?enrollment_type=student&page=2&per_page=10
@@ -112,20 +112,20 @@ http_interactions:
       Cache-Control:
       - must-revalidate, private, max-age=0
       Set-Cookie:
-      - _csrf_token=EKCSPyXN2cjUagWmSyxnJaxR8U8sEwoH%2BOK%2BsSftt2ldytoOR4iA464kSZcqS18X32KgFm84PlPPluvGcNWYMw%3D%3D;
+      - _csrf_token=PwTWrdYNGV1TEWZ7FgiuFE%2FvSm3ihJcSadN98OblgM5bT47cnXxgZDl7FjpRSsRBfosOG9TgpiYbugW206zEhQ%3D%3D;
         path=/
-      - _normandy_session=H9dHgxOeRFp2LKwSrTNzIQ.I42HWwvEwVQ5buNUmA5dvXpAQ5ZVRmlJY3nR57DrpIwxt7DhfRP3lqo99GPyQBz_ZAkKHBQm2CSzGpIsUl7-9wpmgWa4rH-c-eZZf7rIp4gZuviyFtISh8ialNkhn7ZU.P4ihNStsDB5-nXi_LTU-7jxG30c.VJLvJw;
+      - _normandy_session=C44slFtEIvJWZfqJXerjLg.qGoXBN9TzBFAYQJLHoL0Ks2u7WJtMDPFD18x8vSdF_FpLwpvOlyBA9nig8aGXbr2wMnom5kV_b45TBP-P1v8WuGPN1JBc0_S_6slI7VYvYOsBidQhoGMU9jk2HdNW7GU.domHfXFXb9VInjtD4HxbfHhaGbs.VJiTTw;
         path=/; HttpOnly
       X-Session-Id:
-      - bdc07fdf3be919cbe7499e043e699c6e
+      - 0a8f103db518fda7bb13dc1fe57f68af
       X-Request-Context-Id:
-      - 60a38680-68f6-0132-4d7c-38e85630c82a
+      - 299d2f70-6c53-0132-52e9-38e85630c82a
       X-Canvas-Meta:
-      - a=1;g=DtbEcIgsiKSxJvSoQKH05C46ONAcwvepb4BEBYAz;s=2;c=development;b=328036;m=329924;u=0.43;y=0.02;d=0.01;
+      - a=1;g=DtbEcIgsiKSxJvSoQKH05C46ONAcwvepb4BEBYAz;s=2;c=development;b=371464;m=371464;u=0.31;y=0.02;d=0.01;
       X-Runtime:
-      - '0.482755'
+      - '0.367507'
       Date:
-      - Thu, 18 Dec 2014 15:13:43 GMT
+      - Mon, 22 Dec 2014 21:55:27 GMT
       X-Rack-Cache:
       - miss
       Connection:
@@ -144,7 +144,7 @@ http_interactions:
         Watts","sortable_name":"Watts, Stephenson","short_name":"Stephenson Watts","sis_user_id":"student_4442","integration_id":null,"sis_login_id":"westudent496","sis_import_id":4,"login_id":"westudent496"},{"id":115,"name":"Britney
         Whittle","sortable_name":"Whittle, Britney","short_name":"Britney Whittle","sis_user_id":"student_4432","integration_id":null,"sis_login_id":"westudent504","sis_import_id":4,"login_id":"westudent504"}]'
     http_version: 
-  recorded_at: Thu, 18 Dec 2014 15:13:43 GMT
+  recorded_at: Mon, 22 Dec 2014 21:55:27 GMT
 - request:
     method: get
     uri: http://shard1.canvas.dev/api/v1/courses/14/users?enrollment_type=student&page=3&per_page=10
@@ -184,20 +184,20 @@ http_interactions:
       Cache-Control:
       - must-revalidate, private, max-age=0
       Set-Cookie:
-      - _csrf_token=euTKz%2FVNURj4NjFMmxl9Cj7GbrsS%2FmZIkaZGH3aHqbUyqJy1hg4oXZluexneaRBLV55ByErLSWPo%2FjNNIvXsgw%3D%3D;
+      - _csrf_token=dSENVLsxmQ4hosrEI2e8TwBIPF2ioOYAQ90gHTFrA35HS38nw2XRYxT1%2F4JmC%2B8CKzhXE8TqhFAwhE8qYS56NQ%3D%3D;
         path=/
-      - _normandy_session=4H57XVZatJMTTHBTSz0XXg.KJo0W_Gnid9O7o93o7D0B0JXYKU_0DYjX3p5F9mu-e4jYDfeb6xGLjDIgeNmOgsH3RfmC93cFnqnoWl_VNS0F_LwZM6rgmtqWmyXSZYD2G-4Zyi1tL7FP95RBddu6MnT.8pSpRuwegl1mhR3wIZjeSFWPIzs.VJLvJw;
+      - _normandy_session=vXrwazjrTOLyY4EZV54PGA.1oBz9DK-UZghtfaMWXSTsnqTGCjlKeJZsX6fmXufW9UsK1BoUUG3sY2jnjkP9a7CFjDUW9K7AVFaHwy1B8G1riFP9C8S_i2fg5VS6tFpEBsOydFriP5w10_7Mltd_o64.ZYeQUSsY-vnIhxhUUO8sWdNoRXs.VJiTTw;
         path=/; HttpOnly
       X-Session-Id:
-      - 62e9e75f213e4a7d5cc91786fea42c90
+      - 1b093ceebeb6ef802d1b834b9019d557
       X-Request-Context-Id:
-      - 60ef8850-68f6-0132-4d7c-38e85630c82a
+      - 29d75230-6c53-0132-52e9-38e85630c82a
       X-Canvas-Meta:
-      - a=1;g=DtbEcIgsiKSxJvSoQKH05C46ONAcwvepb4BEBYAz;s=2;c=development;b=329924;m=329968;u=0.20;y=0.02;d=0.01;
+      - a=1;g=DtbEcIgsiKSxJvSoQKH05C46ONAcwvepb4BEBYAz;s=2;c=development;b=371464;m=371464;u=0.06;y=0.01;d=0.01;
       X-Runtime:
-      - '0.237708'
+      - '0.096645'
       Date:
-      - Thu, 18 Dec 2014 15:13:43 GMT
+      - Mon, 22 Dec 2014 21:55:27 GMT
       X-Rack-Cache:
       - miss
       Connection:
@@ -207,5 +207,5 @@ http_interactions:
       string: '[{"id":108,"name":"Jessy Young","sortable_name":"Young, Jessy","short_name":"Jessy
         Young","sis_user_id":"student_4425","integration_id":null,"sis_login_id":"westudent520","sis_import_id":4,"login_id":"westudent520"}]'
     http_version: 
-  recorded_at: Thu, 18 Dec 2014 15:13:43 GMT
+  recorded_at: Mon, 22 Dec 2014 21:55:27 GMT
 recorded_with: VCR 2.9.3

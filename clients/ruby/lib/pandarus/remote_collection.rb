@@ -48,18 +48,20 @@ module Pandarus
       handle_response @http_client.get(@pagination_links.last.next)
     end
 
+    private
+
     def was_last_page?
+      return true if @pagination_links == []
       @pagination_links.last.last_page?
     end
 
     def handle_response(response)
-      unless @pagination_links.any? {|links| links == response.env[:pagination_links] }
+      response_links = response.env[:pagination_links]
+      if response_links && !@pagination_links.any? {|existing_links| existing_links == response_links }
         @pagination_links << response.env[:pagination_links]
       end
       response.body.map{|member| @target_class.new(member) }
     end
-
-    private
 
     def base_path
       @http_client.url_prefix.path
