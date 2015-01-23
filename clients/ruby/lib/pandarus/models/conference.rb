@@ -7,6 +7,7 @@ module Pandarus
 
     attribute :id, resolve_type("Integer")
     attribute :conference_type, resolve_type("String")
+    attribute :conference_key, resolve_type("String")
     attribute :description, resolve_type("String")
     attribute :duration, resolve_type("Integer")
     attribute :ended_at, resolve_type("DateTime")

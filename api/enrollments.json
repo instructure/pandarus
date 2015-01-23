@@ -358,6 +358,14 @@
               "type": "string",
               "format": null,
               "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment[self_enrolled]",
+              "description": "If true, marks the enrollment as a self-enrollment, which gives students the ability to drop the course if desired. Defaults to false.",
+              "type": "boolean",
+              "format": null,
+              "required": false
             }
           ],
           "type": "Enrollment"
@@ -462,6 +470,14 @@
               "name": "enrollment[self_enrollment_code]",
               "description": "If the current user is not allowed to manage enrollments in this course, but the course allows self-enrollment, the user can self- enroll as a student in the default section by passing in a valid code. When self-enrolling, the user_id must be 'self'. The enrollment_state will be set to 'active' and all other arguments will be ignored.",
               "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment[self_enrolled]",
+              "description": "If true, marks the enrollment as a self-enrollment, which gives students the ability to drop the course if desired. Defaults to false.",
+              "type": "boolean",
               "format": null,
               "required": false
             }

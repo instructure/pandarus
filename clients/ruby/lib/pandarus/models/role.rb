@@ -5,6 +5,7 @@ module Pandarus
   class Role < ModelBase
     include Virtus.model(finalize: false)
 
+    attribute :label, resolve_type("String")
     attribute :role, resolve_type("String")
     attribute :base_role_type, resolve_type("String")
     attribute :account, resolve_type("Account")

@@ -54,7 +54,7 @@ To generate the Ruby gem from Canvas's api-docs.json file:
 
 1. Install maven (e.g. ```brew install maven```)
 
-2. [Optional] Edit the build-all script to point CANVAS_DIR to your installation of canvas-lms.
+2. [Optional] Set the environment variable `CANVAS_DIR` if your canvas checkout is not located at the relative path `../canvas-lms`
 
 3. Run ```./build-all```
 

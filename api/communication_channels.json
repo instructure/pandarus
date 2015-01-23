@@ -54,7 +54,7 @@
             {
               "paramType": "form",
               "name": "communication_channel[address]",
-              "description": "An email address or SMS number.",
+              "description": "An email address or SMS number. Not required for \"push\" type channels.",
               "type": "string",
               "format": null,
               "required": true
@@ -71,6 +71,14 @@
                 "sms",
                 "push"
               ]
+            },
+            {
+              "paramType": "form",
+              "name": "communication_channel[token]",
+              "description": "A registration id, device token, or equivalent token given to an app when registering with a push notification provider. Only valid for \"push\" type channels.",
+              "type": "string",
+              "format": null,
+              "required": false
             },
             {
               "paramType": "form",

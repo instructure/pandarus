@@ -321,12 +321,12 @@
     },
     {
       "path": "/v1/group_categories/{group_category_id}",
-      "description": "Deletes a group category and all groups under it. Protected group\ncategories can not be deleted, i.e. \"communities\", \"student_organized\", and \"imported\".",
+      "description": "Deletes a group category and all groups under it. Protected group\ncategories can not be deleted, i.e. \"communities\" and \"student_organized\".",
       "operations": [
         {
           "method": "DELETE",
           "summary": "Delete a Group Category",
-          "notes": "Deletes a group category and all groups under it. Protected group\ncategories can not be deleted, i.e. \"communities\", \"student_organized\", and \"imported\".",
+          "notes": "Deletes a group category and all groups under it. Protected group\ncategories can not be deleted, i.e. \"communities\" and \"student_organized\".",
           "nickname": "delete_group_category",
           "parameters": [
             {

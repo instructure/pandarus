@@ -8,6 +8,79 @@
   ],
   "apis": [
     {
+      "path": "/v1/accounts/{account_id}/users/{user_id}/account_notifications",
+      "description": "Returns a list of all global notifications in the account for this user\nAny notifications that have been closed by the user will not be returned",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Index of active global notification for the user",
+          "notes": "Returns a list of all global notifications in the account for this user\nAny notifications that have been closed by the user will not be returned",
+          "nickname": "index_of_active_global_notification_for_user",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "AccountNotification"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/users/{user_id}/account_notifications/{id}",
+      "description": "If the user no long wants to see this notification it can be excused with this call",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Close notification for user",
+          "notes": "If the user no long wants to see this notification it can be excused with this call",
+          "nickname": "close_notification_for_user",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "AccountNotification"
+        }
+      ]
+    },
+    {
       "path": "/v1/accounts/{account_id}/account_notifications",
       "description": "Create and return a new global notification for an account.",
       "operations": [
@@ -90,8 +163,8 @@
     }
   ],
   "models": {
-    "AccountNotificaion": {
-      "id": "AccountNotificaion",
+    "AccountNotification": {
+      "id": "AccountNotification",
       "description": "",
       "required": [
 

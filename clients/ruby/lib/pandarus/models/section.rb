@@ -15,6 +15,7 @@ module Pandarus
     attribute :start_at, resolve_type("DateTime")
     attribute :end_at, resolve_type("DateTime")
     attribute :nonxlist_course_id, resolve_type("Integer")
+    attribute :total_students, resolve_type("Integer")
     
   end
 end

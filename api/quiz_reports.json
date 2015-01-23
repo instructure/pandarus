@@ -51,12 +51,12 @@
     },
     {
       "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/reports",
-      "description": "Create and return a new report for this quiz. If a previously\ngenerated report matches the arguments and is still current (i.e.\nthere have been no new submissions), it will be returned.",
+      "description": "Create and return a new report for this quiz. If a previously\ngenerated report matches the arguments and is still current (i.e.\nthere have been no new submissions), it will be returned.\n\n*Responses*\n\n* <code>400 Bad Request</code> if the specified report type is invalid\n* <code>409 Conflict</code> if a quiz report of the specified type is already being\n  generated",
       "operations": [
         {
           "method": "POST",
           "summary": "Create a quiz report",
-          "notes": "Create and return a new report for this quiz. If a previously\ngenerated report matches the arguments and is still current (i.e.\nthere have been no new submissions), it will be returned.",
+          "notes": "Create and return a new report for this quiz. If a previously\ngenerated report matches the arguments and is still current (i.e.\nthere have been no new submissions), it will be returned.\n\n*Responses*\n\n* <code>400 Bad Request</code> if the specified report type is invalid\n* <code>409 Conflict</code> if a quiz report of the specified type is already being\n  generated",
           "nickname": "create_quiz_report",
           "parameters": [
             {
@@ -160,6 +160,45 @@
             }
           ],
           "type": "QuizReport"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/reports/{id}",
+      "description": "This API allows you to cancel a previous request you issued for a report to\nbe generated. Or in the case of an already generated report, you'd like to\nremove it, perhaps to generate it another time with an updated version that\nprovides new features.\n\nYou must check the report's generation status before attempting to use this\ninterface. See the \"workflow_state\" property of the QuizReport's Progress\nobject for more information. Only when the progress reports itself in a\n\"queued\" state can the generation be aborted.\n\n*Responses*\n\n- <code>204 No Content</code> if your request was accepted\n- <code>422 Unprocessable Entity</code> if the report is not being generated\n  or can not be aborted at this stage",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Abort the generation of a report, or remove a previously generated one",
+          "notes": "This API allows you to cancel a previous request you issued for a report to\nbe generated. Or in the case of an already generated report, you'd like to\nremove it, perhaps to generate it another time with an updated version that\nprovides new features.\n\nYou must check the report's generation status before attempting to use this\ninterface. See the \"workflow_state\" property of the QuizReport's Progress\nobject for more information. Only when the progress reports itself in a\n\"queued\" state can the generation be aborted.\n\n*Responses*\n\n- <code>204 No Content</code> if your request was accepted\n- <code>422 Unprocessable Entity</code> if the report is not being generated\n  or can not be aborted at this stage",
+          "nickname": "abort_generation_of_report_or_remove_previously_generated_one",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
         }
       ]
     }

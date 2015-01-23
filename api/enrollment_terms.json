@@ -9,12 +9,161 @@
   "apis": [
     {
       "path": "/v1/accounts/{account_id}/terms",
-      "description": "Return all of the terms in the account. Account must be a root account and\nrequires permission to manage the account (when called on non-root\naccounts, will be directed to the appropriate root account).",
+      "description": "Create a new enrollment term for the specified account.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create enrollment term",
+          "notes": "Create a new enrollment term for the specified account.",
+          "nickname": "create_enrollment_term",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment_term[name]",
+              "description": "The name of the term.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment_term[start_at]",
+              "description": "The day/time the term starts. Accepts times in ISO 8601 format, e.g. 2015-01-10T18:48:00Z.",
+              "type": "timestamp",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment_term[end_at]",
+              "description": "The day/time the term ends. Accepts times in ISO 8601 format, e.g. 2015-01-10T18:48:00Z.",
+              "type": "timestamp",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment_term[sis_term_id]",
+              "description": "The unique SIS identifier for the term.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "EnrollmentTerm"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/terms/{id}",
+      "description": "Update an existing enrollment term for the specified account.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update enrollment term",
+          "notes": "Update an existing enrollment term for the specified account.",
+          "nickname": "update_enrollment_term",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment_term[name]",
+              "description": "The name of the term.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment_term[start_at]",
+              "description": "The day/time the term starts. Accepts times in ISO 8601 format, e.g. 2015-01-10T18:48:00Z.",
+              "type": "timestamp",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment_term[end_at]",
+              "description": "The day/time the term ends. Accepts times in ISO 8601 format, e.g. 2015-01-10T18:48:00Z.",
+              "type": "timestamp",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment_term[sis_term_id]",
+              "description": "The unique SIS identifier for the term.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "EnrollmentTerm"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/terms/{id}",
+      "description": "Delete the specified enrollment term.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete enrollment term",
+          "notes": "Delete the specified enrollment term.",
+          "nickname": "delete_enrollment_term",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "EnrollmentTerm"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/terms",
+      "description": "Return all of the terms in the account.",
       "operations": [
         {
           "method": "GET",
           "summary": "List enrollment terms",
-          "notes": "Return all of the terms in the account. Account must be a root account and\nrequires permission to manage the account (when called on non-root\naccounts, will be directed to the appropriate root account).",
+          "notes": "Return all of the terms in the account.",
           "nickname": "list_enrollment_terms",
           "parameters": [
             {

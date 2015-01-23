@@ -279,6 +279,72 @@ module Pandarus
       
     end
     
+    # Index of active global notification for the user
+    def index_of_active_global_notification_for_user(account_id,user_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      raise "user_id is required" if user_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id,
+        :user_id => user_id
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/users/{user_id}/account_notifications",
+        :account_id => account_id,
+        :user_id => user_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, AccountNotification, path, query_params)
+      
+    end
+    
+    # Close notification for user
+    def close_notification_for_user(account_id,user_id,id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      raise "user_id is required" if user_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id,
+        :user_id => user_id,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/users/{user_id}/account_notifications/{id}",
+        :account_id => account_id,
+        :user_id => user_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      AccountNotification.new(response)
+      
+    end
+    
     # Create a global notification
     def create_global_notification(account_id,account_notification__subject__,account_notification__message__,account_notification__start_at__,account_notification__end_at__,opts={})
       query_param_keys = [
@@ -609,7 +675,8 @@ module Pandarus
         :hide_enrollmentless_courses,
         :state,
         :enrollment_term_id,
-        :search_term
+        :search_term,
+        :include
       ]
 
       form_param_keys = [
@@ -1284,7 +1351,8 @@ module Pandarus
     def get_assignment_group(course_id,assignment_group_id,opts={})
       query_param_keys = [
         :include,
-        :override_assignment_dates
+        :override_assignment_dates,
+        :grading_period_id
       ]
 
       form_param_keys = [
@@ -1478,7 +1546,8 @@ module Pandarus
       query_param_keys = [
         :include,
         :override_assignment_dates,
-        :needs_grading_count_by_section
+        :needs_grading_count_by_section,
+        :all_dates
       ]
 
       form_param_keys = [
@@ -2287,6 +2356,7 @@ module Pandarus
       form_param_keys = [
         :communication_channel__address__,
         :communication_channel__type__,
+        :communication_channel__token__,
         :skip_confirmation,
         
       ]
@@ -4330,6 +4400,7 @@ module Pandarus
         :course__end_at__,
         :course__license__,
         :course__is_public__,
+        :course__is_public_to_auth_users__,
         :course__public_syllabus__,
         :course__public_description__,
         :course__allow_student_wiki_edits__,
@@ -4435,7 +4506,8 @@ module Pandarus
         :enrollment_role,
         :enrollment_role_id,
         :include,
-        :user_id
+        :user_id,
+        :enrollment_state
       ]
 
       form_param_keys = [
@@ -4468,7 +4540,8 @@ module Pandarus
         :enrollment_role,
         :enrollment_role_id,
         :include,
-        :user_id
+        :user_id,
+        :enrollment_state
       ]
 
       form_param_keys = [
@@ -4740,6 +4813,10 @@ module Pandarus
         :allow_student_discussion_topics,
         :allow_student_forum_attachments,
         :allow_student_discussion_editing,
+        :allow_student_organized_groups,
+        :hide_final_grades,
+        :hide_distribution_graphs,
+        :lock_all_announcements,
         
       ]
 
@@ -4910,6 +4987,35 @@ module Pandarus
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       Progress.new(response)
+      
+    end
+    
+    # Reset a course
+    def reset_course(course_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/reset_content",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      Course.new(response)
       
     end
     
@@ -6707,6 +6813,107 @@ module Pandarus
       
     end
     
+    # Create enrollment term
+    def create_enrollment_term(account_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :enrollment_term__name__,
+        :enrollment_term__start_at__,
+        :enrollment_term__end_at__,
+        :enrollment_term__sis_term_id__,
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/terms",
+        :account_id => account_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      EnrollmentTerm.new(response)
+      
+    end
+    
+    # Update enrollment term
+    def update_enrollment_term(account_id,id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :enrollment_term__name__,
+        :enrollment_term__start_at__,
+        :enrollment_term__end_at__,
+        :enrollment_term__sis_term_id__,
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/terms/{id}",
+        :account_id => account_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      EnrollmentTerm.new(response)
+      
+    end
+    
+    # Delete enrollment term
+    def delete_enrollment_term(account_id,id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/terms/{id}",
+        :account_id => account_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      EnrollmentTerm.new(response)
+      
+    end
+    
     # List enrollment terms
     def list_enrollment_terms(account_id,opts={})
       query_param_keys = [
@@ -6875,6 +7082,7 @@ module Pandarus
         :enrollment__limit_privileges_to_course_section__,
         :enrollment__notify__,
         :enrollment__self_enrollment_code__,
+        :enrollment__self_enrolled__,
         
       ]
 
@@ -6917,6 +7125,7 @@ module Pandarus
         :enrollment__limit_privileges_to_course_section__,
         :enrollment__notify__,
         :enrollment__self_enrollment_code__,
+        :enrollment__self_enrolled__,
         
       ]
 
@@ -8921,6 +9130,303 @@ module Pandarus
       
     end
     
+    # Set usage rights
+    def set_usage_rights_courses(course_id,file_ids,usage_rights__use_justification__,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :file_ids,
+        :folder_ids,
+        :publish,
+        :usage_rights__use_justification__,
+        :usage_rights__legal_copyright__,
+        :usage_rights__license__,
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "file_ids is required" if file_ids.nil?
+      raise "usage_rights__use_justification__ is required" if usage_rights__use_justification__.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :file_ids => file_ids,
+        :usage_rights__use_justification__ => usage_rights__use_justification__
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/usage_rights",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      UsageRights.new(response)
+      
+    end
+    
+    # Set usage rights
+    def set_usage_rights_groups(group_id,file_ids,usage_rights__use_justification__,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :file_ids,
+        :folder_ids,
+        :publish,
+        :usage_rights__use_justification__,
+        :usage_rights__legal_copyright__,
+        :usage_rights__license__,
+        
+      ]
+
+      # verify existence of params
+      raise "group_id is required" if group_id.nil?
+      raise "file_ids is required" if file_ids.nil?
+      raise "usage_rights__use_justification__ is required" if usage_rights__use_justification__.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :group_id => group_id,
+        :file_ids => file_ids,
+        :usage_rights__use_justification__ => usage_rights__use_justification__
+      )
+
+      # resource path
+      path = path_replace("/v1/groups/{group_id}/usage_rights",
+        :group_id => group_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      UsageRights.new(response)
+      
+    end
+    
+    # Set usage rights
+    def set_usage_rights_users(user_id,file_ids,usage_rights__use_justification__,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :file_ids,
+        :folder_ids,
+        :publish,
+        :usage_rights__use_justification__,
+        :usage_rights__legal_copyright__,
+        :usage_rights__license__,
+        
+      ]
+
+      # verify existence of params
+      raise "user_id is required" if user_id.nil?
+      raise "file_ids is required" if file_ids.nil?
+      raise "usage_rights__use_justification__ is required" if usage_rights__use_justification__.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :user_id => user_id,
+        :file_ids => file_ids,
+        :usage_rights__use_justification__ => usage_rights__use_justification__
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{user_id}/usage_rights",
+        :user_id => user_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      UsageRights.new(response)
+      
+    end
+    
+    # Remove usage rights
+    def remove_usage_rights_courses(course_id,file_ids,opts={})
+      query_param_keys = [
+        :file_ids,
+        :folder_ids
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "file_ids is required" if file_ids.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :file_ids => file_ids
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/usage_rights",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      response
+      
+    end
+    
+    # Remove usage rights
+    def remove_usage_rights_groups(group_id,file_ids,opts={})
+      query_param_keys = [
+        :file_ids,
+        :folder_ids
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "group_id is required" if group_id.nil?
+      raise "file_ids is required" if file_ids.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :group_id => group_id,
+        :file_ids => file_ids
+      )
+
+      # resource path
+      path = path_replace("/v1/groups/{group_id}/usage_rights",
+        :group_id => group_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      response
+      
+    end
+    
+    # Remove usage rights
+    def remove_usage_rights_users(user_id,file_ids,opts={})
+      query_param_keys = [
+        :file_ids,
+        :folder_ids
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "user_id is required" if user_id.nil?
+      raise "file_ids is required" if file_ids.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :user_id => user_id,
+        :file_ids => file_ids
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{user_id}/usage_rights",
+        :user_id => user_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      response
+      
+    end
+    
+    # List licenses
+    def list_licenses_courses(course_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/content_licenses",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, License, path, query_params)
+      
+    end
+    
+    # List licenses
+    def list_licenses_groups(group_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "group_id is required" if group_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :group_id => group_id
+      )
+
+      # resource path
+      path = path_replace("/v1/groups/{group_id}/content_licenses",
+        :group_id => group_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, License, path, query_params)
+      
+    end
+    
+    # List licenses
+    def list_licenses_users(user_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "user_id is required" if user_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :user_id => user_id
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{user_id}/content_licenses",
+        :user_id => user_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, License, path, query_params)
+      
+    end
+    
     # Query by assignment.
     def query_by_assignment(assignment_id,opts={})
       query_param_keys = [
@@ -10085,6 +10591,7 @@ module Pandarus
         :join_level,
         :avatar_id,
         :storage_quota_mb,
+        :members,
         
       ]
 
@@ -11183,6 +11690,41 @@ module Pandarus
       
     end
     
+    # Mark module item read
+    def mark_module_item_read(course_id,module_id,id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "module_id is required" if module_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :module_id => module_id,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/modules/{module_id}/items/{id}/mark_read",
+        :course_id => course_id,
+        :module_id => module_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      response
+      
+    end
+    
     # List preferences
     def list_preferences_communication_channel_id(user_id,communication_channel_id,opts={})
       query_param_keys = [
@@ -12057,6 +12599,8 @@ module Pandarus
         :mastery_points,
         :ratings__description__,
         :ratings__points__,
+        :calculation_method,
+        :calculation_int,
         
       ]
 
@@ -12093,6 +12637,8 @@ module Pandarus
         :mastery_points,
         :ratings__description__,
         :ratings__points__,
+        :calculation_method,
+        :calculation_int,
         
       ]
 
@@ -12133,6 +12679,8 @@ module Pandarus
         :mastery_points,
         :ratings__description__,
         :ratings__points__,
+        :calculation_method,
+        :calculation_int,
         
       ]
 
@@ -12172,6 +12720,8 @@ module Pandarus
         :mastery_points,
         :ratings__description__,
         :ratings__points__,
+        :calculation_method,
+        :calculation_int,
         
       ]
 
@@ -12215,6 +12765,8 @@ module Pandarus
         :mastery_points,
         :ratings__description__,
         :ratings__points__,
+        :calculation_method,
+        :calculation_int,
         
       ]
 
@@ -12254,6 +12806,8 @@ module Pandarus
         :mastery_points,
         :ratings__description__,
         :ratings__points__,
+        :calculation_method,
+        :calculation_int,
         
       ]
 
@@ -12790,6 +13344,8 @@ module Pandarus
         :mastery_points,
         :ratings__description__,
         :ratings__points__,
+        :calculation_method,
+        :calculation_int,
         
       ]
 
@@ -12879,7 +13435,6 @@ module Pandarus
       form_param_keys = [
         :wiki_page__title__,
         :wiki_page__body__,
-        :wiki_page__hide_from_students__,
         :wiki_page__editing_roles__,
         :wiki_page__notify_of_update__,
         :wiki_page__published__,
@@ -12914,7 +13469,6 @@ module Pandarus
       form_param_keys = [
         :wiki_page__title__,
         :wiki_page__body__,
-        :wiki_page__hide_from_students__,
         :wiki_page__editing_roles__,
         :wiki_page__notify_of_update__,
         :wiki_page__published__,
@@ -13011,7 +13565,6 @@ module Pandarus
       form_param_keys = [
         :wiki_page__title__,
         :wiki_page__body__,
-        :wiki_page__hide_from_students__,
         :wiki_page__editing_roles__,
         :wiki_page__notify_of_update__,
         :wiki_page__published__,
@@ -13049,7 +13602,6 @@ module Pandarus
       form_param_keys = [
         :wiki_page__title__,
         :wiki_page__body__,
-        :wiki_page__hide_from_students__,
         :wiki_page__editing_roles__,
         :wiki_page__notify_of_update__,
         :wiki_page__published__,
@@ -13151,7 +13703,6 @@ module Pandarus
       form_param_keys = [
         :wiki_page__title__,
         :wiki_page__body__,
-        :wiki_page__hide_from_students__,
         :wiki_page__editing_roles__,
         :wiki_page__notify_of_update__,
         :wiki_page__published__,
@@ -13190,7 +13741,6 @@ module Pandarus
       form_param_keys = [
         :wiki_page__title__,
         :wiki_page__body__,
-        :wiki_page__hide_from_students__,
         :wiki_page__editing_roles__,
         :wiki_page__notify_of_update__,
         :wiki_page__published__,
@@ -14269,7 +14819,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      RemoteCollection.new(connection, QuizAssignmentOverrideSet, path, query_params)
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      QuizAssignmentOverrideSetContainer.new(response)
       
     end
     
@@ -14493,6 +15044,197 @@ module Pandarus
       
     end
     
+    # List questions in a quiz or a submission
+    def list_questions_in_quiz_or_submission(course_id,quiz_id,opts={})
+      query_param_keys = [
+        :quiz_submission_id,
+        :quiz_submission_attempt
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "quiz_id is required" if quiz_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :quiz_id => quiz_id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/questions",
+        :course_id => course_id,
+        :quiz_id => quiz_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, QuizQuestion, path, query_params)
+      
+    end
+    
+    # Get a single quiz question
+    def get_single_quiz_question(course_id,quiz_id,id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "quiz_id is required" if quiz_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :quiz_id => quiz_id,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/questions/{id}",
+        :course_id => course_id,
+        :quiz_id => quiz_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      QuizQuestion.new(response)
+      
+    end
+    
+    # Create a single quiz question
+    def create_single_quiz_question(course_id,quiz_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :question__question_name__,
+        :question__question_text__,
+        :question__quiz_group_id__,
+        :question__question_type__,
+        :question__position__,
+        :question__points_possible__,
+        :question__correct_comments__,
+        :question__incorrect_comments__,
+        :question__neutral_comments__,
+        :question__text_after_answers__,
+        :question__answers__,
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "quiz_id is required" if quiz_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :quiz_id => quiz_id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/questions",
+        :course_id => course_id,
+        :quiz_id => quiz_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      QuizQuestion.new(response)
+      
+    end
+    
+    # Update an existing quiz question
+    def update_existing_quiz_question(course_id,quiz_id,id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :question__question_name__,
+        :question__question_text__,
+        :question__quiz_group_id__,
+        :question__question_type__,
+        :question__position__,
+        :question__points_possible__,
+        :question__correct_comments__,
+        :question__incorrect_comments__,
+        :question__neutral_comments__,
+        :question__text_after_answers__,
+        :question__answers__,
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "quiz_id is required" if quiz_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :quiz_id => quiz_id,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/questions/{id}",
+        :course_id => course_id,
+        :quiz_id => quiz_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      QuizQuestion.new(response)
+      
+    end
+    
+    # Delete a quiz question
+    def delete_quiz_question(course_id,quiz_id,id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "quiz_id is required" if quiz_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :quiz_id => quiz_id,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/questions/{id}",
+        :course_id => course_id,
+        :quiz_id => quiz_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      response
+      
+    end
+    
     # Retrieve all quiz reports
     def retrieve_all_quiz_reports(course_id,quiz_id,opts={})
       query_param_keys = [
@@ -14596,6 +15338,41 @@ module Pandarus
       
     end
     
+    # Abort the generation of a report, or remove a previously generated one
+    def abort_generation_of_report_or_remove_previously_generated_one(course_id,quiz_id,id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "quiz_id is required" if quiz_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :quiz_id => quiz_id,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/reports/{id}",
+        :course_id => course_id,
+        :quiz_id => quiz_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      response
+      
+    end
+    
     # Fetching the latest quiz statistics
     def fetching_latest_quiz_statistics(course_id,quiz_id,opts={})
       query_param_keys = [
@@ -14619,6 +15396,79 @@ module Pandarus
       path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/statistics",
         :course_id => course_id,
         :quiz_id => quiz_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      response
+      
+    end
+    
+    # Submit captured events
+    def submit_captured_events(course_id,quiz_id,id,quiz_submission_events,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :quiz_submission_events,
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "quiz_id is required" if quiz_id.nil?
+      raise "id is required" if id.nil?
+      raise "quiz_submission_events is required" if quiz_submission_events.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :quiz_id => quiz_id,
+        :id => id,
+        :quiz_submission_events => quiz_submission_events
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}/events",
+        :course_id => course_id,
+        :quiz_id => quiz_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      response
+      
+    end
+    
+    # Retrieve captured events
+    def retrieve_captured_events(course_id,quiz_id,id,opts={})
+      query_param_keys = [
+        :attempt
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "quiz_id is required" if quiz_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :quiz_id => quiz_id,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}/events",
+        :course_id => course_id,
+        :quiz_id => quiz_id,
+        :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
@@ -15052,234 +15902,6 @@ module Pandarus
       
     end
     
-    # List questions in a quiz
-    def list_questions_in_quiz(course_id,quiz_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "course_id is required" if course_id.nil?
-      raise "quiz_id is required" if quiz_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :quiz_id => quiz_id
-      )
-
-      # resource path
-      path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/questions",
-        :course_id => course_id,
-        :quiz_id => quiz_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_query_params(options, query_param_keys)
-
-      RemoteCollection.new(connection, QuizQuestion, path, query_params)
-      
-    end
-    
-    # Get a single quiz question
-    def get_single_quiz_question(course_id,quiz_id,id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "course_id is required" if course_id.nil?
-      raise "quiz_id is required" if quiz_id.nil?
-      raise "id is required" if id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :quiz_id => quiz_id,
-        :id => id
-      )
-
-      # resource path
-      path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/questions/{id}",
-        :course_id => course_id,
-        :quiz_id => quiz_id,
-        :id => id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_query_params(options, query_param_keys)
-
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      QuizQuestion.new(response)
-      
-    end
-    
-    # Create a single quiz question
-    def create_single_quiz_question(course_id,quiz_id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        :question__question_name__,
-        :question__question_text__,
-        :question__quiz_group_id__,
-        :question__question_type__,
-        :question__position__,
-        :question__points_possible__,
-        :question__correct_comments__,
-        :question__incorrect_comments__,
-        :question__neutral_comments__,
-        :question__text_after_answers__,
-        :question__answers__,
-        
-      ]
-
-      # verify existence of params
-      raise "course_id is required" if course_id.nil?
-      raise "quiz_id is required" if quiz_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :quiz_id => quiz_id
-      )
-
-      # resource path
-      path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/questions",
-        :course_id => course_id,
-        :quiz_id => quiz_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_query_params(options, query_param_keys)
-
-      response = mixed_request(:post, path, query_params, form_params, headers)
-      QuizQuestion.new(response)
-      
-    end
-    
-    # Update an existing quiz question
-    def update_existing_quiz_question(course_id,quiz_id,id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        :question__question_name__,
-        :question__question_text__,
-        :question__quiz_group_id__,
-        :question__question_type__,
-        :question__position__,
-        :question__points_possible__,
-        :question__correct_comments__,
-        :question__incorrect_comments__,
-        :question__neutral_comments__,
-        :question__text_after_answers__,
-        :question__answers__,
-        
-      ]
-
-      # verify existence of params
-      raise "course_id is required" if course_id.nil?
-      raise "quiz_id is required" if quiz_id.nil?
-      raise "id is required" if id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :quiz_id => quiz_id,
-        :id => id
-      )
-
-      # resource path
-      path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/questions/{id}",
-        :course_id => course_id,
-        :quiz_id => quiz_id,
-        :id => id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_query_params(options, query_param_keys)
-
-      response = mixed_request(:put, path, query_params, form_params, headers)
-      QuizQuestion.new(response)
-      
-    end
-    
-    # Delete a quiz question
-    def delete_quiz_question(course_id,quiz_id,id,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        
-      ]
-
-      # verify existence of params
-      raise "course_id is required" if course_id.nil?
-      raise "quiz_id is required" if quiz_id.nil?
-      raise "id is required" if id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :quiz_id => quiz_id,
-        :id => id
-      )
-
-      # resource path
-      path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/questions/{id}",
-        :course_id => course_id,
-        :quiz_id => quiz_id,
-        :id => id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_query_params(options, query_param_keys)
-
-      response = mixed_request(:delete, path, query_params, form_params, headers)
-      response
-      
-    end
-    
-    # Submit captured events
-    def submit_captured_events(course_id,quiz_id,id,quiz_submission_events,opts={})
-      query_param_keys = [
-        
-      ]
-
-      form_param_keys = [
-        :quiz_submission_events,
-        
-      ]
-
-      # verify existence of params
-      raise "course_id is required" if course_id.nil?
-      raise "quiz_id is required" if quiz_id.nil?
-      raise "id is required" if id.nil?
-      raise "quiz_submission_events is required" if quiz_submission_events.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :quiz_id => quiz_id,
-        :id => id,
-        :quiz_submission_events => quiz_submission_events
-      )
-
-      # resource path
-      path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}/events",
-        :course_id => course_id,
-        :quiz_id => quiz_id,
-        :id => id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_query_params(options, query_param_keys)
-
-      response = mixed_request(:post, path, query_params, form_params, headers)
-      response
-      
-    end
-    
     # List quizzes in a course
     def list_quizzes_in_course(course_id,opts={})
       query_param_keys = [
@@ -15355,6 +15977,7 @@ module Pandarus
         :quiz__shuffle_answers__,
         :quiz__hide_results__,
         :quiz__show_correct_answers__,
+        :quiz__show_correct_answers_last_attempt__,
         :quiz__show_correct_answers_at__,
         :quiz__hide_correct_answers_at__,
         :quiz__allowed_attempts__,
@@ -15522,8 +16145,9 @@ module Pandarus
     end
     
     # Get a single role
-    def get_single_role(id,account_id,role,opts={})
+    def get_single_role(id,account_id,role_id,opts={})
       query_param_keys = [
+        :role_id,
         :role
       ]
 
@@ -15534,12 +16158,12 @@ module Pandarus
       # verify existence of params
       raise "id is required" if id.nil?
       raise "account_id is required" if account_id.nil?
-      raise "role is required" if role.nil?
+      raise "role_id is required" if role_id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id,
         :account_id => account_id,
-        :role => role
+        :role_id => role_id
       )
 
       # resource path
@@ -15556,12 +16180,13 @@ module Pandarus
     end
     
     # Create a new role
-    def create_new_role(account_id,role,opts={})
+    def create_new_role(account_id,label,opts={})
       query_param_keys = [
         
       ]
 
       form_param_keys = [
+        :label,
         :role,
         :base_role_type,
         :permissions____x_____explicit__,
@@ -15572,11 +16197,11 @@ module Pandarus
 
       # verify existence of params
       raise "account_id is required" if account_id.nil?
-      raise "role is required" if role.nil?
+      raise "label is required" if label.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id,
-        :role => role
+        :label => label
       )
 
       # resource path
@@ -15592,8 +16217,9 @@ module Pandarus
     end
     
     # Deactivate a role
-    def deactivate_role(account_id,id,role,opts={})
+    def deactivate_role(account_id,id,role_id,opts={})
       query_param_keys = [
+        :role_id,
         :role
       ]
 
@@ -15604,12 +16230,12 @@ module Pandarus
       # verify existence of params
       raise "account_id is required" if account_id.nil?
       raise "id is required" if id.nil?
-      raise "role is required" if role.nil?
+      raise "role_id is required" if role_id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id,
-        :role => role
+        :role_id => role_id
       )
 
       # resource path
@@ -15626,12 +16252,13 @@ module Pandarus
     end
     
     # Activate a role
-    def activate_role(account_id,id,role,opts={})
+    def activate_role(account_id,id,role_id,opts={})
       query_param_keys = [
         
       ]
 
       form_param_keys = [
+        :role_id,
         :role,
         
       ]
@@ -15639,12 +16266,12 @@ module Pandarus
       # verify existence of params
       raise "account_id is required" if account_id.nil?
       raise "id is required" if id.nil?
-      raise "role is required" if role.nil?
+      raise "role_id is required" if role_id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id,
-        :role => role
+        :role_id => role_id
       )
 
       # resource path
@@ -15667,6 +16294,7 @@ module Pandarus
       ]
 
       form_param_keys = [
+        :label,
         :permissions____x_____explicit__,
         :permissions____x_____enabled__,
         
@@ -15697,7 +16325,7 @@ module Pandarus
     # Get SIS import list
     def get_sis_import_list(account_id,opts={})
       query_param_keys = [
-        
+        :created_since
       ]
 
       form_param_keys = [
@@ -15928,6 +16556,7 @@ module Pandarus
         :course_section__sis_section_id__,
         :course_section__start_at__,
         :course_section__end_at__,
+        :course_section__restrict_enrollments_to_section_dates__,
         
       ]
 
@@ -16371,6 +17000,7 @@ module Pandarus
         :student_ids,
         :assignment_ids,
         :grouped,
+        :grading_period_id,
         :include
       ]
 
@@ -16403,6 +17033,7 @@ module Pandarus
         :student_ids,
         :assignment_ids,
         :grouped,
+        :grading_period_id,
         :include
       ]
 
@@ -16581,6 +17212,7 @@ module Pandarus
         :comment__media_comment_id__,
         :comment__media_comment_type__,
         :comment__file_ids__,
+        :include__visibility__,
         :submission__posted_grade__,
         :rubric_assessment,
         
@@ -16623,6 +17255,7 @@ module Pandarus
         :comment__media_comment_id__,
         :comment__media_comment_type__,
         :comment__file_ids__,
+        :include__visibility__,
         :submission__posted_grade__,
         :rubric_assessment,
         
@@ -16650,6 +17283,84 @@ module Pandarus
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
+      
+    end
+    
+    # Grade or comment on multiple submissions for an assignment
+    def grade_or_comment_on_multiple_submissions_for_assignment_courses(course_id,assignment_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :grade_data___student_id_____posted_grade__,
+        :grade_data___student_id_____rubric_assessment__,
+        :grade_data___student_id_____text_comment__,
+        :grade_data___student_id_____group_comment__,
+        :grade_data___student_id_____media_comment_id__,
+        :grade_data___student_id_____media_comment_type__,
+        :grade_data___student_id_____file_ids__,
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :assignment_id => assignment_id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/assignments/{assignment_id}/submissions/update_grades",
+        :course_id => course_id,
+        :assignment_id => assignment_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      Progress.new(response)
+      
+    end
+    
+    # Grade or comment on multiple submissions for an assignment
+    def grade_or_comment_on_multiple_submissions_for_assignment_sections(section_id,assignment_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :grade_data___student_id_____posted_grade__,
+        :grade_data___student_id_____rubric_assessment__,
+        :grade_data___student_id_____text_comment__,
+        :grade_data___student_id_____group_comment__,
+        :grade_data___student_id_____media_comment_id__,
+        :grade_data___student_id_____media_comment_type__,
+        :grade_data___student_id_____file_ids__,
+        
+      ]
+
+      # verify existence of params
+      raise "section_id is required" if section_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :section_id => section_id,
+        :assignment_id => assignment_id
+      )
+
+      # resource path
+      path = path_replace("/v1/sections/{section_id}/assignments/{assignment_id}/submissions/update_grades",
+        :section_id => section_id,
+        :assignment_id => assignment_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      Progress.new(response)
       
     end
     

@@ -76,11 +76,19 @@
             },
             {
               "paramType": "query",
+              "name": "role_id",
+              "description": "The unique identifier for the role",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            },
+            {
+              "paramType": "query",
               "name": "role",
-              "description": "The name and unique identifier for the role",
+              "description": "The name for the role",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "Role"
@@ -107,11 +115,19 @@
             },
             {
               "paramType": "form",
-              "name": "role",
+              "name": "label",
               "description": "Label for the role.",
               "type": "string",
               "format": null,
               "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "role",
+              "description": "Deprecated alias for label.",
+              "type": "string",
+              "format": null,
+              "required": false
             },
             {
               "paramType": "form",
@@ -186,11 +202,19 @@
             },
             {
               "paramType": "query",
+              "name": "role_id",
+              "description": "The unique identifier for the role",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            },
+            {
+              "paramType": "query",
               "name": "role",
-              "description": "Label and unique identifier for the role.",
+              "description": "The name for the role",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             }
           ],
           "type": "Role"
@@ -225,11 +249,19 @@
             },
             {
               "paramType": "form",
-              "name": "role",
-              "description": "Label and unique identifier for the role.",
-              "type": "string",
-              "format": null,
+              "name": "role_id",
+              "description": "The unique identifier for the role",
+              "type": "integer",
+              "format": "int64",
               "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "role",
+              "description": "The name for the role",
+              "type": "deprecated",
+              "format": null,
+              "required": false
             }
           ],
           "type": "Role"
@@ -261,6 +293,14 @@
               "type": "string",
               "format": null,
               "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "label",
+              "description": "The label for the role. Can only change the label of a custom role that belongs directly to the account.",
+              "type": "string",
+              "format": null,
+              "required": false
             },
             {
               "paramType": "form",
@@ -326,8 +366,13 @@
 
       ],
       "properties": {
-        "role": {
+        "label": {
           "description": "The label of the role.",
+          "example": "New Role",
+          "type": "string"
+        },
+        "role": {
+          "description": "The label of the role. (Deprecated alias for 'label')",
           "example": "New Role",
           "type": "string"
         },

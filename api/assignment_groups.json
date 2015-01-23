@@ -107,6 +107,14 @@
               "type": "boolean",
               "format": null,
               "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "grading_period_id",
+              "description": "The id of the grading period in which assignment groups are being requested (Requires the Multiple Grading Periods account feature turned on)",
+              "type": "integer",
+              "format": "int64",
+              "required": false
             }
           ],
           "type": "AssignmentGroup"

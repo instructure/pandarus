@@ -208,6 +208,26 @@
               "type": "string",
               "format": null,
               "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "- All explanations can be seen in the {api:CoursesController#index Course API index documentation}",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "enum": [
+                "needs_grading_count",
+                "syllabus_body",
+                "total_scores",
+                "term",
+                "course_progress",
+                "sections",
+                "storage_quota_used_mb"
+              ],
+              "items": {
+                "type": "string"
+              }
             }
           ],
           "type": "array",

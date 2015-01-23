@@ -13,6 +13,7 @@ module Pandarus
     attribute :due_at, resolve_type("DateTime")
     attribute :lock_at, resolve_type("DateTime")
     attribute :unlock_at, resolve_type("DateTime")
+    attribute :has_overrides, resolve_type(nil)
     attribute :all_dates, resolve_type("AssignmentDate", collection: true)
     attribute :course_id, resolve_type("Integer")
     attribute :html_url, resolve_type("String")
@@ -53,7 +54,7 @@ module Pandarus
     attribute :submission, resolve_type("Submission")
     attribute :use_rubric_for_grading, resolve_type(nil)
     attribute :rubric_settings, resolve_type("String")
-    attribute :rubric, resolve_type("RubricCriteria")
+    attribute :rubric, resolve_type("RubricCriteria", collection: true)
     attribute :assignment_visibility, resolve_type("Integer", collection: true)
     
   end

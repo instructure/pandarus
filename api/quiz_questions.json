@@ -13,9 +13,9 @@
       "operations": [
         {
           "method": "GET",
-          "summary": "List questions in a quiz",
+          "summary": "List questions in a quiz or a submission",
           "notes": "Returns the list of QuizQuestions in this quiz.",
-          "nickname": "list_questions_in_quiz",
+          "nickname": "list_questions_in_quiz_or_submission",
           "parameters": [
             {
               "paramType": "path",
@@ -32,6 +32,22 @@
               "type": "string",
               "format": null,
               "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "quiz_submission_id",
+              "description": "If specified, the endpoint will return the questions that were presented for that submission. This is useful if the quiz has been modified after the submission was created and the latest quiz version's set of questions does not match the submission's. NOTE: you must specify quiz_submission_attempt as well if you specify this parameter.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "quiz_submission_attempt",
+              "description": "The attempt of the submission you want the questions for.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
             }
           ],
           "type": "array",

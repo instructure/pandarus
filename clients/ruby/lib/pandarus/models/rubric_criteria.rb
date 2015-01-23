@@ -7,7 +7,10 @@ module Pandarus
 
     attribute :points, resolve_type("Integer")
     attribute :id, resolve_type("String")
+    attribute :outcome_id, resolve_type("String")
+    attribute :vendor_guid, resolve_type("String")
     attribute :description, resolve_type("String")
+    attribute :long_description, resolve_type("String")
     attribute :ratings, resolve_type("RubricRating", collection: true)
     
   end

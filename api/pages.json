@@ -89,14 +89,6 @@
             },
             {
               "paramType": "form",
-              "name": "wiki_page[hide_from_students]",
-              "description": "Whether the page should be hidden from students. *Note:* when draft state is enabled, attempts to set +hide_from_students+ will be ignored and the value returned will always be the inverse of the +published+ value.",
-              "type": "boolean",
-              "format": null,
-              "required": false
-            },
-            {
-              "paramType": "form",
               "name": "wiki_page[editing_roles]",
               "description": "Which user roles are allowed to edit this page. Any combination of these roles is allowed (separated by commas). \"teachers\":: Allows editing by teachers in the course. \"students\":: Allows editing by students in the course. \"members\":: For group wikis, allows editing by members of the group. \"public\":: Allows editing by any user.",
               "type": "string",
@@ -120,7 +112,7 @@
             {
               "paramType": "form",
               "name": "wiki_page[published]",
-              "description": "Whether the page is published (true) or draft state (false). *Note:* when draft state is disabled, attempts to set +published+ will be ignored and the value returned will always be the inverse of the +hide_from_students+ value.",
+              "description": "Whether the page is published (true) or draft state (false).",
               "type": "boolean",
               "format": null,
               "required": false
@@ -166,14 +158,6 @@
             },
             {
               "paramType": "form",
-              "name": "wiki_page[hide_from_students]",
-              "description": "Whether the page should be hidden from students. *Note:* when draft state is enabled, attempts to set +hide_from_students+ will be ignored and the value returned will always be the inverse of the +published+ value.",
-              "type": "boolean",
-              "format": null,
-              "required": false
-            },
-            {
-              "paramType": "form",
               "name": "wiki_page[editing_roles]",
               "description": "Which user roles are allowed to edit this page. Any combination of these roles is allowed (separated by commas). \"teachers\":: Allows editing by teachers in the course. \"students\":: Allows editing by students in the course. \"members\":: For group wikis, allows editing by members of the group. \"public\":: Allows editing by any user.",
               "type": "string",
@@ -197,7 +181,7 @@
             {
               "paramType": "form",
               "name": "wiki_page[published]",
-              "description": "Whether the page is published (true) or draft state (false). *Note:* when draft state is disabled, attempts to set +published+ will be ignored and the value returned will always be the inverse of the +hide_from_students+ value.",
+              "description": "Whether the page is published (true) or draft state (false).",
               "type": "boolean",
               "format": null,
               "required": false
@@ -377,14 +361,6 @@
             },
             {
               "paramType": "form",
-              "name": "wiki_page[hide_from_students]",
-              "description": "Whether the page should be hidden from students. *Note:* when draft state is enabled, attempts to set +hide_from_students+ will be ignored and the value returned will always be the inverse of the +published+ value.",
-              "type": "boolean",
-              "format": null,
-              "required": false
-            },
-            {
-              "paramType": "form",
               "name": "wiki_page[editing_roles]",
               "description": "Which user roles are allowed to edit this page. Any combination of these roles is allowed (separated by commas). \"teachers\":: Allows editing by teachers in the course. \"students\":: Allows editing by students in the course. \"members\":: For group wikis, allows editing by members of the group. \"public\":: Allows editing by any user.",
               "type": "string",
@@ -408,7 +384,7 @@
             {
               "paramType": "form",
               "name": "wiki_page[published]",
-              "description": "Whether the page is published (true) or draft state (false). *Note:* when draft state is disabled, attempts to set +published+ will be ignored and the value returned will always be the inverse of the +hide_from_students+ value.",
+              "description": "Whether the page is published (true) or draft state (false).",
               "type": "boolean",
               "format": null,
               "required": false
@@ -462,14 +438,6 @@
             },
             {
               "paramType": "form",
-              "name": "wiki_page[hide_from_students]",
-              "description": "Whether the page should be hidden from students. *Note:* when draft state is enabled, attempts to set +hide_from_students+ will be ignored and the value returned will always be the inverse of the +published+ value.",
-              "type": "boolean",
-              "format": null,
-              "required": false
-            },
-            {
-              "paramType": "form",
               "name": "wiki_page[editing_roles]",
               "description": "Which user roles are allowed to edit this page. Any combination of these roles is allowed (separated by commas). \"teachers\":: Allows editing by teachers in the course. \"students\":: Allows editing by students in the course. \"members\":: For group wikis, allows editing by members of the group. \"public\":: Allows editing by any user.",
               "type": "string",
@@ -493,7 +461,7 @@
             {
               "paramType": "form",
               "name": "wiki_page[published]",
-              "description": "Whether the page is published (true) or draft state (false). *Note:* when draft state is disabled, attempts to set +published+ will be ignored and the value returned will always be the inverse of the +hide_from_students+ value.",
+              "description": "Whether the page is published (true) or draft state (false).",
               "type": "boolean",
               "format": null,
               "required": false
@@ -617,14 +585,6 @@
             },
             {
               "paramType": "form",
-              "name": "wiki_page[hide_from_students]",
-              "description": "Whether the page should be hidden from students. *Note:* when draft state is enabled, attempts to set +hide_from_students+ will be ignored and the value returned will always be the inverse of the +published+ value.",
-              "type": "boolean",
-              "format": null,
-              "required": false
-            },
-            {
-              "paramType": "form",
               "name": "wiki_page[editing_roles]",
               "description": "Which user roles are allowed to edit this page. Any combination of these roles is allowed (separated by commas). \"teachers\":: Allows editing by teachers in the course. \"students\":: Allows editing by students in the course. \"members\":: For group wikis, allows editing by members of the group. \"public\":: Allows editing by any user.",
               "type": "string",
@@ -648,7 +608,7 @@
             {
               "paramType": "form",
               "name": "wiki_page[published]",
-              "description": "Whether the page is published (true) or draft state (false). *Note:* when draft state is disabled, attempts to set +published+ will be ignored and the value returned will always be the inverse of the +hide_from_students+ value.",
+              "description": "Whether the page is published (true) or draft state (false).",
               "type": "boolean",
               "format": null,
               "required": false
@@ -710,14 +670,6 @@
             },
             {
               "paramType": "form",
-              "name": "wiki_page[hide_from_students]",
-              "description": "Whether the page should be hidden from students. *Note:* when draft state is enabled, attempts to set +hide_from_students+ will be ignored and the value returned will always be the inverse of the +published+ value.",
-              "type": "boolean",
-              "format": null,
-              "required": false
-            },
-            {
-              "paramType": "form",
               "name": "wiki_page[editing_roles]",
               "description": "Which user roles are allowed to edit this page. Any combination of these roles is allowed (separated by commas). \"teachers\":: Allows editing by teachers in the course. \"students\":: Allows editing by students in the course. \"members\":: For group wikis, allows editing by members of the group. \"public\":: Allows editing by any user.",
               "type": "string",
@@ -741,7 +693,7 @@
             {
               "paramType": "form",
               "name": "wiki_page[published]",
-              "description": "Whether the page is published (true) or draft state (false). *Note:* when draft state is disabled, attempts to set +published+ will be ignored and the value returned will always be the inverse of the +hide_from_students+ value.",
+              "description": "Whether the page is published (true) or draft state (false).",
               "type": "boolean",
               "format": null,
               "required": false
@@ -1169,7 +1121,7 @@
           "type": "datetime"
         },
         "hide_from_students": {
-          "description": "whether this page is hidden from students (note: students will never see this true; pages hidden from them will be omitted from results)",
+          "description": "(DEPRECATED) whether this page is hidden from students (note: this is always reflected as the inverse of the published value)",
           "example": false,
           "type": "boolean"
         },

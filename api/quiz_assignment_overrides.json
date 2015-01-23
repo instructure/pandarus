@@ -37,10 +37,7 @@
               }
             }
           ],
-          "type": "array",
-          "items": {
-            "$ref": "QuizAssignmentOverrideSet"
-          }
+          "type": "QuizAssignmentOverrideSetContainer"
         }
       ]
     }
@@ -65,6 +62,22 @@
         "all_dates": {
           "description": "An array of all assignment overrides active for the quiz. This is visible only to teachers and staff.",
           "$ref": "QuizAssignmentOverride"
+        }
+      }
+    },
+    "QuizAssignmentOverrideSetContainer": {
+      "id": "QuizAssignmentOverrideSetContainer",
+      "description": "Container for set of assignment-overridden dates for a quiz.",
+      "required": [
+
+      ],
+      "properties": {
+        "quiz_assignment_overrides": {
+          "description": "The QuizAssignmentOverrideSet",
+          "type": "array",
+          "items": {
+            "$ref": "QuizAssignmentOverrideSet"
+          }
         }
       }
     },

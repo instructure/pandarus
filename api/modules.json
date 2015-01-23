@@ -766,6 +766,45 @@
           "type": "ModuleItemSequence"
         }
       ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/modules/{module_id}/items/{id}/mark_read",
+      "description": "Fulfills \"must view\" requirement for a module item. It is generally not necessary to do this explicitly,\nbut it is provided for applications that need to access external content directly (bypassing the html_url\nredirect that normally allows Canvas to fulfill \"must view\" requirements).\n\nThis endpoint cannot be used to complete requirements on locked or unpublished module items.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Mark module item read",
+          "notes": "Fulfills \"must view\" requirement for a module item. It is generally not necessary to do this explicitly,\nbut it is provided for applications that need to access external content directly (bypassing the html_url\nredirect that normally allows Canvas to fulfill \"must view\" requirements).\n\nThis endpoint cannot be used to complete requirements on locked or unpublished module items.",
+          "nickname": "mark_module_item_read",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "module_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
     }
   ],
   "models": {

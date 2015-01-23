@@ -737,6 +737,28 @@
               "items": {
                 "type": "integer"
               }
+            },
+            {
+              "paramType": "form",
+              "name": "calculation_method",
+              "description": "The new calculation method.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "decaying_average",
+                "n_mastery",
+                "latest",
+                "highest"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "calculation_int",
+              "description": "The new calculation int. Only applies if the calculation_method is \"decaying_average\" or \"n_mastery\"",
+              "type": "integer",
+              "format": "int64",
+              "required": false
             }
           ],
           "type": "OutcomeLink"
@@ -830,6 +852,28 @@
               "items": {
                 "type": "integer"
               }
+            },
+            {
+              "paramType": "form",
+              "name": "calculation_method",
+              "description": "The new calculation method.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "decaying_average",
+                "n_mastery",
+                "latest",
+                "highest"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "calculation_int",
+              "description": "The new calculation int. Only applies if the calculation_method is \"decaying_average\" or \"n_mastery\"",
+              "type": "integer",
+              "format": "int64",
+              "required": false
             }
           ],
           "type": "OutcomeLink"
@@ -931,6 +975,28 @@
               "items": {
                 "type": "integer"
               }
+            },
+            {
+              "paramType": "form",
+              "name": "calculation_method",
+              "description": "The new calculation method.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "decaying_average",
+                "n_mastery",
+                "latest",
+                "highest"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "calculation_int",
+              "description": "The new calculation int. Only applies if the calculation_method is \"decaying_average\" or \"n_mastery\"",
+              "type": "integer",
+              "format": "int64",
+              "required": false
             }
           ],
           "type": "OutcomeLink"
@@ -1032,6 +1098,28 @@
               "items": {
                 "type": "integer"
               }
+            },
+            {
+              "paramType": "form",
+              "name": "calculation_method",
+              "description": "The new calculation method.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "decaying_average",
+                "n_mastery",
+                "latest",
+                "highest"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "calculation_int",
+              "description": "The new calculation int. Only applies if the calculation_method is \"decaying_average\" or \"n_mastery\"",
+              "type": "integer",
+              "format": "int64",
+              "required": false
             }
           ],
           "type": "OutcomeLink"
@@ -1133,6 +1221,28 @@
               "items": {
                 "type": "integer"
               }
+            },
+            {
+              "paramType": "form",
+              "name": "calculation_method",
+              "description": "The new calculation method.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "decaying_average",
+                "n_mastery",
+                "latest",
+                "highest"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "calculation_int",
+              "description": "The new calculation int. Only applies if the calculation_method is \"decaying_average\" or \"n_mastery\"",
+              "type": "integer",
+              "format": "int64",
+              "required": false
             }
           ],
           "type": "OutcomeLink"
@@ -1234,6 +1344,28 @@
               "items": {
                 "type": "integer"
               }
+            },
+            {
+              "paramType": "form",
+              "name": "calculation_method",
+              "description": "The new calculation method.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "decaying_average",
+                "n_mastery",
+                "latest",
+                "highest"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "calculation_int",
+              "description": "The new calculation int. Only applies if the calculation_method is \"decaying_average\" or \"n_mastery\"",
+              "type": "integer",
+              "format": "int64",
+              "required": false
             }
           ],
           "type": "OutcomeLink"

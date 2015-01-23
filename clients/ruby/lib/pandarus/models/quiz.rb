@@ -17,6 +17,7 @@ module Pandarus
     attribute :shuffle_answers, resolve_type(nil)
     attribute :hide_results, resolve_type("String")
     attribute :show_correct_answers, resolve_type(nil)
+    attribute :show_correct_answers_last_attempt, resolve_type(nil)
     attribute :show_correct_answers_at, resolve_type("DateTime")
     attribute :hide_correct_answers_at, resolve_type("DateTime")
     attribute :one_time_results, resolve_type(nil)

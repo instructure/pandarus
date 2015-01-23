@@ -244,7 +244,8 @@
                 "submission_history",
                 "submission_comments",
                 "rubric_assessment",
-                "assignment"
+                "assignment",
+                "visibility"
               ],
               "items": {
                 "type": "string"
@@ -295,7 +296,8 @@
                 "submission_history",
                 "submission_comments",
                 "rubric_assessment",
-                "assignment"
+                "assignment",
+                "visibility"
               ],
               "items": {
                 "type": "string"
@@ -359,6 +361,14 @@
             },
             {
               "paramType": "query",
+              "name": "grading_period_id",
+              "description": "The id of the grading period in which submissions are being requested (Requires the Multiple Grading Periods account feature turned on)",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "query",
               "name": "include",
               "description": "Associations to include with the group. `total_scores` requires the `grouped` argument.",
               "type": "array",
@@ -369,7 +379,8 @@
                 "submission_comments",
                 "rubric_assessment",
                 "assignment",
-                "total_scores"
+                "total_scores",
+                "visibility"
               ],
               "items": {
                 "type": "string"
@@ -430,6 +441,14 @@
             },
             {
               "paramType": "query",
+              "name": "grading_period_id",
+              "description": "The id of the grading period in which submissions are being requested (Requires the Multiple Grading Periods account feature turned on)",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "query",
               "name": "include",
               "description": "Associations to include with the group. `total_scores` requires the `grouped` argument.",
               "type": "array",
@@ -440,7 +459,8 @@
                 "submission_comments",
                 "rubric_assessment",
                 "assignment",
-                "total_scores"
+                "total_scores",
+                "visibility"
               ],
               "items": {
                 "type": "string"
@@ -495,7 +515,8 @@
               "enum": [
                 "submission_history",
                 "submission_comments",
-                "rubric_assessment"
+                "rubric_assessment",
+                "visibility"
               ],
               "items": {
                 "type": "string"
@@ -550,7 +571,8 @@
               "enum": [
                 "submission_history",
                 "submission_comments",
-                "rubric_assessment"
+                "rubric_assessment",
+                "visibility"
               ],
               "items": {
                 "type": "string"
@@ -722,6 +744,14 @@
             },
             {
               "paramType": "form",
+              "name": "include[visibility]",
+              "description": "Whether this assignment is visible to the owner of the submission",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "submission[posted_grade]",
               "description": "Assign a score to the submission, updating both the \"score\" and \"grade\" fields on the submission record. This parameter can be passed in a few different formats: points:: A floating point or integral value, such as \"13.5\". The grade will be interpreted directly as the score of the assignment. Values above assignment.points_possible are allowed, for awarding extra credit. percentage:: A floating point value appended with a percent sign, such as \"40%\". The grade will be interpreted as a percentage score on the assignment, where 100% == assignment.points_possible. Values above 100% are allowed, for awarding extra credit. letter grade:: A letter grade, following the assignment's defined letter grading scheme. For example, \"A-\". The resulting score will be the high end of the defined range for the letter grade. For instance, if \"B\" is defined as 86% to 84%, a letter grade of \"B\" will be worth 86%. The letter grade will be rejected if the assignment does not have a defined letter grading scheme. For more fine-grained control of scores, pass in points or percentage rather than the letter grade. \"pass/complete/fail/incomplete\":: A string value of \"pass\" or \"complete\" will give a score of 100%. \"fail\" or \"incomplete\" will give a score of 0. Note that assignments with grading_type of \"pass_fail\" can only be assigned a score of 0 or assignment.points_possible, nothing inbetween. If a posted_grade in the \"points\" or \"percentage\" format is sent, the grade will only be accepted if the grade equals one of those two values.",
               "type": "string",
@@ -824,6 +854,14 @@
             },
             {
               "paramType": "form",
+              "name": "include[visibility]",
+              "description": "Whether this assignment is visible to the owner of the submission",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "submission[posted_grade]",
               "description": "Assign a score to the submission, updating both the \"score\" and \"grade\" fields on the submission record. This parameter can be passed in a few different formats: points:: A floating point or integral value, such as \"13.5\". The grade will be interpreted directly as the score of the assignment. Values above assignment.points_possible are allowed, for awarding extra credit. percentage:: A floating point value appended with a percent sign, such as \"40%\". The grade will be interpreted as a percentage score on the assignment, where 100% == assignment.points_possible. Values above 100% are allowed, for awarding extra credit. letter grade:: A letter grade, following the assignment's defined letter grading scheme. For example, \"A-\". The resulting score will be the high end of the defined range for the letter grade. For instance, if \"B\" is defined as 86% to 84%, a letter grade of \"B\" will be worth 86%. The letter grade will be rejected if the assignment does not have a defined letter grading scheme. For more fine-grained control of scores, pass in points or percentage rather than the letter grade. \"pass/complete/fail/incomplete\":: A string value of \"pass\" or \"complete\" will give a score of 100%. \"fail\" or \"incomplete\" will give a score of 0. Note that assignments with grading_type of \"pass_fail\" can only be assigned a score of 0 or assignment.points_possible, nothing inbetween. If a posted_grade in the \"points\" or \"percentage\" format is sent, the grade will only be accepted if the grade equals one of those two values.",
               "type": "string",
@@ -840,6 +878,194 @@
             }
           ],
           "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/assignments/{assignment_id}/submissions/update_grades",
+      "description": "Update the grading and comments on multiple student's assignment\nsubmissions in an asynchronous job.\n\nThe user must have permission to manage grades in the appropriate context\n(course or section).",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Grade or comment on multiple submissions for an assignment",
+          "notes": "Update the grading and comments on multiple student's assignment\nsubmissions in an asynchronous job.\n\nThe user must have permission to manage grades in the appropriate context\n(course or section).",
+          "nickname": "grade_or_comment_on_multiple_submissions_for_assignment_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][posted_grade]",
+              "description": "See documentation for the posted_grade argument in the {api:SubmissionsApiController#update Submissions Update} documentation",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][rubric_assessment]",
+              "description": "See documentation for the rubric_assessment argument in the {api:SubmissionsApiController#update Submissions Update} documentation",
+              "type": "rubricassessment",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][text_comment]",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][group_comment]",
+              "description": "no description",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][media_comment_id]",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][media_comment_type]",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "audio",
+                "video"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][file_ids]",
+              "description": "See documentation for the comment[] arguments in the {api:SubmissionsApiController#update Submissions Update} documentation",
+              "type": "array",
+              "format": "int64",
+              "required": false,
+              "items": {
+                "type": "integer"
+              }
+            }
+          ],
+          "type": "Progress"
+        }
+      ]
+    },
+    {
+      "path": "/v1/sections/{section_id}/assignments/{assignment_id}/submissions/update_grades",
+      "description": "Update the grading and comments on multiple student's assignment\nsubmissions in an asynchronous job.\n\nThe user must have permission to manage grades in the appropriate context\n(course or section).",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Grade or comment on multiple submissions for an assignment",
+          "notes": "Update the grading and comments on multiple student's assignment\nsubmissions in an asynchronous job.\n\nThe user must have permission to manage grades in the appropriate context\n(course or section).",
+          "nickname": "grade_or_comment_on_multiple_submissions_for_assignment_sections",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "section_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][posted_grade]",
+              "description": "See documentation for the posted_grade argument in the {api:SubmissionsApiController#update Submissions Update} documentation",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][rubric_assessment]",
+              "description": "See documentation for the rubric_assessment argument in the {api:SubmissionsApiController#update Submissions Update} documentation",
+              "type": "rubricassessment",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][text_comment]",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][group_comment]",
+              "description": "no description",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][media_comment_id]",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][media_comment_type]",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "audio",
+                "video"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][file_ids]",
+              "description": "See documentation for the comment[] arguments in the {api:SubmissionsApiController#update Submissions Update} documentation",
+              "type": "array",
+              "format": "int64",
+              "required": false,
+              "items": {
+                "type": "integer"
+              }
+            }
+          ],
+          "type": "Progress"
         }
       ]
     },
@@ -1166,6 +1392,11 @@
         "late": {
           "description": "Whether the submission was made after the applicable due date",
           "example": false,
+          "type": "boolean"
+        },
+        "assignment_visible": {
+          "description": "Whether the assignment is visible to the user who submitted the assignment. Submissions where `assignment_visible` is false no longer count towards the student's grade and the assignment can no longer be accessed by the student. `assignment_visible` becomes false for submissions that do not have a grade and whose assignment is no longer assigned to the student's section.",
+          "example": true,
           "type": "boolean"
         }
       }

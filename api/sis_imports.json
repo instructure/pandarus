@@ -9,12 +9,12 @@
   "apis": [
     {
       "path": "/v1/accounts/{account_id}/sis_imports",
-      "description": "Returns the list of SIS imports for an account\n\n  Examples:\n    curl 'https://<canvas>/api/v1/accounts/<account_id>/sis_imports' \\\n        -H \"Authorization: Bearer <token>\"",
+      "description": "Returns the list of SIS imports for an account\n\nExample:\n  curl 'https://<canvas>/api/v1/accounts/<account_id>/sis_imports' \\\n    -H \"Authorization: Bearer <token>\"",
       "operations": [
         {
           "method": "GET",
           "summary": "Get SIS import list",
-          "notes": "Returns the list of SIS imports for an account\n\n  Examples:\n    curl 'https://<canvas>/api/v1/accounts/<account_id>/sis_imports' \\\n        -H \"Authorization: Bearer <token>\"",
+          "notes": "Returns the list of SIS imports for an account\n\nExample:\n  curl 'https://<canvas>/api/v1/accounts/<account_id>/sis_imports' \\\n    -H \"Authorization: Bearer <token>\"",
           "nickname": "get_sis_import_list",
           "parameters": [
             {
@@ -24,6 +24,14 @@
               "type": "string",
               "format": null,
               "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "created_since",
+              "description": "If set, only shows imports created after the specified date (use ISO8601 format)",
+              "type": "datetime",
+              "format": null,
+              "required": false
             }
           ],
           "type": "array",

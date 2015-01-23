@@ -219,12 +219,20 @@
       "description": "Quiz Question Groups"
     },
     {
+      "path": "/quiz_questions.json",
+      "description": "Quiz Questions"
+    },
+    {
       "path": "/quiz_reports.json",
       "description": "Quiz Reports"
     },
     {
       "path": "/quiz_statistics.json",
       "description": "Quiz Statistics"
+    },
+    {
+      "path": "/quiz_submission_events.json",
+      "description": "Quiz Submission Events"
     },
     {
       "path": "/quiz_submission_files.json",
@@ -241,14 +249,6 @@
     {
       "path": "/quiz_submissions.json",
       "description": "Quiz Submissions"
-    },
-    {
-      "path": "/quiz_questions.json",
-      "description": "QuizQuestions"
-    },
-    {
-      "path": "/quiz_submission_event.json",
-      "description": "QuizSubmissionEvent"
     },
     {
       "path": "/quizzes.json",

@@ -2,7 +2,7 @@
   "apiVersion": "1.0",
   "swaggerVersion": "1.2",
   "basePath": "https://canvas.instructure.com/api",
-  "resourcePath": "/quiz_submission_event",
+  "resourcePath": "/quiz_submission_events",
   "produces": [
     "application/json"
   ],
@@ -56,6 +56,53 @@
           "type": "void"
         }
       ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}/events",
+      "description": "Retrieve the set of events captured during a specific submission attempt.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Retrieve captured events",
+          "notes": "Retrieve the set of events captured during a specific submission attempt.",
+          "nickname": "retrieve_captured_events",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "attempt",
+              "description": "The specific submission attempt to look up the events for. If unspecified, the latest attempt will be used.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
     }
   ],
   "models": {
@@ -76,8 +123,8 @@
           "example": "question_answered",
           "type": "string"
         },
-        "data": {
-          "description": "the event data",
+        "event_data": {
+          "description": "custom contextual data for the specific event type",
           "example": {
             "answer": "42"
           },

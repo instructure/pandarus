@@ -109,6 +109,28 @@
               "items": {
                 "type": "integer"
               }
+            },
+            {
+              "paramType": "form",
+              "name": "calculation_method",
+              "description": "The new calculation method.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "decaying_average",
+                "n_mastery",
+                "latest",
+                "highest"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "calculation_int",
+              "description": "The new calculation int. Only applies if the calculation_method is \"decaying_average\" or \"n_mastery\"",
+              "type": "integer",
+              "format": "int64",
+              "required": false
             }
           ],
           "type": "Outcome"
@@ -171,6 +193,24 @@
         "mastery_points": {
           "description": "points necessary to demonstrate mastery outcomes. included only if the outcome embeds a rubric criterion. omitted in the abbreviated form.",
           "example": 3,
+          "type": "integer"
+        },
+        "calculation_method": {
+          "description": "the method used to calculate a students score",
+          "example": "decaying_average",
+          "type": "string",
+          "allowableValues": {
+            "values": [
+              "decaying_average",
+              "n_mastery",
+              "latest",
+              "highest"
+            ]
+          }
+        },
+        "calculation_int": {
+          "description": "this defines the variable value used by the calculation_method. included only if calculation_method uses it",
+          "example": 75,
           "type": "integer"
         },
         "ratings": {

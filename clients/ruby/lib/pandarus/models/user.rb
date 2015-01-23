@@ -19,6 +19,7 @@ module Pandarus
     attribute :locale, resolve_type("String")
     attribute :last_login, resolve_type("Date")
     attribute :time_zone, resolve_type("String")
+    attribute :bio, resolve_type("String")
     
   end
 end

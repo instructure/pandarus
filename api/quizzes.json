@@ -166,6 +166,14 @@
             },
             {
               "paramType": "form",
+              "name": "quiz[show_correct_answers_last_attempt]",
+              "description": "Only valid if show_correct_answers=true and allowed_attempts > 1 If true, hides correct answers from students when quiz results are viewed until they submit the last attempt for the quiz. Defaults to false.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "quiz[show_correct_answers_at]",
               "description": "Only valid if show_correct_answers=true If set, the correct answers will be visible by students only after this date, otherwise the correct answers are visible once the student hands in their quiz submission.",
               "type": "timestamp",
@@ -484,6 +492,11 @@
         },
         "show_correct_answers": {
           "description": "show which answers were correct when results are shown? only valid if hide_results=null",
+          "example": true,
+          "type": "boolean"
+        },
+        "show_correct_answers_last_attempt": {
+          "description": "restrict the show_correct_answers option above to apply only to the last submitted attempt of a quiz that allows multiple attempts. only valid if show_correct_answers=true and allowed_attempts > 1",
           "example": true,
           "type": "boolean"
         },

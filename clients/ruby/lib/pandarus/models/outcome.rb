@@ -15,6 +15,8 @@ module Pandarus
     attribute :vendor_guid, resolve_type("String")
     attribute :points_possible, resolve_type("Integer")
     attribute :mastery_points, resolve_type("Integer")
+    attribute :calculation_method, resolve_type("String")
+    attribute :calculation_int, resolve_type("Integer")
     attribute :ratings, resolve_type("RubricRating", collection: true)
     attribute :can_edit, resolve_type(nil)
     

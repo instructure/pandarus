@@ -116,7 +116,7 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "Array of additional information to include. \"user\":: the user who uploaded the file or last edited its content",
+              "description": "Array of additional information to include. \"user\":: the user who uploaded the file or last edited its content \"usage_rights\":: copyright and license information for the file (see UsageRights)",
               "type": "array",
               "format": null,
               "required": false,
@@ -203,7 +203,7 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "Array of additional information to include. \"user\":: the user who uploaded the file or last edited its content",
+              "description": "Array of additional information to include. \"user\":: the user who uploaded the file or last edited its content \"usage_rights\":: copyright and license information for the file (see UsageRights)",
               "type": "array",
               "format": null,
               "required": false,
@@ -290,7 +290,7 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "Array of additional information to include. \"user\":: the user who uploaded the file or last edited its content",
+              "description": "Array of additional information to include. \"user\":: the user who uploaded the file or last edited its content \"usage_rights\":: copyright and license information for the file (see UsageRights)",
               "type": "array",
               "format": null,
               "required": false,
@@ -377,7 +377,7 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "Array of additional information to include. \"user\":: the user who uploaded the file or last edited its content",
+              "description": "Array of additional information to include. \"user\":: the user who uploaded the file or last edited its content \"usage_rights\":: copyright and license information for the file (see UsageRights)",
               "type": "array",
               "format": null,
               "required": false,
@@ -468,7 +468,7 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "Array of additional information to include. \"user\":: the user who uploaded the file or last edited its content",
+              "description": "Array of additional information to include. \"user\":: the user who uploaded the file or last edited its content \"usage_rights\":: copyright and license information for the file (see UsageRights)",
               "type": "array",
               "format": null,
               "required": false,
@@ -1356,6 +1356,471 @@
           "type": "void"
         }
       ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/usage_rights",
+      "description": "Sets copyright and license information for one or more files",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Set usage rights",
+          "notes": "Sets copyright and license information for one or more files",
+          "nickname": "set_usage_rights_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "file_ids",
+              "description": "List of ids of files to set usage rights for.",
+              "type": "array",
+              "format": null,
+              "required": true,
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "folder_ids",
+              "description": "List of ids of folders to search for files to set usage rights for. Note that new files uploaded to these folders do not automatically inherit these rights.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "publish",
+              "description": "Whether the file(s) or folder(s) should be published on save, provided that usage rights have been specified (set to `true` to publish on save).",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "usage_rights[use_justification]",
+              "description": "The intellectual property justification for using the files in Canvas",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "own_copyright",
+                "used_by_permission",
+                "fair_use",
+                "public_domain",
+                "creative_commons"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "usage_rights[legal_copyright]",
+              "description": "The legal copyright line for the files",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "usage_rights[license]",
+              "description": "The license that applies to the files. See the {api:UsageRightsController#licenses List licenses endpoint} for the supported license types.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "UsageRights"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/usage_rights",
+      "description": "Sets copyright and license information for one or more files",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Set usage rights",
+          "notes": "Sets copyright and license information for one or more files",
+          "nickname": "set_usage_rights_groups",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "file_ids",
+              "description": "List of ids of files to set usage rights for.",
+              "type": "array",
+              "format": null,
+              "required": true,
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "folder_ids",
+              "description": "List of ids of folders to search for files to set usage rights for. Note that new files uploaded to these folders do not automatically inherit these rights.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "publish",
+              "description": "Whether the file(s) or folder(s) should be published on save, provided that usage rights have been specified (set to `true` to publish on save).",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "usage_rights[use_justification]",
+              "description": "The intellectual property justification for using the files in Canvas",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "own_copyright",
+                "used_by_permission",
+                "fair_use",
+                "public_domain",
+                "creative_commons"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "usage_rights[legal_copyright]",
+              "description": "The legal copyright line for the files",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "usage_rights[license]",
+              "description": "The license that applies to the files. See the {api:UsageRightsController#licenses List licenses endpoint} for the supported license types.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "UsageRights"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/usage_rights",
+      "description": "Sets copyright and license information for one or more files",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Set usage rights",
+          "notes": "Sets copyright and license information for one or more files",
+          "nickname": "set_usage_rights_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "file_ids",
+              "description": "List of ids of files to set usage rights for.",
+              "type": "array",
+              "format": null,
+              "required": true,
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "folder_ids",
+              "description": "List of ids of folders to search for files to set usage rights for. Note that new files uploaded to these folders do not automatically inherit these rights.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "publish",
+              "description": "Whether the file(s) or folder(s) should be published on save, provided that usage rights have been specified (set to `true` to publish on save).",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "usage_rights[use_justification]",
+              "description": "The intellectual property justification for using the files in Canvas",
+              "type": "string",
+              "format": null,
+              "required": true,
+              "enum": [
+                "own_copyright",
+                "used_by_permission",
+                "fair_use",
+                "public_domain",
+                "creative_commons"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "usage_rights[legal_copyright]",
+              "description": "The legal copyright line for the files",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "usage_rights[license]",
+              "description": "The license that applies to the files. See the {api:UsageRightsController#licenses List licenses endpoint} for the supported license types.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "UsageRights"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/usage_rights",
+      "description": "Removes copyright and license information associated with one or more files",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Remove usage rights",
+          "notes": "Removes copyright and license information associated with one or more files",
+          "nickname": "remove_usage_rights_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "file_ids",
+              "description": "List of ids of files to remove associated usage rights from.",
+              "type": "array",
+              "format": null,
+              "required": true,
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "folder_ids",
+              "description": "List of ids of folders. Usage rights will be removed from all files in these folders.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/usage_rights",
+      "description": "Removes copyright and license information associated with one or more files",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Remove usage rights",
+          "notes": "Removes copyright and license information associated with one or more files",
+          "nickname": "remove_usage_rights_groups",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "file_ids",
+              "description": "List of ids of files to remove associated usage rights from.",
+              "type": "array",
+              "format": null,
+              "required": true,
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "folder_ids",
+              "description": "List of ids of folders. Usage rights will be removed from all files in these folders.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/usage_rights",
+      "description": "Removes copyright and license information associated with one or more files",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Remove usage rights",
+          "notes": "Removes copyright and license information associated with one or more files",
+          "nickname": "remove_usage_rights_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "file_ids",
+              "description": "List of ids of files to remove associated usage rights from.",
+              "type": "array",
+              "format": null,
+              "required": true,
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "folder_ids",
+              "description": "List of ids of folders. Usage rights will be removed from all files in these folders.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/content_licenses",
+      "description": "Lists licenses that can be applied",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List licenses",
+          "notes": "Lists licenses that can be applied",
+          "nickname": "list_licenses_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "License"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/content_licenses",
+      "description": "Lists licenses that can be applied",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List licenses",
+          "notes": "Lists licenses that can be applied",
+          "nickname": "list_licenses_groups",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "License"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/content_licenses",
+      "description": "Lists licenses that can be applied",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List licenses",
+          "notes": "Lists licenses that can be applied",
+          "nickname": "list_licenses_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "License"
+          }
+        }
+      ]
     }
   ],
   "models": {
@@ -1513,6 +1978,76 @@
         "locked_for_user": {
           "example": false,
           "type": "boolean"
+        }
+      }
+    },
+    "UsageRights": {
+      "id": "UsageRights",
+      "description": "Describes the copyright and license information for a File",
+      "required": [
+
+      ],
+      "properties": {
+        "legal_copyright": {
+          "type": "string",
+          "description": "Copyright line for the file",
+          "example": "(C) 2014 Incom Corporation Ltd"
+        },
+        "use_justification": {
+          "type": "string",
+          "description": "Justification for using the file in a Canvas course. Valid values are 'own_copyright', 'public_domain', 'used_by_permission', 'fair_use', 'creative_commons'",
+          "example": "creative_commons"
+        },
+        "license": {
+          "type": "string",
+          "description": "License identifier for the file.",
+          "example": "cc_by_sa"
+        },
+        "license_name": {
+          "type": "string",
+          "description": "Readable license name",
+          "example": "CC Attribution Share-Alike"
+        },
+        "message": {
+          "type": "string",
+          "description": "Explanation of the action performed",
+          "example": "4 files updated"
+        },
+        "file_ids": {
+          "description": "List of ids of files that were updated",
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "example": [
+            1,
+            2,
+            3
+          ]
+        }
+      }
+    },
+    "License": {
+      "id": "License",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "a short string identifying the license",
+          "example": "cc_by_sa"
+        },
+        "name": {
+          "type": "string",
+          "description": "the name of the license",
+          "example": "CC Attribution ShareAlike"
+        },
+        "url": {
+          "type": "string",
+          "description": "a link to the license text",
+          "example": "http://creativecommons.org/licenses/by-sa/4.0"
         }
       }
     }
