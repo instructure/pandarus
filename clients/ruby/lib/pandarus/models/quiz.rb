@@ -41,6 +41,7 @@ module Pandarus
     attribute :quiz_extensions_url, resolve_type("String")
     attribute :permissions, resolve_type("QuizPermissions")
     attribute :all_dates, resolve_type("AssignmentDate")
+    attribute :version_number, resolve_type("Integer")
     
   end
 end

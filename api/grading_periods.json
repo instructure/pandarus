@@ -135,17 +135,6 @@
             },
             {
               "paramType": "form",
-              "name": "grading_periods[weight]",
-              "description": "The percentage weight of how much the period should count toward the course grade.",
-              "type": "array",
-              "format": null,
-              "required": true,
-              "items": {
-                "$ref": "number"
-              }
-            },
-            {
-              "paramType": "form",
               "name": "grading_periods[start_date]",
               "description": "The date the grading period starts.",
               "type": "array",
@@ -164,6 +153,17 @@
               "required": true,
               "items": {
                 "$ref": "date"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "grading_periods[weight]",
+              "description": "The percentage weight of how much the period should count toward the course grade.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "$ref": "number"
               }
             }
           ],
@@ -191,17 +191,6 @@
             },
             {
               "paramType": "form",
-              "name": "grading_periods[weight]",
-              "description": "The percentage weight of how much the period should count toward the course grade.",
-              "type": "array",
-              "format": null,
-              "required": true,
-              "items": {
-                "$ref": "number"
-              }
-            },
-            {
-              "paramType": "form",
               "name": "grading_periods[start_date]",
               "description": "The date the grading period starts.",
               "type": "array",
@@ -220,6 +209,17 @@
               "required": true,
               "items": {
                 "$ref": "date"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "grading_periods[weight]",
+              "description": "The percentage weight of how much the period should count toward the course grade.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "$ref": "number"
               }
             }
           ],
@@ -255,17 +255,6 @@
             },
             {
               "paramType": "form",
-              "name": "grading_periods[weight]",
-              "description": "The percentage weight of how much the period should count toward the course grade.",
-              "type": "array",
-              "format": null,
-              "required": true,
-              "items": {
-                "$ref": "number"
-              }
-            },
-            {
-              "paramType": "form",
               "name": "grading_periods[start_date]",
               "description": "The date the grading period starts.",
               "type": "array",
@@ -284,6 +273,17 @@
               "required": true,
               "items": {
                 "$ref": "date"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "grading_periods[weight]",
+              "description": "The percentage weight of how much the period should count toward the course grade.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "$ref": "number"
               }
             }
           ],
@@ -319,17 +319,6 @@
             },
             {
               "paramType": "form",
-              "name": "grading_periods[weight]",
-              "description": "The percentage weight of how much the period should count toward the course grade.",
-              "type": "array",
-              "format": null,
-              "required": true,
-              "items": {
-                "$ref": "number"
-              }
-            },
-            {
-              "paramType": "form",
               "name": "grading_periods[start_date]",
               "description": "The date the grading period starts.",
               "type": "array",
@@ -348,6 +337,17 @@
               "required": true,
               "items": {
                 "$ref": "date"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "grading_periods[weight]",
+              "description": "The percentage weight of how much the period should count toward the course grade.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "$ref": "number"
               }
             }
           ],
@@ -424,7 +424,6 @@
       "description": "",
       "required": [
         "id",
-        "weight",
         "start_date",
         "end_date"
       ],
@@ -433,11 +432,6 @@
           "description": "The unique identifier for the grading period.",
           "example": 1023,
           "type": "integer"
-        },
-        "weight": {
-          "description": "The weighted percentage on how much this particular period should count toward the total grade.",
-          "type": "integer",
-          "example": "25"
         },
         "start_date": {
           "description": "The start date of the grading period.",
@@ -450,6 +444,11 @@
           "example": "2014-05-07T17:07:00Z",
           "type": "string",
           "format": "date-time"
+        },
+        "weight": {
+          "description": "The weighted percentage on how much this particular period should count toward the total grade.",
+          "type": "integer",
+          "example": "25"
         }
       }
     }

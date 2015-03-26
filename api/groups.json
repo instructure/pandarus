@@ -54,6 +54,14 @@
               "type": "string",
               "format": null,
               "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "only_own_groups",
+              "description": "Will only include groups that the user belongs to if this is set",
+              "type": "boolean",
+              "format": null,
+              "required": false
             }
           ],
           "type": "array",
@@ -80,6 +88,14 @@
               "type": "string",
               "format": null,
               "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "only_own_groups",
+              "description": "Will only include groups that the user belongs to if this is set",
+              "type": "boolean",
+              "format": null,
+              "required": false
             }
           ],
           "type": "array",
@@ -878,7 +894,7 @@
         },
         "permissions": {
           "description": "optional: the permissions the user has for the group. returned only for a single group and include[]=permissions",
-          "example": "{\"create_discussion_topic\"=>true}",
+          "example": "{\"create_discussion_topic\"=>true,\"create_announcement\"=>true}",
           "type": "map",
           "key": {
             "type": "string"

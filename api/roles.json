@@ -39,6 +39,14 @@
               "items": {
                 "type": "string"
               }
+            },
+            {
+              "paramType": "query",
+              "name": "show_inherited",
+              "description": "If this argument is true, all roles inherited from parent accounts will be included.",
+              "type": "boolean",
+              "format": null,
+              "required": false
             }
           ],
           "type": "array",

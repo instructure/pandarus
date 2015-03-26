@@ -56,6 +56,7 @@ module Pandarus
     attribute :rubric_settings, resolve_type("String")
     attribute :rubric, resolve_type("RubricCriteria", collection: true)
     attribute :assignment_visibility, resolve_type("Integer", collection: true)
+    attribute :overrides, resolve_type("AssignmentOverride", collection: true)
     
   end
 end

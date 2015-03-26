@@ -520,6 +520,18 @@
             },
             {
               "paramType": "form",
+              "name": "on_duplicate",
+              "description": "If the file is moved to a folder containing a file with the same name, or renamed to a name matching an existing file, the API call will fail unless this parameter is supplied. \"overwrite\":: Replace the existing file with the same name \"rename\":: Add a qualifier to make the new filename unique",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "overwrite",
+                "rename"
+              ]
+            },
+            {
+              "paramType": "form",
               "name": "lock_at",
               "description": "The datetime to lock the file at",
               "type": "datetime",
@@ -591,6 +603,84 @@
             {
               "paramType": "path",
               "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Folder"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/folders",
+      "description": "Returns the paginated list of all folders for the given context. This will\nbe returned as a flat list containing all subfolders as well.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List all folders",
+          "notes": "Returns the paginated list of all folders for the given context. This will\nbe returned as a flat list containing all subfolders as well.",
+          "nickname": "list_all_folders_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Folder"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/folders",
+      "description": "Returns the paginated list of all folders for the given context. This will\nbe returned as a flat list containing all subfolders as well.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List all folders",
+          "notes": "Returns the paginated list of all folders for the given context. This will\nbe returned as a flat list containing all subfolders as well.",
+          "nickname": "list_all_folders_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Folder"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/folders",
+      "description": "Returns the paginated list of all folders for the given context. This will\nbe returned as a flat list containing all subfolders as well.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List all folders",
+          "notes": "Returns the paginated list of all folders for the given context. This will\nbe returned as a flat list containing all subfolders as well.",
+          "nickname": "list_all_folders_groups",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
               "description": "ID",
               "type": "string",
               "format": null,
@@ -1354,6 +1444,80 @@
             }
           ],
           "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/folders/{dest_folder_id}/copy_file",
+      "description": "Copy a file from elsewhere in Canvas into a folder.\n\nCopying a file across contexts (between courses and users) is permitted,\nbut the source and destination must belong to the same institution.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Copy a file",
+          "notes": "Copy a file from elsewhere in Canvas into a folder.\n\nCopying a file across contexts (between courses and users) is permitted,\nbut the source and destination must belong to the same institution.",
+          "nickname": "copy_file",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "dest_folder_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "source_file_id",
+              "description": "The id of the source file",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "on_duplicate",
+              "description": "What to do if a file with the same name already exists at the destination. If such a file exists and this parameter is not given, the call will fail. \"overwrite\":: Replace an existing file with the same name \"rename\":: Add a qualifier to make the new filename unique",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "overwrite",
+                "rename"
+              ]
+            }
+          ],
+          "type": "File"
+        }
+      ]
+    },
+    {
+      "path": "/v1/folders/{dest_folder_id}/copy_folder",
+      "description": "Copy a folder (and its contents) from elsewhere in Canvas into a folder.\n\nCopying a folder across contexts (between courses and users) is permitted,\nbut the source and destination must belong to the same institution.\nIf the source and destination folders are in the same context, the\nsource folder may not contain the destination folder. A folder will be\nrenamed at its destination if another folder with the same name already\nexists.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Copy a folder",
+          "notes": "Copy a folder (and its contents) from elsewhere in Canvas into a folder.\n\nCopying a folder across contexts (between courses and users) is permitted,\nbut the source and destination must belong to the same institution.\nIf the source and destination folders are in the same context, the\nsource folder may not contain the destination folder. A folder will be\nrenamed at its destination if another folder with the same name already\nexists.",
+          "nickname": "copy_folder",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "dest_folder_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "source_folder_id",
+              "description": "The id of the source folder",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "Folder"
         }
       ]
     },

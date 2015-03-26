@@ -482,9 +482,9 @@ module Pandarus
     end
     
     # Status of a Report
-    def status_of_report(account_id,report,id,report_id,opts={})
+    def status_of_report(account_id,report,id,opts={})
       query_param_keys = [
-        :report_id
+        
       ]
 
       form_param_keys = [
@@ -495,13 +495,11 @@ module Pandarus
       raise "account_id is required" if account_id.nil?
       raise "report is required" if report.nil?
       raise "id is required" if id.nil?
-      raise "report_id is required" if report_id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :report => report,
-        :id => id,
-        :report_id => report_id
+        :id => id
       )
 
       # resource path
@@ -556,7 +554,7 @@ module Pandarus
     # List accounts
     def list_accounts(opts={})
       query_param_keys = [
-        
+        :include
       ]
 
       form_param_keys = [
@@ -1322,7 +1320,8 @@ module Pandarus
     def list_assignment_groups(course_id,opts={})
       query_param_keys = [
         :include,
-        :override_assignment_dates
+        :override_assignment_dates,
+        :grading_period_id
       ]
 
       form_param_keys = [
@@ -1516,7 +1515,8 @@ module Pandarus
         :include,
         :search_term,
         :override_assignment_dates,
-        :needs_grading_count_by_section
+        :needs_grading_count_by_section,
+        :bucket
       ]
 
       form_param_keys = [
@@ -4817,6 +4817,8 @@ module Pandarus
         :hide_final_grades,
         :hide_distribution_graphs,
         :lock_all_announcements,
+        :restrict_student_past_view,
+        :restrict_student_future_view,
         
       ]
 
@@ -4901,13 +4903,13 @@ module Pandarus
     end
     
     # Update a course
-    def update_course(id,account_id,opts={})
+    def update_course(id,course__account_id__,opts={})
       query_param_keys = [
         
       ]
 
       form_param_keys = [
-        :account_id,
+        :course__account_id__,
         :course__name__,
         :course__course_code__,
         :course__start_at__,
@@ -4936,11 +4938,11 @@ module Pandarus
 
       # verify existence of params
       raise "id is required" if id.nil?
-      raise "account_id is required" if account_id.nil?
+      raise "course__account_id__ is required" if course__account_id__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id,
-        :account_id => account_id
+        :course__account_id__ => course__account_id__
       )
 
       # resource path
@@ -8504,6 +8506,7 @@ module Pandarus
       form_param_keys = [
         :name,
         :parent_folder_id,
+        :on_duplicate,
         :lock_at,
         :unlock_at,
         :locked,
@@ -8579,6 +8582,90 @@ module Pandarus
       # resource path
       path = path_replace("/v1/folders/{id}/folders",
         :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, Folder, path, query_params)
+      
+    end
+    
+    # List all folders
+    def list_all_folders_courses(course_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/folders",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, Folder, path, query_params)
+      
+    end
+    
+    # List all folders
+    def list_all_folders_users(user_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "user_id is required" if user_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :user_id => user_id
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{user_id}/folders",
+        :user_id => user_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, Folder, path, query_params)
+      
+    end
+    
+    # List all folders
+    def list_all_folders_groups(group_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "group_id is required" if group_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :group_id => group_id
+      )
+
+      # resource path
+      path = path_replace("/v1/groups/{group_id}/folders",
+        :group_id => group_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
@@ -9127,6 +9214,71 @@ module Pandarus
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
+      
+    end
+    
+    # Copy a file
+    def copy_file(dest_folder_id,source_file_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :source_file_id,
+        :on_duplicate,
+        
+      ]
+
+      # verify existence of params
+      raise "dest_folder_id is required" if dest_folder_id.nil?
+      raise "source_file_id is required" if source_file_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :dest_folder_id => dest_folder_id,
+        :source_file_id => source_file_id
+      )
+
+      # resource path
+      path = path_replace("/v1/folders/{dest_folder_id}/copy_file",
+        :dest_folder_id => dest_folder_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      File.new(response)
+      
+    end
+    
+    # Copy a folder
+    def copy_folder(dest_folder_id,source_folder_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :source_folder_id,
+        
+      ]
+
+      # verify existence of params
+      raise "dest_folder_id is required" if dest_folder_id.nil?
+      raise "source_folder_id is required" if source_folder_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :dest_folder_id => dest_folder_id,
+        :source_folder_id => source_folder_id
+      )
+
+      # resource path
+      path = path_replace("/v1/folders/{dest_folder_id}/copy_folder",
+        :dest_folder_id => dest_folder_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      Folder.new(response)
       
     end
     
@@ -9792,27 +9944,25 @@ module Pandarus
     end
     
     # Create a single grading period
-    def create_single_grading_period_courses(course_id,grading_periods__weight__,grading_periods__start_date__,grading_periods__end_date__,opts={})
+    def create_single_grading_period_courses(course_id,grading_periods__start_date__,grading_periods__end_date__,opts={})
       query_param_keys = [
         
       ]
 
       form_param_keys = [
-        :grading_periods__weight__,
         :grading_periods__start_date__,
         :grading_periods__end_date__,
+        :grading_periods__weight__,
         
       ]
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
-      raise "grading_periods__weight__ is required" if grading_periods__weight__.nil?
       raise "grading_periods__start_date__ is required" if grading_periods__start_date__.nil?
       raise "grading_periods__end_date__ is required" if grading_periods__end_date__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
-        :grading_periods__weight__ => grading_periods__weight__,
         :grading_periods__start_date__ => grading_periods__start_date__,
         :grading_periods__end_date__ => grading_periods__end_date__
       )
@@ -9830,27 +9980,25 @@ module Pandarus
     end
     
     # Create a single grading period
-    def create_single_grading_period_accounts(account_id,grading_periods__weight__,grading_periods__start_date__,grading_periods__end_date__,opts={})
+    def create_single_grading_period_accounts(account_id,grading_periods__start_date__,grading_periods__end_date__,opts={})
       query_param_keys = [
         
       ]
 
       form_param_keys = [
-        :grading_periods__weight__,
         :grading_periods__start_date__,
         :grading_periods__end_date__,
+        :grading_periods__weight__,
         
       ]
 
       # verify existence of params
       raise "account_id is required" if account_id.nil?
-      raise "grading_periods__weight__ is required" if grading_periods__weight__.nil?
       raise "grading_periods__start_date__ is required" if grading_periods__start_date__.nil?
       raise "grading_periods__end_date__ is required" if grading_periods__end_date__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id,
-        :grading_periods__weight__ => grading_periods__weight__,
         :grading_periods__start_date__ => grading_periods__start_date__,
         :grading_periods__end_date__ => grading_periods__end_date__
       )
@@ -9868,29 +10016,27 @@ module Pandarus
     end
     
     # Update a single grading period
-    def update_single_grading_period_courses(course_id,id,grading_periods__weight__,grading_periods__start_date__,grading_periods__end_date__,opts={})
+    def update_single_grading_period_courses(course_id,id,grading_periods__start_date__,grading_periods__end_date__,opts={})
       query_param_keys = [
         
       ]
 
       form_param_keys = [
-        :grading_periods__weight__,
         :grading_periods__start_date__,
         :grading_periods__end_date__,
+        :grading_periods__weight__,
         
       ]
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
       raise "id is required" if id.nil?
-      raise "grading_periods__weight__ is required" if grading_periods__weight__.nil?
       raise "grading_periods__start_date__ is required" if grading_periods__start_date__.nil?
       raise "grading_periods__end_date__ is required" if grading_periods__end_date__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id,
-        :grading_periods__weight__ => grading_periods__weight__,
         :grading_periods__start_date__ => grading_periods__start_date__,
         :grading_periods__end_date__ => grading_periods__end_date__
       )
@@ -9909,29 +10055,27 @@ module Pandarus
     end
     
     # Update a single grading period
-    def update_single_grading_period_accounts(account_id,id,grading_periods__weight__,grading_periods__start_date__,grading_periods__end_date__,opts={})
+    def update_single_grading_period_accounts(account_id,id,grading_periods__start_date__,grading_periods__end_date__,opts={})
       query_param_keys = [
         
       ]
 
       form_param_keys = [
-        :grading_periods__weight__,
         :grading_periods__start_date__,
         :grading_periods__end_date__,
+        :grading_periods__weight__,
         
       ]
 
       # verify existence of params
       raise "account_id is required" if account_id.nil?
       raise "id is required" if id.nil?
-      raise "grading_periods__weight__ is required" if grading_periods__weight__.nil?
       raise "grading_periods__start_date__ is required" if grading_periods__start_date__.nil?
       raise "grading_periods__end_date__ is required" if grading_periods__end_date__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id,
-        :grading_periods__weight__ => grading_periods__weight__,
         :grading_periods__start_date__ => grading_periods__start_date__,
         :grading_periods__end_date__ => grading_periods__end_date__
       )
@@ -10429,7 +10573,7 @@ module Pandarus
     # List the groups available in a context.
     def list_groups_available_in_context_accounts(account_id,opts={})
       query_param_keys = [
-        
+        :only_own_groups
       ]
 
       form_param_keys = [
@@ -10457,7 +10601,7 @@ module Pandarus
     # List the groups available in a context.
     def list_groups_available_in_context_courses(course_id,opts={})
       query_param_keys = [
-        
+        :only_own_groups
       ]
 
       form_param_keys = [
@@ -11462,6 +11606,38 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
+      Module.new(response)
+      
+    end
+    
+    # Re-lock module progressions
+    def re_lock_module_progressions(course_id,id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/modules/{id}/relock",
+        :course_id => course_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
       Module.new(response)
       
     end
@@ -16119,7 +16295,8 @@ module Pandarus
     # List roles
     def list_roles(account_id,opts={})
       query_param_keys = [
-        :state
+        :state,
+        :show_inherited
       ]
 
       form_param_keys = [
@@ -16365,6 +16542,8 @@ module Pandarus
         :override_sis_stickiness,
         :add_sis_stickiness,
         :clear_sis_stickiness,
+        :diffing_data_set_identifier,
+        :diffing_remaster_data_set,
         
       ]
 
@@ -17286,8 +17465,44 @@ module Pandarus
       
     end
     
-    # Grade or comment on multiple submissions for an assignment
-    def grade_or_comment_on_multiple_submissions_for_assignment_courses(course_id,assignment_id,opts={})
+    # Grade or comment on multiple submissions
+    def grade_or_comment_on_multiple_submissions_courses_submissions(course_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :grade_data___student_id_____posted_grade__,
+        :grade_data___student_id_____rubric_assessment__,
+        :grade_data___student_id_____text_comment__,
+        :grade_data___student_id_____group_comment__,
+        :grade_data___student_id_____media_comment_id__,
+        :grade_data___student_id_____media_comment_type__,
+        :grade_data___student_id_____file_ids__,
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/submissions/update_grades",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      Progress.new(response)
+      
+    end
+    
+    # Grade or comment on multiple submissions
+    def grade_or_comment_on_multiple_submissions_courses_assignments(course_id,assignment_id,opts={})
       query_param_keys = [
         
       ]
@@ -17325,8 +17540,44 @@ module Pandarus
       
     end
     
-    # Grade or comment on multiple submissions for an assignment
-    def grade_or_comment_on_multiple_submissions_for_assignment_sections(section_id,assignment_id,opts={})
+    # Grade or comment on multiple submissions
+    def grade_or_comment_on_multiple_submissions_sections_submissions(section_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :grade_data___student_id_____posted_grade__,
+        :grade_data___student_id_____rubric_assessment__,
+        :grade_data___student_id_____text_comment__,
+        :grade_data___student_id_____group_comment__,
+        :grade_data___student_id_____media_comment_id__,
+        :grade_data___student_id_____media_comment_type__,
+        :grade_data___student_id_____file_ids__,
+        
+      ]
+
+      # verify existence of params
+      raise "section_id is required" if section_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :section_id => section_id
+      )
+
+      # resource path
+      path = path_replace("/v1/sections/{section_id}/submissions/update_grades",
+        :section_id => section_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      Progress.new(response)
+      
+    end
+    
+    # Grade or comment on multiple submissions
+    def grade_or_comment_on_multiple_submissions_sections_assignments(section_id,assignment_id,opts={})
       query_param_keys = [
         
       ]
@@ -18009,6 +18260,35 @@ module Pandarus
       
     end
     
+    # Show user details
+    def show_user_details(id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{id}",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      User.new(response)
+      
+    end
+    
     # Create a user
     def create_user(account_id,pseudonym__unique_id__,opts={})
       query_param_keys = [
@@ -18031,6 +18311,7 @@ module Pandarus
         :communication_channel__address__,
         :communication_channel__confirmation_url__,
         :communication_channel__skip_confirmation__,
+        :force_validations,
         
       ]
 

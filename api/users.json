@@ -184,6 +184,29 @@
       ]
     },
     {
+      "path": "/v1/users/{id}",
+      "description": "Shows details for user.\n\nAlso includes an attribute \"permissions\", a non-comprehensive list of permissions for the user.\nExample:\n  !!!javascript\n  \"permissions\": {\n   \"can_update_name\": true, // Whether the user can update their name.\n   \"can_update_avatar\": false // Whether the user can update their avatar.\n  }",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Show user details",
+          "notes": "Shows details for user.\n\nAlso includes an attribute \"permissions\", a non-comprehensive list of permissions for the user.\nExample:\n  !!!javascript\n  \"permissions\": {\n   \"can_update_name\": true, // Whether the user can update their name.\n   \"can_update_avatar\": false // Whether the user can update their avatar.\n  }",
+          "nickname": "show_user_details",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "User"
+        }
+      ]
+    },
+    {
       "path": "/v1/accounts/{account_id}/users",
       "description": "Create and return a new user and pseudonym for an account.\n\nIf you don't have the \"Modify login details for users\" permission, but\nself-registration is enabled on the account, you can still use this\nendpoint to register new users. Certain fields will be required, and\nothers will be ignored (see below).",
       "operations": [
@@ -317,6 +340,14 @@
               "paramType": "form",
               "name": "communication_channel[skip_confirmation]",
               "description": "Only valid for site admins and account admins making requests; If true, the channel is automatically validated and no confirmation email or SMS is sent. Otherwise, the user must respond to a confirmation message to confirm the channel.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "force_validations",
+              "description": "If true, validations are performed on the newly created user (and their associated pseudonym) even if the request is made by a privileged user like an admin. When set to false, or not included in the request parameters, any newly created users are subject to validations unless the request is made by a user with a 'manage_user_logins' right. In which case, certain validations such as 'require_acceptance_of_terms' and 'require_presence_of_name' are not enforced. Use this parameter to return helpful json errors while building users with an admin request.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -777,7 +808,7 @@
           "format": "date-time"
         },
         "time_zone": {
-          "description": "Optional: This field is only returned in ceratin API calls, and will return the IANA time zone name of the user's preferred timezone.",
+          "description": "Optional: This field is only returned in certain API calls, and will return the IANA time zone name of the user's preferred timezone.",
           "example": "America/Denver",
           "type": "string"
         },

@@ -19,6 +19,8 @@ module Pandarus
     attribute :override_sis_stickiness, resolve_type(nil)
     attribute :add_sis_stickiness, resolve_type(nil)
     attribute :clear_sis_stickiness, resolve_type(nil)
+    attribute :diffing_data_set_identifier, resolve_type("String")
+    attribute :diffed_against_import_id, resolve_type("Integer")
     
   end
 end

@@ -136,14 +136,6 @@
               "type": "string",
               "format": null,
               "required": true
-            },
-            {
-              "paramType": "query",
-              "name": "report_id",
-              "description": "The report id.",
-              "type": "integer",
-              "format": "int64",
-              "required": true
             }
           ],
           "type": "Report"

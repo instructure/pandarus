@@ -16,6 +16,7 @@ module Pandarus
     attribute :sis_account_id, resolve_type("String")
     attribute :integration_id, resolve_type("String")
     attribute :sis_import_id, resolve_type("Integer")
+    attribute :lti_guid, resolve_type("String")
     attribute :workflow_state, resolve_type("String")
     
   end

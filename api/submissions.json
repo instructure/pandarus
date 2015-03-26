@@ -882,14 +882,100 @@
       ]
     },
     {
+      "path": "/v1/courses/{course_id}/submissions/update_grades",
+      "description": "Update the grading and comments on multiple student's assignment\nsubmissions in an asynchronous job.\n\nThe user must have permission to manage grades in the appropriate context\n(course or section).",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Grade or comment on multiple submissions",
+          "notes": "Update the grading and comments on multiple student's assignment\nsubmissions in an asynchronous job.\n\nThe user must have permission to manage grades in the appropriate context\n(course or section).",
+          "nickname": "grade_or_comment_on_multiple_submissions_courses_submissions",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][posted_grade]",
+              "description": "See documentation for the posted_grade argument in the {api:SubmissionsApiController#update Submissions Update} documentation",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][rubric_assessment]",
+              "description": "See documentation for the rubric_assessment argument in the {api:SubmissionsApiController#update Submissions Update} documentation",
+              "type": "rubricassessment",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][text_comment]",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][group_comment]",
+              "description": "no description",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][media_comment_id]",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][media_comment_type]",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "audio",
+                "video"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][file_ids]",
+              "description": "See documentation for the comment[] arguments in the {api:SubmissionsApiController#update Submissions Update} documentation",
+              "type": "array",
+              "format": "int64",
+              "required": false,
+              "items": {
+                "type": "integer"
+              }
+            }
+          ],
+          "type": "Progress"
+        }
+      ]
+    },
+    {
       "path": "/v1/courses/{course_id}/assignments/{assignment_id}/submissions/update_grades",
       "description": "Update the grading and comments on multiple student's assignment\nsubmissions in an asynchronous job.\n\nThe user must have permission to manage grades in the appropriate context\n(course or section).",
       "operations": [
         {
           "method": "POST",
-          "summary": "Grade or comment on multiple submissions for an assignment",
+          "summary": "Grade or comment on multiple submissions",
           "notes": "Update the grading and comments on multiple student's assignment\nsubmissions in an asynchronous job.\n\nThe user must have permission to manage grades in the appropriate context\n(course or section).",
-          "nickname": "grade_or_comment_on_multiple_submissions_for_assignment_courses",
+          "nickname": "grade_or_comment_on_multiple_submissions_courses_assignments",
           "parameters": [
             {
               "paramType": "path",
@@ -976,14 +1062,100 @@
       ]
     },
     {
+      "path": "/v1/sections/{section_id}/submissions/update_grades",
+      "description": "Update the grading and comments on multiple student's assignment\nsubmissions in an asynchronous job.\n\nThe user must have permission to manage grades in the appropriate context\n(course or section).",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Grade or comment on multiple submissions",
+          "notes": "Update the grading and comments on multiple student's assignment\nsubmissions in an asynchronous job.\n\nThe user must have permission to manage grades in the appropriate context\n(course or section).",
+          "nickname": "grade_or_comment_on_multiple_submissions_sections_submissions",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "section_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][posted_grade]",
+              "description": "See documentation for the posted_grade argument in the {api:SubmissionsApiController#update Submissions Update} documentation",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][rubric_assessment]",
+              "description": "See documentation for the rubric_assessment argument in the {api:SubmissionsApiController#update Submissions Update} documentation",
+              "type": "rubricassessment",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][text_comment]",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][group_comment]",
+              "description": "no description",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][media_comment_id]",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][media_comment_type]",
+              "description": "no description",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "audio",
+                "video"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][file_ids]",
+              "description": "See documentation for the comment[] arguments in the {api:SubmissionsApiController#update Submissions Update} documentation",
+              "type": "array",
+              "format": "int64",
+              "required": false,
+              "items": {
+                "type": "integer"
+              }
+            }
+          ],
+          "type": "Progress"
+        }
+      ]
+    },
+    {
       "path": "/v1/sections/{section_id}/assignments/{assignment_id}/submissions/update_grades",
       "description": "Update the grading and comments on multiple student's assignment\nsubmissions in an asynchronous job.\n\nThe user must have permission to manage grades in the appropriate context\n(course or section).",
       "operations": [
         {
           "method": "POST",
-          "summary": "Grade or comment on multiple submissions for an assignment",
+          "summary": "Grade or comment on multiple submissions",
           "notes": "Update the grading and comments on multiple student's assignment\nsubmissions in an asynchronous job.\n\nThe user must have permission to manage grades in the appropriate context\n(course or section).",
-          "nickname": "grade_or_comment_on_multiple_submissions_for_assignment_sections",
+          "nickname": "grade_or_comment_on_multiple_submissions_sections_assignments",
           "parameters": [
             {
               "paramType": "path",

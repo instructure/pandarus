@@ -66,7 +66,8 @@
               "enum": [
                 "submission",
                 "assignment_visibility",
-                "all_dates"
+                "all_dates",
+                "overrides"
               ],
               "items": {
                 "type": "string"
@@ -93,6 +94,14 @@
               "name": "needs_grading_count_by_section",
               "description": "Split up \"needs_grading_count\" by sections into the \"needs_grading_count_by_section\" key, defaults to false",
               "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "bucket",
+              "description": "If included, only return certain assignments depending on due date and submission status. Valid buckets are \"past\", \"overdue\", \"undated\", \"ungraded\", \"upcoming\", and \"future\".",
+              "type": "string",
               "format": null,
               "required": false
             }
@@ -139,7 +148,8 @@
               "required": false,
               "enum": [
                 "submission",
-                "assignment_visibility"
+                "assignment_visibility",
+                "overrides"
               ],
               "items": {
                 "type": "string"
@@ -1573,6 +1583,13 @@
           "type": "array",
           "items": {
             "type": "integer"
+          }
+        },
+        "overrides": {
+          "description": "(Optional) If 'overrides' is included in the 'include' parameter, includes an array of assignment override objects.",
+          "type": "array",
+          "items": {
+            "$ref": "AssignmentOverride"
           }
         }
       }

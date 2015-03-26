@@ -17,7 +17,21 @@
           "notes": "List accounts that the current user can view or manage.  Typically,\nstudents and even teachers will get an empty list in response, only\naccount admins can view the accounts that they are in.",
           "nickname": "list_accounts",
           "parameters": [
-
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Array of additional information to include. \"lti_guid\":: the 'tool_consumer_instance_guid' that will be sent for this account on LTI launches \"registration_settings\":: returns info about the privacy policy and terms of use",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "enum": [
+                "lti_guid",
+                "registration_settings"
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
           ],
           "type": "array",
           "items": {
@@ -452,6 +466,11 @@
           "description": "The id of the SIS import if created through SIS. Only included if the user has permission to manage SIS information.",
           "example": "12",
           "type": "integer"
+        },
+        "lti_guid": {
+          "description": "The account's identifier that is sent as context_id in LTI launches.",
+          "example": "123xyz",
+          "type": "string"
         },
         "workflow_state": {
           "description": "The state of the account. Can be 'active' or 'deleted'.",

@@ -314,6 +314,37 @@
       ]
     },
     {
+      "path": "/v1/courses/{course_id}/modules/{id}/relock",
+      "description": "Resets module progressions to their default locked state and\nrecalculates them based on the current requirements.\n\nAdding progression requirements to an active course will not lock students\nout of modules they have already unlocked unless this action is called.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Re-lock module progressions",
+          "notes": "Resets module progressions to their default locked state and\nrecalculates them based on the current requirements.\n\nAdding progression requirements to an active course will not lock students\nout of modules they have already unlocked unless this action is called.",
+          "nickname": "re_lock_module_progressions",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "Module"
+        }
+      ]
+    },
+    {
       "path": "/v1/courses/{course_id}/modules/{module_id}/items",
       "description": "List the items in a module",
       "operations": [
