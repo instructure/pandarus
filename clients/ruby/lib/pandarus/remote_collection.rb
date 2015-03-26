@@ -9,6 +9,7 @@ module Pandarus
       @query_params = query_params
 
       @pagination_links = []
+      @next_page_cache = {}
     end
 
     def to_a
@@ -37,15 +38,18 @@ module Pandarus
     end
 
     def first_page
-      response = @http_client.get do |request|
+      @pagination_links = []
+      @first_response ||= @http_client.get do |request|
         request.path = join_paths(base_path, @path)
         request.params = request.params.merge(@query_params) unless @query_params.empty?
       end
-      handle_response(response)
+      handle_response(@first_response)
     end
 
     def next_page
-      handle_response @http_client.get(@pagination_links.last.next)
+      key = @pagination_links.last.next
+      @next_page_cache[key] ||= @http_client.get(key)
+      handle_response @next_page_cache[key]
     end
 
     private

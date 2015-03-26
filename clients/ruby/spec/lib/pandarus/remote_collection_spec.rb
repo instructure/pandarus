@@ -65,6 +65,28 @@ module Pandarus
           expect(array.size).to eq 21
         end
       end
+
+      it 'must create similar arrays on multiple calls' do
+        result_arrays = []
+        (1..10).each do
+          VCR.use_cassette('remote_collection_all_pages') do
+            result_arrays << collection.to_a
+            expect(result_arrays.last.size).to eq 21
+          end
+        end
+
+        (0..9).each do |i|
+          expect(result_arrays[i].size).to eq result_arrays.first.size
+        end
+      end
+
+      it 'must not repeatedly retrieve from the remote source' do
+        VCR.use_cassette('remote_collection_all_pages') do
+          expect(collection.to_a.size).to eq 21
+        end
+
+        expect(collection.to_a.size).to eq 21
+      end
     end
   end
 end
