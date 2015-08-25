@@ -22,7 +22,7 @@ module Pandarus
       @footrest_opts = opts.slice(*footrest_keys)
       # Prepare defaults
       @overridden_params = opts
-      @overridden_params.delete_if{ |k,v| footrest_keys.include?(k.to_sym) }
+      @overridden_params.delete_if{ |k,v| !footrest_keys.include?(k.to_sym) }
 
       @target = target
     end
