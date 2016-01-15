@@ -18308,6 +18308,7 @@ module Pandarus
         :pseudonym__password__,
         :pseudonym__sis_user_id__,
         :pseudonym__send_confirmation__,
+        :pseudonym__authentication_provider_id__,
         :communication_channel__type__,
         :communication_channel__address__,
         :communication_channel__confirmation_url__,
@@ -18374,6 +18375,7 @@ module Pandarus
 
       form_param_keys = [
         :user__name__,
+        :user__email__,
         :user__short_name__,
         :user__sortable_name__,
         :user__time_zone__,
