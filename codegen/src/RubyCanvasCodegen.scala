@@ -32,6 +32,7 @@ object RubyCanvasCodegen extends BasicRubyGenerator {
   override def toModelFilename(name: String) = toUnderscore(name).stripPrefix("_")
 
   override def typeMapping = Map(
+    "number" -> "Float",
     "float" -> "Float",
     // "long" -> "long",
     "double" -> "Float",

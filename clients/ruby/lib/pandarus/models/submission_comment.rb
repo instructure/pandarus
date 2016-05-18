@@ -8,6 +8,7 @@ module Pandarus
     attribute :id, resolve_type("Integer")
     attribute :author_id, resolve_type("Integer")
     attribute :author_name, resolve_type("String")
+    attribute :author, resolve_type("String")
     attribute :comment, resolve_type("String")
     attribute :created_at, resolve_type("DateTime")
     attribute :media_comment, resolve_type("MediaComment")

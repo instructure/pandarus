@@ -23,8 +23,8 @@ module Pandarus
     attribute :grader_id, resolve_type("Integer")
     attribute :user, resolve_type("String")
     attribute :late, resolve_type(nil)
-    attribute :excused, resolve_type(nil)
     attribute :assignment_visible, resolve_type(nil)
+    attribute :excused, resolve_type(nil)
     
   end
 end

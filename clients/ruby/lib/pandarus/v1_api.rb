@@ -17114,7 +17114,8 @@ module Pandarus
     # List assignment submissions
     def list_assignment_submissions_courses(course_id,assignment_id,opts={})
       query_param_keys = [
-        :include
+        :include,
+        :grouped
       ]
 
       form_param_keys = [
@@ -17145,7 +17146,8 @@ module Pandarus
     # List assignment submissions
     def list_assignment_submissions_sections(section_id,assignment_id,opts={})
       query_param_keys = [
-        :include
+        :include,
+        :grouped
       ]
 
       form_param_keys = [
@@ -17393,6 +17395,7 @@ module Pandarus
         :comment__file_ids__,
         :include__visibility__,
         :submission__posted_grade__,
+        :submission__excuse__,
         :rubric_assessment,
         
       ]
@@ -17436,6 +17439,7 @@ module Pandarus
         :comment__file_ids__,
         :include__visibility__,
         :submission__posted_grade__,
+        :submission__excuse__,
         :rubric_assessment,
         
       ]
@@ -17461,6 +17465,38 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:put, path, query_params, form_params, headers)
+      response
+      
+    end
+    
+    # List gradeable students
+    def list_gradeable_students(course_id,assignment_id,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :assignment_id => assignment_id
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/assignments/{assignment_id}/gradeable_students",
+        :course_id => course_id,
+        :assignment_id => assignment_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
     end
