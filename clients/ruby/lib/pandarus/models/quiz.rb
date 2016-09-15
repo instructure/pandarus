@@ -40,8 +40,9 @@ module Pandarus
     attribute :speedgrader_url, resolve_type("String")
     attribute :quiz_extensions_url, resolve_type("String")
     attribute :permissions, resolve_type("QuizPermissions")
-    attribute :all_dates, resolve_type("AssignmentDate")
+    attribute :all_dates, resolve_type("AssignmentDate", collection: true)
     attribute :version_number, resolve_type("Integer")
+    attribute :question_types, resolve_type("String", collection: true)
     
   end
 end

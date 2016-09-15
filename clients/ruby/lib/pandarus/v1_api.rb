@@ -16167,6 +16167,7 @@ module Pandarus
         :quiz__unlock_at__,
         :quiz__published__,
         :quiz__one_time_results__,
+        :quiz__only_visible_to_overrides__,
         
       ]
 
@@ -16289,6 +16290,41 @@ module Pandarus
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
+      
+    end
+    
+    # Validate quiz access code
+    def validate_quiz_access_code(course_id,id,access_code,opts={})
+      query_param_keys = [
+        
+      ]
+
+      form_param_keys = [
+        :access_code,
+        
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "id is required" if id.nil?
+      raise "access_code is required" if access_code.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :id => id,
+        :access_code => access_code
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/quizzes/{id}/validate_access_code",
+        :course_id => course_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      boolean.new(response)
       
     end
     

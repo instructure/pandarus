@@ -123,7 +123,7 @@
             {
               "paramType": "form",
               "name": "quiz[assignment_group_id]",
-              "description": "The assignment group id to put the assignment in. Defaults to the top assignment group in the course. Only valid if the quiz is graded, i.e. if quiz_type is \"assignment\" or \"graded_survey\".",
+              "description": "The assignment group id to put the assignment in. Defaults to the top\nassignment group in the course. Only valid if the quiz is graded, i.e. if\nquiz_type is \"assignment\" or \"graded_survey\".",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -131,7 +131,7 @@
             {
               "paramType": "form",
               "name": "quiz[time_limit]",
-              "description": "Time limit to take this quiz, in minutes. Set to null for no time limit. Defaults to null.",
+              "description": "Time limit to take this quiz, in minutes. Set to null for no time limit.\nDefaults to null.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -139,7 +139,7 @@
             {
               "paramType": "form",
               "name": "quiz[shuffle_answers]",
-              "description": "If true, quiz answers for multiple choice questions will be randomized for each student. Defaults to false.",
+              "description": "If true, quiz answers for multiple choice questions will be randomized for\neach student. Defaults to false.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -147,7 +147,7 @@
             {
               "paramType": "form",
               "name": "quiz[hide_results]",
-              "description": "Dictates whether or not quiz results are hidden from students. If null, students can see their results after any attempt. If \"always\", students can never see their results. If \"until_after_last_attempt\", students can only see results after their last attempt. (Only valid if allowed_attempts > 1). Defaults to null.",
+              "description": "Dictates whether or not quiz results are hidden from students.\nIf null, students can see their results after any attempt.\nIf \"always\", students can never see their results.\nIf \"until_after_last_attempt\", students can only see results after their\nlast attempt. (Only valid if allowed_attempts > 1). Defaults to null.",
               "type": "string",
               "format": null,
               "required": false,
@@ -159,7 +159,7 @@
             {
               "paramType": "form",
               "name": "quiz[show_correct_answers]",
-              "description": "Only valid if hide_results=null If false, hides correct answers from students when quiz results are viewed. Defaults to true.",
+              "description": "Only valid if hide_results=null\nIf false, hides correct answers from students when quiz results are viewed.\nDefaults to true.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -167,7 +167,7 @@
             {
               "paramType": "form",
               "name": "quiz[show_correct_answers_last_attempt]",
-              "description": "Only valid if show_correct_answers=true and allowed_attempts > 1 If true, hides correct answers from students when quiz results are viewed until they submit the last attempt for the quiz. Defaults to false.",
+              "description": "Only valid if show_correct_answers=true and allowed_attempts > 1\nIf true, hides correct answers from students when quiz results are viewed\nuntil they submit the last attempt for the quiz.\nDefaults to false.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -175,23 +175,23 @@
             {
               "paramType": "form",
               "name": "quiz[show_correct_answers_at]",
-              "description": "Only valid if show_correct_answers=true If set, the correct answers will be visible by students only after this date, otherwise the correct answers are visible once the student hands in their quiz submission.",
-              "type": "timestamp",
+              "description": "Only valid if show_correct_answers=true\nIf set, the correct answers will be visible by students only after this\ndate, otherwise the correct answers are visible once the student hands in\ntheir quiz submission.",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
             {
               "paramType": "form",
               "name": "quiz[hide_correct_answers_at]",
-              "description": "Only valid if show_correct_answers=true If set, the correct answers will stop being visible once this date has passed. Otherwise, the correct answers will be visible indefinitely.",
-              "type": "timestamp",
+              "description": "Only valid if show_correct_answers=true\nIf set, the correct answers will stop being visible once this date has\npassed. Otherwise, the correct answers will be visible indefinitely.",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
             {
               "paramType": "form",
               "name": "quiz[allowed_attempts]",
-              "description": "Number of times a student is allowed to take a quiz. Set to -1 for unlimited attempts. Defaults to 1.",
+              "description": "Number of times a student is allowed to take a quiz.\nSet to -1 for unlimited attempts.\nDefaults to 1.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -199,7 +199,7 @@
             {
               "paramType": "form",
               "name": "quiz[scoring_policy]",
-              "description": "Required and only valid if allowed_attempts > 1. Scoring policy for a quiz that students can take multiple times. Defaults to \"keep_highest\".",
+              "description": "Required and only valid if allowed_attempts > 1.\nScoring policy for a quiz that students can take multiple times.\nDefaults to \"keep_highest\".",
               "type": "string",
               "format": null,
               "required": false,
@@ -211,7 +211,7 @@
             {
               "paramType": "form",
               "name": "quiz[one_question_at_a_time]",
-              "description": "If true, shows quiz to student one question at a time. Defaults to false.",
+              "description": "If true, shows quiz to student one question at a time.\nDefaults to false.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -219,7 +219,7 @@
             {
               "paramType": "form",
               "name": "quiz[cant_go_back]",
-              "description": "Only valid if one_question_at_a_time=true If true, questions are locked after answering. Defaults to false.",
+              "description": "Only valid if one_question_at_a_time=true\nIf true, questions are locked after answering.\nDefaults to false.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -227,7 +227,7 @@
             {
               "paramType": "form",
               "name": "quiz[access_code]",
-              "description": "Restricts access to the quiz with a password. For no access code restriction, set to null. Defaults to null.",
+              "description": "Restricts access to the quiz with a password.\nFor no access code restriction, set to null.\nDefaults to null.",
               "type": "string",
               "format": null,
               "required": false
@@ -235,7 +235,7 @@
             {
               "paramType": "form",
               "name": "quiz[ip_filter]",
-              "description": "Restricts access to the quiz to computers in a specified IP range. Filters can be a comma-separated list of addresses, or an address followed by a mask Examples: \"192.168.217.1\" \"192.168.217.1/24\" \"192.168.217.1/255.255.255.0\" For no IP filter restriction, set to null. Defaults to null.",
+              "description": "Restricts access to the quiz to computers in a specified IP range.\nFilters can be a comma-separated list of addresses, or an address followed by a mask\n\nExamples:\n  \"192.168.217.1\"\n  \"192.168.217.1/24\"\n  \"192.168.217.1/255.255.255.0\"\n\nFor no IP filter restriction, set to null.\nDefaults to null.",
               "type": "string",
               "format": null,
               "required": false
@@ -243,31 +243,31 @@
             {
               "paramType": "form",
               "name": "quiz[due_at]",
-              "description": "The day/time the quiz is due. Accepts times in ISO 8601 format, e.g. 2011-10-21T18:48Z.",
-              "type": "timestamp",
+              "description": "The day/time the quiz is due.\nAccepts times in ISO 8601 format, e.g. 2011-10-21T18:48Z.",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
             {
               "paramType": "form",
               "name": "quiz[lock_at]",
-              "description": "The day/time the quiz is locked for students. Accepts times in ISO 8601 format, e.g. 2011-10-21T18:48Z.",
-              "type": "timestamp",
+              "description": "The day/time the quiz is locked for students.\nAccepts times in ISO 8601 format, e.g. 2011-10-21T18:48Z.",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
             {
               "paramType": "form",
               "name": "quiz[unlock_at]",
-              "description": "The day/time the quiz is unlocked for students. Accepts times in ISO 8601 format, e.g. 2011-10-21T18:48Z.",
-              "type": "timestamp",
+              "description": "The day/time the quiz is unlocked for students.\nAccepts times in ISO 8601 format, e.g. 2011-10-21T18:48Z.",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
             {
               "paramType": "form",
               "name": "quiz[published]",
-              "description": "Whether the quiz should have a draft state of published or unpublished. NOTE: If students have started taking the quiz, or there are any submissions for the quiz, you may not unpublish a quiz and will recieve an error.",
+              "description": "Whether the quiz should have a draft state of published or unpublished.\nNOTE: If students have started taking the quiz, or there are any\nsubmissions for the quiz, you may not unpublish a quiz and will recieve\nan error.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -275,7 +275,15 @@
             {
               "paramType": "form",
               "name": "quiz[one_time_results]",
-              "description": "Whether students should be prevented from viewing their quiz results past the first time (right after they turn the quiz in.) Only valid if \"hide_results\" is not set to \"always\". Defaults to false.",
+              "description": "Whether students should be prevented from viewing their quiz results past\nthe first time (right after they turn the quiz in.)\nOnly valid if \"hide_results\" is not set to \"always\".\nDefaults to false.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "quiz[only_visible_to_overrides]",
+              "description": "Whether this quiz is only visible to overrides (Only useful if\n'differentiated assignments' account setting is on)\nDefaults to false.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -314,7 +322,7 @@
             {
               "paramType": "form",
               "name": "quiz[notify_of_update]",
-              "description": "If true, notifies users that the quiz has changed. Defaults to true",
+              "description": "If true, notifies users that the quiz has changed.\nDefaults to true",
               "type": "boolean",
               "format": null,
               "required": false
@@ -409,6 +417,45 @@
             }
           ],
           "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{id}/validate_access_code",
+      "description": "Accepts an access code and returns a boolean indicating whether that access code is correct",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Validate quiz access code",
+          "notes": "Accepts an access code and returns a boolean indicating whether that access code is correct",
+          "nickname": "validate_quiz_access_code",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "access_code",
+              "description": "The access code being validated",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "boolean"
         }
       ]
     }
@@ -614,13 +661,27 @@
           "description": "Permissions the user has for the quiz"
         },
         "all_dates": {
-          "$ref": "AssignmentDate",
-          "description": "list of due dates for the quiz"
+          "description": "list of due dates for the quiz",
+          "type": "array",
+          "items": {
+            "$ref": "AssignmentDate"
+          }
         },
         "version_number": {
           "description": "Current version number of the quiz",
           "example": 3,
           "type": "integer"
+        },
+        "question_types": {
+          "description": "List of question types in the quiz",
+          "example": [
+            "multiple_choice",
+            "essay"
+          ],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
