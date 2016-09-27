@@ -373,6 +373,14 @@
             },
             {
               "paramType": "form",
+              "name": "account[sis_account_id]",
+              "description": "The account's identifier in the Student Information System.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "account[default_storage_quota_mb]",
               "description": "The default course storage quota to be used, if not otherwise specified.",
               "type": "integer",
@@ -396,10 +404,7 @@
               "required": false
             }
           ],
-          "type": "array",
-          "items": {
-            "$ref": "Account"
-          }
+          "type": "Account"
         }
       ]
     }
