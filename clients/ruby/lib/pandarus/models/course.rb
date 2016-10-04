@@ -41,6 +41,7 @@ module Pandarus
     attribute :self_enrollment, resolve_type(nil)
     attribute :restrict_enrollments_to_course_dates, resolve_type(nil)
     attribute :course_format, resolve_type("String")
+    attribute :time_zone, resolve_type("String")
     
   end
 end

@@ -274,6 +274,14 @@
             },
             {
               "paramType": "form",
+              "name": "course[time_zone]",
+              "description": "The time zone for the course. Allowed time zones are\n{http://www.iana.org/time-zones IANA time zones} or friendlier\n{http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html Ruby on Rails time zones}.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "offer",
               "description": "If this option is set to true, the course will be available to students immediately.",
               "type": "boolean",
@@ -1152,6 +1160,14 @@
             },
             {
               "paramType": "form",
+              "name": "course[time_zone]",
+              "description": "The time zone for the course. Allowed time zones are\n{http://www.iana.org/time-zones IANA time zones} or friendlier\n{http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html Ruby on Rails time zones}.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "course[apply_assignment_group_weights]",
               "description": "Set to true to weight final grade based on assignment groups percentages.",
               "type": "boolean",
@@ -1619,6 +1635,11 @@
         },
         "course_format": {
           "example": "online",
+          "type": "string"
+        },
+        "time_zone": {
+          "description": "The course's IANA time zone name.",
+          "example": "America/Denver",
           "type": "string"
         }
       }
