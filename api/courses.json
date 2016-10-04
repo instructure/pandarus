@@ -1168,6 +1168,21 @@
             },
             {
               "paramType": "form",
+              "name": "course[event]",
+              "description": "The action to take on each course.\n* 'claim' makes a course no longer visible to students. This action is also called \"unpublish\" on the web site.\n  A course cannot be unpublished if students have received graded submissions.\n* 'offer' makes a course visible to students. This action is also called \"publish\" on the web site.\n* 'conclude' prevents future enrollments and makes a course read-only for all participants. The course still appears\n  in prior-enrollment lists.\n* 'delete' completely removes the course from the web site (including course menus and prior-enrollment lists).\n  All enrollments are deleted. Course content may be physically deleted at a future date.\n* 'undelete' attempts to recover a course that has been deleted. (Recovery is not guaranteed; please conclude\n  rather than delete a course if there is any possibility the course will be used again.) The recovered course\n  will be unpublished. Deleted enrollments will not be recovered.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "claim",
+                "offer",
+                "conclude",
+                "delete",
+                "undelete"
+              ]
+            },
+            {
+              "paramType": "form",
               "name": "course[syllabus_body]",
               "description": "The syllabus body for the course",
               "type": "string",
