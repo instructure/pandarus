@@ -7,6 +7,7 @@ module Pandarus
 
     attribute :id, resolve_type("Integer")
     attribute :name, resolve_type("String")
+    attribute :uuid, resolve_type("String")
     attribute :parent_account_id, resolve_type("Integer")
     attribute :root_account_id, resolve_type("Integer")
     attribute :default_storage_quota_mb, resolve_type("Integer")
