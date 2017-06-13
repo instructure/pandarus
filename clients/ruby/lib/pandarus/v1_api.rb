@@ -773,6 +773,7 @@ module Pandarus
 
       form_param_keys = [
         :account__name__,
+        :account__sis_account_id__,
         :account__default_storage_quota_mb__,
         :account__default_user_storage_quota_mb__,
         :account__default_group_storage_quota_mb__,
@@ -795,7 +796,8 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      RemoteCollection.new(connection, Account, path, query_params)
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      Account.new(response)
       
     end
     
