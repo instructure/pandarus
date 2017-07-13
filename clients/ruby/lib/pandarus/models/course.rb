@@ -7,6 +7,7 @@ module Pandarus
 
     attribute :id, resolve_type("Integer")
     attribute :sis_course_id, resolve_type("String")
+    attribute :uuid, resolve_type("String")
     attribute :integration_id, resolve_type("String")
     attribute :name, resolve_type("String")
     attribute :course_code, resolve_type("String")
