@@ -12673,7 +12673,7 @@ module Pandarus
     # List linked outcomes
     def list_linked_outcomes_global(id,opts={})
       query_param_keys = [
-        
+        :outcome_style
       ]
 
       form_param_keys = [
@@ -12701,7 +12701,7 @@ module Pandarus
     # List linked outcomes
     def list_linked_outcomes_accounts(account_id,id,opts={})
       query_param_keys = [
-        
+        :outcome_style
       ]
 
       form_param_keys = [
@@ -12732,7 +12732,7 @@ module Pandarus
     # List linked outcomes
     def list_linked_outcomes_courses(course_id,id,opts={})
       query_param_keys = [
-        
+        :outcome_style
       ]
 
       form_param_keys = [

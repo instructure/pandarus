@@ -573,6 +573,14 @@
               "type": "string",
               "format": null,
               "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "outcome_style",
+              "description": "The detail level of the outcomes. Defaults to \"abbrev\". Specify \"full\" for more information.",
+              "type": "string",
+              "format": null,
+              "required": false
             }
           ],
           "type": "array",
@@ -607,6 +615,14 @@
               "type": "string",
               "format": null,
               "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "outcome_style",
+              "description": "The detail level of the outcomes. Defaults to \"abbrev\". Specify \"full\" for more information.",
+              "type": "string",
+              "format": null,
+              "required": false
             }
           ],
           "type": "array",
@@ -641,6 +657,14 @@
               "type": "string",
               "format": null,
               "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "outcome_style",
+              "description": "The detail level of the outcomes. Defaults to \"abbrev\". Specify \"full\" for more information.",
+              "type": "string",
+              "format": null,
+              "required": false
             }
           ],
           "type": "array",
