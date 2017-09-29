@@ -106,7 +106,7 @@ module Pandarus
     end
 
     def select_query_params(params, param_keys)
-      param_keys << :per_page
+      param_keys.concat([:per_page, :cache_pages])
       select_params(params, param_keys)
     end
 

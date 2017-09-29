@@ -40,6 +40,17 @@ module Pandarus
       it 'must fetch the first page' do
         expect(page.all?{|member| User === member}).to be_truthy
       end
+
+      it 'caches the first page by default' do
+        page
+        expect(collection.instance_variable_get(:@first_response)).to be_present
+      end
+
+      it 'does not cache the first page when page caching disabled' do
+        collection.instance_variable_set(:@cache_pages, false)
+        page
+        expect(collection.instance_variable_get(:@first_response)).to be_nil
+      end
     end
 
     describe '#to_a' do
@@ -48,6 +59,19 @@ module Pandarus
           collection.instance_variable_set(:@path, '/v1/courses/183/users')
           array = collection.to_a
           expect(array).to be_empty
+        end
+      end
+
+      it 'defaults page caching to true' do
+        VCR.use_cassette('remote_collection_single_page') do
+          expect(collection.instance_variable_get(:@cache_pages)).to be_truthy
+        end
+      end
+
+      it 'set page caching to false when the proper arg is passed' do
+        VCR.use_cassette('remote_collection_single_page') do
+          collection = RemoteCollection.new(client, Section, '', {cache_pages: false})
+          expect(collection.instance_variable_get(:@cache_pages)).to be_falsey
         end
       end
 
@@ -86,6 +110,25 @@ module Pandarus
         end
 
         expect(collection.to_a.size).to eq 21
+      end
+
+      it 'properly caches page links when enabled' do
+        VCR.use_cassette('remote_collection_all_pages') do
+          array = collection.to_a
+          expect(collection.instance_variable_get(:@pagination_links).length).to eq 3
+          expect(collection.instance_variable_get(:@next_page_cache).keys.length).to eq 2
+          expect(array.size).to eq 21
+        end
+      end
+
+      it 'does not cache page links when disabled' do
+        VCR.use_cassette('remote_collection_all_pages') do
+          collection.instance_variable_set(:@cache_pages, false)
+          array = collection.to_a
+          expect(collection.instance_variable_get(:@pagination_links).length).to eq 1
+          expect(collection.instance_variable_get(:@next_page_cache)).to be_empty
+          expect(array.size).to eq 21
+        end
       end
     end
   end
