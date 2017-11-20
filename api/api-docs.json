@@ -3,10 +3,6 @@
   "swaggerVersion": "1.2",
   "apis": [
     {
-      "path": "/account_authentication_services.json",
-      "description": "Account Authentication Services"
-    },
-    {
       "path": "/account_domain_lookups.json",
       "description": "Account Domain Lookups"
     },
