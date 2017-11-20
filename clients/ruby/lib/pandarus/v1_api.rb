@@ -8,14 +8,17 @@ module Pandarus
     self.prefix = "https://canvas.instructure.com/api"
 
     
+
     # List Authorization Configs
     def list_authorization_configs(account_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -23,6 +26,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -34,16 +38,20 @@ module Pandarus
 
       RemoteCollection.new(connection, AccountAuthorizationConfig, path, query_params)
       
+
     end
     
+
     # Create Authorization Config
     def create_authorization_config(account_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -51,6 +59,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -63,16 +72,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       AccountAuthorizationConfig.new(response)
       
+
     end
     
+
     # Update Authorization Config
     def update_authorization_config(account_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -82,6 +95,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id
+
       )
 
       # resource path
@@ -95,16 +109,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       AccountAuthorizationConfig.new(response)
       
+
     end
     
+
     # Get Authorization Config
     def get_authorization_config(account_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -114,6 +132,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id
+
       )
 
       # resource path
@@ -127,16 +146,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       AccountAuthorizationConfig.new(response)
       
+
     end
     
+
     # Delete Authorization Config
     def delete_authorization_config(account_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -146,6 +169,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id
+
       )
 
       # resource path
@@ -159,16 +183,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # GET discovery url
     def get_discovery_url(account_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -176,6 +204,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -188,16 +217,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       DiscoveryUrl.new(response)
       
+
     end
     
+
     # Set discovery url
     def set_discovery_url(account_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -205,6 +238,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -217,16 +251,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       DiscoveryUrl.new(response)
       
+
     end
     
+
     # Delete discovery url
     def delete_discovery_url(account_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -234,6 +272,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -246,8 +285,10 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Search account domains
     def search_account_domains(opts={})
       query_param_keys = [
@@ -255,16 +296,19 @@ module Pandarus
         :domain,
         :latitude,
         :longitude
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -277,16 +321,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Index of active global notification for the user
     def index_of_active_global_notification_for_user(account_id,user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -296,6 +344,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :user_id => user_id
+
       )
 
       # resource path
@@ -308,16 +357,20 @@ module Pandarus
 
       RemoteCollection.new(connection, AccountNotification, path, query_params)
       
+
     end
     
+
     # Close notification for user
     def close_notification_for_user(account_id,user_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -329,6 +382,7 @@ module Pandarus
         :account_id => account_id,
         :user_id => user_id,
         :id => id
+
       )
 
       # resource path
@@ -343,12 +397,15 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       AccountNotification.new(response)
       
+
     end
     
+
     # Create a global notification
     def create_global_notification(account_id,account_notification__subject__,account_notification__message__,account_notification__start_at__,account_notification__end_at__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -359,6 +416,7 @@ module Pandarus
         :account_notification__icon__,
         :account_notification_roles,
         
+
       ]
 
       # verify existence of params
@@ -374,6 +432,7 @@ module Pandarus
         :account_notification__message__ => account_notification__message__,
         :account_notification__start_at__ => account_notification__start_at__,
         :account_notification__end_at__ => account_notification__end_at__
+
       )
 
       # resource path
@@ -386,16 +445,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List Available Reports
     def list_available_reports(account_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -403,6 +466,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -415,17 +479,21 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Start a Report
     def start_report(account_id,report,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :__parameters__,
         
+
       ]
 
       # verify existence of params
@@ -435,6 +503,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :report => report
+
       )
 
       # resource path
@@ -448,16 +517,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Report.new(response)
       
+
     end
     
+
     # Index of Reports
     def index_of_reports(account_id,report,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -467,6 +540,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :report => report
+
       )
 
       # resource path
@@ -479,16 +553,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Report, path, query_params)
       
+
     end
     
+
     # Status of a Report
     def status_of_report(account_id,report,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -500,6 +578,7 @@ module Pandarus
         :account_id => account_id,
         :report => report,
         :id => id
+
       )
 
       # resource path
@@ -514,16 +593,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Report.new(response)
       
+
     end
     
+
     # Delete a Report
     def delete_report(account_id,report,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -535,6 +618,7 @@ module Pandarus
         :account_id => account_id,
         :report => report,
         :id => id
+
       )
 
       # resource path
@@ -549,22 +633,27 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       Report.new(response)
       
+
     end
     
+
     # List accounts
     def list_accounts(opts={})
       query_param_keys = [
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -576,22 +665,27 @@ module Pandarus
 
       RemoteCollection.new(connection, Account, path, query_params)
       
+
     end
     
+
     # List accounts for course admins
     def list_accounts_for_course_admins(opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -603,16 +697,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Account, path, query_params)
       
+
     end
     
+
     # Get a single account
     def get_single_account(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -620,6 +718,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -632,16 +731,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Account.new(response)
       
+
     end
     
+
     # Get the sub-accounts of an account
     def get_sub_accounts_of_account(account_id,opts={})
       query_param_keys = [
         :recursive
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -649,6 +752,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -660,8 +764,10 @@ module Pandarus
 
       RemoteCollection.new(connection, Account, path, query_params)
       
+
     end
     
+
     # List active courses in an account
     def list_active_courses_in_account(account_id,opts={})
       query_param_keys = [
@@ -675,10 +781,12 @@ module Pandarus
         :enrollment_term_id,
         :search_term,
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -686,6 +794,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -697,12 +806,15 @@ module Pandarus
 
       RemoteCollection.new(connection, Course, path, query_params)
       
+
     end
     
+
     # Update an account
     def update_account(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -712,6 +824,7 @@ module Pandarus
         :account__default_user_storage_quota_mb__,
         :account__default_group_storage_quota_mb__,
         
+
       ]
 
       # verify existence of params
@@ -719,6 +832,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -731,16 +845,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       Account.new(response)
       
+
     end
     
+
     # Delete a user from the root account
     def delete_user_from_root_account(account_id,user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -750,6 +868,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :user_id => user_id
+
       )
 
       # resource path
@@ -763,12 +882,15 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       User.new(response)
       
+
     end
     
+
     # Create a new sub-account
     def create_new_sub_account(account_id,account__name__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -777,6 +899,7 @@ module Pandarus
         :account__default_user_storage_quota_mb__,
         :account__default_group_storage_quota_mb__,
         
+
       ]
 
       # verify existence of params
@@ -786,6 +909,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :account__name__ => account__name__
+
       )
 
       # resource path
@@ -797,12 +921,15 @@ module Pandarus
 
       RemoteCollection.new(connection, Account, path, query_params)
       
+
     end
     
+
     # Make an account admin
     def make_account_admin(account_id,user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -811,6 +938,7 @@ module Pandarus
         :role_id,
         :send_confirmation,
         
+
       ]
 
       # verify existence of params
@@ -820,6 +948,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :user_id => user_id
+
       )
 
       # resource path
@@ -832,17 +961,21 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Admin.new(response)
       
+
     end
     
+
     # Remove account admin
     def remove_account_admin(account_id,user_id,opts={})
       query_param_keys = [
         :role,
         :role_id
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -852,6 +985,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :user_id => user_id
+
       )
 
       # resource path
@@ -865,16 +999,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       Admin.new(response)
       
+
     end
     
+
     # List account admins
     def list_account_admins(account_id,opts={})
       query_param_keys = [
         :user_id
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -882,6 +1020,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -893,16 +1032,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Admin, path, query_params)
       
+
     end
     
+
     # List external feeds
     def list_external_feeds_courses(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -910,6 +1053,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -921,16 +1065,20 @@ module Pandarus
 
       RemoteCollection.new(connection, ExternalFeed, path, query_params)
       
+
     end
     
+
     # List external feeds
     def list_external_feeds_groups(group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -938,6 +1086,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -949,12 +1098,15 @@ module Pandarus
 
       RemoteCollection.new(connection, ExternalFeed, path, query_params)
       
+
     end
     
+
     # Create an external feed
     def create_external_feed_courses(course_id,url,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -962,6 +1114,7 @@ module Pandarus
         :header_match,
         :verbosity,
         
+
       ]
 
       # verify existence of params
@@ -971,6 +1124,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :url => url
+
       )
 
       # resource path
@@ -983,12 +1137,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       ExternalFeed.new(response)
       
+
     end
     
+
     # Create an external feed
     def create_external_feed_groups(group_id,url,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -996,6 +1153,7 @@ module Pandarus
         :header_match,
         :verbosity,
         
+
       ]
 
       # verify existence of params
@@ -1005,6 +1163,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :url => url
+
       )
 
       # resource path
@@ -1017,16 +1176,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       ExternalFeed.new(response)
       
+
     end
     
+
     # Delete an external feed
     def delete_external_feed_courses(course_id,external_feed_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -1036,6 +1199,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :external_feed_id => external_feed_id
+
       )
 
       # resource path
@@ -1049,16 +1213,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       ExternalFeed.new(response)
       
+
     end
     
+
     # Delete an external feed
     def delete_external_feed_groups(group_id,external_feed_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -1068,6 +1236,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :external_feed_id => external_feed_id
+
       )
 
       # resource path
@@ -1081,8 +1250,10 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       ExternalFeed.new(response)
       
+
     end
     
+
     # List appointment groups
     def list_appointment_groups(opts={})
       query_param_keys = [
@@ -1090,16 +1261,19 @@ module Pandarus
         :context_codes,
         :include_past_appointments,
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -1112,12 +1286,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Create an appointment group
     def create_appointment_group(appointment_group__context_codes__,appointment_group__title__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -1134,6 +1311,7 @@ module Pandarus
         :appointment_group__new_appointments_____x__,
         :appointment_group__participant_visibility__,
         
+
       ]
 
       # verify existence of params
@@ -1143,6 +1321,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :appointment_group__context_codes__ => appointment_group__context_codes__,
         :appointment_group__title__ => appointment_group__title__
+
       )
 
       # resource path
@@ -1155,16 +1334,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get a single appointment group
     def get_single_appointment_group(id,opts={})
       query_param_keys = [
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -1172,6 +1355,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -1184,12 +1368,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Update an appointment group
     def update_appointment_group(id,appointment_group__context_codes__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -1206,6 +1393,7 @@ module Pandarus
         :appointment_group__new_appointments_____x__,
         :appointment_group__participant_visibility__,
         
+
       ]
 
       # verify existence of params
@@ -1215,6 +1403,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :id => id,
         :appointment_group__context_codes__ => appointment_group__context_codes__
+
       )
 
       # resource path
@@ -1227,16 +1416,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Delete an appointment group
     def delete_appointment_group(id,opts={})
       query_param_keys = [
         :cancel_reason
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -1244,6 +1437,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -1256,16 +1450,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List user participants
     def list_user_participants(id,opts={})
       query_param_keys = [
         :registration_status
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -1273,6 +1471,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -1285,16 +1484,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List student group participants
     def list_student_group_participants(id,opts={})
       query_param_keys = [
         :registration_status
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -1302,6 +1505,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -1314,18 +1518,22 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List assignment groups
     def list_assignment_groups(course_id,opts={})
       query_param_keys = [
         :include,
         :override_assignment_dates,
         :grading_period_id
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -1333,6 +1541,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -1344,18 +1553,22 @@ module Pandarus
 
       RemoteCollection.new(connection, AssignmentGroup, path, query_params)
       
+
     end
     
+
     # Get an Assignment Group
     def get_assignment_group(course_id,assignment_group_id,opts={})
       query_param_keys = [
         :include,
         :override_assignment_dates,
         :grading_period_id
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -1365,6 +1578,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :assignment_group_id => assignment_group_id
+
       )
 
       # resource path
@@ -1378,12 +1592,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       AssignmentGroup.new(response)
       
+
     end
     
+
     # Create an Assignment Group
     def create_assignment_group(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -1392,6 +1609,7 @@ module Pandarus
         :group_weight,
         :rules,
         
+
       ]
 
       # verify existence of params
@@ -1399,6 +1617,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -1411,16 +1630,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       AssignmentGroup.new(response)
       
+
     end
     
+
     # Edit an Assignment Group
     def edit_assignment_group(course_id,assignment_group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -1430,6 +1653,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :assignment_group_id => assignment_group_id
+
       )
 
       # resource path
@@ -1443,16 +1667,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       AssignmentGroup.new(response)
       
+
     end
     
+
     # Destroy an Assignment Group
     def destroy_assignment_group(course_id,assignment_group_id,opts={})
       query_param_keys = [
         :move_assignment_to
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -1462,6 +1690,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :assignment_group_id => assignment_group_id
+
       )
 
       # resource path
@@ -1475,16 +1704,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       AssignmentGroup.new(response)
       
+
     end
     
+
     # Delete an assignment
     def delete_assignment(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -1494,6 +1727,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -1507,8 +1741,10 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       Assignment.new(response)
       
+
     end
     
+
     # List assignments
     def list_assignments(course_id,opts={})
       query_param_keys = [
@@ -1517,10 +1753,12 @@ module Pandarus
         :override_assignment_dates,
         :needs_grading_count_by_section,
         :bucket
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -1528,6 +1766,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -1539,8 +1778,10 @@ module Pandarus
 
       RemoteCollection.new(connection, Assignment, path, query_params)
       
+
     end
     
+
     # Get a single assignment
     def get_single_assignment(course_id,id,opts={})
       query_param_keys = [
@@ -1548,10 +1789,12 @@ module Pandarus
         :override_assignment_dates,
         :needs_grading_count_by_section,
         :all_dates
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -1561,6 +1804,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -1574,12 +1818,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Assignment.new(response)
       
+
     end
     
+
     # Create an assignment
     def create_assignment(course_id,assignment__name__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -1610,6 +1857,7 @@ module Pandarus
         :assignment__published__,
         :assignment__grading_standard_id__,
         
+
       ]
 
       # verify existence of params
@@ -1619,6 +1867,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :assignment__name__ => assignment__name__
+
       )
 
       # resource path
@@ -1631,12 +1880,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Assignment.new(response)
       
+
     end
     
+
     # Edit an assignment
     def edit_assignment(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -1667,6 +1919,7 @@ module Pandarus
         :assignment__published__,
         :assignment__grading_standard_id__,
         
+
       ]
 
       # verify existence of params
@@ -1676,6 +1929,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -1689,16 +1943,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       Assignment.new(response)
       
+
     end
     
+
     # List assignment overrides
     def list_assignment_overrides(course_id,assignment_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -1708,6 +1966,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :assignment_id => assignment_id
+
       )
 
       # resource path
@@ -1720,16 +1979,20 @@ module Pandarus
 
       RemoteCollection.new(connection, AssignmentOverride, path, query_params)
       
+
     end
     
+
     # Get a single assignment override
     def get_single_assignment_override(course_id,assignment_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -1741,6 +2004,7 @@ module Pandarus
         :course_id => course_id,
         :assignment_id => assignment_id,
         :id => id
+
       )
 
       # resource path
@@ -1755,16 +2019,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       AssignmentOverride.new(response)
       
+
     end
     
+
     # Redirect to the assignment override for a group
     def redirect_to_assignment_override_for_group(group_id,assignment_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -1774,6 +2042,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :assignment_id => assignment_id
+
       )
 
       # resource path
@@ -1787,16 +2056,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Redirect to the assignment override for a section
     def redirect_to_assignment_override_for_section(course_section_id,assignment_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -1806,6 +2079,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_section_id => course_section_id,
         :assignment_id => assignment_id
+
       )
 
       # resource path
@@ -1819,12 +2093,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Create an assignment override
     def create_assignment_override(course_id,assignment_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -1836,6 +2113,7 @@ module Pandarus
         :assignment_override__unlock_at__,
         :assignment_override__lock_at__,
         
+
       ]
 
       # verify existence of params
@@ -1845,6 +2123,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :assignment_id => assignment_id
+
       )
 
       # resource path
@@ -1858,12 +2137,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       AssignmentOverride.new(response)
       
+
     end
     
+
     # Update an assignment override
     def update_assignment_override(course_id,assignment_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -1873,6 +2155,7 @@ module Pandarus
         :assignment_override__unlock_at__,
         :assignment_override__lock_at__,
         
+
       ]
 
       # verify existence of params
@@ -1884,6 +2167,7 @@ module Pandarus
         :course_id => course_id,
         :assignment_id => assignment_id,
         :id => id
+
       )
 
       # resource path
@@ -1898,16 +2182,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       AssignmentOverride.new(response)
       
+
     end
     
+
     # Delete an assignment override
     def delete_assignment_override(course_id,assignment_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -1919,6 +2207,7 @@ module Pandarus
         :course_id => course_id,
         :assignment_id => assignment_id,
         :id => id
+
       )
 
       # resource path
@@ -1933,17 +2222,21 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       AssignmentOverride.new(response)
       
+
     end
     
+
     # Query by login.
     def query_by_login(login_id,opts={})
       query_param_keys = [
         :start_time,
         :end_time
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -1951,6 +2244,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :login_id => login_id
+
       )
 
       # resource path
@@ -1963,17 +2257,21 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Query by account.
     def query_by_account(account_id,opts={})
       query_param_keys = [
         :start_time,
         :end_time
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -1981,6 +2279,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -1993,17 +2292,21 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Query by user.
     def query_by_user(user_id,opts={})
       query_param_keys = [
         :start_time,
         :end_time
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2011,6 +2314,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id
+
       )
 
       # resource path
@@ -2023,8 +2327,10 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List calendar events
     def list_calendar_events(opts={})
       query_param_keys = [
@@ -2034,16 +2340,19 @@ module Pandarus
         :undated,
         :all_events,
         :context_codes
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -2055,12 +2364,15 @@ module Pandarus
 
       RemoteCollection.new(connection, CalendarEvent, path, query_params)
       
+
     end
     
+
     # Create a calendar event
     def create_calendar_event(calendar_event__context_code__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -2076,6 +2388,7 @@ module Pandarus
         :calendar_event__child_event_data_____x____end_at__,
         :calendar_event__child_event_data_____x____context_code__,
         
+
       ]
 
       # verify existence of params
@@ -2083,6 +2396,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :calendar_event__context_code__ => calendar_event__context_code__
+
       )
 
       # resource path
@@ -2095,16 +2409,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get a single calendar event or assignment
     def get_single_calendar_event_or_assignment(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2112,6 +2430,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -2124,18 +2443,22 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       CalendarEvent.new(response)
       
+
     end
     
+
     # Reserve a time slot
     def reserve_time_slot(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :participant_id,
         :cancel_existing,
         
+
       ]
 
       # verify existence of params
@@ -2143,6 +2466,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -2155,17 +2479,21 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Reserve a time slot
     def reserve_time_slot_participant_id(id,participant_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :cancel_existing,
         
+
       ]
 
       # verify existence of params
@@ -2175,6 +2503,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :id => id,
         :participant_id => participant_id
+
       )
 
       # resource path
@@ -2188,12 +2517,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Update a calendar event
     def update_calendar_event(id,calendar_event__context_code__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -2209,6 +2541,7 @@ module Pandarus
         :calendar_event__child_event_data_____x____end_at__,
         :calendar_event__child_event_data_____x____context_code__,
         
+
       ]
 
       # verify existence of params
@@ -2218,6 +2551,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :id => id,
         :calendar_event__context_code__ => calendar_event__context_code__
+
       )
 
       # resource path
@@ -2230,16 +2564,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Delete a calendar event
     def delete_calendar_event(id,opts={})
       query_param_keys = [
         :cancel_reason
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2247,6 +2585,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -2259,16 +2598,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List members of a collaboration.
     def list_members_of_collaboration(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2276,6 +2619,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -2287,18 +2631,22 @@ module Pandarus
 
       RemoteCollection.new(connection, Collaborator, path, query_params)
       
+
     end
     
+
     # List of CommMessages for a user
     def list_of_commmessages_for_user(user_id,opts={})
       query_param_keys = [
         :user_id,
         :start_time,
         :end_time
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2306,6 +2654,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id
+
       )
 
       # resource path
@@ -2317,16 +2666,20 @@ module Pandarus
 
       RemoteCollection.new(connection, CommMessage, path, query_params)
       
+
     end
     
+
     # List user communication channels
     def list_user_communication_channels(user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2334,6 +2687,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id
+
       )
 
       # resource path
@@ -2345,12 +2699,15 @@ module Pandarus
 
       RemoteCollection.new(connection, CommunicationChannel, path, query_params)
       
+
     end
     
+
     # Create a communication channel
     def create_communication_channel(user_id,communication_channel__address__,communication_channel__type__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -2359,6 +2716,7 @@ module Pandarus
         :communication_channel__token__,
         :skip_confirmation,
         
+
       ]
 
       # verify existence of params
@@ -2370,6 +2728,7 @@ module Pandarus
         :user_id => user_id,
         :communication_channel__address__ => communication_channel__address__,
         :communication_channel__type__ => communication_channel__type__
+
       )
 
       # resource path
@@ -2382,16 +2741,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       CommunicationChannel.new(response)
       
+
     end
     
+
     # Delete a communication channel
     def delete_communication_channel_id(user_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2401,6 +2764,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :user_id => user_id,
         :id => id
+
       )
 
       # resource path
@@ -2414,16 +2778,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       CommunicationChannel.new(response)
       
+
     end
     
+
     # Delete a communication channel
     def delete_communication_channel_type(user_id,type,address,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2435,6 +2803,7 @@ module Pandarus
         :user_id => user_id,
         :type => type,
         :address => address
+
       )
 
       # resource path
@@ -2449,16 +2818,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       CommunicationChannel.new(response)
       
+
     end
     
+
     # List conferences
     def list_conferences_courses(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2466,6 +2839,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -2477,16 +2851,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Conference, path, query_params)
       
+
     end
     
+
     # List conferences
     def list_conferences_groups(group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2494,6 +2872,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -2505,16 +2884,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Conference, path, query_params)
       
+
     end
     
+
     # List content exports
     def list_content_exports_courses(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2522,6 +2905,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -2533,16 +2917,20 @@ module Pandarus
 
       RemoteCollection.new(connection, ContentExport, path, query_params)
       
+
     end
     
+
     # List content exports
     def list_content_exports_groups(group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2550,6 +2938,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -2561,16 +2950,20 @@ module Pandarus
 
       RemoteCollection.new(connection, ContentExport, path, query_params)
       
+
     end
     
+
     # List content exports
     def list_content_exports_users(user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2578,6 +2971,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id
+
       )
 
       # resource path
@@ -2589,16 +2983,20 @@ module Pandarus
 
       RemoteCollection.new(connection, ContentExport, path, query_params)
       
+
     end
     
+
     # Show content export
     def show_content_export_courses(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2608,6 +3006,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -2621,16 +3020,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       ContentExport.new(response)
       
+
     end
     
+
     # Show content export
     def show_content_export_groups(group_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2640,6 +3043,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :id => id
+
       )
 
       # resource path
@@ -2653,16 +3057,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       ContentExport.new(response)
       
+
     end
     
+
     # Show content export
     def show_content_export_users(user_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2672,6 +3080,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :user_id => user_id,
         :id => id
+
       )
 
       # resource path
@@ -2685,18 +3094,22 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       ContentExport.new(response)
       
+
     end
     
+
     # Export content
     def export_content_courses(course_id,export_type,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :export_type,
         :skip_notifications,
         
+
       ]
 
       # verify existence of params
@@ -2706,6 +3119,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :export_type => export_type
+
       )
 
       # resource path
@@ -2718,18 +3132,22 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       ContentExport.new(response)
       
+
     end
     
+
     # Export content
     def export_content_groups(group_id,export_type,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :export_type,
         :skip_notifications,
         
+
       ]
 
       # verify existence of params
@@ -2739,6 +3157,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :export_type => export_type
+
       )
 
       # resource path
@@ -2751,18 +3170,22 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       ContentExport.new(response)
       
+
     end
     
+
     # Export content
     def export_content_users(user_id,export_type,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :export_type,
         :skip_notifications,
         
+
       ]
 
       # verify existence of params
@@ -2772,6 +3195,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :user_id => user_id,
         :export_type => export_type
+
       )
 
       # resource path
@@ -2784,16 +3208,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       ContentExport.new(response)
       
+
     end
     
+
     # List migration issues
     def list_migration_issues_accounts(account_id,content_migration_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2803,6 +3231,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :content_migration_id => content_migration_id
+
       )
 
       # resource path
@@ -2815,16 +3244,20 @@ module Pandarus
 
       RemoteCollection.new(connection, MigrationIssue, path, query_params)
       
+
     end
     
+
     # List migration issues
     def list_migration_issues_courses(course_id,content_migration_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2834,6 +3267,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :content_migration_id => content_migration_id
+
       )
 
       # resource path
@@ -2846,16 +3280,20 @@ module Pandarus
 
       RemoteCollection.new(connection, MigrationIssue, path, query_params)
       
+
     end
     
+
     # List migration issues
     def list_migration_issues_groups(group_id,content_migration_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2865,6 +3303,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :content_migration_id => content_migration_id
+
       )
 
       # resource path
@@ -2877,16 +3316,20 @@ module Pandarus
 
       RemoteCollection.new(connection, MigrationIssue, path, query_params)
       
+
     end
     
+
     # List migration issues
     def list_migration_issues_users(user_id,content_migration_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2896,6 +3339,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :user_id => user_id,
         :content_migration_id => content_migration_id
+
       )
 
       # resource path
@@ -2908,16 +3352,20 @@ module Pandarus
 
       RemoteCollection.new(connection, MigrationIssue, path, query_params)
       
+
     end
     
+
     # Get a migration issue
     def get_migration_issue_accounts(account_id,content_migration_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2929,6 +3377,7 @@ module Pandarus
         :account_id => account_id,
         :content_migration_id => content_migration_id,
         :id => id
+
       )
 
       # resource path
@@ -2943,16 +3392,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       MigrationIssue.new(response)
       
+
     end
     
+
     # Get a migration issue
     def get_migration_issue_courses(course_id,content_migration_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2964,6 +3417,7 @@ module Pandarus
         :course_id => course_id,
         :content_migration_id => content_migration_id,
         :id => id
+
       )
 
       # resource path
@@ -2978,16 +3432,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       MigrationIssue.new(response)
       
+
     end
     
+
     # Get a migration issue
     def get_migration_issue_groups(group_id,content_migration_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -2999,6 +3457,7 @@ module Pandarus
         :group_id => group_id,
         :content_migration_id => content_migration_id,
         :id => id
+
       )
 
       # resource path
@@ -3013,16 +3472,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       MigrationIssue.new(response)
       
+
     end
     
+
     # Get a migration issue
     def get_migration_issue_users(user_id,content_migration_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -3034,6 +3497,7 @@ module Pandarus
         :user_id => user_id,
         :content_migration_id => content_migration_id,
         :id => id
+
       )
 
       # resource path
@@ -3048,17 +3512,21 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       MigrationIssue.new(response)
       
+
     end
     
+
     # Update a migration issue
     def update_migration_issue_accounts(account_id,content_migration_id,id,workflow_state,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :workflow_state,
         
+
       ]
 
       # verify existence of params
@@ -3072,6 +3540,7 @@ module Pandarus
         :content_migration_id => content_migration_id,
         :id => id,
         :workflow_state => workflow_state
+
       )
 
       # resource path
@@ -3086,17 +3555,21 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       MigrationIssue.new(response)
       
+
     end
     
+
     # Update a migration issue
     def update_migration_issue_courses(course_id,content_migration_id,id,workflow_state,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :workflow_state,
         
+
       ]
 
       # verify existence of params
@@ -3110,6 +3583,7 @@ module Pandarus
         :content_migration_id => content_migration_id,
         :id => id,
         :workflow_state => workflow_state
+
       )
 
       # resource path
@@ -3124,17 +3598,21 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       MigrationIssue.new(response)
       
+
     end
     
+
     # Update a migration issue
     def update_migration_issue_groups(group_id,content_migration_id,id,workflow_state,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :workflow_state,
         
+
       ]
 
       # verify existence of params
@@ -3148,6 +3626,7 @@ module Pandarus
         :content_migration_id => content_migration_id,
         :id => id,
         :workflow_state => workflow_state
+
       )
 
       # resource path
@@ -3162,17 +3641,21 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       MigrationIssue.new(response)
       
+
     end
     
+
     # Update a migration issue
     def update_migration_issue_users(user_id,content_migration_id,id,workflow_state,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :workflow_state,
         
+
       ]
 
       # verify existence of params
@@ -3186,6 +3669,7 @@ module Pandarus
         :content_migration_id => content_migration_id,
         :id => id,
         :workflow_state => workflow_state
+
       )
 
       # resource path
@@ -3200,16 +3684,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       MigrationIssue.new(response)
       
+
     end
     
+
     # List content migrations
     def list_content_migrations_accounts(account_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -3217,6 +3705,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -3228,16 +3717,20 @@ module Pandarus
 
       RemoteCollection.new(connection, ContentMigration, path, query_params)
       
+
     end
     
+
     # List content migrations
     def list_content_migrations_courses(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -3245,6 +3738,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -3256,16 +3750,20 @@ module Pandarus
 
       RemoteCollection.new(connection, ContentMigration, path, query_params)
       
+
     end
     
+
     # List content migrations
     def list_content_migrations_groups(group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -3273,6 +3771,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -3284,16 +3783,20 @@ module Pandarus
 
       RemoteCollection.new(connection, ContentMigration, path, query_params)
       
+
     end
     
+
     # List content migrations
     def list_content_migrations_users(user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -3301,6 +3804,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id
+
       )
 
       # resource path
@@ -3312,16 +3816,20 @@ module Pandarus
 
       RemoteCollection.new(connection, ContentMigration, path, query_params)
       
+
     end
     
+
     # Get a content migration
     def get_content_migration_accounts(account_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -3331,6 +3839,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id
+
       )
 
       # resource path
@@ -3344,16 +3853,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       ContentMigration.new(response)
       
+
     end
     
+
     # Get a content migration
     def get_content_migration_courses(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -3363,6 +3876,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -3376,16 +3890,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       ContentMigration.new(response)
       
+
     end
     
+
     # Get a content migration
     def get_content_migration_groups(group_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -3395,6 +3913,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :id => id
+
       )
 
       # resource path
@@ -3408,16 +3927,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       ContentMigration.new(response)
       
+
     end
     
+
     # Get a content migration
     def get_content_migration_users(user_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -3427,6 +3950,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :user_id => user_id,
         :id => id
+
       )
 
       # resource path
@@ -3440,12 +3964,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       ContentMigration.new(response)
       
+
     end
     
+
     # Create a content migration
     def create_content_migration_accounts(account_id,migration_type,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -3466,6 +3993,7 @@ module Pandarus
         :date_shift_options__day_substitutions_____x__,
         :date_shift_options__remove_dates__,
         
+
       ]
 
       # verify existence of params
@@ -3475,6 +4003,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :migration_type => migration_type
+
       )
 
       # resource path
@@ -3487,12 +4016,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       ContentMigration.new(response)
       
+
     end
     
+
     # Create a content migration
     def create_content_migration_courses(course_id,migration_type,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -3513,6 +4045,7 @@ module Pandarus
         :date_shift_options__day_substitutions_____x__,
         :date_shift_options__remove_dates__,
         
+
       ]
 
       # verify existence of params
@@ -3522,6 +4055,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :migration_type => migration_type
+
       )
 
       # resource path
@@ -3534,12 +4068,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       ContentMigration.new(response)
       
+
     end
     
+
     # Create a content migration
     def create_content_migration_groups(group_id,migration_type,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -3560,6 +4097,7 @@ module Pandarus
         :date_shift_options__day_substitutions_____x__,
         :date_shift_options__remove_dates__,
         
+
       ]
 
       # verify existence of params
@@ -3569,6 +4107,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :migration_type => migration_type
+
       )
 
       # resource path
@@ -3581,12 +4120,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       ContentMigration.new(response)
       
+
     end
     
+
     # Create a content migration
     def create_content_migration_users(user_id,migration_type,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -3607,6 +4149,7 @@ module Pandarus
         :date_shift_options__day_substitutions_____x__,
         :date_shift_options__remove_dates__,
         
+
       ]
 
       # verify existence of params
@@ -3616,6 +4159,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :user_id => user_id,
         :migration_type => migration_type
+
       )
 
       # resource path
@@ -3628,16 +4172,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       ContentMigration.new(response)
       
+
     end
     
+
     # Update a content migration
     def update_content_migration_accounts(account_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -3647,6 +4195,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id
+
       )
 
       # resource path
@@ -3660,16 +4209,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       ContentMigration.new(response)
       
+
     end
     
+
     # Update a content migration
     def update_content_migration_courses(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -3679,6 +4232,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -3692,16 +4246,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       ContentMigration.new(response)
       
+
     end
     
+
     # Update a content migration
     def update_content_migration_groups(group_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -3711,6 +4269,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :id => id
+
       )
 
       # resource path
@@ -3724,16 +4283,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       ContentMigration.new(response)
       
+
     end
     
+
     # Update a content migration
     def update_content_migration_users(user_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -3743,6 +4306,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :user_id => user_id,
         :id => id
+
       )
 
       # resource path
@@ -3756,16 +4320,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       ContentMigration.new(response)
       
+
     end
     
+
     # List Migration Systems
     def list_migration_systems_accounts(account_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -3773,6 +4341,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -3784,16 +4353,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Migrator, path, query_params)
       
+
     end
     
+
     # List Migration Systems
     def list_migration_systems_courses(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -3801,6 +4374,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -3812,16 +4386,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Migrator, path, query_params)
       
+
     end
     
+
     # List Migration Systems
     def list_migration_systems_groups(group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -3829,6 +4407,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -3840,16 +4419,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Migrator, path, query_params)
       
+
     end
     
+
     # List Migration Systems
     def list_migration_systems_users(user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -3857,6 +4440,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id
+
       )
 
       # resource path
@@ -3868,8 +4452,10 @@ module Pandarus
 
       RemoteCollection.new(connection, Migrator, path, query_params)
       
+
     end
     
+
     # List conversations
     def list_conversations(opts={})
       query_param_keys = [
@@ -3878,16 +4464,19 @@ module Pandarus
         :filter_mode,
         :interleave_submissions,
         :include_all_conversation_ids
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -3899,12 +4488,15 @@ module Pandarus
 
       RemoteCollection.new(connection, Conversation, path, query_params)
       
+
     end
     
+
     # Create a conversation
     def create_conversation(recipients,body,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -3922,6 +4514,7 @@ module Pandarus
         :filter_mode,
         :context_code,
         
+
       ]
 
       # verify existence of params
@@ -3931,6 +4524,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :recipients => recipients,
         :body => body
+
       )
 
       # resource path
@@ -3943,22 +4537,27 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get running batches
     def get_running_batches(opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -3971,8 +4570,10 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get a single conversation
     def get_single_conversation(id,opts={})
       query_param_keys = [
@@ -3981,10 +4582,12 @@ module Pandarus
         :filter,
         :filter_mode,
         :auto_mark_as_read
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -3992,6 +4595,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -4004,12 +4608,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Edit a conversation
     def edit_conversation(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -4021,6 +4628,7 @@ module Pandarus
         :filter,
         :filter_mode,
         
+
       ]
 
       # verify existence of params
@@ -4028,6 +4636,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -4040,22 +4649,27 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Mark all as read
     def mark_all_as_read(opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -4068,16 +4682,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Delete a conversation
     def delete_conversation(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -4085,6 +4703,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -4097,17 +4716,21 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Add recipients
     def add_recipients(id,recipients,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :recipients,
         
+
       ]
 
       # verify existence of params
@@ -4117,6 +4740,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :id => id,
         :recipients => recipients
+
       )
 
       # resource path
@@ -4129,12 +4753,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Add a message
     def add_message(id,body,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -4146,6 +4773,7 @@ module Pandarus
         :included_messages,
         :user_note,
         
+
       ]
 
       # verify existence of params
@@ -4155,6 +4783,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :id => id,
         :body => body
+
       )
 
       # resource path
@@ -4167,17 +4796,21 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Delete a message
     def delete_message(id,remove,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :remove,
         
+
       ]
 
       # verify existence of params
@@ -4187,6 +4820,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :id => id,
         :remove => remove
+
       )
 
       # resource path
@@ -4199,18 +4833,22 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Batch update conversations
     def batch_update_conversations(conversation_ids,event,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :conversation_ids,
         :event,
         
+
       ]
 
       # verify existence of params
@@ -4220,6 +4858,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :conversation_ids => conversation_ids,
         :event => event
+
       )
 
       # resource path
@@ -4232,22 +4871,27 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       Progress.new(response)
       
+
     end
     
+
     # Find recipients
     def find_recipients(opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -4260,22 +4904,27 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Unread count
     def unread_count(opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -4288,17 +4937,21 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Query by course.
     def query_by_course(course_id,opts={})
       query_param_keys = [
         :start_time,
         :end_time
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -4306,6 +4959,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -4317,12 +4971,15 @@ module Pandarus
 
       RemoteCollection.new(connection, CourseEvent, path, query_params)
       
+
     end
     
+
     # Set extensions for student quiz submissions
     def set_extensions_for_student_quiz_submissions(course_id,user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -4333,6 +4990,7 @@ module Pandarus
         :extend_from_now,
         :extend_from_end_at,
         
+
       ]
 
       # verify existence of params
@@ -4342,6 +5000,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :user_id => user_id
+
       )
 
       # resource path
@@ -4354,8 +5013,10 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List your courses
     def list_your_courses(opts={})
       query_param_keys = [
@@ -4364,16 +5025,19 @@ module Pandarus
         :enrollment_role_id,
         :include,
         :state
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -4385,12 +5049,15 @@ module Pandarus
 
       RemoteCollection.new(connection, Course, path, query_params)
       
+
     end
     
+
     # Create a new course
     def create_new_course(account_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -4420,6 +5087,7 @@ module Pandarus
         :course__grading_standard_id__,
         :course__course_format__,
         
+
       ]
 
       # verify existence of params
@@ -4427,6 +5095,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -4439,16 +5108,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Course.new(response)
       
+
     end
     
+
     # Upload a file
     def upload_file(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -4456,6 +5129,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -4468,16 +5142,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List students
     def list_students(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -4485,6 +5163,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -4496,8 +5175,10 @@ module Pandarus
 
       RemoteCollection.new(connection, User, path, query_params)
       
+
     end
     
+
     # List users in course
     def list_users_in_course_users(course_id,opts={})
       query_param_keys = [
@@ -4508,10 +5189,12 @@ module Pandarus
         :include,
         :user_id,
         :enrollment_state
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -4519,6 +5202,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -4530,8 +5214,10 @@ module Pandarus
 
       RemoteCollection.new(connection, User, path, query_params)
       
+
     end
     
+
     # List users in course
     def list_users_in_course_search_users(course_id,opts={})
       query_param_keys = [
@@ -4542,10 +5228,12 @@ module Pandarus
         :include,
         :user_id,
         :enrollment_state
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -4553,6 +5241,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -4564,16 +5253,20 @@ module Pandarus
 
       RemoteCollection.new(connection, User, path, query_params)
       
+
     end
     
+
     # List recently logged in students
     def list_recently_logged_in_students(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -4581,6 +5274,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -4592,16 +5286,20 @@ module Pandarus
 
       RemoteCollection.new(connection, User, path, query_params)
       
+
     end
     
+
     # Get single user
     def get_single_user(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -4611,6 +5309,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -4624,17 +5323,21 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       User.new(response)
       
+
     end
     
+
     # Preview processed html
     def preview_processed_html(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :html,
         
+
       ]
 
       # verify existence of params
@@ -4642,6 +5345,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -4654,16 +5358,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Course activity stream
     def course_activity_stream(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -4671,6 +5379,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -4683,16 +5392,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Course activity stream summary
     def course_activity_stream_summary(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -4700,6 +5413,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -4712,16 +5426,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Course TODO items
     def course_todo_items(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -4729,6 +5447,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -4741,16 +5460,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Conclude a course
     def conclude_course(id,event,opts={})
       query_param_keys = [
         :event
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -4760,6 +5483,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :id => id,
         :event => event
+
       )
 
       # resource path
@@ -4772,16 +5496,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get course settings
     def get_course_settings(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -4789,6 +5517,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -4801,12 +5530,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Update course settings
     def update_course_settings(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -4820,6 +5552,7 @@ module Pandarus
         :restrict_student_past_view,
         :restrict_student_future_view,
         
+
       ]
 
       # verify existence of params
@@ -4827,6 +5560,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -4839,16 +5573,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get a single course
     def get_single_course_courses(id,opts={})
       query_param_keys = [
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -4856,6 +5594,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -4868,16 +5607,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Course.new(response)
       
+
     end
     
+
     # Get a single course
     def get_single_course_accounts(account_id,id,opts={})
       query_param_keys = [
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -4887,6 +5630,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id
+
       )
 
       # resource path
@@ -4900,12 +5644,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Course.new(response)
       
+
     end
     
+
     # Update a course
     def update_course(id,course__account_id__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -4934,6 +5681,7 @@ module Pandarus
         :course__grading_standard_id__,
         :course__course_format__,
         
+
       ]
 
       # verify existence of params
@@ -4943,6 +5691,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :id => id,
         :course__account_id__ => course__account_id__
+
       )
 
       # resource path
@@ -4955,18 +5704,22 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Update courses
     def update_courses(account_id,course_ids,event,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :course_ids,
         :event,
         
+
       ]
 
       # verify existence of params
@@ -4978,6 +5731,7 @@ module Pandarus
         :account_id => account_id,
         :course_ids => course_ids,
         :event => event
+
       )
 
       # resource path
@@ -4990,16 +5744,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       Progress.new(response)
       
+
     end
     
+
     # Reset a course
     def reset_course(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -5007,6 +5765,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -5019,16 +5778,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Course.new(response)
       
+
     end
     
+
     # Get course copy status
     def get_course_copy_status(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -5038,6 +5801,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -5051,12 +5815,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Copy course content
     def copy_course_content(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -5064,6 +5831,7 @@ module Pandarus
         :except,
         :only,
         
+
       ]
 
       # verify existence of params
@@ -5071,6 +5839,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -5083,16 +5852,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List custom gradebook columns
     def list_custom_gradebook_columns(course_id,opts={})
       query_param_keys = [
         :include_hidden
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -5100,6 +5873,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -5111,12 +5885,15 @@ module Pandarus
 
       RemoteCollection.new(connection, CustomColumn, path, query_params)
       
+
     end
     
+
     # Create a custom gradebook column
     def create_custom_gradebook_column(course_id,column__title__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -5125,6 +5902,7 @@ module Pandarus
         :column__hidden__,
         :column__teacher_notes__,
         
+
       ]
 
       # verify existence of params
@@ -5134,6 +5912,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :column__title__ => column__title__
+
       )
 
       # resource path
@@ -5146,16 +5925,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       CustomColumn.new(response)
       
+
     end
     
+
     # Update a custom gradebook column
     def update_custom_gradebook_column(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -5165,6 +5948,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -5178,16 +5962,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       CustomColumn.new(response)
       
+
     end
     
+
     # Delete a custom gradebook column
     def delete_custom_gradebook_column(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -5197,6 +5985,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -5210,17 +5999,21 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       CustomColumn.new(response)
       
+
     end
     
+
     # Reorder custom columns
     def reorder_custom_columns(course_id,order,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :order,
         
+
       ]
 
       # verify existence of params
@@ -5230,6 +6023,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :order => order
+
       )
 
       # resource path
@@ -5242,16 +6036,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List entries for a column
     def list_entries_for_column(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -5261,6 +6059,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -5273,17 +6072,21 @@ module Pandarus
 
       RemoteCollection.new(connection, ColumnDatum, path, query_params)
       
+
     end
     
+
     # Update column data
     def update_column_data(course_id,id,user_id,column_data__content__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :column_data__content__,
         
+
       ]
 
       # verify existence of params
@@ -5297,6 +6100,7 @@ module Pandarus
         :id => id,
         :user_id => user_id,
         :column_data__content__ => column_data__content__
+
       )
 
       # resource path
@@ -5311,8 +6115,10 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       ColumnDatum.new(response)
       
+
     end
     
+
     # List discussion topics
     def list_discussion_topics_courses(course_id,opts={})
       query_param_keys = [
@@ -5320,10 +6126,12 @@ module Pandarus
         :scope,
         :only_announcements,
         :search_term
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -5331,6 +6139,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -5342,8 +6151,10 @@ module Pandarus
 
       RemoteCollection.new(connection, DiscussionTopic, path, query_params)
       
+
     end
     
+
     # List discussion topics
     def list_discussion_topics_groups(group_id,opts={})
       query_param_keys = [
@@ -5351,10 +6162,12 @@ module Pandarus
         :scope,
         :only_announcements,
         :search_term
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -5362,6 +6175,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -5373,12 +6187,15 @@ module Pandarus
 
       RemoteCollection.new(connection, DiscussionTopic, path, query_params)
       
+
     end
     
+
     # Create a new discussion topic
     def create_new_discussion_topic_courses(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -5396,6 +6213,7 @@ module Pandarus
         :position_after,
         :group_category_id,
         
+
       ]
 
       # verify existence of params
@@ -5403,6 +6221,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -5415,12 +6234,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Create a new discussion topic
     def create_new_discussion_topic_groups(group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -5438,6 +6260,7 @@ module Pandarus
         :position_after,
         :group_category_id,
         
+
       ]
 
       # verify existence of params
@@ -5445,6 +6268,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -5457,12 +6281,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Update a topic
     def update_topic_courses(course_id,topic_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -5480,6 +6307,7 @@ module Pandarus
         :position_after,
         :group_category_id,
         
+
       ]
 
       # verify existence of params
@@ -5489,6 +6317,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -5502,12 +6331,15 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Update a topic
     def update_topic_groups(group_id,topic_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -5525,6 +6357,7 @@ module Pandarus
         :position_after,
         :group_category_id,
         
+
       ]
 
       # verify existence of params
@@ -5534,6 +6367,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -5547,16 +6381,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Delete a topic
     def delete_topic_courses(course_id,topic_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -5566,6 +6404,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -5579,16 +6418,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Delete a topic
     def delete_topic_groups(group_id,topic_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -5598,6 +6441,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -5611,17 +6455,21 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Reorder pinned topics
     def reorder_pinned_topics_courses(course_id,order,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :order,
         
+
       ]
 
       # verify existence of params
@@ -5631,6 +6479,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :order => order
+
       )
 
       # resource path
@@ -5643,17 +6492,21 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Reorder pinned topics
     def reorder_pinned_topics_groups(group_id,order,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :order,
         
+
       ]
 
       # verify existence of params
@@ -5663,6 +6516,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :order => order
+
       )
 
       # resource path
@@ -5675,17 +6529,21 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Update an entry
     def update_entry_courses(course_id,topic_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :message,
         
+
       ]
 
       # verify existence of params
@@ -5697,6 +6555,7 @@ module Pandarus
         :course_id => course_id,
         :topic_id => topic_id,
         :id => id
+
       )
 
       # resource path
@@ -5711,17 +6570,21 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Update an entry
     def update_entry_groups(group_id,topic_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :message,
         
+
       ]
 
       # verify existence of params
@@ -5733,6 +6596,7 @@ module Pandarus
         :group_id => group_id,
         :topic_id => topic_id,
         :id => id
+
       )
 
       # resource path
@@ -5747,16 +6611,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Delete an entry
     def delete_entry_courses(course_id,topic_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -5768,6 +6636,7 @@ module Pandarus
         :course_id => course_id,
         :topic_id => topic_id,
         :id => id
+
       )
 
       # resource path
@@ -5782,16 +6651,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Delete an entry
     def delete_entry_groups(group_id,topic_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -5803,6 +6676,7 @@ module Pandarus
         :group_id => group_id,
         :topic_id => topic_id,
         :id => id
+
       )
 
       # resource path
@@ -5817,16 +6691,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get a single topic
     def get_single_topic_courses(course_id,topic_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -5836,6 +6714,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -5849,16 +6728,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get a single topic
     def get_single_topic_groups(group_id,topic_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -5868,6 +6751,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -5881,16 +6765,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get the full topic
     def get_full_topic_courses(course_id,topic_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -5900,6 +6788,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -5913,16 +6802,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get the full topic
     def get_full_topic_groups(group_id,topic_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -5932,6 +6825,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -5945,18 +6839,22 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Post an entry
     def post_entry_courses(course_id,topic_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :message,
         :attachment,
         
+
       ]
 
       # verify existence of params
@@ -5966,6 +6864,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -5979,18 +6878,22 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Post an entry
     def post_entry_groups(group_id,topic_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :message,
         :attachment,
         
+
       ]
 
       # verify existence of params
@@ -6000,6 +6903,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -6013,16 +6917,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List topic entries
     def list_topic_entries_courses(course_id,topic_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -6032,6 +6940,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -6045,16 +6954,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List topic entries
     def list_topic_entries_groups(group_id,topic_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -6064,6 +6977,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -6077,18 +6991,22 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Post a reply
     def post_reply_courses(course_id,topic_id,entry_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :message,
         :attachment,
         
+
       ]
 
       # verify existence of params
@@ -6100,6 +7018,7 @@ module Pandarus
         :course_id => course_id,
         :topic_id => topic_id,
         :entry_id => entry_id
+
       )
 
       # resource path
@@ -6114,18 +7033,22 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Post a reply
     def post_reply_groups(group_id,topic_id,entry_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :message,
         :attachment,
         
+
       ]
 
       # verify existence of params
@@ -6137,6 +7060,7 @@ module Pandarus
         :group_id => group_id,
         :topic_id => topic_id,
         :entry_id => entry_id
+
       )
 
       # resource path
@@ -6151,16 +7075,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List entry replies
     def list_entry_replies_courses(course_id,topic_id,entry_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -6172,6 +7100,7 @@ module Pandarus
         :course_id => course_id,
         :topic_id => topic_id,
         :entry_id => entry_id
+
       )
 
       # resource path
@@ -6186,16 +7115,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List entry replies
     def list_entry_replies_groups(group_id,topic_id,entry_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -6207,6 +7140,7 @@ module Pandarus
         :group_id => group_id,
         :topic_id => topic_id,
         :entry_id => entry_id
+
       )
 
       # resource path
@@ -6221,16 +7155,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List entries
     def list_entries_courses(course_id,topic_id,opts={})
       query_param_keys = [
         :ids
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -6240,6 +7178,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -6253,16 +7192,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List entries
     def list_entries_groups(group_id,topic_id,opts={})
       query_param_keys = [
         :ids
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -6272,6 +7215,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -6285,16 +7229,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Mark topic as read
     def mark_topic_as_read_courses(course_id,topic_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -6304,6 +7252,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -6317,16 +7266,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Mark topic as read
     def mark_topic_as_read_groups(group_id,topic_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -6336,6 +7289,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -6349,16 +7303,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Mark topic as unread
     def mark_topic_as_unread_courses(course_id,topic_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -6368,6 +7326,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -6381,16 +7340,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Mark topic as unread
     def mark_topic_as_unread_groups(group_id,topic_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -6400,6 +7363,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -6413,17 +7377,21 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Mark all entries as read
     def mark_all_entries_as_read_courses(course_id,topic_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :forced_read_state,
         
+
       ]
 
       # verify existence of params
@@ -6433,6 +7401,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -6446,17 +7415,21 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Mark all entries as read
     def mark_all_entries_as_read_groups(group_id,topic_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :forced_read_state,
         
+
       ]
 
       # verify existence of params
@@ -6466,6 +7439,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -6479,16 +7453,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Mark all entries as unread
     def mark_all_entries_as_unread_courses(course_id,topic_id,opts={})
       query_param_keys = [
         :forced_read_state
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -6498,6 +7476,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -6511,16 +7490,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Mark all entries as unread
     def mark_all_entries_as_unread_groups(group_id,topic_id,opts={})
       query_param_keys = [
         :forced_read_state
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -6530,6 +7513,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -6543,17 +7527,21 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Mark entry as read
     def mark_entry_as_read_courses(course_id,topic_id,entry_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :forced_read_state,
         
+
       ]
 
       # verify existence of params
@@ -6565,6 +7553,7 @@ module Pandarus
         :course_id => course_id,
         :topic_id => topic_id,
         :entry_id => entry_id
+
       )
 
       # resource path
@@ -6579,17 +7568,21 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Mark entry as read
     def mark_entry_as_read_groups(group_id,topic_id,entry_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :forced_read_state,
         
+
       ]
 
       # verify existence of params
@@ -6601,6 +7594,7 @@ module Pandarus
         :group_id => group_id,
         :topic_id => topic_id,
         :entry_id => entry_id
+
       )
 
       # resource path
@@ -6615,16 +7609,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Mark entry as unread
     def mark_entry_as_unread_courses(course_id,topic_id,entry_id,opts={})
       query_param_keys = [
         :forced_read_state
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -6636,6 +7634,7 @@ module Pandarus
         :course_id => course_id,
         :topic_id => topic_id,
         :entry_id => entry_id
+
       )
 
       # resource path
@@ -6650,16 +7649,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Mark entry as unread
     def mark_entry_as_unread_groups(group_id,topic_id,entry_id,opts={})
       query_param_keys = [
         :forced_read_state
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -6671,6 +7674,7 @@ module Pandarus
         :group_id => group_id,
         :topic_id => topic_id,
         :entry_id => entry_id
+
       )
 
       # resource path
@@ -6685,16 +7689,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Subscribe to a topic
     def subscribe_to_topic_courses(course_id,topic_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -6704,6 +7712,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -6717,16 +7726,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Subscribe to a topic
     def subscribe_to_topic_groups(group_id,topic_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -6736,6 +7749,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -6749,16 +7763,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Unsubscribe from a topic
     def unsubscribe_from_topic_courses(course_id,topic_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -6768,6 +7786,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -6781,16 +7800,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Unsubscribe from a topic
     def unsubscribe_from_topic_groups(group_id,topic_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -6800,6 +7823,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :topic_id => topic_id
+
       )
 
       # resource path
@@ -6813,12 +7837,15 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Create enrollment term
     def create_enrollment_term(account_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -6827,6 +7854,7 @@ module Pandarus
         :enrollment_term__end_at__,
         :enrollment_term__sis_term_id__,
         
+
       ]
 
       # verify existence of params
@@ -6834,6 +7862,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -6846,12 +7875,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       EnrollmentTerm.new(response)
       
+
     end
     
+
     # Update enrollment term
     def update_enrollment_term(account_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -6860,6 +7892,7 @@ module Pandarus
         :enrollment_term__end_at__,
         :enrollment_term__sis_term_id__,
         
+
       ]
 
       # verify existence of params
@@ -6869,6 +7902,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id
+
       )
 
       # resource path
@@ -6882,16 +7916,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       EnrollmentTerm.new(response)
       
+
     end
     
+
     # Delete enrollment term
     def delete_enrollment_term(account_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -6901,6 +7939,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id
+
       )
 
       # resource path
@@ -6914,16 +7953,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       EnrollmentTerm.new(response)
       
+
     end
     
+
     # List enrollment terms
     def list_enrollment_terms(account_id,opts={})
       query_param_keys = [
         :workflow_state
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -6931,6 +7974,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -6942,8 +7986,10 @@ module Pandarus
 
       RemoteCollection.new(connection, EnrollmentTerm, path, query_params)
       
+
     end
     
+
     # List enrollments
     def list_enrollments_courses(course_id,opts={})
       query_param_keys = [
@@ -6951,10 +7997,12 @@ module Pandarus
         :role,
         :state,
         :user_id
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -6962,6 +8010,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -6973,8 +8022,10 @@ module Pandarus
 
       RemoteCollection.new(connection, Enrollment, path, query_params)
       
+
     end
     
+
     # List enrollments
     def list_enrollments_sections(section_id,opts={})
       query_param_keys = [
@@ -6982,10 +8033,12 @@ module Pandarus
         :role,
         :state,
         :user_id
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -6993,6 +8046,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :section_id => section_id
+
       )
 
       # resource path
@@ -7004,18 +8058,22 @@ module Pandarus
 
       RemoteCollection.new(connection, Enrollment, path, query_params)
       
+
     end
     
+
     # List enrollments
     def list_enrollments_users(user_id,opts={})
       query_param_keys = [
         :type,
         :role,
         :state
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7023,6 +8081,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id
+
       )
 
       # resource path
@@ -7034,16 +8093,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Enrollment, path, query_params)
       
+
     end
     
+
     # Enrollment by ID
     def enrollment_by_id(account_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7053,6 +8116,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id
+
       )
 
       # resource path
@@ -7066,12 +8130,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Enrollment.new(response)
       
+
     end
     
+
     # Enroll a user
     def enroll_user_courses(course_id,enrollment__user_id__,enrollment__type__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -7086,6 +8153,7 @@ module Pandarus
         :enrollment__self_enrollment_code__,
         :enrollment__self_enrolled__,
         
+
       ]
 
       # verify existence of params
@@ -7097,6 +8165,7 @@ module Pandarus
         :course_id => course_id,
         :enrollment__user_id__ => enrollment__user_id__,
         :enrollment__type__ => enrollment__type__
+
       )
 
       # resource path
@@ -7109,12 +8178,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Enrollment.new(response)
       
+
     end
     
+
     # Enroll a user
     def enroll_user_sections(section_id,enrollment__user_id__,enrollment__type__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -7129,6 +8201,7 @@ module Pandarus
         :enrollment__self_enrollment_code__,
         :enrollment__self_enrolled__,
         
+
       ]
 
       # verify existence of params
@@ -7140,6 +8213,7 @@ module Pandarus
         :section_id => section_id,
         :enrollment__user_id__ => enrollment__user_id__,
         :enrollment__type__ => enrollment__type__
+
       )
 
       # resource path
@@ -7152,16 +8226,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Enrollment.new(response)
       
+
     end
     
+
     # Conclude an enrollment
     def conclude_enrollment(course_id,id,opts={})
       query_param_keys = [
         :task
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7171,6 +8249,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -7184,17 +8263,21 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       Enrollment.new(response)
       
+
     end
     
+
     # List external tools
     def list_external_tools_courses(course_id,opts={})
       query_param_keys = [
         :search_term,
         :selectable
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7202,6 +8285,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -7214,17 +8298,21 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List external tools
     def list_external_tools_accounts(account_id,opts={})
       query_param_keys = [
         :search_term,
         :selectable
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7232,6 +8320,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -7244,8 +8333,10 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get a sessionless launch url for an external tool.
     def get_sessionless_launch_url_for_external_tool_courses(course_id,opts={})
       query_param_keys = [
@@ -7253,10 +8344,12 @@ module Pandarus
         :url,
         :assignment_id,
         :launch_type
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7264,6 +8357,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -7276,8 +8370,10 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get a sessionless launch url for an external tool.
     def get_sessionless_launch_url_for_external_tool_accounts(account_id,opts={})
       query_param_keys = [
@@ -7285,10 +8381,12 @@ module Pandarus
         :url,
         :assignment_id,
         :launch_type
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7296,6 +8394,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -7308,16 +8407,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get a single external tool
     def get_single_external_tool_courses(course_id,external_tool_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7327,6 +8430,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :external_tool_id => external_tool_id
+
       )
 
       # resource path
@@ -7340,16 +8444,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get a single external tool
     def get_single_external_tool_accounts(account_id,external_tool_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7359,6 +8467,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :external_tool_id => external_tool_id
+
       )
 
       # resource path
@@ -7372,12 +8481,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Create an external tool
     def create_external_tool_courses(course_id,name,privacy_level,consumer_key,shared_secret,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -7417,6 +8529,7 @@ module Pandarus
         :config_xml,
         :config_url,
         
+
       ]
 
       # verify existence of params
@@ -7432,6 +8545,7 @@ module Pandarus
         :privacy_level => privacy_level,
         :consumer_key => consumer_key,
         :shared_secret => shared_secret
+
       )
 
       # resource path
@@ -7444,12 +8558,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Create an external tool
     def create_external_tool_accounts(account_id,name,privacy_level,consumer_key,shared_secret,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -7489,6 +8606,7 @@ module Pandarus
         :config_xml,
         :config_url,
         
+
       ]
 
       # verify existence of params
@@ -7504,6 +8622,7 @@ module Pandarus
         :privacy_level => privacy_level,
         :consumer_key => consumer_key,
         :shared_secret => shared_secret
+
       )
 
       # resource path
@@ -7516,16 +8635,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Edit an external tool
     def edit_external_tool_courses(course_id,external_tool_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7535,6 +8658,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :external_tool_id => external_tool_id
+
       )
 
       # resource path
@@ -7548,16 +8672,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Edit an external tool
     def edit_external_tool_accounts(account_id,external_tool_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7567,6 +8695,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :external_tool_id => external_tool_id
+
       )
 
       # resource path
@@ -7580,16 +8709,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Delete an external tool
     def delete_external_tool_courses(course_id,external_tool_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7599,6 +8732,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :external_tool_id => external_tool_id
+
       )
 
       # resource path
@@ -7612,16 +8746,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Delete an external tool
     def delete_external_tool_accounts(account_id,external_tool_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7631,6 +8769,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :external_tool_id => external_tool_id
+
       )
 
       # resource path
@@ -7644,22 +8783,27 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List favorite courses
     def list_favorite_courses(opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -7671,16 +8815,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Course, path, query_params)
       
+
     end
     
+
     # Add course to favorites
     def add_course_to_favorites(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7688,6 +8836,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -7700,16 +8849,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Favorite.new(response)
       
+
     end
     
+
     # Remove course from favorites
     def remove_course_from_favorites(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7717,6 +8870,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -7729,22 +8883,27 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       Favorite.new(response)
       
+
     end
     
+
     # Reset course favorites
     def reset_course_favorites(opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -7757,16 +8916,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List features
     def list_features_courses(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7774,6 +8937,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -7785,16 +8949,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Feature, path, query_params)
       
+
     end
     
+
     # List features
     def list_features_accounts(account_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7802,6 +8970,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -7813,16 +8982,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Feature, path, query_params)
       
+
     end
     
+
     # List features
     def list_features_users(user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7830,6 +9003,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id
+
       )
 
       # resource path
@@ -7841,16 +9015,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Feature, path, query_params)
       
+
     end
     
+
     # List enabled features
     def list_enabled_features_courses(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7858,6 +9036,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -7870,16 +9049,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List enabled features
     def list_enabled_features_accounts(account_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7887,6 +9070,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -7899,16 +9083,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List enabled features
     def list_enabled_features_users(user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7916,6 +9104,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id
+
       )
 
       # resource path
@@ -7928,16 +9117,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get feature flag
     def get_feature_flag_courses(course_id,feature,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7947,6 +9140,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :feature => feature
+
       )
 
       # resource path
@@ -7960,16 +9154,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       FeatureFlag.new(response)
       
+
     end
     
+
     # Get feature flag
     def get_feature_flag_accounts(account_id,feature,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -7979,6 +9177,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :feature => feature
+
       )
 
       # resource path
@@ -7992,16 +9191,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       FeatureFlag.new(response)
       
+
     end
     
+
     # Get feature flag
     def get_feature_flag_users(user_id,feature,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8011,6 +9214,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :user_id => user_id,
         :feature => feature
+
       )
 
       # resource path
@@ -8024,18 +9228,22 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       FeatureFlag.new(response)
       
+
     end
     
+
     # Set feature flag
     def set_feature_flag_courses(course_id,feature,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :state,
         :locking_account_id,
         
+
       ]
 
       # verify existence of params
@@ -8045,6 +9253,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :feature => feature
+
       )
 
       # resource path
@@ -8058,18 +9267,22 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       FeatureFlag.new(response)
       
+
     end
     
+
     # Set feature flag
     def set_feature_flag_accounts(account_id,feature,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :state,
         :locking_account_id,
         
+
       ]
 
       # verify existence of params
@@ -8079,6 +9292,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :feature => feature
+
       )
 
       # resource path
@@ -8092,18 +9306,22 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       FeatureFlag.new(response)
       
+
     end
     
+
     # Set feature flag
     def set_feature_flag_users(user_id,feature,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :state,
         :locking_account_id,
         
+
       ]
 
       # verify existence of params
@@ -8113,6 +9331,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :user_id => user_id,
         :feature => feature
+
       )
 
       # resource path
@@ -8126,16 +9345,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       FeatureFlag.new(response)
       
+
     end
     
+
     # Remove feature flag
     def remove_feature_flag_courses(course_id,feature,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8145,6 +9368,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :feature => feature
+
       )
 
       # resource path
@@ -8158,16 +9382,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       FeatureFlag.new(response)
       
+
     end
     
+
     # Remove feature flag
     def remove_feature_flag_accounts(account_id,feature,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8177,6 +9405,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :feature => feature
+
       )
 
       # resource path
@@ -8190,16 +9419,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       FeatureFlag.new(response)
       
+
     end
     
+
     # Remove feature flag
     def remove_feature_flag_users(user_id,feature,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8209,6 +9442,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :user_id => user_id,
         :feature => feature
+
       )
 
       # resource path
@@ -8222,16 +9456,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       FeatureFlag.new(response)
       
+
     end
     
+
     # Get quota information
     def get_quota_information_courses(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8239,6 +9477,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -8251,16 +9490,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get quota information
     def get_quota_information_groups(group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8268,6 +9511,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -8280,16 +9524,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get quota information
     def get_quota_information_users(user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8297,6 +9545,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id
+
       )
 
       # resource path
@@ -8309,8 +9558,10 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List files
     def list_files_courses(course_id,opts={})
       query_param_keys = [
@@ -8319,10 +9570,12 @@ module Pandarus
         :include,
         :sort,
         :order
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8330,6 +9583,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -8341,8 +9595,10 @@ module Pandarus
 
       RemoteCollection.new(connection, File, path, query_params)
       
+
     end
     
+
     # List files
     def list_files_users(user_id,opts={})
       query_param_keys = [
@@ -8351,10 +9607,12 @@ module Pandarus
         :include,
         :sort,
         :order
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8362,6 +9620,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id
+
       )
 
       # resource path
@@ -8373,8 +9632,10 @@ module Pandarus
 
       RemoteCollection.new(connection, File, path, query_params)
       
+
     end
     
+
     # List files
     def list_files_groups(group_id,opts={})
       query_param_keys = [
@@ -8383,10 +9644,12 @@ module Pandarus
         :include,
         :sort,
         :order
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8394,6 +9657,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -8405,8 +9669,10 @@ module Pandarus
 
       RemoteCollection.new(connection, File, path, query_params)
       
+
     end
     
+
     # List files
     def list_files_folders(id,opts={})
       query_param_keys = [
@@ -8415,10 +9681,12 @@ module Pandarus
         :include,
         :sort,
         :order
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8426,6 +9694,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -8437,16 +9706,20 @@ module Pandarus
 
       RemoteCollection.new(connection, File, path, query_params)
       
+
     end
     
+
     # Get quota information
     def get_quota_information(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8454,6 +9727,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -8466,16 +9740,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get file
     def get_file(id,opts={})
       query_param_keys = [
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8483,6 +9761,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -8495,12 +9774,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       File.new(response)
       
+
     end
     
+
     # Update file
     def update_file(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -8512,6 +9794,7 @@ module Pandarus
         :locked,
         :hidden,
         
+
       ]
 
       # verify existence of params
@@ -8519,6 +9802,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -8531,16 +9815,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       File.new(response)
       
+
     end
     
+
     # Delete file
     def delete_file(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8548,6 +9836,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -8560,16 +9849,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List folders
     def list_folders(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8577,6 +9870,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -8588,16 +9882,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Folder, path, query_params)
       
+
     end
     
+
     # List all folders
     def list_all_folders_courses(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8605,6 +9903,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -8616,16 +9915,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Folder, path, query_params)
       
+
     end
     
+
     # List all folders
     def list_all_folders_users(user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8633,6 +9936,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id
+
       )
 
       # resource path
@@ -8644,16 +9948,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Folder, path, query_params)
       
+
     end
     
+
     # List all folders
     def list_all_folders_groups(group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8661,6 +9969,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -8672,16 +9981,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Folder, path, query_params)
       
+
     end
     
+
     # Resolve path
     def resolve_path_courses_full_path(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8689,6 +10002,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -8700,16 +10014,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Folder, path, query_params)
       
+
     end
     
+
     # Resolve path
     def resolve_path_courses(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8717,6 +10035,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -8728,16 +10047,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Folder, path, query_params)
       
+
     end
     
+
     # Resolve path
     def resolve_path_users_full_path(user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8745,6 +10068,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id
+
       )
 
       # resource path
@@ -8756,16 +10080,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Folder, path, query_params)
       
+
     end
     
+
     # Resolve path
     def resolve_path_users(user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8773,6 +10101,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id
+
       )
 
       # resource path
@@ -8784,16 +10113,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Folder, path, query_params)
       
+
     end
     
+
     # Resolve path
     def resolve_path_groups_full_path(group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8801,6 +10134,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -8812,16 +10146,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Folder, path, query_params)
       
+
     end
     
+
     # Resolve path
     def resolve_path_groups(group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8829,6 +10167,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -8840,16 +10179,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Folder, path, query_params)
       
+
     end
     
+
     # Get folder
     def get_folder_courses(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8859,6 +10202,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -8872,16 +10216,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Folder.new(response)
       
+
     end
     
+
     # Get folder
     def get_folder_users(user_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8891,6 +10239,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :user_id => user_id,
         :id => id
+
       )
 
       # resource path
@@ -8904,16 +10253,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Folder.new(response)
       
+
     end
     
+
     # Get folder
     def get_folder_groups(group_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8923,6 +10276,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :id => id
+
       )
 
       # resource path
@@ -8936,16 +10290,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Folder.new(response)
       
+
     end
     
+
     # Get folder
     def get_folder_folders(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -8953,6 +10311,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -8965,12 +10324,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Folder.new(response)
       
+
     end
     
+
     # Update folder
     def update_folder(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -8982,6 +10344,7 @@ module Pandarus
         :hidden,
         :position,
         
+
       ]
 
       # verify existence of params
@@ -8989,6 +10352,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -9001,12 +10365,15 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       Folder.new(response)
       
+
     end
     
+
     # Create folder
     def create_folder_courses(course_id,name,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -9019,6 +10386,7 @@ module Pandarus
         :hidden,
         :position,
         
+
       ]
 
       # verify existence of params
@@ -9028,6 +10396,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :name => name
+
       )
 
       # resource path
@@ -9040,12 +10409,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Folder.new(response)
       
+
     end
     
+
     # Create folder
     def create_folder_users(user_id,name,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -9058,6 +10430,7 @@ module Pandarus
         :hidden,
         :position,
         
+
       ]
 
       # verify existence of params
@@ -9067,6 +10440,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :user_id => user_id,
         :name => name
+
       )
 
       # resource path
@@ -9079,12 +10453,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Folder.new(response)
       
+
     end
     
+
     # Create folder
     def create_folder_groups(group_id,name,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -9097,6 +10474,7 @@ module Pandarus
         :hidden,
         :position,
         
+
       ]
 
       # verify existence of params
@@ -9106,6 +10484,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :name => name
+
       )
 
       # resource path
@@ -9118,12 +10497,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Folder.new(response)
       
+
     end
     
+
     # Create folder
     def create_folder_folders(folder_id,name,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -9136,6 +10518,7 @@ module Pandarus
         :hidden,
         :position,
         
+
       ]
 
       # verify existence of params
@@ -9145,6 +10528,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :folder_id => folder_id,
         :name => name
+
       )
 
       # resource path
@@ -9157,16 +10541,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Folder.new(response)
       
+
     end
     
+
     # Delete folder
     def delete_folder(id,opts={})
       query_param_keys = [
         :force
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -9174,6 +10562,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -9186,16 +10575,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Upload a file
-    def upload_file(folder_id,opts={})
+    def upload_file_V1_0(folder_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -9203,6 +10596,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :folder_id => folder_id
+
       )
 
       # resource path
@@ -9215,18 +10609,22 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Copy a file
     def copy_file(dest_folder_id,source_file_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :source_file_id,
         :on_duplicate,
         
+
       ]
 
       # verify existence of params
@@ -9236,6 +10634,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :dest_folder_id => dest_folder_id,
         :source_file_id => source_file_id
+
       )
 
       # resource path
@@ -9248,17 +10647,21 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       File.new(response)
       
+
     end
     
+
     # Copy a folder
     def copy_folder(dest_folder_id,source_folder_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :source_folder_id,
         
+
       ]
 
       # verify existence of params
@@ -9268,6 +10671,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :dest_folder_id => dest_folder_id,
         :source_folder_id => source_folder_id
+
       )
 
       # resource path
@@ -9280,12 +10684,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Folder.new(response)
       
+
     end
     
+
     # Set usage rights
     def set_usage_rights_courses(course_id,file_ids,usage_rights__use_justification__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -9296,6 +10703,7 @@ module Pandarus
         :usage_rights__legal_copyright__,
         :usage_rights__license__,
         
+
       ]
 
       # verify existence of params
@@ -9307,6 +10715,7 @@ module Pandarus
         :course_id => course_id,
         :file_ids => file_ids,
         :usage_rights__use_justification__ => usage_rights__use_justification__
+
       )
 
       # resource path
@@ -9319,12 +10728,15 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       UsageRights.new(response)
       
+
     end
     
+
     # Set usage rights
     def set_usage_rights_groups(group_id,file_ids,usage_rights__use_justification__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -9335,6 +10747,7 @@ module Pandarus
         :usage_rights__legal_copyright__,
         :usage_rights__license__,
         
+
       ]
 
       # verify existence of params
@@ -9346,6 +10759,7 @@ module Pandarus
         :group_id => group_id,
         :file_ids => file_ids,
         :usage_rights__use_justification__ => usage_rights__use_justification__
+
       )
 
       # resource path
@@ -9358,12 +10772,15 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       UsageRights.new(response)
       
+
     end
     
+
     # Set usage rights
     def set_usage_rights_users(user_id,file_ids,usage_rights__use_justification__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -9374,6 +10791,7 @@ module Pandarus
         :usage_rights__legal_copyright__,
         :usage_rights__license__,
         
+
       ]
 
       # verify existence of params
@@ -9385,6 +10803,7 @@ module Pandarus
         :user_id => user_id,
         :file_ids => file_ids,
         :usage_rights__use_justification__ => usage_rights__use_justification__
+
       )
 
       # resource path
@@ -9397,17 +10816,21 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       UsageRights.new(response)
       
+
     end
     
+
     # Remove usage rights
     def remove_usage_rights_courses(course_id,file_ids,opts={})
       query_param_keys = [
         :file_ids,
         :folder_ids
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -9417,6 +10840,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :file_ids => file_ids
+
       )
 
       # resource path
@@ -9429,17 +10853,21 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Remove usage rights
     def remove_usage_rights_groups(group_id,file_ids,opts={})
       query_param_keys = [
         :file_ids,
         :folder_ids
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -9449,6 +10877,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :file_ids => file_ids
+
       )
 
       # resource path
@@ -9461,17 +10890,21 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Remove usage rights
     def remove_usage_rights_users(user_id,file_ids,opts={})
       query_param_keys = [
         :file_ids,
         :folder_ids
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -9481,6 +10914,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :user_id => user_id,
         :file_ids => file_ids
+
       )
 
       # resource path
@@ -9493,16 +10927,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List licenses
     def list_licenses_courses(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -9510,6 +10948,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -9521,16 +10960,20 @@ module Pandarus
 
       RemoteCollection.new(connection, License, path, query_params)
       
+
     end
     
+
     # List licenses
     def list_licenses_groups(group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -9538,6 +10981,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -9549,16 +10993,20 @@ module Pandarus
 
       RemoteCollection.new(connection, License, path, query_params)
       
+
     end
     
+
     # List licenses
     def list_licenses_users(user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -9566,6 +11014,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id
+
       )
 
       # resource path
@@ -9577,17 +11026,21 @@ module Pandarus
 
       RemoteCollection.new(connection, License, path, query_params)
       
+
     end
     
+
     # Query by assignment.
     def query_by_assignment(assignment_id,opts={})
       query_param_keys = [
         :start_time,
         :end_time
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -9595,6 +11048,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :assignment_id => assignment_id
+
       )
 
       # resource path
@@ -9606,17 +11060,21 @@ module Pandarus
 
       RemoteCollection.new(connection, GradeChangeEvent, path, query_params)
       
+
     end
     
+
     # Query by course.
-    def query_by_course(course_id,opts={})
+    def query_by_course_V1_0(course_id,opts={})
       query_param_keys = [
         :start_time,
         :end_time
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -9624,6 +11082,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -9635,17 +11094,21 @@ module Pandarus
 
       RemoteCollection.new(connection, GradeChangeEvent, path, query_params)
       
+
     end
     
+
     # Query by student.
     def query_by_student(student_id,opts={})
       query_param_keys = [
         :start_time,
         :end_time
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -9653,6 +11116,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :student_id => student_id
+
       )
 
       # resource path
@@ -9664,17 +11128,21 @@ module Pandarus
 
       RemoteCollection.new(connection, GradeChangeEvent, path, query_params)
       
+
     end
     
+
     # Query by grader.
     def query_by_grader(grader_id,opts={})
       query_param_keys = [
         :start_time,
         :end_time
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -9682,6 +11150,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :grader_id => grader_id
+
       )
 
       # resource path
@@ -9693,16 +11162,20 @@ module Pandarus
 
       RemoteCollection.new(connection, GradeChangeEvent, path, query_params)
       
+
     end
     
+
     # Days in gradebook history for this course
     def days_in_gradebook_history_for_this_course(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -9710,6 +11183,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -9721,16 +11195,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Day, path, query_params)
       
+
     end
     
+
     # Details for a given date in gradebook history for this course
     def details_for_given_date_in_gradebook_history_for_this_course(course_id,date,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -9740,6 +11218,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :date => date
+
       )
 
       # resource path
@@ -9752,16 +11231,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Grader, path, query_params)
       
+
     end
     
+
     # Lists submissions
     def lists_submissions(course_id,date,grader_id,assignment_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -9775,6 +11258,7 @@ module Pandarus
         :date => date,
         :grader_id => grader_id,
         :assignment_id => assignment_id
+
       )
 
       # resource path
@@ -9789,18 +11273,22 @@ module Pandarus
 
       RemoteCollection.new(connection, SubmissionHistory, path, query_params)
       
+
     end
     
+
     # List uncollated submission versions
     def list_uncollated_submission_versions(course_id,opts={})
       query_param_keys = [
         :assignment_id,
         :user_id,
         :ascending
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -9808,6 +11296,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -9819,16 +11308,20 @@ module Pandarus
 
       RemoteCollection.new(connection, SubmissionVersion, path, query_params)
       
+
     end
     
+
     # List grading periods
     def list_grading_periods_courses(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -9836,6 +11329,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -9848,16 +11342,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List grading periods
     def list_grading_periods_accounts(account_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -9865,6 +11363,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -9877,16 +11376,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get a single grading period
     def get_single_grading_period_courses(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -9896,6 +11399,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -9909,16 +11413,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get a single grading period
     def get_single_grading_period_accounts(account_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -9928,6 +11436,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id
+
       )
 
       # resource path
@@ -9941,12 +11450,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Create a single grading period
     def create_single_grading_period_courses(course_id,grading_periods__start_date__,grading_periods__end_date__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -9954,6 +11466,7 @@ module Pandarus
         :grading_periods__end_date__,
         :grading_periods__weight__,
         
+
       ]
 
       # verify existence of params
@@ -9965,6 +11478,7 @@ module Pandarus
         :course_id => course_id,
         :grading_periods__start_date__ => grading_periods__start_date__,
         :grading_periods__end_date__ => grading_periods__end_date__
+
       )
 
       # resource path
@@ -9977,12 +11491,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Create a single grading period
     def create_single_grading_period_accounts(account_id,grading_periods__start_date__,grading_periods__end_date__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -9990,6 +11507,7 @@ module Pandarus
         :grading_periods__end_date__,
         :grading_periods__weight__,
         
+
       ]
 
       # verify existence of params
@@ -10001,6 +11519,7 @@ module Pandarus
         :account_id => account_id,
         :grading_periods__start_date__ => grading_periods__start_date__,
         :grading_periods__end_date__ => grading_periods__end_date__
+
       )
 
       # resource path
@@ -10013,12 +11532,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Update a single grading period
     def update_single_grading_period_courses(course_id,id,grading_periods__start_date__,grading_periods__end_date__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -10026,6 +11548,7 @@ module Pandarus
         :grading_periods__end_date__,
         :grading_periods__weight__,
         
+
       ]
 
       # verify existence of params
@@ -10039,6 +11562,7 @@ module Pandarus
         :id => id,
         :grading_periods__start_date__ => grading_periods__start_date__,
         :grading_periods__end_date__ => grading_periods__end_date__
+
       )
 
       # resource path
@@ -10052,12 +11576,15 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Update a single grading period
     def update_single_grading_period_accounts(account_id,id,grading_periods__start_date__,grading_periods__end_date__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -10065,6 +11592,7 @@ module Pandarus
         :grading_periods__end_date__,
         :grading_periods__weight__,
         
+
       ]
 
       # verify existence of params
@@ -10078,6 +11606,7 @@ module Pandarus
         :id => id,
         :grading_periods__start_date__ => grading_periods__start_date__,
         :grading_periods__end_date__ => grading_periods__end_date__
+
       )
 
       # resource path
@@ -10091,16 +11620,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Delete a grading period
     def delete_grading_period_courses(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -10110,6 +11643,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -10123,16 +11657,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Delete a grading period
     def delete_grading_period_accounts(account_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -10142,6 +11680,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id
+
       )
 
       # resource path
@@ -10155,12 +11694,15 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Create a new grading standard
     def create_new_grading_standard_accounts(account_id,title,grading_scheme_entry__name__,grading_scheme_entry__value__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -10168,6 +11710,7 @@ module Pandarus
         :grading_scheme_entry__name__,
         :grading_scheme_entry__value__,
         
+
       ]
 
       # verify existence of params
@@ -10181,6 +11724,7 @@ module Pandarus
         :title => title,
         :grading_scheme_entry__name__ => grading_scheme_entry__name__,
         :grading_scheme_entry__value__ => grading_scheme_entry__value__
+
       )
 
       # resource path
@@ -10193,12 +11737,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       GradingStandard.new(response)
       
+
     end
     
+
     # Create a new grading standard
     def create_new_grading_standard_courses(course_id,title,grading_scheme_entry__name__,grading_scheme_entry__value__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -10206,6 +11753,7 @@ module Pandarus
         :grading_scheme_entry__name__,
         :grading_scheme_entry__value__,
         
+
       ]
 
       # verify existence of params
@@ -10219,6 +11767,7 @@ module Pandarus
         :title => title,
         :grading_scheme_entry__name__ => grading_scheme_entry__name__,
         :grading_scheme_entry__value__ => grading_scheme_entry__value__
+
       )
 
       # resource path
@@ -10231,16 +11780,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       GradingStandard.new(response)
       
+
     end
     
+
     # List group categories for a context
     def list_group_categories_for_context_accounts(account_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -10248,6 +11801,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -10259,16 +11813,20 @@ module Pandarus
 
       RemoteCollection.new(connection, GroupCategory, path, query_params)
       
+
     end
     
+
     # List group categories for a context
     def list_group_categories_for_context_courses(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -10276,6 +11834,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -10287,16 +11846,20 @@ module Pandarus
 
       RemoteCollection.new(connection, GroupCategory, path, query_params)
       
+
     end
     
+
     # Get a single group category
     def get_single_group_category(group_category_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -10304,6 +11867,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_category_id => group_category_id
+
       )
 
       # resource path
@@ -10316,12 +11880,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       GroupCategory.new(response)
       
+
     end
     
+
     # Create a Group Category
     def create_group_category_accounts(account_id,name,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -10332,6 +11899,7 @@ module Pandarus
         :create_group_count,
         :split_group_count,
         
+
       ]
 
       # verify existence of params
@@ -10341,6 +11909,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :name => name
+
       )
 
       # resource path
@@ -10353,12 +11922,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       GroupCategory.new(response)
       
+
     end
     
+
     # Create a Group Category
     def create_group_category_courses(course_id,name,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -10369,6 +11941,7 @@ module Pandarus
         :create_group_count,
         :split_group_count,
         
+
       ]
 
       # verify existence of params
@@ -10378,6 +11951,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :name => name
+
       )
 
       # resource path
@@ -10390,12 +11964,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       GroupCategory.new(response)
       
+
     end
     
+
     # Update a Group Category
     def update_group_category(group_category_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -10406,6 +11983,7 @@ module Pandarus
         :create_group_count,
         :split_group_count,
         
+
       ]
 
       # verify existence of params
@@ -10413,6 +11991,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_category_id => group_category_id
+
       )
 
       # resource path
@@ -10425,16 +12004,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       GroupCategory.new(response)
       
+
     end
     
+
     # Delete a Group Category
     def delete_group_category(group_category_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -10442,6 +12025,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_category_id => group_category_id
+
       )
 
       # resource path
@@ -10454,16 +12038,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List groups in group category
     def list_groups_in_group_category(group_category_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -10471,6 +12059,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_category_id => group_category_id
+
       )
 
       # resource path
@@ -10482,17 +12071,21 @@ module Pandarus
 
       RemoteCollection.new(connection, Group, path, query_params)
       
+
     end
     
+
     # List users in group category
     def list_users_in_group_category(group_category_id,opts={})
       query_param_keys = [
         :search_term,
         :unassigned
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -10500,6 +12093,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_category_id => group_category_id
+
       )
 
       # resource path
@@ -10511,17 +12105,21 @@ module Pandarus
 
       RemoteCollection.new(connection, User, path, query_params)
       
+
     end
     
+
     # Assign unassigned members
     def assign_unassigned_members(group_category_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :sync,
         
+
       ]
 
       # verify existence of params
@@ -10529,6 +12127,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_category_id => group_category_id
+
       )
 
       # resource path
@@ -10541,22 +12140,27 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       GroupMembership | Progress.new(response)
       
+
     end
     
+
     # List your groups
     def list_your_groups(opts={})
       query_param_keys = [
         :context_type
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -10568,16 +12172,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Group, path, query_params)
       
+
     end
     
+
     # List the groups available in a context.
     def list_groups_available_in_context_accounts(account_id,opts={})
       query_param_keys = [
         :only_own_groups
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -10585,6 +12193,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -10596,16 +12205,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Group, path, query_params)
       
+
     end
     
+
     # List the groups available in a context.
     def list_groups_available_in_context_courses(course_id,opts={})
       query_param_keys = [
         :only_own_groups
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -10613,6 +12226,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -10624,16 +12238,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Group, path, query_params)
       
+
     end
     
+
     # Get a single group
     def get_single_group(group_id,opts={})
       query_param_keys = [
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -10641,6 +12259,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -10653,12 +12272,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Group.new(response)
       
+
     end
     
+
     # Create a group
     def create_group_groups(opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -10668,12 +12290,14 @@ module Pandarus
         :join_level,
         :storage_quota_mb,
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -10686,12 +12310,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Group.new(response)
       
+
     end
     
+
     # Create a group
     def create_group_group_categories(group_category_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -10701,6 +12328,7 @@ module Pandarus
         :join_level,
         :storage_quota_mb,
         
+
       ]
 
       # verify existence of params
@@ -10708,6 +12336,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_category_id => group_category_id
+
       )
 
       # resource path
@@ -10720,12 +12349,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Group.new(response)
       
+
     end
     
+
     # Edit a group
     def edit_group(group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -10737,6 +12369,7 @@ module Pandarus
         :storage_quota_mb,
         :members,
         
+
       ]
 
       # verify existence of params
@@ -10744,6 +12377,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -10756,16 +12390,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       Group.new(response)
       
+
     end
     
+
     # Delete a group
     def delete_group(group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -10773,6 +12411,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -10785,17 +12424,21 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       Group.new(response)
       
+
     end
     
+
     # Invite others to a group
     def invite_others_to_group(group_id,invitees,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :invitees,
         
+
       ]
 
       # verify existence of params
@@ -10805,6 +12448,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :invitees => invitees
+
       )
 
       # resource path
@@ -10817,17 +12461,21 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List group's users
     def list_group_s_users(group_id,opts={})
       query_param_keys = [
         :search_term,
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -10835,6 +12483,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -10846,16 +12495,20 @@ module Pandarus
 
       RemoteCollection.new(connection, User, path, query_params)
       
+
     end
     
+
     # Upload a file
-    def upload_file(group_id,opts={})
+    def upload_file_V1_1(group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -10863,6 +12516,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -10875,17 +12529,21 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Preview processed html
-    def preview_processed_html(group_id,opts={})
+    def preview_processed_html_V1_0(group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :html,
         
+
       ]
 
       # verify existence of params
@@ -10893,6 +12551,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -10905,16 +12564,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Group activity stream
     def group_activity_stream(group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -10922,6 +12585,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -10934,16 +12598,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Group activity stream summary
     def group_activity_stream_summary(group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -10951,6 +12619,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -10963,16 +12632,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List group memberships
     def list_group_memberships(group_id,opts={})
       query_param_keys = [
         :filter_states
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -10980,6 +12653,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -10991,17 +12665,21 @@ module Pandarus
 
       RemoteCollection.new(connection, GroupMembership, path, query_params)
       
+
     end
     
+
     # Create a membership
     def create_membership(group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :user_id,
         
+
       ]
 
       # verify existence of params
@@ -11009,6 +12687,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -11021,18 +12700,22 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       GroupMembership.new(response)
       
+
     end
     
+
     # Update a membership
     def update_membership_memberships(group_id,membership_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :workflow_state,
         :moderator,
         
+
       ]
 
       # verify existence of params
@@ -11042,6 +12725,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :membership_id => membership_id
+
       )
 
       # resource path
@@ -11055,18 +12739,22 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       GroupMembership.new(response)
       
+
     end
     
+
     # Update a membership
     def update_membership_users(group_id,user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :workflow_state,
         :moderator,
         
+
       ]
 
       # verify existence of params
@@ -11076,6 +12764,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :user_id => user_id
+
       )
 
       # resource path
@@ -11089,16 +12778,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       GroupMembership.new(response)
       
+
     end
     
+
     # Leave a group
     def leave_group_memberships(group_id,membership_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -11108,6 +12801,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :membership_id => membership_id
+
       )
 
       # resource path
@@ -11121,16 +12815,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Leave a group
     def leave_group_users(group_id,user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -11140,6 +12838,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :user_id => user_id
+
       )
 
       # resource path
@@ -11153,16 +12852,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Create live assessment results
     def create_live_assessment_results(course_id,assessment_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -11172,6 +12875,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :assessment_id => assessment_id
+
       )
 
       # resource path
@@ -11185,16 +12889,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List live assessment results
     def list_live_assessment_results(course_id,assessment_id,opts={})
       query_param_keys = [
         :user_id
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -11204,6 +12912,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :assessment_id => assessment_id
+
       )
 
       # resource path
@@ -11217,16 +12926,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Create or find a live assessment
     def create_or_find_live_assessment(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -11234,6 +12947,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -11246,16 +12960,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List live assessments
     def list_live_assessments(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -11263,6 +12981,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -11275,16 +12994,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List user logins
     def list_user_logins_accounts(account_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -11292,6 +13015,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -11304,16 +13028,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List user logins
     def list_user_logins_users(user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -11321,6 +13049,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id
+
       )
 
       # resource path
@@ -11333,12 +13062,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Create a user login
     def create_user_login(account_id,user__id__,login__unique_id__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -11347,6 +13079,7 @@ module Pandarus
         :login__password__,
         :login__sis_user_id__,
         
+
       ]
 
       # verify existence of params
@@ -11358,6 +13091,7 @@ module Pandarus
         :account_id => account_id,
         :user__id__ => user__id__,
         :login__unique_id__ => login__unique_id__
+
       )
 
       # resource path
@@ -11370,12 +13104,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Edit a user login
     def edit_user_login(account_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -11383,6 +13120,7 @@ module Pandarus
         :login__password__,
         :login__sis_user_id__,
         
+
       ]
 
       # verify existence of params
@@ -11392,6 +13130,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id
+
       )
 
       # resource path
@@ -11405,16 +13144,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Delete a user login
     def delete_user_login(user_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -11424,6 +13167,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :user_id => user_id,
         :id => id
+
       )
 
       # resource path
@@ -11437,18 +13181,22 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List modules
     def list_modules(course_id,opts={})
       query_param_keys = [
         :include,
         :search_term,
         :student_id
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -11456,6 +13204,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -11467,17 +13216,21 @@ module Pandarus
 
       RemoteCollection.new(connection, Module, path, query_params)
       
+
     end
     
+
     # Show module
     def show_module(course_id,id,opts={})
       query_param_keys = [
         :include,
         :student_id
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -11487,6 +13240,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -11500,12 +13254,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Module.new(response)
       
+
     end
     
+
     # Create a module
     def create_module(course_id,module__name__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -11516,6 +13273,7 @@ module Pandarus
         :module__prerequisite_module_ids__,
         :module__publish_final_grade__,
         
+
       ]
 
       # verify existence of params
@@ -11525,6 +13283,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :module__name__ => module__name__
+
       )
 
       # resource path
@@ -11537,12 +13296,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Module.new(response)
       
+
     end
     
+
     # Update a module
     def update_module(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -11554,6 +13316,7 @@ module Pandarus
         :module__publish_final_grade__,
         :module__published__,
         
+
       ]
 
       # verify existence of params
@@ -11563,6 +13326,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -11576,16 +13340,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       Module.new(response)
       
+
     end
     
+
     # Delete module
     def delete_module(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -11595,6 +13363,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -11608,16 +13377,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       Module.new(response)
       
+
     end
     
+
     # Re-lock module progressions
     def re_lock_module_progressions(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -11627,6 +13400,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -11640,18 +13414,22 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       Module.new(response)
       
+
     end
     
+
     # List module items
     def list_module_items(course_id,module_id,opts={})
       query_param_keys = [
         :include,
         :search_term,
         :student_id
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -11661,6 +13439,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :module_id => module_id
+
       )
 
       # resource path
@@ -11673,17 +13452,21 @@ module Pandarus
 
       RemoteCollection.new(connection, ModuleItem, path, query_params)
       
+
     end
     
+
     # Show module item
     def show_module_item(course_id,module_id,id,opts={})
       query_param_keys = [
         :include,
         :student_id
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -11695,6 +13478,7 @@ module Pandarus
         :course_id => course_id,
         :module_id => module_id,
         :id => id
+
       )
 
       # resource path
@@ -11709,12 +13493,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       ModuleItem.new(response)
       
+
     end
     
+
     # Create a module item
     def create_module_item(course_id,module_id,module_item__type__,module_item__content_id__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -11729,6 +13516,7 @@ module Pandarus
         :module_item__completion_requirement____type__,
         :module_item__completion_requirement____min_score__,
         
+
       ]
 
       # verify existence of params
@@ -11742,6 +13530,7 @@ module Pandarus
         :module_id => module_id,
         :module_item__type__ => module_item__type__,
         :module_item__content_id__ => module_item__content_id__
+
       )
 
       # resource path
@@ -11755,12 +13544,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       ModuleItem.new(response)
       
+
     end
     
+
     # Update a module item
     def update_module_item(course_id,module_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -11774,6 +13566,7 @@ module Pandarus
         :module_item__published__,
         :module_item__module_id__,
         
+
       ]
 
       # verify existence of params
@@ -11785,6 +13578,7 @@ module Pandarus
         :course_id => course_id,
         :module_id => module_id,
         :id => id
+
       )
 
       # resource path
@@ -11799,16 +13593,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       ModuleItem.new(response)
       
+
     end
     
+
     # Delete module item
     def delete_module_item(course_id,module_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -11820,6 +13618,7 @@ module Pandarus
         :course_id => course_id,
         :module_id => module_id,
         :id => id
+
       )
 
       # resource path
@@ -11834,17 +13633,21 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       ModuleItem.new(response)
       
+
     end
     
+
     # Get module item sequence
     def get_module_item_sequence(course_id,opts={})
       query_param_keys = [
         :asset_type,
         :asset_id
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -11852,6 +13655,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -11864,16 +13668,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       ModuleItemSequence.new(response)
       
+
     end
     
+
     # Mark module item read
     def mark_module_item_read(course_id,module_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -11885,6 +13693,7 @@ module Pandarus
         :course_id => course_id,
         :module_id => module_id,
         :id => id
+
       )
 
       # resource path
@@ -11899,16 +13708,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List preferences
     def list_preferences_communication_channel_id(user_id,communication_channel_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -11918,6 +13731,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :user_id => user_id,
         :communication_channel_id => communication_channel_id
+
       )
 
       # resource path
@@ -11930,16 +13744,20 @@ module Pandarus
 
       RemoteCollection.new(connection, NotificationPreference, path, query_params)
       
+
     end
     
+
     # List preferences
     def list_preferences_type(user_id,type,address,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -11951,6 +13769,7 @@ module Pandarus
         :user_id => user_id,
         :type => type,
         :address => address
+
       )
 
       # resource path
@@ -11964,16 +13783,20 @@ module Pandarus
 
       RemoteCollection.new(connection, NotificationPreference, path, query_params)
       
+
     end
     
+
     # Get a preference
     def get_preference_communication_channel_id(user_id,communication_channel_id,notification,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -11985,6 +13808,7 @@ module Pandarus
         :user_id => user_id,
         :communication_channel_id => communication_channel_id,
         :notification => notification
+
       )
 
       # resource path
@@ -11999,16 +13823,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       NotificationPreference.new(response)
       
+
     end
     
+
     # Get a preference
     def get_preference_type(user_id,type,address,notification,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -12022,6 +13850,7 @@ module Pandarus
         :type => type,
         :address => address,
         :notification => notification
+
       )
 
       # resource path
@@ -12037,17 +13866,21 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       NotificationPreference.new(response)
       
+
     end
     
+
     # Update a preference
     def update_preference_communication_channel_id(communication_channel_id,notification,notification_preferences__frequency__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :notification_preferences__frequency__,
         
+
       ]
 
       # verify existence of params
@@ -12059,6 +13892,7 @@ module Pandarus
         :communication_channel_id => communication_channel_id,
         :notification => notification,
         :notification_preferences__frequency__ => notification_preferences__frequency__
+
       )
 
       # resource path
@@ -12072,17 +13906,21 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Update a preference
     def update_preference_type(type,address,notification,notification_preferences__frequency__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :notification_preferences__frequency__,
         
+
       ]
 
       # verify existence of params
@@ -12096,6 +13934,7 @@ module Pandarus
         :address => address,
         :notification => notification,
         :notification_preferences__frequency__ => notification_preferences__frequency__
+
       )
 
       # resource path
@@ -12110,17 +13949,21 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Update multiple preferences
     def update_multiple_preferences_communication_channel_id(communication_channel_id,notification_preferences____x_____frequency__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :notification_preferences____x_____frequency__,
         
+
       ]
 
       # verify existence of params
@@ -12130,6 +13973,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :communication_channel_id => communication_channel_id,
         :notification_preferences____x_____frequency__ => notification_preferences____x_____frequency__
+
       )
 
       # resource path
@@ -12142,17 +13986,21 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Update multiple preferences
     def update_multiple_preferences_type(type,address,notification_preferences____x_____frequency__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :notification_preferences____x_____frequency__,
         
+
       ]
 
       # verify existence of params
@@ -12164,6 +14012,7 @@ module Pandarus
         :type => type,
         :address => address,
         :notification_preferences____x_____frequency__ => notification_preferences____x_____frequency__
+
       )
 
       # resource path
@@ -12177,22 +14026,27 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Redirect to root outcome group for context
     def redirect_to_root_outcome_group_for_context_global(opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -12205,16 +14059,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Redirect to root outcome group for context
     def redirect_to_root_outcome_group_for_context_accounts(account_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -12222,6 +14080,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -12234,16 +14093,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Redirect to root outcome group for context
     def redirect_to_root_outcome_group_for_context_courses(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -12251,6 +14114,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -12263,16 +14127,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get all outcome groups for context
     def get_all_outcome_groups_for_context_accounts(account_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -12280,6 +14148,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -12291,16 +14160,20 @@ module Pandarus
 
       RemoteCollection.new(connection, OutcomeGroup, path, query_params)
       
+
     end
     
+
     # Get all outcome groups for context
     def get_all_outcome_groups_for_context_courses(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -12308,6 +14181,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -12319,17 +14193,21 @@ module Pandarus
 
       RemoteCollection.new(connection, OutcomeGroup, path, query_params)
       
+
     end
     
+
     # Get all outcome links for context
     def get_all_outcome_links_for_context_accounts(account_id,opts={})
       query_param_keys = [
         :outcome_style,
         :outcome_group_style
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -12337,6 +14215,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -12348,17 +14227,21 @@ module Pandarus
 
       RemoteCollection.new(connection, OutcomeLink, path, query_params)
       
+
     end
     
+
     # Get all outcome links for context
     def get_all_outcome_links_for_context_courses(course_id,opts={})
       query_param_keys = [
         :outcome_style,
         :outcome_group_style
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -12366,6 +14249,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -12377,16 +14261,20 @@ module Pandarus
 
       RemoteCollection.new(connection, OutcomeLink, path, query_params)
       
+
     end
     
+
     # Show an outcome group
     def show_outcome_group_global(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -12394,6 +14282,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -12406,16 +14295,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       OutcomeGroup.new(response)
       
+
     end
     
+
     # Show an outcome group
     def show_outcome_group_accounts(account_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -12425,6 +14318,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id
+
       )
 
       # resource path
@@ -12438,16 +14332,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       OutcomeGroup.new(response)
       
+
     end
     
+
     # Show an outcome group
     def show_outcome_group_courses(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -12457,6 +14355,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -12470,12 +14369,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       OutcomeGroup.new(response)
       
+
     end
     
+
     # Update an outcome group
     def update_outcome_group_global(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -12484,6 +14386,7 @@ module Pandarus
         :vendor_guid,
         :parent_outcome_group_id,
         
+
       ]
 
       # verify existence of params
@@ -12491,6 +14394,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -12503,12 +14407,15 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       OutcomeGroup.new(response)
       
+
     end
     
+
     # Update an outcome group
     def update_outcome_group_accounts(account_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -12517,6 +14424,7 @@ module Pandarus
         :vendor_guid,
         :parent_outcome_group_id,
         
+
       ]
 
       # verify existence of params
@@ -12526,6 +14434,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id
+
       )
 
       # resource path
@@ -12539,12 +14448,15 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       OutcomeGroup.new(response)
       
+
     end
     
+
     # Update an outcome group
     def update_outcome_group_courses(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -12553,6 +14465,7 @@ module Pandarus
         :vendor_guid,
         :parent_outcome_group_id,
         
+
       ]
 
       # verify existence of params
@@ -12562,6 +14475,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -12575,16 +14489,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       OutcomeGroup.new(response)
       
+
     end
     
+
     # Delete an outcome group
     def delete_outcome_group_global(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -12592,6 +14510,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -12604,16 +14523,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       OutcomeGroup.new(response)
       
+
     end
     
+
     # Delete an outcome group
     def delete_outcome_group_accounts(account_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -12623,6 +14546,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id
+
       )
 
       # resource path
@@ -12636,16 +14560,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       OutcomeGroup.new(response)
       
+
     end
     
+
     # Delete an outcome group
     def delete_outcome_group_courses(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -12655,6 +14583,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -12668,16 +14597,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       OutcomeGroup.new(response)
       
+
     end
     
+
     # List linked outcomes
     def list_linked_outcomes_global(id,opts={})
       query_param_keys = [
         :outcome_style
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -12685,6 +14618,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -12696,16 +14630,20 @@ module Pandarus
 
       RemoteCollection.new(connection, OutcomeLink, path, query_params)
       
+
     end
     
+
     # List linked outcomes
     def list_linked_outcomes_accounts(account_id,id,opts={})
       query_param_keys = [
         :outcome_style
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -12715,6 +14653,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id
+
       )
 
       # resource path
@@ -12727,16 +14666,20 @@ module Pandarus
 
       RemoteCollection.new(connection, OutcomeLink, path, query_params)
       
+
     end
     
+
     # List linked outcomes
     def list_linked_outcomes_courses(course_id,id,opts={})
       query_param_keys = [
         :outcome_style
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -12746,6 +14689,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -12758,12 +14702,15 @@ module Pandarus
 
       RemoteCollection.new(connection, OutcomeLink, path, query_params)
       
+
     end
     
+
     # Create/link an outcome
     def create_link_outcome_global(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -12778,6 +14725,7 @@ module Pandarus
         :calculation_method,
         :calculation_int,
         
+
       ]
 
       # verify existence of params
@@ -12785,6 +14733,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -12797,12 +14746,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       OutcomeLink.new(response)
       
+
     end
     
+
     # Create/link an outcome
     def create_link_outcome_global_outcome_id(id,outcome_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -12816,6 +14768,7 @@ module Pandarus
         :calculation_method,
         :calculation_int,
         
+
       ]
 
       # verify existence of params
@@ -12825,6 +14778,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :id => id,
         :outcome_id => outcome_id
+
       )
 
       # resource path
@@ -12838,12 +14792,15 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       OutcomeLink.new(response)
       
+
     end
     
+
     # Create/link an outcome
     def create_link_outcome_accounts(account_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -12858,6 +14815,7 @@ module Pandarus
         :calculation_method,
         :calculation_int,
         
+
       ]
 
       # verify existence of params
@@ -12867,6 +14825,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id
+
       )
 
       # resource path
@@ -12880,12 +14839,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       OutcomeLink.new(response)
       
+
     end
     
+
     # Create/link an outcome
     def create_link_outcome_accounts_outcome_id(account_id,id,outcome_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -12899,6 +14861,7 @@ module Pandarus
         :calculation_method,
         :calculation_int,
         
+
       ]
 
       # verify existence of params
@@ -12910,6 +14873,7 @@ module Pandarus
         :account_id => account_id,
         :id => id,
         :outcome_id => outcome_id
+
       )
 
       # resource path
@@ -12924,12 +14888,15 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       OutcomeLink.new(response)
       
+
     end
     
+
     # Create/link an outcome
     def create_link_outcome_courses(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -12944,6 +14911,7 @@ module Pandarus
         :calculation_method,
         :calculation_int,
         
+
       ]
 
       # verify existence of params
@@ -12953,6 +14921,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -12966,12 +14935,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       OutcomeLink.new(response)
       
+
     end
     
+
     # Create/link an outcome
     def create_link_outcome_courses_outcome_id(course_id,id,outcome_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -12985,6 +14957,7 @@ module Pandarus
         :calculation_method,
         :calculation_int,
         
+
       ]
 
       # verify existence of params
@@ -12996,6 +14969,7 @@ module Pandarus
         :course_id => course_id,
         :id => id,
         :outcome_id => outcome_id
+
       )
 
       # resource path
@@ -13010,16 +14984,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       OutcomeLink.new(response)
       
+
     end
     
+
     # Unlink an outcome
     def unlink_outcome_global(id,outcome_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -13029,6 +15007,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :id => id,
         :outcome_id => outcome_id
+
       )
 
       # resource path
@@ -13042,16 +15021,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       OutcomeLink.new(response)
       
+
     end
     
+
     # Unlink an outcome
     def unlink_outcome_accounts(account_id,id,outcome_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -13063,6 +15046,7 @@ module Pandarus
         :account_id => account_id,
         :id => id,
         :outcome_id => outcome_id
+
       )
 
       # resource path
@@ -13077,16 +15061,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       OutcomeLink.new(response)
       
+
     end
     
+
     # Unlink an outcome
     def unlink_outcome_courses(course_id,id,outcome_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -13098,6 +15086,7 @@ module Pandarus
         :course_id => course_id,
         :id => id,
         :outcome_id => outcome_id
+
       )
 
       # resource path
@@ -13112,16 +15101,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       OutcomeLink.new(response)
       
+
     end
     
+
     # List subgroups
     def list_subgroups_global(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -13129,6 +15122,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -13140,16 +15134,20 @@ module Pandarus
 
       RemoteCollection.new(connection, OutcomeGroup, path, query_params)
       
+
     end
     
+
     # List subgroups
     def list_subgroups_accounts(account_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -13159,6 +15157,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id
+
       )
 
       # resource path
@@ -13171,16 +15170,20 @@ module Pandarus
 
       RemoteCollection.new(connection, OutcomeGroup, path, query_params)
       
+
     end
     
+
     # List subgroups
     def list_subgroups_courses(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -13190,6 +15193,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -13202,12 +15206,15 @@ module Pandarus
 
       RemoteCollection.new(connection, OutcomeGroup, path, query_params)
       
+
     end
     
+
     # Create a subgroup
     def create_subgroup_global(id,title,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -13215,6 +15222,7 @@ module Pandarus
         :description,
         :vendor_guid,
         
+
       ]
 
       # verify existence of params
@@ -13224,6 +15232,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :id => id,
         :title => title
+
       )
 
       # resource path
@@ -13236,12 +15245,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       OutcomeGroup.new(response)
       
+
     end
     
+
     # Create a subgroup
     def create_subgroup_accounts(account_id,id,title,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -13249,6 +15261,7 @@ module Pandarus
         :description,
         :vendor_guid,
         
+
       ]
 
       # verify existence of params
@@ -13260,6 +15273,7 @@ module Pandarus
         :account_id => account_id,
         :id => id,
         :title => title
+
       )
 
       # resource path
@@ -13273,12 +15287,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       OutcomeGroup.new(response)
       
+
     end
     
+
     # Create a subgroup
     def create_subgroup_courses(course_id,id,title,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -13286,6 +15303,7 @@ module Pandarus
         :description,
         :vendor_guid,
         
+
       ]
 
       # verify existence of params
@@ -13297,6 +15315,7 @@ module Pandarus
         :course_id => course_id,
         :id => id,
         :title => title
+
       )
 
       # resource path
@@ -13310,17 +15329,21 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       OutcomeGroup.new(response)
       
+
     end
     
+
     # Import an outcome group
     def import_outcome_group_global(id,source_outcome_group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :source_outcome_group_id,
         
+
       ]
 
       # verify existence of params
@@ -13330,6 +15353,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :id => id,
         :source_outcome_group_id => source_outcome_group_id
+
       )
 
       # resource path
@@ -13342,17 +15366,21 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       OutcomeGroup.new(response)
       
+
     end
     
+
     # Import an outcome group
     def import_outcome_group_accounts(account_id,id,source_outcome_group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :source_outcome_group_id,
         
+
       ]
 
       # verify existence of params
@@ -13364,6 +15392,7 @@ module Pandarus
         :account_id => account_id,
         :id => id,
         :source_outcome_group_id => source_outcome_group_id
+
       )
 
       # resource path
@@ -13377,17 +15406,21 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       OutcomeGroup.new(response)
       
+
     end
     
+
     # Import an outcome group
     def import_outcome_group_courses(course_id,id,source_outcome_group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :source_outcome_group_id,
         
+
       ]
 
       # verify existence of params
@@ -13399,6 +15432,7 @@ module Pandarus
         :course_id => course_id,
         :id => id,
         :source_outcome_group_id => source_outcome_group_id
+
       )
 
       # resource path
@@ -13412,18 +15446,22 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       OutcomeGroup.new(response)
       
+
     end
     
+
     # Get outcome results
     def get_outcome_results(course_id,opts={})
       query_param_keys = [
         :user_ids,
         :outcome_ids,
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -13431,6 +15469,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -13443,8 +15482,10 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get outcome result rollups
     def get_outcome_result_rollups(course_id,opts={})
       query_param_keys = [
@@ -13452,10 +15493,12 @@ module Pandarus
         :user_ids,
         :outcome_ids,
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -13463,6 +15506,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -13475,16 +15519,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Show an outcome
     def show_outcome(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -13492,6 +15540,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -13504,12 +15553,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Outcome.new(response)
       
+
     end
     
+
     # Update an outcome
     def update_outcome(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -13523,6 +15575,7 @@ module Pandarus
         :calculation_method,
         :calculation_int,
         
+
       ]
 
       # verify existence of params
@@ -13530,6 +15583,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -13542,16 +15596,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       Outcome.new(response)
       
+
     end
     
+
     # Show front page
     def show_front_page_courses(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -13559,6 +15617,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -13571,16 +15630,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Page.new(response)
       
+
     end
     
+
     # Show front page
     def show_front_page_groups(group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -13588,6 +15651,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -13600,12 +15664,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Page.new(response)
       
+
     end
     
+
     # Update/create front page
     def update_create_front_page_courses(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -13615,6 +15682,7 @@ module Pandarus
         :wiki_page__notify_of_update__,
         :wiki_page__published__,
         
+
       ]
 
       # verify existence of params
@@ -13622,6 +15690,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -13634,12 +15703,15 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       Page.new(response)
       
+
     end
     
+
     # Update/create front page
     def update_create_front_page_groups(group_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -13649,6 +15721,7 @@ module Pandarus
         :wiki_page__notify_of_update__,
         :wiki_page__published__,
         
+
       ]
 
       # verify existence of params
@@ -13656,6 +15729,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -13668,8 +15742,10 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       Page.new(response)
       
+
     end
     
+
     # List pages
     def list_pages_courses(course_id,opts={})
       query_param_keys = [
@@ -13677,10 +15753,12 @@ module Pandarus
         :order,
         :search_term,
         :published
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -13688,6 +15766,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -13699,8 +15778,10 @@ module Pandarus
 
       RemoteCollection.new(connection, Page, path, query_params)
       
+
     end
     
+
     # List pages
     def list_pages_groups(group_id,opts={})
       query_param_keys = [
@@ -13708,10 +15789,12 @@ module Pandarus
         :order,
         :search_term,
         :published
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -13719,6 +15802,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -13730,12 +15814,15 @@ module Pandarus
 
       RemoteCollection.new(connection, Page, path, query_params)
       
+
     end
     
+
     # Create page
     def create_page_courses(course_id,wiki_page__title__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -13746,6 +15833,7 @@ module Pandarus
         :wiki_page__published__,
         :wiki_page__front_page__,
         
+
       ]
 
       # verify existence of params
@@ -13755,6 +15843,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :wiki_page__title__ => wiki_page__title__
+
       )
 
       # resource path
@@ -13767,12 +15856,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Page.new(response)
       
+
     end
     
+
     # Create page
     def create_page_groups(group_id,wiki_page__title__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -13783,6 +15875,7 @@ module Pandarus
         :wiki_page__published__,
         :wiki_page__front_page__,
         
+
       ]
 
       # verify existence of params
@@ -13792,6 +15885,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :wiki_page__title__ => wiki_page__title__
+
       )
 
       # resource path
@@ -13804,16 +15898,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Page.new(response)
       
+
     end
     
+
     # Show page
     def show_page_courses(course_id,url,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -13823,6 +15921,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :url => url
+
       )
 
       # resource path
@@ -13836,16 +15935,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Page.new(response)
       
+
     end
     
+
     # Show page
     def show_page_groups(group_id,url,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -13855,6 +15958,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :url => url
+
       )
 
       # resource path
@@ -13868,12 +15972,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Page.new(response)
       
+
     end
     
+
     # Update/create page
     def update_create_page_courses(course_id,url,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -13884,6 +15991,7 @@ module Pandarus
         :wiki_page__published__,
         :wiki_page__front_page__,
         
+
       ]
 
       # verify existence of params
@@ -13893,6 +16001,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :url => url
+
       )
 
       # resource path
@@ -13906,12 +16015,15 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       Page.new(response)
       
+
     end
     
+
     # Update/create page
     def update_create_page_groups(group_id,url,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -13922,6 +16034,7 @@ module Pandarus
         :wiki_page__published__,
         :wiki_page__front_page__,
         
+
       ]
 
       # verify existence of params
@@ -13931,6 +16044,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :url => url
+
       )
 
       # resource path
@@ -13944,16 +16058,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       Page.new(response)
       
+
     end
     
+
     # Delete page
     def delete_page_courses(course_id,url,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -13963,6 +16081,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :url => url
+
       )
 
       # resource path
@@ -13976,16 +16095,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       Page.new(response)
       
+
     end
     
+
     # Delete page
     def delete_page_groups(group_id,url,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -13995,6 +16118,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :url => url
+
       )
 
       # resource path
@@ -14008,16 +16132,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       Page.new(response)
       
+
     end
     
+
     # List revisions
     def list_revisions_courses(course_id,url,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -14027,6 +16155,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :url => url
+
       )
 
       # resource path
@@ -14039,16 +16168,20 @@ module Pandarus
 
       RemoteCollection.new(connection, PageRevision, path, query_params)
       
+
     end
     
+
     # List revisions
     def list_revisions_groups(group_id,url,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -14058,6 +16191,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :url => url
+
       )
 
       # resource path
@@ -14070,16 +16204,20 @@ module Pandarus
 
       RemoteCollection.new(connection, PageRevision, path, query_params)
       
+
     end
     
+
     # Show revision
     def show_revision_courses_latest(course_id,url,opts={})
       query_param_keys = [
         :summary
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -14089,6 +16227,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :url => url
+
       )
 
       # resource path
@@ -14102,16 +16241,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       PageRevision.new(response)
       
+
     end
     
+
     # Show revision
     def show_revision_groups_latest(group_id,url,opts={})
       query_param_keys = [
         :summary
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -14121,6 +16264,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :group_id => group_id,
         :url => url
+
       )
 
       # resource path
@@ -14134,16 +16278,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       PageRevision.new(response)
       
+
     end
     
+
     # Show revision
     def show_revision_courses_revision_id(course_id,url,revision_id,opts={})
       query_param_keys = [
         :summary
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -14155,6 +16303,7 @@ module Pandarus
         :course_id => course_id,
         :url => url,
         :revision_id => revision_id
+
       )
 
       # resource path
@@ -14169,16 +16318,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       PageRevision.new(response)
       
+
     end
     
+
     # Show revision
     def show_revision_groups_revision_id(group_id,url,revision_id,opts={})
       query_param_keys = [
         :summary
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -14190,6 +16343,7 @@ module Pandarus
         :group_id => group_id,
         :url => url,
         :revision_id => revision_id
+
       )
 
       # resource path
@@ -14204,16 +16358,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       PageRevision.new(response)
       
+
     end
     
+
     # Revert to revision
     def revert_to_revision_courses(course_id,url,revision_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -14225,6 +16383,7 @@ module Pandarus
         :course_id => course_id,
         :url => url,
         :revision_id => revision_id
+
       )
 
       # resource path
@@ -14239,16 +16398,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       PageRevision.new(response)
       
+
     end
     
+
     # Revert to revision
     def revert_to_revision_groups(group_id,url,revision_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -14260,6 +16423,7 @@ module Pandarus
         :group_id => group_id,
         :url => url,
         :revision_id => revision_id
+
       )
 
       # resource path
@@ -14274,16 +16438,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       PageRevision.new(response)
       
+
     end
     
+
     # List poll sessions for a poll
     def list_poll_sessions_for_poll(poll_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -14291,6 +16459,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :poll_id => poll_id
+
       )
 
       # resource path
@@ -14303,16 +16472,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get the results for a single poll session
     def get_results_for_single_poll_session(poll_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -14322,6 +16495,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :poll_id => poll_id,
         :id => id
+
       )
 
       # resource path
@@ -14335,12 +16509,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Create a single poll session
     def create_single_poll_session(poll_id,poll_sessions__course_id__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -14348,6 +16525,7 @@ module Pandarus
         :poll_sessions__course_section_id__,
         :poll_sessions__has_public_results__,
         
+
       ]
 
       # verify existence of params
@@ -14357,6 +16535,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :poll_id => poll_id,
         :poll_sessions__course_id__ => poll_sessions__course_id__
+
       )
 
       # resource path
@@ -14369,12 +16548,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Update a single poll session
     def update_single_poll_session(poll_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -14382,6 +16564,7 @@ module Pandarus
         :poll_sessions__course_section_id__,
         :poll_sessions__has_public_results__,
         
+
       ]
 
       # verify existence of params
@@ -14391,6 +16574,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :poll_id => poll_id,
         :id => id
+
       )
 
       # resource path
@@ -14404,16 +16588,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Delete a poll session
     def delete_poll_session(poll_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -14423,6 +16611,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :poll_id => poll_id,
         :id => id
+
       )
 
       # resource path
@@ -14436,16 +16625,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Open a poll session
     def open_poll_session(poll_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -14455,6 +16648,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :poll_id => poll_id,
         :id => id
+
       )
 
       # resource path
@@ -14468,16 +16662,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Close an opened poll session
     def close_opened_poll_session(poll_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -14487,6 +16685,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :poll_id => poll_id,
         :id => id
+
       )
 
       # resource path
@@ -14500,22 +16699,27 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List opened poll sessions
     def list_opened_poll_sessions(opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -14528,22 +16732,27 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List closed poll sessions
     def list_closed_poll_sessions(opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -14556,16 +16765,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List poll choices in a poll
     def list_poll_choices_in_poll(poll_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -14573,6 +16786,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :poll_id => poll_id
+
       )
 
       # resource path
@@ -14585,16 +16799,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get a single poll choice
     def get_single_poll_choice(poll_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -14604,6 +16822,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :poll_id => poll_id,
         :id => id
+
       )
 
       # resource path
@@ -14617,12 +16836,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Create a single poll choice
     def create_single_poll_choice(poll_id,poll_choices__text__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -14630,6 +16852,7 @@ module Pandarus
         :poll_choices__is_correct__,
         :poll_choices__position__,
         
+
       ]
 
       # verify existence of params
@@ -14639,6 +16862,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :poll_id => poll_id,
         :poll_choices__text__ => poll_choices__text__
+
       )
 
       # resource path
@@ -14651,12 +16875,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Update a single poll choice
     def update_single_poll_choice(poll_id,id,poll_choices__text__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -14664,6 +16891,7 @@ module Pandarus
         :poll_choices__is_correct__,
         :poll_choices__position__,
         
+
       ]
 
       # verify existence of params
@@ -14675,6 +16903,7 @@ module Pandarus
         :poll_id => poll_id,
         :id => id,
         :poll_choices__text__ => poll_choices__text__
+
       )
 
       # resource path
@@ -14688,16 +16917,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Delete a poll choice
     def delete_poll_choice(poll_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -14707,6 +16940,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :poll_id => poll_id,
         :id => id
+
       )
 
       # resource path
@@ -14720,16 +16954,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get a single poll submission
     def get_single_poll_submission(poll_id,poll_session_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -14741,6 +16979,7 @@ module Pandarus
         :poll_id => poll_id,
         :poll_session_id => poll_session_id,
         :id => id
+
       )
 
       # resource path
@@ -14755,17 +16994,21 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Create a single poll submission
     def create_single_poll_submission(poll_id,poll_session_id,poll_submissions__poll_choice_id__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :poll_submissions__poll_choice_id__,
         
+
       ]
 
       # verify existence of params
@@ -14777,6 +17020,7 @@ module Pandarus
         :poll_id => poll_id,
         :poll_session_id => poll_session_id,
         :poll_submissions__poll_choice_id__ => poll_submissions__poll_choice_id__
+
       )
 
       # resource path
@@ -14790,22 +17034,27 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List polls
     def list_polls(opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -14818,16 +17067,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get a single poll
     def get_single_poll(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -14835,6 +17088,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -14847,18 +17101,22 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Create a single poll
     def create_single_poll(polls__question__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :polls__question__,
         :polls__description__,
         
+
       ]
 
       # verify existence of params
@@ -14866,6 +17124,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :polls__question__ => polls__question__
+
       )
 
       # resource path
@@ -14878,18 +17137,22 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Update a single poll
     def update_single_poll(id,polls__question__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :polls__question__,
         :polls__description__,
         
+
       ]
 
       # verify existence of params
@@ -14899,6 +17162,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :id => id,
         :polls__question__ => polls__question__
+
       )
 
       # resource path
@@ -14911,16 +17175,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Delete a poll
     def delete_poll(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -14928,6 +17196,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -14940,16 +17209,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Query progress
     def query_progress(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -14957,6 +17230,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -14969,16 +17243,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Progress.new(response)
       
+
     end
     
+
     # Retrieve assignment-overridden dates for quizzes
     def retrieve_assignment_overridden_dates_for_quizzes(course_id,opts={})
       query_param_keys = [
         :quiz_assignment_overrides__0____quiz_ids__
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -14986,6 +17264,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -14998,12 +17277,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       QuizAssignmentOverrideSetContainer.new(response)
       
+
     end
     
+
     # Set extensions for student quiz submissions
-    def set_extensions_for_student_quiz_submissions(course_id,quiz_id,user_id,opts={})
+    def set_extensions_for_student_quiz_submissions_V1_0(course_id,quiz_id,user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -15014,6 +17296,7 @@ module Pandarus
         :extend_from_now,
         :extend_from_end_at,
         
+
       ]
 
       # verify existence of params
@@ -15025,6 +17308,7 @@ module Pandarus
         :course_id => course_id,
         :quiz_id => quiz_id,
         :user_id => user_id
+
       )
 
       # resource path
@@ -15038,16 +17322,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get available quiz IP filters.
     def get_available_quiz_ip_filters(course_id,quiz_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -15057,6 +17345,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :quiz_id => quiz_id
+
       )
 
       # resource path
@@ -15070,12 +17359,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Create a question group
     def create_question_group(course_id,quiz_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -15084,6 +17376,7 @@ module Pandarus
         :quiz_groups__question_points__,
         :quiz_groups__assessment_question_bank_id__,
         
+
       ]
 
       # verify existence of params
@@ -15093,6 +17386,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :quiz_id => quiz_id
+
       )
 
       # resource path
@@ -15106,12 +17400,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Update a question group
     def update_question_group(course_id,quiz_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -15119,6 +17416,7 @@ module Pandarus
         :quiz_groups__pick_count__,
         :quiz_groups__question_points__,
         
+
       ]
 
       # verify existence of params
@@ -15130,6 +17428,7 @@ module Pandarus
         :course_id => course_id,
         :quiz_id => quiz_id,
         :id => id
+
       )
 
       # resource path
@@ -15144,16 +17443,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Delete a question group
     def delete_question_group(course_id,quiz_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -15165,6 +17468,7 @@ module Pandarus
         :course_id => course_id,
         :quiz_id => quiz_id,
         :id => id
+
       )
 
       # resource path
@@ -15179,18 +17483,22 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Reorder question groups
     def reorder_question_groups(course_id,quiz_id,id,order__id__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :order__id__,
         :order__type__,
         
+
       ]
 
       # verify existence of params
@@ -15204,6 +17512,7 @@ module Pandarus
         :quiz_id => quiz_id,
         :id => id,
         :order__id__ => order__id__
+
       )
 
       # resource path
@@ -15218,17 +17527,21 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List questions in a quiz or a submission
     def list_questions_in_quiz_or_submission(course_id,quiz_id,opts={})
       query_param_keys = [
         :quiz_submission_id,
         :quiz_submission_attempt
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -15238,6 +17551,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :quiz_id => quiz_id
+
       )
 
       # resource path
@@ -15250,16 +17564,20 @@ module Pandarus
 
       RemoteCollection.new(connection, QuizQuestion, path, query_params)
       
+
     end
     
+
     # Get a single quiz question
     def get_single_quiz_question(course_id,quiz_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -15271,6 +17589,7 @@ module Pandarus
         :course_id => course_id,
         :quiz_id => quiz_id,
         :id => id
+
       )
 
       # resource path
@@ -15285,12 +17604,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       QuizQuestion.new(response)
       
+
     end
     
+
     # Create a single quiz question
     def create_single_quiz_question(course_id,quiz_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -15306,6 +17628,7 @@ module Pandarus
         :question__text_after_answers__,
         :question__answers__,
         
+
       ]
 
       # verify existence of params
@@ -15315,6 +17638,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :quiz_id => quiz_id
+
       )
 
       # resource path
@@ -15328,12 +17652,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       QuizQuestion.new(response)
       
+
     end
     
+
     # Update an existing quiz question
     def update_existing_quiz_question(course_id,quiz_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -15349,6 +17676,7 @@ module Pandarus
         :question__text_after_answers__,
         :question__answers__,
         
+
       ]
 
       # verify existence of params
@@ -15360,6 +17688,7 @@ module Pandarus
         :course_id => course_id,
         :quiz_id => quiz_id,
         :id => id
+
       )
 
       # resource path
@@ -15374,16 +17703,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       QuizQuestion.new(response)
       
+
     end
     
+
     # Delete a quiz question
     def delete_quiz_question(course_id,quiz_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -15395,6 +17728,7 @@ module Pandarus
         :course_id => course_id,
         :quiz_id => quiz_id,
         :id => id
+
       )
 
       # resource path
@@ -15409,16 +17743,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Retrieve all quiz reports
     def retrieve_all_quiz_reports(course_id,quiz_id,opts={})
       query_param_keys = [
         :includes_all_versions
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -15428,6 +17766,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :quiz_id => quiz_id
+
       )
 
       # resource path
@@ -15440,12 +17779,15 @@ module Pandarus
 
       RemoteCollection.new(connection,  QuizReport , path, query_params)
       
+
     end
     
+
     # Create a quiz report
     def create_quiz_report(course_id,quiz_id,quiz_report__report_type__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -15453,6 +17795,7 @@ module Pandarus
         :quiz_report__includes_all_versions__,
         :include,
         
+
       ]
 
       # verify existence of params
@@ -15464,6 +17807,7 @@ module Pandarus
         :course_id => course_id,
         :quiz_id => quiz_id,
         :quiz_report__report_type__ => quiz_report__report_type__
+
       )
 
       # resource path
@@ -15477,16 +17821,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       QuizReport.new(response)
       
+
     end
     
+
     # Get a quiz report
     def get_quiz_report(course_id,quiz_id,id,opts={})
       query_param_keys = [
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -15498,6 +17846,7 @@ module Pandarus
         :course_id => course_id,
         :quiz_id => quiz_id,
         :id => id
+
       )
 
       # resource path
@@ -15512,16 +17861,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       QuizReport.new(response)
       
+
     end
     
+
     # Abort the generation of a report, or remove a previously generated one
     def abort_generation_of_report_or_remove_previously_generated_one(course_id,quiz_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -15533,6 +17886,7 @@ module Pandarus
         :course_id => course_id,
         :quiz_id => quiz_id,
         :id => id
+
       )
 
       # resource path
@@ -15547,16 +17901,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Fetching the latest quiz statistics
     def fetching_latest_quiz_statistics(course_id,quiz_id,opts={})
       query_param_keys = [
         :all_versions
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -15566,6 +17924,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :quiz_id => quiz_id
+
       )
 
       # resource path
@@ -15579,17 +17938,21 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Submit captured events
     def submit_captured_events(course_id,quiz_id,id,quiz_submission_events,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :quiz_submission_events,
         
+
       ]
 
       # verify existence of params
@@ -15603,6 +17966,7 @@ module Pandarus
         :quiz_id => quiz_id,
         :id => id,
         :quiz_submission_events => quiz_submission_events
+
       )
 
       # resource path
@@ -15617,16 +17981,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Retrieve captured events
     def retrieve_captured_events(course_id,quiz_id,id,opts={})
       query_param_keys = [
         :attempt
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -15638,6 +18006,7 @@ module Pandarus
         :course_id => course_id,
         :quiz_id => quiz_id,
         :id => id
+
       )
 
       # resource path
@@ -15652,18 +18021,22 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Upload a file
-    def upload_file(course_id,quiz_id,opts={})
+    def upload_file_V1_2(course_id,quiz_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :name,
         :on_duplicate,
         
+
       ]
 
       # verify existence of params
@@ -15673,6 +18046,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :quiz_id => quiz_id
+
       )
 
       # resource path
@@ -15686,16 +18060,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get all quiz submission questions.
     def get_all_quiz_submission_questions(quiz_submission_id,opts={})
       query_param_keys = [
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -15703,6 +18081,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :quiz_submission_id => quiz_submission_id
+
       )
 
       # resource path
@@ -15715,16 +18094,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get a single quiz submission question.
     def get_single_quiz_submission_question(quiz_submission_id,id,opts={})
       query_param_keys = [
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -15734,6 +18117,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :quiz_submission_id => quiz_submission_id,
         :id => id
+
       )
 
       # resource path
@@ -15747,12 +18131,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Answering questions
     def answering_questions(quiz_submission_id,attempt,validation_token,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -15761,6 +18148,7 @@ module Pandarus
         :access_code,
         :quiz_questions,
         
+
       ]
 
       # verify existence of params
@@ -15772,6 +18160,7 @@ module Pandarus
         :quiz_submission_id => quiz_submission_id,
         :attempt => attempt,
         :validation_token => validation_token
+
       )
 
       # resource path
@@ -15783,12 +18172,15 @@ module Pandarus
 
       RemoteCollection.new(connection, QuizSubmissionQuestion, path, query_params)
       
+
     end
     
+
     # Flagging a question.
     def flagging_question(quiz_submission_id,id,attempt,validation_token,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -15796,6 +18188,7 @@ module Pandarus
         :validation_token,
         :access_code,
         
+
       ]
 
       # verify existence of params
@@ -15809,6 +18202,7 @@ module Pandarus
         :id => id,
         :attempt => attempt,
         :validation_token => validation_token
+
       )
 
       # resource path
@@ -15822,12 +18216,15 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Unflagging a question.
     def unflagging_question(quiz_submission_id,id,attempt,validation_token,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -15835,6 +18232,7 @@ module Pandarus
         :validation_token,
         :access_code,
         
+
       ]
 
       # verify existence of params
@@ -15848,6 +18246,7 @@ module Pandarus
         :id => id,
         :attempt => attempt,
         :validation_token => validation_token
+
       )
 
       # resource path
@@ -15861,16 +18260,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Send a message to unsubmitted or submitted users for the quiz
     def send_message_to_unsubmitted_or_submitted_users_for_quiz(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -15880,6 +18283,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -15893,16 +18297,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get all quiz submissions.
     def get_all_quiz_submissions(course_id,quiz_id,opts={})
       query_param_keys = [
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -15912,6 +18320,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :quiz_id => quiz_id
+
       )
 
       # resource path
@@ -15925,16 +18334,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get a single quiz submission.
     def get_single_quiz_submission(course_id,quiz_id,id,opts={})
       query_param_keys = [
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -15946,6 +18359,7 @@ module Pandarus
         :course_id => course_id,
         :quiz_id => quiz_id,
         :id => id
+
       )
 
       # resource path
@@ -15960,18 +18374,22 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Create the quiz submission (start a quiz-taking session)
     def create_quiz_submission_start_quiz_taking_session(course_id,quiz_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :access_code,
         :preview,
         
+
       ]
 
       # verify existence of params
@@ -15981,6 +18399,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :quiz_id => quiz_id
+
       )
 
       # resource path
@@ -15994,12 +18413,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Update student question scores and comments.
     def update_student_question_scores_and_comments(course_id,quiz_id,id,attempt,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -16007,6 +18429,7 @@ module Pandarus
         :fudge_points,
         :questions,
         
+
       ]
 
       # verify existence of params
@@ -16020,6 +18443,7 @@ module Pandarus
         :quiz_id => quiz_id,
         :id => id,
         :attempt => attempt
+
       )
 
       # resource path
@@ -16034,12 +18458,15 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Complete the quiz submission (turn it in).
     def complete_quiz_submission_turn_it_in(course_id,quiz_id,id,attempt,validation_token,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -16047,6 +18474,7 @@ module Pandarus
         :validation_token,
         :access_code,
         
+
       ]
 
       # verify existence of params
@@ -16062,6 +18490,7 @@ module Pandarus
         :id => id,
         :attempt => attempt,
         :validation_token => validation_token
+
       )
 
       # resource path
@@ -16076,16 +18505,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List quizzes in a course
     def list_quizzes_in_course(course_id,opts={})
       query_param_keys = [
         :search_term
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -16093,6 +18526,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -16104,16 +18538,20 @@ module Pandarus
 
       RemoteCollection.new(connection, Quiz, path, query_params)
       
+
     end
     
+
     # Get a single quiz
     def get_single_quiz(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -16123,6 +18561,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -16136,12 +18575,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Quiz.new(response)
       
+
     end
     
+
     # Create a quiz
     def create_quiz(course_id,quiz__title__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -16169,6 +18611,7 @@ module Pandarus
         :quiz__one_time_results__,
         :quiz__only_visible_to_overrides__,
         
+
       ]
 
       # verify existence of params
@@ -16178,6 +18621,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :quiz__title__ => quiz__title__
+
       )
 
       # resource path
@@ -16190,17 +18634,21 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Quiz.new(response)
       
+
     end
     
+
     # Edit a quiz
     def edit_quiz(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :quiz__notify_of_update__,
         
+
       ]
 
       # verify existence of params
@@ -16210,6 +18658,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -16223,16 +18672,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       Quiz.new(response)
       
+
     end
     
+
     # Delete a quiz
     def delete_quiz(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -16242,6 +18695,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -16255,18 +18709,22 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       Quiz.new(response)
       
+
     end
     
+
     # Reorder quiz items
     def reorder_quiz_items(course_id,id,order__id__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :order__id__,
         :order__type__,
         
+
       ]
 
       # verify existence of params
@@ -16278,6 +18736,7 @@ module Pandarus
         :course_id => course_id,
         :id => id,
         :order__id__ => order__id__
+
       )
 
       # resource path
@@ -16291,17 +18750,21 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Validate quiz access code
     def validate_quiz_access_code(course_id,id,access_code,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :access_code,
         
+
       ]
 
       # verify existence of params
@@ -16313,6 +18776,7 @@ module Pandarus
         :course_id => course_id,
         :id => id,
         :access_code => access_code
+
       )
 
       # resource path
@@ -16326,17 +18790,21 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       boolean.new(response)
       
+
     end
     
+
     # List roles
     def list_roles(account_id,opts={})
       query_param_keys = [
         :state,
         :show_inherited
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -16344,6 +18812,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -16355,17 +18824,21 @@ module Pandarus
 
       RemoteCollection.new(connection, Role, path, query_params)
       
+
     end
     
+
     # Get a single role
     def get_single_role(id,account_id,role_id,opts={})
       query_param_keys = [
         :role_id,
         :role
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -16377,6 +18850,7 @@ module Pandarus
         :id => id,
         :account_id => account_id,
         :role_id => role_id
+
       )
 
       # resource path
@@ -16390,12 +18864,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Role.new(response)
       
+
     end
     
+
     # Create a new role
     def create_new_role(account_id,label,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -16406,6 +18883,7 @@ module Pandarus
         :permissions____x_____enabled__,
         :permissions____x_____locked__,
         
+
       ]
 
       # verify existence of params
@@ -16415,6 +18893,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :label => label
+
       )
 
       # resource path
@@ -16427,17 +18906,21 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Role.new(response)
       
+
     end
     
+
     # Deactivate a role
     def deactivate_role(account_id,id,role_id,opts={})
       query_param_keys = [
         :role_id,
         :role
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -16449,6 +18932,7 @@ module Pandarus
         :account_id => account_id,
         :id => id,
         :role_id => role_id
+
       )
 
       # resource path
@@ -16462,18 +18946,22 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       Role.new(response)
       
+
     end
     
+
     # Activate a role
     def activate_role(account_id,id,role_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :role_id,
         :role,
         
+
       ]
 
       # verify existence of params
@@ -16485,6 +18973,7 @@ module Pandarus
         :account_id => account_id,
         :id => id,
         :role_id => role_id
+
       )
 
       # resource path
@@ -16498,12 +18987,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Role.new(response)
       
+
     end
     
+
     # Update a role
     def update_role(account_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -16511,6 +19003,7 @@ module Pandarus
         :permissions____x_____explicit__,
         :permissions____x_____enabled__,
         
+
       ]
 
       # verify existence of params
@@ -16520,6 +19013,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id
+
       )
 
       # resource path
@@ -16533,16 +19027,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       Role.new(response)
       
+
     end
     
+
     # Get SIS import list
     def get_sis_import_list(account_id,opts={})
       query_param_keys = [
         :created_since
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -16550,6 +19048,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -16561,12 +19060,15 @@ module Pandarus
 
       RemoteCollection.new(connection, SisImport, path, query_params)
       
+
     end
     
+
     # Import SIS data
     def import_sis_data(account_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -16581,6 +19083,7 @@ module Pandarus
         :diffing_data_set_identifier,
         :diffing_remaster_data_set,
         
+
       ]
 
       # verify existence of params
@@ -16588,6 +19091,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -16600,16 +19104,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       SisImport.new(response)
       
+
     end
     
+
     # Get SIS import status
     def get_sis_import_status(account_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -16619,6 +19127,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :id => id
+
       )
 
       # resource path
@@ -16632,8 +19141,10 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       SisImport.new(response)
       
+
     end
     
+
     # Find recipients
     def find_recipients_conversations(opts={})
       query_param_keys = [
@@ -16644,16 +19155,19 @@ module Pandarus
         :user_id,
         :from_conversation_id,
         :permissions
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -16666,8 +19180,10 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Find recipients
     def find_recipients_search(opts={})
       query_param_keys = [
@@ -16678,16 +19194,19 @@ module Pandarus
         :user_id,
         :from_conversation_id,
         :permissions
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -16700,24 +19219,29 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List all courses
     def list_all_courses(opts={})
       query_param_keys = [
         :search,
         :public_only,
         :open_enrollment_only
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -16730,16 +19254,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List course sections
     def list_course_sections(course_id,opts={})
       query_param_keys = [
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -16747,6 +19275,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -16758,12 +19287,15 @@ module Pandarus
 
       RemoteCollection.new(connection, Section, path, query_params)
       
+
     end
     
+
     # Create course section
     def create_course_section(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -16773,6 +19305,7 @@ module Pandarus
         :course_section__end_at__,
         :course_section__restrict_enrollments_to_section_dates__,
         
+
       ]
 
       # verify existence of params
@@ -16780,6 +19313,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -16792,16 +19326,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Section.new(response)
       
+
     end
     
+
     # Cross-list a Section
     def cross_list_section(id,new_course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -16811,6 +19349,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :id => id,
         :new_course_id => new_course_id
+
       )
 
       # resource path
@@ -16824,16 +19363,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Section.new(response)
       
+
     end
     
+
     # De-cross-list a Section
     def de_cross_list_section(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -16841,6 +19384,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -16853,16 +19397,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       Section.new(response)
       
+
     end
     
+
     # Edit a section
     def edit_section(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -16870,6 +19418,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -16882,16 +19431,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       Section.new(response)
       
+
     end
     
+
     # Get section information
     def get_section_information_courses(course_id,id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -16901,6 +19454,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :id => id
+
       )
 
       # resource path
@@ -16914,16 +19468,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Section.new(response)
       
+
     end
     
+
     # Get section information
     def get_section_information_sections(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -16931,6 +19489,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -16943,16 +19502,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Section.new(response)
       
+
     end
     
+
     # Delete a section
     def delete_section(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -16960,6 +19523,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -16972,22 +19536,27 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       Section.new(response)
       
+
     end
     
+
     # Get Kaltura config
     def get_kaltura_config(opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -17000,22 +19569,27 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Start Kaltura session
     def start_kaltura_session(opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -17028,16 +19602,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Upload a file
-    def upload_file(course_id,assignment_id,user_id,opts={})
+    def upload_file_V1_3(course_id,assignment_id,user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -17049,6 +19627,7 @@ module Pandarus
         :course_id => course_id,
         :assignment_id => assignment_id,
         :user_id => user_id
+
       )
 
       # resource path
@@ -17063,12 +19642,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Submit an assignment
     def submit_assignment_courses(course_id,assignment_id,submission__submission_type__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -17080,6 +19662,7 @@ module Pandarus
         :submission__media_comment_id__,
         :submission__media_comment_type__,
         
+
       ]
 
       # verify existence of params
@@ -17091,6 +19674,7 @@ module Pandarus
         :course_id => course_id,
         :assignment_id => assignment_id,
         :submission__submission_type__ => submission__submission_type__
+
       )
 
       # resource path
@@ -17104,12 +19688,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Submit an assignment
     def submit_assignment_sections(section_id,assignment_id,submission__submission_type__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -17121,6 +19708,7 @@ module Pandarus
         :submission__media_comment_id__,
         :submission__media_comment_type__,
         
+
       ]
 
       # verify existence of params
@@ -17132,6 +19720,7 @@ module Pandarus
         :section_id => section_id,
         :assignment_id => assignment_id,
         :submission__submission_type__ => submission__submission_type__
+
       )
 
       # resource path
@@ -17145,17 +19734,21 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List assignment submissions
     def list_assignment_submissions_courses(course_id,assignment_id,opts={})
       query_param_keys = [
         :include,
         :grouped
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -17165,6 +19758,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :assignment_id => assignment_id
+
       )
 
       # resource path
@@ -17177,17 +19771,21 @@ module Pandarus
 
       RemoteCollection.new(connection, Submission, path, query_params)
       
+
     end
     
+
     # List assignment submissions
     def list_assignment_submissions_sections(section_id,assignment_id,opts={})
       query_param_keys = [
         :include,
         :grouped
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -17197,6 +19795,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :section_id => section_id,
         :assignment_id => assignment_id
+
       )
 
       # resource path
@@ -17209,8 +19808,10 @@ module Pandarus
 
       RemoteCollection.new(connection, Submission, path, query_params)
       
+
     end
     
+
     # List submissions for multiple assignments
     def list_submissions_for_multiple_assignments_courses(course_id,opts={})
       query_param_keys = [
@@ -17219,10 +19820,12 @@ module Pandarus
         :grouped,
         :grading_period_id,
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -17230,6 +19833,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -17242,8 +19846,10 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List submissions for multiple assignments
     def list_submissions_for_multiple_assignments_sections(section_id,opts={})
       query_param_keys = [
@@ -17252,10 +19858,12 @@ module Pandarus
         :grouped,
         :grading_period_id,
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -17263,6 +19871,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :section_id => section_id
+
       )
 
       # resource path
@@ -17275,16 +19884,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get a single submission
     def get_single_submission_courses(course_id,assignment_id,user_id,opts={})
       query_param_keys = [
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -17296,6 +19909,7 @@ module Pandarus
         :course_id => course_id,
         :assignment_id => assignment_id,
         :user_id => user_id
+
       )
 
       # resource path
@@ -17310,16 +19924,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Get a single submission
     def get_single_submission_sections(section_id,assignment_id,user_id,opts={})
       query_param_keys = [
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -17331,6 +19949,7 @@ module Pandarus
         :section_id => section_id,
         :assignment_id => assignment_id,
         :user_id => user_id
+
       )
 
       # resource path
@@ -17345,16 +19964,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Upload a file
     def upload_file_courses(course_id,assignment_id,user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -17366,6 +19989,7 @@ module Pandarus
         :course_id => course_id,
         :assignment_id => assignment_id,
         :user_id => user_id
+
       )
 
       # resource path
@@ -17380,16 +20004,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Upload a file
     def upload_file_sections(section_id,assignment_id,user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -17401,6 +20029,7 @@ module Pandarus
         :section_id => section_id,
         :assignment_id => assignment_id,
         :user_id => user_id
+
       )
 
       # resource path
@@ -17415,12 +20044,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Grade or comment on a submission
     def grade_or_comment_on_submission_courses(course_id,assignment_id,user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -17434,6 +20066,7 @@ module Pandarus
         :submission__excuse__,
         :rubric_assessment,
         
+
       ]
 
       # verify existence of params
@@ -17445,6 +20078,7 @@ module Pandarus
         :course_id => course_id,
         :assignment_id => assignment_id,
         :user_id => user_id
+
       )
 
       # resource path
@@ -17459,12 +20093,15 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Grade or comment on a submission
     def grade_or_comment_on_submission_sections(section_id,assignment_id,user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -17478,6 +20115,7 @@ module Pandarus
         :submission__excuse__,
         :rubric_assessment,
         
+
       ]
 
       # verify existence of params
@@ -17489,6 +20127,7 @@ module Pandarus
         :section_id => section_id,
         :assignment_id => assignment_id,
         :user_id => user_id
+
       )
 
       # resource path
@@ -17503,16 +20142,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List gradeable students
     def list_gradeable_students(course_id,assignment_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -17522,6 +20165,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :assignment_id => assignment_id
+
       )
 
       # resource path
@@ -17535,12 +20179,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Grade or comment on multiple submissions
     def grade_or_comment_on_multiple_submissions_courses_submissions(course_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -17552,6 +20199,7 @@ module Pandarus
         :grade_data___student_id_____media_comment_type__,
         :grade_data___student_id_____file_ids__,
         
+
       ]
 
       # verify existence of params
@@ -17559,6 +20207,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -17571,12 +20220,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Progress.new(response)
       
+
     end
     
+
     # Grade or comment on multiple submissions
     def grade_or_comment_on_multiple_submissions_courses_assignments(course_id,assignment_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -17588,6 +20240,7 @@ module Pandarus
         :grade_data___student_id_____media_comment_type__,
         :grade_data___student_id_____file_ids__,
         
+
       ]
 
       # verify existence of params
@@ -17597,6 +20250,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :assignment_id => assignment_id
+
       )
 
       # resource path
@@ -17610,12 +20264,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Progress.new(response)
       
+
     end
     
+
     # Grade or comment on multiple submissions
     def grade_or_comment_on_multiple_submissions_sections_submissions(section_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -17627,6 +20284,7 @@ module Pandarus
         :grade_data___student_id_____media_comment_type__,
         :grade_data___student_id_____file_ids__,
         
+
       ]
 
       # verify existence of params
@@ -17634,6 +20292,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :section_id => section_id
+
       )
 
       # resource path
@@ -17646,12 +20305,15 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Progress.new(response)
       
+
     end
     
+
     # Grade or comment on multiple submissions
     def grade_or_comment_on_multiple_submissions_sections_assignments(section_id,assignment_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -17663,6 +20325,7 @@ module Pandarus
         :grade_data___student_id_____media_comment_type__,
         :grade_data___student_id_____file_ids__,
         
+
       ]
 
       # verify existence of params
@@ -17672,6 +20335,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :section_id => section_id,
         :assignment_id => assignment_id
+
       )
 
       # resource path
@@ -17685,16 +20349,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       Progress.new(response)
       
+
     end
     
+
     # Mark submission as read
     def mark_submission_as_read_courses(course_id,assignment_id,user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -17706,6 +20374,7 @@ module Pandarus
         :course_id => course_id,
         :assignment_id => assignment_id,
         :user_id => user_id
+
       )
 
       # resource path
@@ -17720,16 +20389,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Mark submission as read
     def mark_submission_as_read_sections(section_id,assignment_id,user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -17741,6 +20414,7 @@ module Pandarus
         :section_id => section_id,
         :assignment_id => assignment_id,
         :user_id => user_id
+
       )
 
       # resource path
@@ -17755,16 +20429,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Mark submission as unread
     def mark_submission_as_unread_courses(course_id,assignment_id,user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -17776,6 +20454,7 @@ module Pandarus
         :course_id => course_id,
         :assignment_id => assignment_id,
         :user_id => user_id
+
       )
 
       # resource path
@@ -17790,16 +20469,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Mark submission as unread
     def mark_submission_as_unread_sections(section_id,assignment_id,user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -17811,6 +20494,7 @@ module Pandarus
         :section_id => section_id,
         :assignment_id => assignment_id,
         :user_id => user_id
+
       )
 
       # resource path
@@ -17825,16 +20509,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List available tabs for a course or group
     def list_available_tabs_for_course_or_group_courses(course_id,opts={})
       query_param_keys = [
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -17842,6 +20530,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :course_id => course_id
+
       )
 
       # resource path
@@ -17854,16 +20543,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List available tabs for a course or group
     def list_available_tabs_for_course_or_group_groups(group_id,opts={})
       query_param_keys = [
         :include
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -17871,6 +20564,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :group_id => group_id
+
       )
 
       # resource path
@@ -17883,18 +20577,22 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Update a tab for a course
     def update_tab_for_course(course_id,tab_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :position,
         :hidden,
         
+
       ]
 
       # verify existence of params
@@ -17904,6 +20602,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :course_id => course_id,
         :tab_id => tab_id
+
       )
 
       # resource path
@@ -17917,16 +20616,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       Tab.new(response)
       
+
     end
     
+
     # List observees
     def list_observees(user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -17934,6 +20637,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id
+
       )
 
       # resource path
@@ -17945,18 +20649,22 @@ module Pandarus
 
       RemoteCollection.new(connection, User, path, query_params)
       
+
     end
     
+
     # Add an observee with credentials
     def add_observee_with_credentials(user_id,observee__unique_id__,observee__password__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :observee__unique_id__,
         :observee__password__,
         
+
       ]
 
       # verify existence of params
@@ -17968,6 +20676,7 @@ module Pandarus
         :user_id => user_id,
         :observee__unique_id__ => observee__unique_id__,
         :observee__password__ => observee__password__
+
       )
 
       # resource path
@@ -17980,16 +20689,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       User.new(response)
       
+
     end
     
+
     # Show an observee
     def show_observee(user_id,observee_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -17999,6 +20712,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :user_id => user_id,
         :observee_id => observee_id
+
       )
 
       # resource path
@@ -18012,16 +20726,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       User.new(response)
       
+
     end
     
+
     # Add an observee
     def add_observee(user_id,observee_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -18031,6 +20749,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :user_id => user_id,
         :observee_id => observee_id
+
       )
 
       # resource path
@@ -18044,16 +20763,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       User.new(response)
       
+
     end
     
+
     # Remove an observee
     def remove_observee(user_id,observee_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -18063,6 +20786,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :user_id => user_id,
         :observee_id => observee_id
+
       )
 
       # resource path
@@ -18076,16 +20800,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       User.new(response)
       
+
     end
     
+
     # List users in account
     def list_users_in_account(account_id,opts={})
       query_param_keys = [
         :search_term
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -18093,6 +20821,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :account_id => account_id
+
       )
 
       # resource path
@@ -18104,22 +20833,27 @@ module Pandarus
 
       RemoteCollection.new(connection, User, path, query_params)
       
+
     end
     
+
     # List the activity stream
     def list_activity_stream_self(opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -18132,22 +20866,27 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List the activity stream
     def list_activity_stream_activity_stream(opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -18160,22 +20899,27 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Activity stream summary
     def activity_stream_summary(opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -18188,22 +20932,27 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List the TODO items
     def list_todo_items(opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -18216,22 +20965,27 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # List upcoming assignments, calendar events
     def list_upcoming_assignments_calendar_events(opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -18244,16 +20998,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Hide a stream item
     def hide_stream_item(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -18261,6 +21019,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -18273,22 +21032,27 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Hide all stream items
     def hide_all_stream_items(opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         {}
       
+
       )
 
       # resource path
@@ -18301,16 +21065,20 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Upload a file
-    def upload_file(user_id,opts={})
+    def upload_file_V1_4(user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -18318,6 +21086,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id
+
       )
 
       # resource path
@@ -18330,16 +21099,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Show user details
     def show_user_details(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -18347,6 +21120,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -18359,12 +21133,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       User.new(response)
       
+
     end
     
+
     # Create a user
     def create_user(account_id,pseudonym__unique_id__,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -18385,6 +21162,7 @@ module Pandarus
         :communication_channel__skip_confirmation__,
         :force_validations,
         
+
       ]
 
       # verify existence of params
@@ -18394,6 +21172,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :account_id => account_id,
         :pseudonym__unique_id__ => pseudonym__unique_id__
+
       )
 
       # resource path
@@ -18406,16 +21185,20 @@ module Pandarus
       response = mixed_request(:post, path, query_params, form_params, headers)
       User.new(response)
       
+
     end
     
+
     # Update user settings.
     def update_user_settings(id,opts={})
       query_param_keys = [
         :manual_mark_as_read
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -18423,6 +21206,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -18435,12 +21219,15 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Edit a user
     def edit_user(id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
@@ -18452,6 +21239,7 @@ module Pandarus
         :user__avatar____token__,
         :user__avatar____url__,
         
+
       ]
 
       # verify existence of params
@@ -18459,6 +21247,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :id => id
+
       )
 
       # resource path
@@ -18471,16 +21260,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       User.new(response)
       
+
     end
     
+
     # Merge user into another user
     def merge_user_into_another_user_destination_user_id(id,destination_user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -18490,6 +21283,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :id => id,
         :destination_user_id => destination_user_id
+
       )
 
       # resource path
@@ -18503,16 +21297,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       User.new(response)
       
+
     end
     
+
     # Merge user into another user
     def merge_user_into_another_user_accounts(id,destination_account_id,destination_user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -18524,6 +21322,7 @@ module Pandarus
         :id => id,
         :destination_account_id => destination_account_id,
         :destination_user_id => destination_user_id
+
       )
 
       # resource path
@@ -18538,16 +21337,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       User.new(response)
       
+
     end
     
+
     # Get user profile
     def get_user_profile(user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -18555,6 +21358,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id
+
       )
 
       # resource path
@@ -18567,16 +21371,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       Profile.new(response)
       
+
     end
     
+
     # List avatar options
     def list_avatar_options(user_id,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -18584,6 +21392,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id
+
       )
 
       # resource path
@@ -18595,17 +21404,21 @@ module Pandarus
 
       RemoteCollection.new(connection, Avatar, path, query_params)
       
+
     end
     
+
     # List user page views
     def list_user_page_views(user_id,opts={})
       query_param_keys = [
         :start_time,
         :end_time
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -18613,6 +21426,7 @@ module Pandarus
       # set default values and merge with input
       options = underscored_merge_opts(opts,
         :user_id => user_id
+
       )
 
       # resource path
@@ -18624,18 +21438,22 @@ module Pandarus
 
       RemoteCollection.new(connection, PageView, path, query_params)
       
+
     end
     
+
     # Store custom data
     def store_custom_data(user_id,ns,data,opts={})
       query_param_keys = [
         
+
       ]
 
       form_param_keys = [
         :ns,
         :data,
         
+
       ]
 
       # verify existence of params
@@ -18647,6 +21465,7 @@ module Pandarus
         :user_id => user_id,
         :ns => ns,
         :data => data
+
       )
 
       # resource path
@@ -18659,16 +21478,20 @@ module Pandarus
       response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Load custom data
     def load_custom_data(user_id,ns,opts={})
       query_param_keys = [
         :ns
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -18678,6 +21501,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :user_id => user_id,
         :ns => ns
+
       )
 
       # resource path
@@ -18690,16 +21514,20 @@ module Pandarus
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
+
     end
     
+
     # Delete custom data
     def delete_custom_data(user_id,ns,opts={})
       query_param_keys = [
         :ns
+
       ]
 
       form_param_keys = [
         
+
       ]
 
       # verify existence of params
@@ -18709,6 +21537,7 @@ module Pandarus
       options = underscored_merge_opts(opts,
         :user_id => user_id,
         :ns => ns
+
       )
 
       # resource path
@@ -18721,8 +21550,10 @@ module Pandarus
       response = mixed_request(:delete, path, query_params, form_params, headers)
       response
       
+
     end
     
+
   end
 end
 
