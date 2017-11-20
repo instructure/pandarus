@@ -23,14 +23,100 @@ popd > /dev/null
 #
 # Comment this out if you don't want to overwrite the Pandarus gem's built-in
 # Canvas API spec.
-# cd "$SCRIPT_DIR" && (
-#   set +x
-#   echo `pwd`
-#   set -x
-#   rm -rf ./api &&
-#   mkdir api &&
-#   cp ${CANVAS_DIR}/public/doc/api/*.json api/
-# )
+cd "$SCRIPT_DIR" && (
+  set +x
+  echo `pwd`
+  set -x
+  rm -rf ./api &&
+  mkdir api &&
+  cp ${CANVAS_DIR}/public/doc/api/*.json api/
+  git checkout -- api/account_domain_lookups.json
+	git checkout -- api/account_notifications.json
+	git checkout -- api/account_reports.json
+	git checkout -- api/accounts.json
+	git checkout -- api/admins.json
+	git checkout -- api/announcement_external_feeds.json
+	git checkout -- api/appointment_groups.json
+	git checkout -- api/assignment_groups.json
+	git checkout -- api/assignments.json
+	git checkout -- api/authentications_log.json
+	git checkout -- api/calendar_events.json
+	git checkout -- api/collaborations.json
+	git checkout -- api/comm_messages.json
+	git checkout -- api/communication_channels.json
+	git checkout -- api/conferences.json
+	git checkout -- api/content_exports.json
+	git checkout -- api/content_migrations.json
+	git checkout -- api/conversations.json
+	git checkout -- api/course_audit_log.json
+	git checkout -- api/course_quiz_extensions.json
+	git checkout -- api/courses.json
+	git checkout -- api/custom_gradebook_columns.json
+	git checkout -- api/discussion_topics.json
+	git checkout -- api/enrollment_terms.json
+	git checkout -- api/enrollments.json
+	git checkout -- api/external_tools.json
+	git checkout -- api/favorites.json
+	git checkout -- api/feature_flags.json
+	git checkout -- api/files.json
+	git checkout -- api/grade_change_log.json
+	git checkout -- api/gradebook_history.json
+	git checkout -- api/grading_periods.json
+	git checkout -- api/grading_standards.json
+	git checkout -- api/group_categories.json
+	git checkout -- api/groups.json
+	git checkout -- api/live_assessments.json
+	git checkout -- api/logins.json
+	git checkout -- api/modules.json
+	git checkout -- api/notification_preferences.json
+	git checkout -- api/outcome_groups.json
+	git checkout -- api/outcome_results.json
+	git checkout -- api/outcomes.json
+	git checkout -- api/pages.json
+	git checkout -- api/poll_choices.json
+	git checkout -- api/poll_sessions.json
+	git checkout -- api/polls.json
+	git checkout -- api/quiz_assignment_overrides.json
+	git checkout -- api/quiz_extensions.json
+	git checkout -- api/quiz_question_groups.json
+	git checkout -- api/quiz_questions.json
+	git checkout -- api/quiz_reports.json
+	git checkout -- api/quiz_submission_events.json
+	git checkout -- api/quiz_submission_questions.json
+	git checkout -- api/quiz_submission_user_list.json
+	git checkout -- api/quiz_submissions.json
+	git checkout -- api/quizzes.json
+	git checkout -- api/roles.json
+	git checkout -- api/search.json
+	git checkout -- api/sections.json
+	git checkout -- api/sis_imports.json
+	git checkout -- api/submissions.json
+	git checkout -- api/tabs.json
+	git checkout -- api/user_observees.json
+	git checkout -- api/users.json
+  rm api/analytics.json
+	rm api/announcements.json
+	rm api/authentication_providers.json
+	rm api/blueprint_courses.json
+	rm api/blueprint_templates.json
+	rm api/bookmarks.json
+	rm api/brand_configs.json
+	rm api/e_pub_exports.json
+	rm api/error_reports.json
+	rm api/jw_ts.json
+	rm api/late_policy.json
+	rm api/moderated_grading.json
+	rm api/originality_reports.json
+	rm api/peer_reviews.json
+	rm api/plagiarism_detection_platform_users.json
+	rm api/planner_note.json
+	rm api/planner_override.json
+	rm api/rubrics.json
+	rm api/shared_brand_configs.json
+	rm api/sis_integration.json
+	rm api/webhooks_subscriptions.json
+  ruby normalize-manifest
+)
 
 # Build the Ruby gem and install it locally
 cd "$SCRIPT_DIR" && (
@@ -48,4 +134,7 @@ cd "$SCRIPT_DIR" && (
     gem install $GEMFILE
   )
 
+  pushd clients/ruby
+  bundle exec rspec
+  popd
 )

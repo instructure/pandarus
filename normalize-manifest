@@ -1,0 +1,15 @@
+#!/usr/bin/ruby
+
+require 'json'
+
+files = Dir['api/*.json'].map{|x| x.gsub(/^api/, "")}
+manifest = JSON.parse(File.read("api/api-docs.json"))
+
+normalized = files & manifest["apis"].map{ |x| x["path"] }
+manifest["apis"] = manifest["apis"].select do |x|
+  normalized.include?(x["path"])
+end
+
+File.open("api/api-docs.json", "w") do |f|
+  f.write(JSON.pretty_generate(manifest))
+end
