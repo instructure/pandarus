@@ -752,7 +752,7 @@
             {
               "paramType": "form",
               "name": "migration_type",
-              "description": "The type of the migration. Use the {api:ContentMigrationsController#available_migrators Migrator} endpoint to see all available migrators. Default allowed values: canvas_cartridge_importer, common_cartridge_importer, course_copy_importer, zip_file_importer, qti_converter, moodle_converter",
+              "description": "The type of the migration. Use the\n{api:ContentMigrationsController#available_migrators Migrator} endpoint to\nsee all available migrators. Default allowed values:\ncanvas_cartridge_importer, common_cartridge_importer,\ncourse_copy_importer, zip_file_importer, qti_converter, moodle_converter",
               "type": "string",
               "format": null,
               "required": true
@@ -760,7 +760,7 @@
             {
               "paramType": "form",
               "name": "pre_attachment[name]",
-              "description": "Required if uploading a file. This is the first step in uploading a file to the content migration. See the {file:file_uploads.html File Upload Documentation} for details on the file upload workflow.",
+              "description": "Required if uploading a file. This is the first step in uploading a file\nto the content migration. See the {file:file_uploads.html File Upload\nDocumentation} for details on the file upload workflow.",
               "type": "string",
               "format": null,
               "required": false
@@ -768,7 +768,7 @@
             {
               "paramType": "form",
               "name": "pre_attachment[*]",
-              "description": "Other file upload properties, See {file:file_uploads.html File Upload Documentation}",
+              "description": "Other file upload properties, See {file:file_uploads.html File Upload\nDocumentation}",
               "type": "string",
               "format": null,
               "required": false
@@ -784,7 +784,7 @@
             {
               "paramType": "form",
               "name": "settings[source_course_id]",
-              "description": "The course to copy from for a course copy migration. (required if doing course copy)",
+              "description": "The course to copy from for a course copy migration. (required if doing\ncourse copy)",
               "type": "string",
               "format": null,
               "required": false
@@ -800,7 +800,7 @@
             {
               "paramType": "form",
               "name": "settings[overwrite_quizzes]",
-              "description": "Whether to overwrite quizzes with the same identifiers between content packages.",
+              "description": "Whether to overwrite quizzes with the same identifiers between content\npackages.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -808,7 +808,7 @@
             {
               "paramType": "form",
               "name": "settings[question_bank_id]",
-              "description": "The existing question bank ID to import questions into if not specified in the content package.",
+              "description": "The existing question bank ID to import questions into if not specified in\nthe content package.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -816,7 +816,7 @@
             {
               "paramType": "form",
               "name": "settings[question_bank_name]",
-              "description": "The question bank to import questions into if not specified in the content package, if both bank id and name are set, id will take precedence.",
+              "description": "The question bank to import questions into if not specified in the content\npackage, if both bank id and name are set, id will take precedence.",
               "type": "string",
               "format": null,
               "required": false
@@ -833,7 +833,7 @@
               "paramType": "form",
               "name": "date_shift_options[old_start_date]",
               "description": "The original start date of the source content/course",
-              "type": "date",
+              "type": "Date",
               "format": null,
               "required": false
             },
@@ -841,7 +841,7 @@
               "paramType": "form",
               "name": "date_shift_options[old_end_date]",
               "description": "The original end date of the source content/course",
-              "type": "date",
+              "type": "Date",
               "format": null,
               "required": false
             },
@@ -849,7 +849,7 @@
               "paramType": "form",
               "name": "date_shift_options[new_start_date]",
               "description": "The new start date for the content/course",
-              "type": "date",
+              "type": "Date",
               "format": null,
               "required": false
             },
@@ -857,14 +857,14 @@
               "paramType": "form",
               "name": "date_shift_options[new_end_date]",
               "description": "The new end date for the source content/course",
-              "type": "date",
+              "type": "Date",
               "format": null,
               "required": false
             },
             {
               "paramType": "form",
               "name": "date_shift_options[day_substitutions][X]",
-              "description": "Move anything scheduled for day 'X' to the specified day. (0-Sunday, 1-Monday, 2-Tuesday, 3-Wednesday, 4-Thursday, 5-Friday, 6-Saturday)",
+              "description": "Move anything scheduled for day 'X' to the specified day. (0-Sunday,\n1-Monday, 2-Tuesday, 3-Wednesday, 4-Thursday, 5-Friday, 6-Saturday)",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -872,7 +872,7 @@
             {
               "paramType": "form",
               "name": "date_shift_options[remove_dates]",
-              "description": "Whether to remove dates in the copied course. Cannot be used in conjunction with *shift_dates*.",
+              "description": "Whether to remove dates in the copied course. Cannot be used\nin conjunction with *shift_dates*.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -903,7 +903,7 @@
             {
               "paramType": "form",
               "name": "migration_type",
-              "description": "The type of the migration. Use the {api:ContentMigrationsController#available_migrators Migrator} endpoint to see all available migrators. Default allowed values: canvas_cartridge_importer, common_cartridge_importer, course_copy_importer, zip_file_importer, qti_converter, moodle_converter",
+              "description": "The type of the migration. Use the\n{api:ContentMigrationsController#available_migrators Migrator} endpoint to\nsee all available migrators. Default allowed values:\ncanvas_cartridge_importer, common_cartridge_importer,\ncourse_copy_importer, zip_file_importer, qti_converter, moodle_converter",
               "type": "string",
               "format": null,
               "required": true
@@ -911,7 +911,7 @@
             {
               "paramType": "form",
               "name": "pre_attachment[name]",
-              "description": "Required if uploading a file. This is the first step in uploading a file to the content migration. See the {file:file_uploads.html File Upload Documentation} for details on the file upload workflow.",
+              "description": "Required if uploading a file. This is the first step in uploading a file\nto the content migration. See the {file:file_uploads.html File Upload\nDocumentation} for details on the file upload workflow.",
               "type": "string",
               "format": null,
               "required": false
@@ -919,7 +919,7 @@
             {
               "paramType": "form",
               "name": "pre_attachment[*]",
-              "description": "Other file upload properties, See {file:file_uploads.html File Upload Documentation}",
+              "description": "Other file upload properties, See {file:file_uploads.html File Upload\nDocumentation}",
               "type": "string",
               "format": null,
               "required": false
@@ -935,7 +935,7 @@
             {
               "paramType": "form",
               "name": "settings[source_course_id]",
-              "description": "The course to copy from for a course copy migration. (required if doing course copy)",
+              "description": "The course to copy from for a course copy migration. (required if doing\ncourse copy)",
               "type": "string",
               "format": null,
               "required": false
@@ -951,7 +951,7 @@
             {
               "paramType": "form",
               "name": "settings[overwrite_quizzes]",
-              "description": "Whether to overwrite quizzes with the same identifiers between content packages.",
+              "description": "Whether to overwrite quizzes with the same identifiers between content\npackages.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -959,7 +959,7 @@
             {
               "paramType": "form",
               "name": "settings[question_bank_id]",
-              "description": "The existing question bank ID to import questions into if not specified in the content package.",
+              "description": "The existing question bank ID to import questions into if not specified in\nthe content package.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -967,7 +967,7 @@
             {
               "paramType": "form",
               "name": "settings[question_bank_name]",
-              "description": "The question bank to import questions into if not specified in the content package, if both bank id and name are set, id will take precedence.",
+              "description": "The question bank to import questions into if not specified in the content\npackage, if both bank id and name are set, id will take precedence.",
               "type": "string",
               "format": null,
               "required": false
@@ -984,7 +984,7 @@
               "paramType": "form",
               "name": "date_shift_options[old_start_date]",
               "description": "The original start date of the source content/course",
-              "type": "date",
+              "type": "Date",
               "format": null,
               "required": false
             },
@@ -992,7 +992,7 @@
               "paramType": "form",
               "name": "date_shift_options[old_end_date]",
               "description": "The original end date of the source content/course",
-              "type": "date",
+              "type": "Date",
               "format": null,
               "required": false
             },
@@ -1000,7 +1000,7 @@
               "paramType": "form",
               "name": "date_shift_options[new_start_date]",
               "description": "The new start date for the content/course",
-              "type": "date",
+              "type": "Date",
               "format": null,
               "required": false
             },
@@ -1008,14 +1008,14 @@
               "paramType": "form",
               "name": "date_shift_options[new_end_date]",
               "description": "The new end date for the source content/course",
-              "type": "date",
+              "type": "Date",
               "format": null,
               "required": false
             },
             {
               "paramType": "form",
               "name": "date_shift_options[day_substitutions][X]",
-              "description": "Move anything scheduled for day 'X' to the specified day. (0-Sunday, 1-Monday, 2-Tuesday, 3-Wednesday, 4-Thursday, 5-Friday, 6-Saturday)",
+              "description": "Move anything scheduled for day 'X' to the specified day. (0-Sunday,\n1-Monday, 2-Tuesday, 3-Wednesday, 4-Thursday, 5-Friday, 6-Saturday)",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -1023,7 +1023,7 @@
             {
               "paramType": "form",
               "name": "date_shift_options[remove_dates]",
-              "description": "Whether to remove dates in the copied course. Cannot be used in conjunction with *shift_dates*.",
+              "description": "Whether to remove dates in the copied course. Cannot be used\nin conjunction with *shift_dates*.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -1054,7 +1054,7 @@
             {
               "paramType": "form",
               "name": "migration_type",
-              "description": "The type of the migration. Use the {api:ContentMigrationsController#available_migrators Migrator} endpoint to see all available migrators. Default allowed values: canvas_cartridge_importer, common_cartridge_importer, course_copy_importer, zip_file_importer, qti_converter, moodle_converter",
+              "description": "The type of the migration. Use the\n{api:ContentMigrationsController#available_migrators Migrator} endpoint to\nsee all available migrators. Default allowed values:\ncanvas_cartridge_importer, common_cartridge_importer,\ncourse_copy_importer, zip_file_importer, qti_converter, moodle_converter",
               "type": "string",
               "format": null,
               "required": true
@@ -1062,7 +1062,7 @@
             {
               "paramType": "form",
               "name": "pre_attachment[name]",
-              "description": "Required if uploading a file. This is the first step in uploading a file to the content migration. See the {file:file_uploads.html File Upload Documentation} for details on the file upload workflow.",
+              "description": "Required if uploading a file. This is the first step in uploading a file\nto the content migration. See the {file:file_uploads.html File Upload\nDocumentation} for details on the file upload workflow.",
               "type": "string",
               "format": null,
               "required": false
@@ -1070,7 +1070,7 @@
             {
               "paramType": "form",
               "name": "pre_attachment[*]",
-              "description": "Other file upload properties, See {file:file_uploads.html File Upload Documentation}",
+              "description": "Other file upload properties, See {file:file_uploads.html File Upload\nDocumentation}",
               "type": "string",
               "format": null,
               "required": false
@@ -1086,7 +1086,7 @@
             {
               "paramType": "form",
               "name": "settings[source_course_id]",
-              "description": "The course to copy from for a course copy migration. (required if doing course copy)",
+              "description": "The course to copy from for a course copy migration. (required if doing\ncourse copy)",
               "type": "string",
               "format": null,
               "required": false
@@ -1102,7 +1102,7 @@
             {
               "paramType": "form",
               "name": "settings[overwrite_quizzes]",
-              "description": "Whether to overwrite quizzes with the same identifiers between content packages.",
+              "description": "Whether to overwrite quizzes with the same identifiers between content\npackages.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -1110,7 +1110,7 @@
             {
               "paramType": "form",
               "name": "settings[question_bank_id]",
-              "description": "The existing question bank ID to import questions into if not specified in the content package.",
+              "description": "The existing question bank ID to import questions into if not specified in\nthe content package.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -1118,7 +1118,7 @@
             {
               "paramType": "form",
               "name": "settings[question_bank_name]",
-              "description": "The question bank to import questions into if not specified in the content package, if both bank id and name are set, id will take precedence.",
+              "description": "The question bank to import questions into if not specified in the content\npackage, if both bank id and name are set, id will take precedence.",
               "type": "string",
               "format": null,
               "required": false
@@ -1135,7 +1135,7 @@
               "paramType": "form",
               "name": "date_shift_options[old_start_date]",
               "description": "The original start date of the source content/course",
-              "type": "date",
+              "type": "Date",
               "format": null,
               "required": false
             },
@@ -1143,7 +1143,7 @@
               "paramType": "form",
               "name": "date_shift_options[old_end_date]",
               "description": "The original end date of the source content/course",
-              "type": "date",
+              "type": "Date",
               "format": null,
               "required": false
             },
@@ -1151,7 +1151,7 @@
               "paramType": "form",
               "name": "date_shift_options[new_start_date]",
               "description": "The new start date for the content/course",
-              "type": "date",
+              "type": "Date",
               "format": null,
               "required": false
             },
@@ -1159,14 +1159,14 @@
               "paramType": "form",
               "name": "date_shift_options[new_end_date]",
               "description": "The new end date for the source content/course",
-              "type": "date",
+              "type": "Date",
               "format": null,
               "required": false
             },
             {
               "paramType": "form",
               "name": "date_shift_options[day_substitutions][X]",
-              "description": "Move anything scheduled for day 'X' to the specified day. (0-Sunday, 1-Monday, 2-Tuesday, 3-Wednesday, 4-Thursday, 5-Friday, 6-Saturday)",
+              "description": "Move anything scheduled for day 'X' to the specified day. (0-Sunday,\n1-Monday, 2-Tuesday, 3-Wednesday, 4-Thursday, 5-Friday, 6-Saturday)",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -1174,7 +1174,7 @@
             {
               "paramType": "form",
               "name": "date_shift_options[remove_dates]",
-              "description": "Whether to remove dates in the copied course. Cannot be used in conjunction with *shift_dates*.",
+              "description": "Whether to remove dates in the copied course. Cannot be used\nin conjunction with *shift_dates*.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -1205,7 +1205,7 @@
             {
               "paramType": "form",
               "name": "migration_type",
-              "description": "The type of the migration. Use the {api:ContentMigrationsController#available_migrators Migrator} endpoint to see all available migrators. Default allowed values: canvas_cartridge_importer, common_cartridge_importer, course_copy_importer, zip_file_importer, qti_converter, moodle_converter",
+              "description": "The type of the migration. Use the\n{api:ContentMigrationsController#available_migrators Migrator} endpoint to\nsee all available migrators. Default allowed values:\ncanvas_cartridge_importer, common_cartridge_importer,\ncourse_copy_importer, zip_file_importer, qti_converter, moodle_converter",
               "type": "string",
               "format": null,
               "required": true
@@ -1213,7 +1213,7 @@
             {
               "paramType": "form",
               "name": "pre_attachment[name]",
-              "description": "Required if uploading a file. This is the first step in uploading a file to the content migration. See the {file:file_uploads.html File Upload Documentation} for details on the file upload workflow.",
+              "description": "Required if uploading a file. This is the first step in uploading a file\nto the content migration. See the {file:file_uploads.html File Upload\nDocumentation} for details on the file upload workflow.",
               "type": "string",
               "format": null,
               "required": false
@@ -1221,7 +1221,7 @@
             {
               "paramType": "form",
               "name": "pre_attachment[*]",
-              "description": "Other file upload properties, See {file:file_uploads.html File Upload Documentation}",
+              "description": "Other file upload properties, See {file:file_uploads.html File Upload\nDocumentation}",
               "type": "string",
               "format": null,
               "required": false
@@ -1237,7 +1237,7 @@
             {
               "paramType": "form",
               "name": "settings[source_course_id]",
-              "description": "The course to copy from for a course copy migration. (required if doing course copy)",
+              "description": "The course to copy from for a course copy migration. (required if doing\ncourse copy)",
               "type": "string",
               "format": null,
               "required": false
@@ -1253,7 +1253,7 @@
             {
               "paramType": "form",
               "name": "settings[overwrite_quizzes]",
-              "description": "Whether to overwrite quizzes with the same identifiers between content packages.",
+              "description": "Whether to overwrite quizzes with the same identifiers between content\npackages.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -1261,7 +1261,7 @@
             {
               "paramType": "form",
               "name": "settings[question_bank_id]",
-              "description": "The existing question bank ID to import questions into if not specified in the content package.",
+              "description": "The existing question bank ID to import questions into if not specified in\nthe content package.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -1269,7 +1269,7 @@
             {
               "paramType": "form",
               "name": "settings[question_bank_name]",
-              "description": "The question bank to import questions into if not specified in the content package, if both bank id and name are set, id will take precedence.",
+              "description": "The question bank to import questions into if not specified in the content\npackage, if both bank id and name are set, id will take precedence.",
               "type": "string",
               "format": null,
               "required": false
@@ -1286,7 +1286,7 @@
               "paramType": "form",
               "name": "date_shift_options[old_start_date]",
               "description": "The original start date of the source content/course",
-              "type": "date",
+              "type": "Date",
               "format": null,
               "required": false
             },
@@ -1294,7 +1294,7 @@
               "paramType": "form",
               "name": "date_shift_options[old_end_date]",
               "description": "The original end date of the source content/course",
-              "type": "date",
+              "type": "Date",
               "format": null,
               "required": false
             },
@@ -1302,7 +1302,7 @@
               "paramType": "form",
               "name": "date_shift_options[new_start_date]",
               "description": "The new start date for the content/course",
-              "type": "date",
+              "type": "Date",
               "format": null,
               "required": false
             },
@@ -1310,14 +1310,14 @@
               "paramType": "form",
               "name": "date_shift_options[new_end_date]",
               "description": "The new end date for the source content/course",
-              "type": "date",
+              "type": "Date",
               "format": null,
               "required": false
             },
             {
               "paramType": "form",
               "name": "date_shift_options[day_substitutions][X]",
-              "description": "Move anything scheduled for day 'X' to the specified day. (0-Sunday, 1-Monday, 2-Tuesday, 3-Wednesday, 4-Thursday, 5-Friday, 6-Saturday)",
+              "description": "Move anything scheduled for day 'X' to the specified day. (0-Sunday,\n1-Monday, 2-Tuesday, 3-Wednesday, 4-Thursday, 5-Friday, 6-Saturday)",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -1325,7 +1325,7 @@
             {
               "paramType": "form",
               "name": "date_shift_options[remove_dates]",
-              "description": "Whether to remove dates in the copied course. Cannot be used in conjunction with *shift_dates*.",
+              "description": "Whether to remove dates in the copied course. Cannot be used\nin conjunction with *shift_dates*.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -1735,7 +1735,9 @@
         },
         "required_settings": {
           "description": "A list of fields this system requires",
-          "example": "[]",
+          "example": [
+            "source_course_id"
+          ],
           "type": "array",
           "items": {
             "type": "string"
