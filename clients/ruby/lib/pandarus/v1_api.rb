@@ -9381,7 +9381,7 @@ module Pandarus
     # List favorite courses
     def list_favorite_courses(opts={})
       query_param_keys = [
-        
+        :exclude_blueprint_courses
 
       ]
 
@@ -9410,6 +9410,38 @@ module Pandarus
     end
     
 
+    # List favorite groups
+    def list_favorite_groups(opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        {}
+      
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/self/favorites/groups",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, Group, path, query_params)
+      
+
+    end
+    
+
     # Add course to favorites
     def add_course_to_favorites(id,opts={})
       query_param_keys = [
@@ -9432,6 +9464,40 @@ module Pandarus
 
       # resource path
       path = path_replace("/v1/users/self/favorites/courses/{id}",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      Favorite.new(response)
+      
+
+    end
+    
+
+    # Add group to favorites
+    def add_group_to_favorites(id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/self/favorites/groups/{id}",
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
@@ -9478,6 +9544,40 @@ module Pandarus
     end
     
 
+    # Remove group from favorites
+    def remove_group_from_favorites(id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/self/favorites/groups/{id}",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      Favorite.new(response)
+      
+
+    end
+    
+
     # Reset course favorites
     def reset_course_favorites(opts={})
       query_param_keys = [
@@ -9499,6 +9599,39 @@ module Pandarus
 
       # resource path
       path = path_replace("/v1/users/self/favorites/courses",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Reset group favorites
+    def reset_group_favorites(opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        {}
+      
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/self/favorites/groups",
         )
       headers = nil
       form_params = select_params(options, form_param_keys)

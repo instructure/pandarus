@@ -9,19 +9,45 @@
   "apis": [
     {
       "path": "/v1/users/self/favorites/courses",
-      "description": "Retrieve the list of favorite courses for the current user. If the user has not chosen\nany favorites, then a selection of currently enrolled courses will be returned.\n\nSee the {api:CoursesController#index List courses API} for details on accepted include[] parameters.",
+      "description": "Retrieve the paginated list of favorite courses for the current user. If the user has not chosen\nany favorites, then a selection of currently enrolled courses will be returned.\n\nSee the {api:CoursesController#index List courses API} for details on accepted include[] parameters.",
       "operations": [
         {
           "method": "GET",
           "summary": "List favorite courses",
-          "notes": "Retrieve the list of favorite courses for the current user. If the user has not chosen\nany favorites, then a selection of currently enrolled courses will be returned.\n\nSee the {api:CoursesController#index List courses API} for details on accepted include[] parameters.",
+          "notes": "Retrieve the paginated list of favorite courses for the current user. If the user has not chosen\nany favorites, then a selection of currently enrolled courses will be returned.\n\nSee the {api:CoursesController#index List courses API} for details on accepted include[] parameters.",
           "nickname": "list_favorite_courses",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "exclude_blueprint_courses",
+              "description": "When set, only return courses that are not configured as blueprint courses.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Course"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/self/favorites/groups",
+      "description": "Retrieve the paginated list of favorite groups for the current user. If the user has not chosen\nany favorites, then a selection of groups that the user is a member of will be returned.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List favorite groups",
+          "notes": "Retrieve the paginated list of favorite groups for the current user. If the user has not chosen\nany favorites, then a selection of groups that the user is a member of will be returned.",
+          "nickname": "list_favorite_groups",
           "parameters": [
 
           ],
           "type": "array",
           "items": {
-            "$ref": "Course"
+            "$ref": "Group"
           }
         }
       ]
@@ -39,7 +65,30 @@
             {
               "paramType": "path",
               "name": "id",
-              "description": "The ID or SIS ID of the course to add. The current user must be registered in the course.",
+              "description": "The ID or SIS ID of the course to add.  The current user must be\nregistered in the course.",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "Favorite"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/self/favorites/groups/{id}",
+      "description": "Add a group to the current user's favorites.  If the group is already\nin the user's favorites, nothing happens.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Add group to favorites",
+          "notes": "Add a group to the current user's favorites.  If the group is already\nin the user's favorites, nothing happens.",
+          "nickname": "add_group_to_favorites",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "The ID or SIS ID of the group to add.  The current user must be\na member of the group.",
               "type": "string",
               "format": null,
               "required": true
@@ -73,6 +122,29 @@
       ]
     },
     {
+      "path": "/v1/users/self/favorites/groups/{id}",
+      "description": "Remove a group from the current user's favorites.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Remove group from favorites",
+          "notes": "Remove a group from the current user's favorites.",
+          "nickname": "remove_group_from_favorites",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "the ID or SIS ID of the group to remove",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "Favorite"
+        }
+      ]
+    },
+    {
       "path": "/v1/users/self/favorites/courses",
       "description": "Reset the current user's course favorites to the default\nautomatically generated list of enrolled courses",
       "operations": [
@@ -81,6 +153,22 @@
           "summary": "Reset course favorites",
           "notes": "Reset the current user's course favorites to the default\nautomatically generated list of enrolled courses",
           "nickname": "reset_course_favorites",
+          "parameters": [
+
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/self/favorites/groups",
+      "description": "Reset the current user's group favorites to the default\nautomatically generated list of enrolled group",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Reset group favorites",
+          "notes": "Reset the current user's group favorites to the default\nautomatically generated list of enrolled group",
+          "nickname": "reset_group_favorites",
           "parameters": [
 
           ],
