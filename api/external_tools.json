@@ -40,6 +40,14 @@
               "type": "boolean",
               "format": null,
               "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "include_parents",
+              "description": "If true, then include tools installed in all accounts above the current context",
+              "type": "boolean",
+              "format": null,
+              "required": false
             }
           ],
           "type": "void"
@@ -79,6 +87,61 @@
               "type": "boolean",
               "format": null,
               "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "include_parents",
+              "description": "If true, then include tools installed in all accounts above the current context",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/external_tools",
+      "description": "Returns the paginated list of external tools for the current context.\nSee the get request docs for a single tool for a list of properties on an external tool.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List external tools",
+          "notes": "Returns the paginated list of external tools for the current context.\nSee the get request docs for a single tool for a list of properties on an external tool.",
+          "nickname": "list_external_tools_groups",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "search_term",
+              "description": "The partial name of the tools to match and return.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "selectable",
+              "description": "If true, then only tools that are meant to be selectable are returned",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "include_parents",
+              "description": "If true, then include tools installed in all accounts above the current context",
+              "type": "boolean",
+              "format": null,
+              "required": false
             }
           ],
           "type": "void"
@@ -87,12 +150,12 @@
     },
     {
       "path": "/v1/courses/{course_id}/external_tools/sessionless_launch",
-      "description": "Returns a sessionless launch url for an external tool.\n\nEither the id or url must be provided.",
+      "description": "Returns a sessionless launch url for an external tool.\n\nNOTE: Either the id or url must be provided unless launch_type is assessment or module_item.",
       "operations": [
         {
           "method": "GET",
           "summary": "Get a sessionless launch url for an external tool.",
-          "notes": "Returns a sessionless launch url for an external tool.\n\nEither the id or url must be provided.",
+          "notes": "Returns a sessionless launch url for an external tool.\n\nNOTE: Either the id or url must be provided unless launch_type is assessment or module_item.",
           "nickname": "get_sessionless_launch_url_for_external_tool_courses",
           "parameters": [
             {
@@ -122,7 +185,15 @@
             {
               "paramType": "query",
               "name": "assignment_id",
-              "description": "The assignment id for an assignment launch.",
+              "description": "The assignment id for an assignment launch. Required if launch_type is set to \"assessment\".",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "module_item_id",
+              "description": "The assignment id for a module item launch. Required if launch_type is set to \"module_item\".",
               "type": "string",
               "format": null,
               "required": false
@@ -130,10 +201,14 @@
             {
               "paramType": "query",
               "name": "launch_type",
-              "description": "The type of launch to perform on the external tool.",
+              "description": "The type of launch to perform on the external tool. Placement names (eg. \"course_navigation\")\ncan also be specified to use the custom launch url for that placement; if done, the tool id\nmust be provided.",
               "type": "string",
               "format": null,
-              "required": false
+              "required": false,
+              "enum": [
+                "assessment",
+                "module_item"
+              ]
             }
           ],
           "type": "void"
@@ -142,12 +217,12 @@
     },
     {
       "path": "/v1/accounts/{account_id}/external_tools/sessionless_launch",
-      "description": "Returns a sessionless launch url for an external tool.\n\nEither the id or url must be provided.",
+      "description": "Returns a sessionless launch url for an external tool.\n\nNOTE: Either the id or url must be provided unless launch_type is assessment or module_item.",
       "operations": [
         {
           "method": "GET",
           "summary": "Get a sessionless launch url for an external tool.",
-          "notes": "Returns a sessionless launch url for an external tool.\n\nEither the id or url must be provided.",
+          "notes": "Returns a sessionless launch url for an external tool.\n\nNOTE: Either the id or url must be provided unless launch_type is assessment or module_item.",
           "nickname": "get_sessionless_launch_url_for_external_tool_accounts",
           "parameters": [
             {
@@ -177,7 +252,15 @@
             {
               "paramType": "query",
               "name": "assignment_id",
-              "description": "The assignment id for an assignment launch.",
+              "description": "The assignment id for an assignment launch. Required if launch_type is set to \"assessment\".",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "module_item_id",
+              "description": "The assignment id for a module item launch. Required if launch_type is set to \"module_item\".",
               "type": "string",
               "format": null,
               "required": false
@@ -185,10 +268,14 @@
             {
               "paramType": "query",
               "name": "launch_type",
-              "description": "The type of launch to perform on the external tool.",
+              "description": "The type of launch to perform on the external tool. Placement names (eg. \"course_navigation\")\ncan also be specified to use the custom launch url for that placement; if done, the tool id\nmust be provided.",
               "type": "string",
               "format": null,
-              "required": false
+              "required": false,
+              "enum": [
+                "assessment",
+                "module_item"
+              ]
             }
           ],
           "type": "void"
@@ -323,7 +410,7 @@
             {
               "paramType": "form",
               "name": "url",
-              "description": "The url to match links against. Either \"url\" or \"domain\" should be set, not both.",
+              "description": "The url to match links against. Either \"url\" or \"domain\" should be set,\nnot both.",
               "type": "string",
               "format": null,
               "required": false
@@ -331,7 +418,7 @@
             {
               "paramType": "form",
               "name": "domain",
-              "description": "The domain to match links against. Either \"url\" or \"domain\" should be set, not both.",
+              "description": "The domain to match links against. Either \"url\" or \"domain\" should be\nset, not both.",
               "type": "string",
               "format": null,
               "required": false
@@ -354,16 +441,8 @@
             },
             {
               "paramType": "form",
-              "name": "not_selectable",
-              "description": "Default: false, if set to true the tool won't show up in the external tool selection UI in modules and assignments",
-              "type": "boolean",
-              "format": null,
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "custom_fields",
-              "description": "Custom fields that will be sent to the tool consumer, specified as custom_fields[field_name]",
+              "name": "custom_fields[field_name]",
+              "description": "Custom fields that will be sent to the tool consumer; can be used\nmultiple times",
               "type": "string",
               "format": null,
               "required": false
@@ -394,6 +473,22 @@
             },
             {
               "paramType": "form",
+              "name": "account_navigation[selection_width]",
+              "description": "The width of the dialog the tool is launched in",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account_navigation[selection_height]",
+              "description": "The height of the dialog the tool is launched in",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "user_navigation[url]",
               "description": "The url of the external tool for user navigation",
               "type": "string",
@@ -418,8 +513,32 @@
             },
             {
               "paramType": "form",
-              "name": "course_navigation[url]",
-              "description": "The url of the external tool for course navigation",
+              "name": "course_home_sub_navigation[url]",
+              "description": "The url of the external tool for right-side course home navigation menu",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course_home_sub_navigation[enabled]",
+              "description": "Set this to enable this feature",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course_home_sub_navigation[text]",
+              "description": "The text that will show on the right-side course home navigation menu",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course_home_sub_navigation[icon_url]",
+              "description": "The url of the icon to show in the right-side course home navigation menu",
               "type": "string",
               "format": null,
               "required": false
@@ -443,7 +562,7 @@
             {
               "paramType": "form",
               "name": "course_navigation[visibility]",
-              "description": "Who will see the navigation tab. \"admins\" for course admins, \"members\" for students, null for everyone",
+              "description": "Who will see the navigation tab. \"admins\" for course admins, \"members\" for\nstudents, null for everyone",
               "type": "string",
               "format": null,
               "required": false,
@@ -454,8 +573,20 @@
             },
             {
               "paramType": "form",
+              "name": "course_navigation[windowTarget]",
+              "description": "Determines how the navigation tab will be opened.\n\"_blank\"\tLaunches the external tool in a new window or tab.\n\"_self\"\t(Default) Launches the external tool in an iframe inside of Canvas.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "_blank",
+                "_self"
+              ]
+            },
+            {
+              "paramType": "form",
               "name": "course_navigation[default]",
-              "description": "Whether the navigation option will show in the course by default or whether the teacher will have to explicitly enable it",
+              "description": "Whether the navigation option will show in the course by default or\nwhether the teacher will have to explicitly enable it",
               "type": "boolean",
               "format": null,
               "required": false
@@ -502,6 +633,134 @@
             },
             {
               "paramType": "form",
+              "name": "editor_button[message_type]",
+              "description": "Set this to ContentItemSelectionRequest to tell the tool to use\ncontent-item; otherwise, omit",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "homework_submission[url]",
+              "description": "The url of the external tool",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "homework_submission[enabled]",
+              "description": "Set this to enable this feature",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "homework_submission[text]",
+              "description": "The text that will show on the homework submission tab",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "homework_submission[message_type]",
+              "description": "Set this to ContentItemSelectionRequest to tell the tool to use\ncontent-item; otherwise, omit",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "link_selection[url]",
+              "description": "The url of the external tool",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "link_selection[enabled]",
+              "description": "Set this to enable this feature",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "link_selection[text]",
+              "description": "The text that will show for the link selection text",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "link_selection[message_type]",
+              "description": "Set this to ContentItemSelectionRequest to tell the tool to use\ncontent-item; otherwise, omit",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "migration_selection[url]",
+              "description": "The url of the external tool",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "migration_selection[enabled]",
+              "description": "Set this to enable this feature",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "migration_selection[message_type]",
+              "description": "Set this to ContentItemSelectionRequest to tell the tool to use\ncontent-item; otherwise, omit",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "tool_configuration[url]",
+              "description": "The url of the external tool",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "tool_configuration[enabled]",
+              "description": "Set this to enable this feature",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "tool_configuration[message_type]",
+              "description": "Set this to ContentItemSelectionRequest to tell the tool to use\ncontent-item; otherwise, omit",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "tool_configuration[prefer_sis_email]",
+              "description": "Set this to default the lis_person_contact_email_primary to prefer\nprovisioned sis_email; otherwise, omit",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "resource_selection[url]",
               "description": "The url of the external tool",
               "type": "string",
@@ -543,7 +802,7 @@
             {
               "paramType": "form",
               "name": "config_type",
-              "description": "Configuration can be passed in as CC xml instead of using query parameters. If this value is \"by_url\" or \"by_xml\" then an xml configuration will be expected in either the \"config_xml\" or \"config_url\" parameter. Note that the name parameter overrides the tool name provided in the xml",
+              "description": "Configuration can be passed in as CC xml instead of using query\nparameters. If this value is \"by_url\" or \"by_xml\" then an xml\nconfiguration will be expected in either the \"config_xml\" or \"config_url\"\nparameter. Note that the name parameter overrides the tool name provided\nin the xml",
               "type": "string",
               "format": null,
               "required": false
@@ -551,7 +810,7 @@
             {
               "paramType": "form",
               "name": "config_xml",
-              "description": "XML tool configuration, as specified in the CC xml specification. This is required if \"config_type\" is set to \"by_xml\"",
+              "description": "XML tool configuration, as specified in the CC xml specification. This is\nrequired if \"config_type\" is set to \"by_xml\"",
               "type": "string",
               "format": null,
               "required": false
@@ -559,8 +818,24 @@
             {
               "paramType": "form",
               "name": "config_url",
-              "description": "URL where the server can retrieve an XML tool configuration, as specified in the CC xml specification. This is required if \"config_type\" is set to \"by_url\"",
+              "description": "URL where the server can retrieve an XML tool configuration, as specified\nin the CC xml specification. This is required if \"config_type\" is set to\n\"by_url\"",
               "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "not_selectable",
+              "description": "Default: false, if set to true the tool won't show up in the external tool\nselection UI in modules and assignments",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "oauth_compliant",
+              "description": "Default: false, if set to true LTI query params will not be copied to the\npost body.",
+              "type": "boolean",
               "format": null,
               "required": false
             }
@@ -635,7 +910,7 @@
             {
               "paramType": "form",
               "name": "url",
-              "description": "The url to match links against. Either \"url\" or \"domain\" should be set, not both.",
+              "description": "The url to match links against. Either \"url\" or \"domain\" should be set,\nnot both.",
               "type": "string",
               "format": null,
               "required": false
@@ -643,7 +918,7 @@
             {
               "paramType": "form",
               "name": "domain",
-              "description": "The domain to match links against. Either \"url\" or \"domain\" should be set, not both.",
+              "description": "The domain to match links against. Either \"url\" or \"domain\" should be\nset, not both.",
               "type": "string",
               "format": null,
               "required": false
@@ -666,16 +941,8 @@
             },
             {
               "paramType": "form",
-              "name": "not_selectable",
-              "description": "Default: false, if set to true the tool won't show up in the external tool selection UI in modules and assignments",
-              "type": "boolean",
-              "format": null,
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "custom_fields",
-              "description": "Custom fields that will be sent to the tool consumer, specified as custom_fields[field_name]",
+              "name": "custom_fields[field_name]",
+              "description": "Custom fields that will be sent to the tool consumer; can be used\nmultiple times",
               "type": "string",
               "format": null,
               "required": false
@@ -706,6 +973,22 @@
             },
             {
               "paramType": "form",
+              "name": "account_navigation[selection_width]",
+              "description": "The width of the dialog the tool is launched in",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account_navigation[selection_height]",
+              "description": "The height of the dialog the tool is launched in",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "user_navigation[url]",
               "description": "The url of the external tool for user navigation",
               "type": "string",
@@ -730,8 +1013,32 @@
             },
             {
               "paramType": "form",
-              "name": "course_navigation[url]",
-              "description": "The url of the external tool for course navigation",
+              "name": "course_home_sub_navigation[url]",
+              "description": "The url of the external tool for right-side course home navigation menu",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course_home_sub_navigation[enabled]",
+              "description": "Set this to enable this feature",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course_home_sub_navigation[text]",
+              "description": "The text that will show on the right-side course home navigation menu",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course_home_sub_navigation[icon_url]",
+              "description": "The url of the icon to show in the right-side course home navigation menu",
               "type": "string",
               "format": null,
               "required": false
@@ -755,7 +1062,7 @@
             {
               "paramType": "form",
               "name": "course_navigation[visibility]",
-              "description": "Who will see the navigation tab. \"admins\" for course admins, \"members\" for students, null for everyone",
+              "description": "Who will see the navigation tab. \"admins\" for course admins, \"members\" for\nstudents, null for everyone",
               "type": "string",
               "format": null,
               "required": false,
@@ -766,8 +1073,20 @@
             },
             {
               "paramType": "form",
+              "name": "course_navigation[windowTarget]",
+              "description": "Determines how the navigation tab will be opened.\n\"_blank\"\tLaunches the external tool in a new window or tab.\n\"_self\"\t(Default) Launches the external tool in an iframe inside of Canvas.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "_blank",
+                "_self"
+              ]
+            },
+            {
+              "paramType": "form",
               "name": "course_navigation[default]",
-              "description": "Whether the navigation option will show in the course by default or whether the teacher will have to explicitly enable it",
+              "description": "Whether the navigation option will show in the course by default or\nwhether the teacher will have to explicitly enable it",
               "type": "boolean",
               "format": null,
               "required": false
@@ -814,6 +1133,134 @@
             },
             {
               "paramType": "form",
+              "name": "editor_button[message_type]",
+              "description": "Set this to ContentItemSelectionRequest to tell the tool to use\ncontent-item; otherwise, omit",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "homework_submission[url]",
+              "description": "The url of the external tool",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "homework_submission[enabled]",
+              "description": "Set this to enable this feature",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "homework_submission[text]",
+              "description": "The text that will show on the homework submission tab",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "homework_submission[message_type]",
+              "description": "Set this to ContentItemSelectionRequest to tell the tool to use\ncontent-item; otherwise, omit",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "link_selection[url]",
+              "description": "The url of the external tool",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "link_selection[enabled]",
+              "description": "Set this to enable this feature",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "link_selection[text]",
+              "description": "The text that will show for the link selection text",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "link_selection[message_type]",
+              "description": "Set this to ContentItemSelectionRequest to tell the tool to use\ncontent-item; otherwise, omit",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "migration_selection[url]",
+              "description": "The url of the external tool",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "migration_selection[enabled]",
+              "description": "Set this to enable this feature",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "migration_selection[message_type]",
+              "description": "Set this to ContentItemSelectionRequest to tell the tool to use\ncontent-item; otherwise, omit",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "tool_configuration[url]",
+              "description": "The url of the external tool",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "tool_configuration[enabled]",
+              "description": "Set this to enable this feature",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "tool_configuration[message_type]",
+              "description": "Set this to ContentItemSelectionRequest to tell the tool to use\ncontent-item; otherwise, omit",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "tool_configuration[prefer_sis_email]",
+              "description": "Set this to default the lis_person_contact_email_primary to prefer\nprovisioned sis_email; otherwise, omit",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "resource_selection[url]",
               "description": "The url of the external tool",
               "type": "string",
@@ -855,7 +1302,7 @@
             {
               "paramType": "form",
               "name": "config_type",
-              "description": "Configuration can be passed in as CC xml instead of using query parameters. If this value is \"by_url\" or \"by_xml\" then an xml configuration will be expected in either the \"config_xml\" or \"config_url\" parameter. Note that the name parameter overrides the tool name provided in the xml",
+              "description": "Configuration can be passed in as CC xml instead of using query\nparameters. If this value is \"by_url\" or \"by_xml\" then an xml\nconfiguration will be expected in either the \"config_xml\" or \"config_url\"\nparameter. Note that the name parameter overrides the tool name provided\nin the xml",
               "type": "string",
               "format": null,
               "required": false
@@ -863,7 +1310,7 @@
             {
               "paramType": "form",
               "name": "config_xml",
-              "description": "XML tool configuration, as specified in the CC xml specification. This is required if \"config_type\" is set to \"by_xml\"",
+              "description": "XML tool configuration, as specified in the CC xml specification. This is\nrequired if \"config_type\" is set to \"by_xml\"",
               "type": "string",
               "format": null,
               "required": false
@@ -871,8 +1318,24 @@
             {
               "paramType": "form",
               "name": "config_url",
-              "description": "URL where the server can retrieve an XML tool configuration, as specified in the CC xml specification. This is required if \"config_type\" is set to \"by_url\"",
+              "description": "URL where the server can retrieve an XML tool configuration, as specified\nin the CC xml specification. This is required if \"config_type\" is set to\n\"by_url\"",
               "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "not_selectable",
+              "description": "Default: false, if set to true the tool won't show up in the external tool\nselection UI in modules and assignments",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "oauth_compliant",
+              "description": "Default: false, if set to true LTI query params will not be copied to the\npost body.",
+              "type": "boolean",
               "format": null,
               "required": false
             }

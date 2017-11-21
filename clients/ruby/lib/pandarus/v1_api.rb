@@ -8776,7 +8776,8 @@ module Pandarus
     def list_external_tools_courses(course_id,opts={})
       query_param_keys = [
         :search_term,
-        :selectable
+        :selectable,
+        :include_parents
 
       ]
 
@@ -8811,7 +8812,8 @@ module Pandarus
     def list_external_tools_accounts(account_id,opts={})
       query_param_keys = [
         :search_term,
-        :selectable
+        :selectable,
+        :include_parents
 
       ]
 
@@ -8842,12 +8844,49 @@ module Pandarus
     end
     
 
+    # List external tools
+    def list_external_tools_groups(group_id,opts={})
+      query_param_keys = [
+        :search_term,
+        :selectable,
+        :include_parents
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "group_id is required" if group_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :group_id => group_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/groups/{group_id}/external_tools",
+        :group_id => group_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
     # Get a sessionless launch url for an external tool.
     def get_sessionless_launch_url_for_external_tool_courses(course_id,opts={})
       query_param_keys = [
         :id,
         :url,
         :assignment_id,
+        :module_item_id,
         :launch_type
 
       ]
@@ -8885,6 +8924,7 @@ module Pandarus
         :id,
         :url,
         :assignment_id,
+        :module_item_id,
         :launch_type
 
       ]
@@ -9007,24 +9047,45 @@ module Pandarus
         :domain,
         :icon_url,
         :text,
-        :not_selectable,
-        :custom_fields,
+        :custom_fields__field_name__,
         :account_navigation__url__,
         :account_navigation__enabled__,
         :account_navigation__text__,
+        :account_navigation__selection_width__,
+        :account_navigation__selection_height__,
         :user_navigation__url__,
         :user_navigation__enabled__,
         :user_navigation__text__,
-        :course_navigation__url__,
+        :course_home_sub_navigation__url__,
+        :course_home_sub_navigation__enabled__,
+        :course_home_sub_navigation__text__,
+        :course_home_sub_navigation__icon_url__,
         :course_navigation__enabled__,
         :course_navigation__text__,
         :course_navigation__visibility__,
+        :course_navigation__window_target__,
         :course_navigation__default__,
         :editor_button__url__,
         :editor_button__enabled__,
         :editor_button__icon_url__,
         :editor_button__selection_width__,
         :editor_button__selection_height__,
+        :editor_button__message_type__,
+        :homework_submission__url__,
+        :homework_submission__enabled__,
+        :homework_submission__text__,
+        :homework_submission__message_type__,
+        :link_selection__url__,
+        :link_selection__enabled__,
+        :link_selection__text__,
+        :link_selection__message_type__,
+        :migration_selection__url__,
+        :migration_selection__enabled__,
+        :migration_selection__message_type__,
+        :tool_configuration__url__,
+        :tool_configuration__enabled__,
+        :tool_configuration__message_type__,
+        :tool_configuration__prefer_sis_email__,
         :resource_selection__url__,
         :resource_selection__enabled__,
         :resource_selection__icon_url__,
@@ -9033,6 +9094,8 @@ module Pandarus
         :config_type,
         :config_xml,
         :config_url,
+        :not_selectable,
+        :oauth_compliant,
         
 
       ]
@@ -9084,24 +9147,45 @@ module Pandarus
         :domain,
         :icon_url,
         :text,
-        :not_selectable,
-        :custom_fields,
+        :custom_fields__field_name__,
         :account_navigation__url__,
         :account_navigation__enabled__,
         :account_navigation__text__,
+        :account_navigation__selection_width__,
+        :account_navigation__selection_height__,
         :user_navigation__url__,
         :user_navigation__enabled__,
         :user_navigation__text__,
-        :course_navigation__url__,
+        :course_home_sub_navigation__url__,
+        :course_home_sub_navigation__enabled__,
+        :course_home_sub_navigation__text__,
+        :course_home_sub_navigation__icon_url__,
         :course_navigation__enabled__,
         :course_navigation__text__,
         :course_navigation__visibility__,
+        :course_navigation__window_target__,
         :course_navigation__default__,
         :editor_button__url__,
         :editor_button__enabled__,
         :editor_button__icon_url__,
         :editor_button__selection_width__,
         :editor_button__selection_height__,
+        :editor_button__message_type__,
+        :homework_submission__url__,
+        :homework_submission__enabled__,
+        :homework_submission__text__,
+        :homework_submission__message_type__,
+        :link_selection__url__,
+        :link_selection__enabled__,
+        :link_selection__text__,
+        :link_selection__message_type__,
+        :migration_selection__url__,
+        :migration_selection__enabled__,
+        :migration_selection__message_type__,
+        :tool_configuration__url__,
+        :tool_configuration__enabled__,
+        :tool_configuration__message_type__,
+        :tool_configuration__prefer_sis_email__,
         :resource_selection__url__,
         :resource_selection__enabled__,
         :resource_selection__icon_url__,
@@ -9110,6 +9194,8 @@ module Pandarus
         :config_type,
         :config_xml,
         :config_url,
+        :not_selectable,
+        :oauth_compliant,
         
 
       ]
