@@ -1416,8 +1416,10 @@ module Pandarus
     def list_assignment_groups(course_id,opts={})
       query_param_keys = [
         :include,
+        :exclude_assignment_submission_types,
         :override_assignment_dates,
-        :grading_period_id
+        :grading_period_id,
+        :scope_assignments_to_student
 
       ]
 
@@ -1497,6 +1499,8 @@ module Pandarus
         :name,
         :position,
         :group_weight,
+        :sis_source_id,
+        :integration_data,
         :rules,
         
 
@@ -1564,7 +1568,7 @@ module Pandarus
     # Destroy an Assignment Group
     def destroy_assignment_group(course_id,assignment_group_id,opts={})
       query_param_keys = [
-        :move_assignment_to
+        :move_assignments_to
 
       ]
 

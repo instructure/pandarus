@@ -9,12 +9,12 @@
   "apis": [
     {
       "path": "/v1/courses/{course_id}/assignment_groups",
-      "description": "Returns the list of assignment groups for the current context. The returned\ngroups are sorted by their position field.",
+      "description": "Returns the paginated list of assignment groups for the current context.\nThe returned groups are sorted by their position field.",
       "operations": [
         {
           "method": "GET",
           "summary": "List assignment groups",
-          "notes": "Returns the list of assignment groups for the current context. The returned\ngroups are sorted by their position field.",
+          "notes": "Returns the paginated list of assignment groups for the current context.\nThe returned groups are sorted by their position field.",
           "nickname": "list_assignment_groups",
           "parameters": [
             {
@@ -28,7 +28,7 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "Associations to include with the group. \"discussion_topic\", \"all_dates\" \"assignment_visibility\" are only valid are only valid if \"assignments\" is also included. The \"assignment_visibility\" option additionally requires that the Differentiated Assignments course feature be turned on.",
+              "description": "Associations to include with the group. \"discussion_topic\", \"all_dates\"\n\"assignment_visibility\" & \"submission\" are only valid if \"assignments\" is also included.\nThe \"assignment_visibility\" option additionally requires that the Differentiated Assignments course feature be turned on.",
               "type": "array",
               "format": null,
               "required": false,
@@ -36,7 +36,26 @@
                 "assignments",
                 "discussion_topic",
                 "all_dates",
-                "assignment_visibility"
+                "assignment_visibility",
+                "overrides",
+                "submission"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "exclude_assignment_submission_types",
+              "description": "If \"assignments\" are included, those with the specified submission types\nwill be excluded from the assignment groups.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "enum": [
+                "online_quiz",
+                "discussion_topic",
+                "wiki_page",
+                "external_tool"
               ],
               "items": {
                 "type": "string"
@@ -53,9 +72,17 @@
             {
               "paramType": "query",
               "name": "grading_period_id",
-              "description": "The id of the grading period in which assignment groups are being requested (Requires the Multiple Grading Periods account feature turned on)",
+              "description": "The id of the grading period in which assignment groups are being requested\n(Requires grading periods to exist.)",
               "type": "integer",
               "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "scope_assignments_to_student",
+              "description": "If true, all assignments returned will apply to the current user in the\nspecified grading period. If assignments apply to other students in the\nspecified grading period, but not the current user, they will not be\nreturned. (Requires the grading_period_id argument and grading periods to\nexist. In addition, the current user must be a student.)",
+              "type": "boolean",
+              "format": null,
               "required": false
             }
           ],
@@ -95,14 +122,15 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "Associations to include with the group. \"discussion_topic\" and \"assignment_visibility\" are only valid if \"assignments\" is also included. The \"assignment_visibility\" option additionally requires that the Differentiated Assignments course feature be turned on.",
+              "description": "Associations to include with the group. \"discussion_topic\" and \"assignment_visibility\" and \"submission\"\nare only valid if \"assignments\" is also included. The \"assignment_visibility\" option additionally\nrequires that the Differentiated Assignments course feature be turned on.",
               "type": "array",
               "format": null,
               "required": false,
               "enum": [
                 "assignments",
                 "discussion_topic",
-                "assignment_visibility"
+                "assignment_visibility",
+                "submission"
               ],
               "items": {
                 "type": "string"
@@ -119,7 +147,7 @@
             {
               "paramType": "query",
               "name": "grading_period_id",
-              "description": "The id of the grading period in which assignment groups are being requested (Requires the Multiple Grading Periods account feature turned on)",
+              "description": "The id of the grading period in which assignment groups are being requested\n(Requires grading periods to exist on the account)",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -167,14 +195,30 @@
               "paramType": "form",
               "name": "group_weight",
               "description": "The percent of the total grade that this assignment group represents",
-              "type": "float",
+              "type": "number",
+              "format": "float",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "sis_source_id",
+              "description": "The sis source id of the Assignment Group",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "integration_data",
+              "description": "The integration data of the Assignment Group",
+              "type": "Object",
               "format": null,
               "required": false
             },
             {
               "paramType": "form",
               "name": "rules",
-              "description": "The grading rules that are applied within this assignment group See the Assignment Group object definition for format",
+              "description": "The grading rules that are applied within this assignment group\nSee the Assignment Group object definition for format",
               "type": "string",
               "format": null,
               "required": false
@@ -243,10 +287,10 @@
             },
             {
               "paramType": "query",
-              "name": "move_assignment_to",
-              "description": "The ID of an active Assignment Group to which the assignments that are currently assigned to the destroyed Assignment Group will be assigned. NOTE: If this argument is not provided, any assignments in this Assignment Group will be deleted.",
-              "type": "string",
-              "format": null,
+              "name": "move_assignments_to",
+              "description": "The ID of an active Assignment Group to which the assignments that are\ncurrently assigned to the destroyed Assignment Group will be assigned.\nNOTE: If this argument is not provided, any assignments in this Assignment\nGroup will be deleted.",
+              "type": "integer",
+              "format": "int64",
               "required": false
             }
           ],
@@ -275,7 +319,11 @@
         },
         "never_drop": {
           "description": "Assignment IDs that should never be dropped.",
-          "example": "[33, 17, 24]",
+          "example": [
+            33,
+            17,
+            24
+          ],
           "type": "array",
           "items": {
             "type": "integer"
@@ -310,9 +358,23 @@
           "example": 20,
           "type": "integer"
         },
+        "sis_source_id": {
+          "description": "the sis source id of the Assignment Group",
+          "example": "1234",
+          "type": "string"
+        },
+        "integration_data": {
+          "description": "the integration data of the Assignment Group",
+          "example": {
+            "5678": "0954"
+          },
+          "type": "object"
+        },
         "assignments": {
           "description": "the assignments in this Assignment Group (see the Assignment API for a detailed list of fields)",
-          "example": "[]",
+          "example": [
+
+          ],
           "type": "array",
           "items": {
             "type": "integer"

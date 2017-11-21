@@ -9,6 +9,8 @@ module Pandarus
     attribute :name, resolve_type("String")
     attribute :position, resolve_type("Integer")
     attribute :group_weight, resolve_type("Integer")
+    attribute :sis_source_id, resolve_type("String")
+    attribute :integration_data, resolve_type("Object")
     attribute :assignments, resolve_type("Integer", collection: true)
     attribute :rules, resolve_type("GradingRules")
     
