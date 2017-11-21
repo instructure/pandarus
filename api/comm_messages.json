@@ -9,12 +9,12 @@
   "apis": [
     {
       "path": "/v1/comm_messages",
-      "description": "Retrieve messages sent to a user.",
+      "description": "Retrieve a paginated list of messages sent to a user.",
       "operations": [
         {
           "method": "GET",
           "summary": "List of CommMessages for a user",
-          "notes": "Retrieve messages sent to a user.",
+          "notes": "Retrieve a paginated list of messages sent to a user.",
           "nickname": "list_of_commmessages_for_user",
           "parameters": [
             {
@@ -29,7 +29,7 @@
               "paramType": "query",
               "name": "start_time",
               "description": "The beginning of the time range you want to retrieve message from.",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -37,7 +37,7 @@
               "paramType": "query",
               "name": "end_time",
               "description": "The end of the time range you want to retrieve messages for.",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             }
@@ -93,6 +93,11 @@
         "from": {
           "description": "The address that was put in the 'from' field of the message",
           "example": "notifications@example.com",
+          "type": "string"
+        },
+        "from_name": {
+          "description": "The display name for the from address",
+          "example": "Instructure Canvas",
           "type": "string"
         },
         "to": {
