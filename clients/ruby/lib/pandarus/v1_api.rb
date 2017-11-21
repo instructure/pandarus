@@ -2944,6 +2944,465 @@ module Pandarus
     end
     
 
+    # Get blueprint information
+    def get_blueprint_information(course_id,template_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "template_id is required" if template_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :template_id => template_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/blueprint_templates/{template_id}",
+        :course_id => course_id,
+        :template_id => template_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      BlueprintTemplate.new(response)
+      
+
+    end
+    
+
+    # Get associated course information
+    def get_associated_course_information(course_id,template_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "template_id is required" if template_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :template_id => template_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/blueprint_templates/{template_id}/associated_courses",
+        :course_id => course_id,
+        :template_id => template_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, Course, path, query_params)
+      
+
+    end
+    
+
+    # Update associated courses
+    def update_associated_courses(course_id,template_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :course_ids_to_add,
+        :course_ids_to_remove,
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "template_id is required" if template_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :template_id => template_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/blueprint_templates/{template_id}/update_associations",
+        :course_id => course_id,
+        :template_id => template_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Begin a migration to push to associated courses
+    def begin_migration_to_push_to_associated_courses(course_id,template_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :comment,
+        :send_notification,
+        :copy_settings,
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "template_id is required" if template_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :template_id => template_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/blueprint_templates/{template_id}/migrations",
+        :course_id => course_id,
+        :template_id => template_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      BlueprintMigration.new(response)
+      
+
+    end
+    
+
+    # Set or remove restrictions on a blueprint course object
+    def set_or_remove_restrictions_on_blueprint_course_object(course_id,template_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :content_type,
+        :content_id,
+        :restricted,
+        :restrictions,
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "template_id is required" if template_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :template_id => template_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/blueprint_templates/{template_id}/restrict_item",
+        :course_id => course_id,
+        :template_id => template_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Get unsynced changes
+    def get_unsynced_changes(course_id,template_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "template_id is required" if template_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :template_id => template_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/blueprint_templates/{template_id}/unsynced_changes",
+        :course_id => course_id,
+        :template_id => template_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, ChangeRecord, path, query_params)
+      
+
+    end
+    
+
+    # List blueprint migrations
+    def list_blueprint_migrations(course_id,template_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "template_id is required" if template_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :template_id => template_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/blueprint_templates/{template_id}/migrations",
+        :course_id => course_id,
+        :template_id => template_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, BlueprintMigration, path, query_params)
+      
+
+    end
+    
+
+    # Show a blueprint migration
+    def show_blueprint_migration(course_id,template_id,id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "template_id is required" if template_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :template_id => template_id,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/blueprint_templates/{template_id}/migrations/{id}",
+        :course_id => course_id,
+        :template_id => template_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      BlueprintMigration.new(response)
+      
+
+    end
+    
+
+    # Get migration details
+    def get_migration_details(course_id,template_id,id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "template_id is required" if template_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :template_id => template_id,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/blueprint_templates/{template_id}/migrations/{id}/details",
+        :course_id => course_id,
+        :template_id => template_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, ChangeRecord, path, query_params)
+      
+
+    end
+    
+
+    # List blueprint imports
+    def list_blueprint_imports(course_id,subscription_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "subscription_id is required" if subscription_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :subscription_id => subscription_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/blueprint_subscriptions/{subscription_id}/migrations",
+        :course_id => course_id,
+        :subscription_id => subscription_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, BlueprintMigration, path, query_params)
+      
+
+    end
+    
+
+    # Show a blueprint import
+    def show_blueprint_import(course_id,subscription_id,id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "subscription_id is required" if subscription_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :subscription_id => subscription_id,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/blueprint_subscriptions/{subscription_id}/migrations/{id}",
+        :course_id => course_id,
+        :subscription_id => subscription_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      BlueprintMigration.new(response)
+      
+
+    end
+    
+
+    # Get import details
+    def get_import_details(course_id,subscription_id,id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "subscription_id is required" if subscription_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :subscription_id => subscription_id,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/blueprint_subscriptions/{subscription_id}/migrations/{id}/details",
+        :course_id => course_id,
+        :subscription_id => subscription_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, ChangeRecord, path, query_params)
+      
+
+    end
+    
+
     # List calendar events
     def list_calendar_events(opts={})
       query_param_keys = [

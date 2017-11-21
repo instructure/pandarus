@@ -1,0 +1,576 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://localhost:3000/api",
+  "resourcePath": "/blueprint_templates",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/blueprint_templates/{template_id}",
+      "description": "Using 'default' as the template_id should suffice for the current implmentation (as there should be only one template per course).\nHowever, using specific template ids may become necessary in the future",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get blueprint information",
+          "notes": "Using 'default' as the template_id should suffice for the current implmentation (as there should be only one template per course).\nHowever, using specific template ids may become necessary in the future",
+          "nickname": "get_blueprint_information",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "template_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "BlueprintTemplate"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/blueprint_templates/{template_id}/associated_courses",
+      "description": "Returns a list of courses that are configured to receive updates from this blueprint",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get associated course information",
+          "notes": "Returns a list of courses that are configured to receive updates from this blueprint",
+          "nickname": "get_associated_course_information",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "template_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Course"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/blueprint_templates/{template_id}/update_associations",
+      "description": "Send a list of course ids to add or remove new associations for the template.\nCannot add courses that do not belong to the blueprint course's account. Also cannot add\nother blueprint courses or courses that already have an association with another blueprint course.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update associated courses",
+          "notes": "Send a list of course ids to add or remove new associations for the template.\nCannot add courses that do not belong to the blueprint course's account. Also cannot add\nother blueprint courses or courses that already have an association with another blueprint course.",
+          "nickname": "update_associated_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "template_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "course_ids_to_add",
+              "description": "Courses to add as associated courses",
+              "type": "Array",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course_ids_to_remove",
+              "description": "Courses to remove as associated courses",
+              "type": "Array",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/blueprint_templates/{template_id}/migrations",
+      "description": "Begins a migration to push recently updated content to all associated courses.\nOnly one migration can be running at a time.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Begin a migration to push to associated courses",
+          "notes": "Begins a migration to push recently updated content to all associated courses.\nOnly one migration can be running at a time.",
+          "nickname": "begin_migration_to_push_to_associated_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "template_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "comment",
+              "description": "An optional comment to be included in the sync history.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "BlueprintMigration"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/blueprint_templates/{template_id}/migrations",
+      "description": "Shows migrations for the template, starting with the most recent",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List blueprint migrations",
+          "notes": "Shows migrations for the template, starting with the most recent",
+          "nickname": "list_blueprint_migrations",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "template_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "BlueprintMigration"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/blueprint_templates/{template_id}/migrations/{id}",
+      "description": "Shows the status of a migration",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Show a blueprint migration",
+          "notes": "Shows the status of a migration",
+          "nickname": "show_blueprint_migration",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "template_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "BlueprintMigration"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/blueprint_templates/{template_id}/restrict_item",
+      "description": "If a blueprint course object is restricted, editing will be limited for copies in associated courses.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Set or remove restrictions on a blueprint course object",
+          "notes": "If a blueprint course object is restricted, editing will be limited for copies in associated courses.",
+          "nickname": "set_or_remove_restrictions_on_blueprint_course_object",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "template_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "content_type",
+              "description": "The type of the object.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "assignment",
+                "attachment",
+                "discussion_topic",
+                "external_tool",
+                "quiz",
+                "wiki_page"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "content_id",
+              "description": "The ID of the object.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "restricted",
+              "description": "Whether to apply restrictions.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "restrictions",
+              "description": "(Optional) If the object is restricted, this specifies a set of restrictions. If not specified,\nthe course-level restrictions will be used. See {api:CoursesController#update Course API update documentation}",
+              "type": "BlueprintRestriction",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/blueprint_templates/{template_id}/migrations/{id}/details",
+      "description": "Show the changes that were propagated in a blueprint migration. This endpoint can be called on a\nblueprint course or an associated course; when called on an associated course, the exceptions\nfield will only include records for that course (and not other courses associated with the blueprint).",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get migration details",
+          "notes": "Show the changes that were propagated in a blueprint migration. This endpoint can be called on a\nblueprint course or an associated course; when called on an associated course, the exceptions\nfield will only include records for that course (and not other courses associated with the blueprint).",
+          "nickname": "get_migration_details",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "template_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "ChangeRecord"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/blueprint_templates/{template_id}/unsynced_changes",
+      "description": "Retrieve a list of learning objects that have changed since the last blueprint sync operation.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get unsynced changes",
+          "notes": "Retrieve a list of learning objects that have changed since the last blueprint sync operation.",
+          "nickname": "get_unsynced_changes",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "template_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "ChangeRecord"
+          }
+        }
+      ]
+    }
+  ],
+  "models": {
+    "BlueprintTemplate": {
+      "id": "BlueprintTemplate",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "The ID of the template.",
+          "example": 1,
+          "type": "integer",
+          "format": "int64"
+        },
+        "course_id": {
+          "description": "The ID of the Course the template belongs to.",
+          "example": 2,
+          "type": "integer",
+          "format": "int64"
+        },
+        "last_export_completed_at": {
+          "description": "Time when the last export was completed",
+          "example": "2013-08-28T23:59:00-06:00",
+          "type": "datetime"
+        }
+      }
+    },
+    "BlueprintMigration": {
+      "id": "BlueprintMigration",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "The ID of the migration.",
+          "example": 1,
+          "type": "integer",
+          "format": "int64"
+        },
+        "template_id": {
+          "description": "The ID of the template the migration belongs to.",
+          "example": 2,
+          "type": "integer",
+          "format": "int64"
+        },
+        "user_id": {
+          "description": "The ID of the user who queued the migration.",
+          "example": 3,
+          "type": "integer",
+          "format": "int64"
+        },
+        "workflow_state": {
+          "description": "Current state of the content migration: queued, exporting, imports_queued, completed, exports_failed, imports_failed",
+          "example": "running",
+          "type": "string"
+        },
+        "created_at": {
+          "description": "Time when the migration was queued",
+          "example": "2013-08-28T23:59:00-06:00",
+          "type": "datetime"
+        },
+        "exports_started_at": {
+          "description": "Time when the exports begun",
+          "example": "2013-08-28T23:59:00-06:00",
+          "type": "datetime"
+        },
+        "imports_queued_at": {
+          "description": "Time when the exports were completed and imports were queued",
+          "example": "2013-08-28T23:59:00-06:00",
+          "type": "datetime"
+        },
+        "imports_completed_at": {
+          "description": "Time when the imports were completed",
+          "example": "2013-08-28T23:59:00-06:00",
+          "type": "datetime"
+        },
+        "comment": {
+          "description": "User-specified comment describing changes made in this operation",
+          "example": "Fixed spelling in question 3 of midterm exam",
+          "type": "string"
+        }
+      }
+    },
+    "BlueprintRestriction": {
+      "id": "BlueprintRestriction",
+      "description": "A set of restrictions on editing for copied objects in associated courses",
+      "required": [
+
+      ],
+      "properties": {
+        "content": {
+          "description": "Restriction on main content (e.g. title, description).",
+          "example": true,
+          "type": "boolean"
+        },
+        "points": {
+          "description": "Restriction on points possible for assignments and graded learning objects",
+          "example": true,
+          "type": "boolean"
+        },
+        "due_dates": {
+          "description": "Restriction on due dates for assignments and graded learning objects",
+          "example": false,
+          "type": "boolean"
+        },
+        "availability_dates": {
+          "description": "Restriction on availability dates for an object",
+          "example": true,
+          "type": "boolean"
+        }
+      }
+    },
+    "ChangeRecord": {
+      "id": "ChangeRecord",
+      "description": "Describes a learning object change propagated to associated courses from a blueprint course",
+      "required": [
+
+      ],
+      "properties": {
+        "asset_id": {
+          "description": "The ID of the learning object that was changed in the blueprint course.",
+          "example": 2,
+          "type": "integer",
+          "format": "int64"
+        },
+        "asset_type": {
+          "description": "The type of the learning object that was changed in the blueprint course.  One of 'assignment', 'attachment', 'discussion_topic', 'external_tool', 'quiz', or 'wiki_page'.",
+          "example": "assignment",
+          "type": "string"
+        },
+        "asset_name": {
+          "description": "The name of the learning object that was changed in the blueprint course.",
+          "example": "Some Assignment",
+          "type": "string"
+        },
+        "change_type": {
+          "description": "The type of change; one of 'created', 'updated', 'deleted'",
+          "example": "created",
+          "type": "string"
+        },
+        "html_url": {
+          "description": "The URL of the changed object",
+          "example": "https://canvas.example.com/courses/101/assignments/2",
+          "type": "string"
+        },
+        "locked": {
+          "description": "Whether the object is locked in the blueprint",
+          "example": false,
+          "type": "boolean"
+        },
+        "exceptions": {
+          "description": "A list of ExceptionRecords for linked courses that did not receive this update.",
+          "example": [
+            {
+              "course_id": 101,
+              "conflicting_changes": [
+                "points"
+              ]
+            }
+          ],
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "ExceptionRecord": {
+      "id": "ExceptionRecord",
+      "description": "Lists associated courses that did not receive a change propagated from a blueprint",
+      "required": [
+
+      ],
+      "properties": {
+        "course_id": {
+          "description": "The ID of the associated course",
+          "example": 101,
+          "type": "integer",
+          "format": "int64"
+        },
+        "conflicting_changes": {
+          "description": "A list of change classes in the associated course's copy of the item that prevented a blueprint change from being applied. One or more of ['content', 'points', 'due_dates', 'availability_dates'].",
+          "example": [
+            "points"
+          ],
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}

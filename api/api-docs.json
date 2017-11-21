@@ -51,6 +51,10 @@
       "description": "Authentications Log"
     },
     {
+      "path": "/blueprint_courses.json",
+      "description": "Blueprint Courses"
+    },
+    {
       "path": "/calendar_events.json",
       "description": "Calendar Events"
     },
