@@ -4800,7 +4800,8 @@ module Pandarus
         :filter,
         :filter_mode,
         :interleave_submissions,
-        :include_all_conversation_ids
+        :include_all_conversation_ids,
+        :include
 
       ]
 
@@ -4957,7 +4958,6 @@ module Pandarus
       ]
 
       form_param_keys = [
-        :conversation__subject__,
         :conversation__workflow_state__,
         :conversation__subscribed__,
         :conversation__starred__,

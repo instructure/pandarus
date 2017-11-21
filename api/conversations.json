@@ -9,18 +9,18 @@
   "apis": [
     {
       "path": "/v1/conversations",
-      "description": "Returns the list of conversations for the current user, most recent ones first.",
+      "description": "Returns the paginated list of conversations for the current user, most\nrecent ones first.",
       "operations": [
         {
           "method": "GET",
           "summary": "List conversations",
-          "notes": "Returns the list of conversations for the current user, most recent ones first.",
+          "notes": "Returns the paginated list of conversations for the current user, most\nrecent ones first.",
           "nickname": "list_conversations",
           "parameters": [
             {
               "paramType": "query",
               "name": "scope",
-              "description": "When set, only return conversations of the specified type. For example, set to \"unread\" to return only conversations that haven't been read. The default behavior is to return all non-archived conversations (i.e. read and unread).",
+              "description": "When set, only return conversations of the specified type. For example,\nset to \"unread\" to return only conversations that haven't been read.\nThe default behavior is to return all non-archived conversations (i.e.\nread and unread).",
               "type": "string",
               "format": null,
               "required": false,
@@ -33,7 +33,7 @@
             {
               "paramType": "query",
               "name": "filter",
-              "description": "When set, only return conversations for the specified courses, groups or users. The id should be prefixed with its type, e.g. \"user_123\" or \"course_456\". Can be an array (by setting \"filter[]\") or single value (by setting \"filter\")",
+              "description": "When set, only return conversations for the specified courses, groups\nor users. The id should be prefixed with its type, e.g. \"user_123\" or\n\"course_456\". Can be an array (by setting \"filter[]\") or single value\n(by setting \"filter\")",
               "type": "array",
               "format": null,
               "required": false,
@@ -44,21 +44,20 @@
             {
               "paramType": "query",
               "name": "filter_mode",
-              "description": "no description",
-              "type": "combine them with this mode",
+              "description": "When filter[] contains multiple filters, combine them with this mode,\nfiltering conversations that at have at least all of the contexts (\"and\")\nor at least one of the contexts (\"or\")",
+              "type": "string",
               "format": null,
               "required": false,
               "enum": [
                 "and",
                 "or",
-                "default or] When filter[] contains multiple filters",
-                "filtering conversations that at have at least all of the contexts (and) or at least one of the contexts (or)"
+                "default or"
               ]
             },
             {
               "paramType": "query",
               "name": "interleave_submissions",
-              "description": "(Obsolete) Submissions are no longer linked to conversations. This parameter is ignored.",
+              "description": "(Obsolete) Submissions are no\nlonger linked to conversations. This parameter is ignored.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -66,10 +65,24 @@
             {
               "paramType": "query",
               "name": "include_all_conversation_ids",
-              "description": "Default is false. If true, the top-level element of the response will be an object rather than an array, and will have the keys \"conversations\" which will contain the paged conversation data, and \"conversation_ids\" which will contain the ids of all conversations under this scope/filter in the same order.",
+              "description": "Default is false. If true,\nthe top-level element of the response will be an object rather than\nan array, and will have the keys \"conversations\" which will contain the\npaged conversation data, and \"conversation_ids\" which will contain the\nids of all conversations under this scope/filter in the same order.",
               "type": "boolean",
               "format": null,
               "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "\"participant_avatars\":: Optionally include an \"avatar_url\" key for each user participanting in the conversation",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "enum": [
+                "participant_avatars"
+              ],
+              "items": {
+                "type": "string"
+              }
             }
           ],
           "type": "array",
@@ -92,7 +105,7 @@
             {
               "paramType": "form",
               "name": "recipients",
-              "description": "An array of recipient ids. These may be user ids or course/group ids prefixed with \"course_\" or \"group_\" respectively, e.g. recipients[]=1&recipients[]=2&recipients[]=course_3",
+              "description": "An array of recipient ids. These may be user ids or course/group ids\nprefixed with \"course_\" or \"group_\" respectively, e.g.\nrecipients[]=1&recipients[]=2&recipients[]=course_3",
               "type": "array",
               "format": null,
               "required": true,
@@ -103,7 +116,7 @@
             {
               "paramType": "form",
               "name": "subject",
-              "description": "The subject of the conversation. This is ignored when reusing a conversation. Maximum length is 255 characters.",
+              "description": "The subject of the conversation. This is ignored when reusing a\nconversation. Maximum length is 255 characters.",
               "type": "string",
               "format": null,
               "required": false
@@ -119,7 +132,7 @@
             {
               "paramType": "form",
               "name": "group_conversation",
-              "description": "Defaults to false. If true, this will be a group conversation (i.e. all recipients may see all messages and replies). If false, individual private conversations will be started with each recipient.",
+              "description": "Defaults to false. If true, this will be a group conversation (i.e. all\nrecipients may see all messages and replies). If false, individual private\nconversations will be started with each recipient. Must be set false if the\nnumber of recipients is over the set maximum (default is 100).",
               "type": "boolean",
               "format": null,
               "required": false
@@ -127,7 +140,7 @@
             {
               "paramType": "form",
               "name": "attachment_ids",
-              "description": "An array of attachments ids. These must be files that have been previously uploaded to the sender's \"conversation attachments\" folder.",
+              "description": "An array of attachments ids. These must be files that have been previously\nuploaded to the sender's \"conversation attachments\" folder.",
               "type": "array",
               "format": null,
               "required": false,
@@ -138,7 +151,7 @@
             {
               "paramType": "form",
               "name": "media_comment_id",
-              "description": "Media comment id of an audio of video file to be associated with this message.",
+              "description": "Media comment id of an audio of video file to be associated with this\nmessage.",
               "type": "string",
               "format": null,
               "required": false
@@ -158,7 +171,7 @@
             {
               "paramType": "form",
               "name": "user_note",
-              "description": "Will add a faculty journal entry for each recipient as long as the user making the api call has permission, the recipient is a student and faculty journals are enabled in the account.",
+              "description": "Will add a faculty journal entry for each recipient as long as the user\nmaking the api call has permission, the recipient is a student and\nfaculty journals are enabled in the account.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -166,7 +179,7 @@
             {
               "paramType": "form",
               "name": "mode",
-              "description": "Determines whether the messages will be created/sent synchronously or asynchronously. Defaults to sync, and this option is ignored if this is a group conversation or there is just one recipient (i.e. it must be a bulk private message). When sent async, the response will be an empty array (batch status can be queried via the {api:ConversationsController#batches batches API})",
+              "description": "Determines whether the messages will be created/sent synchronously or\nasynchronously. Defaults to sync, and this option is ignored if this is a\ngroup conversation or there is just one recipient (i.e. it must be a bulk\nprivate message). When sent async, the response will be an empty array\n(batch status can be queried via the {api:ConversationsController#batches batches API})",
               "type": "string",
               "format": null,
               "required": false,
@@ -178,7 +191,7 @@
             {
               "paramType": "form",
               "name": "scope",
-              "description": "Used when generating \"visible\" in the API response. See the explanation under the {api:ConversationsController#index index API action}",
+              "description": "Used when generating \"visible\" in the API response. See the explanation\nunder the {api:ConversationsController#index index API action}",
               "type": "string",
               "format": null,
               "required": false,
@@ -191,7 +204,7 @@
             {
               "paramType": "form",
               "name": "filter",
-              "description": "Used when generating \"visible\" in the API response. See the explanation under the {api:ConversationsController#index index API action}",
+              "description": "Used when generating \"visible\" in the API response. See the explanation\nunder the {api:ConversationsController#index index API action}",
               "type": "array",
               "format": null,
               "required": false,
@@ -202,20 +215,20 @@
             {
               "paramType": "form",
               "name": "filter_mode",
-              "description": "no description",
+              "description": "Used when generating \"visible\" in the API response. See the explanation\nunder the {api:ConversationsController#index index API action}",
               "type": "string",
               "format": null,
               "required": false,
               "enum": [
                 "and",
                 "or",
-                "default or] Used when generating visible in the API response. See the explanation under the {api:ConversationsController#index index API action}"
+                "default or"
               ]
             },
             {
               "paramType": "form",
               "name": "context_code",
-              "description": "The course or group that is the context for this conversation. Same format as courses or groups in the recipients argument.",
+              "description": "The course or group that is the context for this conversation. Same format\nas courses or groups in the recipients argument.",
               "type": "string",
               "format": null,
               "required": false
@@ -243,12 +256,12 @@
     },
     {
       "path": "/v1/conversations/{id}",
-      "description": "Returns information for a single conversation. Response includes all\nfields that are present in the list/index action as well as messages\nand extended participant information.",
+      "description": "Returns information for a single conversation for the current user. Response includes all\nfields that are present in the list/index action as well as messages\nand extended participant information.",
       "operations": [
         {
           "method": "GET",
           "summary": "Get a single conversation",
-          "notes": "Returns information for a single conversation. Response includes all\nfields that are present in the list/index action as well as messages\nand extended participant information.",
+          "notes": "Returns information for a single conversation for the current user. Response includes all\nfields that are present in the list/index action as well as messages\nand extended participant information.",
           "nickname": "get_single_conversation",
           "parameters": [
             {
@@ -262,7 +275,7 @@
             {
               "paramType": "query",
               "name": "interleave_submissions",
-              "description": "(Obsolete) Submissions are no longer linked to conversations. This parameter is ignored.",
+              "description": "(Obsolete) Submissions are no\nlonger linked to conversations. This parameter is ignored.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -270,7 +283,7 @@
             {
               "paramType": "query",
               "name": "scope",
-              "description": "Used when generating \"visible\" in the API response. See the explanation under the {api:ConversationsController#index index API action}",
+              "description": "Used when generating \"visible\" in the API response. See the explanation\nunder the {api:ConversationsController#index index API action}",
               "type": "string",
               "format": null,
               "required": false,
@@ -283,7 +296,7 @@
             {
               "paramType": "query",
               "name": "filter",
-              "description": "Used when generating \"visible\" in the API response. See the explanation under the {api:ConversationsController#index index API action}",
+              "description": "Used when generating \"visible\" in the API response. See the explanation\nunder the {api:ConversationsController#index index API action}",
               "type": "array",
               "format": null,
               "required": false,
@@ -294,20 +307,20 @@
             {
               "paramType": "query",
               "name": "filter_mode",
-              "description": "no description",
+              "description": "Used when generating \"visible\" in the API response. See the explanation\nunder the {api:ConversationsController#index index API action}",
               "type": "string",
               "format": null,
               "required": false,
               "enum": [
                 "and",
                 "or",
-                "default or] Used when generating visible in the API response. See the explanation under the {api:ConversationsController#index index API action}"
+                "default or"
               ]
             },
             {
               "paramType": "query",
               "name": "auto_mark_as_read",
-              "description": "Default true. If true, unread conversations will be automatically marked as read. This will default to false in a future API release, so clients should explicitly send true if that is the desired behavior.",
+              "description": "Default true. If true, unread\nconversations will be automatically marked as read. This will default\nto false in a future API release, so clients should explicitly send\ntrue if that is the desired behavior.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -337,14 +350,6 @@
             },
             {
               "paramType": "form",
-              "name": "conversation[subject]",
-              "description": "Change the subject of this conversation",
-              "type": "string",
-              "format": null,
-              "required": false
-            },
-            {
-              "paramType": "form",
               "name": "conversation[workflow_state]",
               "description": "Change the state of this conversation",
               "type": "string",
@@ -359,7 +364,7 @@
             {
               "paramType": "form",
               "name": "conversation[subscribed]",
-              "description": "Toggle the current user's subscription to the conversation (only valid for group conversations). If unsubscribed, the user will still have access to the latest messages, but the conversation won't be automatically flagged as unread, nor will it jump to the top of the inbox.",
+              "description": "Toggle the current user's subscription to the conversation (only valid for\ngroup conversations). If unsubscribed, the user will still have access to\nthe latest messages, but the conversation won't be automatically flagged\nas unread, nor will it jump to the top of the inbox.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -375,7 +380,7 @@
             {
               "paramType": "form",
               "name": "scope",
-              "description": "Used when generating \"visible\" in the API response. See the explanation under the {api:ConversationsController#index index API action}",
+              "description": "Used when generating \"visible\" in the API response. See the explanation\nunder the {api:ConversationsController#index index API action}",
               "type": "string",
               "format": null,
               "required": false,
@@ -388,7 +393,7 @@
             {
               "paramType": "form",
               "name": "filter",
-              "description": "Used when generating \"visible\" in the API response. See the explanation under the {api:ConversationsController#index index API action}",
+              "description": "Used when generating \"visible\" in the API response. See the explanation\nunder the {api:ConversationsController#index index API action}",
               "type": "array",
               "format": null,
               "required": false,
@@ -399,14 +404,14 @@
             {
               "paramType": "form",
               "name": "filter_mode",
-              "description": "no description",
+              "description": "Used when generating \"visible\" in the API response. See the explanation\nunder the {api:ConversationsController#index index API action}",
               "type": "string",
               "format": null,
               "required": false,
               "enum": [
                 "and",
                 "or",
-                "default or] Used when generating visible in the API response. See the explanation under the {api:ConversationsController#index index API action}"
+                "default or"
               ]
             }
           ],
@@ -474,7 +479,7 @@
             {
               "paramType": "form",
               "name": "recipients",
-              "description": "An array of recipient ids. These may be user ids or course/group ids prefixed with \"course_\" or \"group_\" respectively, e.g. recipients[]=1&recipients[]=2&recipients[]=course_3",
+              "description": "An array of recipient ids. These may be user ids or course/group ids\nprefixed with \"course_\" or \"group_\" respectively, e.g.\nrecipients[]=1&recipients[]=2&recipients[]=course_3",
               "type": "array",
               "format": null,
               "required": true,
@@ -516,7 +521,7 @@
             {
               "paramType": "form",
               "name": "attachment_ids",
-              "description": "An array of attachments ids. These must be files that have been previously uploaded to the sender's \"conversation attachments\" folder.",
+              "description": "An array of attachments ids. These must be files that have been previously\nuploaded to the sender's \"conversation attachments\" folder.",
               "type": "array",
               "format": null,
               "required": false,
@@ -527,7 +532,7 @@
             {
               "paramType": "form",
               "name": "media_comment_id",
-              "description": "Media comment id of an audio of video file to be associated with this message.",
+              "description": "Media comment id of an audio of video file to be associated with this\nmessage.",
               "type": "string",
               "format": null,
               "required": false
@@ -569,7 +574,7 @@
             {
               "paramType": "form",
               "name": "user_note",
-              "description": "Will add a faculty journal entry for each recipient as long as the user making the api call has permission, the recipient is a student and faculty journals are enabled in the account.",
+              "description": "Will add a faculty journal entry for each recipient as long as the user\nmaking the api call has permission, the recipient is a student and\nfaculty journals are enabled in the account.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -769,10 +774,10 @@
           "type": "string"
         },
         "participants": {
-          "description": "Array of users (id, name) participating in the conversation. Includes current user.",
+          "description": "Array of users participating in the conversation. Includes current user.",
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "ConversationParticipant"
           }
         },
         "visible": {
@@ -783,6 +788,36 @@
         "context_name": {
           "description": "Name of the course or group in which the conversation is occurring.",
           "example": "Canvas 101",
+          "type": "string"
+        }
+      }
+    },
+    "ConversationParticipant": {
+      "id": "ConversationParticipant",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "The user ID for the participant.",
+          "example": 2,
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "A short name the user has selected, for use in conversations or other less formal places through the site.",
+          "example": "Shelly",
+          "type": "string"
+        },
+        "full_name": {
+          "description": "The full name of the user.",
+          "example": "Sheldon Cooper",
+          "type": "string"
+        },
+        "avatar_url": {
+          "description": "If requested, this field will be included and contain a url to retrieve the user's avatar.",
+          "example": "https://canvas.instructure.com/images/messages/avatar-50.png",
           "type": "string"
         }
       }

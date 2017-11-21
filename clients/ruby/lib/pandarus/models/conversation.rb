@@ -18,7 +18,7 @@ module Pandarus
     attribute :audience, resolve_type("Integer", collection: true)
     attribute :audience_contexts, resolve_type("String", collection: true)
     attribute :avatar_url, resolve_type("String")
-    attribute :participants, resolve_type("String", collection: true)
+    attribute :participants, resolve_type("ConversationParticipant", collection: true)
     attribute :visible, resolve_type(nil)
     attribute :context_name, resolve_type("String")
     
