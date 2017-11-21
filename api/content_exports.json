@@ -9,12 +9,12 @@
   "apis": [
     {
       "path": "/v1/courses/{course_id}/content_exports",
-      "description": "List the past and pending content export jobs for a course, group, or user.\nExports are returned newest first.",
+      "description": "A paginated list of the past and pending content export jobs for a course,\ngroup, or user. Exports are returned newest first.",
       "operations": [
         {
           "method": "GET",
           "summary": "List content exports",
-          "notes": "List the past and pending content export jobs for a course, group, or user.\nExports are returned newest first.",
+          "notes": "A paginated list of the past and pending content export jobs for a course,\ngroup, or user. Exports are returned newest first.",
           "nickname": "list_content_exports_courses",
           "parameters": [
             {
@@ -35,12 +35,12 @@
     },
     {
       "path": "/v1/groups/{group_id}/content_exports",
-      "description": "List the past and pending content export jobs for a course, group, or user.\nExports are returned newest first.",
+      "description": "A paginated list of the past and pending content export jobs for a course,\ngroup, or user. Exports are returned newest first.",
       "operations": [
         {
           "method": "GET",
           "summary": "List content exports",
-          "notes": "List the past and pending content export jobs for a course, group, or user.\nExports are returned newest first.",
+          "notes": "A paginated list of the past and pending content export jobs for a course,\ngroup, or user. Exports are returned newest first.",
           "nickname": "list_content_exports_groups",
           "parameters": [
             {
@@ -61,12 +61,12 @@
     },
     {
       "path": "/v1/users/{user_id}/content_exports",
-      "description": "List the past and pending content export jobs for a course, group, or user.\nExports are returned newest first.",
+      "description": "A paginated list of the past and pending content export jobs for a course,\ngroup, or user. Exports are returned newest first.",
       "operations": [
         {
           "method": "GET",
           "summary": "List content exports",
-          "notes": "List the past and pending content export jobs for a course, group, or user.\nExports are returned newest first.",
+          "notes": "A paginated list of the past and pending content export jobs for a course,\ngroup, or user. Exports are returned newest first.",
           "nickname": "list_content_exports_users",
           "parameters": [
             {
@@ -199,7 +199,7 @@
             {
               "paramType": "form",
               "name": "export_type",
-              "description": "\"common_cartridge\":: Export the contents of the course in the Common Cartridge (.imscc) format \"qti\":: Export quizzes from a course in the QTI format \"zip\":: Export files from a course, group, or user in a zip file",
+              "description": "\"common_cartridge\":: Export the contents of the course in the Common Cartridge (.imscc) format\n\"qti\":: Export quizzes from a course in the QTI format\n\"zip\":: Export files from a course, group, or user in a zip file",
               "type": "string",
               "format": null,
               "required": true,
@@ -243,7 +243,7 @@
             {
               "paramType": "form",
               "name": "export_type",
-              "description": "\"common_cartridge\":: Export the contents of the course in the Common Cartridge (.imscc) format \"qti\":: Export quizzes from a course in the QTI format \"zip\":: Export files from a course, group, or user in a zip file",
+              "description": "\"common_cartridge\":: Export the contents of the course in the Common Cartridge (.imscc) format\n\"qti\":: Export quizzes from a course in the QTI format\n\"zip\":: Export files from a course, group, or user in a zip file",
               "type": "string",
               "format": null,
               "required": true,
@@ -287,7 +287,7 @@
             {
               "paramType": "form",
               "name": "export_type",
-              "description": "\"common_cartridge\":: Export the contents of the course in the Common Cartridge (.imscc) format \"qti\":: Export quizzes from a course in the QTI format \"zip\":: Export files from a course, group, or user in a zip file",
+              "description": "\"common_cartridge\":: Export the contents of the course in the Common Cartridge (.imscc) format\n\"qti\":: Export quizzes from a course in the QTI format\n\"zip\":: Export files from a course, group, or user in a zip file",
               "type": "string",
               "format": null,
               "required": true,
@@ -341,8 +341,10 @@
           }
         },
         "attachment": {
-          "description": "attachment api object for the export package (not present until the export completes)",
-          "example": "{\"url\"=>\"https://example.com/api/v1/attachments/789?download_frd=1&verifier=bG9sY2F0cyEh\"}",
+          "description": "attachment api object for the export package (not present before the export completes or after it becomes unavailable for download.)",
+          "example": {
+            "url": "https://example.com/api/v1/attachments/789?download_frd=1&verifier=bG9sY2F0cyEh"
+          },
           "$ref": "File"
         },
         "progress_url": {
