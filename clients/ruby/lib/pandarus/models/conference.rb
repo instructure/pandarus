@@ -16,7 +16,7 @@ module Pandarus
     attribute :users, resolve_type("Integer", collection: true)
     attribute :has_advanced_settings, resolve_type(nil)
     attribute :long_running, resolve_type(nil)
-    attribute :user_settings, resolve_type("Map")
+    attribute :user_settings, resolve_type("Object")
     attribute :recordings, resolve_type("ConferenceRecording", collection: true)
     attribute :url, resolve_type("String")
     attribute :join_url, resolve_type("String")
