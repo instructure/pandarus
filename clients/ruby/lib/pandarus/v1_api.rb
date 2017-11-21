@@ -575,15 +575,21 @@ module Pandarus
     def list_active_courses_in_account(account_id,opts={})
       query_param_keys = [
         :with_enrollments,
+        :enrollment_type,
         :published,
         :completed,
+        :blueprint,
+        :blueprint_associated,
         :by_teachers,
         :by_subaccounts,
         :hide_enrollmentless_courses,
         :state,
         :enrollment_term_id,
         :search_term,
-        :include
+        :include,
+        :sort,
+        :order,
+        :search_by
 
       ]
 
@@ -622,10 +628,20 @@ module Pandarus
 
       form_param_keys = [
         :account__name__,
+        :account__sis_account_id__,
         :account__default_time_zone__,
         :account__default_storage_quota_mb__,
         :account__default_user_storage_quota_mb__,
         :account__default_group_storage_quota_mb__,
+        :account__settings____restrict_student_past_view____value__,
+        :account__settings____restrict_student_past_view____locked__,
+        :account__settings____restrict_student_future_view____value__,
+        :account__settings____restrict_student_future_view____locked__,
+        :account__settings____lock_all_announcements____value__,
+        :account__settings____lock_all_announcements____locked__,
+        :account__settings____restrict_student_future_listing____value__,
+        :account__settings____restrict_student_future_listing____locked__,
+        :account__services__,
         
 
       ]
@@ -698,6 +714,7 @@ module Pandarus
 
       form_param_keys = [
         :account__name__,
+        :account__sis_account_id__,
         :account__default_storage_quota_mb__,
         :account__default_user_storage_quota_mb__,
         :account__default_group_storage_quota_mb__,
@@ -722,7 +739,45 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      RemoteCollection.new(connection, Account, path, query_params)
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      Account.new(response)
+      
+
+    end
+    
+
+    # Delete a sub-account
+    def delete_sub_account(account_id,id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/sub_accounts/{id}",
+        :account_id => account_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      Account.new(response)
       
 
     end

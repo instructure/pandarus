@@ -9,24 +9,25 @@
   "apis": [
     {
       "path": "/v1/accounts",
-      "description": "List accounts that the current user can view or manage.  Typically,\nstudents and even teachers will get an empty list in response, only\naccount admins can view the accounts that they are in.",
+      "description": "A paginated list of accounts that the current user can view or manage.\nTypically, students and even teachers will get an empty list in response,\nonly account admins can view the accounts that they are in.",
       "operations": [
         {
           "method": "GET",
           "summary": "List accounts",
-          "notes": "List accounts that the current user can view or manage.  Typically,\nstudents and even teachers will get an empty list in response, only\naccount admins can view the accounts that they are in.",
+          "notes": "A paginated list of accounts that the current user can view or manage.\nTypically, students and even teachers will get an empty list in response,\nonly account admins can view the accounts that they are in.",
           "nickname": "list_accounts",
           "parameters": [
             {
               "paramType": "query",
               "name": "include",
-              "description": "Array of additional information to include. \"lti_guid\":: the 'tool_consumer_instance_guid' that will be sent for this account on LTI launches \"registration_settings\":: returns info about the privacy policy and terms of use",
+              "description": "Array of additional information to include.\n\n\"lti_guid\":: the 'tool_consumer_instance_guid' that will be sent for this account on LTI launches\n\"registration_settings\":: returns info about the privacy policy and terms of use\n\"services\":: returns services and whether they are enabled (requires account management permissions)",
               "type": "array",
               "format": null,
               "required": false,
               "enum": [
                 "lti_guid",
-                "registration_settings"
+                "registration_settings",
+                "services"
               ],
               "items": {
                 "type": "string"
@@ -42,12 +43,12 @@
     },
     {
       "path": "/v1/course_accounts",
-      "description": "List accounts that the current user can view through their admin course enrollments.\n(Teacher, TA, or designer enrollments).\nOnly returns \"id\", \"name\", \"workflow_state\", \"root_account_id\" and \"parent_account_id\"",
+      "description": "A paginated list of accounts that the current user can view through their\nadmin course enrollments. (Teacher, TA, or designer enrollments).\nOnly returns \"id\", \"name\", \"workflow_state\", \"root_account_id\" and \"parent_account_id\"",
       "operations": [
         {
           "method": "GET",
           "summary": "List accounts for course admins",
-          "notes": "List accounts that the current user can view through their admin course enrollments.\n(Teacher, TA, or designer enrollments).\nOnly returns \"id\", \"name\", \"workflow_state\", \"root_account_id\" and \"parent_account_id\"",
+          "notes": "A paginated list of accounts that the current user can view through their\nadmin course enrollments. (Teacher, TA, or designer enrollments).\nOnly returns \"id\", \"name\", \"workflow_state\", \"root_account_id\" and \"parent_account_id\"",
           "nickname": "list_accounts_for_course_admins",
           "parameters": [
 
@@ -103,7 +104,7 @@
             {
               "paramType": "query",
               "name": "recursive",
-              "description": "If true, the entire account tree underneath this account will be returned (though still paginated). If false, only direct sub-accounts of this account will be returned. Defaults to false.",
+              "description": "If true, the entire account tree underneath\nthis account will be returned (though still paginated). If false, only\ndirect sub-accounts of this account will be returned. Defaults to false.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -118,12 +119,12 @@
     },
     {
       "path": "/v1/accounts/{account_id}/courses",
-      "description": "Retrieve the list of courses in this account.",
+      "description": "Retrieve a paginated list of courses in this account.",
       "operations": [
         {
           "method": "GET",
           "summary": "List active courses in an account",
-          "notes": "Retrieve the list of courses in this account.",
+          "notes": "Retrieve a paginated list of courses in this account.",
           "nickname": "list_active_courses_in_account",
           "parameters": [
             {
@@ -137,15 +138,33 @@
             {
               "paramType": "query",
               "name": "with_enrollments",
-              "description": "If true, include only courses with at least one enrollment. If false, include only courses with no enrollments. If not present, do not filter on course enrollment status.",
+              "description": "If true, include only courses with at least one enrollment.  If false,\ninclude only courses with no enrollments.  If not present, do not filter\non course enrollment status.",
               "type": "boolean",
               "format": null,
               "required": false
             },
             {
               "paramType": "query",
+              "name": "enrollment_type",
+              "description": "If set, only return courses that have at least one user enrolled in\nin the course with one of the specified enrollment types.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "enum": [
+                "teacher",
+                "student",
+                "ta",
+                "observer",
+                "designer"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "paramType": "query",
               "name": "published",
-              "description": "If true, include only published courses. If false, exclude published courses. If not present, do not filter on published status.",
+              "description": "If true, include only published courses.  If false, exclude published\ncourses.  If not present, do not filter on published status.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -153,7 +172,23 @@
             {
               "paramType": "query",
               "name": "completed",
-              "description": "If true, include only completed courses (these may be in state 'completed', or their enrollment term may have ended). If false, exclude completed courses. If not present, do not filter on completed status.",
+              "description": "If true, include only completed courses (these may be in state\n'completed', or their enrollment term may have ended).  If false, exclude\ncompleted courses.  If not present, do not filter on completed status.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "blueprint",
+              "description": "If true, include only blueprint courses. If false, exclude them.\nIf not present, do not filter on this basis.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "blueprint_associated",
+              "description": "If true, include only courses that inherit content from a blueprint course.\nIf false, exclude them. If not present, do not filter on this basis.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -161,7 +196,7 @@
             {
               "paramType": "query",
               "name": "by_teachers",
-              "description": "List of User IDs of teachers; if supplied, include only courses taught by one of the referenced users.",
+              "description": "List of User IDs of teachers; if supplied, include only courses taught by\none of the referenced users.",
               "type": "array",
               "format": "int64",
               "required": false,
@@ -172,7 +207,7 @@
             {
               "paramType": "query",
               "name": "by_subaccounts",
-              "description": "List of Account IDs; if supplied, include only courses associated with one of the referenced subaccounts.",
+              "description": "List of Account IDs; if supplied, include only courses associated with one\nof the referenced subaccounts.",
               "type": "array",
               "format": "int64",
               "required": false,
@@ -183,7 +218,7 @@
             {
               "paramType": "query",
               "name": "hide_enrollmentless_courses",
-              "description": "If present, only return courses that have at least one enrollment. Equivalent to 'with_enrollments=true'; retained for compatibility.",
+              "description": "If present, only return courses that have at least one enrollment.\nEquivalent to 'with_enrollments=true'; retained for compatibility.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -191,7 +226,7 @@
             {
               "paramType": "query",
               "name": "state",
-              "description": "If set, only return courses that are in the given state(s). By default, all states but \"deleted\" are returned.",
+              "description": "If set, only return courses that are in the given state(s). By default,\nall states but \"deleted\" are returned.",
               "type": "array",
               "format": null,
               "required": false,
@@ -226,22 +261,60 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "- All explanations can be seen in the {api:CoursesController#index Course API index documentation}",
+              "description": "- All explanations can be seen in the {api:CoursesController#index Course API index documentation}\n- \"sections\", \"needs_grading_count\" and \"total_scores\" are not valid options at the account level",
               "type": "array",
               "format": null,
               "required": false,
               "enum": [
-                "needs_grading_count",
                 "syllabus_body",
-                "total_scores",
                 "term",
                 "course_progress",
-                "sections",
-                "storage_quota_used_mb"
+                "storage_quota_used_mb",
+                "total_students",
+                "teachers"
               ],
               "items": {
                 "type": "string"
               }
+            },
+            {
+              "paramType": "query",
+              "name": "sort",
+              "description": "The column to sort results by.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "course_name",
+                "sis_course_id",
+                "teacher",
+                "subaccount",
+                "total_students"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "order",
+              "description": "The order to sort the given column by.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "search_by",
+              "description": "The filter to search by. \"course\" searches for course names, course codes,\nand SIS IDs. \"teacher\" searches for teacher names",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "course",
+                "teacher"
+              ]
             }
           ],
           "type": "array",
@@ -279,8 +352,16 @@
             },
             {
               "paramType": "form",
+              "name": "account[sis_account_id]",
+              "description": "Updates the account sis_account_id\nMust have manage_sis permission and must not be a root_account.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "account[default_time_zone]",
-              "description": "The default time zone of the account. Allowed time zones are {http://www.iana.org/time-zones IANA time zones} or friendlier {http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html Ruby on Rails time zones}.",
+              "description": "The default time zone of the account. Allowed time zones are\n{http://www.iana.org/time-zones IANA time zones} or friendlier\n{http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html Ruby on Rails time zones}.",
               "type": "string",
               "format": null,
               "required": false
@@ -307,6 +388,78 @@
               "description": "The default group storage quota to be used, if not otherwise specified.",
               "type": "integer",
               "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account[settings][restrict_student_past_view][value]",
+              "description": "Restrict students from viewing courses after end date",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account[settings][restrict_student_past_view][locked]",
+              "description": "Lock this setting for sub-accounts and courses",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account[settings][restrict_student_future_view][value]",
+              "description": "Restrict students from viewing courses before start date",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account[settings][restrict_student_future_view][locked]",
+              "description": "Lock this setting for sub-accounts and courses",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account[settings][lock_all_announcements][value]",
+              "description": "Disable comments on announcements",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account[settings][lock_all_announcements][locked]",
+              "description": "Lock this setting for sub-accounts and courses",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account[settings][restrict_student_future_listing][value]",
+              "description": "Restrict students from viewing future enrollments in course list",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account[settings][restrict_student_future_listing][locked]",
+              "description": "Lock this setting for sub-accounts and courses",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account[services]",
+              "description": "Give this a set of keys and boolean values to enable or disable services matching the keys",
+              "type": "Hash",
+              "format": null,
               "required": false
             }
           ],
@@ -373,6 +526,14 @@
             },
             {
               "paramType": "form",
+              "name": "account[sis_account_id]",
+              "description": "The account's identifier in the Student Information System.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "account[default_storage_quota_mb]",
               "description": "The default course storage quota to be used, if not otherwise specified.",
               "type": "integer",
@@ -396,10 +557,38 @@
               "required": false
             }
           ],
-          "type": "array",
-          "items": {
-            "$ref": "Account"
-          }
+          "type": "Account"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/sub_accounts/{id}",
+      "description": "Cannot delete an account with active courses or active sub_accounts.\nCannot delete a root_account",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete a sub-account",
+          "notes": "Cannot delete an account with active courses or active sub_accounts.\nCannot delete a root_account",
+          "nickname": "delete_sub_account",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "Account"
         }
       ]
     }
