@@ -59,7 +59,7 @@
             {
               "paramType": "form",
               "name": "display_name",
-              "description": "A friendly name shown in reports for outcomes with cryptic titles, such as common core standards names.",
+              "description": "A friendly name shown in reports for outcomes with cryptic titles,\nsuch as common core standards names.",
               "type": "string",
               "format": null,
               "required": false
@@ -102,7 +102,7 @@
             {
               "paramType": "form",
               "name": "ratings[points]",
-              "description": "The points corresponding to a new rating level for the embedded rubric criterion.",
+              "description": "The points corresponding to a new rating level for the embedded rubric\ncriterion.",
               "type": "array",
               "format": "int64",
               "required": false,
@@ -127,7 +127,7 @@
             {
               "paramType": "form",
               "name": "calculation_int",
-              "description": "The new calculation int. Only applies if the calculation_method is \"decaying_average\" or \"n_mastery\"",
+              "description": "The new calculation int.  Only applies if the calculation_method is \"decaying_average\" or \"n_mastery\"",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -222,6 +222,11 @@
         },
         "can_edit": {
           "description": "whether the current user can update the outcome",
+          "example": true,
+          "type": "boolean"
+        },
+        "can_unlink": {
+          "description": "whether the outcome can be unlinked",
           "example": true,
           "type": "boolean"
         },

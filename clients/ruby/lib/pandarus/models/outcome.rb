@@ -19,6 +19,7 @@ module Pandarus
     attribute :calculation_int, resolve_type("Integer")
     attribute :ratings, resolve_type("RubricRating", collection: true)
     attribute :can_edit, resolve_type(nil)
+    attribute :can_unlink, resolve_type(nil)
     attribute :assessed, resolve_type(nil)
     
   end
