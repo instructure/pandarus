@@ -9,12 +9,12 @@
   "apis": [
     {
       "path": "/v1/users/self/groups",
-      "description": "Returns a list of active groups for the current user.",
+      "description": "Returns a paginated list of active groups for the current user.",
       "operations": [
         {
           "method": "GET",
           "summary": "List your groups",
-          "notes": "Returns a list of active groups for the current user.",
+          "notes": "Returns a paginated list of active groups for the current user.",
           "nickname": "list_your_groups",
           "parameters": [
             {
@@ -28,6 +28,20 @@
                 "Account",
                 "Course"
               ]
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "- \"tabs\": Include the list of tabs configured for each group.  See the\n  {api:TabsController#index List available tabs API} for more information.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "enum": [
+                "tabs"
+              ],
+              "items": {
+                "type": "string"
+              }
             }
           ],
           "type": "array",
@@ -39,12 +53,12 @@
     },
     {
       "path": "/v1/accounts/{account_id}/groups",
-      "description": "Returns the list of active groups in the given context that are visible to user.",
+      "description": "Returns the paginated list of active groups in the given context that are visible to user.",
       "operations": [
         {
           "method": "GET",
           "summary": "List the groups available in a context.",
-          "notes": "Returns the list of active groups in the given context that are visible to user.",
+          "notes": "Returns the paginated list of active groups in the given context that are visible to user.",
           "nickname": "list_groups_available_in_context_accounts",
           "parameters": [
             {
@@ -62,6 +76,20 @@
               "type": "boolean",
               "format": null,
               "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "- \"tabs\": Include the list of tabs configured for each group.  See the\n  {api:TabsController#index List available tabs API} for more information.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "enum": [
+                "tabs"
+              ],
+              "items": {
+                "type": "string"
+              }
             }
           ],
           "type": "array",
@@ -73,12 +101,12 @@
     },
     {
       "path": "/v1/courses/{course_id}/groups",
-      "description": "Returns the list of active groups in the given context that are visible to user.",
+      "description": "Returns the paginated list of active groups in the given context that are visible to user.",
       "operations": [
         {
           "method": "GET",
           "summary": "List the groups available in a context.",
-          "notes": "Returns the list of active groups in the given context that are visible to user.",
+          "notes": "Returns the paginated list of active groups in the given context that are visible to user.",
           "nickname": "list_groups_available_in_context_courses",
           "parameters": [
             {
@@ -96,6 +124,20 @@
               "type": "boolean",
               "format": null,
               "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "- \"tabs\": Include the list of tabs configured for each group.  See the\n  {api:TabsController#index List available tabs API} for more information.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "enum": [
+                "tabs"
+              ],
+              "items": {
+                "type": "string"
+              }
             }
           ],
           "type": "array",
@@ -126,12 +168,13 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "- \"permissions\": Include permissions the current user has for the group.",
+              "description": "- \"permissions\": Include permissions the current user has\n  for the group.\n- \"tabs\": Include the list of tabs configured for each group.  See the\n  {api:TabsController#index List available tabs API} for more information.",
               "type": "array",
               "format": null,
               "required": false,
               "enum": [
-                "permissions"
+                "permissions",
+                "tabs"
               ],
               "items": {
                 "type": "string"
@@ -192,7 +235,7 @@
             {
               "paramType": "form",
               "name": "storage_quota_mb",
-              "description": "The allowed file storage for the group, in megabytes. This parameter is ignored if the caller does not have the manage_storage_quotas permission.",
+              "description": "The allowed file storage for the group, in megabytes. This parameter is\nignored if the caller does not have the manage_storage_quotas permission.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -260,7 +303,7 @@
             {
               "paramType": "form",
               "name": "storage_quota_mb",
-              "description": "The allowed file storage for the group, in megabytes. This parameter is ignored if the caller does not have the manage_storage_quotas permission.",
+              "description": "The allowed file storage for the group, in megabytes. This parameter is\nignored if the caller does not have the manage_storage_quotas permission.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -307,7 +350,7 @@
             {
               "paramType": "form",
               "name": "is_public",
-              "description": "Whether the group is public (applies only to community groups). Currently you cannot set a group back to private once it has been made public.",
+              "description": "Whether the group is public (applies only to community groups). Currently\nyou cannot set a group back to private once it has been made public.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -328,7 +371,7 @@
             {
               "paramType": "form",
               "name": "avatar_id",
-              "description": "The id of the attachment previously uploaded to the group that you would like to use as the avatar image for this group.",
+              "description": "The id of the attachment previously uploaded to the group that you would\nlike to use as the avatar image for this group.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -336,7 +379,7 @@
             {
               "paramType": "form",
               "name": "storage_quota_mb",
-              "description": "The allowed file storage for the group, in megabytes. This parameter is ignored if the caller does not have the manage_storage_quotas permission.",
+              "description": "The allowed file storage for the group, in megabytes. This parameter is\nignored if the caller does not have the manage_storage_quotas permission.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -344,7 +387,7 @@
             {
               "paramType": "form",
               "name": "members",
-              "description": "An array of user ids for users you would like in the group. Users not in the group will be sent invitations. Existing group members who aren't in the list will be removed from the group.",
+              "description": "An array of user ids for users you would like in the group.\nUsers not in the group will be sent invitations. Existing group\nmembers who aren't in the list will be removed from the group.",
               "type": "array",
               "format": null,
               "required": false,
@@ -416,12 +459,12 @@
     },
     {
       "path": "/v1/groups/{group_id}/users",
-      "description": "Returns a list of users in the group.",
+      "description": "Returns a paginated list of users in the group.",
       "operations": [
         {
           "method": "GET",
           "summary": "List group's users",
-          "notes": "Returns a list of users in the group.",
+          "notes": "Returns a paginated list of users in the group.",
           "nickname": "list_group_s_users",
           "parameters": [
             {
@@ -435,7 +478,7 @@
             {
               "paramType": "query",
               "name": "search_term",
-              "description": "The partial name or full ID of the users to match and return in the results list. Must be at least 3 characters.",
+              "description": "The partial name or full ID of the users to match and return in the\nresults list. Must be at least 3 characters.",
               "type": "string",
               "format": null,
               "required": false
@@ -564,12 +607,12 @@
     },
     {
       "path": "/v1/groups/{group_id}/memberships",
-      "description": "List the members of a group.",
+      "description": "A paginated list of the members of a group.",
       "operations": [
         {
           "method": "GET",
           "summary": "List group memberships",
-          "notes": "List the members of a group.",
+          "notes": "A paginated list of the members of a group.",
           "nickname": "list_group_memberships",
           "parameters": [
             {
@@ -583,7 +626,7 @@
             {
               "paramType": "query",
               "name": "filter_states",
-              "description": "Only list memberships with the given workflow_states. By default it will return all memberships.",
+              "description": "Only list memberships with the given workflow_states. By default it will\nreturn all memberships.",
               "type": "array",
               "format": null,
               "required": false,
@@ -601,6 +644,68 @@
           "items": {
             "$ref": "GroupMembership"
           }
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/memberships/{membership_id}",
+      "description": "Returns the group membership with the given membership id or user id.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single group membership",
+          "notes": "Returns the group membership with the given membership id or user id.",
+          "nickname": "get_single_group_membership_memberships",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "membership_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "GroupMembership"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/users/{user_id}",
+      "description": "Returns the group membership with the given membership id or user id.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single group membership",
+          "notes": "Returns the group membership with the given membership id or user id.",
+          "nickname": "get_single_group_membership_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "GroupMembership"
         }
       ]
     },
@@ -894,8 +999,11 @@
         },
         "permissions": {
           "description": "optional: the permissions the user has for the group. returned only for a single group and include[]=permissions",
-          "example": "{\"create_discussion_topic\"=>true,\"create_announcement\"=>true}",
-          "type": "map",
+          "example": {
+            "create_discussion_topic": true,
+            "create_announcement": true
+          },
+          "type": "object",
           "key": {
             "type": "string"
           },

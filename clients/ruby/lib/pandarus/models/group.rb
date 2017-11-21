@@ -20,7 +20,7 @@ module Pandarus
     attribute :sis_group_id, resolve_type("String")
     attribute :sis_import_id, resolve_type("Integer")
     attribute :storage_quota_mb, resolve_type("Integer")
-    attribute :permissions, resolve_type("Map")
+    attribute :permissions, resolve_type("Object")
     
   end
 end

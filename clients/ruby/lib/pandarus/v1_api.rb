@@ -12960,7 +12960,8 @@ module Pandarus
     # List your groups
     def list_your_groups(opts={})
       query_param_keys = [
-        :context_type
+        :context_type,
+        :include
 
       ]
 
@@ -12992,7 +12993,8 @@ module Pandarus
     # List the groups available in a context.
     def list_groups_available_in_context_accounts(account_id,opts={})
       query_param_keys = [
-        :only_own_groups
+        :only_own_groups,
+        :include
 
       ]
 
@@ -13025,7 +13027,8 @@ module Pandarus
     # List the groups available in a context.
     def list_groups_available_in_context_courses(course_id,opts={})
       query_param_keys = [
-        :only_own_groups
+        :only_own_groups,
+        :include
 
       ]
 
@@ -13477,6 +13480,80 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       RemoteCollection.new(connection, GroupMembership, path, query_params)
+      
+
+    end
+    
+
+    # Get a single group membership
+    def get_single_group_membership_memberships(group_id,membership_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "group_id is required" if group_id.nil?
+      raise "membership_id is required" if membership_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :group_id => group_id,
+        :membership_id => membership_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/groups/{group_id}/memberships/{membership_id}",
+        :group_id => group_id,
+        :membership_id => membership_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      GroupMembership.new(response)
+      
+
+    end
+    
+
+    # Get a single group membership
+    def get_single_group_membership_users(group_id,user_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "group_id is required" if group_id.nil?
+      raise "user_id is required" if user_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :group_id => group_id,
+        :user_id => user_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/groups/{group_id}/users/{user_id}",
+        :group_id => group_id,
+        :user_id => user_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      GroupMembership.new(response)
       
 
     end
