@@ -9,12 +9,12 @@
   "apis": [
     {
       "path": "/v1/accounts/{account_id}/roles",
-      "description": "List the roles available to an account.",
+      "description": "A paginated list of the roles available to an account.",
       "operations": [
         {
           "method": "GET",
           "summary": "List roles",
-          "notes": "List the roles available to an account.",
+          "notes": "A paginated list of the roles available to an account.",
           "nickname": "list_roles",
           "parameters": [
             {
@@ -28,7 +28,7 @@
             {
               "paramType": "query",
               "name": "state",
-              "description": "Filter by role state. If this argument is omitted, only 'active' roles are returned.",
+              "description": "Filter by role state. If this argument is omitted, only 'active' roles are\nreturned.",
               "type": "array",
               "format": null,
               "required": false,
@@ -43,7 +43,7 @@
             {
               "paramType": "query",
               "name": "show_inherited",
-              "description": "If this argument is true, all roles inherited from parent accounts will be included.",
+              "description": "If this argument is true, all roles inherited from parent accounts will\nbe included.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -140,7 +140,7 @@
             {
               "paramType": "form",
               "name": "base_role_type",
-              "description": "Specifies the role type that will be used as a base for the permissions granted to this role. Defaults to 'AccountMembership' if absent",
+              "description": "Specifies the role type that will be used as a base\nfor the permissions granted to this role.\n\nDefaults to 'AccountMembership' if absent",
               "type": "string",
               "format": null,
               "required": false,
@@ -164,7 +164,7 @@
             {
               "paramType": "form",
               "name": "permissions[<X>][enabled]",
-              "description": "If explicit is 1 and enabled is 1, permission <X> will be explicitly granted to this role. If explicit is 1 and enabled has any other value (typically 0), permission <X> will be explicitly denied to this role. If explicit is any other value (typically 0) or absent, or if enabled is absent, the value for permission <X> will be inherited from upstream. Ignored if permission <X> is locked upstream (in an ancestor account). May occur multiple times with unique values for <X>. Recognized permission names for <X> are: [For Account-Level Roles Only] become_user -- Become other users manage_account_memberships -- Add/remove other admins for the account manage_account_settings -- Manage account-level settings manage_alerts -- Manage global alerts manage_courses -- Manage ( add / edit / delete ) courses manage_developer_keys -- Manage developer keys manage_global_outcomes -- Manage learning outcomes manage_jobs -- Manage background jobs manage_role_overrides -- Manage permissions manage_storage_quotas -- Set storage quotas for courses, groups, and users manage_sis -- Import and manage SIS data manage_site_settings -- Manage site-wide and plugin settings manage_user_logins -- Modify login details for users read_course_content -- View course content read_course_list -- View the list of courses read_messages -- View notifications sent to users site_admin -- Use the Site Admin section and admin all other accounts view_error_reports -- View error reports view_statistics -- View statistics manage_feature_flags -- Enable or disable features at an account level [For both Account-Level and Course-Level roles] Note: Applicable enrollment types for course-level roles are given in brackets: S = student, T = teacher, A = TA, D = designer, O = observer. Lower-case letters indicate permissions that are off by default. A missing letter indicates the permission cannot be enabled for the role or any derived custom roles. change_course_state -- [ TaD ] Change course state comment_on_others_submissions -- [sTAD ] View all students' submissions and make comments on them create_collaborations -- [STADo] Create student collaborations create_conferences -- [STADo] Create web conferences manage_admin_users -- [ Tad ] Add/remove other teachers, course designers or TAs to the course manage_assignments -- [ TADo] Manage (add / edit / delete) assignments and quizzes manage_calendar -- [sTADo] Add, edit and delete events on the course calendar manage_content -- [ TADo] Manage all other course content manage_files -- [ TADo] Manage (add / edit / delete) course files manage_grades -- [ TA ] Edit grades manage_groups -- [ TAD ] Manage (create / edit / delete) groups manage_interaction_alerts -- [ Ta ] Manage alerts manage_outcomes -- [sTaDo] Manage learning outcomes manage_sections -- [ TaD ] Manage (create / edit / delete) course sections manage_students -- [ TAD ] Add/remove students for the course manage_user_notes -- [ TA ] Manage faculty journal entries manage_rubrics -- [ TAD ] Edit assessing rubrics manage_wiki -- [ TADo] Manage wiki (add / edit / delete pages) read_forum -- [STADO] View discussions moderate_forum -- [sTADo] Moderate discussions (delete/edit others' posts, lock topics) post_to_forum -- [STADo] Post to discussions read_question_banks -- [ TADo] View and link to question banks read_reports -- [ TAD ] View usage reports for the course read_roster -- [STADo] See the list of users read_sis -- [sTa ] Read SIS data send_messages -- [STADo] Send messages to individual course members send_messages_all -- [sTADo] Send messages to the entire class view_all_grades -- [ TAd ] View all grades view_group_pages -- [sTADo] View the group pages of all student groups Some of these permissions are applicable only for roles on the site admin account, on a root account, or for course-level roles with a particular base role type; if a specified permission is inapplicable, it will be ignored. Additional permissions may exist based on installed plugins.",
+              "description": "If explicit is 1 and enabled is 1, permission <X> will be explicitly\ngranted to this role. If explicit is 1 and enabled has any other value\n(typically 0), permission <X> will be explicitly denied to this role. If\nexplicit is any other value (typically 0) or absent, or if enabled is\nabsent, the value for permission <X> will be inherited from upstream.\nIgnored if permission <X> is locked upstream (in an ancestor account).\n\nMay occur multiple times with unique values for <X>. Recognized\npermission names for <X> are:\n\n  [For Account-Level Roles Only]\n  become_user                      -- Become other users\n  import_sis                       -- Import SIS data\n  manage_account_memberships       -- Add/remove other admins for the account\n  manage_account_settings          -- Manage account-level settings\n  manage_alerts                    -- Manage global alerts\n  manage_courses                   -- Manage ( add / edit / delete ) courses\n  manage_developer_keys            -- Manage developer keys\n  manage_global_outcomes           -- Manage learning outcomes\n  manage_jobs                      -- Manage background jobs\n  manage_role_overrides            -- Manage permissions\n  manage_storage_quotas            -- Set storage quotas for courses, groups, and users\n  manage_sis                       -- Manage SIS data\n  manage_site_settings             -- Manage site-wide and plugin settings\n  manage_user_logins               -- Modify login details for users\n  read_course_content              -- View course content\n  read_course_list                 -- View the list of courses\n  read_messages                    -- View notifications sent to users\n  site_admin                       -- Use the Site Admin section and admin all other accounts\n  view_error_reports               -- View error reports\n  view_statistics                  -- View statistics\n  manage_feature_flags             -- Enable or disable features at an account level\n\n  [For both Account-Level and Course-Level roles]\n   Note: Applicable enrollment types for course-level roles are given in brackets:\n         S = student, T = teacher, A = TA, D = designer, O = observer.\n         Lower-case letters indicate permissions that are off by default.\n         A missing letter indicates the permission cannot be enabled for the role\n         or any derived custom roles.\n  change_course_state              -- [ TaD ] Change course state\n  comment_on_others_submissions    -- [sTAD ] View all students' submissions and make comments on them\n  create_collaborations            -- [STADo] Create student collaborations\n  create_conferences               -- [STADo] Create web conferences\n  manage_admin_users               -- [ Tad ] Add/remove other teachers, course designers or TAs to the course\n  manage_assignments               -- [ TADo] Manage (add / edit / delete) assignments and quizzes\n  manage_calendar                  -- [sTADo] Add, edit and delete events on the course calendar\n  manage_content                   -- [ TADo] Manage all other course content\n  manage_files                     -- [ TADo] Manage (add / edit / delete) course files\n  manage_grades                    -- [ TA  ] Edit grades\n  manage_groups                    -- [ TAD ] Manage (create / edit / delete) groups\n  manage_interaction_alerts        -- [ Ta  ] Manage alerts\n  manage_outcomes                  -- [sTaDo] Manage learning outcomes\n  manage_sections                  -- [ TaD ] Manage (create / edit / delete) course sections\n  manage_students                  -- [ TAD ] Add/remove students for the course\n  manage_user_notes                -- [ TA  ] Manage faculty journal entries\n  manage_rubrics                   -- [ TAD ] Edit assessing rubrics\n  manage_wiki                      -- [ TADo] Manage (add / edit / delete) pages\n  read_forum                       -- [STADO] View discussions\n  moderate_forum                   -- [sTADo] Moderate discussions (delete/edit others' posts, lock topics)\n  post_to_forum                    -- [STADo] Post to discussions\n  read_announcements               -- [STADO] View announcements\n  read_question_banks              -- [ TADo] View and link to question banks\n  read_reports                     -- [ TAD ] View usage reports for the course\n  read_roster                      -- [STADo] See the list of users\n  read_sis                         -- [sTa  ] Read SIS data\n  send_messages                    -- [STADo] Send messages to individual course members\n  send_messages_all                -- [sTADo] Send messages to the entire class\n  view_all_grades                  -- [ TAd ] View all grades\n  view_group_pages                 -- [sTADo] View the group pages of all student groups\n  lti_add_edit                     -- [ TAD ] LTI add and edit\n\nSome of these permissions are applicable only for roles on the site admin\naccount, on a root account, or for course-level roles with a particular base role type;\nif a specified permission is inapplicable, it will be ignored.\n\nAdditional permissions may exist based on installed plugins.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -172,7 +172,23 @@
             {
               "paramType": "form",
               "name": "permissions[<X>][locked]",
-              "description": "If the value is 1, permission <X> will be locked downstream (new roles in subaccounts cannot override the setting). For any other value, permission <X> is left unlocked. Ignored if permission <X> is already locked upstream. May occur multiple times with unique values for <X>.",
+              "description": "If the value is 1, permission <X> will be locked downstream (new roles in\nsubaccounts cannot override the setting). For any other value, permission\n<X> is left unlocked. Ignored if permission <X> is already locked\nupstream. May occur multiple times with unique values for <X>.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "permissions[<X>][applies_to_self]",
+              "description": "If the value is 1, permission <X> applies to the account this role is in.\nThe default value is 1. Must be true if applies_to_descendants is false.\nThis value is only returned if enabled is true.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "permissions[<X>][applies_to_descendants]",
+              "description": "If the value is 1, permission <X> cascades down to sub accounts of the\naccount this role is in. The default value is 1.  Must be true if\napplies_to_self is false.This value is only returned if enabled is true.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -267,7 +283,7 @@
               "paramType": "form",
               "name": "role",
               "description": "The name for the role",
-              "type": "deprecated",
+              "type": "Deprecated",
               "format": null,
               "required": false
             }
@@ -321,7 +337,23 @@
             {
               "paramType": "form",
               "name": "permissions[<X>][enabled]",
-              "description": "These arguments are described in the documentation for the {api:RoleOverridesController#add_role add_role method}.",
+              "description": "These arguments are described in the documentation for the\n{api:RoleOverridesController#add_role add_role method}.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "permissions[<X>][applies_to_self]",
+              "description": "If the value is 1, permission <X> applies to the account this role is in.\nThe default value is 1. Must be true if applies_to_descendants is false.\nThis value is only returned if enabled is true.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "permissions[<X>][applies_to_descendants]",
+              "description": "If the value is 1, permission <X> cascades down to sub accounts of the\naccount this role is in. The default value is 1.  Must be true if\napplies_to_self is false.This value is only returned if enabled is true.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -348,17 +380,32 @@
         "locked": {
           "description": "Whether the permission is locked by this role",
           "example": false,
-          "type": "boolean"
+          "type": "boolean",
+          "default": false
+        },
+        "applies_to_self": {
+          "description": "Whether the permission applies to the account this role is in. Only present if enabled is true",
+          "example": true,
+          "type": "boolean",
+          "default": true
+        },
+        "applies_to_descendants": {
+          "description": "Whether the permission cascades down to sub accounts of the account this role is in. Only present if enabled is true",
+          "example": false,
+          "type": "boolean",
+          "default": true
         },
         "readonly": {
           "description": "Whether the permission can be modified in this role (i.e. whether the permission is locked by an upstream role).",
           "example": false,
-          "type": "boolean"
+          "type": "boolean",
+          "default": false
         },
         "explicit": {
           "description": "Whether the value of enabled is specified explicitly by this role, or inherited from an upstream role.",
           "example": true,
-          "type": "boolean"
+          "type": "boolean",
+          "default": false
         },
         "prior_default": {
           "description": "The value that would have been inherited from upstream if the role had not explicitly set a value. Only present if explicit is true.",
@@ -391,7 +438,14 @@
         },
         "account": {
           "description": "JSON representation of the account the role is in.",
-          "example": "{\"id\"=>1019, \"name\"=>\"CGNU\", \"parent_account_id\"=>73, \"root_account_id\"=>1, \"sis_account_id\"=>\"cgnu\"}",
+          "example": {
+            "id": 1019,
+            "name": "CGNU",
+            "parent_account_id": 73,
+            "root_account_id": 1,
+            "sis_account_id": "cgnu"
+          },
+          "type": "object",
           "$ref": "Account"
         },
         "workflow_state": {
@@ -401,8 +455,35 @@
         },
         "permissions": {
           "description": "A dictionary of permissions keyed by name (see permissions input parameter in the 'Create a role' API).",
-          "example": "{\"read_course_content\"=>{\"enabled\"=>true, \"locked\"=>false, \"readonly\"=>false, \"explicit\"=>true, \"prior_default\"=>false}, \"read_course_list\"=>{\"enabled\"=>true, \"locked\"=>true, \"readonly\"=>true, \"explicit\"=>false}, \"read_question_banks\"=>{\"enabled\"=>false, \"locked\"=>true, \"readonly\"=>false, \"explicit\"=>true, \"prior_default\"=>false}, \"read_reports\"=>{\"enabled\"=>true, \"locked\"=>false, \"readonly\"=>false, \"explicit\"=>false}}",
-          "type": "map",
+          "example": {
+            "read_course_content": {
+              "enabled": true,
+              "locked": false,
+              "readonly": false,
+              "explicit": true,
+              "prior_default": false
+            },
+            "read_course_list": {
+              "enabled": true,
+              "locked": true,
+              "readonly": true,
+              "explicit": false
+            },
+            "read_question_banks": {
+              "enabled": false,
+              "locked": true,
+              "readonly": false,
+              "explicit": true,
+              "prior_default": false
+            },
+            "read_reports": {
+              "enabled": true,
+              "locked": false,
+              "readonly": false,
+              "explicit": false
+            }
+          },
+          "type": "object",
           "key": {
             "type": "string"
           },

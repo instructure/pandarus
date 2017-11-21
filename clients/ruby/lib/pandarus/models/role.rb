@@ -10,7 +10,7 @@ module Pandarus
     attribute :base_role_type, resolve_type("String")
     attribute :account, resolve_type("Account")
     attribute :workflow_state, resolve_type("String")
-    attribute :permissions, resolve_type("Map")
+    attribute :permissions, resolve_type("Object")
     
   end
 end

@@ -20012,6 +20012,8 @@ module Pandarus
         :permissions____x_____explicit__,
         :permissions____x_____enabled__,
         :permissions____x_____locked__,
+        :permissions____x_____applies_to_self__,
+        :permissions____x_____applies_to_descendants__,
         
 
       ]
@@ -20132,6 +20134,8 @@ module Pandarus
         :label,
         :permissions____x_____explicit__,
         :permissions____x_____enabled__,
+        :permissions____x_____applies_to_self__,
+        :permissions____x_____applies_to_descendants__,
         
 
       ]
