@@ -37,16 +37,16 @@
               "paramType": "query",
               "name": "latitude",
               "description": "no description",
-              "type": "float",
-              "format": null,
+              "type": "number",
+              "format": "float",
               "required": false
             },
             {
               "paramType": "query",
               "name": "longitude",
               "description": "no description",
-              "type": "float",
-              "format": null,
+              "type": "number",
+              "format": "float",
               "required": false
             }
           ],
