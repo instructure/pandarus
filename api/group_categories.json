@@ -9,12 +9,12 @@
   "apis": [
     {
       "path": "/v1/accounts/{account_id}/group_categories",
-      "description": "Returns a list of group categories in a context",
+      "description": "Returns a paginated list of group categories in a context",
       "operations": [
         {
           "method": "GET",
           "summary": "List group categories for a context",
-          "notes": "Returns a list of group categories in a context",
+          "notes": "Returns a paginated list of group categories in a context",
           "nickname": "list_group_categories_for_context_accounts",
           "parameters": [
             {
@@ -35,12 +35,12 @@
     },
     {
       "path": "/v1/courses/{course_id}/group_categories",
-      "description": "Returns a list of group categories in a context",
+      "description": "Returns a paginated list of group categories in a context",
       "operations": [
         {
           "method": "GET",
           "summary": "List group categories for a context",
-          "notes": "Returns a list of group categories in a context",
+          "notes": "Returns a paginated list of group categories in a context",
           "nickname": "list_group_categories_for_context_courses",
           "parameters": [
             {
@@ -111,7 +111,7 @@
             {
               "paramType": "form",
               "name": "self_signup",
-              "description": "Allow students to sign up for a group themselves (Course Only). valid values are: \"enabled\":: allows students to self sign up for any group in course \"restricted\":: allows students to self sign up only for groups in the same section null disallows self sign up",
+              "description": "Allow students to sign up for a group themselves (Course Only).\nvalid values are:\n\"enabled\":: allows students to self sign up for any group in course\n\"restricted\":: allows students to self sign up only for groups in the\n               same section null disallows self sign up",
               "type": "string",
               "format": null,
               "required": false,
@@ -123,7 +123,7 @@
             {
               "paramType": "form",
               "name": "auto_leader",
-              "description": "Assigns group leaders automatically when generating and allocating students to groups Valid values are: \"first\":: the first student to be allocated to a group is the leader \"random\":: a random student from all members is chosen as the leader",
+              "description": "Assigns group leaders automatically when generating and allocating students to groups\nValid values are:\n\"first\":: the first student to be allocated to a group is the leader\n\"random\":: a random student from all members is chosen as the leader",
               "type": "string",
               "format": null,
               "required": false,
@@ -135,7 +135,7 @@
             {
               "paramType": "form",
               "name": "group_limit",
-              "description": "Limit the maximum number of users in each group (Course Only). Requires self signup.",
+              "description": "Limit the maximum number of users in each group (Course Only). Requires\nself signup.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -151,7 +151,7 @@
             {
               "paramType": "form",
               "name": "split_group_count",
-              "description": "(Deprecated) Create this number of groups, and evenly distribute students among them. not allowed with \"enable_self_signup\". because the group assignment happens synchronously, it's recommended that you instead use the assign_unassigned_members endpoint. (Course Only)",
+              "description": "(Deprecated)\nCreate this number of groups, and evenly distribute students\namong them. not allowed with \"enable_self_signup\". because\nthe group assignment happens synchronously, it's recommended\nthat you instead use the assign_unassigned_members endpoint.\n(Course Only)",
               "type": "string",
               "format": null,
               "required": false
@@ -190,7 +190,7 @@
             {
               "paramType": "form",
               "name": "self_signup",
-              "description": "Allow students to sign up for a group themselves (Course Only). valid values are: \"enabled\":: allows students to self sign up for any group in course \"restricted\":: allows students to self sign up only for groups in the same section null disallows self sign up",
+              "description": "Allow students to sign up for a group themselves (Course Only).\nvalid values are:\n\"enabled\":: allows students to self sign up for any group in course\n\"restricted\":: allows students to self sign up only for groups in the\n               same section null disallows self sign up",
               "type": "string",
               "format": null,
               "required": false,
@@ -202,7 +202,7 @@
             {
               "paramType": "form",
               "name": "auto_leader",
-              "description": "Assigns group leaders automatically when generating and allocating students to groups Valid values are: \"first\":: the first student to be allocated to a group is the leader \"random\":: a random student from all members is chosen as the leader",
+              "description": "Assigns group leaders automatically when generating and allocating students to groups\nValid values are:\n\"first\":: the first student to be allocated to a group is the leader\n\"random\":: a random student from all members is chosen as the leader",
               "type": "string",
               "format": null,
               "required": false,
@@ -214,7 +214,7 @@
             {
               "paramType": "form",
               "name": "group_limit",
-              "description": "Limit the maximum number of users in each group (Course Only). Requires self signup.",
+              "description": "Limit the maximum number of users in each group (Course Only). Requires\nself signup.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -230,7 +230,7 @@
             {
               "paramType": "form",
               "name": "split_group_count",
-              "description": "(Deprecated) Create this number of groups, and evenly distribute students among them. not allowed with \"enable_self_signup\". because the group assignment happens synchronously, it's recommended that you instead use the assign_unassigned_members endpoint. (Course Only)",
+              "description": "(Deprecated)\nCreate this number of groups, and evenly distribute students\namong them. not allowed with \"enable_self_signup\". because\nthe group assignment happens synchronously, it's recommended\nthat you instead use the assign_unassigned_members endpoint.\n(Course Only)",
               "type": "string",
               "format": null,
               "required": false
@@ -269,7 +269,7 @@
             {
               "paramType": "form",
               "name": "self_signup",
-              "description": "Allow students to sign up for a group themselves (Course Only). Valid values are: \"enabled\":: allows students to self sign up for any group in course \"restricted\":: allows students to self sign up only for groups in the same section null disallows self sign up",
+              "description": "Allow students to sign up for a group themselves (Course Only).\nValid values are:\n\"enabled\":: allows students to self sign up for any group in course\n\"restricted\":: allows students to self sign up only for groups in the\n               same section null disallows self sign up",
               "type": "string",
               "format": null,
               "required": false,
@@ -281,7 +281,7 @@
             {
               "paramType": "form",
               "name": "auto_leader",
-              "description": "Assigns group leaders automatically when generating and allocating students to groups Valid values are: \"first\":: the first student to be allocated to a group is the leader \"random\":: a random student from all members is chosen as the leader",
+              "description": "Assigns group leaders automatically when generating and allocating students to groups\nValid values are:\n\"first\":: the first student to be allocated to a group is the leader\n\"random\":: a random student from all members is chosen as the leader",
               "type": "string",
               "format": null,
               "required": false,
@@ -293,7 +293,7 @@
             {
               "paramType": "form",
               "name": "group_limit",
-              "description": "Limit the maximum number of users in each group (Course Only). Requires self signup.",
+              "description": "Limit the maximum number of users in each group (Course Only). Requires\nself signup.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -309,7 +309,7 @@
             {
               "paramType": "form",
               "name": "split_group_count",
-              "description": "(Deprecated) Create this number of groups, and evenly distribute students among them. not allowed with \"enable_self_signup\". because the group assignment happens synchronously, it's recommended that you instead use the assign_unassigned_members endpoint. (Course Only)",
+              "description": "(Deprecated)\nCreate this number of groups, and evenly distribute students\namong them. not allowed with \"enable_self_signup\". because\nthe group assignment happens synchronously, it's recommended\nthat you instead use the assign_unassigned_members endpoint.\n(Course Only)",
               "type": "string",
               "format": null,
               "required": false
@@ -344,12 +344,12 @@
     },
     {
       "path": "/v1/group_categories/{group_category_id}/groups",
-      "description": "Returns a list of groups in a group category",
+      "description": "Returns a paginated list of groups in a group category",
       "operations": [
         {
           "method": "GET",
           "summary": "List groups in group category",
-          "notes": "Returns a list of groups in a group category",
+          "notes": "Returns a paginated list of groups in a group category",
           "nickname": "list_groups_in_group_category",
           "parameters": [
             {
@@ -370,12 +370,12 @@
     },
     {
       "path": "/v1/group_categories/{group_category_id}/users",
-      "description": "Returns a list of users in the group category.",
+      "description": "Returns a paginated list of users in the group category.",
       "operations": [
         {
           "method": "GET",
           "summary": "List users in group category",
-          "notes": "Returns a list of users in the group category.",
+          "notes": "Returns a paginated list of users in the group category.",
           "nickname": "list_users_in_group_category",
           "parameters": [
             {
@@ -389,7 +389,7 @@
             {
               "paramType": "query",
               "name": "search_term",
-              "description": "The partial name or full ID of the users to match and return in the results list. Must be at least 3 characters.",
+              "description": "The partial name or full ID of the users to match and return in the results\nlist. Must be at least 3 characters.",
               "type": "string",
               "format": null,
               "required": false
@@ -397,7 +397,7 @@
             {
               "paramType": "query",
               "name": "unassigned",
-              "description": "Set this value to true if you wish only to search unassigned users in the group category.",
+              "description": "Set this value to true if you wish only to search unassigned users in the\ngroup category.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -431,7 +431,7 @@
             {
               "paramType": "form",
               "name": "sync",
-              "description": "The assigning is done asynchronously by default. If you would like to override this and have the assigning done synchronously, set this value to true.",
+              "description": "The assigning is done asynchronously by default. If you would like to\noverride this and have the assigning done synchronously, set this value\nto true.",
               "type": "boolean",
               "format": null,
               "required": false
