@@ -138,7 +138,7 @@
             {
               "paramType": "query",
               "name": "assignment_id",
-              "description": "The ID of the assignment for which you want to see submissions. If absent, versions of submissions from any assignment in the course are included.",
+              "description": "The ID of the assignment for which you want to see submissions. If\nabsent, versions of submissions from any assignment in the course are\nincluded.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -146,7 +146,7 @@
             {
               "paramType": "query",
               "name": "user_id",
-              "description": "The ID of the user for which you want to see submissions. If absent, versions of submissions from any user in the course are included.",
+              "description": "The ID of the user for which you want to see submissions. If absent,\nversions of submissions from any user in the course are included.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -154,7 +154,7 @@
             {
               "paramType": "query",
               "name": "ascending",
-              "description": "Returns submission versions in ascending date order (oldest first). If absent, returns submission versions in descending date order (newest first).",
+              "description": "Returns submission versions in ascending date order (oldest first). If\nabsent, returns submission versions in descending date order (newest\nfirst).",
               "type": "boolean",
               "format": null,
               "required": false
@@ -188,7 +188,11 @@
         },
         "assignments": {
           "description": "the assignment groups for all submissions in this response that were graded by this user.  The details are not nested inside here, but the fact that an assignment is present here means that the grader did grade submissions for this assignment on the contextual date. You can use the id of a grader and of an assignment to make another API call to find all submissions for a grader/assignment combination on a given date.",
-          "example": "[]",
+          "example": [
+            1,
+            2,
+            3
+          ],
           "type": "array",
           "items": {
             "type": "integer"
@@ -352,10 +356,9 @@
         },
         "versions": {
           "description": "an array of all the versions of this submission",
-          "example": "[]",
           "type": "array",
           "items": {
-            "type": "integer"
+            "$ref": "SubmissionVersion"
           }
         }
       }

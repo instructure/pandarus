@@ -6,7 +6,7 @@ module Pandarus
     include Virtus.model(finalize: false)
 
     attribute :submission_id, resolve_type("Integer")
-    attribute :versions, resolve_type("Integer", collection: true)
+    attribute :versions, resolve_type("SubmissionVersion", collection: true)
     
   end
 end
