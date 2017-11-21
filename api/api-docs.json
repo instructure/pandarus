@@ -315,6 +315,10 @@
       "description": "SIS Imports"
     },
     {
+      "path": "/sis_integration.json",
+      "description": "SIS Integration"
+    },
+    {
       "path": "/search.json",
       "description": "Search"
     },

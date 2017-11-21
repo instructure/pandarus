@@ -38,7 +38,6 @@ cd "$SCRIPT_DIR" && (
 	git checkout -- api/sis_imports.json
 	rm api/authentication_providers.json
 	rm api/rubrics.json
-	rm api/sis_integration.json
 	rm api/webhooks_subscriptions.json
   ruby normalize-manifest
 )
