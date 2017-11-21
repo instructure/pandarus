@@ -8,6 +8,7 @@ module Pandarus
     attribute :points, resolve_type("Integer")
     attribute :id, resolve_type("String")
     attribute :description, resolve_type("String")
+    attribute :long_description, resolve_type("String")
     
   end
 end

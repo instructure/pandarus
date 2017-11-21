@@ -1646,7 +1646,9 @@ module Pandarus
         :search_term,
         :override_assignment_dates,
         :needs_grading_count_by_section,
-        :bucket
+        :bucket,
+        :assignment_ids,
+        :order_by
 
       ]
 
@@ -1671,6 +1673,43 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       RemoteCollection.new(connection, Assignment, path, query_params)
+      
+
+    end
+    
+
+    # List assignments for user
+    def list_assignments_for_user(user_id,course_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "user_id is required" if user_id.nil?
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :user_id => user_id,
+        :course_id => course_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{user_id}/courses/{course_id}/assignments",
+        :user_id => user_id,
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      response
       
 
     end
@@ -1729,6 +1768,7 @@ module Pandarus
         :assignment__submission_types__,
         :assignment__allowed_extensions__,
         :assignment__turnitin_enabled__,
+        :assignment__vericite_enabled__,
         :assignment__turnitin_settings__,
         :assignment__integration_data__,
         :assignment__integration_id__,
@@ -1750,6 +1790,8 @@ module Pandarus
         :assignment__only_visible_to_overrides__,
         :assignment__published__,
         :assignment__grading_standard_id__,
+        :assignment__omit_from_final_grade__,
+        :assignment__quiz_lti__,
         
 
       ]
@@ -1791,6 +1833,7 @@ module Pandarus
         :assignment__submission_types__,
         :assignment__allowed_extensions__,
         :assignment__turnitin_enabled__,
+        :assignment__vericite_enabled__,
         :assignment__turnitin_settings__,
         :assignment__integration_data__,
         :assignment__integration_id__,
@@ -1812,6 +1855,7 @@ module Pandarus
         :assignment__only_visible_to_overrides__,
         :assignment__published__,
         :assignment__grading_standard_id__,
+        :assignment__omit_from_final_grade__,
         
 
       ]
@@ -2115,6 +2159,116 @@ module Pandarus
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       AssignmentOverride.new(response)
+      
+
+    end
+    
+
+    # Batch retrieve overrides in a course
+    def batch_retrieve_overrides_in_course(course_id,assignment_overrides__id__,assignment_overrides__assignment_id__,opts={})
+      query_param_keys = [
+        :assignment_overrides__id__,
+        :assignment_overrides__assignment_id__
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "assignment_overrides__id__ is required" if assignment_overrides__id__.nil?
+      raise "assignment_overrides__assignment_id__ is required" if assignment_overrides__assignment_id__.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :assignment_overrides__id__ => assignment_overrides__id__,
+        :assignment_overrides__assignment_id__ => assignment_overrides__assignment_id__
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/assignments/overrides",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, AssignmentOverride, path, query_params)
+      
+
+    end
+    
+
+    # Batch create overrides in a course
+    def batch_create_overrides_in_course(course_id,assignment_overrides,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :assignment_overrides,
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "assignment_overrides is required" if assignment_overrides.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :assignment_overrides => assignment_overrides
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/assignments/overrides",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, AssignmentOverride, path, query_params)
+      
+
+    end
+    
+
+    # Batch update overrides in a course
+    def batch_update_overrides_in_course(course_id,assignment_overrides,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :assignment_overrides,
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "assignment_overrides is required" if assignment_overrides.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :assignment_overrides => assignment_overrides
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/assignments/overrides",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, AssignmentOverride, path, query_params)
       
 
     end

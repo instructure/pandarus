@@ -17,9 +17,13 @@ module Pandarus
     attribute :all_dates, resolve_type("AssignmentDate", collection: true)
     attribute :course_id, resolve_type("Integer")
     attribute :html_url, resolve_type("String")
+    attribute :submissions_download_url, resolve_type("String")
     attribute :assignment_group_id, resolve_type("Integer")
+    attribute :due_date_required, resolve_type(nil)
     attribute :allowed_extensions, resolve_type("String", collection: true)
+    attribute :max_name_length, resolve_type("Integer")
     attribute :turnitin_enabled, resolve_type(nil)
+    attribute :vericite_enabled, resolve_type(nil)
     attribute :turnitin_settings, resolve_type("TurnitinSettings")
     attribute :grade_group_students_individually, resolve_type(nil)
     attribute :external_tool_tag_attributes, resolve_type("ExternalToolTagAttributes")
@@ -27,6 +31,7 @@ module Pandarus
     attribute :automatic_peer_reviews, resolve_type(nil)
     attribute :peer_review_count, resolve_type("Integer")
     attribute :peer_reviews_assign_at, resolve_type("DateTime")
+    attribute :intra_group_peer_reviews, resolve_type(nil)
     attribute :group_category_id, resolve_type("Integer")
     attribute :needs_grading_count, resolve_type("Integer")
     attribute :needs_grading_count_by_section, resolve_type("NeedsGradingCount", collection: true)
@@ -37,6 +42,7 @@ module Pandarus
     attribute :muted, resolve_type(nil)
     attribute :points_possible, resolve_type("Integer")
     attribute :submission_types, resolve_type("String", collection: true)
+    attribute :has_submitted_submissions, resolve_type(nil)
     attribute :grading_type, resolve_type("String")
     attribute :grading_standard_id, resolve_type("Integer")
     attribute :published, resolve_type(nil)
@@ -57,6 +63,7 @@ module Pandarus
     attribute :rubric, resolve_type("RubricCriteria", collection: true)
     attribute :assignment_visibility, resolve_type("Integer", collection: true)
     attribute :overrides, resolve_type("AssignmentOverride", collection: true)
+    attribute :omit_from_final_grade, resolve_type(nil)
     
   end
 end
