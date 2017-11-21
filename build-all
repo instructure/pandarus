@@ -33,7 +33,6 @@ cd "$SCRIPT_DIR" && (
 	git checkout -- api/account_reports.json
 	git checkout -- api/admins.json
 	git checkout -- api/courses.json
-	git checkout -- api/enrollments.json
 	git checkout -- api/external_tools.json
 	git checkout -- api/favorites.json
 	git checkout -- api/feature_flags.json

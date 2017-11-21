@@ -8444,7 +8444,13 @@ module Pandarus
         :type,
         :role,
         :state,
-        :user_id
+        :include,
+        :user_id,
+        :grading_period_id,
+        :sis_account_id,
+        :sis_course_id,
+        :sis_section_id,
+        :sis_user_id
 
       ]
 
@@ -8480,7 +8486,13 @@ module Pandarus
         :type,
         :role,
         :state,
-        :user_id
+        :include,
+        :user_id,
+        :grading_period_id,
+        :sis_account_id,
+        :sis_course_id,
+        :sis_section_id,
+        :sis_user_id
 
       ]
 
@@ -8515,7 +8527,13 @@ module Pandarus
       query_param_keys = [
         :type,
         :role,
-        :state
+        :state,
+        :include,
+        :grading_period_id,
+        :sis_account_id,
+        :sis_course_id,
+        :sis_section_id,
+        :sis_user_id
 
       ]
 
@@ -8600,6 +8618,7 @@ module Pandarus
         :enrollment__notify__,
         :enrollment__self_enrollment_code__,
         :enrollment__self_enrolled__,
+        :enrollment__associated_user_id__,
         
 
       ]
@@ -8648,6 +8667,7 @@ module Pandarus
         :enrollment__notify__,
         :enrollment__self_enrollment_code__,
         :enrollment__self_enrolled__,
+        :enrollment__associated_user_id__,
         
 
       ]
@@ -8678,8 +8698,8 @@ module Pandarus
     end
     
 
-    # Conclude an enrollment
-    def conclude_enrollment(course_id,id,opts={})
+    # Conclude, deactivate, or delete an enrollment
+    def conclude_deactivate_or_delete_enrollment(course_id,id,opts={})
       query_param_keys = [
         :task
 
@@ -8709,6 +8729,43 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
+      Enrollment.new(response)
+      
+
+    end
+    
+
+    # Re-activate an enrollment
+    def re_activate_enrollment(course_id,id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/enrollments/{id}/reactivate",
+        :course_id => course_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
       Enrollment.new(response)
       
 
