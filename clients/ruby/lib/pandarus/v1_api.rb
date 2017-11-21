@@ -19324,6 +19324,7 @@ module Pandarus
       ]
 
       form_param_keys = [
+        :conversations,
         
 
       ]
@@ -19377,6 +19378,43 @@ module Pandarus
 
       # resource path
       path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/submissions",
+        :course_id => course_id,
+        :quiz_id => quiz_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Get the quiz submission.
+    def get_quiz_submission(course_id,quiz_id,opts={})
+      query_param_keys = [
+        :include
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "quiz_id is required" if quiz_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :quiz_id => quiz_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/submission",
         :course_id => course_id,
         :quiz_id => quiz_id)
       headers = nil
@@ -19555,6 +19593,46 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Get current quiz submission times.
+    def get_current_quiz_submission_times(course_id,quiz_id,id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "quiz_id is required" if quiz_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :quiz_id => quiz_id,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}/time",
+        :course_id => course_id,
+        :quiz_id => quiz_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
 

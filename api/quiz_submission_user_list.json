@@ -32,6 +32,14 @@
               "type": "string",
               "format": null,
               "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "conversations",
+              "description": "- Body and recipients to send the message to.",
+              "type": "QuizUserConversation",
+              "format": null,
+              "required": false
             }
           ],
           "type": "void"

@@ -49,7 +49,7 @@
               "format": null,
               "required": true,
               "items": {
-                "$ref": "array"
+                "$ref": "Array"
               }
             }
           ],
@@ -94,7 +94,7 @@
             {
               "paramType": "query",
               "name": "attempt",
-              "description": "The specific submission attempt to look up the events for. If unspecified, the latest attempt will be used.",
+              "description": "The specific submission attempt to look up the events for. If unspecified,\nthe latest attempt will be used.",
               "type": "integer",
               "format": "int64",
               "required": false

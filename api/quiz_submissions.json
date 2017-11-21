@@ -9,13 +9,60 @@
   "apis": [
     {
       "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/submissions",
-      "description": "Get a list of all submissions for this quiz.\n\n<b>200 OK</b> response code is returned if the request was successful.",
+      "description": "Get a list of all submissions for this quiz. Users who can view or manage\ngrades for a course will have submissions from multiple users returned. A\nuser who can only submit will have only their own submissions returned. When\na user has an in-progress submission, only that submission is returned. When\nthere isn't an in-progress quiz_submission, all completed submissions,\nincluding previous attempts, are returned.\n\n<b>200 OK</b> response code is returned if the request was successful.",
       "operations": [
         {
           "method": "GET",
           "summary": "Get all quiz submissions.",
-          "notes": "Get a list of all submissions for this quiz.\n\n<b>200 OK</b> response code is returned if the request was successful.",
+          "notes": "Get a list of all submissions for this quiz. Users who can view or manage\ngrades for a course will have submissions from multiple users returned. A\nuser who can only submit will have only their own submissions returned. When\na user has an in-progress submission, only that submission is returned. When\nthere isn't an in-progress quiz_submission, all completed submissions,\nincluding previous attempts, are returned.\n\n<b>200 OK</b> response code is returned if the request was successful.",
           "nickname": "get_all_quiz_submissions",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Associations to include with the quiz submission.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "enum": [
+                "submission",
+                "quiz",
+                "user"
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/submission",
+      "description": "Get the submission for this quiz for the current user.\n\n<b>200 OK</b> response code is returned if the request was successful.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get the quiz submission.",
+          "notes": "Get the submission for this quiz for the current user.\n\n<b>200 OK</b> response code is returned if the request was successful.",
+          "nickname": "get_quiz_submission",
           "parameters": [
             {
               "paramType": "path",
@@ -146,7 +193,7 @@
             {
               "paramType": "form",
               "name": "preview",
-              "description": "Whether this should be a preview QuizSubmission and not count towards the user's course record. Teachers only.",
+              "description": "Whether this should be a preview QuizSubmission and not count towards\nthe user's course record. Teachers only.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -193,7 +240,7 @@
             {
               "paramType": "form",
               "name": "attempt",
-              "description": "The attempt number of the quiz submission that should be updated. This attempt MUST be already completed.",
+              "description": "The attempt number of the quiz submission that should be updated. This\nattempt MUST be already completed.",
               "type": "integer",
               "format": "int64",
               "required": true
@@ -202,15 +249,15 @@
               "paramType": "form",
               "name": "fudge_points",
               "description": "Amount of positive or negative points to fudge the total score by.",
-              "type": "float",
-              "format": null,
+              "type": "number",
+              "format": "float",
               "required": false
             },
             {
               "paramType": "form",
               "name": "questions",
-              "description": "A set of scores and comments for each question answered by the student. The keys are the question IDs, and the values are hashes of `score` and `comment` entries. See {Appendix: Manual Scoring} for more on this parameter.",
-              "type": "hash",
+              "description": "A set of scores and comments for each question answered by the student.\nThe keys are the question IDs, and the values are hashes of `score` and\n`comment` entries. See {Appendix: Manual Scoring} for more on this\nparameter.",
+              "type": "Hash",
               "format": null,
               "required": false
             }
@@ -256,7 +303,7 @@
             {
               "paramType": "form",
               "name": "attempt",
-              "description": "The attempt number of the quiz submission that should be completed. Note that this must be the latest attempt index, as earlier attempts can not be modified.",
+              "description": "The attempt number of the quiz submission that should be completed. Note\nthat this must be the latest attempt index, as earlier attempts can not\nbe modified.",
               "type": "integer",
               "format": "int64",
               "required": true
@@ -264,7 +311,7 @@
             {
               "paramType": "form",
               "name": "validation_token",
-              "description": "The unique validation token you received when this Quiz Submission was created.",
+              "description": "The unique validation token you received when this Quiz Submission was\ncreated.",
               "type": "string",
               "format": null,
               "required": true
@@ -276,6 +323,45 @@
               "type": "string",
               "format": null,
               "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/submissions/{id}/time",
+      "description": "Get the current timing data for the quiz attempt, both the end_at timestamp\nand the time_left parameter.\n\n<b>Responses</b>\n\n* <b>200 OK</b> if the request was successful",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get current quiz submission times.",
+          "notes": "Get the current timing data for the quiz attempt, both the end_at timestamp\nand the time_left parameter.\n\n<b>Responses</b>\n\n* <b>200 OK</b> if the request was successful",
+          "nickname": "get_current_quiz_submission_times",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
             }
           ],
           "type": "void"
@@ -396,6 +482,11 @@
           "description": "The current state of the quiz submission. Possible values: ['untaken'|'pending_review'|'complete'|'settings_only'|'preview'].",
           "example": "untaken",
           "type": "string"
+        },
+        "overdue_and_needs_submission": {
+          "description": "Indicates whether the quiz submission is overdue and needs submission",
+          "example": "false",
+          "type": "boolean"
         }
       }
     }
