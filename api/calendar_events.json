@@ -9,12 +9,12 @@
   "apis": [
     {
       "path": "/v1/calendar_events",
-      "description": "Retrieve the list of calendar events or assignments for the current user",
+      "description": "Retrieve the paginated list of calendar events or assignments for the current user",
       "operations": [
         {
           "method": "GET",
           "summary": "List calendar events",
-          "notes": "Retrieve the list of calendar events or assignments for the current user",
+          "notes": "Retrieve the paginated list of calendar events or assignments for the current user",
           "nickname": "list_calendar_events",
           "parameters": [
             {
@@ -32,23 +32,23 @@
             {
               "paramType": "query",
               "name": "start_date",
-              "description": "Only return events since the start_date (inclusive). Defaults to today. The value should be formatted as: yyyy-mm-dd or ISO 8601 YYYY-MM-DDTHH:MM:SSZ.",
-              "type": "date",
+              "description": "Only return events since the start_date (inclusive).\nDefaults to today. The value should be formatted as: yyyy-mm-dd or ISO 8601 YYYY-MM-DDTHH:MM:SSZ.",
+              "type": "Date",
               "format": null,
               "required": false
             },
             {
               "paramType": "query",
               "name": "end_date",
-              "description": "Only return events before the end_date (inclusive). Defaults to start_date. The value should be formatted as: yyyy-mm-dd or ISO 8601 YYYY-MM-DDTHH:MM:SSZ. If end_date is the same as start_date, then only events on that day are returned.",
-              "type": "date",
+              "description": "Only return events before the end_date (inclusive).\nDefaults to start_date. The value should be formatted as: yyyy-mm-dd or ISO 8601 YYYY-MM-DDTHH:MM:SSZ.\nIf end_date is the same as start_date, then only events on that day are\nreturned.",
+              "type": "Date",
               "format": null,
               "required": false
             },
             {
               "paramType": "query",
               "name": "undated",
-              "description": "Defaults to false (dated events only). If true, only return undated events and ignore start_date and end_date.",
+              "description": "Defaults to false (dated events only).\nIf true, only return undated events and ignore start_date and end_date.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -56,7 +56,7 @@
             {
               "paramType": "query",
               "name": "all_events",
-              "description": "Defaults to false (uses start_date, end_date, and undated criteria). If true, all events are returned, ignoring start_date, end_date, and undated criteria.",
+              "description": "Defaults to false (uses start_date, end_date, and undated criteria).\nIf true, all events are returned, ignoring start_date, end_date, and undated criteria.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -64,12 +64,115 @@
             {
               "paramType": "query",
               "name": "context_codes",
-              "description": "List of context codes of courses/groups/users whose events you want to see. If not specified, defaults to the current user (i.e personal calendar, no course/group events). Limited to 10 context codes, additional ones are ignored. The format of this field is the context type, followed by an underscore, followed by the context id. For example: course_42",
+              "description": "List of context codes of courses/groups/users whose events you want to see.\nIf not specified, defaults to the current user (i.e personal calendar,\nno course/group events). Limited to 10 context codes, additional ones are\nignored. The format of this field is the context type, followed by an\nunderscore, followed by the context id. For example: course_42",
               "type": "array",
               "format": null,
               "required": false,
               "items": {
                 "type": "string"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "excludes",
+              "description": "Array of attributes to exclude. Possible values are \"description\", \"child_events\" and \"assignment\"",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "$ref": "Array"
+              }
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "CalendarEvent"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/calendar_events",
+      "description": "Retrieve the paginated list of calendar events or assignments for the specified user.\nTo view calendar events for a user other than yourself,\nyou must either be an observer of that user or an administrator.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List calendar events for a user",
+          "notes": "Retrieve the paginated list of calendar events or assignments for the specified user.\nTo view calendar events for a user other than yourself,\nyou must either be an observer of that user or an administrator.",
+          "nickname": "list_calendar_events_for_user",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "type",
+              "description": "Defaults to \"event\"",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "event",
+                "assignment"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "start_date",
+              "description": "Only return events since the start_date (inclusive).\nDefaults to today. The value should be formatted as: yyyy-mm-dd or ISO 8601 YYYY-MM-DDTHH:MM:SSZ.",
+              "type": "Date",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "end_date",
+              "description": "Only return events before the end_date (inclusive).\nDefaults to start_date. The value should be formatted as: yyyy-mm-dd or ISO 8601 YYYY-MM-DDTHH:MM:SSZ.\nIf end_date is the same as start_date, then only events on that day are\nreturned.",
+              "type": "Date",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "undated",
+              "description": "Defaults to false (dated events only).\nIf true, only return undated events and ignore start_date and end_date.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "all_events",
+              "description": "Defaults to false (uses start_date, end_date, and undated criteria).\nIf true, all events are returned, ignoring start_date, end_date, and undated criteria.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "context_codes",
+              "description": "List of context codes of courses/groups/users whose events you want to see.\nIf not specified, defaults to the current user (i.e personal calendar,\nno course/group events). Limited to 10 context codes, additional ones are\nignored. The format of this field is the context type, followed by an\nunderscore, followed by the context id. For example: course_42",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "excludes",
+              "description": "Array of attributes to exclude. Possible values are \"description\", \"child_events\" and \"assignment\"",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "$ref": "Array"
               }
             }
           ],
@@ -93,7 +196,7 @@
             {
               "paramType": "form",
               "name": "calendar_event[context_code]",
-              "description": "Context code of the course/group/user whose calendar this event should be added to.",
+              "description": "Context code of the course/group/user whose calendar this event should be\nadded to.",
               "type": "string",
               "format": null,
               "required": true
@@ -118,7 +221,7 @@
               "paramType": "form",
               "name": "calendar_event[start_at]",
               "description": "Start date/time of the event.",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -126,7 +229,7 @@
               "paramType": "form",
               "name": "calendar_event[end_at]",
               "description": "End date/time of the event.",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -149,7 +252,7 @@
             {
               "paramType": "form",
               "name": "calendar_event[time_zone_edited]",
-              "description": "Time zone of the user editing the event. Allowed time zones are {http://www.iana.org/time-zones IANA time zones} or friendlier {http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html Ruby on Rails time zones}.",
+              "description": "Time zone of the user editing the event. Allowed time zones are\n{http://www.iana.org/time-zones IANA time zones} or friendlier\n{http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html Ruby on Rails time zones}.",
               "type": "string",
               "format": null,
               "required": false
@@ -157,8 +260,8 @@
             {
               "paramType": "form",
               "name": "calendar_event[child_event_data][X][start_at]",
-              "description": "Section-level start time(s) if this is a course event. X can be any identifier, provided that it is consistent across the start_at, end_at and context_code",
-              "type": "datetime",
+              "description": "Section-level start time(s) if this is a course event. X can be any\nidentifier, provided that it is consistent across the start_at, end_at\nand context_code",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -166,7 +269,7 @@
               "paramType": "form",
               "name": "calendar_event[child_event_data][X][end_at]",
               "description": "Section-level end time(s) if this is a course event.",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -175,6 +278,43 @@
               "name": "calendar_event[child_event_data][X][context_code]",
               "description": "Context code(s) corresponding to the section-level start and end time(s).",
               "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[duplicate][count]",
+              "description": "Number of times to copy/duplicate the event.",
+              "type": "number",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[duplicate][interval]",
+              "description": "Defaults to 1 if duplicate `count` is set.  The interval between the duplicated events.",
+              "type": "number",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[duplicate][frequency]",
+              "description": "Defaults to \"weekly\".  The frequency at which to duplicate the event",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "daily",
+                "weekly",
+                "monthly"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "calendar_event[duplicate][append_iterator]",
+              "description": "Defaults to false.  If set to `true`, an increasing counter number will be appended to the event title\nwhen the event is duplicated.  (e.g. Event 1, Event 2, Event 3, etc)",
+              "type": "boolean",
               "format": null,
               "required": false
             }
@@ -227,7 +367,15 @@
             {
               "paramType": "form",
               "name": "participant_id",
-              "description": "User or group id for whom you are making the reservation (depends on the participant type). Defaults to the current user (or user's candidate group).",
+              "description": "User or group id for whom you are making the reservation (depends on the\nparticipant type). Defaults to the current user (or user's candidate group).",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "comments",
+              "description": "Comments to associate with this reservation",
               "type": "string",
               "format": null,
               "required": false
@@ -235,7 +383,7 @@
             {
               "paramType": "form",
               "name": "cancel_existing",
-              "description": "Defaults to false. If true, cancel any previous reservation(s) for this participant and appointment group.",
+              "description": "Defaults to false. If true, cancel any previous reservation(s) for this\nparticipant and appointment group.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -266,15 +414,23 @@
             {
               "paramType": "path",
               "name": "participant_id",
-              "description": "User or group id for whom you are making the reservation (depends on the participant type). Defaults to the current user (or user's candidate group).",
+              "description": "User or group id for whom you are making the reservation (depends on the\nparticipant type). Defaults to the current user (or user's candidate group).",
               "type": "string",
               "format": null,
               "required": true
             },
             {
               "paramType": "form",
+              "name": "comments",
+              "description": "Comments to associate with this reservation",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "cancel_existing",
-              "description": "Defaults to false. If true, cancel any previous reservation(s) for this participant and appointment group.",
+              "description": "Defaults to false. If true, cancel any previous reservation(s) for this\nparticipant and appointment group.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -305,10 +461,10 @@
             {
               "paramType": "form",
               "name": "calendar_event[context_code]",
-              "description": "Context code of the course/group/user whose calendar this event should be added to.",
+              "description": "Context code of the course/group/user to move this event to.\nScheduler appointments and events with section-specific times cannot be moved between calendars.",
               "type": "string",
               "format": null,
-              "required": true
+              "required": false
             },
             {
               "paramType": "form",
@@ -330,7 +486,7 @@
               "paramType": "form",
               "name": "calendar_event[start_at]",
               "description": "Start date/time of the event.",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -338,7 +494,7 @@
               "paramType": "form",
               "name": "calendar_event[end_at]",
               "description": "End date/time of the event.",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -361,7 +517,7 @@
             {
               "paramType": "form",
               "name": "calendar_event[time_zone_edited]",
-              "description": "Time zone of the user editing the event. Allowed time zones are {http://www.iana.org/time-zones IANA time zones} or friendlier {http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html Ruby on Rails time zones}.",
+              "description": "Time zone of the user editing the event. Allowed time zones are\n{http://www.iana.org/time-zones IANA time zones} or friendlier\n{http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html Ruby on Rails time zones}.",
               "type": "string",
               "format": null,
               "required": false
@@ -369,8 +525,8 @@
             {
               "paramType": "form",
               "name": "calendar_event[child_event_data][X][start_at]",
-              "description": "Section-level start time(s) if this is a course event. X can be any identifier, provided that it is consistent across the start_at, end_at and context_code",
-              "type": "datetime",
+              "description": "Section-level start time(s) if this is a course event. X can be any\nidentifier, provided that it is consistent across the start_at, end_at\nand context_code",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -378,7 +534,7 @@
               "paramType": "form",
               "name": "calendar_event[child_event_data][X][end_at]",
               "description": "Section-level end time(s) if this is a course event.",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -420,6 +576,193 @@
               "type": "string",
               "format": null,
               "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/calendar_events/timetable",
+      "description": "Creates and updates \"timetable\" events for a course.\nCan automaticaly generate a series of calendar events based on simple schedules\n(e.g. \"Monday and Wednesday at 2:00pm\" )\n\nExisting timetable events for the course and course sections\nwill be updated if they still are part of the timetable.\nOtherwise, they will be deleted.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Set a course timetable",
+          "notes": "Creates and updates \"timetable\" events for a course.\nCan automaticaly generate a series of calendar events based on simple schedules\n(e.g. \"Monday and Wednesday at 2:00pm\" )\n\nExisting timetable events for the course and course sections\nwill be updated if they still are part of the timetable.\nOtherwise, they will be deleted.",
+          "nickname": "set_course_timetable",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "timetables[course_section_id]",
+              "description": "An array of timetable objects for the course section specified by course_section_id.\nIf course_section_id is set to \"all\", events will be created for the entire course.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "$ref": "Array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "timetables[course_section_id][weekdays]",
+              "description": "A comma-separated list of abbreviated weekdays\n(Mon-Monday, Tue-Tuesday, Wed-Wednesday, Thu-Thursday, Fri-Friday, Sat-Saturday, Sun-Sunday)",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "timetables[course_section_id][start_time]",
+              "description": "Time to start each event at (e.g. \"9:00 am\")",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "timetables[course_section_id][end_time]",
+              "description": "Time to end each event at (e.g. \"9:00 am\")",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "timetables[course_section_id][location_name]",
+              "description": "A location name to set for each event",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/calendar_events/timetable",
+      "description": "Returns the last timetable set by the\n{api:CalendarEventsApiController#set_course_timetable Set a course timetable} endpoint",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get course timetable",
+          "notes": "Returns the last timetable set by the\n{api:CalendarEventsApiController#set_course_timetable Set a course timetable} endpoint",
+          "nickname": "get_course_timetable",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/calendar_events/timetable_events",
+      "description": "Creates and updates \"timetable\" events for a course or course section.\nSimilar to {api:CalendarEventsApiController#set_course_timetable setting a course timetable},\nbut instead of generating a list of events based on a timetable schedule,\nthis endpoint expects a complete list of events.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create or update events directly for a course timetable",
+          "notes": "Creates and updates \"timetable\" events for a course or course section.\nSimilar to {api:CalendarEventsApiController#set_course_timetable setting a course timetable},\nbut instead of generating a list of events based on a timetable schedule,\nthis endpoint expects a complete list of events.",
+          "nickname": "create_or_update_events_directly_for_course_timetable",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "course_section_id",
+              "description": "Events will be created for the course section specified by course_section_id.\nIf not present, events will be created for the entire course.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "events",
+              "description": "An array of event objects to use.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "$ref": "Array"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "events[start_at]",
+              "description": "Start time for the event",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "$ref": "DateTime"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "events[end_at]",
+              "description": "End time for the event",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "$ref": "DateTime"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "events[location_name]",
+              "description": "Location name for the event",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "paramType": "form",
+              "name": "events[code]",
+              "description": "A unique identifier that can be used to update the event at a later time\nIf one is not specified, an identifier will be generated based on the start and end times",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "type": "string"
+              }
             }
           ],
           "type": "void"
@@ -477,6 +820,11 @@
         },
         "effective_context_code": {
           "description": "if specified, it indicates which calendar this event should be displayed on. for example, a section-level event would have the course's context code here, while the section's context code would be returned above)",
+          "type": "string"
+        },
+        "all_context_codes": {
+          "description": "a comma-separated list of all calendar contexts this event is part of",
+          "example": "course_123,course_456",
           "type": "string"
         },
         "workflow_state": {
@@ -556,6 +904,11 @@
           "description": "If the event is a time slot, a boolean indicating whether the user has already made a reservation for it",
           "example": false,
           "type": "boolean"
+        },
+        "participant_type": {
+          "description": "The type of participant to sign up for a slot: 'User' or 'Group'",
+          "example": "User",
+          "type": "string"
         },
         "participants_per_appointment": {
           "description": "If the event is a time slot, this is the participant limit",
@@ -656,6 +1009,10 @@
         "assignment": {
           "description": "The full assignment JSON data (See the Assignments API)",
           "$ref": "Assignment"
+        },
+        "assignment_overrides": {
+          "description": "The list of AssignmentOverrides that apply to this event (See the Assignments API). This information is useful for determining which students or sections this assignment-due event applies to.",
+          "$ref": "AssignmentOverride"
         }
       }
     }

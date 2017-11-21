@@ -2387,7 +2387,8 @@ module Pandarus
         :end_date,
         :undated,
         :all_events,
-        :context_codes
+        :context_codes,
+        :excludes
 
       ]
 
@@ -2406,6 +2407,45 @@ module Pandarus
       # resource path
       path = path_replace("/v1/calendar_events",
         )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, CalendarEvent, path, query_params)
+      
+
+    end
+    
+
+    # List calendar events for a user
+    def list_calendar_events_for_user(user_id,opts={})
+      query_param_keys = [
+        :type,
+        :start_date,
+        :end_date,
+        :undated,
+        :all_events,
+        :context_codes,
+        :excludes
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "user_id is required" if user_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :user_id => user_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{user_id}/calendar_events",
+        :user_id => user_id)
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
@@ -2435,6 +2475,10 @@ module Pandarus
         :calendar_event__child_event_data_____x____start_at__,
         :calendar_event__child_event_data_____x____end_at__,
         :calendar_event__child_event_data_____x____context_code__,
+        :calendar_event__duplicate____count__,
+        :calendar_event__duplicate____interval__,
+        :calendar_event__duplicate____frequency__,
+        :calendar_event__duplicate____append_iterator__,
         
 
       ]
@@ -2504,6 +2548,7 @@ module Pandarus
 
       form_param_keys = [
         :participant_id,
+        :comments,
         :cancel_existing,
         
 
@@ -2539,6 +2584,7 @@ module Pandarus
       ]
 
       form_param_keys = [
+        :comments,
         :cancel_existing,
         
 
@@ -2570,7 +2616,7 @@ module Pandarus
     
 
     # Update a calendar event
-    def update_calendar_event(id,calendar_event__context_code__,opts={})
+    def update_calendar_event(id,opts={})
       query_param_keys = [
         
 
@@ -2594,11 +2640,9 @@ module Pandarus
 
       # verify existence of params
       raise "id is required" if id.nil?
-      raise "calendar_event__context_code__ is required" if calendar_event__context_code__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :id => id,
-        :calendar_event__context_code__ => calendar_event__context_code__
+        :id => id
 
       )
 
@@ -2644,6 +2688,119 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Set a course timetable
+    def set_course_timetable(course_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :timetables__course_section_id__,
+        :timetables__course_section_id____weekdays__,
+        :timetables__course_section_id____start_time__,
+        :timetables__course_section_id____end_time__,
+        :timetables__course_section_id____location_name__,
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/calendar_events/timetable",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Get course timetable
+    def get_course_timetable(course_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/calendar_events/timetable",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Create or update events directly for a course timetable
+    def create_or_update_events_directly_for_course_timetable(course_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :course_section_id,
+        :events,
+        :events__start_at__,
+        :events__end_at__,
+        :events__location_name__,
+        :events__code__,
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/calendar_events/timetable_events",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
 
