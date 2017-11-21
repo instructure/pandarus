@@ -6459,10 +6459,12 @@ module Pandarus
     # List discussion topics
     def list_discussion_topics_courses(course_id,opts={})
       query_param_keys = [
+        :include,
         :order_by,
         :scope,
         :only_announcements,
-        :search_term
+        :search_term,
+        :exclude_context_module_locked_topics
 
       ]
 
@@ -6495,10 +6497,12 @@ module Pandarus
     # List discussion topics
     def list_discussion_topics_groups(group_id,opts={})
       query_param_keys = [
+        :include,
         :order_by,
         :scope,
         :only_announcements,
-        :search_term
+        :search_term,
+        :exclude_context_module_locked_topics
 
       ]
 
@@ -6541,14 +6545,20 @@ module Pandarus
         :discussion_type,
         :published,
         :delayed_post_at,
+        :allow_rating,
         :lock_at,
         :podcast_enabled,
         :podcast_has_student_posts,
         :require_initial_post,
         :assignment,
         :is_announcement,
+        :pinned,
         :position_after,
         :group_category_id,
+        :allow_rating,
+        :only_graders_can_rate,
+        :sort_by_rating,
+        :attachment,
         
 
       ]
@@ -6588,14 +6598,20 @@ module Pandarus
         :discussion_type,
         :published,
         :delayed_post_at,
+        :allow_rating,
         :lock_at,
         :podcast_enabled,
         :podcast_has_student_posts,
         :require_initial_post,
         :assignment,
         :is_announcement,
+        :pinned,
         :position_after,
         :group_category_id,
+        :allow_rating,
+        :only_graders_can_rate,
+        :sort_by_rating,
+        :attachment,
         
 
       ]
@@ -6641,8 +6657,12 @@ module Pandarus
         :require_initial_post,
         :assignment,
         :is_announcement,
+        :pinned,
         :position_after,
         :group_category_id,
+        :allow_rating,
+        :only_graders_can_rate,
+        :sort_by_rating,
         
 
       ]
@@ -6691,8 +6711,12 @@ module Pandarus
         :require_initial_post,
         :assignment,
         :is_announcement,
+        :pinned,
         :position_after,
         :group_category_id,
+        :allow_rating,
+        :only_graders_can_rate,
+        :sort_by_rating,
         
 
       ]
@@ -8024,6 +8048,88 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Rate entry
+    def rate_entry_courses(course_id,topic_id,entry_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :rating,
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "topic_id is required" if topic_id.nil?
+      raise "entry_id is required" if entry_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :topic_id => topic_id,
+        :entry_id => entry_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/discussion_topics/{topic_id}/entries/{entry_id}/rating",
+        :course_id => course_id,
+        :topic_id => topic_id,
+        :entry_id => entry_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Rate entry
+    def rate_entry_groups(group_id,topic_id,entry_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :rating,
+        
+
+      ]
+
+      # verify existence of params
+      raise "group_id is required" if group_id.nil?
+      raise "topic_id is required" if topic_id.nil?
+      raise "entry_id is required" if entry_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :group_id => group_id,
+        :topic_id => topic_id,
+        :entry_id => entry_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/groups/{group_id}/discussion_topics/{topic_id}/entries/{entry_id}/rating",
+        :group_id => group_id,
+        :topic_id => topic_id,
+        :entry_id => entry_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
       response
       
 

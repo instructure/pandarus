@@ -34,7 +34,10 @@ module Pandarus
     attribute :discussion_type, resolve_type("String")
     attribute :group_category_id, resolve_type("Integer")
     attribute :attachments, resolve_type("FileAttachment", collection: true)
-    attribute :permissions, resolve_type("Map")
+    attribute :permissions, resolve_type("Object")
+    attribute :allow_rating, resolve_type(nil)
+    attribute :only_graders_can_rate, resolve_type(nil)
+    attribute :sort_by_rating, resolve_type(nil)
     
   end
 end
