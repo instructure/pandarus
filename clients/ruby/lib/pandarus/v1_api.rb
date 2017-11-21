@@ -8296,6 +8296,8 @@ module Pandarus
         :enrollment_term__start_at__,
         :enrollment_term__end_at__,
         :enrollment_term__sis_term_id__,
+        :enrollment_term__overrides____enrollment_type____start_at__,
+        :enrollment_term__overrides____enrollment_type____end_at__,
         
 
       ]
@@ -8334,6 +8336,8 @@ module Pandarus
         :enrollment_term__start_at__,
         :enrollment_term__end_at__,
         :enrollment_term__sis_term_id__,
+        :enrollment_term__overrides____enrollment_type____start_at__,
+        :enrollment_term__overrides____enrollment_type____end_at__,
         
 
       ]
@@ -8403,7 +8407,8 @@ module Pandarus
     # List enrollment terms
     def list_enrollment_terms(account_id,opts={})
       query_param_keys = [
-        :workflow_state
+        :workflow_state,
+        :include
 
       ]
 

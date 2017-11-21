@@ -7,10 +7,12 @@ module Pandarus
 
     attribute :id, resolve_type("Integer")
     attribute :sis_term_id, resolve_type("String")
+    attribute :sis_import_id, resolve_type("Integer")
     attribute :name, resolve_type("String")
     attribute :start_at, resolve_type("DateTime")
     attribute :end_at, resolve_type("DateTime")
     attribute :workflow_state, resolve_type("String")
+    attribute :overrides, resolve_type("Object")
     
   end
 end

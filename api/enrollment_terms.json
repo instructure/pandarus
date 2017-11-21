@@ -36,16 +36,16 @@
             {
               "paramType": "form",
               "name": "enrollment_term[start_at]",
-              "description": "The day/time the term starts. Accepts times in ISO 8601 format, e.g. 2015-01-10T18:48:00Z.",
-              "type": "timestamp",
+              "description": "The day/time the term starts.\nAccepts times in ISO 8601 format, e.g. 2015-01-10T18:48:00Z.",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
             {
               "paramType": "form",
               "name": "enrollment_term[end_at]",
-              "description": "The day/time the term ends. Accepts times in ISO 8601 format, e.g. 2015-01-10T18:48:00Z.",
-              "type": "timestamp",
+              "description": "The day/time the term ends.\nAccepts times in ISO 8601 format, e.g. 2015-01-10T18:48:00Z.",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -54,6 +54,22 @@
               "name": "enrollment_term[sis_term_id]",
               "description": "The unique SIS identifier for the term.",
               "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment_term[overrides][enrollment_type][start_at]",
+              "description": "The day/time the term starts, overridden for the given enrollment type.\n*enrollment_type* can be one of StudentEnrollment, TeacherEnrollment, TaEnrollment, or DesignerEnrollment",
+              "type": "DateTime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment_term[overrides][enrollment_type][end_at]",
+              "description": "The day/time the term ends, overridden for the given enrollment type.\n*enrollment_type* can be one of StudentEnrollment, TeacherEnrollment, TaEnrollment, or DesignerEnrollment",
+              "type": "DateTime",
               "format": null,
               "required": false
             }
@@ -99,16 +115,16 @@
             {
               "paramType": "form",
               "name": "enrollment_term[start_at]",
-              "description": "The day/time the term starts. Accepts times in ISO 8601 format, e.g. 2015-01-10T18:48:00Z.",
-              "type": "timestamp",
+              "description": "The day/time the term starts.\nAccepts times in ISO 8601 format, e.g. 2015-01-10T18:48:00Z.",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
             {
               "paramType": "form",
               "name": "enrollment_term[end_at]",
-              "description": "The day/time the term ends. Accepts times in ISO 8601 format, e.g. 2015-01-10T18:48:00Z.",
-              "type": "timestamp",
+              "description": "The day/time the term ends.\nAccepts times in ISO 8601 format, e.g. 2015-01-10T18:48:00Z.",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -117,6 +133,22 @@
               "name": "enrollment_term[sis_term_id]",
               "description": "The unique SIS identifier for the term.",
               "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment_term[overrides][enrollment_type][start_at]",
+              "description": "The day/time the term starts, overridden for the given enrollment type.\n*enrollment_type* can be one of StudentEnrollment, TeacherEnrollment, TaEnrollment, or DesignerEnrollment",
+              "type": "DateTime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "enrollment_term[overrides][enrollment_type][end_at]",
+              "description": "The day/time the term ends, overridden for the given enrollment type.\n*enrollment_type* can be one of StudentEnrollment, TeacherEnrollment, TaEnrollment, or DesignerEnrollment",
+              "type": "DateTime",
               "format": null,
               "required": false
             }
@@ -158,12 +190,12 @@
     },
     {
       "path": "/v1/accounts/{account_id}/terms",
-      "description": "Return all of the terms in the account.",
+      "description": "A paginated list of all of the terms in the account.",
       "operations": [
         {
           "method": "GET",
           "summary": "List enrollment terms",
-          "notes": "Return all of the terms in the account.",
+          "notes": "A paginated list of all of the terms in the account.",
           "nickname": "list_enrollment_terms",
           "parameters": [
             {
@@ -177,10 +209,29 @@
             {
               "paramType": "query",
               "name": "workflow_state",
-              "description": "no description",
+              "description": "If set, only returns terms that are in the given state.\nDefaults to 'active'.",
               "type": "array",
               "format": null,
               "required": false,
+              "enum": [
+                "active",
+                "deleted",
+                "all"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Array of additional information to include.\n\n\"overrides\":: term start/end dates overridden for different enrollment types",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "enum": [
+                "overrides"
+              ],
               "items": {
                 "type": "string"
               }
@@ -212,6 +263,11 @@
           "example": "Sp2014",
           "type": "string"
         },
+        "sis_import_id": {
+          "description": "the unique identifier for the SIS import. This field is only included if the user has permission to manage SIS information.",
+          "example": 34,
+          "type": "integer"
+        },
         "name": {
           "description": "The name of the term.",
           "example": "Spring 2014",
@@ -231,6 +287,16 @@
           "description": "The state of the term. Can be 'active' or 'deleted'.",
           "example": "active",
           "type": "string"
+        },
+        "overrides": {
+          "description": "Term date overrides for specific enrollment types",
+          "example": {
+            "StudentEnrollment": {
+              "start_at": "2014-01-07T08:00:00-05:00",
+              "end_at": "2014-05-14T05:00:00-04:0"
+            }
+          },
+          "type": "object"
         }
       }
     }
