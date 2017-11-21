@@ -22075,7 +22075,9 @@ module Pandarus
     # List users in account
     def list_users_in_account(account_id,opts={})
       query_param_keys = [
-        :search_term
+        :search_term,
+        :sort,
+        :order
 
       ]
 
@@ -22207,7 +22209,7 @@ module Pandarus
     # List the TODO items
     def list_todo_items(opts={})
       query_param_keys = [
-        
+        :include
 
       ]
 
@@ -22265,6 +22267,39 @@ module Pandarus
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       response
+      
+
+    end
+    
+
+    # List Missing Submissions
+    def list_missing_submissions(user_id,opts={})
+      query_param_keys = [
+        :include
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "user_id is required" if user_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :user_id => user_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{user_id}/missing_submissions",
+        :user_id => user_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, Assignment, path, query_params)
       
 
     end
@@ -22420,15 +22455,20 @@ module Pandarus
         :user__locale__,
         :user__birthdate__,
         :user__terms_of_use__,
+        :user__skip_registration__,
         :pseudonym__unique_id__,
         :pseudonym__password__,
         :pseudonym__sis_user_id__,
+        :pseudonym__integration_id__,
         :pseudonym__send_confirmation__,
+        :pseudonym__force_self_registration__,
+        :pseudonym__authentication_provider_id__,
         :communication_channel__type__,
         :communication_channel__address__,
         :communication_channel__confirmation_url__,
         :communication_channel__skip_confirmation__,
         :force_validations,
+        :enable_sis_reactivation,
         
 
       ]
@@ -22457,10 +22497,61 @@ module Pandarus
     end
     
 
+    # Self register a user
+    def self_register_user(account_id,user__name__,user__terms_of_use__,pseudonym__unique_id__,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :user__name__,
+        :user__short_name__,
+        :user__sortable_name__,
+        :user__time_zone__,
+        :user__locale__,
+        :user__birthdate__,
+        :user__terms_of_use__,
+        :pseudonym__unique_id__,
+        :communication_channel__type__,
+        :communication_channel__address__,
+        
+
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      raise "user__name__ is required" if user__name__.nil?
+      raise "user__terms_of_use__ is required" if user__terms_of_use__.nil?
+      raise "pseudonym__unique_id__ is required" if pseudonym__unique_id__.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id,
+        :user__name__ => user__name__,
+        :user__terms_of_use__ => user__terms_of_use__,
+        :pseudonym__unique_id__ => pseudonym__unique_id__
+
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/self_registration",
+        :account_id => account_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      User.new(response)
+      
+
+    end
+    
+
     # Update user settings.
     def update_user_settings(id,opts={})
       query_param_keys = [
-        :manual_mark_as_read
+        :manual_mark_as_read,
+        :collapse_global_nav
 
       ]
 
@@ -22491,6 +22582,183 @@ module Pandarus
     end
     
 
+    # Get custom colors
+    def get_custom_colors(id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{id}/colors",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Get custom color
+    def get_custom_color(id,asset_string,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      raise "asset_string is required" if asset_string.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id,
+        :asset_string => asset_string
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{id}/colors/{asset_string}",
+        :id => id,
+        :asset_string => asset_string)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Update custom color
+    def update_custom_color(id,asset_string,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :hexcode,
+        
+
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      raise "asset_string is required" if asset_string.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id,
+        :asset_string => asset_string
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{id}/colors/{asset_string}",
+        :id => id,
+        :asset_string => asset_string)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Get dashboard postions
+    def get_dashboard_postions(id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{id}/dashboard_positions",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Update dashboard positions
+    def update_dashboard_positions(id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{id}/dashboard_positions",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
     # Edit a user
     def edit_user(id,opts={})
       query_param_keys = [
@@ -22503,6 +22771,7 @@ module Pandarus
         :user__short_name__,
         :user__sortable_name__,
         :user__time_zone__,
+        :user__email__,
         :user__locale__,
         :user__avatar____token__,
         :user__avatar____url__,
@@ -22604,6 +22873,39 @@ module Pandarus
 
       response = mixed_request(:put, path, query_params, form_params, headers)
       User.new(response)
+      
+
+    end
+    
+
+    # Split merged users into separate users
+    def split_merged_users_into_separate_users(id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{id}/split",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, User, path, query_params)
       
 
     end
@@ -22811,6 +23113,176 @@ module Pandarus
       # resource path
       path = path_replace("/v1/users/{user_id}/custom_data",
         :user_id => user_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # List course nicknames
+    def list_course_nicknames(opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        {}
+      
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/self/course_nicknames",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, CourseNickname, path, query_params)
+      
+
+    end
+    
+
+    # Get course nickname
+    def get_course_nickname(course_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/self/course_nicknames/{course_id}",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      CourseNickname.new(response)
+      
+
+    end
+    
+
+    # Set course nickname
+    def set_course_nickname(course_id,nickname,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :nickname,
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "nickname is required" if nickname.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :nickname => nickname
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/self/course_nicknames/{course_id}",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      CourseNickname.new(response)
+      
+
+    end
+    
+
+    # Remove course nickname
+    def remove_course_nickname(course_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/self/course_nicknames/{course_id}",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      CourseNickname.new(response)
+      
+
+    end
+    
+
+    # Clear course nicknames
+    def clear_course_nicknames(opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        {}
+      
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/self/course_nicknames",
+        )
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)

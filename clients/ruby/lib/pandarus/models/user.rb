@@ -11,7 +11,7 @@ module Pandarus
     attribute :short_name, resolve_type("String")
     attribute :sis_user_id, resolve_type("String")
     attribute :sis_import_id, resolve_type(nil)
-    attribute :sis_login_id, resolve_type("String")
+    attribute :integration_id, resolve_type("String")
     attribute :login_id, resolve_type("String")
     attribute :avatar_url, resolve_type("String")
     attribute :enrollments, resolve_type("Enrollment", collection: true)

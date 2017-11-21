@@ -14,7 +14,7 @@ module Pandarus
     attribute :primary_email, resolve_type("String")
     attribute :login_id, resolve_type("String")
     attribute :sis_user_id, resolve_type("String")
-    attribute :sis_login_id, resolve_type("String")
+    attribute :lti_user_id, resolve_type("String")
     attribute :avatar_url, resolve_type("String")
     attribute :calendar, resolve_type("CalendarLink")
     attribute :time_zone, resolve_type("String")

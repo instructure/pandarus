@@ -6,6 +6,7 @@ module Pandarus
     include Virtus.model(finalize: false)
 
     attribute :id, resolve_type("String")
+    attribute :app_name, resolve_type("String")
     attribute :url, resolve_type("String")
     attribute :context_type, resolve_type("String")
     attribute :asset_type, resolve_type("String")
