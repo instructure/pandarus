@@ -10,6 +10,8 @@ module Pandarus
     attribute :context_type, resolve_type("String")
     attribute :outcome_group, resolve_type("OutcomeGroup")
     attribute :outcome, resolve_type("Outcome")
+    attribute :assessed, resolve_type(nil)
+    attribute :can_unlink, resolve_type(nil)
     
   end
 end
