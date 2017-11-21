@@ -43,6 +43,45 @@
     },
     {
       "path": "/v1/accounts/{account_id}/users/{user_id}/account_notifications/{id}",
+      "description": "Returns a global notification\nA notification that has been closed by the user will not be returned",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Show a global notification",
+          "notes": "Returns a global notification\nA notification that has been closed by the user will not be returned",
+          "nickname": "show_global_notification",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "AccountNotification"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/users/{user_id}/account_notifications/{id}",
       "description": "If the user no long wants to see this notification it can be excused with this call",
       "operations": [
         {
@@ -117,23 +156,23 @@
             {
               "paramType": "form",
               "name": "account_notification[start_at]",
-              "description": "The start date and time of the notification in ISO8601 format. e.g. 2014-01-01T01:00Z",
-              "type": "datetime",
+              "description": "The start date and time of the notification in ISO8601 format.\ne.g. 2014-01-01T01:00Z",
+              "type": "DateTime",
               "format": null,
               "required": true
             },
             {
               "paramType": "form",
               "name": "account_notification[end_at]",
-              "description": "The end date and time of the notification in ISO8601 format. e.g. 2014-01-01T01:00Z",
-              "type": "datetime",
+              "description": "The end date and time of the notification in ISO8601 format.\ne.g. 2014-01-01T01:00Z",
+              "type": "DateTime",
               "format": null,
               "required": true
             },
             {
               "paramType": "form",
               "name": "account_notification[icon]",
-              "description": "The icon to display with the notification. Note: Defaults to warning.",
+              "description": "The icon to display with the notification.\nNote: Defaults to warning.",
               "type": "string",
               "format": null,
               "required": false,
@@ -148,7 +187,96 @@
             {
               "paramType": "form",
               "name": "account_notification_roles",
-              "description": "The role(s) to send global notification to. Note: ommitting this field will send to everyone Example: account_notification_roles: [\"StudentEnrollment\", \"TeacherEnrollment\"]",
+              "description": "The role(s) to send global notification to.  Note:  ommitting this field will send to everyone\nExample:\n  account_notification_roles: [\"StudentEnrollment\", \"TeacherEnrollment\"]",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/account_notifications/{id}",
+      "description": "Update global notification for an account.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update a global notification",
+          "notes": "Update global notification for an account.",
+          "nickname": "update_global_notification",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "account_notification[subject]",
+              "description": "The subject of the notification.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account_notification[message]",
+              "description": "The message body of the notification.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account_notification[start_at]",
+              "description": "The start date and time of the notification in ISO8601 format.\ne.g. 2014-01-01T01:00Z",
+              "type": "DateTime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account_notification[end_at]",
+              "description": "The end date and time of the notification in ISO8601 format.\ne.g. 2014-01-01T01:00Z",
+              "type": "DateTime",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "account_notification[icon]",
+              "description": "The icon to display with the notification.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "warning",
+                "information",
+                "question",
+                "error",
+                "calendar"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "account_notification_roles",
+              "description": "The role(s) to send global notification to.  Note:  ommitting this field will send to everyone\nExample:\n  account_notification_roles: [\"StudentEnrollment\", \"TeacherEnrollment\"]",
               "type": "array",
               "format": null,
               "required": false,
@@ -192,11 +320,8 @@
         },
         "icon": {
           "description": "The icon to display with the message.  Defaults to warning.",
-          "example": "[\"information\"]",
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
+          "example": "information",
+          "type": "string",
           "allowableValues": {
             "values": [
               "warning",
@@ -209,7 +334,9 @@
         },
         "roles": {
           "description": "(Deprecated) The roles to send the notification to.  If roles is not passed it defaults to all roles",
-          "example": "[\"StudentEnrollment\"]",
+          "example": [
+            "StudentEnrollment"
+          ],
           "type": "array",
           "items": {
             "type": "string"
@@ -217,7 +344,9 @@
         },
         "role_ids": {
           "description": "The roles to send the notification to.  If roles is not passed it defaults to all roles",
-          "example": "[1]",
+          "example": [
+            1
+          ],
           "type": "array",
           "items": {
             "type": "integer"

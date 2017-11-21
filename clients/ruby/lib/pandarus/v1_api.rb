@@ -81,6 +81,46 @@ module Pandarus
     end
     
 
+    # Show a global notification
+    def show_global_notification(account_id,user_id,id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      raise "user_id is required" if user_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id,
+        :user_id => user_id,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/users/{user_id}/account_notifications/{id}",
+        :account_id => account_id,
+        :user_id => user_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      AccountNotification.new(response)
+      
+
+    end
+    
+
     # Close notification for user
     def close_notification_for_user(account_id,user_id,id,opts={})
       query_param_keys = [
@@ -163,6 +203,49 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Update a global notification
+    def update_global_notification(account_id,id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :account_notification__subject__,
+        :account_notification__message__,
+        :account_notification__start_at__,
+        :account_notification__end_at__,
+        :account_notification__icon__,
+        :account_notification_roles,
+        
+
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/account_notifications/{id}",
+        :account_id => account_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
       response
       
 
