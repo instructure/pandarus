@@ -355,6 +355,10 @@
       "description": "Users"
     },
     {
+      "path": "/webhooks_subscriptions.json",
+      "description": "Webhooks Subscriptions"
+    },
+    {
       "path": "/e_pub_exports.json",
       "description": "ePub Exports"
     }

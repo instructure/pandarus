@@ -257,6 +257,191 @@ module Pandarus
     end
     
 
+    # Create a Webhook Subscription
+    def create_webhook_subscription(submission___context_id__,subscription___context_type__,subscription___event_types__,subscription___format__,subscription___transport_metadata__,subscription___transport_type__,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :submission___context_id__,
+        :subscription___context_type__,
+        :subscription___event_types__,
+        :subscription___format__,
+        :subscription___transport_metadata__,
+        :subscription___transport_type__,
+        
+
+      ]
+
+      # verify existence of params
+      raise "submission___context_id__ is required" if submission___context_id__.nil?
+      raise "subscription___context_type__ is required" if subscription___context_type__.nil?
+      raise "subscription___event_types__ is required" if subscription___event_types__.nil?
+      raise "subscription___format__ is required" if subscription___format__.nil?
+      raise "subscription___transport_metadata__ is required" if subscription___transport_metadata__.nil?
+      raise "subscription___transport_type__ is required" if subscription___transport_type__.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :submission___context_id__ => submission___context_id__,
+        :subscription___context_type__ => subscription___context_type__,
+        :subscription___event_types__ => subscription___event_types__,
+        :subscription___format__ => subscription___format__,
+        :subscription___transport_metadata__ => subscription___transport_metadata__,
+        :subscription___transport_type__ => subscription___transport_type__
+
+      )
+
+      # resource path
+      path = path_replace("/lti/subscriptions",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      Webhook Subscription.new(response)
+      
+
+    end
+    
+
+    # Delete a Webhook Subscription
+    def delete_webhook_subscription(id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/lti/subscriptions/{id}",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Show a single Webhook Subscription
+    def show_single_webhook_subscription(id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/lti/subscriptions/{id}",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Update a Webhook Subscription
+    def update_webhook_subscription(id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/lti/subscriptions/{id}",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # List all Webhook Subscription for a tool proxy
+    def list_all_webhook_subscription_for_tool_proxy(opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        {}
+      
+
+      )
+
+      # resource path
+      path = path_replace("/lti/subscriptions",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
   end
 end
 

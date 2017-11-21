@@ -1,0 +1,161 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/webhooks_subscriptions",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/lti/subscriptions",
+      "description": "Creates a webook subscription for the specified event type and\ncontext.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a Webhook Subscription",
+          "notes": "Creates a webook subscription for the specified event type and\ncontext.",
+          "nickname": "create_webhook_subscription",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "submission[ContextId]",
+              "description": "The id of the context for the subscription.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "subscription[ContextType]",
+              "description": "The type of context for the subscription. Must be 'assignment',\n'account', or 'course'.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "subscription[EventTypes]",
+              "description": "Array of strings representing the event types for\nthe subscription.",
+              "type": "Array",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "subscription[Format]",
+              "description": "Format to deliver the live events. Must be 'live-event' or 'caliper'.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "subscription[TransportMetadata]",
+              "description": "An object with a single key: 'Url'. Example: { \"Url\": \"sqs.example\" }",
+              "type": "Object",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "subscription[TransportType]",
+              "description": "Must be either 'sqs' or 'https'.",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "Webhook Subscription"
+        }
+      ]
+    },
+    {
+      "path": "/lti/subscriptions/{id}",
+      "description": "",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete a Webhook Subscription",
+          "notes": "",
+          "nickname": "delete_webhook_subscription",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/lti/subscriptions/{id}",
+      "description": "",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Show a single Webhook Subscription",
+          "notes": "",
+          "nickname": "show_single_webhook_subscription",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/lti/subscriptions/{id}",
+      "description": "This endpoint uses the same parameters as the create endpoint",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update a Webhook Subscription",
+          "notes": "This endpoint uses the same parameters as the create endpoint",
+          "nickname": "update_webhook_subscription",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/lti/subscriptions",
+      "description": "This endpoint returns a paginated list with a default limit of 100 items per result set.\nYou can retrieve the next result set by setting a 'StartKey' header in your next request\nwith the value of the 'EndKey' header in the response.\n\nExample use of a 'StartKey' header object:\n  { \"Id\":\"71d6dfba-0547-477d-b41d-db8cb528c6d1\",\"DeveloperKey\":\"10000000000001\" }",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List all Webhook Subscription for a tool proxy",
+          "notes": "This endpoint returns a paginated list with a default limit of 100 items per result set.\nYou can retrieve the next result set by setting a 'StartKey' header in your next request\nwith the value of the 'EndKey' header in the response.\n\nExample use of a 'StartKey' header object:\n  { \"Id\":\"71d6dfba-0547-477d-b41d-db8cb528c6d1\",\"DeveloperKey\":\"10000000000001\" }",
+          "nickname": "list_all_webhook_subscription_for_tool_proxy",
+          "parameters": [
+
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+  }
+}
