@@ -8,9 +8,11 @@ module Pandarus
     attribute :id, resolve_type("Integer")
     attribute :report, resolve_type("String")
     attribute :file_url, resolve_type("String")
+    attribute :attachment, resolve_type("File")
     attribute :status, resolve_type("String")
     attribute :parameters, resolve_type("ReportParameters")
-    attribute :progress, resolve_type("String")
+    attribute :progress, resolve_type("Integer")
+    attribute :current_line, resolve_type("Integer")
     
   end
 end

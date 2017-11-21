@@ -18356,7 +18356,7 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:post, path, query_params, form_params, headers)
-      the page that was created.new(response)
+      Page.new(response)
       
 
     end

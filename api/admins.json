@@ -36,7 +36,7 @@
             {
               "paramType": "form",
               "name": "role",
-              "description": "(deprecated) The user's admin relationship with the account will be created with the given role. Defaults to 'AccountAdmin'.",
+              "description": "[DEPRECATED] The user's admin relationship with the account will be\ncreated with the given role. Defaults to 'AccountAdmin'.",
               "type": "string",
               "format": null,
               "required": false
@@ -44,7 +44,7 @@
             {
               "paramType": "form",
               "name": "role_id",
-              "description": "The user's admin relationship with the account will be created with the given role. Defaults to the built-in role for 'AccountAdmin'.",
+              "description": "The user's admin relationship with the account will be created with the\ngiven role. Defaults to the built-in role for 'AccountAdmin'.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -52,7 +52,7 @@
             {
               "paramType": "form",
               "name": "send_confirmation",
-              "description": "Send a notification email to the new admin if true. Default is true.",
+              "description": "Send a notification email to\nthe new admin if true. Default is true.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -91,7 +91,7 @@
             {
               "paramType": "query",
               "name": "role",
-              "description": "(Deprecated) Account role to remove from the user. Defaults to 'AccountAdmin'. Any other account role must be specified explicitly.",
+              "description": "[DEPRECATED] Account role to remove from the user. Defaults to\n'AccountAdmin'. Any other account role must be specified explicitly.",
               "type": "string",
               "format": null,
               "required": false
@@ -99,7 +99,7 @@
             {
               "paramType": "query",
               "name": "role_id",
-              "description": "The user's admin relationship with the account will be created with the given role. Defaults to the built-in role for 'AccountAdmin'.",
+              "description": "The user's admin relationship with the account will be created with the\ngiven role. Defaults to the built-in role for 'AccountAdmin'.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -111,12 +111,12 @@
     },
     {
       "path": "/v1/accounts/{account_id}/admins",
-      "description": "List the admins in the account",
+      "description": "A paginated list of the admins in the account",
       "operations": [
         {
           "method": "GET",
           "summary": "List account admins",
-          "notes": "List the admins in the account",
+          "notes": "A paginated list of the admins in the account",
           "nickname": "list_account_admins",
           "parameters": [
             {
@@ -135,7 +135,7 @@
               "format": null,
               "required": false,
               "items": {
-                "$ref": "[integer]"
+                "$ref": "[Integer]"
               }
             }
           ],
@@ -169,7 +169,7 @@
           "description": "The user the role is assigned to. See the Users API for details.",
           "$ref": "User"
         },
-        "status": {
+        "workflow_state": {
           "description": "The status of the account role/user assignment.",
           "type": "string",
           "example": "deleted"

@@ -9,12 +9,12 @@
   "apis": [
     {
       "path": "/v1/accounts/{account_id}/reports",
-      "description": "Returns the list of reports for the current context.",
+      "description": "Returns a paginated list of reports for the current context.",
       "operations": [
         {
           "method": "GET",
           "summary": "List Available Reports",
-          "notes": "Returns the list of reports for the current context.",
+          "notes": "Returns a paginated list of reports for the current context.",
           "nickname": "list_available_reports",
           "parameters": [
             {
@@ -205,6 +205,10 @@
           "example": "https://example.com/some/path",
           "type": "string"
         },
+        "attachment": {
+          "description": "The attachment api object of the report. Only available after the report has completed.",
+          "$ref": "File"
+        },
         "status": {
           "description": "The status of the report",
           "example": "complete",
@@ -212,12 +216,22 @@
         },
         "parameters": {
           "description": "The report parameters",
+          "example": {
+            "course_id": 2,
+            "start_at": "2012-07-13T10:55:20-06:00",
+            "end_at": "2012-07-13T10:55:20-06:00"
+          },
           "$ref": "ReportParameters"
         },
         "progress": {
           "description": "The progress of the report",
           "example": "100",
-          "type": "string"
+          "type": "integer"
+        },
+        "current_line": {
+          "description": "This is the current line count being written to the report. It updates every 1000 records.",
+          "example": "12000",
+          "type": "integer"
         }
       }
     },
@@ -308,10 +322,15 @@
           "example": false,
           "type": "boolean"
         },
-        "enrollment_state[]": {
+        "enrollment_state": {
           "description": "Include enrollment state. Defaults to 'all' Options: ['active'| 'invited'| 'creation_pending'| 'deleted'| 'rejected'| 'completed'| 'inactive'| 'all']",
-          "example": "['all']",
-          "type": "string"
+          "example": [
+            "all"
+          ],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "start_at": {
           "description": "The beginning date for submissions. Max time range is 2 weeks.",

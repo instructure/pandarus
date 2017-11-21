@@ -20,7 +20,7 @@ module Pandarus
     attribute :sis_terms_csv, resolve_type("Integer")
     attribute :sis_accounts_csv, resolve_type("Integer")
     attribute :include_enrollment_state, resolve_type(nil)
-    attribute :enrollment_state____, resolve_type("String")
+    attribute :enrollment_state, resolve_type("String", collection: true)
     attribute :start_at, resolve_type("DateTime")
     attribute :end_at, resolve_type("DateTime")
     

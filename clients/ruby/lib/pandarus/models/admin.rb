@@ -8,7 +8,7 @@ module Pandarus
     attribute :id, resolve_type("Integer")
     attribute :role, resolve_type("String")
     attribute :user, resolve_type("User")
-    attribute :status, resolve_type("String")
+    attribute :workflow_state, resolve_type("String")
     
   end
 end

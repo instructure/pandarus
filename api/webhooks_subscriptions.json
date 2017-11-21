@@ -66,7 +66,7 @@
               "required": true
             }
           ],
-          "type": "Webhook Subscription"
+          "type": "void"
         }
       ]
     },

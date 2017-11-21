@@ -80,7 +80,7 @@
               "required": true
             }
           ],
-          "type": "the page that was created"
+          "type": "Page"
         }
       ]
     },
