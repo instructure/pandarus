@@ -34,7 +34,6 @@ cd "$SCRIPT_DIR" && (
 	git checkout -- api/admins.json
 	git checkout -- api/courses.json
 	git checkout -- api/notification_preferences.json
-	git checkout -- api/outcome_results.json
 	git checkout -- api/outcomes.json
 	git checkout -- api/pages.json
 	git checkout -- api/poll_choices.json

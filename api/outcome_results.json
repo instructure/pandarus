@@ -28,7 +28,7 @@
             {
               "paramType": "query",
               "name": "user_ids",
-              "description": "If specified, only the users whose ids are given will be included in the results. it is an error to specify an id for a user who is not a student in the context",
+              "description": "If specified, only the users whose ids are given will be included in the\nresults. SIS ids can be used, prefixed by \"sis_user_id:\".\nIt is an error to specify an id for a user who is not a student in\nthe context.",
               "type": "array",
               "format": "int64",
               "required": false,
@@ -39,7 +39,7 @@
             {
               "paramType": "query",
               "name": "outcome_ids",
-              "description": "If specified, only the outcomes whose ids are given will be included in the results. it is an error to specify an id for an outcome which is not linked to the context.",
+              "description": "If specified, only the outcomes whose ids are given will be included in the\nresults. it is an error to specify an id for an outcome which is not linked\nto the context.",
               "type": "array",
               "format": "int64",
               "required": false,
@@ -50,19 +50,10 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "Specify additional collections to be side loaded with the result. \"alignments\" includes only the alignments referenced by the returned results. \"outcomes.alignments\" includes all alignments referenced by outcomes in the context.",
+              "description": "[String, \"alignments\"|\"outcomes\"|\"outcomes.alignments\"|\"outcome_groups\"|\"outcome_links\"|\"outcome_paths\"|\"users\"]\nSpecify additional collections to be side loaded with the result.\n\"alignments\" includes only the alignments referenced by the returned\nresults.\n\"outcomes.alignments\" includes all alignments referenced by outcomes in the\ncontext.",
               "type": "array",
               "format": null,
               "required": false,
-              "enum": [
-                "alignments",
-                "outcomes",
-                "outcomes.alignments",
-                "outcome_groups",
-                "outcome_links",
-                "outcome_paths",
-                "users"
-              ],
               "items": {
                 "type": "string"
               }
@@ -93,7 +84,7 @@
             {
               "paramType": "query",
               "name": "aggregate",
-              "description": "If specified, instead of returning one rollup for each user, all the user rollups will be combined into one rollup for the course that will contain the average rollup score for each outcome.",
+              "description": "If specified, instead of returning one rollup for each user, all the user\nrollups will be combined into one rollup for the course that will contain\nthe average rollup score for each outcome.",
               "type": "string",
               "format": null,
               "required": false,
@@ -104,7 +95,7 @@
             {
               "paramType": "query",
               "name": "user_ids",
-              "description": "If specified, only the users whose ids are given will be included in the results or used in an aggregate result. it is an error to specify an id for a user who is not a student in the context",
+              "description": "If specified, only the users whose ids are given will be included in the\nresults or used in an aggregate result. it is an error to specify an id\nfor a user who is not a student in the context",
               "type": "array",
               "format": "int64",
               "required": false,
@@ -115,7 +106,7 @@
             {
               "paramType": "query",
               "name": "outcome_ids",
-              "description": "If specified, only the outcomes whose ids are given will be included in the results. it is an error to specify an id for an outcome which is not linked to the context.",
+              "description": "If specified, only the outcomes whose ids are given will be included in the\nresults. it is an error to specify an id for an outcome which is not linked\nto the context.",
               "type": "array",
               "format": "int64",
               "required": false,
@@ -126,19 +117,10 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "Specify additional collections to be side loaded with the result.",
+              "description": "[String, \"courses\"|\"outcomes\"|\"outcomes.alignments\"|\"outcome_groups\"|\"outcome_links\"|\"outcome_paths\"|\"users\"]\nSpecify additional collections to be side loaded with the result.",
               "type": "array",
               "format": null,
               "required": false,
-              "enum": [
-                "courses",
-                "outcomes",
-                "outcomes.alignments",
-                "outcome_groups",
-                "outcome_links",
-                "outcome_paths",
-                "users"
-              ],
               "items": {
                 "type": "string"
               }
@@ -168,13 +150,23 @@
           "description": "The student's score"
         },
         "submitted_or_assessed_at": {
-          "description": "The datetime the resulting OutcomeResult was submitted at, or absent that, when it was assessed.",
           "example": "2013-02-01T00:00:00-06:00",
-          "type": "datetime"
+          "type": "datetime",
+          "description": "The datetime the resulting OutcomeResult was submitted at, or absent that, when it was assessed."
         },
         "links": {
-          "example": "{\"user\"=>\"3\", \"learning_outcome\"=>\"97\", \"alignment\"=>\"53\"}",
+          "example": {
+            "user": "3",
+            "learning_outcome": "97",
+            "alignment": "53"
+          },
+          "type": "object",
           "description": "Unique identifiers of objects associated with this result"
+        },
+        "percent": {
+          "example": "0.65",
+          "type": "number",
+          "description": "score's percent of maximum points possible for outcome, scaled to reflect any custom mastery levels that differ from the learning outcome"
         }
       }
     },
@@ -210,7 +202,9 @@
           "description": "The number of alignment scores included in this rollup."
         },
         "links": {
-          "example": "{\"outcome\"=>\"42\"}",
+          "example": {
+            "outcome": "42"
+          },
           "$ref": "OutcomeRollupScoreLinks"
         }
       }
@@ -223,7 +217,7 @@
       ],
       "properties": {
         "course": {
-          "description": "If an aggregate result was requested, the course field will be present Otherwise, the user and section field will be present (Optional) The id of the course that this rollup applies to",
+          "description": "If an aggregate result was requested, the course field will be present. Otherwise, the user and section field will be present (Optional) The id of the course that this rollup applies to",
           "example": 42,
           "type": "integer"
         },
@@ -256,7 +250,11 @@
           "type": "string"
         },
         "links": {
-          "example": "{\"course\"=>42, \"user\"=>42, \"section\"=>57}",
+          "example": {
+            "course": 42,
+            "user": 42,
+            "section": 57
+          },
           "$ref": "OutcomeRollupLinks"
         }
       }
