@@ -11,7 +11,7 @@ describe Pandarus::Client do
     let(:opts) { { :prefix => prefix, :token => token } }
 
     it "raises when args are too few" do
-      expect { client.list_account_admins }.to raise_error
+      expect { client.list_account_admins }.to raise_error("account_id is required")
     end
   end
 
