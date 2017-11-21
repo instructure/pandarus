@@ -59,6 +59,10 @@
       "description": "Bookmarks"
     },
     {
+      "path": "/brand_configs.json",
+      "description": "Brand Configs"
+    },
+    {
       "path": "/calendar_events.json",
       "description": "Calendar Events"
     },
@@ -285,6 +289,10 @@
     {
       "path": "/services.json",
       "description": "Services"
+    },
+    {
+      "path": "/shared_brand_configs.json",
+      "description": "Shared Brand Configs"
     },
     {
       "path": "/submission_comments.json",

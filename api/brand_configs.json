@@ -1,0 +1,29 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/brand_configs",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/brand_variables",
+      "description": "Will redirect to a static json file that has all of the brand\nvariables used by this account. Even though this is a redirect,\ndo not store the redirected url since if the account makes any changes\nit will redirect to a new url. Needs no authentication.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get the brand config variables that should be used for this domain",
+          "notes": "Will redirect to a static json file that has all of the brand\nvariables used by this account. Even though this is a redirect,\ndo not store the redirected url since if the account makes any changes\nit will redirect to a new url. Needs no authentication.",
+          "nickname": "get_brand_config_variables_that_should_be_used_for_this_domain",
+          "parameters": [
+
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+  }
+}

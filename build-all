@@ -37,7 +37,6 @@ cd "$SCRIPT_DIR" && (
 	git checkout -- api/quiz_submission_questions.json
 	git checkout -- api/sis_imports.json
 	rm api/authentication_providers.json
-	rm api/brand_configs.json
 	rm api/e_pub_exports.json
 	rm api/error_reports.json
 	rm api/jw_ts.json
@@ -49,7 +48,6 @@ cd "$SCRIPT_DIR" && (
 	rm api/planner_note.json
 	rm api/planner_override.json
 	rm api/rubrics.json
-	rm api/shared_brand_configs.json
 	rm api/sis_integration.json
 	rm api/webhooks_subscriptions.json
   ruby normalize-manifest

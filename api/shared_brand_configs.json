@@ -1,0 +1,145 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/shared_brand_configs",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/accounts/{account_id}/shared_brand_configs",
+      "description": "Create a SharedBrandConfig, which will give the given brand_config a name\nand make it available to other users of this account.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Share a BrandConfig (Theme)",
+          "notes": "Create a SharedBrandConfig, which will give the given brand_config a name\nand make it available to other users of this account.",
+          "nickname": "share_brandconfig_theme",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "shared_brand_config[name]",
+              "description": "Name to share this BrandConfig (theme) as.",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "shared_brand_config[brand_config_md5]",
+              "description": "MD5 of brand_config to share",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "SharedBrandConfig"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/shared_brand_configs/{id}",
+      "description": "Update the specified shared_brand_config with a new name or to point to a new brand_config.\nUses same parameters as create.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update a shared theme",
+          "notes": "Update the specified shared_brand_config with a new name or to point to a new brand_config.\nUses same parameters as create.",
+          "nickname": "update_shared_theme",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "SharedBrandConfig"
+        }
+      ]
+    },
+    {
+      "path": "/v1/shared_brand_configs/{id}",
+      "description": "Delete a SharedBrandConfig, which will unshare it so you nor anyone else in\nyour account will see it as an option to pick from.",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Un-share a BrandConfig (Theme)",
+          "notes": "Delete a SharedBrandConfig, which will unshare it so you nor anyone else in\nyour account will see it as an option to pick from.",
+          "nickname": "un_share_brandconfig_theme",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "SharedBrandConfig"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "SharedBrandConfig": {
+      "id": "SharedBrandConfig",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "The shared_brand_config identifier.",
+          "example": 987,
+          "type": "integer"
+        },
+        "account_id": {
+          "description": "The id of the account it should be shared within.",
+          "example": "",
+          "type": "string"
+        },
+        "brand_config_md5": {
+          "description": "The md5 (since BrandConfigs are identified by MD5 and not numeric id) of the BrandConfig to share.",
+          "example": "1d31002c95842f8fe16da7dfcc0d1f39",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name to share this theme as",
+          "example": "Crimson and Gold Verson 1",
+          "type": "string"
+        },
+        "created_at": {
+          "description": "When this was created",
+          "example": "2012-07-13T10:55:20-06:00",
+          "type": "datetime"
+        },
+        "updated_at": {
+          "description": "When this was last updated",
+          "example": "2012-07-13T10:55:20-06:00",
+          "type": "datetime"
+        }
+      }
+    }
+  }
+}

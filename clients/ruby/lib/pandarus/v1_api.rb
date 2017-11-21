@@ -3578,6 +3578,39 @@ module Pandarus
     end
     
 
+    # Get the brand config variables that should be used for this domain
+    def get_brand_config_variables_that_should_be_used_for_this_domain(opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        {}
+      
+
+      )
+
+      # resource path
+      path = path_replace("/v1/brand_variables",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
     # List calendar events
     def list_calendar_events(opts={})
       query_param_keys = [
@@ -21941,6 +21974,117 @@ module Pandarus
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       response
+      
+
+    end
+    
+
+    # Share a BrandConfig (Theme)
+    def share_brandconfig_theme(account_id,shared_brand_config__name__,shared_brand_config__brand_config_md5__,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :shared_brand_config__name__,
+        :shared_brand_config__brand_config_md5__,
+        
+
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      raise "shared_brand_config__name__ is required" if shared_brand_config__name__.nil?
+      raise "shared_brand_config__brand_config_md5__ is required" if shared_brand_config__brand_config_md5__.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id,
+        :shared_brand_config__name__ => shared_brand_config__name__,
+        :shared_brand_config__brand_config_md5__ => shared_brand_config__brand_config_md5__
+
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/shared_brand_configs",
+        :account_id => account_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      SharedBrandConfig.new(response)
+      
+
+    end
+    
+
+    # Update a shared theme
+    def update_shared_theme(account_id,id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/shared_brand_configs/{id}",
+        :account_id => account_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      SharedBrandConfig.new(response)
+      
+
+    end
+    
+
+    # Un-share a BrandConfig (Theme)
+    def un_share_brandconfig_theme(id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/shared_brand_configs/{id}",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      SharedBrandConfig.new(response)
       
 
     end
