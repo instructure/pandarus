@@ -171,6 +171,10 @@
       "description": "Groups"
     },
     {
+      "path": "/jw_ts.json",
+      "description": "JWTs"
+    },
+    {
       "path": "/live_assessments.json",
       "description": "LiveAssessments"
     },

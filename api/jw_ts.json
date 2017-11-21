@@ -1,0 +1,66 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/jw_ts",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/jwts",
+      "description": "Create a unique jwt for using with other canvas services\n\nGenerates a different JWT each time it's called, each one expires\nafter a short window (1 hour)",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create JWT",
+          "notes": "Create a unique jwt for using with other canvas services\n\nGenerates a different JWT each time it's called, each one expires\nafter a short window (1 hour)",
+          "nickname": "create_jwt",
+          "parameters": [
+
+          ],
+          "type": "JWT"
+        }
+      ]
+    },
+    {
+      "path": "/v1/jwts/refresh",
+      "description": "Refresh a JWT for use with other canvas services\n\nGenerates a different JWT each time it's called, each one expires\nafter a short window (1 hour).",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Refresh JWT",
+          "notes": "Refresh a JWT for use with other canvas services\n\nGenerates a different JWT each time it's called, each one expires\nafter a short window (1 hour).",
+          "nickname": "refresh_jwt",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "jwt",
+              "description": "An existing JWT token to be refreshed. The new token will have\nthe same context and workflows as the existing token.",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "JWT"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "JWT": {
+      "id": "JWT",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "token": {
+          "description": "The signed, encrypted, base64 encoded JWT",
+          "example": "ZXlKaGJHY2lPaUprYVhJaUxDSmxibU1pT2lKQk1qVTJSME5OSW4wLi5QbnAzS1QzLUJkZ3lQZHgtLm5JT0pOV01iZmdtQ0g3WWtybjhLeHlMbW13cl9yZExXTXF3Y0IwbXkzZDd3V1NDd0JYQkV0UTRtTVNJSVRrX0FJcG0zSU1DeThMcW5NdzA0ckdHVTkweDB3MmNJbjdHeWxOUXdveU5ZZ3UwOEN4TkZteUpCeW5FVktrdU05QlRyZXZ3Y1ZTN2hvaC1WZHRqM19PR3duRm5yUVgwSFhFVFc4R28tUGxoQVUtUnhKT0pNakx1OUxYd2NDUzZsaW9ZMno5NVU3T0hLSGNpaDBmSGVjN2FzekVJT3g4NExUeHlReGxYU3BtbFZ5LVNuYWdfbVJUeU5yNHNsMmlDWFcwSzZCNDhpWHJ1clJVVm1LUkVlVTl4ZVVJcTJPaWNpSHpfemJ0X3FrMjhkdzRyajZXRnBHSlZPNWcwTlUzVHlSWk5qdHg1S2NrTjVSQjZ1X2FzWTBScjhTY2VhNFk3Y2JFX01wcm54cFZTNDFIekVVSVRNdzVMTk1GLVpQZy52LVVDTkVJYk8zQ09EVEhPRnFXLUFR",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

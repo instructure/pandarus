@@ -15017,6 +15017,74 @@ module Pandarus
     end
     
 
+    # Create JWT
+    def create_jwt(opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        {}
+      
+
+      )
+
+      # resource path
+      path = path_replace("/v1/jwts",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      JWT.new(response)
+      
+
+    end
+    
+
+    # Refresh JWT
+    def refresh_jwt(jwt,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :jwt,
+        
+
+      ]
+
+      # verify existence of params
+      raise "jwt is required" if jwt.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :jwt => jwt
+
+      )
+
+      # resource path
+      path = path_replace("/v1/jwts/refresh",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      JWT.new(response)
+      
+
+    end
+    
+
     # Create live assessment results
     def create_live_assessment_results(course_id,assessment_id,opts={})
       query_param_keys = [
