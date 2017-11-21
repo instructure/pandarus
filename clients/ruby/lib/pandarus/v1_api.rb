@@ -13968,6 +13968,8 @@ module Pandarus
         :login__unique_id__,
         :login__password__,
         :login__sis_user_id__,
+        :login__integration_id__,
+        :login__authentication_provider_id__,
         
 
       ]
@@ -14009,6 +14011,7 @@ module Pandarus
         :login__unique_id__,
         :login__password__,
         :login__sis_user_id__,
+        :login__integration_id__,
         
 
       ]
