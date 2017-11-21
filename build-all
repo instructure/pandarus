@@ -130,7 +130,6 @@ cd "$SCRIPT_DIR" && (
   (
     cd clients/ruby
     GEMFILE=$(gem build pandarus.gemspec | fgrep -i 'FILE:' | awk '{ print $2 }')
-    echo "Gem file: $GEMFILE"
     gem install $GEMFILE
   )
 
