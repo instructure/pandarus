@@ -31,6 +31,10 @@
       "description": "Announcement External Feeds"
     },
     {
+      "path": "/announcements.json",
+      "description": "Announcements"
+    },
+    {
       "path": "/appointment_groups.json",
       "description": "Appointment Groups"
     },

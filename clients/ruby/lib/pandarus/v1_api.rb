@@ -1641,6 +1641,42 @@ module Pandarus
     end
     
 
+    # List announcements
+    def list_announcements(context_codes,opts={})
+      query_param_keys = [
+        :context_codes,
+        :start_date,
+        :end_date,
+        :active_only
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "context_codes is required" if context_codes.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :context_codes => context_codes
+
+      )
+
+      # resource path
+      path = path_replace("/v1/announcements",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, DiscussionTopic, path, query_params)
+      
+
+    end
+    
+
     # List appointment groups
     def list_appointment_groups(opts={})
       query_param_keys = [
