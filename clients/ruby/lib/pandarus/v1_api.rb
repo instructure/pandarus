@@ -15533,6 +15533,233 @@ module Pandarus
     end
     
 
+    # List students selected for moderation
+    def list_students_selected_for_moderation(course_id,assignment_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :assignment_id => assignment_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/assignments/{assignment_id}/moderated_students",
+        :course_id => course_id,
+        :assignment_id => assignment_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, User, path, query_params)
+      
+
+    end
+    
+
+    # Select students for moderation
+    def select_students_for_moderation(course_id,assignment_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :student_ids,
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :assignment_id => assignment_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/assignments/{assignment_id}/moderated_students",
+        :course_id => course_id,
+        :assignment_id => assignment_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, User, path, query_params)
+      
+
+    end
+    
+
+    # Show provisional grade status for a student
+    def show_provisional_grade_status_for_student(course_id,assignment_id,opts={})
+      query_param_keys = [
+        :student_id
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :assignment_id => assignment_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/assignments/{assignment_id}/provisional_grades/status",
+        :course_id => course_id,
+        :assignment_id => assignment_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Select provisional grade
+    def select_provisional_grade(course_id,assignment_id,provisional_grade_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      raise "provisional_grade_id is required" if provisional_grade_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :assignment_id => assignment_id,
+        :provisional_grade_id => provisional_grade_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/assignments/{assignment_id}/provisional_grades/{provisional_grade_id}/select",
+        :course_id => course_id,
+        :assignment_id => assignment_id,
+        :provisional_grade_id => provisional_grade_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Copy provisional grade
+    def copy_provisional_grade(course_id,assignment_id,provisional_grade_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      raise "provisional_grade_id is required" if provisional_grade_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :assignment_id => assignment_id,
+        :provisional_grade_id => provisional_grade_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/assignments/{assignment_id}/provisional_grades/{provisional_grade_id}/copy_to_final_mark",
+        :course_id => course_id,
+        :assignment_id => assignment_id,
+        :provisional_grade_id => provisional_grade_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      ProvisionalGrade.new(response)
+      
+
+    end
+    
+
+    # Publish provisional grades for an assignment
+    def publish_provisional_grades_for_assignment(course_id,assignment_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :assignment_id => assignment_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/assignments/{assignment_id}/provisional_grades/publish",
+        :course_id => course_id,
+        :assignment_id => assignment_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
     # List modules
     def list_modules(course_id,opts={})
       query_param_keys = [

@@ -1,0 +1,284 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/moderated_grading",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/assignments/{assignment_id}/moderated_students",
+      "description": "Returns a paginated list of students selected for moderation",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List students selected for moderation",
+          "notes": "Returns a paginated list of students selected for moderation",
+          "nickname": "list_students_selected_for_moderation",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "User"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/assignments/{assignment_id}/moderated_students",
+      "description": "Returns an array of users that were selected for moderation",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Select students for moderation",
+          "notes": "Returns an array of users that were selected for moderation",
+          "nickname": "select_students_for_moderation",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "student_ids",
+              "description": "user ids for students to select for moderation",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "type": "number"
+              }
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "User"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/assignments/{assignment_id}/provisional_grades/status",
+      "description": "Tell whether the student's submission needs one or more provisional grades.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Show provisional grade status for a student",
+          "notes": "Tell whether the student's submission needs one or more provisional grades.",
+          "nickname": "show_provisional_grade_status_for_student",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "student_id",
+              "description": "The id of the student to show the status for",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/assignments/{assignment_id}/provisional_grades/{provisional_grade_id}/select",
+      "description": "Choose which provisional grade the student should receive for a submission.\nThe caller must have :moderate_grades rights.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Select provisional grade",
+          "notes": "Choose which provisional grade the student should receive for a submission.\nThe caller must have :moderate_grades rights.",
+          "nickname": "select_provisional_grade",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "provisional_grade_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/assignments/{assignment_id}/provisional_grades/{provisional_grade_id}/copy_to_final_mark",
+      "description": "Given a provisional grade, copy the grade (and associated submission comments and rubric assessments)\nto a \"final\" mark which can be edited or commented upon by a moderator prior to publication of grades.\n\nNotes:\n* The student must be in the moderation set for the assignment.\n* The newly created grade will be selected.\n* The caller must have \"Moderate Grades\" rights in the course.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Copy provisional grade",
+          "notes": "Given a provisional grade, copy the grade (and associated submission comments and rubric assessments)\nto a \"final\" mark which can be edited or commented upon by a moderator prior to publication of grades.\n\nNotes:\n* The student must be in the moderation set for the assignment.\n* The newly created grade will be selected.\n* The caller must have \"Moderate Grades\" rights in the course.",
+          "nickname": "copy_provisional_grade",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "provisional_grade_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "ProvisionalGrade"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/assignments/{assignment_id}/provisional_grades/publish",
+      "description": "Publish the selected provisional grade for all submissions to an assignment.\nUse the \"Select provisional grade\" endpoint to choose which provisional grade to publish\nfor a particular submission.\n\nStudents not in the moderation set will have their one and only provisional grade published.\n\nWARNING: This is irreversible. This will overwrite existing grades in the gradebook.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Publish provisional grades for an assignment",
+          "notes": "Publish the selected provisional grade for all submissions to an assignment.\nUse the \"Select provisional grade\" endpoint to choose which provisional grade to publish\nfor a particular submission.\n\nStudents not in the moderation set will have their one and only provisional grade published.\n\nWARNING: This is irreversible. This will overwrite existing grades in the gradebook.",
+          "nickname": "publish_provisional_grades_for_assignment",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "ProvisionalGrade": {
+      "id": "ProvisionalGrade",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "provisional_grade_id": {
+          "description": "The identifier for the provisional grade",
+          "example": 23,
+          "type": "integer"
+        },
+        "score": {
+          "description": "The numeric score",
+          "example": 90,
+          "type": "integer"
+        },
+        "grade": {
+          "description": "The grade",
+          "example": "A-",
+          "type": "string"
+        },
+        "grade_matches_current_submission": {
+          "description": "Whether the grade was applied to the most current submission (false if the student resubmitted after grading)",
+          "example": true,
+          "type": "boolean"
+        },
+        "graded_at": {
+          "description": "When the grade was given",
+          "example": "2015-11-01T00:03:21-06:00",
+          "type": "datetime"
+        },
+        "final": {
+          "description": "Whether this is the 'final' provisional grade created by the moderator",
+          "example": false,
+          "type": "boolean"
+        },
+        "speedgrader_url": {
+          "description": "A link to view this provisional grade in SpeedGrader™",
+          "example": "http://www.example.com/courses/123/gradebook/speed_grader?...",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

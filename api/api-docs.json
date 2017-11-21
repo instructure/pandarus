@@ -187,6 +187,10 @@
       "description": "Logins"
     },
     {
+      "path": "/moderated_grading.json",
+      "description": "Moderated Grading"
+    },
+    {
       "path": "/modules.json",
       "description": "Modules"
     },
