@@ -52,7 +52,8 @@
                 "online_text_entry",
                 "online_url",
                 "online_upload",
-                "media_recording"
+                "media_recording",
+                "basic_lti_launch"
               ]
             },
             {
@@ -66,7 +67,7 @@
             {
               "paramType": "form",
               "name": "submission[url]",
-              "description": "Submit the assignment as a URL. The URL scheme must be \"http\" or \"https\",\nno \"ftp\" or other URL schemes are allowed. If no scheme is given (e.g.\n\"www.example.com\") then \"http\" will be assumed. Requires a submission_type\nof \"online_url\".",
+              "description": "Submit the assignment as a URL. The URL scheme must be \"http\" or \"https\",\nno \"ftp\" or other URL schemes are allowed. If no scheme is given (e.g.\n\"www.example.com\") then \"http\" will be assumed. Requires a submission_type\nof \"online_url\" or \"basic_lti_launch\".",
               "type": "string",
               "format": null,
               "required": false
@@ -152,7 +153,8 @@
                 "online_text_entry",
                 "online_url",
                 "online_upload",
-                "media_recording"
+                "media_recording",
+                "basic_lti_launch"
               ]
             },
             {
@@ -166,7 +168,7 @@
             {
               "paramType": "form",
               "name": "submission[url]",
-              "description": "Submit the assignment as a URL. The URL scheme must be \"http\" or \"https\",\nno \"ftp\" or other URL schemes are allowed. If no scheme is given (e.g.\n\"www.example.com\") then \"http\" will be assumed. Requires a submission_type\nof \"online_url\".",
+              "description": "Submit the assignment as a URL. The URL scheme must be \"http\" or \"https\",\nno \"ftp\" or other URL schemes are allowed. If no scheme is given (e.g.\n\"www.example.com\") then \"http\" will be assumed. Requires a submission_type\nof \"online_url\" or \"basic_lti_launch\".",
               "type": "string",
               "format": null,
               "required": false
@@ -209,12 +211,12 @@
     },
     {
       "path": "/v1/courses/{course_id}/assignments/{assignment_id}/submissions",
-      "description": "Get all existing submissions for an assignment.",
+      "description": "A paginated list of all existing submissions for an assignment.",
       "operations": [
         {
           "method": "GET",
           "summary": "List assignment submissions",
-          "notes": "Get all existing submissions for an assignment.",
+          "notes": "A paginated list of all existing submissions for an assignment.",
           "nickname": "list_assignment_submissions_courses",
           "parameters": [
             {
@@ -272,12 +274,12 @@
     },
     {
       "path": "/v1/sections/{section_id}/assignments/{assignment_id}/submissions",
-      "description": "Get all existing submissions for an assignment.",
+      "description": "A paginated list of all existing submissions for an assignment.",
       "operations": [
         {
           "method": "GET",
           "summary": "List assignment submissions",
-          "notes": "Get all existing submissions for an assignment.",
+          "notes": "A paginated list of all existing submissions for an assignment.",
           "nickname": "list_assignment_submissions_sections",
           "parameters": [
             {
@@ -335,12 +337,12 @@
     },
     {
       "path": "/v1/courses/{course_id}/students/submissions",
-      "description": "Get all existing submissions for a given set of students and assignments.",
+      "description": "A paginated list of all existing submissions for a given set of students and assignments.",
       "operations": [
         {
           "method": "GET",
           "summary": "List submissions for multiple assignments",
-          "notes": "Get all existing submissions for a given set of students and assignments.",
+          "notes": "A paginated list of all existing submissions for a given set of students and assignments.",
           "nickname": "list_submissions_for_multiple_assignments_courses",
           "parameters": [
             {
@@ -383,11 +385,69 @@
             },
             {
               "paramType": "query",
+              "name": "post_to_sis",
+              "description": "If this argument is set to true, the response will only include\nsubmissions for assignments that have the post_to_sis flag set to true and\nuser enrollments that were added through sis.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
               "name": "grading_period_id",
-              "description": "The id of the grading period in which submissions are being requested\n(Requires the Multiple Grading Periods account feature turned on)",
+              "description": "The id of the grading period in which submissions are being requested\n(Requires grading periods to exist on the account)",
               "type": "integer",
               "format": "int64",
               "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "workflow_state",
+              "description": "The current status of the submission",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "submitted",
+                "unsubmitted",
+                "graded",
+                "pending_review"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "enrollment_state",
+              "description": "The current state of the enrollments. If omitted will include all\nenrollments that are not deleted.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "active",
+                "concluded"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "order",
+              "description": "The order submissions will be returned in.  Defaults to \"id\".  Doesn't\naffect results for \"grouped\" mode.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "id",
+                "graded_at"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "order_direction",
+              "description": "Determines whether ordered results are retured in ascending or descending\norder.  Defaults to \"ascending\".  Doesn't affect results for \"grouped\" mode.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "ascending",
+                "descending"
+              ]
             },
             {
               "paramType": "query",
@@ -417,12 +477,12 @@
     },
     {
       "path": "/v1/sections/{section_id}/students/submissions",
-      "description": "Get all existing submissions for a given set of students and assignments.",
+      "description": "A paginated list of all existing submissions for a given set of students and assignments.",
       "operations": [
         {
           "method": "GET",
           "summary": "List submissions for multiple assignments",
-          "notes": "Get all existing submissions for a given set of students and assignments.",
+          "notes": "A paginated list of all existing submissions for a given set of students and assignments.",
           "nickname": "list_submissions_for_multiple_assignments_sections",
           "parameters": [
             {
@@ -465,11 +525,69 @@
             },
             {
               "paramType": "query",
+              "name": "post_to_sis",
+              "description": "If this argument is set to true, the response will only include\nsubmissions for assignments that have the post_to_sis flag set to true and\nuser enrollments that were added through sis.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
               "name": "grading_period_id",
-              "description": "The id of the grading period in which submissions are being requested\n(Requires the Multiple Grading Periods account feature turned on)",
+              "description": "The id of the grading period in which submissions are being requested\n(Requires grading periods to exist on the account)",
               "type": "integer",
               "format": "int64",
               "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "workflow_state",
+              "description": "The current status of the submission",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "submitted",
+                "unsubmitted",
+                "graded",
+                "pending_review"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "enrollment_state",
+              "description": "The current state of the enrollments. If omitted will include all\nenrollments that are not deleted.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "active",
+                "concluded"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "order",
+              "description": "The order submissions will be returned in.  Defaults to \"id\".  Doesn't\naffect results for \"grouped\" mode.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "id",
+                "graded_at"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "order_direction",
+              "description": "Determines whether ordered results are retured in ascending or descending\norder.  Defaults to \"ascending\".  Doesn't affect results for \"grouped\" mode.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "ascending",
+                "descending"
+              ]
             },
             {
               "paramType": "query",
@@ -798,6 +916,22 @@
             },
             {
               "paramType": "form",
+              "name": "submission[late_policy_status]",
+              "description": "Sets the late policy status to either \"late\", \"missing\", \"none\", or null.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "submission[seconds_late_override]",
+              "description": "Sets the seconds late if late policy status is \"late\"",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "rubric_assessment",
               "description": "Assign a rubric assessment to this assignment submission. The\nsub-parameters here depend on the rubric for the assignment. The general\nformat is, for each row in the rubric:\n\nThe points awarded for this row.\n  rubric_assessment[criterion_id][points]\n\nComments to add for this row.\n  rubric_assessment[criterion_id][comments]\n\nFor example, if the assignment rubric is (in JSON format):\n  !!!javascript\n  [\n    {\n      'id': 'crit1',\n      'points': 10,\n      'description': 'Criterion 1',\n      'ratings':\n      [\n        { 'description': 'Good', 'points': 10 },\n        { 'description': 'Poor', 'points': 3 }\n      ]\n    },\n    {\n      'id': 'crit2',\n      'points': 5,\n      'description': 'Criterion 2',\n      'ratings':\n      [\n        { 'description': 'Complete', 'points': 5 },\n        { 'description': 'Incomplete', 'points': 0 }\n      ]\n    }\n  ]\n\nThen a possible set of values for rubric_assessment would be:\n    rubric_assessment[crit1][points]=3&rubric_assessment[crit2][points]=5&rubric_assessment[crit2][comments]=Well%20Done.",
               "type": "RubricAssessment",
@@ -916,6 +1050,22 @@
             },
             {
               "paramType": "form",
+              "name": "submission[late_policy_status]",
+              "description": "Sets the late policy status to either \"late\", \"missing\", \"none\", or null.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "submission[seconds_late_override]",
+              "description": "Sets the seconds late if late policy status is \"late\"",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "rubric_assessment",
               "description": "Assign a rubric assessment to this assignment submission. The\nsub-parameters here depend on the rubric for the assignment. The general\nformat is, for each row in the rubric:\n\nThe points awarded for this row.\n  rubric_assessment[criterion_id][points]\n\nComments to add for this row.\n  rubric_assessment[criterion_id][comments]\n\nFor example, if the assignment rubric is (in JSON format):\n  !!!javascript\n  [\n    {\n      'id': 'crit1',\n      'points': 10,\n      'description': 'Criterion 1',\n      'ratings':\n      [\n        { 'description': 'Good', 'points': 10 },\n        { 'description': 'Poor', 'points': 3 }\n      ]\n    },\n    {\n      'id': 'crit2',\n      'points': 5,\n      'description': 'Criterion 2',\n      'ratings':\n      [\n        { 'description': 'Complete', 'points': 5 },\n        { 'description': 'Incomplete', 'points': 0 }\n      ]\n    }\n  ]\n\nThen a possible set of values for rubric_assessment would be:\n    rubric_assessment[crit1][points]=3&rubric_assessment[crit2][points]=5&rubric_assessment[crit2][comments]=Well%20Done.",
               "type": "RubricAssessment",
@@ -929,12 +1079,12 @@
     },
     {
       "path": "/v1/courses/{course_id}/assignments/{assignment_id}/gradeable_students",
-      "description": "List students eligible to submit the assignment. The caller must have permission to view grades.\n\nSection-limited instructors will only see students in their own sections.\n\nreturns [UserDisplay]",
+      "description": "A paginated list of students eligible to submit the assignment. The caller must have permission to view grades.\n\nSection-limited instructors will only see students in their own sections.\n\nreturns [UserDisplay]",
       "operations": [
         {
           "method": "GET",
           "summary": "List gradeable students",
-          "notes": "List students eligible to submit the assignment. The caller must have permission to view grades.\n\nSection-limited instructors will only see students in their own sections.\n\nreturns [UserDisplay]",
+          "notes": "A paginated list of students eligible to submit the assignment. The caller must have permission to view grades.\n\nSection-limited instructors will only see students in their own sections.\n\nreturns [UserDisplay]",
           "nickname": "list_gradeable_students",
           "parameters": [
             {
@@ -952,6 +1102,40 @@
               "type": "string",
               "format": null,
               "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/assignments/gradeable_students",
+      "description": "A paginated list of students eligible to submit a list of assignments. The caller must have\npermission to view grades for the requested course.\n\nSection-limited instructors will only see students in their own sections.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List multiple assignments gradeable students",
+          "notes": "A paginated list of students eligible to submit a list of assignments. The caller must have\npermission to view grades for the requested course.\n\nSection-limited instructors will only see students in their own sections.",
+          "nickname": "list_multiple_assignments_gradeable_students",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "assignment_ids",
+              "description": "Assignments being requested",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "type": "string"
+              }
             }
           ],
           "type": "void"
@@ -981,6 +1165,14 @@
               "name": "grade_data[<student_id>][posted_grade]",
               "description": "See documentation for the posted_grade argument in the\n{api:SubmissionsApiController#update Submissions Update} documentation",
               "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][excuse]",
+              "description": "See documentation for the excuse argument in the\n{api:SubmissionsApiController#update Submissions Update} documentation",
+              "type": "boolean",
               "format": null,
               "required": false
             },
@@ -1038,6 +1230,14 @@
               "items": {
                 "type": "integer"
               }
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][assignment_id]",
+              "description": "Specifies which assignment to grade.  This argument is not necessary when\nusing the assignment-specific endpoints.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
             }
           ],
           "type": "Progress"
@@ -1080,6 +1280,14 @@
             },
             {
               "paramType": "form",
+              "name": "grade_data[<student_id>][excuse]",
+              "description": "See documentation for the excuse argument in the\n{api:SubmissionsApiController#update Submissions Update} documentation",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "grade_data[<student_id>][rubric_assessment]",
               "description": "See documentation for the rubric_assessment argument in the\n{api:SubmissionsApiController#update Submissions Update} documentation",
               "type": "RubricAssessment",
@@ -1132,6 +1340,14 @@
               "items": {
                 "type": "integer"
               }
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][assignment_id]",
+              "description": "Specifies which assignment to grade.  This argument is not necessary when\nusing the assignment-specific endpoints.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
             }
           ],
           "type": "Progress"
@@ -1166,6 +1382,14 @@
             },
             {
               "paramType": "form",
+              "name": "grade_data[<student_id>][excuse]",
+              "description": "See documentation for the excuse argument in the\n{api:SubmissionsApiController#update Submissions Update} documentation",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "grade_data[<student_id>][rubric_assessment]",
               "description": "See documentation for the rubric_assessment argument in the\n{api:SubmissionsApiController#update Submissions Update} documentation",
               "type": "RubricAssessment",
@@ -1218,6 +1442,14 @@
               "items": {
                 "type": "integer"
               }
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][assignment_id]",
+              "description": "Specifies which assignment to grade.  This argument is not necessary when\nusing the assignment-specific endpoints.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
             }
           ],
           "type": "Progress"
@@ -1260,6 +1492,14 @@
             },
             {
               "paramType": "form",
+              "name": "grade_data[<student_id>][excuse]",
+              "description": "See documentation for the excuse argument in the\n{api:SubmissionsApiController#update Submissions Update} documentation",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "grade_data[<student_id>][rubric_assessment]",
               "description": "See documentation for the rubric_assessment argument in the\n{api:SubmissionsApiController#update Submissions Update} documentation",
               "type": "RubricAssessment",
@@ -1312,6 +1552,14 @@
               "items": {
                 "type": "integer"
               }
+            },
+            {
+              "paramType": "form",
+              "name": "grade_data[<student_id>][assignment_id]",
+              "description": "Specifies which assignment to grade.  This argument is not necessary when\nusing the assignment-specific endpoints.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
             }
           ],
           "type": "Progress"
@@ -1473,6 +1721,68 @@
           "type": "void"
         }
       ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/assignments/{assignment_id}/submission_summary",
+      "description": "Returns the number of submissions for the given assignment based on gradeable students\nthat fall into three categories: graded, ungraded, not submitted.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Submission Summary",
+          "notes": "Returns the number of submissions for the given assignment based on gradeable students\nthat fall into three categories: graded, ungraded, not submitted.",
+          "nickname": "submission_summary_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/sections/{section_id}/assignments/{assignment_id}/submission_summary",
+      "description": "Returns the number of submissions for the given assignment based on gradeable students\nthat fall into three categories: graded, ungraded, not submitted.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Submission Summary",
+          "notes": "Returns the number of submissions for the given assignment based on gradeable students\nthat fall into three categories: graded, ungraded, not submitted.",
+          "nickname": "submission_summary_sections",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "section_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
     }
   ],
   "models": {
@@ -1535,6 +1845,10 @@
         },
         "created_at": {
           "example": "2012-01-01T01:00:00Z",
+          "type": "datetime"
+        },
+        "edited_at": {
+          "example": "2012-01-02T01:00:00Z",
           "type": "datetime"
         },
         "media_comment": {
@@ -1634,9 +1948,13 @@
           "type": "integer"
         },
         "grader_id": {
-          "description": "The id of the user who graded the submission",
+          "description": "The id of the user who graded the submission. This will be null for submissions that haven't been graded yet. It will be a positive number if a real user has graded the submission and a negative number if the submission was graded by a process (e.g. Quiz autograder and autograding LTI tools).  Specifically autograded quizzes set grader_id to the negative of the quiz id.  Submissions autograded by LTI tools set grader_id to the negative of the tool id.",
           "example": 86,
           "type": "integer"
+        },
+        "graded_at": {
+          "example": "2012-01-02T03:05:34Z",
+          "type": "datetime"
         },
         "user": {
           "description": "The submissions user (see user API) (optional)",
@@ -1657,6 +1975,39 @@
           "description": "Whether the assignment is excused.  Excused assignments have no impact on a user's grade.",
           "example": true,
           "type": "boolean"
+        },
+        "missing": {
+          "description": "Whether the assignment is missing.",
+          "example": true,
+          "type": "boolean"
+        },
+        "late_policy_status": {
+          "description": "The status of the submission in relation to the late policy. Can be late, missing, none, or null.",
+          "example": "missing",
+          "type": "string"
+        },
+        "points_deducted": {
+          "description": "The amount of points automatically deducted from the score by the missing/late policy for a late or missing assignment.",
+          "example": 12.3,
+          "type": "number"
+        },
+        "seconds_late": {
+          "description": "The amount of time, in seconds, that an submission is late by.",
+          "example": 300,
+          "type": "number"
+        },
+        "workflow_state": {
+          "description": "The current state of the submission",
+          "example": "submitted",
+          "type": "string",
+          "allowableValues": {
+            "values": [
+              "graded",
+              "submitted",
+              "unsubmitted",
+              "pending_review"
+            ]
+          }
         }
       }
     }

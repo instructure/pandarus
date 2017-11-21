@@ -21,10 +21,16 @@ module Pandarus
     attribute :url, resolve_type("String")
     attribute :user_id, resolve_type("Integer")
     attribute :grader_id, resolve_type("Integer")
+    attribute :graded_at, resolve_type("DateTime")
     attribute :user, resolve_type("String")
     attribute :late, resolve_type(nil)
     attribute :assignment_visible, resolve_type(nil)
     attribute :excused, resolve_type(nil)
+    attribute :missing, resolve_type(nil)
+    attribute :late_policy_status, resolve_type("String")
+    attribute :points_deducted, resolve_type("Float")
+    attribute :seconds_late, resolve_type("Float")
+    attribute :workflow_state, resolve_type("String")
     
   end
 end

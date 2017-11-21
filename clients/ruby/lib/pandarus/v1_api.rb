@@ -20959,7 +20959,12 @@ module Pandarus
         :student_ids,
         :assignment_ids,
         :grouped,
+        :post_to_sis,
         :grading_period_id,
+        :workflow_state,
+        :enrollment_state,
+        :order,
+        :order_direction,
         :include
 
       ]
@@ -20997,7 +21002,12 @@ module Pandarus
         :student_ids,
         :assignment_ids,
         :grouped,
+        :post_to_sis,
         :grading_period_id,
+        :workflow_state,
+        :enrollment_state,
+        :order,
+        :order_direction,
         :include
 
       ]
@@ -21205,6 +21215,8 @@ module Pandarus
         :include__visibility__,
         :submission__posted_grade__,
         :submission__excuse__,
+        :submission__late_policy_status__,
+        :submission__seconds_late_override__,
         :rubric_assessment,
         
 
@@ -21254,6 +21266,8 @@ module Pandarus
         :include__visibility__,
         :submission__posted_grade__,
         :submission__excuse__,
+        :submission__late_policy_status__,
+        :submission__seconds_late_override__,
         :rubric_assessment,
         
 
@@ -21324,6 +21338,40 @@ module Pandarus
     end
     
 
+    # List multiple assignments gradeable students
+    def list_multiple_assignments_gradeable_students(course_id,opts={})
+      query_param_keys = [
+        :assignment_ids
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/assignments/gradeable_students",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
     # Grade or comment on multiple submissions
     def grade_or_comment_on_multiple_submissions_courses_submissions(course_id,opts={})
       query_param_keys = [
@@ -21333,12 +21381,14 @@ module Pandarus
 
       form_param_keys = [
         :grade_data___student_id_____posted_grade__,
+        :grade_data___student_id_____excuse__,
         :grade_data___student_id_____rubric_assessment__,
         :grade_data___student_id_____text_comment__,
         :grade_data___student_id_____group_comment__,
         :grade_data___student_id_____media_comment_id__,
         :grade_data___student_id_____media_comment_type__,
         :grade_data___student_id_____file_ids__,
+        :grade_data___student_id_____assignment_id__,
         
 
       ]
@@ -21374,12 +21424,14 @@ module Pandarus
 
       form_param_keys = [
         :grade_data___student_id_____posted_grade__,
+        :grade_data___student_id_____excuse__,
         :grade_data___student_id_____rubric_assessment__,
         :grade_data___student_id_____text_comment__,
         :grade_data___student_id_____group_comment__,
         :grade_data___student_id_____media_comment_id__,
         :grade_data___student_id_____media_comment_type__,
         :grade_data___student_id_____file_ids__,
+        :grade_data___student_id_____assignment_id__,
         
 
       ]
@@ -21418,12 +21470,14 @@ module Pandarus
 
       form_param_keys = [
         :grade_data___student_id_____posted_grade__,
+        :grade_data___student_id_____excuse__,
         :grade_data___student_id_____rubric_assessment__,
         :grade_data___student_id_____text_comment__,
         :grade_data___student_id_____group_comment__,
         :grade_data___student_id_____media_comment_id__,
         :grade_data___student_id_____media_comment_type__,
         :grade_data___student_id_____file_ids__,
+        :grade_data___student_id_____assignment_id__,
         
 
       ]
@@ -21459,12 +21513,14 @@ module Pandarus
 
       form_param_keys = [
         :grade_data___student_id_____posted_grade__,
+        :grade_data___student_id_____excuse__,
         :grade_data___student_id_____rubric_assessment__,
         :grade_data___student_id_____text_comment__,
         :grade_data___student_id_____group_comment__,
         :grade_data___student_id_____media_comment_id__,
         :grade_data___student_id_____media_comment_type__,
         :grade_data___student_id_____file_ids__,
+        :grade_data___student_id_____assignment_id__,
         
 
       ]
@@ -21648,6 +21704,80 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Submission Summary
+    def submission_summary_courses(course_id,assignment_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :assignment_id => assignment_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/assignments/{assignment_id}/submission_summary",
+        :course_id => course_id,
+        :assignment_id => assignment_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Submission Summary
+    def submission_summary_sections(section_id,assignment_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "section_id is required" if section_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :section_id => section_id,
+        :assignment_id => assignment_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/sections/{section_id}/assignments/{assignment_id}/submission_summary",
+        :section_id => section_id,
+        :assignment_id => assignment_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
 

@@ -11,6 +11,7 @@ module Pandarus
     attribute :author, resolve_type("String")
     attribute :comment, resolve_type("String")
     attribute :created_at, resolve_type("DateTime")
+    attribute :edited_at, resolve_type("DateTime")
     attribute :media_comment, resolve_type("MediaComment")
     
   end
