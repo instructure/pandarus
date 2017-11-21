@@ -16643,6 +16643,43 @@ module Pandarus
     end
     
 
+    # Duplicate page
+    def duplicate_page(course_id,url,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "url is required" if url.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :url => url
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/pages/{url}/duplicate",
+        :course_id => course_id,
+        :url => url)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      the page that was created.new(response)
+      
+
+    end
+    
+
     # Update/create front page
     def update_create_front_page_courses(course_id,opts={})
       query_param_keys = [

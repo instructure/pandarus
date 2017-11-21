@@ -54,6 +54,37 @@
       ]
     },
     {
+      "path": "/v1/courses/{course_id}/pages/{url}/duplicate",
+      "description": "Duplicate a wiki page",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Duplicate page",
+          "notes": "Duplicate a wiki page",
+          "nickname": "duplicate_page",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "url",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "the page that was created"
+        }
+      ]
+    },
+    {
       "path": "/v1/courses/{course_id}/front_page",
       "description": "Update the title or contents of the front page",
       "operations": [
@@ -74,7 +105,7 @@
             {
               "paramType": "form",
               "name": "wiki_page[title]",
-              "description": "The title for the new page. NOTE: changing a page's title will change its url. The updated url will be returned in the result.",
+              "description": "The title for the new page. NOTE: changing a page's title will change its\nurl. The updated url will be returned in the result.",
               "type": "string",
               "format": null,
               "required": false
@@ -90,7 +121,7 @@
             {
               "paramType": "form",
               "name": "wiki_page[editing_roles]",
-              "description": "Which user roles are allowed to edit this page. Any combination of these roles is allowed (separated by commas). \"teachers\":: Allows editing by teachers in the course. \"students\":: Allows editing by students in the course. \"members\":: For group wikis, allows editing by members of the group. \"public\":: Allows editing by any user.",
+              "description": "Which user roles are allowed to edit this page. Any combination\nof these roles is allowed (separated by commas).\n\n\"teachers\":: Allows editing by teachers in the course.\n\"students\":: Allows editing by students in the course.\n\"members\":: For group wikis, allows editing by members of the group.\n\"public\":: Allows editing by any user.",
               "type": "string",
               "format": null,
               "required": false,
@@ -143,7 +174,7 @@
             {
               "paramType": "form",
               "name": "wiki_page[title]",
-              "description": "The title for the new page. NOTE: changing a page's title will change its url. The updated url will be returned in the result.",
+              "description": "The title for the new page. NOTE: changing a page's title will change its\nurl. The updated url will be returned in the result.",
               "type": "string",
               "format": null,
               "required": false
@@ -159,7 +190,7 @@
             {
               "paramType": "form",
               "name": "wiki_page[editing_roles]",
-              "description": "Which user roles are allowed to edit this page. Any combination of these roles is allowed (separated by commas). \"teachers\":: Allows editing by teachers in the course. \"students\":: Allows editing by students in the course. \"members\":: For group wikis, allows editing by members of the group. \"public\":: Allows editing by any user.",
+              "description": "Which user roles are allowed to edit this page. Any combination\nof these roles is allowed (separated by commas).\n\n\"teachers\":: Allows editing by teachers in the course.\n\"students\":: Allows editing by students in the course.\n\"members\":: For group wikis, allows editing by members of the group.\n\"public\":: Allows editing by any user.",
               "type": "string",
               "format": null,
               "required": false,
@@ -193,12 +224,12 @@
     },
     {
       "path": "/v1/courses/{course_id}/pages",
-      "description": "List the wiki pages associated with a course or group",
+      "description": "A paginated list of the wiki pages associated with a course or group",
       "operations": [
         {
           "method": "GET",
           "summary": "List pages",
-          "notes": "List the wiki pages associated with a course or group",
+          "notes": "A paginated list of the wiki pages associated with a course or group",
           "nickname": "list_pages_courses",
           "parameters": [
             {
@@ -245,7 +276,7 @@
             {
               "paramType": "query",
               "name": "published",
-              "description": "If true, include only published paqes. If false, exclude published pages. If not present, do not filter on published status.",
+              "description": "If true, include only published paqes. If false, exclude published\npages. If not present, do not filter on published status.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -260,12 +291,12 @@
     },
     {
       "path": "/v1/groups/{group_id}/pages",
-      "description": "List the wiki pages associated with a course or group",
+      "description": "A paginated list of the wiki pages associated with a course or group",
       "operations": [
         {
           "method": "GET",
           "summary": "List pages",
-          "notes": "List the wiki pages associated with a course or group",
+          "notes": "A paginated list of the wiki pages associated with a course or group",
           "nickname": "list_pages_groups",
           "parameters": [
             {
@@ -312,7 +343,7 @@
             {
               "paramType": "query",
               "name": "published",
-              "description": "If true, include only published paqes. If false, exclude published pages. If not present, do not filter on published status.",
+              "description": "If true, include only published paqes. If false, exclude published\npages. If not present, do not filter on published status.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -362,7 +393,7 @@
             {
               "paramType": "form",
               "name": "wiki_page[editing_roles]",
-              "description": "Which user roles are allowed to edit this page. Any combination of these roles is allowed (separated by commas). \"teachers\":: Allows editing by teachers in the course. \"students\":: Allows editing by students in the course. \"members\":: For group wikis, allows editing by members of the group. \"public\":: Allows editing by any user.",
+              "description": "Which user roles are allowed to edit this page. Any combination\nof these roles is allowed (separated by commas).\n\n\"teachers\":: Allows editing by teachers in the course.\n\"students\":: Allows editing by students in the course.\n\"members\":: For group wikis, allows editing by members of the group.\n\"public\":: Allows editing by any user.",
               "type": "string",
               "format": null,
               "required": false,
@@ -439,7 +470,7 @@
             {
               "paramType": "form",
               "name": "wiki_page[editing_roles]",
-              "description": "Which user roles are allowed to edit this page. Any combination of these roles is allowed (separated by commas). \"teachers\":: Allows editing by teachers in the course. \"students\":: Allows editing by students in the course. \"members\":: For group wikis, allows editing by members of the group. \"public\":: Allows editing by any user.",
+              "description": "Which user roles are allowed to edit this page. Any combination\nof these roles is allowed (separated by commas).\n\n\"teachers\":: Allows editing by teachers in the course.\n\"students\":: Allows editing by students in the course.\n\"members\":: For group wikis, allows editing by members of the group.\n\"public\":: Allows editing by any user.",
               "type": "string",
               "format": null,
               "required": false,
@@ -570,7 +601,7 @@
             {
               "paramType": "form",
               "name": "wiki_page[title]",
-              "description": "The title for the new page. NOTE: changing a page's title will change its url. The updated url will be returned in the result.",
+              "description": "The title for the new page. NOTE: changing a page's title will change its\nurl. The updated url will be returned in the result.",
               "type": "string",
               "format": null,
               "required": false
@@ -586,7 +617,7 @@
             {
               "paramType": "form",
               "name": "wiki_page[editing_roles]",
-              "description": "Which user roles are allowed to edit this page. Any combination of these roles is allowed (separated by commas). \"teachers\":: Allows editing by teachers in the course. \"students\":: Allows editing by students in the course. \"members\":: For group wikis, allows editing by members of the group. \"public\":: Allows editing by any user.",
+              "description": "Which user roles are allowed to edit this page. Any combination\nof these roles is allowed (separated by commas).\n\n\"teachers\":: Allows editing by teachers in the course.\n\"students\":: Allows editing by students in the course.\n\"members\":: For group wikis, allows editing by members of the group.\n\"public\":: Allows editing by any user.",
               "type": "string",
               "format": null,
               "required": false,
@@ -655,7 +686,7 @@
             {
               "paramType": "form",
               "name": "wiki_page[title]",
-              "description": "The title for the new page. NOTE: changing a page's title will change its url. The updated url will be returned in the result.",
+              "description": "The title for the new page. NOTE: changing a page's title will change its\nurl. The updated url will be returned in the result.",
               "type": "string",
               "format": null,
               "required": false
@@ -671,7 +702,7 @@
             {
               "paramType": "form",
               "name": "wiki_page[editing_roles]",
-              "description": "Which user roles are allowed to edit this page. Any combination of these roles is allowed (separated by commas). \"teachers\":: Allows editing by teachers in the course. \"students\":: Allows editing by students in the course. \"members\":: For group wikis, allows editing by members of the group. \"public\":: Allows editing by any user.",
+              "description": "Which user roles are allowed to edit this page. Any combination\nof these roles is allowed (separated by commas).\n\n\"teachers\":: Allows editing by teachers in the course.\n\"students\":: Allows editing by students in the course.\n\"members\":: For group wikis, allows editing by members of the group.\n\"public\":: Allows editing by any user.",
               "type": "string",
               "format": null,
               "required": false,
@@ -775,12 +806,12 @@
     },
     {
       "path": "/v1/courses/{course_id}/pages/{url}/revisions",
-      "description": "List the revisions of a page. Callers must have update rights on the page in order to see page history.",
+      "description": "A paginated list of the revisions of a page. Callers must have update rights on the page in order to see page history.",
       "operations": [
         {
           "method": "GET",
           "summary": "List revisions",
-          "notes": "List the revisions of a page. Callers must have update rights on the page in order to see page history.",
+          "notes": "A paginated list of the revisions of a page. Callers must have update rights on the page in order to see page history.",
           "nickname": "list_revisions_courses",
           "parameters": [
             {
@@ -809,12 +840,12 @@
     },
     {
       "path": "/v1/groups/{group_id}/pages/{url}/revisions",
-      "description": "List the revisions of a page. Callers must have update rights on the page in order to see page history.",
+      "description": "A paginated list of the revisions of a page. Callers must have update rights on the page in order to see page history.",
       "operations": [
         {
           "method": "GET",
           "summary": "List revisions",
-          "notes": "List the revisions of a page. Callers must have update rights on the page in order to see page history.",
+          "notes": "A paginated list of the revisions of a page. Callers must have update rights on the page in order to see page history.",
           "nickname": "list_revisions_groups",
           "parameters": [
             {
@@ -1042,7 +1073,7 @@
             {
               "paramType": "path",
               "name": "revision_id",
-              "description": "The revision to revert to (use the {api:WikiPagesApiController#revisions List Revisions API} to see available revisions)",
+              "description": "The revision to revert to (use the\n{api:WikiPagesApiController#revisions List Revisions API} to see\navailable revisions)",
               "type": "integer",
               "format": "int64",
               "required": true
@@ -1081,7 +1112,7 @@
             {
               "paramType": "path",
               "name": "revision_id",
-              "description": "The revision to revert to (use the {api:WikiPagesApiController#revisions List Revisions API} to see available revisions)",
+              "description": "The revision to revert to (use the\n{api:WikiPagesApiController#revisions List Revisions API} to see\navailable revisions)",
               "type": "integer",
               "format": "int64",
               "required": true
