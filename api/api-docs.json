@@ -313,6 +313,10 @@
     {
       "path": "/users.json",
       "description": "Users"
+    },
+    {
+      "path": "/e_pub_exports.json",
+      "description": "ePub Exports"
     }
   ]
 }

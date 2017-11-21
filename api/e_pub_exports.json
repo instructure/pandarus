@@ -1,0 +1,160 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/e_pub_exports",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/epub_exports",
+      "description": "A paginated list of all courses a user is actively participating in, and\nthe latest ePub export associated with the user & course.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List courses with their latest ePub export",
+          "notes": "A paginated list of all courses a user is actively participating in, and\nthe latest ePub export associated with the user & course.",
+          "nickname": "list_courses_with_their_latest_epub_export",
+          "parameters": [
+
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "CourseEpubExport"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/epub_exports",
+      "description": "Begin an ePub export for a course.\n\nYou can use the {api:ProgressController#show Progress API} to track the\nprogress of the export. The export's progress is linked to with the\n_progress_url_ value.\n\nWhen the export completes, use the {api:EpubExportsController#show Show content export} endpoint\nto retrieve a download URL for the exported content.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create ePub Export",
+          "notes": "Begin an ePub export for a course.\n\nYou can use the {api:ProgressController#show Progress API} to track the\nprogress of the export. The export's progress is linked to with the\n_progress_url_ value.\n\nWhen the export completes, use the {api:EpubExportsController#show Show content export} endpoint\nto retrieve a download URL for the exported content.",
+          "nickname": "create_epub_export",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "EpubExport"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/epub_exports/{id}",
+      "description": "Get information about a single ePub export.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Show ePub export",
+          "notes": "Get information about a single ePub export.",
+          "nickname": "show_epub_export",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "EpubExport"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "CourseEpubExport": {
+      "id": "CourseEpubExport",
+      "description": "Combination of a Course & EpubExport.",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "the unique identifier for the course",
+          "example": 101,
+          "type": "integer"
+        },
+        "name": {
+          "description": "the name for the course",
+          "example": "Maths 101",
+          "type": "string"
+        },
+        "epub_export": {
+          "description": "ePub export API object",
+          "$ref": "EpubExport"
+        }
+      }
+    },
+    "EpubExport": {
+      "id": "EpubExport",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "the unique identifier for the export",
+          "example": 101,
+          "type": "integer"
+        },
+        "created_at": {
+          "description": "the date and time this export was requested",
+          "example": "2014-01-01T00:00:00Z",
+          "type": "datetime"
+        },
+        "attachment": {
+          "description": "attachment api object for the export ePub (not present until the export completes)",
+          "example": {
+            "url": "https://example.com/api/v1/attachments/789?download_frd=1&verifier=bG9sY2F0cyEh"
+          },
+          "$ref": "File"
+        },
+        "progress_url": {
+          "description": "The api endpoint for polling the current progress",
+          "example": "https://example.com/api/v1/progress/4",
+          "type": "string"
+        },
+        "user_id": {
+          "description": "The ID of the user who started the export",
+          "example": 4,
+          "type": "integer"
+        },
+        "workflow_state": {
+          "description": "Current state of the ePub export: created exporting exported generating generated failed",
+          "example": "exported",
+          "type": "string",
+          "allowableValues": {
+            "values": [
+              "created",
+              "exporting",
+              "exported",
+              "generating",
+              "generated",
+              "failed"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
