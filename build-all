@@ -37,7 +37,6 @@ cd "$SCRIPT_DIR" && (
 	git checkout -- api/quiz_submission_questions.json
 	git checkout -- api/sis_imports.json
 	rm api/authentication_providers.json
-	rm api/bookmarks.json
 	rm api/brand_configs.json
 	rm api/e_pub_exports.json
 	rm api/error_reports.json

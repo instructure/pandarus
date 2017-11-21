@@ -55,6 +55,10 @@
       "description": "Blueprint Courses"
     },
     {
+      "path": "/bookmarks.json",
+      "description": "Bookmarks"
+    },
+    {
       "path": "/calendar_events.json",
       "description": "Calendar Events"
     },

@@ -3403,6 +3403,181 @@ module Pandarus
     end
     
 
+    # List bookmarks
+    def list_bookmarks(opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        {}
+      
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/self/bookmarks",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, Bookmark, path, query_params)
+      
+
+    end
+    
+
+    # Create bookmark
+    def create_bookmark(opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :name,
+        :url,
+        :position,
+        :data,
+        
+
+      ]
+
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        {}
+      
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/self/bookmarks",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      Bookmark.new(response)
+      
+
+    end
+    
+
+    # Get bookmark
+    def get_bookmark(id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/self/bookmarks/{id}",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      Bookmark.new(response)
+      
+
+    end
+    
+
+    # Update bookmark
+    def update_bookmark(id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :name,
+        :url,
+        :position,
+        :data,
+        
+
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/self/bookmarks/{id}",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      Folder.new(response)
+      
+
+    end
+    
+
+    # Delete bookmark
+    def delete_bookmark(id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/self/bookmarks/{id}",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
     # List calendar events
     def list_calendar_events(opts={})
       query_param_keys = [
