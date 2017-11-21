@@ -36,7 +36,7 @@
             {
               "paramType": "form",
               "name": "grading_scheme_entry[name]",
-              "description": "The name for an entry value within a GradingStandard that describes the range of the value e.g. A-",
+              "description": "The name for an entry value within a GradingStandard that describes the range of the value\ne.g. A-",
               "type": "array",
               "format": null,
               "required": true,
@@ -47,7 +47,7 @@
             {
               "paramType": "form",
               "name": "grading_scheme_entry[value]",
-              "description": "The value for the name of the entry within a GradingStandard. The entry represents the lower bound of the range for the entry. This range includes the value up to the next entry in the GradingStandard, or 100 if there is no upper bound. The lowest value will have a lower bound range of 0. e.g. 93",
+              "description": "The value for the name of the entry within a GradingStandard.\nThe entry represents the lower bound of the range for the entry.\nThis range includes the value up to the next entry in the GradingStandard,\nor 100 if there is no upper bound. The lowest value will have a lower bound range of 0.\ne.g. 93",
               "type": "array",
               "format": "int64",
               "required": true,
@@ -89,7 +89,7 @@
             {
               "paramType": "form",
               "name": "grading_scheme_entry[name]",
-              "description": "The name for an entry value within a GradingStandard that describes the range of the value e.g. A-",
+              "description": "The name for an entry value within a GradingStandard that describes the range of the value\ne.g. A-",
               "type": "array",
               "format": null,
               "required": true,
@@ -100,13 +100,127 @@
             {
               "paramType": "form",
               "name": "grading_scheme_entry[value]",
-              "description": "The value for the name of the entry within a GradingStandard. The entry represents the lower bound of the range for the entry. This range includes the value up to the next entry in the GradingStandard, or 100 if there is no upper bound. The lowest value will have a lower bound range of 0. e.g. 93",
+              "description": "The value for the name of the entry within a GradingStandard.\nThe entry represents the lower bound of the range for the entry.\nThis range includes the value up to the next entry in the GradingStandard,\nor 100 if there is no upper bound. The lowest value will have a lower bound range of 0.\ne.g. 93",
               "type": "array",
               "format": "int64",
               "required": true,
               "items": {
                 "type": "integer"
               }
+            }
+          ],
+          "type": "GradingStandard"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/grading_standards",
+      "description": "Returns the paginated list of grading standards for the given context that are visible to the user.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List the grading standards available in a context.",
+          "notes": "Returns the paginated list of grading standards for the given context that are visible to the user.",
+          "nickname": "list_grading_standards_available_in_context_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "GradingStandard"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/grading_standards",
+      "description": "Returns the paginated list of grading standards for the given context that are visible to the user.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List the grading standards available in a context.",
+          "notes": "Returns the paginated list of grading standards for the given context that are visible to the user.",
+          "nickname": "list_grading_standards_available_in_context_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "GradingStandard"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/grading_standards/{grading_standard_id}",
+      "description": "Returns a grading standard for the given context that is visible to the user.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single grading standard in a context.",
+          "notes": "Returns a grading standard for the given context that is visible to the user.",
+          "nickname": "get_single_grading_standard_in_context_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "grading_standard_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "GradingStandard"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/grading_standards/{grading_standard_id}",
+      "description": "Returns a grading standard for the given context that is visible to the user.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single grading standard in a context.",
+          "notes": "Returns a grading standard for the given context that is visible to the user.",
+          "nickname": "get_single_grading_standard_in_context_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "grading_standard_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
             }
           ],
           "type": "GradingStandard"
@@ -163,7 +277,24 @@
         },
         "grading_scheme": {
           "description": "A list of GradingSchemeEntry that make up the Grading Standard as an array of values with the scheme name and value",
-          "example": "[{\"name\":\"A\", \"value\":0.9}, {\"name\":\"B\", \"value\":0.8}, {\"name\":\"C\", \"value\":0.7}, {\"name\":\"D\", \"value\":0.6}]",
+          "example": [
+            {
+              "name": "A",
+              "value": 0.9
+            },
+            {
+              "name": "B",
+              "value": 0.8
+            },
+            {
+              "name": "C",
+              "value": 0.7
+            },
+            {
+              "name": "D",
+              "value": 0.6
+            }
+          ],
           "type": "array",
           "items": {
             "$ref": "GradingSchemeEntry"

@@ -12457,6 +12457,146 @@ module Pandarus
     end
     
 
+    # List the grading standards available in a context.
+    def list_grading_standards_available_in_context_courses(course_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/grading_standards",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, GradingStandard, path, query_params)
+      
+
+    end
+    
+
+    # List the grading standards available in a context.
+    def list_grading_standards_available_in_context_accounts(account_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/grading_standards",
+        :account_id => account_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, GradingStandard, path, query_params)
+      
+
+    end
+    
+
+    # Get a single grading standard in a context.
+    def get_single_grading_standard_in_context_courses(course_id,grading_standard_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "grading_standard_id is required" if grading_standard_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :grading_standard_id => grading_standard_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/grading_standards/{grading_standard_id}",
+        :course_id => course_id,
+        :grading_standard_id => grading_standard_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      GradingStandard.new(response)
+      
+
+    end
+    
+
+    # Get a single grading standard in a context.
+    def get_single_grading_standard_in_context_accounts(account_id,grading_standard_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      raise "grading_standard_id is required" if grading_standard_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id,
+        :grading_standard_id => grading_standard_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/grading_standards/{grading_standard_id}",
+        :account_id => account_id,
+        :grading_standard_id => grading_standard_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      GradingStandard.new(response)
+      
+
+    end
+    
+
     # List group categories for a context
     def list_group_categories_for_context_accounts(account_id,opts={})
       query_param_keys = [
