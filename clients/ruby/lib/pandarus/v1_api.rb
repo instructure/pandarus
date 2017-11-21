@@ -20438,6 +20438,7 @@ module Pandarus
         :course_section__start_at__,
         :course_section__end_at__,
         :course_section__restrict_enrollments_to_section_dates__,
+        :enable_sis_reactivation,
         
 
       ]
@@ -20543,6 +20544,12 @@ module Pandarus
       ]
 
       form_param_keys = [
+        :course_section__name__,
+        :course_section__sis_section_id__,
+        :course_section__integration_id__,
+        :course_section__start_at__,
+        :course_section__end_at__,
+        :course_section__restrict_enrollments_to_section_dates__,
         
 
       ]
@@ -20572,7 +20579,7 @@ module Pandarus
     # Get section information
     def get_section_information_courses(course_id,id,opts={})
       query_param_keys = [
-        
+        :include
 
       ]
 
@@ -20609,7 +20616,7 @@ module Pandarus
     # Get section information
     def get_section_information_sections(id,opts={})
       query_param_keys = [
-        
+        :include
 
       ]
 
