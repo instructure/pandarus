@@ -12149,40 +12149,6 @@ module Pandarus
     
 
     # List grading periods
-    def list_grading_periods_courses(course_id,opts={})
-      query_param_keys = [
-        
-
-      ]
-
-      form_param_keys = [
-        
-
-      ]
-
-      # verify existence of params
-      raise "course_id is required" if course_id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :course_id => course_id
-
-      )
-
-      # resource path
-      path = path_replace("/v1/courses/{course_id}/grading_periods",
-        :course_id => course_id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_query_params(options, query_param_keys)
-
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      response
-      
-
-    end
-    
-
-    # List grading periods
     def list_grading_periods_accounts(account_id,opts={})
       query_param_keys = [
         
@@ -12216,8 +12182,8 @@ module Pandarus
     end
     
 
-    # Get a single grading period
-    def get_single_grading_period_courses(course_id,id,opts={})
+    # List grading periods
+    def list_grading_periods_courses(course_id,opts={})
       query_param_keys = [
         
 
@@ -12230,90 +12196,9 @@ module Pandarus
 
       # verify existence of params
       raise "course_id is required" if course_id.nil?
-      raise "id is required" if id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :id => id
-
-      )
-
-      # resource path
-      path = path_replace("/v1/courses/{course_id}/grading_periods/{id}",
-        :course_id => course_id,
-        :id => id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_query_params(options, query_param_keys)
-
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      response
-      
-
-    end
-    
-
-    # Get a single grading period
-    def get_single_grading_period_accounts(account_id,id,opts={})
-      query_param_keys = [
-        
-
-      ]
-
-      form_param_keys = [
-        
-
-      ]
-
-      # verify existence of params
-      raise "account_id is required" if account_id.nil?
-      raise "id is required" if id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :account_id => account_id,
-        :id => id
-
-      )
-
-      # resource path
-      path = path_replace("/v1/accounts/{account_id}/grading_periods/{id}",
-        :account_id => account_id,
-        :id => id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_query_params(options, query_param_keys)
-
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      response
-      
-
-    end
-    
-
-    # Create a single grading period
-    def create_single_grading_period_courses(course_id,grading_periods__start_date__,grading_periods__end_date__,opts={})
-      query_param_keys = [
-        
-
-      ]
-
-      form_param_keys = [
-        :grading_periods__start_date__,
-        :grading_periods__end_date__,
-        :grading_periods__weight__,
-        
-
-      ]
-
-      # verify existence of params
-      raise "course_id is required" if course_id.nil?
-      raise "grading_periods__start_date__ is required" if grading_periods__start_date__.nil?
-      raise "grading_periods__end_date__ is required" if grading_periods__end_date__.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :course_id => course_id,
-        :grading_periods__start_date__ => grading_periods__start_date__,
-        :grading_periods__end_date__ => grading_periods__end_date__
+        :course_id => course_id
 
       )
 
@@ -12324,48 +12209,44 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      response = mixed_request(:post, path, query_params, form_params, headers)
+      response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
 
     end
     
 
-    # Create a single grading period
-    def create_single_grading_period_accounts(account_id,grading_periods__start_date__,grading_periods__end_date__,opts={})
+    # Get a single grading period
+    def get_single_grading_period(course_id,id,opts={})
       query_param_keys = [
         
 
       ]
 
       form_param_keys = [
-        :grading_periods__start_date__,
-        :grading_periods__end_date__,
-        :grading_periods__weight__,
         
 
       ]
 
       # verify existence of params
-      raise "account_id is required" if account_id.nil?
-      raise "grading_periods__start_date__ is required" if grading_periods__start_date__.nil?
-      raise "grading_periods__end_date__ is required" if grading_periods__end_date__.nil?
+      raise "course_id is required" if course_id.nil?
+      raise "id is required" if id.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :account_id => account_id,
-        :grading_periods__start_date__ => grading_periods__start_date__,
-        :grading_periods__end_date__ => grading_periods__end_date__
+        :course_id => course_id,
+        :id => id
 
       )
 
       # resource path
-      path = path_replace("/v1/accounts/{account_id}/grading_periods",
-        :account_id => account_id)
+      path = path_replace("/v1/courses/{course_id}/grading_periods/{id}",
+        :course_id => course_id,
+        :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      response = mixed_request(:post, path, query_params, form_params, headers)
+      response = mixed_request(:get, path, query_params, form_params, headers)
       response
       
 
@@ -12373,7 +12254,7 @@ module Pandarus
     
 
     # Update a single grading period
-    def update_single_grading_period_courses(course_id,id,grading_periods__start_date__,grading_periods__end_date__,opts={})
+    def update_single_grading_period(course_id,id,grading_periods__start_date__,grading_periods__end_date__,opts={})
       query_param_keys = [
         
 
@@ -12404,50 +12285,6 @@ module Pandarus
       # resource path
       path = path_replace("/v1/courses/{course_id}/grading_periods/{id}",
         :course_id => course_id,
-        :id => id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_query_params(options, query_param_keys)
-
-      response = mixed_request(:put, path, query_params, form_params, headers)
-      response
-      
-
-    end
-    
-
-    # Update a single grading period
-    def update_single_grading_period_accounts(account_id,id,grading_periods__start_date__,grading_periods__end_date__,opts={})
-      query_param_keys = [
-        
-
-      ]
-
-      form_param_keys = [
-        :grading_periods__start_date__,
-        :grading_periods__end_date__,
-        :grading_periods__weight__,
-        
-
-      ]
-
-      # verify existence of params
-      raise "account_id is required" if account_id.nil?
-      raise "id is required" if id.nil?
-      raise "grading_periods__start_date__ is required" if grading_periods__start_date__.nil?
-      raise "grading_periods__end_date__ is required" if grading_periods__end_date__.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :account_id => account_id,
-        :id => id,
-        :grading_periods__start_date__ => grading_periods__start_date__,
-        :grading_periods__end_date__ => grading_periods__end_date__
-
-      )
-
-      # resource path
-      path = path_replace("/v1/accounts/{account_id}/grading_periods/{id}",
-        :account_id => account_id,
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
