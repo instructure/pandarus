@@ -13,6 +13,7 @@ module Pandarus
     attribute :created_at, resolve_type("DateTime")
     attribute :updated_at, resolve_type("DateTime")
     attribute :unlock_at, resolve_type("DateTime")
+    attribute :modified_at, resolve_type("DateTime")
     attribute :locked, resolve_type(nil)
     attribute :hidden, resolve_type(nil)
     attribute :lock_at, resolve_type("DateTime")
@@ -21,6 +22,8 @@ module Pandarus
     attribute :lock_explanation, resolve_type("String")
     attribute :hidden_for_user, resolve_type(nil)
     attribute :thumbnail_url, resolve_type("String")
+    attribute :mime_class, resolve_type("String")
+    attribute :media_entry_id, resolve_type("String")
     attribute :preview_url, resolve_type("String")
     
   end

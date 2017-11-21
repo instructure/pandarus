@@ -24,6 +24,7 @@ module Pandarus
     attribute :hidden_for_user, resolve_type(nil)
     attribute :locked, resolve_type(nil)
     attribute :locked_for_user, resolve_type(nil)
+    attribute :for_submissions, resolve_type(nil)
     
   end
 end

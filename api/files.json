@@ -97,7 +97,7 @@
             {
               "paramType": "query",
               "name": "content_types",
-              "description": "Filter results by content-type. You can specify type/subtype pairs (e.g., 'image/jpeg'), or simply types (e.g., 'image', which will match 'image/gif', 'image/jpeg', etc.).",
+              "description": "Filter results by content-type. You can specify type/subtype pairs (e.g.,\n'image/jpeg'), or simply types (e.g., 'image', which will match\n'image/gif', 'image/jpeg', etc.).",
               "type": "array",
               "format": null,
               "required": false,
@@ -116,7 +116,7 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "Array of additional information to include. \"user\":: the user who uploaded the file or last edited its content \"usage_rights\":: copyright and license information for the file (see UsageRights)",
+              "description": "Array of additional information to include.\n\n\"user\":: the user who uploaded the file or last edited its content\n\"usage_rights\":: copyright and license information for the file (see UsageRights)",
               "type": "array",
               "format": null,
               "required": false,
@@ -125,6 +125,17 @@
               ],
               "items": {
                 "type": "string"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "only",
+              "description": "Array of information to restrict to. Overrides include[]\n\n\"names\":: only returns file name information",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "$ref": "Array"
               }
             },
             {
@@ -184,7 +195,7 @@
             {
               "paramType": "query",
               "name": "content_types",
-              "description": "Filter results by content-type. You can specify type/subtype pairs (e.g., 'image/jpeg'), or simply types (e.g., 'image', which will match 'image/gif', 'image/jpeg', etc.).",
+              "description": "Filter results by content-type. You can specify type/subtype pairs (e.g.,\n'image/jpeg'), or simply types (e.g., 'image', which will match\n'image/gif', 'image/jpeg', etc.).",
               "type": "array",
               "format": null,
               "required": false,
@@ -203,7 +214,7 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "Array of additional information to include. \"user\":: the user who uploaded the file or last edited its content \"usage_rights\":: copyright and license information for the file (see UsageRights)",
+              "description": "Array of additional information to include.\n\n\"user\":: the user who uploaded the file or last edited its content\n\"usage_rights\":: copyright and license information for the file (see UsageRights)",
               "type": "array",
               "format": null,
               "required": false,
@@ -212,6 +223,17 @@
               ],
               "items": {
                 "type": "string"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "only",
+              "description": "Array of information to restrict to. Overrides include[]\n\n\"names\":: only returns file name information",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "$ref": "Array"
               }
             },
             {
@@ -271,7 +293,7 @@
             {
               "paramType": "query",
               "name": "content_types",
-              "description": "Filter results by content-type. You can specify type/subtype pairs (e.g., 'image/jpeg'), or simply types (e.g., 'image', which will match 'image/gif', 'image/jpeg', etc.).",
+              "description": "Filter results by content-type. You can specify type/subtype pairs (e.g.,\n'image/jpeg'), or simply types (e.g., 'image', which will match\n'image/gif', 'image/jpeg', etc.).",
               "type": "array",
               "format": null,
               "required": false,
@@ -290,7 +312,7 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "Array of additional information to include. \"user\":: the user who uploaded the file or last edited its content \"usage_rights\":: copyright and license information for the file (see UsageRights)",
+              "description": "Array of additional information to include.\n\n\"user\":: the user who uploaded the file or last edited its content\n\"usage_rights\":: copyright and license information for the file (see UsageRights)",
               "type": "array",
               "format": null,
               "required": false,
@@ -299,6 +321,17 @@
               ],
               "items": {
                 "type": "string"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "only",
+              "description": "Array of information to restrict to. Overrides include[]\n\n\"names\":: only returns file name information",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "$ref": "Array"
               }
             },
             {
@@ -358,7 +391,7 @@
             {
               "paramType": "query",
               "name": "content_types",
-              "description": "Filter results by content-type. You can specify type/subtype pairs (e.g., 'image/jpeg'), or simply types (e.g., 'image', which will match 'image/gif', 'image/jpeg', etc.).",
+              "description": "Filter results by content-type. You can specify type/subtype pairs (e.g.,\n'image/jpeg'), or simply types (e.g., 'image', which will match\n'image/gif', 'image/jpeg', etc.).",
               "type": "array",
               "format": null,
               "required": false,
@@ -377,7 +410,7 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "Array of additional information to include. \"user\":: the user who uploaded the file or last edited its content \"usage_rights\":: copyright and license information for the file (see UsageRights)",
+              "description": "Array of additional information to include.\n\n\"user\":: the user who uploaded the file or last edited its content\n\"usage_rights\":: copyright and license information for the file (see UsageRights)",
               "type": "array",
               "format": null,
               "required": false,
@@ -386,6 +419,17 @@
               ],
               "items": {
                 "type": "string"
+              }
+            },
+            {
+              "paramType": "query",
+              "name": "only",
+              "description": "Array of information to restrict to. Overrides include[]\n\n\"names\":: only returns file name information",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "$ref": "Array"
               }
             },
             {
@@ -430,9 +474,9 @@
       "operations": [
         {
           "method": "GET",
-          "summary": "Get quota information",
+          "summary": "Get public inline preview url",
           "notes": "Determine the URL that should be used for inline preview of the file.",
-          "nickname": "get_quota_information",
+          "nickname": "get_public_inline_preview_url",
           "parameters": [
             {
               "paramType": "path",
@@ -441,6 +485,14 @@
               "type": "string",
               "format": null,
               "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "submission_id",
+              "description": "The id of the submission the file is associated with.  Provide this argument to gain access to a file\nthat has been submitted to an assignment (Canvas will verify that the file belongs to the submission\nand the calling user has rights to view the submission).",
+              "type": "integer",
+              "format": "int64",
+              "required": false
             }
           ],
           "type": "void"
@@ -455,7 +507,7 @@
           "method": "GET",
           "summary": "Get file",
           "notes": "Returns the standard attachment json object",
-          "nickname": "get_file",
+          "nickname": "get_file_files",
           "parameters": [
             {
               "paramType": "path",
@@ -468,7 +520,142 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "Array of additional information to include. \"user\":: the user who uploaded the file or last edited its content \"usage_rights\":: copyright and license information for the file (see UsageRights)",
+              "description": "Array of additional information to include.\n\n\"user\":: the user who uploaded the file or last edited its content\n\"usage_rights\":: copyright and license information for the file (see UsageRights)",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "enum": [
+                "user"
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "type": "File"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/files/{id}",
+      "description": "Returns the standard attachment json object",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get file",
+          "notes": "Returns the standard attachment json object",
+          "nickname": "get_file_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Array of additional information to include.\n\n\"user\":: the user who uploaded the file or last edited its content\n\"usage_rights\":: copyright and license information for the file (see UsageRights)",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "enum": [
+                "user"
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "type": "File"
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/files/{id}",
+      "description": "Returns the standard attachment json object",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get file",
+          "notes": "Returns the standard attachment json object",
+          "nickname": "get_file_groups",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Array of additional information to include.\n\n\"user\":: the user who uploaded the file or last edited its content\n\"usage_rights\":: copyright and license information for the file (see UsageRights)",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "enum": [
+                "user"
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "type": "File"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/{user_id}/files/{id}",
+      "description": "Returns the standard attachment json object",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get file",
+          "notes": "Returns the standard attachment json object",
+          "nickname": "get_file_users",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Array of additional information to include.\n\n\"user\":: the user who uploaded the file or last edited its content\n\"usage_rights\":: copyright and license information for the file (see UsageRights)",
               "type": "array",
               "format": null,
               "required": false,
@@ -513,7 +700,7 @@
             {
               "paramType": "form",
               "name": "parent_folder_id",
-              "description": "The id of the folder to move this file into. The new folder must be in the same context as the original parent folder. If the file is in a context without folders this does not apply.",
+              "description": "The id of the folder to move this file into.\nThe new folder must be in the same context as the original parent folder.\nIf the file is in a context without folders this does not apply.",
               "type": "string",
               "format": null,
               "required": false
@@ -521,7 +708,7 @@
             {
               "paramType": "form",
               "name": "on_duplicate",
-              "description": "If the file is moved to a folder containing a file with the same name, or renamed to a name matching an existing file, the API call will fail unless this parameter is supplied. \"overwrite\":: Replace the existing file with the same name \"rename\":: Add a qualifier to make the new filename unique",
+              "description": "If the file is moved to a folder containing a file with the same name,\nor renamed to a name matching an existing file, the API call will fail\nunless this parameter is supplied.\n\n\"overwrite\":: Replace the existing file with the same name\n\"rename\":: Add a qualifier to make the new filename unique",
               "type": "string",
               "format": null,
               "required": false,
@@ -534,7 +721,7 @@
               "paramType": "form",
               "name": "lock_at",
               "description": "The datetime to lock the file at",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -542,7 +729,7 @@
               "paramType": "form",
               "name": "unlock_at",
               "description": "The datetime to unlock the file at",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -569,12 +756,12 @@
     },
     {
       "path": "/v1/files/{id}",
-      "description": "Remove the specified file\n\n  curl -XDELETE 'https://<canvas>/api/v1/files/<file_id>' \\\n       -H 'Authorization: Bearer <token>'",
+      "description": "Remove the specified file",
       "operations": [
         {
           "method": "DELETE",
           "summary": "Delete file",
-          "notes": "Remove the specified file\n\n  curl -XDELETE 'https://<canvas>/api/v1/files/<file_id>' \\\n       -H 'Authorization: Bearer <token>'",
+          "notes": "Remove the specified file",
           "nickname": "delete_file",
           "parameters": [
             {
@@ -584,9 +771,17 @@
               "type": "string",
               "format": null,
               "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "replace",
+              "description": "This action is irreversible.\nIf replace is set to true the file contents will be replaced with a\ngeneric \"file has been removed\" file. This also destroys any previews\nthat have been generated for the file.\nMust have manage files and become other users permissions",
+              "type": "boolean",
+              "format": null,
+              "required": false
             }
           ],
-          "type": "void"
+          "type": "File"
         }
       ]
     },
@@ -1004,7 +1199,7 @@
               "paramType": "form",
               "name": "lock_at",
               "description": "The datetime to lock the folder at",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -1012,7 +1207,7 @@
               "paramType": "form",
               "name": "unlock_at",
               "description": "The datetime to unlock the folder at",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -1091,7 +1286,7 @@
               "paramType": "form",
               "name": "lock_at",
               "description": "The datetime to lock the folder at",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -1099,7 +1294,7 @@
               "paramType": "form",
               "name": "unlock_at",
               "description": "The datetime to unlock the folder at",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -1178,7 +1373,7 @@
               "paramType": "form",
               "name": "lock_at",
               "description": "The datetime to lock the folder at",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -1186,7 +1381,7 @@
               "paramType": "form",
               "name": "unlock_at",
               "description": "The datetime to unlock the folder at",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -1265,7 +1460,7 @@
               "paramType": "form",
               "name": "lock_at",
               "description": "The datetime to lock the folder at",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -1273,7 +1468,7 @@
               "paramType": "form",
               "name": "unlock_at",
               "description": "The datetime to unlock the folder at",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -1352,7 +1547,7 @@
               "paramType": "form",
               "name": "lock_at",
               "description": "The datetime to lock the folder at",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -1360,7 +1555,7 @@
               "paramType": "form",
               "name": "unlock_at",
               "description": "The datetime to unlock the folder at",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -1476,7 +1671,7 @@
             {
               "paramType": "form",
               "name": "on_duplicate",
-              "description": "What to do if a file with the same name already exists at the destination. If such a file exists and this parameter is not given, the call will fail. \"overwrite\":: Replace an existing file with the same name \"rename\":: Add a qualifier to make the new filename unique",
+              "description": "What to do if a file with the same name already exists at the destination.\nIf such a file exists and this parameter is not given, the call will fail.\n\n\"overwrite\":: Replace an existing file with the same name\n\"rename\":: Add a qualifier to make the new filename unique",
               "type": "string",
               "format": null,
               "required": false,
@@ -1553,7 +1748,7 @@
             {
               "paramType": "form",
               "name": "folder_ids",
-              "description": "List of ids of folders to search for files to set usage rights for. Note that new files uploaded to these folders do not automatically inherit these rights.",
+              "description": "List of ids of folders to search for files to set usage rights for.\nNote that new files uploaded to these folders do not automatically inherit these rights.",
               "type": "array",
               "format": null,
               "required": false,
@@ -1637,7 +1832,7 @@
             {
               "paramType": "form",
               "name": "folder_ids",
-              "description": "List of ids of folders to search for files to set usage rights for. Note that new files uploaded to these folders do not automatically inherit these rights.",
+              "description": "List of ids of folders to search for files to set usage rights for.\nNote that new files uploaded to these folders do not automatically inherit these rights.",
               "type": "array",
               "format": null,
               "required": false,
@@ -1721,7 +1916,7 @@
             {
               "paramType": "form",
               "name": "folder_ids",
-              "description": "List of ids of folders to search for files to set usage rights for. Note that new files uploaded to these folders do not automatically inherit these rights.",
+              "description": "List of ids of folders to search for files to set usage rights for.\nNote that new files uploaded to these folders do not automatically inherit these rights.",
               "type": "array",
               "format": null,
               "required": false,
@@ -1910,12 +2105,12 @@
     },
     {
       "path": "/v1/courses/{course_id}/content_licenses",
-      "description": "Lists licenses that can be applied",
+      "description": "A paginated list of licenses that can be applied",
       "operations": [
         {
           "method": "GET",
           "summary": "List licenses",
-          "notes": "Lists licenses that can be applied",
+          "notes": "A paginated list of licenses that can be applied",
           "nickname": "list_licenses_courses",
           "parameters": [
             {
@@ -1936,12 +2131,12 @@
     },
     {
       "path": "/v1/groups/{group_id}/content_licenses",
-      "description": "Lists licenses that can be applied",
+      "description": "A paginated list of licenses that can be applied",
       "operations": [
         {
           "method": "GET",
           "summary": "List licenses",
-          "notes": "Lists licenses that can be applied",
+          "notes": "A paginated list of licenses that can be applied",
           "nickname": "list_licenses_groups",
           "parameters": [
             {
@@ -1962,12 +2157,12 @@
     },
     {
       "path": "/v1/users/{user_id}/content_licenses",
-      "description": "Lists licenses that can be applied",
+      "description": "A paginated list of licenses that can be applied",
       "operations": [
         {
           "method": "GET",
           "summary": "List licenses",
-          "notes": "Lists licenses that can be applied",
+          "notes": "A paginated list of licenses that can be applied",
           "nickname": "list_licenses_users",
           "parameters": [
             {
@@ -2026,6 +2221,10 @@
         "unlock_at": {
           "type": "datetime"
         },
+        "modified_at": {
+          "example": "2012-07-06T14:58:50Z",
+          "type": "datetime"
+        },
         "locked": {
           "example": false,
           "type": "boolean"
@@ -2055,9 +2254,17 @@
         "thumbnail_url": {
           "type": "string"
         },
+        "mime_class": {
+          "type": "string",
+          "description": "simplified content-type mapping"
+        },
+        "media_entry_id": {
+          "type": "string",
+          "description": "identifier for file in third-party transcoding service"
+        },
         "preview_url": {
           "type": "string",
-          "description": "optional: url to the document preview (only included in submission endpoints)"
+          "description": "optional: url to the document preview. This url is specific to the user making the api call. Only included in submission endpoints."
         }
       }
     },
@@ -2142,6 +2349,11 @@
         "locked_for_user": {
           "example": false,
           "type": "boolean"
+        },
+        "for_submissions": {
+          "example": false,
+          "type": "boolean",
+          "description": "If true, indicates this is a read-only folder containing files submitted to assignments"
         }
       }
     },

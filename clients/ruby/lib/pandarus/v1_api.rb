@@ -10289,6 +10289,7 @@ module Pandarus
         :content_types,
         :search_term,
         :include,
+        :only,
         :sort,
         :order
 
@@ -10326,6 +10327,7 @@ module Pandarus
         :content_types,
         :search_term,
         :include,
+        :only,
         :sort,
         :order
 
@@ -10363,6 +10365,7 @@ module Pandarus
         :content_types,
         :search_term,
         :include,
+        :only,
         :sort,
         :order
 
@@ -10400,6 +10403,7 @@ module Pandarus
         :content_types,
         :search_term,
         :include,
+        :only,
         :sort,
         :order
 
@@ -10431,10 +10435,10 @@ module Pandarus
     end
     
 
-    # Get quota information
-    def get_quota_information(id,opts={})
+    # Get public inline preview url
+    def get_public_inline_preview_url(id,opts={})
       query_param_keys = [
-        
+        :submission_id
 
       ]
 
@@ -10466,7 +10470,7 @@ module Pandarus
     
 
     # Get file
-    def get_file(id,opts={})
+    def get_file_files(id,opts={})
       query_param_keys = [
         :include
 
@@ -10487,6 +10491,117 @@ module Pandarus
 
       # resource path
       path = path_replace("/v1/files/{id}",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      File.new(response)
+      
+
+    end
+    
+
+    # Get file
+    def get_file_courses(course_id,id,opts={})
+      query_param_keys = [
+        :include
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/files/{id}",
+        :course_id => course_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      File.new(response)
+      
+
+    end
+    
+
+    # Get file
+    def get_file_groups(group_id,id,opts={})
+      query_param_keys = [
+        :include
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "group_id is required" if group_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :group_id => group_id,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/groups/{group_id}/files/{id}",
+        :group_id => group_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      File.new(response)
+      
+
+    end
+    
+
+    # Get file
+    def get_file_users(user_id,id,opts={})
+      query_param_keys = [
+        :include
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "user_id is required" if user_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :user_id => user_id,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{user_id}/files/{id}",
+        :user_id => user_id,
         :id => id)
       headers = nil
       form_params = select_params(options, form_param_keys)
@@ -10543,7 +10658,7 @@ module Pandarus
     # Delete file
     def delete_file(id,opts={})
       query_param_keys = [
-        
+        :replace
 
       ]
 
@@ -10568,7 +10683,7 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
-      response
+      File.new(response)
       
 
     end
