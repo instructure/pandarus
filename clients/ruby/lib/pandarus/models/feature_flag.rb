@@ -10,7 +10,6 @@ module Pandarus
     attribute :feature, resolve_type("String")
     attribute :state, resolve_type("String")
     attribute :locked, resolve_type(nil)
-    attribute :locking_account_id, resolve_type("Integer")
     
   end
 end

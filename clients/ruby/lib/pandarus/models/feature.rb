@@ -12,6 +12,7 @@ module Pandarus
     attribute :feature_flag, resolve_type("FeatureFlag")
     attribute :root_opt_in, resolve_type(nil)
     attribute :beta, resolve_type(nil)
+    attribute :autoexpand, resolve_type(nil)
     attribute :development, resolve_type(nil)
     attribute :release_notes_url, resolve_type("String")
     
