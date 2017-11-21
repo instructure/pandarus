@@ -14,10 +14,12 @@ module Pandarus
       Array
     )
 
-    def self.resolve_type type_name, opts = {}
+    def self.resolve_type(type_name, opts = {})
       qualified_type = BUILTIN_TYPES.include?(type_name) ? type_name : "Pandarus::#{type_name}"
       if type_name == "Map" || type_name.nil?
         return "String"
+      elsif type_name == "Object"
+        return "Hash"
       elsif opts[:collection]
         return Array[qualified_type]
       else
