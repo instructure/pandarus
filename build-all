@@ -32,7 +32,6 @@ cd "$SCRIPT_DIR" && (
   cp ${CANVAS_DIR}/public/doc/api/*.json api/
 	git checkout -- api/account_reports.json
 	git checkout -- api/admins.json
-	git checkout -- api/communication_channels.json
 	git checkout -- api/conferences.json
 	git checkout -- api/content_exports.json
 	git checkout -- api/content_migrations.json

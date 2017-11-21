@@ -9,12 +9,12 @@
   "apis": [
     {
       "path": "/v1/users/{user_id}/communication_channels",
-      "description": "Returns a list of communication channels for the specified user, sorted by\nposition.",
+      "description": "Returns a paginated list of communication channels for the specified user,\nsorted by position.",
       "operations": [
         {
           "method": "GET",
           "summary": "List user communication channels",
-          "notes": "Returns a list of communication channels for the specified user, sorted by\nposition.",
+          "notes": "Returns a paginated list of communication channels for the specified user,\nsorted by position.",
           "nickname": "list_user_communication_channels",
           "parameters": [
             {
@@ -62,7 +62,7 @@
             {
               "paramType": "form",
               "name": "communication_channel[type]",
-              "description": "The type of communication channel. In order to enable push notification support, the server must be properly configured (via sns.yml) to communicate with Amazon Simple Notification Services, and the developer key used to create the access token from this request must have an SNS ARN configured on it.",
+              "description": "The type of communication channel.\n\nIn order to enable push notification support, the server must be\nproperly configured (via sns.yml) to communicate with Amazon\nSimple Notification Services, and the developer key used to create\nthe access token from this request must have an SNS ARN configured on\nit.",
               "type": "string",
               "format": null,
               "required": true,
@@ -75,7 +75,7 @@
             {
               "paramType": "form",
               "name": "communication_channel[token]",
-              "description": "A registration id, device token, or equivalent token given to an app when registering with a push notification provider. Only valid for \"push\" type channels.",
+              "description": "A registration id, device token, or equivalent token given to an app when\nregistering with a push notification provider. Only valid for \"push\" type channels.",
               "type": "string",
               "format": null,
               "required": false
@@ -83,7 +83,7 @@
             {
               "paramType": "form",
               "name": "skip_confirmation",
-              "description": "Only valid for site admins and account admins making requests; If true, the channel is automatically validated and no confirmation email or SMS is sent. Otherwise, the user must respond to a confirmation message to confirm the channel.",
+              "description": "Only valid for site admins and account admins making requests; If true, the channel is\nautomatically validated and no confirmation email or SMS is sent.\nOtherwise, the user must respond to a confirmation message to confirm the\nchannel.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -183,15 +183,14 @@
           "type": "string"
         },
         "type": {
-          "description": "The type of communcation channel being described. Possible values are: 'email', 'sms', 'chat', 'facebook', 'twitter' or 'yo'. This field determines the type of value seen in 'address'.",
+          "description": "The type of communcation channel being described. Possible values are: 'email', 'push', 'sms', 'twitter' or 'yo'. This field determines the type of value seen in 'address'.",
           "example": "email",
           "type": "string",
           "allowableValues": {
             "values": [
               "email",
+              "push",
               "sms",
-              "chat",
-              "facebook",
               "twitter",
               "yo"
             ]
