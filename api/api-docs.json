@@ -127,6 +127,10 @@
       "description": "Enrollments"
     },
     {
+      "path": "/error_reports.json",
+      "description": "Error Reports"
+    },
+    {
       "path": "/external_tools.json",
       "description": "External Tools"
     },

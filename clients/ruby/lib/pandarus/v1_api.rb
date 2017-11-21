@@ -10004,6 +10004,45 @@ module Pandarus
     end
     
 
+    # Create Error Report
+    def create_error_report(error__subject__,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :error__subject__,
+        :error__url__,
+        :error__email__,
+        :error__comments__,
+        :error__http_env__,
+        
+
+      ]
+
+      # verify existence of params
+      raise "error__subject__ is required" if error__subject__.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :error__subject__ => error__subject__
+
+      )
+
+      # resource path
+      path = path_replace("/v1/error_reports",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
     # List external tools
     def list_external_tools_courses(course_id,opts={})
       query_param_keys = [

@@ -1,0 +1,112 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/error_reports",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/error_reports",
+      "description": "Create a new error report documenting an experienced problem\n\nPerforms the same action as when a user uses the \"help -> report a problem\"\ndialog.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create Error Report",
+          "notes": "Create a new error report documenting an experienced problem\n\nPerforms the same action as when a user uses the \"help -> report a problem\"\ndialog.",
+          "nickname": "create_error_report",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "error[subject]",
+              "description": "The summary of the problem",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "error[url]",
+              "description": "URL from which the report was issued",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "error[email]",
+              "description": "Email address for the reporting user",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "error[comments]",
+              "description": "The long version of the story from the user one what they experienced",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "error[http_env]",
+              "description": "A collection of metadata about the users' environment.  If not provided,\ncanvas will collect it based on information found in the request.\n(Doesn't have to be HTTPENV info, could be anything JSON object that can be\nserialized as a hash, a mobile app might include relevant metadata for\nitself)",
+              "type": "SerializedHash",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "ErrorReport": {
+      "id": "ErrorReport",
+      "description": "A collection of information around a specific notification of a problem",
+      "required": [
+
+      ],
+      "properties": {
+        "subject": {
+          "description": "The users problem summary, like an email subject line",
+          "type": "string",
+          "example": "File upload breaking"
+        },
+        "comments": {
+          "description": "long form documentation of what was witnessed",
+          "type": "string",
+          "example": "When I went to upload a .mov file to my files page, I got an error.  Retrying didn't help, other file types seem ok"
+        },
+        "user_perceived_severity": {
+          "description": "categorization of how bad the user thinks the problem is.  Should be one of [just_a_comment, not_urgent, workaround_possible, blocks_what_i_need_to_do, extreme_critical_emergency].",
+          "type": "string",
+          "example": "just_a_comment"
+        },
+        "email": {
+          "description": "the email address of the reporting user",
+          "type": "string",
+          "example": "name@example.com"
+        },
+        "url": {
+          "description": "URL of the page on which the error was reported",
+          "type": "string",
+          "example": "https://canvas.instructure.com/courses/1"
+        },
+        "context_asset_string": {
+          "description": "string describing the asset being interacted with at the time of error.  Formatted '[type]_[id]'",
+          "type": "string",
+          "example": "user_1"
+        },
+        "user_roles": {
+          "description": "comma seperated list of roles the reporting user holds.  Can be one [student], or many [teacher,admin]",
+          "type": "string",
+          "example": "user,teacher,admin"
+        }
+      }
+    }
+  }
+}
