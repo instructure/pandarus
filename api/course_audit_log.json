@@ -29,7 +29,7 @@
               "paramType": "query",
               "name": "start_time",
               "description": "The beginning of the time range from which you want events.",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -37,7 +37,7 @@
               "paramType": "query",
               "name": "end_time",
               "description": "The end of the time range from which you want events.",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             }
@@ -124,7 +124,11 @@
         },
         "links": {
           "description": "Jsonapi.org links",
-          "example": "{\"course\"=>\"12345\", \"user\"=>\"12345\", \"page_view\"=>\"e2b76430-27a5-0131-3ca1-48e0eb13f29b\"}",
+          "example": {
+            "course": "12345",
+            "user": "12345",
+            "page_view": "e2b76430-27a5-0131-3ca1-48e0eb13f29b"
+          },
           "$ref": "CourseEventLink"
         }
       }
@@ -137,34 +141,50 @@
       ],
       "properties": {
         "name": {
-          "example": "[nil, \"Course 1\"]",
+          "example": [
+            null,
+            "Course 1"
+          ],
           "type": "array",
           "items": {
             "type": "string"
           }
         },
         "start_at": {
-          "example": "[nil, \"2012-01-19T15:00:00-06:00\"]",
+          "example": [
+            null,
+            "2012-01-19T15:00:00-06:00"
+          ],
           "type": "array",
           "items": {
             "type": "datetime"
           }
         },
         "conclude_at": {
-          "example": "[nil, \"2012-01-19T15:00:00-08:00\"]",
+          "example": [
+            null,
+            "2012-01-19T15:00:00-08:00"
+          ],
           "type": "array",
           "items": {
             "type": "datetime"
           }
         },
         "is_public": {
-          "example": "[nil, false]",
+          "example": [
+            null,
+            false
+          ],
           "type": "array",
           "items": {
             "type": "boolean"
           }
         },
-        "created_source": "manual|sis|api"
+        "created_source": {
+          "description": "The type of action that triggered the creation of the course.",
+          "example": "manual|sis|api",
+          "type": "string"
+        }
       }
     },
     "UpdatedEventData": {
@@ -175,28 +195,40 @@
       ],
       "properties": {
         "name": {
-          "example": "[\"Course 1\", \"Course 2\"]",
+          "example": [
+            "Course 1",
+            "Course 2"
+          ],
           "type": "array",
           "items": {
             "type": "string"
           }
         },
         "start_at": {
-          "example": "[\"2012-01-19T15:00:00-06:00\", \"2012-07-19T15:00:00-06:00\"]",
+          "example": [
+            "2012-01-19T15:00:00-06:00",
+            "2012-07-19T15:00:00-06:00"
+          ],
           "type": "array",
           "items": {
             "type": "datetime"
           }
         },
         "conclude_at": {
-          "example": "[\"2012-01-19T15:00:00-08:00\", \"2012-07-19T15:00:00-08:00\"]",
+          "example": [
+            "2012-01-19T15:00:00-08:00",
+            "2012-07-19T15:00:00-08:00"
+          ],
           "type": "array",
           "items": {
             "type": "datetime"
           }
         },
         "is_public": {
-          "example": "[true, false]",
+          "example": [
+            true,
+            false
+          ],
           "type": "array",
           "items": {
             "type": "boolean"
