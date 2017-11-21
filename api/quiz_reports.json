@@ -36,7 +36,7 @@
             {
               "paramType": "query",
               "name": "includes_all_versions",
-              "description": "Whether to retrieve reports that consider all the submissions or only the most recent. Defaults to false, ignored for item_analysis reports.",
+              "description": "Whether to retrieve reports that consider all the submissions or only\nthe most recent. Defaults to false, ignored for item_analysis reports.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -44,7 +44,7 @@
           ],
           "type": "array",
           "items": {
-            "$ref": " QuizReport "
+            "$ref": "QuizReport"
           }
         }
       ]
@@ -90,7 +90,7 @@
             {
               "paramType": "form",
               "name": "quiz_report[includes_all_versions]",
-              "description": "Whether the report should consider all submissions or only the most recent. Defaults to false, ignored for item_analysis.",
+              "description": "Whether the report should consider all submissions or only the most\nrecent. Defaults to false, ignored for item_analysis.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -98,8 +98,8 @@
             {
               "paramType": "form",
               "name": "include",
-              "description": "Whether the output should include documents for the file and/or progress objects associated with this report. (Note: JSON-API only)",
-              "type": "string[]",
+              "description": "Whether the output should include documents for the file and/or progress\nobjects associated with this report. (Note: JSON-API only)",
+              "type": "String[]",
               "format": null,
               "required": false,
               "enum": [
@@ -149,8 +149,8 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "Whether the output should include documents for the file and/or progress objects associated with this report. (Note: JSON-API only)",
-              "type": "string[]",
+              "description": "Whether the output should include documents for the file and/or progress\nobjects associated with this report. (Note: JSON-API only)",
+              "type": "String[]",
               "format": null,
               "required": false,
               "enum": [

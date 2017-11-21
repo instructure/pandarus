@@ -28,7 +28,7 @@
             {
               "paramType": "query",
               "name": "quiz_assignment_overrides[0][quiz_ids]",
-              "description": "An array of quiz IDs. If omitted, overrides for all quizzes available to the operating user will be returned.",
+              "description": "An array of quiz IDs. If omitted, overrides for all quizzes available to\nthe operating user will be returned.",
               "type": "array",
               "format": "int64",
               "required": false,

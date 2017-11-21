@@ -18789,7 +18789,7 @@ module Pandarus
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)
 
-      RemoteCollection.new(connection,  QuizReport , path, query_params)
+      RemoteCollection.new(connection, QuizReport, path, query_params)
       
 
     end

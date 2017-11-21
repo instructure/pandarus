@@ -44,7 +44,7 @@
             {
               "paramType": "form",
               "name": "extra_attempts",
-              "description": "Number of times the student is allowed to re-take the quiz over the multiple-attempt limit. This is limited to 1000 attempts or less.",
+              "description": "Number of times the student is allowed to re-take the quiz over the\nmultiple-attempt limit. This is limited to 1000 attempts or less.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -52,7 +52,7 @@
             {
               "paramType": "form",
               "name": "extra_time",
-              "description": "The number of extra minutes to allow for all attempts. This will add to the existing time limit on the submission. This is limited to 10080 minutes (1 week)",
+              "description": "The number of extra minutes to allow for all attempts. This will\nadd to the existing time limit on the submission. This is limited to\n10080 minutes (1 week)",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -60,7 +60,7 @@
             {
               "paramType": "form",
               "name": "manually_unlocked",
-              "description": "Allow the student to take the quiz even if it's locked for everyone else.",
+              "description": "Allow the student to take the quiz even if it's locked for\neveryone else.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -68,7 +68,7 @@
             {
               "paramType": "form",
               "name": "extend_from_now",
-              "description": "The number of minutes to extend the quiz from the current time. This is mutually exclusive to extend_from_end_at. This is limited to 1440 minutes (24 hours)",
+              "description": "The number of minutes to extend the quiz from the current time. This is\nmutually exclusive to extend_from_end_at. This is limited to 1440\nminutes (24 hours)",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -76,7 +76,7 @@
             {
               "paramType": "form",
               "name": "extend_from_end_at",
-              "description": "The number of minutes to extend the quiz beyond the quiz's current ending time. This is mutually exclusive to extend_from_now. This is limited to 1440 minutes (24 hours)",
+              "description": "The number of minutes to extend the quiz beyond the quiz's current\nending time. This is mutually exclusive to extend_from_now. This is\nlimited to 1440 minutes (24 hours)",
               "type": "integer",
               "format": "int64",
               "required": false
