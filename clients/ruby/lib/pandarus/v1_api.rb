@@ -6380,7 +6380,7 @@ module Pandarus
     # List entries for a column
     def list_entries_for_column(course_id,id,opts={})
       query_param_keys = [
-        
+        :include_hidden
 
       ]
 

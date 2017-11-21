@@ -9,12 +9,12 @@
   "apis": [
     {
       "path": "/v1/courses/{course_id}/custom_gradebook_columns",
-      "description": "List all custom gradebook columns for a course",
+      "description": "A paginated list of all custom gradebook columns for a course",
       "operations": [
         {
           "method": "GET",
           "summary": "List custom gradebook columns",
-          "notes": "List all custom gradebook columns for a course",
+          "notes": "A paginated list of all custom gradebook columns for a course",
           "nickname": "list_custom_gradebook_columns",
           "parameters": [
             {
@@ -86,7 +86,7 @@
             {
               "paramType": "form",
               "name": "column[teacher_notes]",
-              "description": "Set this if the column is created by a teacher. The gradebook only supports one teacher_notes column.",
+              "description": "Set this if the column is created by a teacher.  The gradebook only\nsupports one teacher_notes column.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -217,6 +217,14 @@
               "type": "string",
               "format": null,
               "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include_hidden",
+              "description": "If true, hidden columns will be included in the\nresult. If false or absent, only visible columns\nwill be returned.",
+              "type": "boolean",
+              "format": null,
+              "required": false
             }
           ],
           "type": "array",
@@ -263,7 +271,7 @@
             {
               "paramType": "form",
               "name": "column_data[content]",
-              "description": "Column content. Setting this to blank will delete the datum object.",
+              "description": "Column content.  Setting this to blank will delete the datum object.",
               "type": "string",
               "format": null,
               "required": true
