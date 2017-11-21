@@ -9,12 +9,12 @@
   "apis": [
     {
       "path": "/v1/polls",
-      "description": "Returns the list of polls for the current user.",
+      "description": "Returns the paginated list of polls for the current user.",
       "operations": [
         {
           "method": "GET",
           "summary": "List polls",
-          "notes": "Returns the list of polls for the current user.",
+          "notes": "Returns the paginated list of polls for the current user.",
           "nickname": "list_polls",
           "parameters": [
 

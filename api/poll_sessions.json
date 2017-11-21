@@ -9,12 +9,12 @@
   "apis": [
     {
       "path": "/v1/polls/{poll_id}/poll_sessions",
-      "description": "Returns the list of PollSessions in this poll.",
+      "description": "Returns the paginated list of PollSessions in this poll.",
       "operations": [
         {
           "method": "GET",
           "summary": "List poll sessions for a poll",
-          "notes": "Returns the list of PollSessions in this poll.",
+          "notes": "Returns the paginated list of PollSessions in this poll.",
           "nickname": "list_poll_sessions_for_poll",
           "parameters": [
             {
@@ -109,7 +109,7 @@
               "format": null,
               "required": false,
               "items": {
-                "$ref": "boolean"
+                "type": "boolean"
               }
             }
           ],
@@ -173,7 +173,7 @@
               "format": null,
               "required": false,
               "items": {
-                "$ref": "boolean"
+                "type": "boolean"
               }
             }
           ],
@@ -276,12 +276,12 @@
     },
     {
       "path": "/v1/poll_sessions/opened",
-      "description": "Lists all opened poll sessions available to the current user.",
+      "description": "A paginated list of all opened poll sessions available to the current user.",
       "operations": [
         {
           "method": "GET",
           "summary": "List opened poll sessions",
-          "notes": "Lists all opened poll sessions available to the current user.",
+          "notes": "A paginated list of all opened poll sessions available to the current user.",
           "nickname": "list_opened_poll_sessions",
           "parameters": [
 
@@ -292,12 +292,12 @@
     },
     {
       "path": "/v1/poll_sessions/closed",
-      "description": "Lists all closed poll sessions available to the current user.",
+      "description": "A paginated list of all closed poll sessions available to the current user.",
       "operations": [
         {
           "method": "GET",
           "summary": "List closed poll sessions",
-          "notes": "Lists all closed poll sessions available to the current user.",
+          "notes": "A paginated list of all closed poll sessions available to the current user.",
           "nickname": "list_closed_poll_sessions",
           "parameters": [
 

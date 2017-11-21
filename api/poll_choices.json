@@ -9,12 +9,12 @@
   "apis": [
     {
       "path": "/v1/polls/{poll_id}/poll_choices",
-      "description": "Returns the list of PollChoices in this poll.",
+      "description": "Returns the paginated list of PollChoices in this poll.",
       "operations": [
         {
           "method": "GET",
           "summary": "List poll choices in a poll",
-          "notes": "Returns the list of PollChoices in this poll.",
+          "notes": "Returns the paginated list of PollChoices in this poll.",
           "nickname": "list_poll_choices_in_poll",
           "parameters": [
             {
@@ -98,7 +98,7 @@
               "format": null,
               "required": false,
               "items": {
-                "$ref": "boolean"
+                "type": "boolean"
               }
             },
             {
@@ -157,12 +157,12 @@
             {
               "paramType": "form",
               "name": "poll_choices[is_correct]",
-              "description": "Whether this poll choice is considered correct or not. Defaults to false.",
+              "description": "Whether this poll choice is considered correct or not.  Defaults to false.",
               "type": "array",
               "format": null,
               "required": false,
               "items": {
-                "$ref": "boolean"
+                "type": "boolean"
               }
             },
             {
