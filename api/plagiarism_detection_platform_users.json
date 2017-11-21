@@ -1,0 +1,65 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/plagiarism_detection_platform_users",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/lti/users/{id}",
+      "description": "Get a single Canvas user by Canvas id or LTI id. Tool providers may only access\nusers that have been assigned an assignment associated with their tool.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single user",
+          "notes": "Get a single Canvas user by Canvas id or LTI id. Tool providers may only access\nusers that have been assigned an assignment associated with their tool.",
+          "nickname": "get_single_user",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "User": {
+      "id": "User",
+      "description": "A Canvas user",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "example": 4,
+          "type": "integer"
+        },
+        "name": {
+          "example": "John Smith",
+          "type": "string"
+        },
+        "sortable_name": {
+          "example": "Smith, John",
+          "type": "string"
+        },
+        "email": {
+          "example": "john@test.com",
+          "type": "string"
+        },
+        "lti_id": {
+          "example": "86157096483e6b3a50bfedc6bac902c0b20a824f",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

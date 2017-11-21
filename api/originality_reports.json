@@ -1,0 +1,393 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/originality_reports",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/lti/assignments/{assignment_id}/submissions/{submission_id}/originality_report",
+      "description": "Create a new OriginalityReport for the specified file",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create an Originality Report",
+          "notes": "Create a new OriginalityReport for the specified file",
+          "nickname": "create_originality_report",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "submission_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "originality_report[file_id]",
+              "description": "The id of the file being given an originality score.",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "originality_report[originality_score]",
+              "description": "A number between 0 and 100 representing the measure of the\nspecified file's originality.",
+              "type": "number",
+              "format": "float",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "originality_report[originality_report_url]",
+              "description": "The URL where the originality report for the specified\nfile may be found.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "originality_report[originality_report_file_id]",
+              "description": "The ID of the file within Canvas that contains the originality\nreport for the submitted file provided in the request URL.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "originality_report[tool_setting][resource_type_code]",
+              "description": "The resource type code of the resource handler Canvas should use for the\nLTI launch for viewing originality reports. If set Canvas will launch\nto the message with type 'basic-lti-launch-request' in the specified\nresource handler rather than using the originality_report_url.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "originality_report[tool_setting][resource_url]",
+              "description": "The URL Canvas should launch to when showing an LTI originality report.\nNote that this value is inferred from the specified resource handler's\nmessage \"path\" value (See `resource_type_code`) unless\nit is specified. If this parameter is used a `resource_type_code`\nmust also be specified.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "originality_report[workflow_state]",
+              "description": "May be set to \"pending\", \"error\", or \"scored\". If an originality score\nis provided a workflow state of \"scored\" will be inferred.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "OriginalityReport"
+        }
+      ]
+    },
+    {
+      "path": "/lti/assignments/{assignment_id}/submissions/{submission_id}/originality_report/{id}",
+      "description": "Modify an existing originality report. An alternative to this endpoint is\nto POST the same parameters listed below to the CREATE endpoint.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Edit an Originality Report",
+          "notes": "Modify an existing originality report. An alternative to this endpoint is\nto POST the same parameters listed below to the CREATE endpoint.",
+          "nickname": "edit_originality_report_submissions",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "submission_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "originality_report[originality_score]",
+              "description": "A number between 0 and 100 representing the measure of the\nspecified file's originality.",
+              "type": "number",
+              "format": "float",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "originality_report[originality_report_url]",
+              "description": "The URL where the originality report for the specified\nfile may be found.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "originality_report[originality_report_file_id]",
+              "description": "The ID of the file within Canvas that contains the originality\nreport for the submitted file provided in the request URL.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "originality_report[tool_setting][resource_type_code]",
+              "description": "The resource type code of the resource handler Canvas should use for the\nLTI launch for viewing originality reports. If set Canvas will launch\nto the message with type 'basic-lti-launch-request' in the specified\nresource handler rather than using the originality_report_url.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "originality_report[tool_setting][resource_url]",
+              "description": "The URL Canvas should launch to when showing an LTI originality report.\nNote that this value is inferred from the specified resource handler's\nmessage \"path\" value (See `resource_type_code`) unless\nit is specified. If this parameter is used a `resource_type_code`\nmust also be specified.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "originality_report[workflow_state]",
+              "description": "May be set to \"pending\", \"error\", or \"scored\". If an originality score\nis provided a workflow state of \"scored\" will be inferred.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "OriginalityReport"
+        }
+      ]
+    },
+    {
+      "path": "/lti/assignments/{assignment_id}/files/{file_id}/originality_report",
+      "description": "Modify an existing originality report. An alternative to this endpoint is\nto POST the same parameters listed below to the CREATE endpoint.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Edit an Originality Report",
+          "notes": "Modify an existing originality report. An alternative to this endpoint is\nto POST the same parameters listed below to the CREATE endpoint.",
+          "nickname": "edit_originality_report_files",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "file_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "originality_report[originality_score]",
+              "description": "A number between 0 and 100 representing the measure of the\nspecified file's originality.",
+              "type": "number",
+              "format": "float",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "originality_report[originality_report_url]",
+              "description": "The URL where the originality report for the specified\nfile may be found.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "originality_report[originality_report_file_id]",
+              "description": "The ID of the file within Canvas that contains the originality\nreport for the submitted file provided in the request URL.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "originality_report[tool_setting][resource_type_code]",
+              "description": "The resource type code of the resource handler Canvas should use for the\nLTI launch for viewing originality reports. If set Canvas will launch\nto the message with type 'basic-lti-launch-request' in the specified\nresource handler rather than using the originality_report_url.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "originality_report[tool_setting][resource_url]",
+              "description": "The URL Canvas should launch to when showing an LTI originality report.\nNote that this value is inferred from the specified resource handler's\nmessage \"path\" value (See `resource_type_code`) unless\nit is specified. If this parameter is used a `resource_type_code`\nmust also be specified.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "originality_report[workflow_state]",
+              "description": "May be set to \"pending\", \"error\", or \"scored\". If an originality score\nis provided a workflow state of \"scored\" will be inferred.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "OriginalityReport"
+        }
+      ]
+    },
+    {
+      "path": "/lti/assignments/{assignment_id}/submissions/{submission_id}/originality_report/{id}",
+      "description": "Get a single originality report",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Show an Originality Report",
+          "notes": "Get a single originality report",
+          "nickname": "show_originality_report_submissions",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "submission_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "OriginalityReport"
+        }
+      ]
+    },
+    {
+      "path": "/lti/assignments/{assignment_id}/files/{file_id}/originality_report",
+      "description": "Get a single originality report",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Show an Originality Report",
+          "notes": "Get a single originality report",
+          "nickname": "show_originality_report_files",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "file_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "OriginalityReport"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "ToolSetting": {
+      "id": "ToolSetting",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "resource_type_code": {
+          "description": "the resource type code of the resource handler to use to display originality reports",
+          "example": "originality_reports",
+          "type": "string"
+        },
+        "resource_url": {
+          "description": "a URL that may be used to override the launch URL inferred by the specified resource_type_code. If used a 'resource_type_code' must also be specified.",
+          "example": "http://www.test.com/originality_report",
+          "type": "string"
+        }
+      }
+    },
+    "OriginalityReport": {
+      "id": "OriginalityReport",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "The id of the OriginalityReport",
+          "example": "4",
+          "type": "integer"
+        },
+        "file_id": {
+          "description": "The id of the file receiving the originality score",
+          "example": "8",
+          "type": "integer"
+        },
+        "originality_score": {
+          "description": "A number between 0 and 100 representing the originality score",
+          "example": "0.16",
+          "type": "number"
+        },
+        "originality_report_file_id": {
+          "description": "The ID of the file within Canvas containing the originality report document (if provided)",
+          "example": "23",
+          "type": "integer"
+        },
+        "originality_report_url": {
+          "description": "A non-LTI launch URL where the originality score of the file may be found.",
+          "example": "http://www.example.com/report",
+          "type": "string"
+        },
+        "tool_setting": {
+          "description": "A ToolSetting object containing optional 'resource_type_code' and 'resource_url'",
+          "type": "ToolSetting"
+        }
+      }
+    }
+  }
+}

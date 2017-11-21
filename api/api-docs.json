@@ -199,6 +199,10 @@
       "description": "Notification Preferences"
     },
     {
+      "path": "/originality_reports.json",
+      "description": "Originality Reports"
+    },
+    {
       "path": "/outcome_groups.json",
       "description": "Outcome Groups"
     },
@@ -213,6 +217,10 @@
     {
       "path": "/pages.json",
       "description": "Pages"
+    },
+    {
+      "path": "/plagiarism_detection_platform_users.json",
+      "description": "Plagiarism Detection Platform Users"
     },
     {
       "path": "/poll_sessions.json",
