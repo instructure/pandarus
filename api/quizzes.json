@@ -9,12 +9,12 @@
   "apis": [
     {
       "path": "/v1/courses/{course_id}/quizzes",
-      "description": "Returns the list of Quizzes in this course.",
+      "description": "Returns the paginated list of Quizzes in this course.",
       "operations": [
         {
           "method": "GET",
           "summary": "List quizzes in a course",
-          "notes": "Returns the list of Quizzes in this course.",
+          "notes": "Returns the paginated list of Quizzes in this course.",
           "nickname": "list_quizzes_in_course",
           "parameters": [
             {
@@ -682,6 +682,11 @@
           "items": {
             "type": "string"
           }
+        },
+        "anonymous_submissions": {
+          "description": "Whether survey submissions will be kept anonymous (only applicable to 'graded_survey', 'survey' quiz types)",
+          "example": false,
+          "type": "boolean"
         }
       }
     },

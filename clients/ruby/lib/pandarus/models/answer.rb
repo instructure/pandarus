@@ -16,6 +16,8 @@ module Pandarus
     attribute :numerical_answer_type, resolve_type("String")
     attribute :exact, resolve_type(nil)
     attribute :margin, resolve_type(nil)
+    attribute :approximate, resolve_type("Float")
+    attribute :precision, resolve_type(nil)
     attribute :start, resolve_type(nil)
     attribute :end, resolve_type(nil)
     attribute :blank_id, resolve_type(nil)

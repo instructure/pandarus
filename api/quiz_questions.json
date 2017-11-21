@@ -9,12 +9,12 @@
   "apis": [
     {
       "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/questions",
-      "description": "Returns the list of QuizQuestions in this quiz.",
+      "description": "Returns the paginated list of QuizQuestions in this quiz.",
       "operations": [
         {
           "method": "GET",
           "summary": "List questions in a quiz or a submission",
-          "notes": "Returns the list of QuizQuestions in this quiz.",
+          "notes": "Returns the paginated list of QuizQuestions in this quiz.",
           "nickname": "list_questions_in_quiz_or_submission",
           "parameters": [
             {
@@ -36,7 +36,7 @@
             {
               "paramType": "query",
               "name": "quiz_submission_id",
-              "description": "If specified, the endpoint will return the questions that were presented for that submission. This is useful if the quiz has been modified after the submission was created and the latest quiz version's set of questions does not match the submission's. NOTE: you must specify quiz_submission_attempt as well if you specify this parameter.",
+              "description": "If specified, the endpoint will return the questions that were presented\nfor that submission. This is useful if the quiz has been modified after\nthe submission was created and the latest quiz version's set of questions\ndoes not match the submission's.\nNOTE: you must specify quiz_submission_attempt as well if you specify this\nparameter.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -164,7 +164,8 @@
                 "multiple_dropdowns_question",
                 "numerical_question",
                 "short_answer_question",
-                "text_only_question"
+                "text_only_question",
+                "true_false_question"
               ]
             },
             {
@@ -219,7 +220,7 @@
               "paramType": "form",
               "name": "question[answers]",
               "description": "no description",
-              "type": "[answer]",
+              "type": "[Answer]",
               "format": null,
               "required": false
             }
@@ -304,7 +305,8 @@
                 "multiple_dropdowns_question",
                 "numerical_question",
                 "short_answer_question",
-                "text_only_question"
+                "text_only_question",
+                "true_false_question"
               ]
             },
             {
@@ -359,7 +361,7 @@
               "paramType": "form",
               "name": "question[answers]",
               "description": "no description",
-              "type": "[answer]",
+              "type": "[Answer]",
               "format": null,
               "required": false
             }
@@ -531,7 +533,7 @@
           "type": "string"
         },
         "numerical_answer_type": {
-          "description": "Used in numerical questions.  Values can be 'exact_answer' or 'range_answer'.",
+          "description": "Used in numerical questions.  Values can be 'exact_answer', 'range_answer', or 'precision_answer'.",
           "example": "exact_answer",
           "type": "string"
         },
@@ -543,6 +545,18 @@
         },
         "margin": {
           "description": "Used in numerical questions of type 'exact_answer'. The margin of error allowed for the student's answer.",
+          "example": 4,
+          "type": "integer",
+          "format": "int64"
+        },
+        "approximate": {
+          "description": "Used in numerical questions of type 'precision_answer'.  The value the answer should equal.",
+          "example": 1234600000.0,
+          "type": "number",
+          "format": "float64"
+        },
+        "precision": {
+          "description": "Used in numerical questions of type 'precision_answer'. The numerical precision that will be used when comparing the student's answer.",
           "example": 4,
           "type": "integer",
           "format": "int64"

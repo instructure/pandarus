@@ -43,6 +43,7 @@ module Pandarus
     attribute :all_dates, resolve_type("AssignmentDate", collection: true)
     attribute :version_number, resolve_type("Integer")
     attribute :question_types, resolve_type("String", collection: true)
+    attribute :anonymous_submissions, resolve_type(nil)
     
   end
 end

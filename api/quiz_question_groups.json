@@ -8,6 +8,45 @@
   ],
   "apis": [
     {
+      "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/groups/{id}",
+      "description": "Returns details of the quiz group with the given id.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single quiz group",
+          "notes": "Returns details of the quiz group with the given id.",
+          "nickname": "get_single_quiz_group",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "quiz_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "QuizGroup"
+        }
+      ]
+    },
+    {
       "path": "/v1/courses/{course_id}/quizzes/{quiz_id}/groups",
       "description": "Create a new question group for this quiz\n\n<b>201 Created</b> response code is returned if the creation was successful.",
       "operations": [

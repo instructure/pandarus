@@ -18375,6 +18375,46 @@ module Pandarus
     end
     
 
+    # Get a single quiz group
+    def get_single_quiz_group(course_id,quiz_id,id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "quiz_id is required" if quiz_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :quiz_id => quiz_id,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/quizzes/{quiz_id}/groups/{id}",
+        :course_id => course_id,
+        :quiz_id => quiz_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      QuizGroup.new(response)
+      
+
+    end
+    
+
     # Create a question group
     def create_question_group(course_id,quiz_id,opts={})
       query_param_keys = [
