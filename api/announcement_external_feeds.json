@@ -9,12 +9,12 @@
   "apis": [
     {
       "path": "/v1/courses/{course_id}/external_feeds",
-      "description": "Returns the list of External Feeds this course or group.",
+      "description": "Returns the paginated list of External Feeds this course or group.",
       "operations": [
         {
           "method": "GET",
           "summary": "List external feeds",
-          "notes": "Returns the list of External Feeds this course or group.",
+          "notes": "Returns the paginated list of External Feeds this course or group.",
           "nickname": "list_external_feeds_courses",
           "parameters": [
             {
@@ -35,12 +35,12 @@
     },
     {
       "path": "/v1/groups/{group_id}/external_feeds",
-      "description": "Returns the list of External Feeds this course or group.",
+      "description": "Returns the paginated list of External Feeds this course or group.",
       "operations": [
         {
           "method": "GET",
           "summary": "List external feeds",
-          "notes": "Returns the list of External Feeds this course or group.",
+          "notes": "Returns the paginated list of External Feeds this course or group.",
           "nickname": "list_external_feeds_groups",
           "parameters": [
             {
