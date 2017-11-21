@@ -1380,6 +1380,38 @@ module Pandarus
     end
     
 
+    # Get next appointment
+    def get_next_appointment(opts={})
+      query_param_keys = [
+        :appointment_group_ids
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        {}
+      
+
+      )
+
+      # resource path
+      path = path_replace("/v1/appointment_groups/next_appointment",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, CalendarEvent, path, query_params)
+      
+
+    end
+    
+
     # List assignment groups
     def list_assignment_groups(course_id,opts={})
       query_param_keys = [
