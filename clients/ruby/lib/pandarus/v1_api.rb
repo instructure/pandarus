@@ -2807,10 +2807,76 @@ module Pandarus
     end
     
 
+    # List collaborations
+    def list_collaborations_courses(course_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/collaborations",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, Collaboration, path, query_params)
+      
+
+    end
+    
+
+    # List collaborations
+    def list_collaborations_groups(group_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "group_id is required" if group_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :group_id => group_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/groups/{group_id}/collaborations",
+        :group_id => group_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, Collaboration, path, query_params)
+      
+
+    end
+    
+
     # List members of a collaboration.
     def list_members_of_collaboration(id,opts={})
       query_param_keys = [
-        
+        :include
 
       ]
 
@@ -2835,6 +2901,72 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       RemoteCollection.new(connection, Collaborator, path, query_params)
+      
+
+    end
+    
+
+    # List potential members
+    def list_potential_members_courses(course_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/potential_collaborators",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, User, path, query_params)
+      
+
+    end
+    
+
+    # List potential members
+    def list_potential_members_groups(group_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "group_id is required" if group_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :group_id => group_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/groups/{group_id}/potential_collaborators",
+        :group_id => group_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, User, path, query_params)
       
 
     end

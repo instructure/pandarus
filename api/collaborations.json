@@ -8,13 +8,65 @@
   ],
   "apis": [
     {
+      "path": "/v1/courses/{course_id}/collaborations",
+      "description": "A paginated list of collaborations the current user has access to in the\ncontext of the course provided in the url. NOTE: this only returns\nExternalToolCollaboration type collaborations.\n\n  curl https://<canvas>/api/v1/courses/1/collaborations/",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List collaborations",
+          "notes": "A paginated list of collaborations the current user has access to in the\ncontext of the course provided in the url. NOTE: this only returns\nExternalToolCollaboration type collaborations.\n\n  curl https://<canvas>/api/v1/courses/1/collaborations/",
+          "nickname": "list_collaborations_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Collaboration"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/collaborations",
+      "description": "A paginated list of collaborations the current user has access to in the\ncontext of the course provided in the url. NOTE: this only returns\nExternalToolCollaboration type collaborations.\n\n  curl https://<canvas>/api/v1/courses/1/collaborations/",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List collaborations",
+          "notes": "A paginated list of collaborations the current user has access to in the\ncontext of the course provided in the url. NOTE: this only returns\nExternalToolCollaboration type collaborations.\n\n  curl https://<canvas>/api/v1/courses/1/collaborations/",
+          "nickname": "list_collaborations_groups",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "Collaboration"
+          }
+        }
+      ]
+    },
+    {
       "path": "/v1/collaborations/{id}/members",
-      "description": "List the collaborators of a given collaboration",
+      "description": "A paginated list of the collaborators of a given collaboration",
       "operations": [
         {
           "method": "GET",
           "summary": "List members of a collaboration.",
-          "notes": "List the collaborators of a given collaboration",
+          "notes": "A paginated list of the collaborators of a given collaboration",
           "nickname": "list_members_of_collaboration",
           "parameters": [
             {
@@ -24,6 +76,21 @@
               "type": "string",
               "format": null,
               "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "- \"collaborator_lti_id\": Optional information to include with each member.\n  Represents an identifier to be used for the member in an LTI context.\n- \"avatar_image_url\": Optional information to include with each member.\n  The url for the avatar of a collaborator with type 'user'.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "enum": [
+                "collaborator_lti_id",
+                "avatar_image_url"
+              ],
+              "items": {
+                "type": "string"
+              }
             }
           ],
           "type": "array",
@@ -32,9 +99,134 @@
           }
         }
       ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/potential_collaborators",
+      "description": "A paginated list of the users who can potentially be added to a\ncollaboration in the given context.\n\nFor courses, this consists of all enrolled users.  For groups, it is comprised of the\ngroup members plus the admins of the course containing the group.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List potential members",
+          "notes": "A paginated list of the users who can potentially be added to a\ncollaboration in the given context.\n\nFor courses, this consists of all enrolled users.  For groups, it is comprised of the\ngroup members plus the admins of the course containing the group.",
+          "nickname": "list_potential_members_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "User"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/groups/{group_id}/potential_collaborators",
+      "description": "A paginated list of the users who can potentially be added to a\ncollaboration in the given context.\n\nFor courses, this consists of all enrolled users.  For groups, it is comprised of the\ngroup members plus the admins of the course containing the group.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List potential members",
+          "notes": "A paginated list of the users who can potentially be added to a\ncollaboration in the given context.\n\nFor courses, this consists of all enrolled users.  For groups, it is comprised of the\ngroup members plus the admins of the course containing the group.",
+          "nickname": "list_potential_members_groups",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "group_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "User"
+          }
+        }
+      ]
     }
   ],
   "models": {
+    "Collaboration": {
+      "id": "Collaboration",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "The unique identifier for the collaboration",
+          "example": 43,
+          "type": "integer"
+        },
+        "collaboration_type": {
+          "description": "A name for the type of collaboration",
+          "example": "Microsoft Office",
+          "type": "string"
+        },
+        "document_id": {
+          "description": "The collaboration document identifier for the collaboration provider",
+          "example": "oinwoenfe8w8ef_onweufe89fef",
+          "type": "string"
+        },
+        "user_id": {
+          "description": "The canvas id of the user who created the collaboration",
+          "example": 92,
+          "type": "integer"
+        },
+        "context_id": {
+          "description": "The canvas id of the course or group to which the collaboration belongs",
+          "example": 77,
+          "type": "integer"
+        },
+        "context_type": {
+          "description": "The canvas type of the course or group to which the collaboration belongs",
+          "example": "Course",
+          "type": "string"
+        },
+        "url": {
+          "description": "The LTI launch url to view collaboration.",
+          "type": "string"
+        },
+        "created_at": {
+          "description": "The timestamp when the collaboration was created",
+          "example": "2012-06-01T00:00:00-06:00",
+          "type": "datetime"
+        },
+        "updated_at": {
+          "description": "The timestamp when the collaboration was last modified",
+          "example": "2012-06-01T00:00:00-06:00",
+          "type": "datetime"
+        },
+        "description": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "description": "Another representation of the collaboration type",
+          "example": "ExternalToolCollaboration",
+          "type": "string"
+        },
+        "update_url": {
+          "description": "The LTI launch url to edit the collaboration",
+          "type": "string"
+        },
+        "user_name": {
+          "description": "The name of the user who owns the collaboration",
+          "example": "John Danger",
+          "type": "string"
+        }
+      }
+    },
     "Collaborator": {
       "id": "Collaborator",
       "description": "",
