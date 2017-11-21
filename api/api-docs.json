@@ -175,6 +175,10 @@
       "description": "JWTs"
     },
     {
+      "path": "/late_policy.json",
+      "description": "Late Policy"
+    },
+    {
       "path": "/live_assessments.json",
       "description": "LiveAssessments"
     },

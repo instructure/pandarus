@@ -1,0 +1,273 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/late_policy",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{id}/late_policy",
+      "description": "Returns the late policy for a course.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a late policy",
+          "notes": "Returns the late policy for a course.",
+          "nickname": "get_late_policy",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{id}/late_policy",
+      "description": "Create a late policy. If the course already has a late policy, a\nbad_request is returned since there can only be one late policy\nper course.",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a late policy",
+          "notes": "Create a late policy. If the course already has a late policy, a\nbad_request is returned since there can only be one late policy\nper course.",
+          "nickname": "create_late_policy",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "late_policy[missing_submission_deduction_enabled]",
+              "description": "Whether to enable the missing submission deduction late policy.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "late_policy[missing_submission_deduction]",
+              "description": "How many percentage points to deduct from a missing submission.",
+              "type": "number",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "late_policy[late_submission_deduction_enabled]",
+              "description": "Whether to enable the late submission deduction late policy.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "late_policy[late_submission_deduction]",
+              "description": "How many percentage points to deduct per the late submission interval.",
+              "type": "number",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "late_policy[late_submission_interval]",
+              "description": "The interval for late policies.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "late_policy[late_submission_minimum_percent_enabled]",
+              "description": "Whether to enable the late submission minimum percent for a late policy.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "late_policy[late_submission_minimum_percent]",
+              "description": "The minimum grade a submissions can have in percentage points.",
+              "type": "number",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{id}/late_policy",
+      "description": "Patch a late policy. No body is returned upon success.",
+      "operations": [
+        {
+          "method": "PATCH",
+          "summary": "Patch a late policy",
+          "notes": "Patch a late policy. No body is returned upon success.",
+          "nickname": "patch_late_policy",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "late_policy[missing_submission_deduction_enabled]",
+              "description": "Whether to enable the missing submission deduction late policy.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "late_policy[missing_submission_deduction]",
+              "description": "How many percentage points to deduct from a missing submission.",
+              "type": "number",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "late_policy[late_submission_deduction_enabled]",
+              "description": "Whether to enable the late submission deduction late policy.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "late_policy[late_submission_deduction]",
+              "description": "How many percentage points to deduct per the late submission interval.",
+              "type": "number",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "late_policy[late_submission_interval]",
+              "description": "The interval for late policies.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "late_policy[late_submission_minimum_percent_enabled]",
+              "description": "Whether to enable the late submission minimum percent for a late policy.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "late_policy[late_submission_minimum_percent]",
+              "description": "The minimum grade a submissions can have in percentage points.",
+              "type": "number",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "LatePolicy": {
+      "id": "LatePolicy",
+      "description": "",
+      "required": "course_id",
+      "properties": {
+        "id": {
+          "description": "the unique identifier for the late policy",
+          "example": 123,
+          "type": "integer"
+        },
+        "course_id": {
+          "description": "the unique identifier for the course",
+          "example": 123,
+          "type": "integer"
+        },
+        "missing_submission_deduction_enabled": {
+          "description": "whether to enable missing submission deductions",
+          "example": true,
+          "type": "boolean",
+          "default": false
+        },
+        "missing_submission_deduction": {
+          "description": "amount of percentage points to deduct",
+          "example": 12.34,
+          "type": "number",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 100
+        },
+        "late_submission_deduction_enabled": {
+          "description": "whether to enable late submission deductions",
+          "example": true,
+          "type": "boolean",
+          "default": false
+        },
+        "late_submission_deduction": {
+          "description": "amount of percentage points to deduct per late_submission_interval",
+          "example": 12.34,
+          "type": "number",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 100
+        },
+        "late_submission_interval": {
+          "description": "time interval for late submission deduction",
+          "example": "hour",
+          "type": "string",
+          "default": "day",
+          "enum": [
+            "hour",
+            "day"
+          ]
+        },
+        "late_submission_minimum_percent_enabled": {
+          "description": "whether to enable late submission minimum percent",
+          "example": true,
+          "type": "boolean",
+          "default": false
+        },
+        "late_submission_minimum_percent": {
+          "description": "the minimum score a submission can receive in percentage points",
+          "example": 12.34,
+          "type": "number",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 100
+        },
+        "created_at": {
+          "description": "the time at which this late policy was originally created",
+          "example": "2012-07-01T23:59:00-06:00",
+          "type": "datetime"
+        },
+        "updated_at": {
+          "description": "the time at which this late policy was last modified in any way",
+          "example": "2012-07-01T23:59:00-06:00",
+          "type": "datetime"
+        }
+      }
+    }
+  }
+}
