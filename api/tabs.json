@@ -9,12 +9,12 @@
   "apis": [
     {
       "path": "/v1/courses/{course_id}/tabs",
-      "description": "Returns a list of navigation tabs available in the current context.",
+      "description": "Returns a paginated list of navigation tabs available in the current context.",
       "operations": [
         {
           "method": "GET",
           "summary": "List available tabs for a course or group",
-          "notes": "Returns a list of navigation tabs available in the current context.",
+          "notes": "Returns a paginated list of navigation tabs available in the current context.",
           "nickname": "list_available_tabs_for_course_or_group_courses",
           "parameters": [
             {
@@ -28,7 +28,7 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "Optionally include external tool tabs in the returned list of tabs (Only has effect for courses, not groups)",
+              "description": "\"external\":: Optionally include external tool tabs in the returned list of tabs (Only has effect for courses, not groups)",
               "type": "array",
               "format": null,
               "required": false,
@@ -46,12 +46,12 @@
     },
     {
       "path": "/v1/groups/{group_id}/tabs",
-      "description": "Returns a list of navigation tabs available in the current context.",
+      "description": "Returns a paginated list of navigation tabs available in the current context.",
       "operations": [
         {
           "method": "GET",
           "summary": "List available tabs for a course or group",
-          "notes": "Returns a list of navigation tabs available in the current context.",
+          "notes": "Returns a paginated list of navigation tabs available in the current context.",
           "nickname": "list_available_tabs_for_course_or_group_groups",
           "parameters": [
             {
@@ -65,7 +65,7 @@
             {
               "paramType": "query",
               "name": "include",
-              "description": "Optionally include external tool tabs in the returned list of tabs (Only has effect for courses, not groups)",
+              "description": "\"external\":: Optionally include external tool tabs in the returned list of tabs (Only has effect for courses, not groups)",
               "type": "array",
               "format": null,
               "required": false,
