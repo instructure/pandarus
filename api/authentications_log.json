@@ -28,8 +28,8 @@
             {
               "paramType": "query",
               "name": "start_time",
-              "description": "The beginning of the time range from which you want events.",
-              "type": "datetime",
+              "description": "The beginning of the time range from which you want events.\nEvents are stored for one year.",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -37,7 +37,7 @@
               "paramType": "query",
               "name": "end_time",
               "description": "The end of the time range from which you want events.",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             }
@@ -67,8 +67,8 @@
             {
               "paramType": "query",
               "name": "start_time",
-              "description": "The beginning of the time range from which you want events.",
-              "type": "datetime",
+              "description": "The beginning of the time range from which you want events.\nEvents are stored for one year.",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -76,7 +76,7 @@
               "paramType": "query",
               "name": "end_time",
               "description": "The end of the time range from which you want events.",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             }
@@ -106,8 +106,8 @@
             {
               "paramType": "query",
               "name": "start_time",
-              "description": "The beginning of the time range from which you want events.",
-              "type": "datetime",
+              "description": "The beginning of the time range from which you want events.\nEvents are stored for one year.",
+              "type": "DateTime",
               "format": null,
               "required": false
             },
@@ -115,7 +115,7 @@
               "paramType": "query",
               "name": "end_time",
               "description": "The end of the time range from which you want events.",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             }
