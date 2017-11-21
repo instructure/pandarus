@@ -19136,6 +19136,326 @@ module Pandarus
     end
     
 
+    # Get all Peer Reviews
+    def get_all_peer_reviews_courses_peer_reviews(course_id,assignment_id,opts={})
+      query_param_keys = [
+        :include
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :assignment_id => assignment_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/assignments/{assignment_id}/peer_reviews",
+        :course_id => course_id,
+        :assignment_id => assignment_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, PeerReview, path, query_params)
+      
+
+    end
+    
+
+    # Get all Peer Reviews
+    def get_all_peer_reviews_sections_peer_reviews(section_id,assignment_id,opts={})
+      query_param_keys = [
+        :include
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "section_id is required" if section_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :section_id => section_id,
+        :assignment_id => assignment_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/sections/{section_id}/assignments/{assignment_id}/peer_reviews",
+        :section_id => section_id,
+        :assignment_id => assignment_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, PeerReview, path, query_params)
+      
+
+    end
+    
+
+    # Get all Peer Reviews
+    def get_all_peer_reviews_courses_submissions(course_id,assignment_id,submission_id,opts={})
+      query_param_keys = [
+        :include
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      raise "submission_id is required" if submission_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :assignment_id => assignment_id,
+        :submission_id => submission_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{submission_id}/peer_reviews",
+        :course_id => course_id,
+        :assignment_id => assignment_id,
+        :submission_id => submission_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, PeerReview, path, query_params)
+      
+
+    end
+    
+
+    # Get all Peer Reviews
+    def get_all_peer_reviews_sections_submissions(section_id,assignment_id,submission_id,opts={})
+      query_param_keys = [
+        :include
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "section_id is required" if section_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      raise "submission_id is required" if submission_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :section_id => section_id,
+        :assignment_id => assignment_id,
+        :submission_id => submission_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{submission_id}/peer_reviews",
+        :section_id => section_id,
+        :assignment_id => assignment_id,
+        :submission_id => submission_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, PeerReview, path, query_params)
+      
+
+    end
+    
+
+    # Create Peer Review
+    def create_peer_review_courses(course_id,assignment_id,submission_id,user_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :user_id,
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      raise "submission_id is required" if submission_id.nil?
+      raise "user_id is required" if user_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :assignment_id => assignment_id,
+        :submission_id => submission_id,
+        :user_id => user_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{submission_id}/peer_reviews",
+        :course_id => course_id,
+        :assignment_id => assignment_id,
+        :submission_id => submission_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      PeerReview.new(response)
+      
+
+    end
+    
+
+    # Create Peer Review
+    def create_peer_review_sections(section_id,assignment_id,submission_id,user_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :user_id,
+        
+
+      ]
+
+      # verify existence of params
+      raise "section_id is required" if section_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      raise "submission_id is required" if submission_id.nil?
+      raise "user_id is required" if user_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :section_id => section_id,
+        :assignment_id => assignment_id,
+        :submission_id => submission_id,
+        :user_id => user_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{submission_id}/peer_reviews",
+        :section_id => section_id,
+        :assignment_id => assignment_id,
+        :submission_id => submission_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      PeerReview.new(response)
+      
+
+    end
+    
+
+    # Delete Peer Review
+    def delete_peer_review_courses(course_id,assignment_id,submission_id,user_id,opts={})
+      query_param_keys = [
+        :user_id
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      raise "submission_id is required" if submission_id.nil?
+      raise "user_id is required" if user_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :assignment_id => assignment_id,
+        :submission_id => submission_id,
+        :user_id => user_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{submission_id}/peer_reviews",
+        :course_id => course_id,
+        :assignment_id => assignment_id,
+        :submission_id => submission_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      PeerReview.new(response)
+      
+
+    end
+    
+
+    # Delete Peer Review
+    def delete_peer_review_sections(section_id,assignment_id,submission_id,user_id,opts={})
+      query_param_keys = [
+        :user_id
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "section_id is required" if section_id.nil?
+      raise "assignment_id is required" if assignment_id.nil?
+      raise "submission_id is required" if submission_id.nil?
+      raise "user_id is required" if user_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :section_id => section_id,
+        :assignment_id => assignment_id,
+        :submission_id => submission_id,
+        :user_id => user_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{submission_id}/peer_reviews",
+        :section_id => section_id,
+        :assignment_id => assignment_id,
+        :submission_id => submission_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      PeerReview.new(response)
+      
+
+    end
+    
+
     # List poll sessions for a poll
     def list_poll_sessions_for_poll(poll_id,opts={})
       query_param_keys = [

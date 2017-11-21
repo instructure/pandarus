@@ -1,0 +1,467 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/peer_reviews",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/courses/{course_id}/assignments/{assignment_id}/peer_reviews",
+      "description": "Get a list of all Peer Reviews for this assignment",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get all Peer Reviews",
+          "notes": "Get a list of all Peer Reviews for this assignment",
+          "nickname": "get_all_peer_reviews_courses_peer_reviews",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Associations to include with the peer review.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "enum": [
+                "submission_comments",
+                "user"
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "PeerReview"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/sections/{section_id}/assignments/{assignment_id}/peer_reviews",
+      "description": "Get a list of all Peer Reviews for this assignment",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get all Peer Reviews",
+          "notes": "Get a list of all Peer Reviews for this assignment",
+          "nickname": "get_all_peer_reviews_sections_peer_reviews",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "section_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Associations to include with the peer review.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "enum": [
+                "submission_comments",
+                "user"
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "PeerReview"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{submission_id}/peer_reviews",
+      "description": "Get a list of all Peer Reviews for this assignment",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get all Peer Reviews",
+          "notes": "Get a list of all Peer Reviews for this assignment",
+          "nickname": "get_all_peer_reviews_courses_submissions",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "submission_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Associations to include with the peer review.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "enum": [
+                "submission_comments",
+                "user"
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "PeerReview"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{submission_id}/peer_reviews",
+      "description": "Get a list of all Peer Reviews for this assignment",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get all Peer Reviews",
+          "notes": "Get a list of all Peer Reviews for this assignment",
+          "nickname": "get_all_peer_reviews_sections_submissions",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "section_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "submission_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "Associations to include with the peer review.",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "enum": [
+                "submission_comments",
+                "user"
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "PeerReview"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{submission_id}/peer_reviews",
+      "description": "Create a peer review for the assignment",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create Peer Review",
+          "notes": "Create a peer review for the assignment",
+          "nickname": "create_peer_review_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "submission_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "user_id",
+              "description": "user_id to assign as reviewer on this assignment",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            }
+          ],
+          "type": "PeerReview"
+        }
+      ]
+    },
+    {
+      "path": "/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{submission_id}/peer_reviews",
+      "description": "Create a peer review for the assignment",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create Peer Review",
+          "notes": "Create a peer review for the assignment",
+          "nickname": "create_peer_review_sections",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "section_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "submission_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "user_id",
+              "description": "user_id to assign as reviewer on this assignment",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            }
+          ],
+          "type": "PeerReview"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/assignments/{assignment_id}/submissions/{submission_id}/peer_reviews",
+      "description": "Delete a peer review for the assignment",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete Peer Review",
+          "notes": "Delete a peer review for the assignment",
+          "nickname": "delete_peer_review_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "submission_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "user_id",
+              "description": "user_id to delete as reviewer on this assignment",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            }
+          ],
+          "type": "PeerReview"
+        }
+      ]
+    },
+    {
+      "path": "/v1/sections/{section_id}/assignments/{assignment_id}/submissions/{submission_id}/peer_reviews",
+      "description": "Delete a peer review for the assignment",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete Peer Review",
+          "notes": "Delete a peer review for the assignment",
+          "nickname": "delete_peer_review_sections",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "section_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "submission_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "user_id",
+              "description": "user_id to delete as reviewer on this assignment",
+              "type": "integer",
+              "format": "int64",
+              "required": true
+            }
+          ],
+          "type": "PeerReview"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "PeerReview": {
+      "id": "PeerReview",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "assessor_id": {
+          "description": "The assessors user id",
+          "example": 23,
+          "type": "integer"
+        },
+        "asset_id": {
+          "description": "The id for the asset associated with this Peer Review",
+          "example": 13,
+          "type": "integer"
+        },
+        "asset_type": {
+          "description": "The type of the asset",
+          "example": "Submission",
+          "type": "string"
+        },
+        "id": {
+          "description": "The id of the Peer Review",
+          "example": 1,
+          "type": "integer"
+        },
+        "user_id": {
+          "description": "The user id for the owner of the asset",
+          "example": 7,
+          "type": "integer"
+        },
+        "workflow_state": {
+          "description": "The state of the Peer Review, either 'assigned' or 'completed'",
+          "example": "assigned",
+          "type": "string"
+        },
+        "user": {
+          "description": "the User object for the owner of the asset if the user include parameter is provided (see user API) (optional)",
+          "example": "User",
+          "type": "string"
+        },
+        "assessor": {
+          "description": "The User object for the assessor if the user include parameter is provided (see user API) (optional)",
+          "example": "User",
+          "type": "string"
+        },
+        "submission_comments": {
+          "description": "The submission comments associated with this Peer Review if the submission_comment include parameter is provided (see submissions API) (optional)",
+          "example": "SubmissionComment",
+          "type": "string"
+        }
+      }
+    }
+  }
+}
