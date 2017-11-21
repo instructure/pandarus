@@ -14490,6 +14490,48 @@ module Pandarus
     end
     
 
+    # Select a mastery path
+    def select_mastery_path(course_id,module_id,id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :assignment_set_id,
+        :student_id,
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "module_id is required" if module_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :module_id => module_id,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/modules/{module_id}/items/{id}/select_mastery_path",
+        :course_id => course_id,
+        :module_id => module_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
     # Delete module item
     def delete_module_item(course_id,module_id,id,opts={})
       query_param_keys = [
@@ -14525,6 +14567,46 @@ module Pandarus
 
       response = mixed_request(:delete, path, query_params, form_params, headers)
       ModuleItem.new(response)
+      
+
+    end
+    
+
+    # Mark module item as done/not done
+    def mark_module_item_as_done_not_done(course_id,module_id,id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      raise "module_id is required" if module_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id,
+        :module_id => module_id,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/modules/{module_id}/items/{id}/done",
+        :course_id => course_id,
+        :module_id => module_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      response
       
 
     end

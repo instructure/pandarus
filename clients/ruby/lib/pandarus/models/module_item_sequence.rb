@@ -5,7 +5,7 @@ module Pandarus
   class ModuleItemSequence < ModelBase
     include Virtus.model(finalize: false)
 
-    attribute :items, resolve_type("String")
+    attribute :items, resolve_type("Object", collection: true)
     attribute :modules, resolve_type("Module", collection: true)
     
   end
