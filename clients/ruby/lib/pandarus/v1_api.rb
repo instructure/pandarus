@@ -21894,7 +21894,7 @@ module Pandarus
     # List observees
     def list_observees(user_id,opts={})
       query_param_keys = [
-        
+        :include
 
       ]
 
@@ -21925,7 +21925,7 @@ module Pandarus
     
 
     # Add an observee with credentials
-    def add_observee_with_credentials(user_id,observee__unique_id__,observee__password__,opts={})
+    def add_observee_with_credentials(user_id,opts={})
       query_param_keys = [
         
 
@@ -21934,19 +21934,16 @@ module Pandarus
       form_param_keys = [
         :observee__unique_id__,
         :observee__password__,
+        :access_token,
         
 
       ]
 
       # verify existence of params
       raise "user_id is required" if user_id.nil?
-      raise "observee__unique_id__ is required" if observee__unique_id__.nil?
-      raise "observee__password__ is required" if observee__password__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :user_id => user_id,
-        :observee__unique_id__ => observee__unique_id__,
-        :observee__password__ => observee__password__
+        :user_id => user_id
 
       )
 
