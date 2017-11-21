@@ -1,0 +1,286 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/planner_note",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/planner_notes",
+      "description": "Retrieve the paginated list of planner notes\n\nRetrieve planner note for a user",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List planner notes",
+          "notes": "Retrieve the paginated list of planner notes\n\nRetrieve planner note for a user",
+          "nickname": "list_planner_notes",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "start_date",
+              "description": "Only return notes with todo dates since the start_date (inclusive).\nNo default. The value should be formatted as: yyyy-mm-dd.",
+              "type": "Date",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "end_date",
+              "description": "Only return notes with todo dates before the end_date (inclusive).\nNo default. The value should be formatted as: yyyy-mm-dd.\nIf end_date and start_date are both specified and equivalent,\nthen only notes with todo dates on that day are returned.",
+              "type": "Date",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "context_codes",
+              "description": "List of context codes of courses/users whose notes you want to see.\nIf not specified, defaults to all contexts that the user belongs to.\nThe format of this field is the context type, followed by an\nunderscore, followed by the context id. For example: course_42, user_37",
+              "type": "array",
+              "format": null,
+              "required": false,
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "PlannerNote"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/planner_notes/{id}",
+      "description": "Retrieve a planner note for the current user",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Show a PlannerNote",
+          "notes": "Retrieve a planner note for the current user",
+          "nickname": "show_plannernote",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "PlannerNote"
+        }
+      ]
+    },
+    {
+      "path": "/v1/planner_notes/{id}",
+      "description": "Update a planner note for the current user",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update a PlannerNote",
+          "notes": "Update a planner note for the current user",
+          "nickname": "update_plannernote",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "title",
+              "description": "The title of the planner note.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "details",
+              "description": "Text of the planner note.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "todo_date",
+              "description": "The date where this planner note should appear in the planner.\nThe value should be formatted as: yyyy-mm-dd.",
+              "type": "Date",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course_id",
+              "description": "The ID of the course to associate with the planner note. The caller must be able to view the course in order to\nassociate it with a planner note. Use a null or empty value to remove a planner note from a course. Note that if\nthe planner note is linked to a learning object, its course_id cannot be changed.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            }
+          ],
+          "type": "PlannerNote"
+        }
+      ]
+    },
+    {
+      "path": "/v1/planner_notes",
+      "description": "Create a planner note for the current user",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a planner note",
+          "notes": "Create a planner note for the current user",
+          "nickname": "create_planner_note",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "title",
+              "description": "The title of the planner note.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "details",
+              "description": "Text of the planner note.",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "todo_date",
+              "description": "The date where this planner note should appear in the planner.\nThe value should be formatted as: yyyy-mm-dd.",
+              "type": "Date",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "course_id",
+              "description": "The ID of the course to associate with the planner note. The caller must be able to view the course in order to\nassociate it with a planner note.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "linked_object_type",
+              "description": "The type of a learning object to link to this planner note. Must be used in conjunction wtih linked_object_id\nand course_id. Valid linked_object_type values are:\n'announcement', 'assignment', 'discussion_topic', 'wiki_page', 'quiz'",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "linked_object_id",
+              "description": "The id of a learning object to link to this planner note. Must be used in conjunction with linked_object_type\nand course_id. The object must be in the same course as specified by course_id. If the title argument is not\nprovided, the planner note will use the learning object's title as its title. Only one planner note may be\nlinked to a specific learning object.",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            }
+          ],
+          "type": "PlannerNote"
+        }
+      ]
+    },
+    {
+      "path": "/v1/planner_notes/{id}",
+      "description": "Delete a planner note for the current user",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete a planner note",
+          "notes": "Delete a planner note for the current user",
+          "nickname": "delete_planner_note",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "PlannerNote"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "PlannerNote": {
+      "id": "PlannerNote",
+      "description": "A planner note",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "The ID of the planner note",
+          "example": 234,
+          "type": "integer"
+        },
+        "title": {
+          "description": "The title for a planner note",
+          "example": "Bring books tomorrow",
+          "type": "string"
+        },
+        "description": {
+          "description": "The description of the planner note",
+          "example": "I need to bring books tomorrow for my course on biology",
+          "type": "string"
+        },
+        "user_id": {
+          "description": "The id of the associated user creating the planner note",
+          "example": 1578941,
+          "type": "integer"
+        },
+        "workflow_state": {
+          "description": "The current published state of the planner note",
+          "example": "active",
+          "type": "string"
+        },
+        "course_id": {
+          "description": "The course that the note is in relation too, if applicable",
+          "example": 1578941,
+          "type": "integer"
+        },
+        "todo_date": {
+          "description": "The datetime of when the planner note should show up on their planner",
+          "example": "2017-05-09T10:12:00Z",
+          "type": "datetime"
+        },
+        "linked_object_type": {
+          "description": "the type of the linked learning object",
+          "example": "assignment",
+          "type": "string"
+        },
+        "linked_object_id": {
+          "description": "the id of the linked learning object",
+          "example": 131072,
+          "type": "integer"
+        },
+        "linked_object_html_url": {
+          "description": "the Canvas web URL of the linked learning object",
+          "example": "https://canvas.example.com/courses/1578941/assignments/131072",
+          "type": "string"
+        },
+        "linked_object_url": {
+          "description": "the API URL of the linked learning object",
+          "example": "https://canvas.example.com/api/v1/courses/1578941/assignments/131072",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

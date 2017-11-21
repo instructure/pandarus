@@ -1,0 +1,273 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/planner_override",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/planner/items",
+      "description": "Retrieve the paginated list of objects to be shown on the planner for the\ncurrent user with the associated planner override to override an item's\nvisibility if set.\n\n[\n  {\n    \"context_type\": \"Course\",\n    \"course_id\": 1,\n    \"visible_in_planner\": true, // Whether or not it is displayed on the student planner\n    \"planner_override\": { ... planner override object ... }, // Associated PlannerOverride object if user has toggled visibility for the object on the planner\n    \"submissions\": false, // The statuses of the user's submissions for this object\n    \"plannable_id\": \"123\",\n    \"plannable_type\": \"discussion_topic\",\n    \"plannable\": { ... discussion topic object },\n    \"html_url\": \"/courses/1/discussion_topics/8\"\n  },\n  {\n    \"context_type\": \"Course\",\n    \"course_id\": 1,\n    \"visible_in_planner\": true,\n    \"planner_override\": {\n        \"id\": 3,\n        \"plannable_type\": \"Assignment\",\n        \"plannable_id\": 1,\n        \"user_id\": 2,\n        \"workflow_state\": \"active\",\n        \"marked_complete\": true, // A user-defined setting for marking items complete in the planner\n        \"dismissed\": false, // A user-defined setting for hiding items from the opportunities list\n        \"deleted_at\": null,\n        \"created_at\": \"2017-05-18T18:35:55Z\",\n        \"updated_at\": \"2017-05-18T18:35:55Z\"\n    },\n    \"submissions\": { // The status as it pertains to the current user\n      \"excused\": false,\n      \"graded\": false,\n      \"late\": false,\n      \"missing\": true,\n      \"needs_grading\": false,\n      \"with_feedback\": false\n    },\n    \"plannable_id\": \"456\",\n    \"plannable_type\": \"assignment\",\n    \"plannable\": { ... assignment object ...  },\n    \"html_url\": \"http://canvas.instructure.com/courses/1/assignments/1#submit\"\n  },\n  {\n    \"visible_in_planner\": true,\n    \"planner_override\": null,\n    \"submissions\": false, // false if no associated assignment exists for the plannable item\n    \"plannable_id\": \"789\",\n    \"plannable_type\": \"planner_note\",\n    \"plannable\": {\n      \"id\": 1,\n      \"todo_date\": \"2017-05-30T06:00:00Z\",\n      \"title\": \"hello\",\n      \"details\": \"world\",\n      \"user_id\": 2,\n      \"course_id\": null,\n      \"workflow_state\": \"active\",\n      \"created_at\": \"2017-05-30T16:29:04Z\",\n      \"updated_at\": \"2017-05-30T16:29:15Z\"\n    },\n    \"html_url\": \"http://canvas.instructure.com/api/v1/planner_notes.1\"\n  }\n]",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List planner items",
+          "notes": "Retrieve the paginated list of objects to be shown on the planner for the\ncurrent user with the associated planner override to override an item's\nvisibility if set.\n\n[\n  {\n    \"context_type\": \"Course\",\n    \"course_id\": 1,\n    \"visible_in_planner\": true, // Whether or not it is displayed on the student planner\n    \"planner_override\": { ... planner override object ... }, // Associated PlannerOverride object if user has toggled visibility for the object on the planner\n    \"submissions\": false, // The statuses of the user's submissions for this object\n    \"plannable_id\": \"123\",\n    \"plannable_type\": \"discussion_topic\",\n    \"plannable\": { ... discussion topic object },\n    \"html_url\": \"/courses/1/discussion_topics/8\"\n  },\n  {\n    \"context_type\": \"Course\",\n    \"course_id\": 1,\n    \"visible_in_planner\": true,\n    \"planner_override\": {\n        \"id\": 3,\n        \"plannable_type\": \"Assignment\",\n        \"plannable_id\": 1,\n        \"user_id\": 2,\n        \"workflow_state\": \"active\",\n        \"marked_complete\": true, // A user-defined setting for marking items complete in the planner\n        \"dismissed\": false, // A user-defined setting for hiding items from the opportunities list\n        \"deleted_at\": null,\n        \"created_at\": \"2017-05-18T18:35:55Z\",\n        \"updated_at\": \"2017-05-18T18:35:55Z\"\n    },\n    \"submissions\": { // The status as it pertains to the current user\n      \"excused\": false,\n      \"graded\": false,\n      \"late\": false,\n      \"missing\": true,\n      \"needs_grading\": false,\n      \"with_feedback\": false\n    },\n    \"plannable_id\": \"456\",\n    \"plannable_type\": \"assignment\",\n    \"plannable\": { ... assignment object ...  },\n    \"html_url\": \"http://canvas.instructure.com/courses/1/assignments/1#submit\"\n  },\n  {\n    \"visible_in_planner\": true,\n    \"planner_override\": null,\n    \"submissions\": false, // false if no associated assignment exists for the plannable item\n    \"plannable_id\": \"789\",\n    \"plannable_type\": \"planner_note\",\n    \"plannable\": {\n      \"id\": 1,\n      \"todo_date\": \"2017-05-30T06:00:00Z\",\n      \"title\": \"hello\",\n      \"details\": \"world\",\n      \"user_id\": 2,\n      \"course_id\": null,\n      \"workflow_state\": \"active\",\n      \"created_at\": \"2017-05-30T16:29:04Z\",\n      \"updated_at\": \"2017-05-30T16:29:15Z\"\n    },\n    \"html_url\": \"http://canvas.instructure.com/api/v1/planner_notes.1\"\n  }\n]",
+          "nickname": "list_planner_items",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "start_date",
+              "description": "Only return items starting from the given date.\nThe value should be formatted as: yyyy-mm-dd or ISO 8601 YYYY-MM-DDTHH:MM:SSZ.",
+              "type": "Date",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "end_date",
+              "description": "Only return items up to the given date.\nThe value should be formatted as: yyyy-mm-dd or ISO 8601 YYYY-MM-DDTHH:MM:SSZ.",
+              "type": "Date",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "filter",
+              "description": "Only return items that have new or unread activity",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "new_activity"
+              ]
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/planner/overrides",
+      "description": "Retrieve a planner override for the current user",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List planner overrides",
+          "notes": "Retrieve a planner override for the current user",
+          "nickname": "list_planner_overrides",
+          "parameters": [
+
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "PlannerOverride"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/v1/planner/overrides/{id}",
+      "description": "Retrieve a planner override for the current user",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Show a planner override",
+          "notes": "Retrieve a planner override for the current user",
+          "nickname": "show_planner_override",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "PlannerOverride"
+        }
+      ]
+    },
+    {
+      "path": "/v1/planner/overrides/{id}",
+      "description": "Update a planner override's visibilty for the current user",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update a planner override",
+          "notes": "Update a planner override's visibilty for the current user",
+          "nickname": "update_planner_override",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "marked_complete",
+              "description": "determines whether the planner item is marked as completed",
+              "type": "string",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "dismissed",
+              "description": "determines whether the planner item shows in the opportunities list",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "PlannerOverride"
+        }
+      ]
+    },
+    {
+      "path": "/v1/planner/overrides",
+      "description": "Create a planner override for the current user",
+      "operations": [
+        {
+          "method": "POST",
+          "summary": "Create a planner override",
+          "notes": "Create a planner override for the current user",
+          "nickname": "create_planner_override",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "plannable_type",
+              "description": "Type of the item that you are overriding in the planner",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "announcement",
+                "assignment",
+                "discussion_topic",
+                "quiz",
+                "wiki_page",
+                "planner_note"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "plannable_id",
+              "description": "ID of the item that you are overriding in the planner",
+              "type": "integer",
+              "format": "int64",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "marked_complete",
+              "description": "If this is true, the item will show in the planner as completed",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "dismissed",
+              "description": "If this is true, the item will not show in the opportunities list",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "PlannerOverride"
+        }
+      ]
+    },
+    {
+      "path": "/v1/planner/overrides/{id}",
+      "description": "Delete a planner override for the current user",
+      "operations": [
+        {
+          "method": "DELETE",
+          "summary": "Delete a planner override",
+          "notes": "Delete a planner override for the current user",
+          "nickname": "delete_planner_override",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "PlannerOverride"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "PlannerOverride": {
+      "id": "PlannerOverride",
+      "description": "User-controlled setting for whether an item should be displayed on the planner or not",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "The ID of the planner override",
+          "example": 234,
+          "type": "integer"
+        },
+        "plannable_type": {
+          "description": "The type of the associated object for the planner override",
+          "example": "Assignment",
+          "type": "string"
+        },
+        "plannable_id": {
+          "description": "The id of the associated object for the planner override",
+          "example": 1578941,
+          "type": "integer"
+        },
+        "user_id": {
+          "description": "The id of the associated user for the planner override",
+          "example": 1578941,
+          "type": "integer"
+        },
+        "workflow_state": {
+          "description": "The current published state of the item, synced with the associated object",
+          "example": "published",
+          "type": "string"
+        },
+        "marked_complete": {
+          "description": "Controls whether or not the associated plannable item is marked complete on the planner",
+          "example": false,
+          "type": "boolean"
+        },
+        "dismissed": {
+          "description": "Controls whether or not the associated plannable item shows up in the opportunities list",
+          "example": false,
+          "type": "boolean"
+        },
+        "created_at": {
+          "description": "The datetime of when the planner override was created",
+          "example": "2017-05-09T10:12:00Z",
+          "type": "datetime"
+        },
+        "updated_at": {
+          "description": "The datetime of when the planner override was updated",
+          "example": "2017-05-09T10:12:00Z",
+          "type": "datetime"
+        },
+        "deleted_at": {
+          "description": "The datetime of when the planner override was deleted, if applicable",
+          "example": "2017-05-15T12:12:00Z",
+          "type": "datetime"
+        }
+      }
+    }
+  }
+}

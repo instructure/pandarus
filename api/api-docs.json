@@ -227,6 +227,14 @@
       "description": "Plagiarism Detection Platform Users"
     },
     {
+      "path": "/planner_note.json",
+      "description": "Planner Note"
+    },
+    {
+      "path": "/planner_override.json",
+      "description": "Planner override"
+    },
+    {
       "path": "/poll_sessions.json",
       "description": "Poll Sessions"
     },

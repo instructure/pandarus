@@ -19456,6 +19456,393 @@ module Pandarus
     end
     
 
+    # List planner notes
+    def list_planner_notes(opts={})
+      query_param_keys = [
+        :start_date,
+        :end_date,
+        :context_codes
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        {}
+      
+
+      )
+
+      # resource path
+      path = path_replace("/v1/planner_notes",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, PlannerNote, path, query_params)
+      
+
+    end
+    
+
+    # Show a PlannerNote
+    def show_plannernote(id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/planner_notes/{id}",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      PlannerNote.new(response)
+      
+
+    end
+    
+
+    # Update a PlannerNote
+    def update_plannernote(id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :title,
+        :details,
+        :todo_date,
+        :course_id,
+        
+
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/planner_notes/{id}",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      PlannerNote.new(response)
+      
+
+    end
+    
+
+    # Create a planner note
+    def create_planner_note(opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :title,
+        :details,
+        :todo_date,
+        :course_id,
+        :linked_object_type,
+        :linked_object_id,
+        
+
+      ]
+
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        {}
+      
+
+      )
+
+      # resource path
+      path = path_replace("/v1/planner_notes",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      PlannerNote.new(response)
+      
+
+    end
+    
+
+    # Delete a planner note
+    def delete_planner_note(id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/planner_notes/{id}",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      PlannerNote.new(response)
+      
+
+    end
+    
+
+    # List planner items
+    def list_planner_items(opts={})
+      query_param_keys = [
+        :start_date,
+        :end_date,
+        :filter
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        {}
+      
+
+      )
+
+      # resource path
+      path = path_replace("/v1/planner/items",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # List planner overrides
+    def list_planner_overrides(opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        {}
+      
+
+      )
+
+      # resource path
+      path = path_replace("/v1/planner/overrides",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, PlannerOverride, path, query_params)
+      
+
+    end
+    
+
+    # Show a planner override
+    def show_planner_override(id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/planner/overrides/{id}",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      PlannerOverride.new(response)
+      
+
+    end
+    
+
+    # Update a planner override
+    def update_planner_override(id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :marked_complete,
+        :dismissed,
+        
+
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/planner/overrides/{id}",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      PlannerOverride.new(response)
+      
+
+    end
+    
+
+    # Create a planner override
+    def create_planner_override(opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :plannable_type,
+        :plannable_id,
+        :marked_complete,
+        :dismissed,
+        
+
+      ]
+
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        {}
+      
+
+      )
+
+      # resource path
+      path = path_replace("/v1/planner/overrides",
+        )
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:post, path, query_params, form_params, headers)
+      PlannerOverride.new(response)
+      
+
+    end
+    
+
+    # Delete a planner override
+    def delete_planner_override(id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/planner/overrides/{id}",
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:delete, path, query_params, form_params, headers)
+      PlannerOverride.new(response)
+      
+
+    end
+    
+
     # List poll sessions for a poll
     def list_poll_sessions_for_poll(poll_id,opts={})
       query_param_keys = [
