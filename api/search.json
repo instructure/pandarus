@@ -20,7 +20,7 @@
             {
               "paramType": "query",
               "name": "search",
-              "description": "Search terms used for matching users/courses/groups (e.g. \"bob smith\"). If multiple terms are given (separated via whitespace), only results matching all terms will be returned.",
+              "description": "Search terms used for matching users/courses/groups (e.g. \"bob smith\"). If\nmultiple terms are given (separated via whitespace), only results matching\nall terms will be returned.",
               "type": "string",
               "format": null,
               "required": false
@@ -36,7 +36,7 @@
             {
               "paramType": "query",
               "name": "exclude",
-              "description": "Array of ids to exclude from the search. These may be user ids or course/group ids prefixed with \"course_\" or \"group_\" respectively, e.g. exclude[]=1&exclude[]=2&exclude[]=course_3",
+              "description": "Array of ids to exclude from the search. These may be user ids or\ncourse/group ids prefixed with \"course_\" or \"group_\" respectively,\ne.g. exclude[]=1&exclude[]=2&exclude[]=course_3",
               "type": "array",
               "format": null,
               "required": false,
@@ -59,7 +59,7 @@
             {
               "paramType": "query",
               "name": "user_id",
-              "description": "Search for a specific user id. This ignores the other above parameters, and will never return more than one result.",
+              "description": "Search for a specific user id. This ignores the other above parameters,\nand will never return more than one result.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -67,7 +67,7 @@
             {
               "paramType": "query",
               "name": "from_conversation_id",
-              "description": "When searching by user_id, only users that could be normally messaged by this user will be returned. This parameter allows you to specify a conversation that will be referenced for a shared context -- if both the current user and the searched user are in the conversation, the user will be returned. This is used to start new side conversations.",
+              "description": "When searching by user_id, only users that could be normally messaged by\nthis user will be returned. This parameter allows you to specify a\nconversation that will be referenced for a shared context -- if both the\ncurrent user and the searched user are in the conversation, the user will\nbe returned. This is used to start new side conversations.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -75,7 +75,7 @@
             {
               "paramType": "query",
               "name": "permissions",
-              "description": "Array of permission strings to be checked for each matched context (e.g. \"send_messages\"). This argument determines which permissions may be returned in the response; it won't prevent contexts from being returned if they don't grant the permission(s).",
+              "description": "Array of permission strings to be checked for each matched context (e.g.\n\"send_messages\"). This argument determines which permissions may be\nreturned in the response; it won't prevent contexts from being returned if\nthey don't grant the permission(s).",
               "type": "array",
               "format": null,
               "required": false,
@@ -101,7 +101,7 @@
             {
               "paramType": "query",
               "name": "search",
-              "description": "Search terms used for matching users/courses/groups (e.g. \"bob smith\"). If multiple terms are given (separated via whitespace), only results matching all terms will be returned.",
+              "description": "Search terms used for matching users/courses/groups (e.g. \"bob smith\"). If\nmultiple terms are given (separated via whitespace), only results matching\nall terms will be returned.",
               "type": "string",
               "format": null,
               "required": false
@@ -117,7 +117,7 @@
             {
               "paramType": "query",
               "name": "exclude",
-              "description": "Array of ids to exclude from the search. These may be user ids or course/group ids prefixed with \"course_\" or \"group_\" respectively, e.g. exclude[]=1&exclude[]=2&exclude[]=course_3",
+              "description": "Array of ids to exclude from the search. These may be user ids or\ncourse/group ids prefixed with \"course_\" or \"group_\" respectively,\ne.g. exclude[]=1&exclude[]=2&exclude[]=course_3",
               "type": "array",
               "format": null,
               "required": false,
@@ -140,7 +140,7 @@
             {
               "paramType": "query",
               "name": "user_id",
-              "description": "Search for a specific user id. This ignores the other above parameters, and will never return more than one result.",
+              "description": "Search for a specific user id. This ignores the other above parameters,\nand will never return more than one result.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -148,7 +148,7 @@
             {
               "paramType": "query",
               "name": "from_conversation_id",
-              "description": "When searching by user_id, only users that could be normally messaged by this user will be returned. This parameter allows you to specify a conversation that will be referenced for a shared context -- if both the current user and the searched user are in the conversation, the user will be returned. This is used to start new side conversations.",
+              "description": "When searching by user_id, only users that could be normally messaged by\nthis user will be returned. This parameter allows you to specify a\nconversation that will be referenced for a shared context -- if both the\ncurrent user and the searched user are in the conversation, the user will\nbe returned. This is used to start new side conversations.",
               "type": "integer",
               "format": "int64",
               "required": false
@@ -156,7 +156,7 @@
             {
               "paramType": "query",
               "name": "permissions",
-              "description": "Array of permission strings to be checked for each matched context (e.g. \"send_messages\"). This argument determines which permissions may be returned in the response; it won't prevent contexts from being returned if they don't grant the permission(s).",
+              "description": "Array of permission strings to be checked for each matched context (e.g.\n\"send_messages\"). This argument determines which permissions may be\nreturned in the response; it won't prevent contexts from being returned if\nthey don't grant the permission(s).",
               "type": "array",
               "format": null,
               "required": false,
@@ -171,18 +171,18 @@
     },
     {
       "path": "/v1/search/all_courses",
-      "description": "List all courses visible in the public index",
+      "description": "A paginated list of all courses visible in the public index",
       "operations": [
         {
           "method": "GET",
           "summary": "List all courses",
-          "notes": "List all courses visible in the public index",
+          "notes": "A paginated list of all courses visible in the public index",
           "nickname": "list_all_courses",
           "parameters": [
             {
               "paramType": "query",
               "name": "search",
-              "description": "Search terms used for matching users/courses/groups (e.g. \"bob smith\"). If multiple terms are given (separated via whitespace), only results matching all terms will be returned.",
+              "description": "Search terms used for matching users/courses/groups (e.g. \"bob smith\"). If\nmultiple terms are given (separated via whitespace), only results matching\nall terms will be returned.",
               "type": "string",
               "format": null,
               "required": false
