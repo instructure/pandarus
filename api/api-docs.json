@@ -319,6 +319,10 @@
       "description": "Roles"
     },
     {
+      "path": "/rubrics.json",
+      "description": "Rubrics"
+    },
+    {
       "path": "/sis_imports.json",
       "description": "SIS Imports"
     },

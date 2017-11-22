@@ -1,0 +1,293 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/rubrics",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/v1/accounts/{account_id}/rubrics",
+      "description": "Returns the paginated list of active rubrics for the current context.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List rubrics",
+          "notes": "Returns the paginated list of active rubrics for the current context.",
+          "nickname": "list_rubrics_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/rubrics",
+      "description": "Returns the paginated list of active rubrics for the current context.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List rubrics",
+          "notes": "Returns the paginated list of active rubrics for the current context.",
+          "nickname": "list_rubrics_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/rubrics/{id}",
+      "description": "Returns the rubric with the given id.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single rubric",
+          "notes": "Returns the rubric with the given id.",
+          "nickname": "get_single_rubric_accounts",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "If included, the type of associated rubric assessments to return. If not included, assessments will be omitted.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "assessments",
+                "graded_assessments",
+                "peer_assessments"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "style",
+              "description": "Applicable only if assessments are being returned. If included, returns either all criteria data associated with the assessment, or just the comments. If not included, both data and comments are omitted.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "full",
+                "comments_only"
+              ]
+            }
+          ],
+          "type": "Rubric"
+        }
+      ]
+    },
+    {
+      "path": "/v1/courses/{course_id}/rubrics/{id}",
+      "description": "Returns the rubric with the given id.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single rubric",
+          "notes": "Returns the rubric with the given id.",
+          "nickname": "get_single_rubric_courses",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "course_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "include",
+              "description": "If included, the type of associated rubric assessments to return. If not included, assessments will be omitted.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "assessments",
+                "graded_assessments",
+                "peer_assessments"
+              ]
+            },
+            {
+              "paramType": "query",
+              "name": "style",
+              "description": "Applicable only if assessments are being returned. If included, returns either all criteria data associated with the assessment, or just the comments. If not included, both data and comments are omitted.",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "full",
+                "comments_only"
+              ]
+            }
+          ],
+          "type": "Rubric"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "Rubric": {
+      "id": "Rubric",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "the ID of the rubric",
+          "example": 1,
+          "type": "integer"
+        },
+        "title": {
+          "description": "title of the rubric",
+          "example": "some title",
+          "type": "string"
+        },
+        "context_id": {
+          "description": "the context owning the rubric",
+          "example": 1,
+          "type": "integer"
+        },
+        "context_type": {
+          "example": "Course",
+          "type": "string"
+        },
+        "points_possible": {
+          "example": "10.0",
+          "type": "integer"
+        },
+        "reusable": {
+          "example": "false",
+          "type": "boolean"
+        },
+        "read_only": {
+          "example": "true",
+          "type": "boolean"
+        },
+        "free_form_criterion_comments": {
+          "description": "whether or not free-form comments are used",
+          "example": "true",
+          "type": "boolean"
+        },
+        "hide_score_total": {
+          "example": "true",
+          "type": "boolean"
+        },
+        "assessments": {
+          "description": "If an assessment type is included in the 'include' parameter, includes an array of rubric assessment objects for a given rubric, based on the assessment type requested. If the user does not request an assessment type this key will be absent.",
+          "type": "array",
+          "items": {
+            "$ref": "RubricAssessment"
+          }
+        }
+      }
+    },
+    "RubricAssessment": {
+      "id": "RubricAssessment",
+      "description": "",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "description": "the ID of the rubric",
+          "example": 1,
+          "type": "integer"
+        },
+        "rubric_id": {
+          "description": "the rubric the assessment belongs to",
+          "example": 1,
+          "type": "integer"
+        },
+        "rubric_association_id": {
+          "example": "2",
+          "type": "integer"
+        },
+        "score": {
+          "example": "5.0",
+          "type": "integer"
+        },
+        "artifact_type": {
+          "description": "the object of the assessment",
+          "example": "Submission",
+          "type": "string"
+        },
+        "artifact_id": {
+          "description": "the id of the object of the assessment",
+          "example": "3",
+          "type": "integer"
+        },
+        "artifact_attempt": {
+          "description": "the current number of attempts made on the object of the assessment",
+          "example": "2",
+          "type": "integer"
+        },
+        "assessment_type": {
+          "description": "the type of assessment. values will be either 'grading', 'peer_review', or 'provisional_grade'",
+          "example": "grading",
+          "type": "string"
+        },
+        "assessor_id": {
+          "description": "user id of the person who made the assessment",
+          "example": "6",
+          "type": "integer"
+        },
+        "data": {
+          "description": "(Optional) If 'full' is included in the 'style' parameter, returned assessments will have their full details contained in their data hash. If the user does not request a style, this key will be absent.",
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "comments": {
+          "description": "(Optional) If 'comments_only' is included in the 'style' parameter, returned assessments will include only the comments portion of their data hash. If the user does not request a style, this key will be absent.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
