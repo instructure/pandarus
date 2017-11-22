@@ -30,7 +30,6 @@ cd "$SCRIPT_DIR" && (
   rm -rf ./api &&
   mkdir api &&
   cp ${CANVAS_DIR}/public/doc/api/*.json api/
-	git checkout -- api/notification_preferences.json
 	git checkout -- api/quiz_submission_questions.json
 	git checkout -- api/sis_imports.json
 	rm api/authentication_providers.json

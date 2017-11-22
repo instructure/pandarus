@@ -16566,6 +16566,43 @@ module Pandarus
     end
     
 
+    # List of preference categories
+    def list_of_preference_categories(user_id,communication_channel_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "user_id is required" if user_id.nil?
+      raise "communication_channel_id is required" if communication_channel_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :user_id => user_id,
+        :communication_channel_id => communication_channel_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{user_id}/communication_channels/{communication_channel_id}/notification_preference_categories",
+        :user_id => user_id,
+        :communication_channel_id => communication_channel_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
     # Get a preference
     def get_preference_communication_channel_id(user_id,communication_channel_id,notification,opts={})
       query_param_keys = [
@@ -16721,6 +16758,46 @@ module Pandarus
         :type => type,
         :address => address,
         :notification => notification)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Update preferences by category
+    def update_preferences_by_category(communication_channel_id,category,notification_preferences__frequency__,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        :notification_preferences__frequency__,
+        
+
+      ]
+
+      # verify existence of params
+      raise "communication_channel_id is required" if communication_channel_id.nil?
+      raise "category is required" if category.nil?
+      raise "notification_preferences__frequency__ is required" if notification_preferences__frequency__.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :communication_channel_id => communication_channel_id,
+        :category => category,
+        :notification_preferences__frequency__ => notification_preferences__frequency__
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/self/communication_channels/{communication_channel_id}/notification_preference_categories/{category}",
+        :communication_channel_id => communication_channel_id,
+        :category => category)
       headers = nil
       form_params = select_params(options, form_param_keys)
       query_params = select_query_params(options, query_param_keys)

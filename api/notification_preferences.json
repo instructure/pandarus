@@ -84,6 +84,37 @@
       ]
     },
     {
+      "path": "/v1/users/{user_id}/communication_channels/{communication_channel_id}/notification_preference_categories",
+      "description": "Fetch all notification preference categories for the given communication channel",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "List of preference categories",
+          "notes": "Fetch all notification preference categories for the given communication channel",
+          "nickname": "list_of_preference_categories",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "user_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "communication_channel_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
       "path": "/v1/users/{user_id}/communication_channels/{communication_channel_id}/notification_preferences/{notification}",
       "description": "Fetch the preference for the given notification for the given communicaiton channel",
       "operations": [
@@ -246,6 +277,45 @@
               "paramType": "form",
               "name": "notification_preferences[frequency]",
               "description": "The desired frequency for this notification",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "void"
+        }
+      ]
+    },
+    {
+      "path": "/v1/users/self/communication_channels/{communication_channel_id}/notification_preference_categories/{category}",
+      "description": "Change the preferences for multiple notifications based on the category for a single communication channel",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Update preferences by category",
+          "notes": "Change the preferences for multiple notifications based on the category for a single communication channel",
+          "nickname": "update_preferences_by_category",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "communication_channel_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "category",
+              "description": "The name of the category. Must be parameterized (e.g. The category \"Course Content\" should be \"course_content\")",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "notification_preferences[frequency]",
+              "description": "The desired frequency for each notification in the category",
               "type": "string",
               "format": null,
               "required": true
