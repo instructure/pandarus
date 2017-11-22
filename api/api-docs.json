@@ -47,6 +47,10 @@
       "description": "Assignments"
     },
     {
+      "path": "/authentication_providers.json",
+      "description": "Authentication Providers"
+    },
+    {
       "path": "/authentications_log.json",
       "description": "Authentications Log"
     },

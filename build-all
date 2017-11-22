@@ -30,7 +30,6 @@ cd "$SCRIPT_DIR" && (
   rm -rf ./api &&
   mkdir api &&
   cp ${CANVAS_DIR}/public/doc/api/*.json api/
-	rm api/authentication_providers.json
 	rm api/rubrics.json
   ruby normalize-manifest
 )
