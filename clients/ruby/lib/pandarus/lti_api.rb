@@ -223,8 +223,42 @@ module Pandarus
     end
     
 
-    # Get a single user
-    def get_single_user(id,opts={})
+    # Get a single assignment (lti)
+    def get_single_assignment_lti(assignment_id,opts={})
+      query_param_keys = [
+        :user_id
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "assignment_id is required" if assignment_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :assignment_id => assignment_id
+
+      )
+
+      # resource path
+      path = path_replace("/lti/assignments/{assignment_id}",
+        :assignment_id => assignment_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      LtiAssignment.new(response)
+      
+
+    end
+    
+
+    # Get a single user (lti)
+    def get_single_user_lti(id,opts={})
       query_param_keys = [
         
 
@@ -251,7 +285,7 @@ module Pandarus
       query_params = select_query_params(options, query_param_keys)
 
       response = mixed_request(:get, path, query_params, form_params, headers)
-      response
+      User.new(response)
       
 
     end

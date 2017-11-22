@@ -223,6 +223,10 @@
       "description": "Peer Reviews"
     },
     {
+      "path": "/plagiarism_detection_platform_assignments.json",
+      "description": "Plagiarism Detection Platform Assignments"
+    },
+    {
       "path": "/plagiarism_detection_platform_users.json",
       "description": "Plagiarism Detection Platform Users"
     },

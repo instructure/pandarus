@@ -1,0 +1,78 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://canvas.instructure.com/api",
+  "resourcePath": "/plagiarism_detection_platform_assignments",
+  "produces": [
+    "application/json"
+  ],
+  "apis": [
+    {
+      "path": "/lti/assignments/{assignment_id}",
+      "description": "Get a single Canvas assignment by Canvas id or LTI id. Tool providers may only access\nassignments that are associated with their tool.",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Get a single assignment (lti)",
+          "notes": "Get a single Canvas assignment by Canvas id or LTI id. Tool providers may only access\nassignments that are associated with their tool.",
+          "nickname": "get_single_assignment_lti",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "assignment_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "user_id",
+              "description": "The id of the user. Can be a Canvas or LTI id for the user.",
+              "type": "string",
+              "format": null,
+              "required": false
+            }
+          ],
+          "type": "LtiAssignment"
+        }
+      ]
+    }
+  ],
+  "models": {
+    "LtiAssignment": {
+      "id": "LtiAssignment",
+      "description": "A Canvas assignment",
+      "required": [
+
+      ],
+      "properties": {
+        "id": {
+          "example": 4,
+          "type": "integer"
+        },
+        "name": {
+          "example": "Midterm Review",
+          "type": "string"
+        },
+        "description": {
+          "example": "<p>Do the following:</p>...",
+          "type": "string"
+        },
+        "points_possible": {
+          "example": 10,
+          "type": "integer"
+        },
+        "due_at": {
+          "description": "The due date for the assignment. If a user id is supplied and an assignment override is in place this field will reflect the due date as it applies to the user.",
+          "example": "2012-07-01T23:59:00-06:00",
+          "type": "datetime"
+        },
+        "lti_id": {
+          "example": "86157096483e6b3a50bfedc6bac902c0b20a824f",
+          "type": "string"
+        }
+      }
+    }
+  }
+}
