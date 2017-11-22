@@ -7,7 +7,7 @@ popd > /dev/null
 # Set CANVAS_DIR if not set in the environment
 : ${CANVAS_DIR:="$SCRIPT_DIR/../canvas-lms"}
 
-# [OPTIONAL]: Build the Canvas API docs and corresponding JSON files.
+# Build the Canvas API docs and corresponding JSON files.
 #
 # Comment this out if you don't want to re-generate the Canvas API spec.
 set -x
@@ -18,7 +18,7 @@ cd "$CANVAS_DIR" && (
   CANVAS_DOMAIN="https://canvas.instructure.com" bundle exec rake doc:api
 )
 
-# [OPTIONAL]: Remove the pandarus/api directory and re-populate it with JSON
+# Remove the pandarus/api directory and re-populate it with JSON
 # files from the Canvas "rake doc:api" process.
 #
 # Comment this out if you don't want to overwrite the Pandarus gem's built-in

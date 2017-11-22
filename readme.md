@@ -1,69 +1,132 @@
-What is Pandarus?
-=================
+# What is Pandarus?
 
-Pandarus is a Ruby gem that makes it easy to access to the full Canvas API. It is also a code generator that has the potential to generate Canvas API support for other programming languages.
+Pandarus is a Ruby gem client library for the Canvas LMS API.  It is
+auto-generated from the Canvas api documentation.
 
-Pandarus uses the Swagger spec. It depends on the canvas-lms API documentation to be accurate. If the documentation is accurate, the generated code should work. Because Pandarus is still fairly new, there are cases where the documentation hasn't been corrected, or where the code generation is not complete. Please feel free to make corrections in either case by adding pull requests.
+Included in this repo is also the code generator that has the potential to
+generate Canvas API support for other programming languages.
 
-Installation
-------------
+Pandarus uses the Swagger 1.2 spec. It depends on the canvas-lms API documentation
+to be accurate. If the documentation is accurate, the generated code should
+work. However, there are several known cases where the api documentation cannot
+conform to the spec, and these cases are broken.  We'll try to document known
+broken cases below.
+
+## Warning
+
+Please think carefully about whether or not Pandarus makes sense for your use
+case. It might make sense to write a smaller wrapper around just the api
+endpoints that you need.
+
+**Potential Risks:**
+
+- Pandarus relies on the Canvas API documentation to be accurate. Since there's
+  nothing directly tying the API documentation to API response generation, it's
+  possible for these to get out of sync.
+- It's also possible for the API documentation to be accurate but malformed
+  w.r.t the Swagger spec, causing problems with code generation. We've
+  considered trying to add a validation step to the build, but don't have firm
+  plans to do so at this time.
+- There are cases where the Canvas API returns values (such as arrays of
+  arrays) that are not possible to represent with the Swagger 1.2 spec.
+- Pandarus is built against the master branch at a certain point in time, and
+  so could contain both APIs that have not yet been deployed to production, or
+  after some time has passed, could fall behind what is deployed to production.
+- Pandarus ignores the "beta" tag on some canvas apis, meaning there is
+  potential for endpoints in Pandarus to change from version to version.
+- Pandarus caches all results in memory by default. For querying large
+  datasets, this can become a problem.  Pass `cache_pages: false` to disable
+  this.
+- We currently don't have a very robust test suite for the generated code.
+  There are a few tests, and then run on every update and pass, which prevents
+  the worst kinds of codegen issues from creeping in, but there are probably
+  still lots of issues with individual endpoints lurking.
+
+**Potential Benefits:**
+- Pandarus is "complete", in that it should contain all documented API
+  endpoints.
+- It's pretty easy to get started and play around with the API.
+
+Pandarus was created internally as an experiment, and is only used sporadically
+internally. As such, it's only updated sporadically as well. It's provided as
+a way to experiment with the Canvas API, but **please understand the risks
+before using it in a production application**.
+
+## Installation
 
 ```
 gem install pandarus
 ```
 
-Example Usage
--------------
+## Example Usage
 
-```
+```ruby
 require 'pandarus'
 
 client = Pandarus::Client.new(
   prefix: "https://pandamonium.instructure.com/api",
   token: "[YOUR API TOKEN HERE]")
 
-client.get_single_course_courses(17, '')
+client.get_single_course_courses(1)
 
-# => <Pandarus::Course :id=>17, :sis_course_id=>"PANDA-101", :name=>"Pandarus: Canvas API Access", :course_code=>"PANDA-101", :workflow_state=>"available", :account_id=>2, :root_account_id=>nil, :start_at=>"2014-01-27T18:16:00Z", :end_at=>nil, :enrollments=>[{"type"=>"teacher", "role"=>"TeacherEnrollment"}], :calendar=>{"ics"=>"https://pandamonium.instructure.com/feeds/calendars/course_RyNBDB2Rtt5rxd9koFq3QbAxx1AqCimyN6xWYEmW.ics"}, :default_view=>"wiki", :syllabus_body=>nil, :needs_grading_count=>nil, :term=>nil, :apply_assignment_group_weights=>false, :permissions=>nil, :is_public=>nil, :public_syllabus=>true, :public_description=>nil, :storage_quota_mb=>500, :hide_final_grades=>false, :license=>nil, :allow_student_assignment_edits=>nil, :allow_wiki_comments=>nil, :allow_student_forum_attachments=>nil, :open_enrollment=>nil, :self_enrollment=>nil, :restrict_enrollments_to_course_dates=>nil>
+# => <Pandarus::Course :id=>1 ...>
 ```
 
-
-Documentation
--------------
+## Documentation
 
 See the Canvas API documentation that Pandarus is built from:
 
 http://api.instructure.com/
 
-Pandarus method names are very similar to the descriptions in the documentation. If you follow three rules, you will be able to access the full API:
+Pandarus method names are very similar to the descriptions in the
+documentation. If you follow three rules, you will be able to access the full
+API:
 
 1. All descriptions get lower-cased and spaces become underscores
 2. If there is an 'a', 'an' or 'the' in the description, ignore it
-3. If there are two ways to access an API call (such as via /courses and /sections) then add a _courses or _sections suffix
+3. If there are two ways to access an API call (such as via `/courses` and
+   `/sections`) then add a `_courses` or `_sections` suffix
 
 **Examples:**
 
-- The API documentation describes a "Get a single account" API. This becomes "get_single_account"
-- "Reserve a time slot" becomes "reserve_time_slot"
-- "Get a single course" becomes EITHER "get_single_course_courses" OR "get_single_course_accounts" because there are two ways to access the API.
+- The API documentation describes a "Get a single account" API. This becomes
+  `get_single_account`
+- "Reserve a time slot" becomes `reserve_time_slot`
+- "Get a single course" becomes EITHER `get_single_course_courses` OR
+  `get_single_course_accounts` because there are two ways to access the API.
 
-Code Generation
----------------
+## Code Generation
 
 To generate the Ruby gem from Canvas's api-docs.json file:
 
-1. Install maven (e.g. ```brew install maven```)
+1. Install Java 1.8 SDK
+2. Install maven (e.g. `brew install maven`)
+3. Set the environment variable `CANVAS_DIR` if your canvas checkout is not
+   located at the relative path `../canvas-lms`.
+4. Run `./build-all`
 
-2. [Optional] Set the environment variable `CANVAS_DIR` if your canvas checkout is not located at the relative path `../canvas-lms`
+## Directory Structure
 
-3. Run ```./build-all```
+- [`api/`](api/) - This is a copy of the api swagger docs generated by canvas. It is
+  autogenerated and should not be modified by hand.
+- [`clients/`](clients/) - This is where the Ruby gem lives.
+  - `clients/ruby/lib/pandarus/{models/*,api_base.rb,models.rb}` are all
+    auto-generated.
+  - [`api_base.rb`](clients/ruby/lib/pandarus/api_base.rb) is where all the
+    individual api calls live.
+- [`codegen/`](codegen/) - This is the scala code that uses Swagger to run the
+  code gen.
 
-(requires Java 1.7, may work on 1.6 but OOM errors have cropped up)
+## Known Issues
 
-Authors
--------
+- Group Categories "Assign unassigned members" returns two different object
+  types (`GroupMembership` or `Progress`) depending on the input params, which
+  Swagger does not handle.
+- The SisImport object has two fields `processing_warnings` and
+  `processing_errors` which are arrays of arrays. This datatype can't be
+  expressed in Swagger.
 
-Duane Johnson -- duane@instructure.com
+## TODO
 
-Eric Adams -- eadams@instructure.com
-
+- Look into validation of the swagger json files with
+  https://github.com/apigee-127/swagger-tools
