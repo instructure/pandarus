@@ -16,6 +16,9 @@ module Pandarus
     attribute :groups, resolve_type("Integer")
     attribute :group_memberships, resolve_type("Integer")
     attribute :grade_publishing_results, resolve_type("Integer")
+    attribute :batch_courses_deleted, resolve_type("Integer")
+    attribute :batch_sections_deleted, resolve_type("Integer")
+    attribute :batch_enrollments_deleted, resolve_type("Integer")
     
   end
 end

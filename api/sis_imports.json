@@ -29,7 +29,7 @@
               "paramType": "query",
               "name": "created_since",
               "description": "If set, only shows imports created after the specified date (use ISO8601 format)",
-              "type": "datetime",
+              "type": "DateTime",
               "format": null,
               "required": false
             }
@@ -62,7 +62,7 @@
             {
               "paramType": "form",
               "name": "import_type",
-              "description": "Choose the data format for reading SIS data. With a standard Canvas install, this option can only be 'instructure_csv', and if unprovided, will be assumed to be so. Can be part of the query string.",
+              "description": "Choose the data format for reading SIS data. With a standard Canvas\ninstall, this option can only be 'instructure_csv', and if unprovided,\nwill be assumed to be so. Can be part of the query string.",
               "type": "string",
               "format": null,
               "required": false
@@ -70,7 +70,7 @@
             {
               "paramType": "form",
               "name": "attachment",
-              "description": "There are two ways to post SIS import data - either via a multipart/form-data form-field-style attachment, or via a non-multipart raw post request. 'attachment' is required for multipart/form-data style posts. Assumed to be SIS data from a file upload form field named 'attachment'. Examples: curl -F attachment=@<filename> -H \"Authorization: Bearer <token>\" \\ 'https://<canvas>/api/v1/accounts/<account_id>/sis_imports.json?import_type=instructure_csv' If you decide to do a raw post, you can skip the 'attachment' argument, but you will then be required to provide a suitable Content-Type header. You are encouraged to also provide the 'extension' argument. Examples: curl -H 'Content-Type: application/octet-stream' --data-binary @<filename>.zip \\ -H \"Authorization: Bearer <token>\" \\ 'https://<canvas>/api/v1/accounts/<account_id>/sis_imports.json?import_type=instructure_csv&extension=zip' curl -H 'Content-Type: application/zip' --data-binary @<filename>.zip \\ -H \"Authorization: Bearer <token>\" \\ 'https://<canvas>/api/v1/accounts/<account_id>/sis_imports.json?import_type=instructure_csv' curl -H 'Content-Type: text/csv' --data-binary @<filename>.csv \\ -H \"Authorization: Bearer <token>\" \\ 'https://<canvas>/api/v1/accounts/<account_id>/sis_imports.json?import_type=instructure_csv' curl -H 'Content-Type: text/csv' --data-binary @<filename>.csv \\ -H \"Authorization: Bearer <token>\" \\ 'https://<canvas>/api/v1/accounts/<account_id>/sis_imports.json?import_type=instructure_csv&batch_mode=1&batch_mode_term_id=15'",
+              "description": "There are two ways to post SIS import data - either via a\nmultipart/form-data form-field-style attachment, or via a non-multipart\nraw post request.\n\n'attachment' is required for multipart/form-data style posts. Assumed to\nbe SIS data from a file upload form field named 'attachment'.\n\nExamples:\n  curl -F attachment=@<filename> -H \"Authorization: Bearer <token>\" \\\n      'https://<canvas>/api/v1/accounts/<account_id>/sis_imports.json?import_type=instructure_csv'\n\nIf you decide to do a raw post, you can skip the 'attachment' argument,\nbut you will then be required to provide a suitable Content-Type header.\nYou are encouraged to also provide the 'extension' argument.\n\nExamples:\n  curl -H 'Content-Type: application/octet-stream' --data-binary @<filename>.zip \\\n      -H \"Authorization: Bearer <token>\" \\\n      'https://<canvas>/api/v1/accounts/<account_id>/sis_imports.json?import_type=instructure_csv&extension=zip'\n\n  curl -H 'Content-Type: application/zip' --data-binary @<filename>.zip \\\n      -H \"Authorization: Bearer <token>\" \\\n      'https://<canvas>/api/v1/accounts/<account_id>/sis_imports.json?import_type=instructure_csv'\n\n  curl -H 'Content-Type: text/csv' --data-binary @<filename>.csv \\\n      -H \"Authorization: Bearer <token>\" \\\n      'https://<canvas>/api/v1/accounts/<account_id>/sis_imports.json?import_type=instructure_csv'\n\n  curl -H 'Content-Type: text/csv' --data-binary @<filename>.csv \\\n      -H \"Authorization: Bearer <token>\" \\\n      'https://<canvas>/api/v1/accounts/<account_id>/sis_imports.json?import_type=instructure_csv&batch_mode=1&batch_mode_term_id=15'",
               "type": "string",
               "format": null,
               "required": false
@@ -78,7 +78,7 @@
             {
               "paramType": "form",
               "name": "extension",
-              "description": "Recommended for raw post request style imports. This field will be used to distinguish between zip, xml, csv, and other file format extensions that would usually be provided with the filename in the multipart post request scenario. If not provided, this value will be inferred from the Content-Type, falling back to zip-file format if all else fails.",
+              "description": "Recommended for raw post request style imports. This field will be used to\ndistinguish between zip, xml, csv, and other file format extensions that\nwould usually be provided with the filename in the multipart post request\nscenario. If not provided, this value will be inferred from the\nContent-Type, falling back to zip-file format if all else fails.",
               "type": "string",
               "format": null,
               "required": false
@@ -86,7 +86,7 @@
             {
               "paramType": "form",
               "name": "batch_mode",
-              "description": "If set, this SIS import will be run in batch mode, deleting any data previously imported via SIS that is not present in this latest import. See the SIS CSV Format page for details.",
+              "description": "If set, this SIS import will be run in batch mode, deleting any data\npreviously imported via SIS that is not present in this latest import.\nSee the SIS CSV Format page for details.\nBatch mode cannot be used with diffing.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -101,8 +101,16 @@
             },
             {
               "paramType": "form",
+              "name": "multi_term_batch_mode",
+              "description": "Runs batch mode against all terms in terms file. Requires change_threshold.",
+              "type": "boolean",
+              "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
               "name": "override_sis_stickiness",
-              "description": "Many fields on records in Canvas can be marked \"sticky,\" which means that when something changes in the UI apart from the SIS, that field gets \"stuck.\" In this way, by default, SIS imports do not override UI changes. If this field is present, however, it will tell the SIS import to ignore \"stickiness\" and override all fields.",
+              "description": "Many fields on records in Canvas can be marked \"sticky,\" which means that\nwhen something changes in the UI apart from the SIS, that field gets\n\"stuck.\" In this way, by default, SIS imports do not override UI changes.\nIf this field is present, however, it will tell the SIS import to ignore\n\"stickiness\" and override all fields.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -110,7 +118,7 @@
             {
               "paramType": "form",
               "name": "add_sis_stickiness",
-              "description": "This option, if present, will process all changes as if they were UI changes. This means that \"stickiness\" will be added to changed fields. This option is only processed if 'override_sis_stickiness' is also provided.",
+              "description": "This option, if present, will process all changes as if they were UI\nchanges. This means that \"stickiness\" will be added to changed fields.\nThis option is only processed if 'override_sis_stickiness' is also provided.",
               "type": "boolean",
               "format": null,
               "required": false
@@ -118,7 +126,7 @@
             {
               "paramType": "form",
               "name": "clear_sis_stickiness",
-              "description": "This option, if present, will clear \"stickiness\" from all fields touched by this import. Requires that 'override_sis_stickiness' is also provided. If 'add_sis_stickiness' is also provided, 'clear_sis_stickiness' will overrule the behavior of 'add_sis_stickiness'",
+              "description": "This option, if present, will clear \"stickiness\" from all fields touched\nby this import. Requires that 'override_sis_stickiness' is also provided.\nIf 'add_sis_stickiness' is also provided, 'clear_sis_stickiness' will\noverrule the behavior of 'add_sis_stickiness'",
               "type": "boolean",
               "format": null,
               "required": false
@@ -126,7 +134,7 @@
             {
               "paramType": "form",
               "name": "diffing_data_set_identifier",
-              "description": "If set on a CSV import, Canvas will attempt to optimize the SIS import by comparing this set of CSVs to the previous set that has the same data set identifier, and only appliying the difference between the two. See the SIS CSV Format documentation for more details.",
+              "description": "If set on a CSV import, Canvas will attempt to optimize the SIS import by\ncomparing this set of CSVs to the previous set that has the same data set\nidentifier, and only applying the difference between the two. See the\nSIS CSV Format documentation for more details.\nDiffing cannot be used with batch_mode",
               "type": "string",
               "format": null,
               "required": false
@@ -134,9 +142,30 @@
             {
               "paramType": "form",
               "name": "diffing_remaster_data_set",
-              "description": "If true, and diffing_data_set_identifier is sent, this SIS import will be part of the data set, but diffing will not be performed. See the SIS CSV Format documentation for details.",
+              "description": "If true, and diffing_data_set_identifier is sent, this SIS import will be\npart of the data set, but diffing will not be performed. See the SIS CSV\nFormat documentation for details.",
               "type": "boolean",
               "format": null,
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "diffing_drop_status",
+              "description": "If diffing_drop_status is passed, this SIS import will use this status for\nenrollments that are not included in the sis_batch. Defaults to 'deleted'",
+              "type": "string",
+              "format": null,
+              "required": false,
+              "enum": [
+                "deleted",
+                "completed",
+                "inactive"
+              ]
+            },
+            {
+              "paramType": "form",
+              "name": "change_threshold",
+              "description": "If set with batch_mode, the batch cleanup process will not run if the\nnumber of items deleted is higher than the percentage set. If set to 10\nand a term has 200 enrollments, and batch would delete more than 20 of\nthe enrollments the batch will abort before the enrollments are deleted.\nThe change_threshold will be evaluated for course, sections, and\nenrollments independently.\nIf set with diffing, diffing  will not be performed if the files are\ngreater than the threshold as a percent. If set to 5 and the file is more\nthan 5% smaller or more than 5% larger than the file that is being\ncompared to, diffing will not be performed. If the files are less than 5%,\ndiffing will be performed. See the SIS CSV Format documentation for more\ndetails.\nRequired for multi_term_batch_mode.",
+              "type": "integer",
+              "format": "int64",
               "required": false
             }
           ],
@@ -174,6 +203,60 @@
           "type": "SisImport"
         }
       ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/sis_imports/{id}/abort",
+      "description": "Abort a SIS import that has not completed.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Abort SIS import",
+          "notes": "Abort a SIS import that has not completed.",
+          "nickname": "abort_sis_import",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "SisImport"
+        }
+      ]
+    },
+    {
+      "path": "/v1/accounts/{account_id}/sis_imports/abort_all_pending",
+      "description": "Abort already created but not processed or processing SIS imports.",
+      "operations": [
+        {
+          "method": "PUT",
+          "summary": "Abort all pending SIS imports",
+          "notes": "Abort already created but not processed or processing SIS imports.",
+          "nickname": "abort_all_pending_sis_imports",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "boolean"
+        }
+      ]
     }
   ],
   "models": {
@@ -190,8 +273,14 @@
           "type": "string"
         },
         "supplied_batches": {
-          "description": "Which file were included in the SIS import",
-          "example": "[\"term\", \"course\", \"section\", \"user\", \"enrollment\"]",
+          "description": "Which files were included in the SIS import",
+          "example": [
+            "term",
+            "course",
+            "section",
+            "user",
+            "enrollment"
+          ],
           "type": "array",
           "items": {
             "type": "string"
@@ -253,6 +342,21 @@
         "grade_publishing_results": {
           "example": 0,
           "type": "integer"
+        },
+        "batch_courses_deleted": {
+          "description": "the number of courses that were removed because they were not included in the batch for batch_mode imports. Only included if courses were deleted",
+          "example": 11,
+          "type": "integer"
+        },
+        "batch_sections_deleted": {
+          "description": "the number of sections that were removed because they were not included in the batch for batch_mode imports. Only included if sections were deleted",
+          "example": 0,
+          "type": "integer"
+        },
+        "batch_enrollments_deleted": {
+          "description": "the number of enrollments that were removed because they were not included in the batch for batch_mode imports. Only included if enrollments were deleted",
+          "example": 150,
+          "type": "integer"
         }
       }
     },
@@ -284,14 +388,17 @@
           "type": "datetime"
         },
         "workflow_state": {
-          "description": "The current state of the SIS import. - 'created': The SIS import has been created.\n - 'importing': The SIS import is currently processing.\n - 'imported': The SIS import has completed successfully.\n - 'imported_with_messages': The SIS import completed with errors or warnings.\n - 'failed_with_messages': The SIS import failed with errors.\n - 'failed': The SIS import failed.",
+          "description": "The current state of the SIS import. - 'created': The SIS import has been created.\n - 'importing': The SIS import is currently processing.\n - 'cleanup_batch': The SIS import is currently cleaning up courses, sections, and enrollments not included in the batch for batch_mode imports.\n - 'imported': The SIS import has completed successfully.\n - 'imported_with_messages': The SIS import completed with errors or warnings.\n - 'failed_with_messages': The SIS import failed with errors.\n - 'failed': The SIS import failed.",
           "example": "imported",
           "type": "string",
           "allowableValues": {
             "values": [
               "created",
+              "importing",
+              "cleanup_batch",
               "imported",
               "imported_with_messages",
+              "aborted",
               "failed_with_messages",
               "failed"
             ]
@@ -302,24 +409,48 @@
           "$ref": "SisImportData"
         },
         "progress": {
-          "description": "The progress of the SIS import.",
+          "description": "The progress of the SIS import. The progress will reset when using batch_mode and have a different progress for the cleanup stage",
           "example": "100",
           "type": "string"
         },
+        "errors_attachment": {
+          "description": "The errors_attachment api object of the SIS import. Only available if there are errors or warning and import has completed.",
+          "$ref": "File"
+        },
         "processing_warnings": {
           "description": "Only imports that are complete will get this data. An array of CSV_file/warning_message pairs.",
-          "example": "[['students.csv','user John Doe has already claimed john_doe's requested login information, skipping'], ...]",
+          "example": [
+            [
+              "students.csv",
+              "user John Doe has already claimed john_doe's requested login information, skipping"
+            ]
+          ],
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
+        },
+        "user": {
+          "description": "The user that initiated the sis_batch. See the Users API for details.",
+          "$ref": "User"
         },
         "processing_errors": {
           "description": "An array of CSV_file/error_message pairs.",
-          "example": "[['students.csv','Error while importing CSV. Please contact support.'], ...]",
+          "example": [
+            [
+              "students.csv",
+              "Error while importing CSV. Please contact support."
+            ]
+          ],
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         },
         "batch_mode": {
@@ -331,6 +462,11 @@
           "description": "The term the batch was limited to.",
           "example": "1234",
           "type": "string"
+        },
+        "multi_term_batch_mode": {
+          "description": "Enables batch mode against all terms in term file. Requires change_threshold to be set.",
+          "example": "false",
+          "type": "boolean"
         },
         "override_sis_stickiness": {
           "description": "Whether UI changes were overridden.",

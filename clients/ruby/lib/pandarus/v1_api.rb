@@ -22762,11 +22762,14 @@ module Pandarus
         :extension,
         :batch_mode,
         :batch_mode_term_id,
+        :multi_term_batch_mode,
         :override_sis_stickiness,
         :add_sis_stickiness,
         :clear_sis_stickiness,
         :diffing_data_set_identifier,
         :diffing_remaster_data_set,
+        :diffing_drop_status,
+        :change_threshold,
         
 
       ]
@@ -22825,6 +22828,77 @@ module Pandarus
 
       response = mixed_request(:get, path, query_params, form_params, headers)
       SisImport.new(response)
+      
+
+    end
+    
+
+    # Abort SIS import
+    def abort_sis_import(account_id,id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      raise "id is required" if id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id,
+        :id => id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/sis_imports/{id}/abort",
+        :account_id => account_id,
+        :id => id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      SisImport.new(response)
+      
+
+    end
+    
+
+    # Abort all pending SIS imports
+    def abort_all_pending_sis_imports(account_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/sis_imports/abort_all_pending",
+        :account_id => account_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:put, path, query_params, form_params, headers)
+      boolean.new(response)
       
 
     end
