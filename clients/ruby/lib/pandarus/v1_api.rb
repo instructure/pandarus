@@ -21738,43 +21738,6 @@ module Pandarus
     end
     
 
-    # Get a single quiz submission question.
-    def get_single_quiz_submission_question(quiz_submission_id,id,opts={})
-      query_param_keys = [
-        :include
-
-      ]
-
-      form_param_keys = [
-        
-
-      ]
-
-      # verify existence of params
-      raise "quiz_submission_id is required" if quiz_submission_id.nil?
-      raise "id is required" if id.nil?
-      # set default values and merge with input
-      options = underscored_merge_opts(opts,
-        :quiz_submission_id => quiz_submission_id,
-        :id => id
-
-      )
-
-      # resource path
-      path = path_replace("/v1/quiz_submissions/{quiz_submission_id}/questions/{id}",
-        :quiz_submission_id => quiz_submission_id,
-        :id => id)
-      headers = nil
-      form_params = select_params(options, form_param_keys)
-      query_params = select_query_params(options, query_param_keys)
-
-      response = mixed_request(:get, path, query_params, form_params, headers)
-      response
-      
-
-    end
-    
-
     # Answering questions
     def answering_questions(quiz_submission_id,attempt,validation_token,opts={})
       query_param_keys = [

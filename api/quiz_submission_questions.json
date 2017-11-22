@@ -45,51 +45,6 @@
       ]
     },
     {
-      "path": "/v1/quiz_submissions/{quiz_submission_id}/questions/{id}",
-      "description": "Get a single question record.\n\n<b>200 OK</b> response code is returned if the request was successful.",
-      "operations": [
-        {
-          "method": "GET",
-          "summary": "Get a single quiz submission question.",
-          "notes": "Get a single question record.\n\n<b>200 OK</b> response code is returned if the request was successful.",
-          "nickname": "get_single_quiz_submission_question",
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "quiz_submission_id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "path",
-              "name": "id",
-              "description": "ID",
-              "type": "string",
-              "format": null,
-              "required": true
-            },
-            {
-              "paramType": "query",
-              "name": "include",
-              "description": "Associations to include with the quiz submission question.",
-              "type": "array",
-              "format": null,
-              "required": false,
-              "enum": [
-                "quiz_question"
-              ],
-              "items": {
-                "type": "string"
-              }
-            }
-          ],
-          "type": "void"
-        }
-      ]
-    },
-    {
       "path": "/v1/quiz_submissions/{quiz_submission_id}/questions",
       "description": "Provide or update an answer to one or more QuizQuestions.",
       "operations": [
@@ -110,7 +65,7 @@
             {
               "paramType": "form",
               "name": "attempt",
-              "description": "The attempt number of the quiz submission being taken. Note that this must be the latest attempt index, as questions for earlier attempts can not be modified.",
+              "description": "The attempt number of the quiz submission being taken. Note that this\nmust be the latest attempt index, as questions for earlier attempts can\nnot be modified.",
               "type": "integer",
               "format": "int64",
               "required": true
@@ -118,7 +73,7 @@
             {
               "paramType": "form",
               "name": "validation_token",
-              "description": "The unique validation token you received when the Quiz Submission was created.",
+              "description": "The unique validation token you received when the Quiz Submission was\ncreated.",
               "type": "string",
               "format": null,
               "required": true
@@ -134,12 +89,12 @@
             {
               "paramType": "form",
               "name": "quiz_questions",
-              "description": "Set of question IDs and the answer value. See {Appendix: Question Answer Formats} for the accepted answer formats for each question type.",
+              "description": "Set of question IDs and the answer value.\n\nSee {Appendix: Question Answer Formats} for the accepted answer formats\nfor each question type.",
               "type": "array",
               "format": null,
               "required": false,
               "items": {
-                "$ref": "quizsubmissionquestion"
+                "$ref": "QuizSubmissionQuestion"
               }
             }
           ],
@@ -179,7 +134,7 @@
             {
               "paramType": "form",
               "name": "attempt",
-              "description": "The attempt number of the quiz submission being taken. Note that this must be the latest attempt index, as questions for earlier attempts can not be modified.",
+              "description": "The attempt number of the quiz submission being taken. Note that this\nmust be the latest attempt index, as questions for earlier attempts can\nnot be modified.",
               "type": "integer",
               "format": "int64",
               "required": true
@@ -187,7 +142,7 @@
             {
               "paramType": "form",
               "name": "validation_token",
-              "description": "The unique validation token you received when the Quiz Submission was created.",
+              "description": "The unique validation token you received when the Quiz Submission was\ncreated.",
               "type": "string",
               "format": null,
               "required": true
@@ -234,7 +189,7 @@
             {
               "paramType": "form",
               "name": "attempt",
-              "description": "The attempt number of the quiz submission being taken. Note that this must be the latest attempt index, as questions for earlier attempts can not be modified.",
+              "description": "The attempt number of the quiz submission being taken. Note that this\nmust be the latest attempt index, as questions for earlier attempts can\nnot be modified.",
               "type": "integer",
               "format": "int64",
               "required": true
@@ -242,7 +197,7 @@
             {
               "paramType": "form",
               "name": "validation_token",
-              "description": "The unique validation token you received when the Quiz Submission was created.",
+              "description": "The unique validation token you received when the Quiz Submission was\ncreated.",
               "type": "string",
               "format": null,
               "required": true
@@ -283,6 +238,13 @@
         "answer": {
           "description": "The provided answer (if any) for this question. The format of this parameter depends on the type of the question, see the Appendix for more information.",
           "type": "string"
+        },
+        "answers": {
+          "description": "The possible answers for this question when those possible answers are necessary.  The presence of this parameter is dependent on permissions.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     }

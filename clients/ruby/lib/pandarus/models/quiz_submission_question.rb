@@ -8,6 +8,7 @@ module Pandarus
     attribute :id, resolve_type(nil)
     attribute :flagged, resolve_type(nil)
     attribute :answer, resolve_type("String")
+    attribute :answers, resolve_type("String", collection: true)
     
   end
 end
