@@ -6592,6 +6592,8 @@ module Pandarus
         :enrollment_type,
         :enrollment_role,
         :enrollment_role_id,
+        :enrollment_state,
+        :exclude_blueprint_courses,
         :include,
         :state
 
@@ -6622,6 +6624,41 @@ module Pandarus
     end
     
 
+    # List courses for a user
+    def list_courses_for_user(user_id,opts={})
+      query_param_keys = [
+        :include,
+        :state,
+        :enrollment_state
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "user_id is required" if user_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :user_id => user_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/users/{user_id}/courses",
+        :user_id => user_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      RemoteCollection.new(connection, Course, path, query_params)
+      
+
+    end
+    
+
     # Create a new course
     def create_new_course(account_id,opts={})
       query_param_keys = [
@@ -6638,6 +6675,7 @@ module Pandarus
         :course__is_public__,
         :course__is_public_to_auth_users__,
         :course__public_syllabus__,
+        :course__public_syllabus_to_auth__,
         :course__public_description__,
         :course__allow_student_wiki_edits__,
         :course__allow_wiki_comments__,
@@ -6650,11 +6688,13 @@ module Pandarus
         :course__integration_id__,
         :course__hide_final_grades__,
         :course__apply_assignment_group_weights__,
+        :course__time_zone__,
         :offer,
         :enroll_me,
         :course__syllabus_body__,
         :course__grading_standard_id__,
         :course__course_format__,
+        :enable_sis_reactivation,
         
 
       ]
@@ -6757,6 +6797,7 @@ module Pandarus
         :enrollment_role_id,
         :include,
         :user_id,
+        :user_ids,
         :enrollment_state
 
       ]
@@ -6796,6 +6837,7 @@ module Pandarus
         :enrollment_role_id,
         :include,
         :user_id,
+        :user_ids,
         :enrollment_state
 
       ]
@@ -7033,8 +7075,8 @@ module Pandarus
     end
     
 
-    # Conclude a course
-    def conclude_course(id,event,opts={})
+    # Delete/Conclude a course
+    def delete_conclude_course(id,event,opts={})
       query_param_keys = [
         :event
 
@@ -7120,6 +7162,8 @@ module Pandarus
         :lock_all_announcements,
         :restrict_student_past_view,
         :restrict_student_future_view,
+        :show_announcements_on_home_page,
+        :home_page_announcement_limit,
         
 
       ]
@@ -7218,7 +7262,7 @@ module Pandarus
     
 
     # Update a course
-    def update_course(id,course__account_id__,opts={})
+    def update_course(id,opts={})
       query_param_keys = [
         
 
@@ -7232,7 +7276,9 @@ module Pandarus
         :course__end_at__,
         :course__license__,
         :course__is_public__,
+        :course__is_public_to_auth_users__,
         :course__public_syllabus__,
+        :course__public_syllabus_to_auth__,
         :course__public_description__,
         :course__allow_student_wiki_edits__,
         :course__allow_wiki_comments__,
@@ -7244,22 +7290,30 @@ module Pandarus
         :course__sis_course_id__,
         :course__integration_id__,
         :course__hide_final_grades__,
+        :course__time_zone__,
         :course__apply_assignment_group_weights__,
+        :course__storage_quota_mb__,
         :offer,
+        :course__event__,
         :course__syllabus_body__,
         :course__grading_standard_id__,
         :course__course_format__,
+        :course__image_id__,
+        :course__image_url__,
+        :course__remove_image__,
+        :course__blueprint__,
+        :course__blueprint_restrictions__,
+        :course__use_blueprint_restrictions_by_object_type__,
+        :course__blueprint_restrictions_by_object_type__,
         
 
       ]
 
       # verify existence of params
       raise "id is required" if id.nil?
-      raise "course__account_id__ is required" if course__account_id__.nil?
       # set default values and merge with input
       options = underscored_merge_opts(opts,
-        :id => id,
-        :course__account_id__ => course__account_id__
+        :id => id
 
       )
 
@@ -7346,6 +7400,74 @@ module Pandarus
 
       response = mixed_request(:post, path, query_params, form_params, headers)
       Course.new(response)
+      
+
+    end
+    
+
+    # Get effective due dates
+    def get_effective_due_dates(course_id,opts={})
+      query_param_keys = [
+        :assignment_ids
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/effective_due_dates",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      response
+      
+
+    end
+    
+
+    # Permissions
+    def permissions(course_id,opts={})
+      query_param_keys = [
+        :permissions
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "course_id is required" if course_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :course_id => course_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/courses/{course_id}/permissions",
+        :course_id => course_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      response
       
 
     end
