@@ -5397,6 +5397,7 @@ module Pandarus
         :course__hide_final_grades__,
         :course__apply_assignment_group_weights__,
         :offer,
+        :course__event__,
         :course__syllabus_body__,
         :course__grading_standard_id__,
         :course__course_format__,
