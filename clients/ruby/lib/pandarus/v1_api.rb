@@ -571,6 +571,40 @@ module Pandarus
     end
     
 
+    # Returns the terms of service for that account
+    def returns_terms_of_service_for_that_account(account_id,opts={})
+      query_param_keys = [
+        
+
+      ]
+
+      form_param_keys = [
+        
+
+      ]
+
+      # verify existence of params
+      raise "account_id is required" if account_id.nil?
+      # set default values and merge with input
+      options = underscored_merge_opts(opts,
+        :account_id => account_id
+
+      )
+
+      # resource path
+      path = path_replace("/v1/accounts/{account_id}/terms_of_service",
+        :account_id => account_id)
+      headers = nil
+      form_params = select_params(options, form_param_keys)
+      query_params = select_query_params(options, query_param_keys)
+
+      response = mixed_request(:get, path, query_params, form_params, headers)
+      TermsOfService.new(response)
+      
+
+    end
+    
+
     # List active courses in an account
     def list_active_courses_in_account(account_id,opts={})
       query_param_keys = [
@@ -8155,7 +8189,6 @@ module Pandarus
         :pinned,
         :position_after,
         :group_category_id,
-        :allow_rating,
         :only_graders_can_rate,
         :sort_by_rating,
         :attachment,
@@ -8208,7 +8241,6 @@ module Pandarus
         :pinned,
         :position_after,
         :group_category_id,
-        :allow_rating,
         :only_graders_can_rate,
         :sort_by_rating,
         :attachment,

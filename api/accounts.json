@@ -118,6 +118,29 @@
       ]
     },
     {
+      "path": "/v1/accounts/{account_id}/terms_of_service",
+      "description": "",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Returns the terms of service for that account",
+          "notes": "",
+          "nickname": "returns_terms_of_service_for_that_account",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "account_id",
+              "description": "ID",
+              "type": "string",
+              "format": null,
+              "required": true
+            }
+          ],
+          "type": "TermsOfService"
+        }
+      ]
+    },
+    {
       "path": "/v1/accounts/{account_id}/courses",
       "description": "Retrieve a paginated list of courses in this account.",
       "operations": [

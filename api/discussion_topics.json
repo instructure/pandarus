@@ -333,14 +333,6 @@
             },
             {
               "paramType": "form",
-              "name": "allow_rating",
-              "description": "If true, users will be allowed to rate entries.",
-              "type": "boolean",
-              "format": null,
-              "required": false
-            },
-            {
-              "paramType": "form",
               "name": "only_graders_can_rate",
               "description": "If true, only graders will be allowed to rate entries.",
               "type": "boolean",
@@ -508,14 +500,6 @@
               "description": "If present, the topic will become a group discussion assigned\nto the group.",
               "type": "integer",
               "format": "int64",
-              "required": false
-            },
-            {
-              "paramType": "form",
-              "name": "allow_rating",
-              "description": "If true, users will be allowed to rate entries.",
-              "type": "boolean",
-              "format": null,
               "required": false
             },
             {
