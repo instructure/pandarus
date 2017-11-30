@@ -13,6 +13,12 @@ describe Pandarus::Client do
     it "raises when args are too few" do
       expect { client.list_account_admins }.to raise_error("account_id is required")
     end
+
+    it "leaves options intact" do
+      new_opts = opts.dup
+      client
+      expect(opts).to eq(new_opts)
+    end
   end
 
   def stub_json_request(url, body, method=:any)
