@@ -83,7 +83,7 @@
   </dependencies>
   <properties>
     <codegen-version>2.0.17</codegen-version>
-    <scala-version>2.10.4</scala-version>
+    <scala-version>2.13.18</scala-version>
     <junit-version>4.8.1</junit-version>
     <maven-plugin-version>3.1.0</maven-plugin-version>
   </properties>
